@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq8xqg1q1wgxp"]
+[gd_scene load_steps=7 format=3 uid="uid://cq8xqg1q1wgxp"]
 
+[ext_resource type="Script" path="res://level.gd" id="1_uypkh"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://tileset1.tres" id="2_323mn"]
-[ext_resource type="PackedScene" uid="uid://k62cirntbwcj" path="res://character_body_2d.tscn" id="2_mh6gl"]
-[ext_resource type="Script" path="res://TileMap.gd" id="3_ne0a6"]
 [ext_resource type="Script" path="res://CharacterManager.gd" id="4_m8tdb"]
+[ext_resource type="TileSet" uid="uid://c71n7ovyb0chb" path="res://tileset2.tres" id="5_74kex"]
+[ext_resource type="PackedScene" uid="uid://ccrflxfdcwo3c" path="res://menu.tscn" id="7_psia6"]
+[ext_resource type="Script" path="res://TurnService.gd" id="8_5tca6"]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainService" type="Node2D"]
 y_sort_enabled = true
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_mh6gl")]
-position = Vector2(187.557, -20.417)
+script = ExtResource("1_uypkh")
+metadata/_edit_horizontal_guides_ = [371.787]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -27,9 +28,22 @@ layer_1/y_sort_enabled = true
 layer_1/y_sort_origin = 32
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(196615, 131073, 0, -393209, 131073, 0, -458745, 65537, 0, -327673, 131073, 0, -262137, 131073, 0, -196601, 131073, 0, -131065, 131073, 0, -65529, 131073, 0, 7, 131073, 0, 65543, 131073, 0, 131079, 131073, 0, 196614, 131073, 0, 196613, 131073, 0, -393217, 65537, 0, 196607, 65537, 0, 131071, 65537, 0, 65535, 65537, 0, -1, 65537, 0, -65537, 65537, 0, -131073, 65537, 0, -196609, 65537, 0, -262145, 65537, 0, -327681, 65537, 0, -458752, 65537, 0, -458751, 65537, 0, -458750, 65537, 0, -458749, 65537, 0, -458748, 65537, 0, -458747, 65537, 0, -458746, 65537, 0, 196612, 131073, 0, 196611, 131073, 0, 196610, 131073, 0, 196609, 131073, 0, 196608, 131073, 0, 262143, 65537, 0)
-script = ExtResource("3_ne0a6")
 
-[node name="CharacterManager" type="Node2D" parent="."]
-script = ExtResource("4_m8tdb")
+[node name="HighlightService" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("5_74kex")
+cell_quadrant_size = 64
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/z_index = 10
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MoveService" type="Node2D" parent="."]
+script = ExtResource("4_m8tdb")
+
+[node name="ActionService" parent="." instance=ExtResource("7_psia6")]
+position = Vector2(-576.348, -322.077)
+
+[node name="TurnService" type="Node" parent="."]
+script = ExtResource("8_5tca6")

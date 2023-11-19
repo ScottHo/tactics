@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccrflxfdcwo3c"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0qs77")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 35.5113
+offset_top = 494.192
+offset_right = 86.5113
+offset_bottom = 525.192
+scale = Vector2(3.15897, 4.09686)
+text = "Move"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 238.761
+offset_top = 536.321
+offset_right = 278.761
+offset_bottom = 562.321
+text = "1"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 49.8903
+offset_top = 338.727
+offset_right = 171.89
+offset_bottom = 410.727
+text = "NextTurn
+"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 243.245
+offset_top = 352.139
+offset_right = 283.245
+offset_bottom = 375.139
+text = "1"
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 189.505
+offset_top = 240.416
+offset_right = 229.505
+offset_bottom = 263.416
+text = "-1"
+
+[node name="Label4" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 69.2964
+offset_top = 243.245
+offset_right = 174.296
+offset_bottom = 269.245
+text = "Current Turn:"

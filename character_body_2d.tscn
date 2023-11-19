@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://k62cirntbwcj"]
 
-[ext_resource type="Texture2D" uid="uid://7uxwmsqq02n1" path="res://Cast1.png" id="1_oyju4"]
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_qayqg"]
+[ext_resource type="Texture2D" uid="uid://s6hhpycbmdr7" path="res://StickIdle1.png" id="2_q8223"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449
@@ -25,6 +25,13 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mdc5f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.49907, -9.60504)
-scale = Vector2(0.375289, 0.417286)
-texture = ExtResource("1_oyju4")
+position = Vector2(0.631921, -10.6688)
+scale = Vector2(0.32326, 0.285382)
+texture = ExtResource("2_q8223")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -9.32854
+offset_top = -44.7235
+offset_right = 12.6715
+offset_bottom = -18.7235
+text = "-1"
