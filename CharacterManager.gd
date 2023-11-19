@@ -7,8 +7,10 @@ var enabled: = false
 var finishInProcess: = false
 var previous_vector: = Vector2i(-99,-99)
 var _points = []
-var _starting_pos = Vector2i(0, 0)
+var _starting_point = Vector2i(0, 0)
 var _state: State
+var maxMoves: int = -1
+
 signal movesFound
 signal numMovesUpdated
 
@@ -38,10 +40,12 @@ func _input(event):
                 return            
             previous_vector = coords
             
-            var startPoint = globalToPoint(_starting_pos)
+            var startPoint = _starting_point
             var points: Array[Vector2i] = astar.get_id_path(startPoint, coords)
             if len(points) == 0:
-                return            
+                return
+            if len(points) > maxMoves:
+                return          
             _points = []
             for point in points:
                 _points.append(point)
@@ -56,7 +60,7 @@ func _input(event):
                 var poses = []
                 for point in _points:
                     poses.append(pointToGlobal(point))
-                movesFound.emit(poses)
+                movesFound.emit(poses, _points[-1])
                 enabled = false
                 return
 
@@ -66,15 +70,22 @@ func globalToPoint(pos):
 func pointToGlobal(point):
     return tileMap.to_global(tileMap.map_to_local(point))
 
+func updateEntityLocations():
+    for i in range(1,8):
+        for j in range(-5,4):
+            astar.set_point_solid(Vector2i(i, j), false)
+    for id in _state.entities.allKeys():
+        astar.set_point_solid(_state.entities.get_data(id).location, true)
+    return
 
 func finish():
     for point in _points:
-        print(point)
         highlightMap.set_cell(0, point, -1, Vector2i(1,0), 0)
     return
 
-func start(starting_pos: Vector2):
-    _starting_pos = starting_pos
+func start(entity: Entity):
+    _starting_point = entity.location
+    maxMoves = entity.movement
     _points = []
     previous_vector = Vector2i(-99,-99)
     enabled = true
