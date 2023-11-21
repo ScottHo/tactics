@@ -3,14 +3,27 @@ extends Node2D
 @onready var moveService: MoveService = $MoveService
 @onready var actionService = $ActionService
 @onready var turnService: TurnService = $TurnService
+@onready var highlightMap: HighlightMap = $HighlightMap
 var current_turn_id: int = -1
 var state: State = State.new()
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
     actionService.nextTurnActionInitiate.connect(nextTurn)
     actionService.moveActionInitiate.connect(doMove)
     moveService.movesFound.connect(movesFound)
     
+    importTestData()
+    
+    moveService.setState(state)
+    moveService.updateEntityLocations()
+    turnService.setState(state)
+    turnService.update()
+    actionService.setState(state)
+    actionService.showTurns(turnService.next5Turns())
+    nextTurn()
+    return
+
+func importTestData():
     var ally1 = Entity.new()
     ally1.health = 10
     ally1.movement = 6
@@ -55,22 +68,17 @@ func _ready():
     ally4.sprite = sprite4
     var id4 = state.addAlly(ally4)
     sprite4.setLabel(str(id4))
-
-    moveService.setState(state)
-    moveService.updateEntityLocations()
-    turnService.setState(state)
-    turnService.update()
-    actionService.setState(state)
-    actionService.showTurns(turnService.next5Turns())
     return
 
 func currentEntity() -> Entity:
     return state.entities.get_data(current_turn_id)
 
 func nextTurn():
+    highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
     actionService.showCurrentTurn(current_turn_id)
     actionService.showTurns(turnService.next5Turns())
+    highlightMap.highlight(currentEntity())
     return
 
 func doMove():
@@ -91,5 +99,6 @@ func doneMove():
     moveService.finish()
     moveService.updateEntityLocations()
     actionService.setMoveNum(0)
+    highlightMap.highlight(currentEntity())
     return
     

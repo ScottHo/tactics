@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lkmoe1jcgg64"
-path="res://.godot/imported/BaseTiles2.png-d107b4fa11f0f2c0cad871a54a0afb58.ctex"
+uid="uid://dsassaq042trr"
+path="res://.godot/imported/HighlightTiles.png-2be7b712a77eb50a6dafa5839bb479cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BaseTiles2.png"
-dest_files=["res://.godot/imported/BaseTiles2.png-d107b4fa11f0f2c0cad871a54a0afb58.ctex"]
+source_file="res://HighlightTiles.png"
+dest_files=["res://.godot/imported/HighlightTiles.png-2be7b712a77eb50a6dafa5839bb479cd.ctex"]
 
 [params]
 

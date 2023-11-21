@@ -14,10 +14,12 @@ signal doneMoving
 func _process(_delta):
     if not moving:
         if shouldMove:
-            move(points.pop_front())
             if len(points) == 0:
                 shouldMove = false
                 doneMoving.emit()
+                return
+            move(points.pop_front())
+            
                 
 
 func _physics_process(_delta):
