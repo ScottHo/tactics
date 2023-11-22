@@ -1,4 +1,4 @@
-class_name TurnService extends Node
+class_name TurnService extends Node2D
 
 var _state: State
 var _turnNodes: Array[TurnNode] = []

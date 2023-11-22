@@ -1,7 +1,7 @@
 class_name MoveService extends Node2D
 
-@onready var tileMap = $"../TileMap"
-@onready var highlightMap = $"../HighlightMap"
+@onready var tileMap: MainTileMap = $"../TileMap"
+@onready var highlightMap: HighlightMap = $"../HighlightMap"
 var astar = AStarGrid2D.new()
 var enabled: = false
 var finishInProcess: = false
@@ -31,7 +31,7 @@ func _input(event):
     if not enabled:
         return
     if event is InputEventMouseMotion:
-        var coords: Vector2i = globalToPoint(get_global_mouse_position())
+        var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if previous_vector != coords:
             clearPoints()
             if not astar.is_in_bounds(coords.x, coords.y):
@@ -55,7 +55,7 @@ func _input(event):
                     return
                 var poses = []
                 for point in _points:
-                    poses.append(pointToGlobal(point))
+                    poses.append(tileMap.pointToGlobal(point))
                 movesFound.emit(poses, _points[-1])
                 enabled = false
                 return
@@ -72,12 +72,6 @@ func clearPoints():
         highlightMap.set_cell(0, point, 0, Highlights.EMPTY, 0)
     _points = []
     return
-
-func globalToPoint(pos):
-    return tileMap.local_to_map(tileMap.to_local(pos))
-
-func pointToGlobal(point):
-    return tileMap.to_global(tileMap.map_to_local(point))
 
 func updateEntityLocations():
     for i in range(1,8):

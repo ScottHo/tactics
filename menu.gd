@@ -1,4 +1,4 @@
-extends Node2D
+class_name MenuService extends Node2D
 
 var _state: State
 signal moveActionInitiate

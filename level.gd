@@ -1,15 +1,15 @@
 extends Node2D
 
 @onready var moveService: MoveService = $MoveService
-@onready var actionService = $ActionService
+@onready var menuService: MenuService = $MenuService
 @onready var turnService: TurnService = $TurnService
 @onready var highlightMap: HighlightMap = $HighlightMap
 var current_turn_id: int = -1
 var state: State = State.new()
 
 func _ready():
-    actionService.nextTurnActionInitiate.connect(nextTurn)
-    actionService.moveActionInitiate.connect(doMove)
+    menuService.nextTurnActionInitiate.connect(nextTurn)
+    menuService.moveActionInitiate.connect(doMove)
     moveService.movesFound.connect(movesFound)
     
     importTestData()
@@ -18,8 +18,8 @@ func _ready():
     moveService.updateEntityLocations()
     turnService.setState(state)
     turnService.update()
-    actionService.setState(state)
-    actionService.showTurns(turnService.next5Turns())
+    menuService.setState(state)
+    menuService.showTurns(turnService.next5Turns())
     nextTurn()
     return
 
@@ -76,13 +76,13 @@ func currentEntity() -> Entity:
 func nextTurn():
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
-    actionService.showCurrentTurn(current_turn_id)
-    actionService.showTurns(turnService.next5Turns())
+    menuService.showCurrentTurn(current_turn_id)
+    menuService.showTurns(turnService.next5Turns())
     highlightMap.highlight(currentEntity())
     return
 
 func doMove():
-    moveService.numMovesUpdated.connect(actionService.setMoveNum)
+    moveService.numMovesUpdated.connect(menuService.setMoveNum)
     moveService.start(currentEntity())
     return
 
@@ -94,11 +94,11 @@ func movesFound(poses, destination: Vector2i):
     return
 
 func doneMove():
-    moveService.numMovesUpdated.disconnect(actionService.setMoveNum)
+    moveService.numMovesUpdated.disconnect(menuService.setMoveNum)
     currentEntity().sprite.doneMoving.disconnect(doneMove)
     moveService.finish()
     moveService.updateEntityLocations()
-    actionService.setMoveNum(0)
+    menuService.setMoveNum(0)
     highlightMap.highlight(currentEntity())
     return
     
