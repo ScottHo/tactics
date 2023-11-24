@@ -17,7 +17,6 @@ signal actionInitiate
 @onready var futureTurnsLabel: Label = $Control/TurnLabelsContainer/FutureTurnsLabel
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
     moveButton.button_down.connect(func(): moveActionInitiate.emit())
     nextTurnButton.button_down.connect(func(): nextTurnActionInitiate.emit())

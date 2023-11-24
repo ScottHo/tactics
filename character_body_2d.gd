@@ -1,8 +1,5 @@
 class_name EntitySprite extends CharacterBody2D
 
-const MOTION_SPEED = 30 # Pixels/second.
-const FRICTION_FACTOR = 0.89
-
 var original_position
 var target_position
 var moving = false
@@ -24,10 +21,10 @@ func _process(_delta):
     
 func _physics_process(_delta):
     if moving:
-        step += 1        
+        step += 1
         global_position = original_position.lerp(target_position, .05*step)
         if step == 20:
-            moving = false  
+            moving = false
 
 func setLabel(s):
     $Label.text = s
