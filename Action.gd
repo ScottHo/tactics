@@ -1,6 +1,6 @@
 class_name Action extends Node
 
-var range 
-var shape
-var damage
+var range: int
+var shape: Array[Vector2i]
+var damage: int
 var effect: Callable

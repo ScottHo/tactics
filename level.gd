@@ -3,14 +3,17 @@ extends Node2D
 @onready var moveService: MoveService = $MoveService
 @onready var menuService: MenuService = $MenuService
 @onready var turnService: TurnService = $TurnService
+@onready var actionService: ActionService = $ActionService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 var current_turn_id: int = -1
 var state: State = State.new()
 
+
 func _ready():
     menuService.nextTurnActionInitiate.connect(nextTurn)
     menuService.moveActionInitiate.connect(doMove)
+    menuService.actionInitiate.connect(doAction)
     moveService.movesFound.connect(movesFound)
     
     importTestData()
@@ -69,6 +72,37 @@ func importTestData():
     ally4.sprite = sprite4
     var id4 = state.addAlly(ally4)
     sprite4.setLabel(str(id4))
+    
+    var action = Action.new()
+    action.range = 5
+    action.damage = 5
+    var arr : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0)]
+    action.shape = arr 
+    actionService.setAction(0, action)
+    
+    action = Action.new()
+    action.range = 6
+    action.damage = 5
+    arr = [
+        Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
+        Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
+        ]
+    action.shape = arr
+    actionService.setAction(1, action)
+    
+    action = Action.new()
+    action.range = 1
+    action.damage = 10
+    arr = [Vector2i(1,-1), Vector2i(1,0), Vector2i(1,1)]
+    action.shape = arr
+    actionService.setAction(2, action)
+    
+    action = Action.new()
+    action.range = 5
+    action.damage = 5
+    arr = []
+    action.shape = arr
+    actionService.setAction(3, action)
     return
 
 func currentEntity() -> Entity:
@@ -101,5 +135,9 @@ func doneMove():
     moveService.updateEntityLocations()
     menuService.setMoveNum(0)
     highlightMap.highlight(currentEntity())
+    return
+
+func doAction(idx: int):
+    actionService.start(currentEntity(), idx)
     return
     

@@ -4,13 +4,13 @@ func assertEquals(a,b):
     if a == b:
         return
     else:
-        print(str(a) + " Does not equal " + str(b))
-        assert(false)
+        assert(false, str(a) + " Does not equal " + str(b))
 
 func _ready():
     $Label.text = "Running"
     test_ID_Dict()
     test_turnService()
+    test_actionService()
     $Label.text = "Good"
     return
     
@@ -67,4 +67,20 @@ func test_turnService():
     assertEquals(ts.startNextTurn(), 2)
     assertEquals(ts.startNextTurn(), 3)
     assertEquals(ts.startNextTurn(), 3)
+    return
+
+func test_actionService():
+    var _as = ActionService.new()
+    var v1 = _as.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, -1))
+    var v3 = _as.computeRotatedVectors(Vector2i(2,-1), Vector2i(0, -1))
+    assertEquals(v1, Vector2i(1, -2))
+    assertEquals(v3, Vector2i(-1, -2))
+    v1 = _as.computeRotatedVectors(Vector2i(2, 1), Vector2i(-1, 0))
+    v3 = _as.computeRotatedVectors(Vector2i(2, -1), Vector2i(-1, 0))
+    assertEquals(v1, Vector2i(-2, -1))
+    assertEquals(v3, Vector2i(-2, 1))
+    v1 = _as.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, 1))
+    v3 = _as.computeRotatedVectors(Vector2i(2, -1), Vector2i(0, 1))
+    assertEquals(v1, Vector2i(-1, 2))
+    assertEquals(v3, Vector2i(1, 2))
     return

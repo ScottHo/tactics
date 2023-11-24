@@ -12,16 +12,16 @@ var step
 signal doneMoving
 
 func _process(_delta):
-    if not moving:
-        if shouldMove:
-            if len(points) == 0:
-                shouldMove = false
-                doneMoving.emit()
-                return
-            move(points.pop_front())
-            
-                
-
+    if moving:
+        return
+    if shouldMove:
+        if len(points) == 0:
+            shouldMove = false
+            doneMoving.emit()
+            return
+        move(points.pop_front())
+    return
+    
 func _physics_process(_delta):
     if moving:
         step += 1        

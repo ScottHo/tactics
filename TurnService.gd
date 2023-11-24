@@ -14,6 +14,7 @@ func update():
         turnNode.step = entity.speed
         turnNode.total = 0
         _turnNodes.append(turnNode)
+        
     _turnCache.append(findNextTurn())
     _turnCache.append(findNextTurn())
     _turnCache.append(findNextTurn())
