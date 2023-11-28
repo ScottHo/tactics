@@ -18,6 +18,7 @@ func _ready():
     
     importTestData()
     
+    actionService.setState(state)
     moveService.setState(state)
     moveService.updateEntityLocations()
     turnService.setState(state)

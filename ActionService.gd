@@ -36,8 +36,15 @@ func _input(event):
             MOUSE_BUTTON_LEFT:
                 if len(_target_points) <= 0:
                     return
-                _enabled = false
+                for _ent in _state.entities.allData():
+                    if _ent.location in _target_points:
+                        _ent.loseHP(damage())
+                finish()
                 return
+    return
+
+func setState(state: State):
+    _state = state
     return
 
 func calcRange_bfs():
@@ -136,11 +143,13 @@ func maxRange() -> int:
 func shape() -> Array[Vector2i]:
     return _actions[_action_idx].shape
 
+func damage() -> int:
+    return _actions[_action_idx].damage
+
 func finish():
     resetHighlights(false)
     _enabled = false
     return
-
 
 func start(entity: Entity, action_idx: int):
     _entity = entity

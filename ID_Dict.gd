@@ -30,3 +30,6 @@ func has_data(id: int):
 
 func allKeys() -> Array:
     return _data.keys()
+
+func allData() -> Array:
+    return _data.values()
