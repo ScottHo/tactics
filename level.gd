@@ -28,81 +28,50 @@ func _ready():
     return
 
 func importTestData():
-    var ally1 = Entity.new()
-    ally1.health = 10
-    ally1.movement = 6
-    ally1.speed = 10
-    ally1.location = Vector2i(1,0)
-    var sprite1 = load("res://character_body_2d.tscn").instantiate()
-    add_child(sprite1)
-    sprite1.global_position = tileMap.pointToGlobal(ally1.location)
-    ally1.sprite = sprite1
-    var id1 = state.addAlly(ally1)
-    sprite1.setLabel(str(id1))
-    var ally2 = Entity.new()
-    ally2.health = 10
-    ally2.movement = 10
-    ally2.speed = 8
-    ally2.location = Vector2i(1,1)
-    var sprite2 = load("res://character_body_2d.tscn").instantiate()
-    add_child(sprite2)
-    sprite2.global_position = tileMap.pointToGlobal(ally2.location)
-    ally2.sprite = sprite2
-    var id2 = state.addAlly(ally2)
-    sprite2.setLabel(str(id2))
-    var ally3 = Entity.new()
-    ally3.health = 10
-    ally3.movement = 10
-    ally3.speed = 12
-    ally3.location = Vector2i(1,2)
-    var sprite3 = load("res://character_body_2d.tscn").instantiate()
-    add_child(sprite3)
-    sprite3.global_position = tileMap.pointToGlobal(ally3.location)
-    ally3.sprite = sprite3
-    var id3 = state.addAlly(ally3)
-    sprite3.setLabel(str(id3))
-    var ally4 = Entity.new()
-    ally4.health = 10
-    ally4.movement = 10
-    ally4.speed = 14
-    ally4.location = Vector2i(1,3)
-    var sprite4  = load("res://character_body_2d.tscn").instantiate()
-    add_child(sprite4)
-    sprite4.global_position = tileMap.pointToGlobal(ally4.location)
-    ally4.sprite = sprite4
-    var id4 = state.addAlly(ally4)
-    sprite4.setLabel(str(id4))
+    _add_test_entity(10, 6, 8, Vector2i(1, 1), "res://character_body_2d.tscn", true)
+    _add_test_entity(10, 10, 12, Vector2i(1, 2), "res://character_body_2d.tscn", true)
+    _add_test_entity(10, 4, 14, Vector2i(1, 3), "res://character_body_2d.tscn", true)
+    _add_test_entity(100, 10, 20, Vector2i(4,-4), "res://enemy1.tscn", false)
     
-    var action = Action.new()
-    action.range = 5
-    action.damage = 5
     var arr : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0)]
-    action.shape = arr 
-    actionService.setAction(0, action)
-    
-    action = Action.new()
-    action.range = 6
-    action.damage = 5
+    _add_test_action(5, 5, arr, 0)
     arr = [
         Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
         Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
         ]
-    action.shape = arr
-    actionService.setAction(1, action)
-    
-    action = Action.new()
-    action.range = 1
-    action.damage = 10
+    _add_test_action(6, 5, arr, 1)
     arr = [Vector2i(1,-1), Vector2i(1,0), Vector2i(1,1)]
-    action.shape = arr
-    actionService.setAction(2, action)
-    
-    action = Action.new()
-    action.range = 5
-    action.damage = 5
+    _add_test_action(1, 10, arr, 2)
     arr = []
-    action.shape = arr
-    actionService.setAction(3, action)
+    _add_test_action(5, 5, arr, 3)
+    return
+
+func _add_test_action(range, damage, shape, idx):
+    var action = Action.new()
+    action.range = range
+    action.damage = damage
+    action.shape = shape
+    actionService.setAction(idx, action)
+    return
+
+func _add_test_entity(health, movement, speed, location, sprite_path, ally):
+    var ent = Entity.new()
+    ent.health = health
+    ent.movement = movement
+    ent.speed = speed
+    ent.location = location
+    var sprite: EntitySprite  = load(sprite_path).instantiate()
+    add_child(sprite)
+    sprite.global_position = tileMap.pointToGlobal(ent.location)
+    sprite.setMaxHP(ent.health)
+    sprite.setHP(ent.health)
+    ent.sprite = sprite
+    if ally:
+        var _id = state.addEnemy(ent)
+        sprite.setLabel(str(_id))
+    else:
+        var _id = state.addAlly(ent)
+        sprite.setLabel(str(_id))
     return
 
 func currentEntity() -> Entity:
@@ -122,7 +91,6 @@ func doMove():
     return
 
 func movesFound(poses, destination: Vector2i):
-    var entity: Entity = state.entities.get_data(current_turn_id)
     currentEntity().sprite.movePoints(poses)
     currentEntity().location = destination
     currentEntity().sprite.doneMoving.connect(doneMove)

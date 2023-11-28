@@ -25,9 +25,6 @@ func _physics_process(_delta):
         global_position = original_position.lerp(target_position, .05*step)
         if step == 20:
             moving = false
-
-func setLabel(s):
-    $Label.text = s
     return
 
 func movePoints(_points: Array):
@@ -36,10 +33,21 @@ func movePoints(_points: Array):
     move(points.pop_front())
     return
 
-
 func move(pos):
     original_position = global_position
     target_position = pos
     step = 0
     moving = true
+    return
+
+func setMaxHP(hp: int):
+    $TextureProgressBar.setMaxHP(hp)
+    return
+
+func setHP(hp: int):
+    $TextureProgressBar.setHP(hp)
+    return
+
+func setLabel(s):
+    $TextureProgressBar.setLabel(s)
     return

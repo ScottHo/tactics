@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bab7tow8gdhok"]
+
+[ext_resource type="Texture2D" uid="uid://di2pvfhgjirl" path="res://Progress_Under.png" id="1_7ve84"]
+[ext_resource type="Script" path="res://character_common.gd" id="1_qudye"]
+[ext_resource type="Texture2D" uid="uid://pgde8yg8u1fd" path="res://Progress_Over.png" id="2_p6bvf"]
+
+[node name="TextureProgressBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qudye")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 0.0605583
+offset_top = 3.51834
+offset_right = 40.0606
+offset_bottom = 26.5183
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 1.0
+scale = Vector2(0.07, 0.07)
+texture_under = ExtResource("1_7ve84")
+texture_progress = ExtResource("2_p6bvf")

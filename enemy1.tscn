@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://k62cirntbwcj"]
+[gd_scene load_steps=5 format=3 uid="uid://uf53d6pg1ets"]
 
-[ext_resource type="Script" path="res://character_body_2d.gd" id="1_qayqg"]
-[ext_resource type="Texture2D" uid="uid://s6hhpycbmdr7" path="res://StickIdle1.png" id="2_q8223"]
-[ext_resource type="PackedScene" uid="uid://bab7tow8gdhok" path="res://character_common.tscn" id="3_n5s8g"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_4eihf"]
+[ext_resource type="Texture2D" uid="uid://ct8jl1iwaoqv4" path="res://redstickguy.png" id="2_egdi8"]
+[ext_resource type="PackedScene" uid="uid://bab7tow8gdhok" path="res://character_common.tscn" id="3_8f20u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449
@@ -19,7 +19,7 @@ floor_block_on_wall = false
 floor_max_angle = 3.14159
 floor_snap_length = 32.0
 safe_margin = 0.01
-script = ExtResource("1_qayqg")
+script = ExtResource("1_4eihf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.0947666, -3.8147e-06)
@@ -29,9 +29,9 @@ shape = SubResource("CapsuleShape2D_mdc5f")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.631921, -10.6688)
 scale = Vector2(0.32326, 0.285382)
-texture = ExtResource("2_q8223")
+texture = ExtResource("2_egdi8")
 
-[node name="TextureProgressBar" parent="." instance=ExtResource("3_n5s8g")]
+[node name="TextureProgressBar" parent="." instance=ExtResource("3_8f20u")]
 offset_left = -9.99479
 offset_top = 6.49953
 offset_right = -9.99479
