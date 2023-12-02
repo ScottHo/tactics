@@ -12,6 +12,8 @@ var _bfs_points: Dictionary = {}
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
 
+signal actionDone
+
 func _ready():
     return
 
@@ -149,6 +151,7 @@ func damage() -> int:
 func finish():
     resetHighlights(false)
     _enabled = false
+    actionDone.emit()
     return
 
 func start(entity: Entity, action_idx: int):

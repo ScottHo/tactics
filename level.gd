@@ -15,7 +15,7 @@ func _ready():
     menuService.moveActionInitiate.connect(doMove)
     menuService.actionInitiate.connect(doAction)
     moveService.movesFound.connect(movesFound)
-    
+    actionService.actionDone.connect(actionDone)
     importTestData()
     
     actionService.setState(state)
@@ -29,10 +29,10 @@ func _ready():
     return
 
 func importTestData():
-    _add_test_entity(10, 6, 8, Vector2i(1, 1), "res://character_body_2d.tscn", true)
-    _add_test_entity(10, 10, 12, Vector2i(1, 2), "res://character_body_2d.tscn", true)
-    _add_test_entity(10, 4, 14, Vector2i(1, 3), "res://character_body_2d.tscn", true)
-    _add_test_entity(100, 10, 20, Vector2i(4,-4), "res://enemy1.tscn", false)
+    _add_test_entity(10, 4, 10, Vector2i(1, 1), "res://character_body_2d.tscn", true)
+    _add_test_entity(10, 3, 10, Vector2i(1, 2), "res://character_body_2d.tscn", true)
+    _add_test_entity(10, 4, 10, Vector2i(1, 3), "res://character_body_2d.tscn", true)
+    _add_test_entity(100, 6, 20, Vector2i(4,-4), "res://enemy1.tscn", false)
     
     var arr : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0)]
     _add_test_action(5, 5, arr, 0)
@@ -84,29 +84,37 @@ func nextTurn():
     menuService.showCurrentTurn(current_turn_id)
     menuService.showTurns(turnService.next5Turns())
     highlightMap.highlight(currentEntity())
+    currentEntity().moves_left = currentEntity().movement
+    menuService.setMoveNum(currentEntity().moves_left)
+    menuService.enableAllButtons()
     return
 
 func doMove():
-    moveService.numMovesUpdated.connect(menuService.setMoveNum)
     moveService.start(currentEntity())
     return
 
 func movesFound(poses, destination: Vector2i):
+    var numMoves := len(poses)
     currentEntity().sprite.movePoints(poses)
     currentEntity().location = destination
     currentEntity().sprite.doneMoving.connect(doneMove)
+    currentEntity().moves_left -= numMoves
+    menuService.setMoveNum(currentEntity().moves_left)
+    if currentEntity().moves_left == 0:
+        menuService.disableMovesButton()
     return
 
 func doneMove():
-    moveService.numMovesUpdated.disconnect(menuService.setMoveNum)
     currentEntity().sprite.doneMoving.disconnect(doneMove)
     moveService.finish()
     moveService.updateEntityLocations()
-    menuService.setMoveNum(0)
     highlightMap.highlight(currentEntity())
     return
 
 func doAction(idx: int):
     actionService.start(currentEntity(), idx)
     return
-    
+
+func actionDone():
+    menuService.disableActionButtons()
+    return

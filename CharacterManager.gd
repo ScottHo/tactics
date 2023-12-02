@@ -12,7 +12,6 @@ var _state: State
 var maxMoves: int = -1
 var astar_memoize: Dictionary = {}
 signal movesFound
-signal numMovesUpdated
 
 func _ready():
     astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
@@ -46,8 +45,7 @@ func _input(event):
             for point in points:
                 _points.append(point)
                 highlightMap.set_cell(0, point, 0, Highlights.YELLOW, 0)
-            numMovesUpdated.emit(len(_points) - 1)
-                
+    
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
             MOUSE_BUTTON_LEFT:
@@ -89,7 +87,7 @@ func finish():
 
 func start(entity: Entity):
     _starting_point = entity.location
-    maxMoves = entity.movement
+    maxMoves = entity.moves_left
     _points = []
     previous_vector = Vector2i(-99,-99)
     enabled = true

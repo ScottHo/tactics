@@ -42,3 +42,24 @@ func showTurns(turns: Array[int]):
 func showCurrentTurn(turn: int):
     currentTurnLabel.text = str(turn)
     return
+
+func enableAllButtons():
+    moveButton.disabled = false
+    nextTurnButton.disabled = false
+    interactButton.disabled = false
+    action1Button.disabled = false
+    action2Button.disabled = false
+    action3Button.disabled = false
+    action4Button.disabled = false
+    return
+
+func disableMovesButton():
+    moveButton.disabled = true
+    return
+
+func disableActionButtons():
+    action1Button.disabled = true
+    action2Button.disabled = true
+    action3Button.disabled = true
+    action4Button.disabled = true
+    return
