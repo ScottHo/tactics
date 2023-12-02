@@ -69,6 +69,16 @@ func _check_on_entity(vector):
 
 func inRange(vector) -> bool:
     return _bfs_points.has(vector) and vector != _location
+    
+func closestInRange(vector) -> Vector2i:
+    var minVec:= Vector2i(9999, 9999)
+    var curMin:= 9999
+    for vec in _bfs_points.keys():
+        var newMin = abs(vector.x-vec.x) + abs(vector.y-vec.y)
+        if newMin < curMin:
+            curMin = newMin
+            minVec = vec
+    return minVec
 
 func getPath(vector) -> Array:
     return _bfs_points.get(vector, [])

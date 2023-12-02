@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq8xqg1q1wgxp"]
+[gd_scene load_steps=11 format=3 uid="uid://cq8xqg1q1wgxp"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_uypkh"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="2_df7di"]
 [ext_resource type="TileSet" uid="uid://c71n7ovyb0chb" path="res://highlight_tiles.tres" id="3_ilats"]
 [ext_resource type="Script" path="res://TileMap.gd" id="3_j2hyq"]
 [ext_resource type="Script" path="res://HighlightMap.gd" id="4_fv11e"]
-[ext_resource type="Script" path="res://CharacterManager.gd" id="4_m8tdb"]
+[ext_resource type="Script" path="res://MoveService.gd" id="6_jpms6"]
 [ext_resource type="PackedScene" uid="uid://ccrflxfdcwo3c" path="res://menu.tscn" id="7_psia6"]
 [ext_resource type="Script" path="res://TurnService.gd" id="8_5tca6"]
 [ext_resource type="Script" path="res://ActionService.gd" id="8_hhoig"]
+[ext_resource type="Script" path="res://AiMoveService.gd" id="10_lo4ht"]
 
 [node name="MainService" type="Node2D"]
 y_sort_enabled = true
@@ -46,7 +47,7 @@ script = ExtResource("4_fv11e")
 position = Vector2(137.927, 97.7729)
 
 [node name="MoveService" type="Node2D" parent="."]
-script = ExtResource("4_m8tdb")
+script = ExtResource("6_jpms6")
 
 [node name="MenuService" parent="." instance=ExtResource("7_psia6")]
 position = Vector2(-445.054, -240.566)
@@ -56,3 +57,6 @@ script = ExtResource("8_5tca6")
 
 [node name="ActionService" type="Node2D" parent="."]
 script = ExtResource("8_hhoig")
+
+[node name="AiMoveService" type="Node2D" parent="."]
+script = ExtResource("10_lo4ht")

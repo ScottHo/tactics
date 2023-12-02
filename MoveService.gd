@@ -38,9 +38,7 @@ func _input(event):
             MOUSE_BUTTON_LEFT:
                 if len(_points) <= 0:
                     return
-                var poses = []
-                for point in _points:
-                    poses.append(tileMap.pointToGlobal(point))
+                var poses = tileMap.arrayToGlobal(_points)
                 movesFound.emit(poses, _points[-1])
                 enabled = false
                 return

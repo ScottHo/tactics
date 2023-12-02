@@ -4,10 +4,18 @@ extends Node2D
 @onready var menuService: MenuService = $MenuService
 @onready var turnService: TurnService = $TurnService
 @onready var actionService: ActionService = $ActionService
+@onready var aiMoveService: AiMoveService = $AiMoveService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 var current_turn_id: int = -1
 var state: State = State.new()
+var _is_ai_turn := false
+var _orig_ai_delay := 2.0
+var _ai_delay := 0.0
+var _do_ai_delay := false
+var _ai_callable: Callable
+
+signal ai_delay_done
 
 
 func _ready():
@@ -20,6 +28,7 @@ func _ready():
     
     actionService.setState(state)
     moveService.setState(state)
+    aiMoveService.setState(state)
     turnService.setState(state)
     turnService.update()
     menuService.setState(state)
@@ -27,6 +36,13 @@ func _ready():
     nextTurn()
     return
 
+func _process(delta):
+    if _do_ai_delay:
+        _ai_delay -= delta
+        if _ai_delay <= 0:
+            _do_ai_delay = false
+            ai_delay_done.emit()
+            
 func importTestData():
     _add_test_entity(10, 4, 10, Vector2i(1, 1), "res://character_body_2d.tscn", true)
     _add_test_entity(10, 3, 10, Vector2i(1, 2), "res://character_body_2d.tscn", true)
@@ -67,10 +83,10 @@ func _add_test_entity(health, movement, speed, location, sprite_path, ally):
     sprite.setHP(ent.health)
     ent.sprite = sprite
     if ally:
-        var _id = state.addEnemy(ent)
+        var _id = state.addAlly(ent)
         sprite.setLabel(str(_id))
     else:
-        var _id = state.addAlly(ent)
+        var _id = state.addEnemy(ent)
         sprite.setLabel(str(_id))
     return
 
@@ -85,14 +101,40 @@ func nextTurn():
     highlightMap.highlight(currentEntity())
     currentEntity().moves_left = currentEntity().movement
     menuService.setMoveNum(currentEntity().moves_left)
-    menuService.enableAllButtons()
+    if state.allies.has(current_turn_id):
+        _is_ai_turn = false
+        menuService.enableAllButtons()
+    else:
+        _is_ai_turn = true
+        menuService.disableAllButtons()
+        doAiMove()
     return
+    
+func startAiDelay():
+    _ai_delay = _orig_ai_delay
+    _do_ai_delay = true
+    return
+
+func doAiMove():
+    aiMoveService.start(currentEntity())
+    var movePath = aiMoveService.find_move()
+    _ai_callable = func ():
+        aiMoveService.showPath(movePath)
+        movesFound(tileMap.arrayToGlobal(movePath), movePath[-1])
+    ai_delay_done.connect(_ai_callable)
+    startAiDelay()
+    return
+    
+
+func doneAiMove():
+    return
+    
 
 func doMove():
     moveService.start(currentEntity())
     return
 
-func movesFound(poses, destination: Vector2i):
+func movesFound(poses, destination):
     var numMoves := len(poses)
     currentEntity().sprite.movePoints(poses)
     currentEntity().location = destination
@@ -105,7 +147,12 @@ func movesFound(poses, destination: Vector2i):
 
 func doneMove():
     currentEntity().sprite.doneMoving.disconnect(doneMove)
-    moveService.finish()
+    if _is_ai_turn:
+        ai_delay_done.disconnect(_ai_callable)
+        aiMoveService.finish()
+        nextTurn()
+    else:
+        moveService.finish()
     highlightMap.highlight(currentEntity())
     return
 
