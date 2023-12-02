@@ -20,7 +20,6 @@ func _ready():
     
     actionService.setState(state)
     moveService.setState(state)
-    moveService.updateEntityLocations()
     turnService.setState(state)
     turnService.update()
     menuService.setState(state)
@@ -107,7 +106,6 @@ func movesFound(poses, destination: Vector2i):
 func doneMove():
     currentEntity().sprite.doneMoving.disconnect(doneMove)
     moveService.finish()
-    moveService.updateEntityLocations()
     highlightMap.highlight(currentEntity())
     return
 
