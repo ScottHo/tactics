@@ -31,7 +31,7 @@ func importTestData():
     _add_test_entity(10, 4, 10, Vector2i(1, 1), "res://character_body_2d.tscn", true)
     _add_test_entity(10, 3, 10, Vector2i(1, 2), "res://character_body_2d.tscn", true)
     _add_test_entity(10, 4, 10, Vector2i(1, 3), "res://character_body_2d.tscn", true)
-    _add_test_entity(100, 6, 20, Vector2i(4,-4), "res://enemy1.tscn", false)
+    _add_test_entity(100, 6, 20, Vector2i(10,-3), "res://enemy1.tscn", false)
     
     var arr : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0)]
     _add_test_action(5, 5, arr, 0)
