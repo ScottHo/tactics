@@ -1,0 +1,35 @@
+CLASS/ABILITY IDEAS
+
+Warrior - 2 Damage
+Extert - +2 Damage, +2 Threat, -2 Movement
+Shield - Take no damage
+
+Rogue - 2 Damage
+Debilitate - Slow movement
+Nimble - Refill move bar
+
+Blacksmith - 2 Damage
+Create Dummy - 
+Upgrade Weapon - Permanent +1 Damage to Weapon Class
+
+Wizard - 2 Damage
+Lightning Storm - 3 Damage, AOE
+Barrier - -2 Damage to all in AOE till next turn
+
+Priest - 2 Damage
+Heal - Heal + 6 to one
+Bless - Heal + 3 to area 
+
+Monk - 2 Damage
+Ashura Strike - +3 Damage Cone Punch
+Meditate - Full heal self
+
+Bard - 2 Damage
+Song of Healing - +1 Heal to all
+Song of Damage - +1 Damage to all
+
+Archer - 2 Damage
+High Velocity Shot - +3 Damage, straight shot no shoot through
+Rain of Arrows - +1 Damage, AOE
+
+
