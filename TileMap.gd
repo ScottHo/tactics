@@ -5,3 +5,10 @@ func globalToPoint(pos: Vector2i) -> Vector2:
 
 func pointToGlobal(point: Vector2i) -> Vector2:
     return to_global(map_to_local(point))
+
+func arrayToGlobal(arr: Array) -> Array:
+    var poses = []
+    for point in arr:
+        poses.append(pointToGlobal(point))
+    return poses
+        

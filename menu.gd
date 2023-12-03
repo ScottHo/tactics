@@ -53,6 +53,11 @@ func enableAllButtons():
     action4Button.disabled = false
     return
 
+func disableAllButtons():
+    disableActionButtons()
+    disableMovesButton()
+    return
+
 func disableMovesButton():
     moveButton.disabled = true
     return
