@@ -13,36 +13,44 @@ offset_bottom = 648.0
 
 [node name="MoveButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 162.0
-offset_top = 309.0
-offset_right = 213.0
-offset_bottom = 340.0
+offset_left = 131.285
+offset_top = 198.874
+offset_right = 182.285
+offset_bottom = 229.874
 scale = Vector2(1.27043, 1.39487)
 text = "Move"
 
 [node name="TurnButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 15.4473
-offset_top = 387.577
-offset_right = 137.447
-offset_bottom = 459.577
+offset_left = 19.1931
+offset_top = 259.472
+offset_right = 141.193
+offset_bottom = 331.472
 text = "NextTurn
 "
 
 [node name="NumMovesLabel" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 244.0
-offset_top = 316.0
-offset_right = 284.0
-offset_bottom = 342.0
+offset_left = 303.183
+offset_top = 199.132
+offset_right = 343.183
+offset_bottom = 225.132
 text = "1"
+
+[node name="Label5" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 206.331
+offset_top = 196.587
+offset_right = 311.331
+offset_bottom = 222.587
+text = "Moves Left:"
 
 [node name="InteractButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 299.0
-offset_right = 137.0
-offset_bottom = 371.0
+offset_left = 25.2407
+offset_top = 196.515
+offset_right = 113.241
+offset_bottom = 247.515
 text = "Interact
 "
 
@@ -50,43 +58,43 @@ text = "Interact
 anchors_preset = 0
 offset_left = 19.0
 offset_top = 120.0
-offset_right = 260.0
-offset_bottom = 298.0
+offset_right = 351.0
+offset_bottom = 195.0
 
 [node name="Action1Button" type="Button" parent="Control/ActionContainer"]
 layout_mode = 0
 offset_right = 94.0
 offset_bottom = 64.0
-text = "Action1"
+text = "Attack"
 
 [node name="Action2Button" type="Button" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = 118.0
-offset_top = 4.0
-offset_right = 212.0
-offset_bottom = 68.0
-text = "Action2"
+offset_left = 114.254
+offset_top = -1.24406
+offset_right = 208.254
+offset_bottom = 62.7559
+text = "Action 1
+"
 
 [node name="Action3Button" type="Button" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 78.0
-offset_right = 97.0
-offset_bottom = 142.0
+offset_left = 230.743
+offset_top = -1.41025
+offset_right = 324.743
+offset_bottom = 62.5898
 text = "Action3"
-
-[node name="Action4Button" type="Button" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 112.0
-offset_top = 80.0
-offset_right = 206.0
-offset_bottom = 144.0
-text = "Action4"
 
 [node name="TurnLabelsContainer" type="Control" parent="Control"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Label4" type="Label" parent="Control/TurnLabelsContainer"]
+offset_left = 15.2964
+offset_top = 57.245
+offset_right = 120.296
+offset_bottom = 83.245
+text = "Current Turn:"
 
 [node name="FutureTurnsLabel" type="Label" parent="Control/TurnLabelsContainer"]
 layout_mode = 0
@@ -103,14 +111,6 @@ offset_top = 54.416
 offset_right = 175.505
 offset_bottom = 80.416
 text = "-1"
-
-[node name="Label4" type="Label" parent="Control/TurnLabelsContainer"]
-layout_mode = 0
-offset_left = 15.2964
-offset_top = 57.245
-offset_right = 120.296
-offset_bottom = 83.245
-text = "Current Turn:"
 
 [node name="Label5" type="Label" parent="Control/TurnLabelsContainer"]
 layout_mode = 0

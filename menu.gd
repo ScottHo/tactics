@@ -11,7 +11,6 @@ signal actionInitiate
 @onready var action1Button: Button = $Control/ActionContainer/Action1Button
 @onready var action2Button: Button = $Control/ActionContainer/Action2Button
 @onready var action3Button: Button = $Control/ActionContainer/Action3Button
-@onready var action4Button: Button = $Control/ActionContainer/Action4Button
 @onready var numMovesLabel: Label = $Control/NumMovesLabel
 @onready var currentTurnLabel: Label = $Control/TurnLabelsContainer/CurrentTurnLabel
 @onready var futureTurnsLabel: Label = $Control/TurnLabelsContainer/FutureTurnsLabel
@@ -24,7 +23,6 @@ func _ready():
     action1Button.button_down.connect(func(): actionInitiate.emit(0))
     action2Button.button_down.connect(func(): actionInitiate.emit(1))
     action3Button.button_down.connect(func(): actionInitiate.emit(2))
-    action4Button.button_down.connect(func(): actionInitiate.emit(3))
     return
 
 func setState(state: State):
@@ -36,11 +34,11 @@ func setMoveNum(i: int):
     return
 
 func showTurns(turns: Array[int]):
-    futureTurnsLabel.text = str(turns)
+    futureTurnsLabel.text = _state.get_entity(turn).display_name
     return
 
 func showCurrentTurn(turn: int):
-    currentTurnLabel.text = str(turn)
+    currentTurnLabel.text = _state.get_entity(turn).display_name
     return
 
 func enableAllButtons():
@@ -50,10 +48,11 @@ func enableAllButtons():
     action1Button.disabled = false
     action2Button.disabled = false
     action3Button.disabled = false
-    action4Button.disabled = false
     return
 
 func disableAllButtons():
+    nextTurnButton.disabled = true
+    interactButton.disabled = true
     disableActionButtons()
     disableMovesButton()
     return
@@ -66,5 +65,4 @@ func disableActionButtons():
     action1Button.disabled = true
     action2Button.disabled = true
     action3Button.disabled = true
-    action4Button.disabled = true
     return

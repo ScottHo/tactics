@@ -9,10 +9,12 @@ func update():
     _turnCache = []
     for entity_id in _state.entities.allKeys():
         var turnNode = TurnNode.new()
-        var entity: Entity = _state.entities.get_data(entity_id)
+        var entity: Entity = _state.get_entity(entity_id)
         turnNode.entity_id = entity_id
         turnNode.step = entity.speed
         turnNode.total = 0
+        if _state.isAlly(entity):
+            turnNode.total = 50
         _turnNodes.append(turnNode)
         
     _turnCache.append(findNextTurn())

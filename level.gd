@@ -44,34 +44,97 @@ func _process(delta):
             ai_delay_done.emit()
             
 func importTestData():
-    _add_test_entity(10, 4, 10, Vector2i(1, 1), "res://character_body_2d.tscn", true)
-    _add_test_entity(10, 3, 10, Vector2i(1, 2), "res://character_body_2d.tscn", true)
-    _add_test_entity(10, 4, 10, Vector2i(1, 3), "res://character_body_2d.tscn", true)
-    _add_test_entity(100, 6, 20, Vector2i(10,-3), "res://enemy1.tscn", false)
+    var arr = []
+    var base_effect = func (user: Entity, entities: Array[Entity]):
+        user.threat += user.damage
+        for _ent in entities:
+            _ent.loseHP(user.damage)
+        return
+        
+    var ent = _add_test_entity("Warrior", 10, 4, 10, Vector2i(0, 1), "res://character_body_2d.tscn", true)
+    _add_test_action(ent, "ATTACK", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
+    var other_effect = func (user: Entity, targets: Array[Entity], _state_: State):
+        user.movement_penalty = 3
+        user.threat += 2
+        user.threat += user.damage
+        for _ent in targets:
+            _ent.loseHP(user.damage + 2)
+        return
+    _add_test_action(ent, "Exert", 1, false, 0, 3, [], other_effect, true, ActionType.ACTION1)
+    other_effect = func (user: Entity, targets: Array[Entity]):
+        user.immune_count = 1
+        return
+    _add_test_action(ent, "Take Cover", 0, true, 0, 2, [], other_effect, false, ActionType.ACTION2)
     
-    var arr : Array[Vector2i] = [Vector2i(1,0), Vector2i(-1,0)]
-    _add_test_action(5, 5, arr, 0)
+    
+    ent = _add_test_entity("Rogue", 10, 5, 10, Vector2i(0, 2), "res://character_body_2d.tscn", true)
+    _add_test_action(ent, "NAME", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
+    other_effect = func (user: Entity, targets: Array[Entity]):
+        user.immune_count = 1
+        return
+    _add_test_action(ent, "NAME", 0, true, 0, 2, [], other_effect, true, ActionType.ACTION1)
+    other_effect = func (user: Entity, targets: Array[Entity]):
+        user.immune_count = 1
+        return
+    _add_test_action(ent, "NAME", 0, true, 0, 2, [], other_effect, false, ActionType.ACTION2)
+    
+    
+    
+    ent = _add_test_entity("Wizard", 10, 3, 10, Vector2i(0, 2), "res://character_body_2d.tscn", true)
+    _add_test_action(ent, "NAME", 4, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
+    other_effect = func (user: Entity, entities: Array[Entity]):
+        for _ent in entities:
+            _ent.loseHP(user.damage + 1)
+        return
     arr = [
         Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
         Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
         ]
-    _add_test_action(6, 5, arr, 1)
+    _add_test_action(ent, "NAME", 4, true, 0, 3, arr, other_effect, false, ActionType.ACTION1)
+    other_effect = func (user: Entity, entities: Array[Entity]):
+        for _ent in entities:
+            _ent.shield_amount = 2
+            _ent.shield_count = 1
+        return
+    _add_test_action(ent, "NAME", 4, true, 0, 3, arr, other_effect, true, ActionType.ACTION1)
+    
+    ent = _add_test_entity("Priest", 10, 3, 10, Vector2i(0, 3), "res://character_body_2d.tscn", true)
+    _add_test_action(ent, "NAME", 4, false, 0, 0, [], null, true, ActionType.ATTACK)
+    ent = _add_test_entity("Bard", 10, 4, 10, Vector2i(0, 4), "res://character_body_2d.tscn", true)
+    _add_test_action(ent, "NAME", 1, false, 0, 0, [], null, true, ActionType.ATTACK)
+    ent = _add_test_entity("Archer", 10, 4, 10, Vector2i(0, 4), "res://character_body_2d.tscn", true)
+    _add_test_action(ent, "NAME", 5, false, 0, 0, [], null, true, ActionType.ATTACK)
+    ent = _add_test_entity("Boss", 100, 6, 14, Vector2i(10,-3), "res://enemy1.tscn", false)
+    _add_test_action(ent, "NAME", 1, false, 0, 0, [], null, true, ActionType.ATTACK)
+    
     arr = [Vector2i(1,-1), Vector2i(1,0), Vector2i(1,1)]
-    _add_test_action(1, 10, arr, 2)
-    arr = []
-    _add_test_action(5, 5, arr, 3)
     return
 
-func _add_test_action(range, damage, shape, idx):
+func _add_test_action(ent, display_name, range, self_castable, threat, cost, shape, effect, offensive, action_type):
     var action = Action.new()
     action.range = range
-    action.damage = damage
     action.shape = shape
-    actionService.setAction(idx, action)
+    action.effect = effect
+    action.threat = threat
+    action.cost = cost
+    action.self_castable = self_castable
+    action.display_name = display_name
+    if offensive:
+        action.target_color = Highlights.RED
+    else:
+        action.target_color = Highlights.BLUE
+    if action_type == ActionType.ATTACK:
+        ent.attack = action
+    if action_type == ActionType.ACTION1:
+        ent.action1 = action
+    if action_type == ActionType.ACTION2:
+        ent.action2 = action
     return
 
-func _add_test_entity(health, movement, speed, location, sprite_path, ally):
+func _add_test_entity(display_name, health, movement, speed, location, sprite_path, ally):
     var ent = Entity.new()
+    ent.damage = 2
+    ent.display_name = display_name
     ent.health = health
     ent.movement = movement
     ent.speed = speed
@@ -88,7 +151,7 @@ func _add_test_entity(health, movement, speed, location, sprite_path, ally):
     else:
         var _id = state.addEnemy(ent)
         sprite.setLabel(str(_id))
-    return
+    return ent
 
 func currentEntity() -> Entity:
     return state.entities.get_data(current_turn_id)
