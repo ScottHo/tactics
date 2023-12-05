@@ -1,6 +1,6 @@
 CLASS/ABILITY IDEAS
 
-Warrior - 2 Damage
+Melee Bot 1 - 2 Damage
 Extert - +2 Damage, +2 Threat, -2 Movement
 Shield - Take no damage
 

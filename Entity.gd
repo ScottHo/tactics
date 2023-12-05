@@ -2,6 +2,7 @@ class_name Entity extends Node
 
 var id: int
 var display_name: String
+var max_health: int
 var health: int
 var movement: int
 var moves_left: int
@@ -24,5 +25,12 @@ func loseHP(hp):
     health -= hp
     if health < 0:
         health = 0
+    sprite.setHP(health)
+    return
+
+func gainHP(hp):
+    health += hp
+    if health > max_health:
+        health = max_health
     sprite.setHP(health)
     return

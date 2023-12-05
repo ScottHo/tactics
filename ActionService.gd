@@ -3,7 +3,7 @@ class_name ActionService extends Node2D
 var _state: State
 var _enabled: bool = false
 var _entity: Entity
-var _action_idx: int = -1
+var _action_type: int = -1
 var _actions: Array[Action] = [null, null, null , null]
 var _previous_coords: Vector2i
 var _target_points: Array[Vector2i] = []
@@ -38,9 +38,11 @@ func _input(event):
             MOUSE_BUTTON_LEFT:
                 if len(_target_points) <= 0:
                     return
+                var targets = []
                 for _ent in _state.entities.allData():
                     if _ent.location in _target_points:
-                        _ent.loseHP(damage())
+                        targets.append(_ent)
+                action().effect.call(_entity, targets)
                 finish()
                 return
     return
@@ -100,13 +102,19 @@ func setAction(idx: int, action: Action):
     return
 
 func maxRange() -> int:
-    return _actions[_action_idx].range
+    return action().range
 
-func shape() -> Array[Vector2i]:
-    return _actions[_action_idx].shape
+func shape() -> Array:
+    return action().shape
 
-func damage() -> int:
-    return _actions[_action_idx].damage
+func action() -> Action:
+    if _action_type == ActionType.ATTACK:
+        return _entity.attack
+    if _action_type == ActionType.ACTION1:
+        return _entity.action1
+    if _action_type == ActionType.ACTION2:
+        return _entity.action2
+    return null
 
 func finish():
     _map_bfs.resetHighlights(false)
@@ -114,9 +122,9 @@ func finish():
     actionDone.emit()
     return
 
-func start(entity: Entity, action_idx: int):
+func start(entity: Entity, action_type: int):
     _entity = entity
-    _action_idx = action_idx
+    _action_type = action_type
     _map_bfs = MapBFS.new()
     _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, true, false)
     _map_bfs.resetHighlights(true)

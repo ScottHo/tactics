@@ -9,13 +9,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qudye")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 0.0605583
-offset_top = 3.51834
-offset_right = 40.0606
-offset_bottom = 26.5183
-
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
 offset_right = 1.0
@@ -23,3 +16,16 @@ offset_bottom = 1.0
 scale = Vector2(0.07, 0.07)
 texture_under = ExtResource("1_7ve84")
 texture_progress = ExtResource("2_p6bvf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 0.0992126
+offset_top = 3.37322
+offset_right = 40.0992
+offset_bottom = 26.3732
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 10
+text = "sdsa"

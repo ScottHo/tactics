@@ -4,7 +4,7 @@ var entities: ID_Dict = ID_Dict.new()
 var allies: Array[int] = []
 var enemies: Array[int] = []
 
-func get_entity(id: int):
+func get_entity(id: int) -> Entity:
     return entities.get_data(id)
 
 func addAlly(entity: Entity) -> int:
