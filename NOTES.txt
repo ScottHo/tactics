@@ -1,3 +1,13 @@
+TODO
+AiActionService, maybe separate for attack and special spells
+InteractService, basic version that can target 1 range
+Interactable, interactable simple entity
+Different target highlights for good/bad
+Show Damage Numbers
+
+
+
+
 CLASS/ABILITY IDEAS
 
 Melee Bot 1 - 2 Damage
