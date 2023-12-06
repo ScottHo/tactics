@@ -14,7 +14,7 @@ func update():
         turnNode.step = entity.speed
         turnNode.total = 0
         if _state.isAlly(entity):
-            turnNode.total = 50
+            turnNode.total = randi_range(1, 99)
         _turnNodes.append(turnNode)
         
     _turnCache.append(findNextTurn())
