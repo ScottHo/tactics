@@ -4,7 +4,6 @@ var _state: State
 var _enabled: bool = false
 var _entity: Entity
 var _action_type: int = -1
-var _actions: Array[Action] = [null, null, null , null]
 var _previous_coords: Vector2i
 var _target_points: Array[Vector2i] = []
 var _map_bfs: MapBFS
@@ -24,7 +23,7 @@ func _input(event):
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if _previous_coords != coords:
             clearTargetHighlights()
-            if not _map_bfs.inRange(coords):
+            if not _map_bfs.inRange(coords, action().self_castable):
                 return
             _previous_coords = coords
             _target_points.append(coords)
@@ -90,15 +89,11 @@ func fillTargetHighlights():
 
 func clearTargetHighlights():
     for point in _target_points:
-        if _map_bfs.inRange(point):
+        if _map_bfs.inRange(point, action().self_castable):
             highlightMap.set_cell(0, point, 0, Highlights.PURPLE, 0)
         else:
             highlightMap.set_cell(0, point, 0, Highlights.EMPTY, 0)
     _target_points = []
-    return
-
-func setAction(idx: int, action: Action):
-    _actions[idx] = action
     return
 
 func maxRange() -> int:
@@ -117,7 +112,7 @@ func action() -> Action:
     return null
 
 func finish():
-    _map_bfs.resetHighlights(false)
+    _map_bfs.resetHighlights(false, action().self_castable)
     _enabled = false
     actionDone.emit()
     return
@@ -127,6 +122,6 @@ func start(entity: Entity, action_type: int):
     _action_type = action_type
     _map_bfs = MapBFS.new()
     _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, true, false)
-    _map_bfs.resetHighlights(true)
+    _map_bfs.resetHighlights(true, action().self_castable)
     _enabled = true
     return

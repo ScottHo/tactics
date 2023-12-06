@@ -30,7 +30,7 @@ func init(
     return
 
 func calcRange_bfs():
-    _bfs_points = {}
+    _bfs_points = {_location: [] }
     var frontier: Array[Vector2i] = [_location]
     while len(frontier) > 0:
         var current = frontier.pop_front()
@@ -67,8 +67,8 @@ func _check_on_entity(vector):
             return true
     return false
 
-func inRange(vector) -> bool:
-    return _bfs_points.has(vector) and vector != _location
+func inRange(vector: Vector2i, can_target_self := false) -> bool:
+    return _bfs_points.has(vector) and (vector != _location or can_target_self)
     
 func closestInRange(vector) -> Vector2i:
     var minVec:= Vector2i(9999, 9999)
@@ -83,15 +83,15 @@ func closestInRange(vector) -> Vector2i:
 func getPath(vector) -> Array:
     return _bfs_points.get(vector, [])
 
-func resetHighlights(calcRange: bool):
+func resetHighlights(calcRange: bool, highlight_self := false):
     if calcRange:
         calcRange_bfs()
     for i in range(0, 15):
         for j in range(-6, 9):
             var curVec := Vector2i(i,j)
-            if curVec == _location:
+            if not highlight_self and curVec == _location:
                 continue
             _highlight_map.set_cell(0, curVec, 0, Highlights.EMPTY, 0)
-            if calcRange and inRange(curVec):
+            if calcRange and inRange(curVec, highlight_self):
                 _highlight_map.set_cell(0, curVec, 0, _range_color, 0)
     return
