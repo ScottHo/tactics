@@ -75,7 +75,7 @@ func importTestData():
             _ent.loseHP(user.damage)
             _ent.movement_penalty = 3
         return
-    _add_test_action(ent, "Sticky Grenade", 3, false, 0, 0, [], other_effect, true, ActionType.ACTION1)
+    _add_test_action(ent, "Sticky Grenade", 3, false, 0, 2, [], other_effect, true, ActionType.ACTION1)
     other_effect = func (user: Entity, targets: Array):
         user.moves_left = user.movement
         return
@@ -181,6 +181,7 @@ func _add_test_entity(display_name, health, movement, speed, location, sprite_pa
     ent.movement = movement
     ent.speed = speed
     ent.location = location
+    ent.energy = 1
     var sprite: EntitySprite  = load(sprite_path).instantiate()
     add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(ent.location)
@@ -200,10 +201,10 @@ func currentEntity() -> Entity:
 func nextTurn():
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
-    menuService.showCurrentTurn(current_turn_id)
     menuService.showTurns(turnService.next5Turns())
     highlightMap.highlight(currentEntity())
     currentEntity().moves_left = currentEntity().movement
+    currentEntity().energy += 1
     menuService.setMoveNum(currentEntity().moves_left)
     if state.allies.has(current_turn_id):
         _is_ai_turn = false
@@ -212,6 +213,7 @@ func nextTurn():
         _is_ai_turn = true
         menuService.disableAllButtons()
         doAiMove()
+    menuService.showCurrentTurn(current_turn_id)    
     return
     
 func startAiDelay():

@@ -11,6 +11,7 @@ var speed: int # 10 is average, per 100 "cycles"
 var location: Vector2i
 var threat: int
 var damage: int
+var energy: int
 var attack: Action
 var action1: Action
 var action2: Action

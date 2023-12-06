@@ -42,6 +42,7 @@ func _input(event):
                     if _ent.location in _target_points:
                         targets.append(_ent)
                 action().effect.call(_entity, targets)
+                _entity.energy -= action().cost
                 finish()
                 return
     return

@@ -43,11 +43,15 @@ func showTurns(turns: Array[int]):
 func showCurrentTurn(turn: int):
     var entity := _state.get_entity(turn)
     currentTurnLabel.text = _state.get_entity(turn).display_name
-    
+    disableActionButtons()
     if _state.isAlly(entity):
+        attackButton.disabled = false
         action1Button.text = entity.action1.display_name
+        if entity.action1.cost <= entity.energy:
+            action1Button.disabled = false
         action2Button.text = entity.action2.display_name
-    
+        if entity.action2.cost <= entity.energy:
+            action2Button.disabled = false
     return
 
 func enableAllButtons():
