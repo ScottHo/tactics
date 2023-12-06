@@ -22,6 +22,12 @@ var shield_count: int
 var shield_amount: int
 
 func loseHP(hp):
+    if immune_count > 0:
+        immune_count -= 1
+        return
+    if shield_count > 0:
+        hp -= shield_amount
+        shield_count -= 1
     health -= hp
     if health < 0:
         health = 0
