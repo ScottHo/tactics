@@ -6,6 +6,7 @@ extends Node2D
 @onready var actionService: ActionService = $ActionService
 @onready var aiMoveService: AiMoveService = $AiMoveService
 @onready var aiActionService: AiActionService = $AiActionService
+@onready var deathService: DeathService = $DeathService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 var current_turn_id: int = -1
@@ -15,7 +16,9 @@ var _orig_ai_delay := 2.0
 var _ai_delay := 0.0
 var _do_ai_delay := false
 var _ai_callable: Callable
-
+var _animation_delay := 0.0
+var _do_animation_delay := false
+var _animation_callback: Callable
 
 func _ready():
     menuService.nextTurnActionInitiate.connect(nextTurn)
@@ -29,6 +32,7 @@ func _ready():
     moveService.setState(state)
     aiMoveService.setState(state)
     aiActionService.setState(state)
+    deathService.setState(state)
     turnService.setState(state)
     turnService.update()
     menuService.setState(state)
@@ -42,9 +46,14 @@ func _process(delta):
         if _ai_delay <= 0:
             _do_ai_delay = false
             _ai_callable.call()
-            _ai_callable = func (): return
-            
-            
+    if _do_animation_delay:
+        _animation_delay -= delta
+        if _animation_delay <= 0.0:
+            _do_animation_delay = false
+            _animation_callback.call()
+    
+    return
+
 func importTestData():
     var arr = []
     var base_effect = func (user: Entity, targets: Array):
@@ -176,6 +185,7 @@ func _add_test_action(ent, display_name, range, self_castable, threat, cost, sha
 
 func _add_test_entity(display_name, health, movement, speed, location, sprite_path, ally):
     var ent = Entity.new()
+    ent.alive = true
     ent.damage = 2
     ent.display_name = display_name
     ent.max_health = health
@@ -217,7 +227,12 @@ func nextTurn():
         startAiMove()
     menuService.showCurrentTurn(current_turn_id)    
     return
-    
+
+func startAnimationDelay(delay: float):
+    _do_animation_delay = delay
+    _do_animation_delay = true
+    return
+
 func startAiDelay():
     _ai_delay = _orig_ai_delay
     _do_ai_delay = true
@@ -242,12 +257,14 @@ func doAiAction():
     var location = aiActionService.find_attack_location()
     if location == Vector2i(999, 999):
         aiActionService.finish()
-        nextTurn()
+        if not checkDeaths():
+            nextTurn()
         return
     _ai_callable = func ():
         aiActionService.do_attack(location)
         aiActionService.finish()
-        nextTurn()
+        if not checkDeaths():
+            nextTurn()
     startAiDelay()
     return
 
@@ -279,4 +296,29 @@ func doAction(action_type: int):
 
 func actionDone():
     menuService.disableActionButtons()
+    checkDeaths()
     return
+
+func checkDeaths():
+    if not deathService.checkDeaths():
+        return false
+    deathService.processDeaths()
+    turnService.updateDeaths()
+    _animation_callback = processDeathsFinished
+    menuService.cache_button_states()
+    menuService.disableAllButtons()
+    startAnimationDelay(1)
+    return true
+
+func processDeathsFinished():
+    if state.all_allies_dead():
+        menuService.lose()
+        return
+    if state.all_enemies_dead():
+        menuService.win()
+        return
+    menuService.restore_button_states()
+    if _is_ai_turn:
+        nextTurn()
+    return
+    

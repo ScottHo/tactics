@@ -1,6 +1,7 @@
 class_name MenuService extends Node2D
 
 var _state: State
+var _button_state_cache: Array
 signal moveActionInitiate
 signal nextTurnActionInitiate
 signal interactActionInitiate
@@ -23,6 +24,7 @@ func _ready():
     attackButton.button_down.connect(func(): actionInitiate.emit(ActionType.ATTACK))
     action1Button.button_down.connect(func(): actionInitiate.emit(ActionType.ACTION1))
     action2Button.button_down.connect(func(): actionInitiate.emit(ActionType.ACTION2))
+    cache_button_states()
     return
 
 func setState(state: State):
@@ -63,6 +65,25 @@ func enableAllButtons():
     action2Button.disabled = false
     return
 
+func cache_button_states():
+    _button_state_cache = [
+        moveButton.disabled,
+        nextTurnButton.disabled,
+        interactButton.disabled,
+        attackButton.disabled,    
+        action1Button.disabled,
+        action2Button.disabled,
+    ]
+
+func restore_button_states():
+    moveButton.disabled = _button_state_cache[0]
+    nextTurnButton.disabled = _button_state_cache[1]
+    interactButton.disabled = _button_state_cache[2]
+    attackButton.disabled = _button_state_cache[3]
+    action1Button.disabled = _button_state_cache[4]
+    action2Button.disabled = _button_state_cache[5]
+    return
+
 func disableAllButtons():
     nextTurnButton.disabled = true
     interactButton.disabled = true
@@ -78,4 +99,14 @@ func disableActionButtons():
     attackButton.disabled = true
     action1Button.disabled = true
     action2Button.disabled = true
+    return
+
+func win():
+    disableActionButtons()
+    $Control/GameOverLabel.text = "You win!"
+    return
+
+func lose():
+    disableActionButtons()
+    $Control/GameOverLabel.text = "You lose!"
     return

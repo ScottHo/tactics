@@ -4,7 +4,7 @@ var _state: State
 var _turnNodes: Array[TurnNode] = []
 var _turnCache: Array[int] = []
 
-func update():
+func update(random=true):
     _turnNodes = []
     _turnCache = []
     for entity_id in _state.entities.allKeys():
@@ -13,8 +13,8 @@ func update():
         turnNode.entity_id = entity_id
         turnNode.step = entity.speed
         turnNode.total = 0
-        if _state.isAlly(entity):
-            turnNode.total = randi_range(1, 99)
+        if _state.isAlly(entity) and random:
+            turnNode.total = randi_range(1, 9) * 10
         _turnNodes.append(turnNode)
         
     _turnCache.append(findNextTurn())
@@ -22,6 +22,23 @@ func update():
     _turnCache.append(findNextTurn())
     _turnCache.append(findNextTurn())
     _turnCache.append(findNextTurn())
+    return
+
+func updateDeaths():
+    var numberOfDeaths := 0
+    var nodesToRemove := []
+    for node in _turnNodes:
+        if _state.get_entity(node.entity_id).alive:
+            continue
+        nodesToRemove.append(node)
+        while _turnCache.has(node.entity_id):
+            _turnCache.pop_at(_turnCache.find(node.entity_id))
+            numberOfDeaths += 1
+    
+    for node in nodesToRemove:
+        _turnNodes.pop_at(_turnNodes.find(node))
+    for i in range(numberOfDeaths):
+        _turnCache.append(findNextTurn())
     return
 
 func findNextTurn():

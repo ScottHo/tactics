@@ -5,12 +5,24 @@ func assertEquals(a,b):
         return
     else:
         assert(false, str(a) + " Does not equal " + str(b))
+    
+func assertIn(a, b: Array):
+    if a in b:
+        return
+    else:
+        assert(false, str(a) + " doesn't exists in " + str(b))
 
+func assertNotIn(a, b: Array):
+    if a not in b:
+        return
+    else:
+        assert(false, str(a) + " does exists in " + str(b))
+        
 func _ready():
     $Label.text = "Running"
     test_ID_Dict()
     test_turnService()
-    test_actionService()
+    test_vectorHelper()
     $Label.text = "Good"
     return
     
@@ -46,17 +58,19 @@ func test_turnService():
     for i in range(3):
         var entity = Entity.new()
         entity.speed = 10
+        entity.alive = true
         state.addAlly(entity)
     ts.setState(state)
-    ts.update()
+    ts.update(false)
     assertEquals(ts.next5Turns(), [0,1,2,0,1])
     assertEquals(ts.startNextTurn(), 0)
     assertEquals(ts.startNextTurn(), 1)
     assertEquals(ts.next5Turns(), [2,0,1,2,0])
     var entity = Entity.new()
     entity.speed = 15
+    entity.alive = true
     state.addAlly(entity)
-    ts.update()
+    ts.update(false)
     assertEquals(ts.startNextTurn(), 3)
     assertEquals(ts.startNextTurn(), 0)
     assertEquals(ts.startNextTurn(), 1)
@@ -67,20 +81,23 @@ func test_turnService():
     assertEquals(ts.startNextTurn(), 2)
     assertEquals(ts.startNextTurn(), 3)
     assertEquals(ts.startNextTurn(), 3)
+    
+    state.get_entity(0).alive = false
+    ts.updateDeaths()
+    assertNotIn(0, ts.next5Turns())
     return
 
-func test_actionService():
-    var _as = ActionService.new()
-    var v1 = _as.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, -1))
-    var v3 = _as.computeRotatedVectors(Vector2i(2,-1), Vector2i(0, -1))
+func test_vectorHelper():
+    var v1 = VectorHelpers.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, -1))
+    var v3 = VectorHelpers.computeRotatedVectors(Vector2i(2,-1), Vector2i(0, -1))
     assertEquals(v1, Vector2i(1, -2))
     assertEquals(v3, Vector2i(-1, -2))
-    v1 = _as.computeRotatedVectors(Vector2i(2, 1), Vector2i(-1, 0))
-    v3 = _as.computeRotatedVectors(Vector2i(2, -1), Vector2i(-1, 0))
+    v1 = VectorHelpers.computeRotatedVectors(Vector2i(2, 1), Vector2i(-1, 0))
+    v3 = VectorHelpers.computeRotatedVectors(Vector2i(2, -1), Vector2i(-1, 0))
     assertEquals(v1, Vector2i(-2, -1))
     assertEquals(v3, Vector2i(-2, 1))
-    v1 = _as.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, 1))
-    v3 = _as.computeRotatedVectors(Vector2i(2, -1), Vector2i(0, 1))
+    v1 = VectorHelpers.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, 1))
+    v3 = VectorHelpers.computeRotatedVectors(Vector2i(2, -1), Vector2i(0, 1))
     assertEquals(v1, Vector2i(-1, 2))
     assertEquals(v3, Vector2i(1, 2))
     return

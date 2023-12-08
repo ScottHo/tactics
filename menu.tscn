@@ -160,3 +160,10 @@ offset_right = 120.0
 offset_bottom = 41.0
 text = "Next 5 Turns:
 "
+
+[node name="GameOverLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 668.987
+offset_top = 40.4086
+offset_right = 708.987
+offset_bottom = 63.4086
