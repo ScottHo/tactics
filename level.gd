@@ -16,8 +16,6 @@ var _ai_delay := 0.0
 var _do_ai_delay := false
 var _ai_callable: Callable
 
-signal ai_delay_done
-
 
 func _ready():
     menuService.nextTurnActionInitiate.connect(nextTurn)
@@ -43,8 +41,8 @@ func _process(delta):
         _ai_delay -= delta
         if _ai_delay <= 0:
             _do_ai_delay = false
-            ai_delay_done.emit()
             _ai_callable.call()
+            _ai_callable = func (): return
             
             
 func importTestData():
@@ -230,7 +228,7 @@ func startAiMove():
     var movePath = aiMoveService.find_move()
     _ai_callable = func ():
         aiMoveService.showPath(movePath)
-        movesFound(tileMap.arrayToGlobal(movePath), movePath[-1])
+        movesFound(tileMap.arrayToGlobal(movePath))
     startAiDelay()
     return
 
@@ -257,12 +255,9 @@ func doMove():
     moveService.start(currentEntity())
     return
 
-func movesFound(poses, destination):
-    var numMoves := len(poses)
+func movesFound(poses):
     currentEntity().sprite.movePoints(poses)
-    currentEntity().location = destination
     currentEntity().sprite.doneMoving.connect(doneMove)
-    currentEntity().moves_left -= numMoves
     menuService.setMoveNum(currentEntity().moves_left)
     if currentEntity().moves_left == 0:
         menuService.disableMovesButton()

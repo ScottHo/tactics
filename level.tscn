@@ -64,3 +64,5 @@ script = ExtResource("10_lo4ht")
 
 [node name="AiActionService" type="Node2D" parent="."]
 script = ExtResource("11_jfegk")
+
+[node name="DeathService" type="Node2D" parent="."]

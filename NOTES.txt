@@ -1,6 +1,7 @@
 TODO
 Death mechanics
 AiSpecialActionService
+Threat system from 0-5
 Description of actions / one service active at a time
 InteractService, basic version that can target 1 range
 Interactable, interactable simple entity

@@ -10,6 +10,7 @@ var _starting_point = Vector2i(0, 0)
 var _state: State
 var maxMoves: int = -1
 var _map_bfs: MapBFS
+var _entity: Entity
 
 signal movesFound
 
@@ -39,7 +40,9 @@ func _input(event):
                 if len(_points) <= 0:
                     return
                 var poses = tileMap.arrayToGlobal(_points)
-                movesFound.emit(poses, _points[-1])
+                _entity.moves_left -= len(_points)
+                _entity.location = _points[-1]
+                movesFound.emit(poses)
                 enabled = false
                 return
 
@@ -56,6 +59,7 @@ func finish():
     return
 
 func start(entity: Entity):
+    _entity = entity
     _starting_point = entity.location
     maxMoves = entity.moves_left
     _points = []
