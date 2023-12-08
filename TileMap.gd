@@ -11,4 +11,3 @@ func arrayToGlobal(arr: Array) -> Array:
     for point in arr:
         poses.append(pointToGlobal(point))
     return poses
-        

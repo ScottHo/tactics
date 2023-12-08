@@ -1,14 +1,17 @@
 TODO
-AiSpecialActionService
-Threat system from 0-5
+Rest of Threat, Threat system from 0-5, show threat
 Description of actions / one service active at a time
+Refactor to re-use more (highlightmap)
+Energy Label
+Floating Effect Texts
+Show HP Numbers
 InteractService, basic version that can target 1 range
 Interactable, interactable simple entity
 Different target highlights for good/bad
-Show Damage Numbers
-
-
-
+Bug with highlight map for moving/targetting
+Choose different bots
+12 different bots
+Bot roulette
 
 CLASS/ABILITY IDEAS
 

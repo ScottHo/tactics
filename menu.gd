@@ -101,6 +101,10 @@ func disableActionButtons():
     action2Button.disabled = true
     return
 
+func set_mechanic_text(t):
+    $Control/MechanicContainer/MechanicLabel.text = t
+    return
+
 func win():
     disableActionButtons()
     $Control/GameOverLabel.text = "You win!"

@@ -22,10 +22,10 @@ text = "Move"
 
 [node name="TurnButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 25.8002
-offset_top = 10.2892
-offset_right = 147.8
-offset_bottom = 82.2892
+offset_left = 33.0
+offset_top = 24.0
+offset_right = 155.0
+offset_bottom = 96.0
 text = "NextTurn
 "
 
@@ -47,86 +47,86 @@ text = "Moves Left:"
 
 [node name="InteractButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 30.4645
-offset_top = 106.586
-offset_right = 118.465
-offset_bottom = 157.586
+offset_left = 32.0
+offset_top = 114.0
+offset_right = 120.0
+offset_bottom = 165.0
 text = "Interact
 "
 
 [node name="ActionContainer" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 14.5102
-offset_top = 167.143
-offset_right = 346.51
-offset_bottom = 242.143
+offset_left = -2.0
+offset_top = 142.0
+offset_right = 330.0
+offset_bottom = 217.0
 
 [node name="AttackButton" type="Button" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = -0.820129
-offset_top = 57.1199
-offset_right = 93.1799
-offset_bottom = 121.12
+offset_left = 11.0
+offset_top = 53.0
+offset_right = 105.0
+offset_bottom = 117.0
 text = "Attack"
 
 [node name="Action1Button" type="Button" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = 141.168
-offset_top = 55.4766
-offset_right = 235.168
-offset_bottom = 119.477
+offset_left = 123.49
+offset_top = 55.857
+offset_right = 217.49
+offset_bottom = 119.857
 text = "Action 1
 "
 
 [node name="Action2Button" type="Button" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = 298.812
-offset_top = 50.7197
-offset_right = 392.812
-offset_bottom = 114.72
+offset_left = 250.49
+offset_top = 56.857
+offset_right = 344.49
+offset_bottom = 120.857
 text = "Action2
 "
 
 [node name="Label2" type="Label" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = 139.94
-offset_top = 23.5272
-offset_right = 191.94
-offset_bottom = 49.5272
+offset_left = 140.0
+offset_top = 29.0
+offset_right = 192.0
+offset_bottom = 55.0
 text = "Cost:"
 
 [node name="Label3" type="Label" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = 299.558
-offset_top = 23.3871
-offset_right = 351.558
-offset_bottom = 49.3871
+offset_left = 258.0
+offset_top = 28.0
+offset_right = 310.0
+offset_bottom = 54.0
 text = "Cost:"
 
 [node name="Action1Cost" type="Label" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = 197.103
-offset_top = 23.0203
-offset_right = 216.103
-offset_bottom = 49.0203
+offset_left = 183.0
+offset_top = 28.0
+offset_right = 202.0
+offset_bottom = 54.0
 text = "0
 "
 
 [node name="Action2Cost" type="Label" parent="Control/ActionContainer"]
 layout_mode = 0
-offset_left = 350.667
-offset_top = 22.4021
-offset_right = 390.667
-offset_bottom = 48.4021
+offset_left = 305.0
+offset_top = 28.0
+offset_right = 345.0
+offset_bottom = 54.0
 text = "0
 "
 
 [node name="TurnLabelsContainer" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 157.627
-offset_top = -3.7755
-offset_right = 197.627
-offset_bottom = 36.2245
+offset_left = 163.0
+offset_top = 10.0
+offset_right = 203.0
+offset_bottom = 50.0
 
 [node name="Label4" type="Label" parent="Control/TurnLabelsContainer"]
 layout_mode = 0
@@ -163,7 +163,42 @@ text = "Next 5 Turns:
 
 [node name="GameOverLabel" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 668.987
-offset_top = 40.4086
-offset_right = 708.987
-offset_bottom = 63.4086
+offset_left = 604.0
+offset_top = 50.0
+offset_right = 644.0
+offset_bottom = 73.0
+
+[node name="MechanicContainer" type="Control" parent="Control"]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 560.0
+offset_right = 45.0
+offset_bottom = 600.0
+
+[node name="Label" type="Label" parent="Control/MechanicContainer"]
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 125.0
+offset_bottom = 30.0
+text = "Next Mechanic:"
+
+[node name="MechanicLabel" type="Label" parent="Control/MechanicContainer"]
+offset_left = 138.0
+offset_top = 4.0
+offset_right = 338.0
+offset_bottom = 54.0
+text = "None"
+
+[node name="DescriptionContainer" type="Control" parent="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 28.0
+offset_top = 405.0
+offset_right = 68.0
+offset_bottom = 445.0
+
+[node name="DescriptionLabel" type="Label" parent="Control/DescriptionContainer"]
+offset_left = 8.0
+offset_top = -51.0
+offset_right = 228.0
+offset_bottom = 149.0

@@ -19,7 +19,7 @@ func find_move() -> Array:
 
 func _find_move() -> Array:
     var target := _find_target()
-    if target ==  null:
+    if target == null:
         return _map_bfs.getPath(_find_closest())
     var path := _map_bfs.getPath(target.location)
     if len(path) <= 1:
@@ -29,16 +29,14 @@ func _find_move() -> Array:
     return path
 
 func _find_target() -> Entity:
-    var target: Entity
-    for ent_id in _state.threatOrder():
-        if _map_bfs.inRange(_state.get_entity(ent_id).location):
-            target = _state.get_entity(ent_id)
-            return target
+    for ent in _state.threatOrder():
+        if _map_bfs.inRange(ent.location):
+            return ent
     return null
 
 func _find_closest() -> Vector2i:
-    var highest_threat_id = _state.threatOrder()[0]
-    var loc = _state.get_entity(highest_threat_id).location
+    var highest_threat = _state.threatOrder()[0]
+    var loc = highest_threat.location
     return _map_bfs.closestInRange(loc)
 
 func showPath(path):

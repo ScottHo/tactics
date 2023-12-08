@@ -21,6 +21,9 @@ var _animation_delay := 0.0
 var _do_animation_delay := false
 var _animation_callback: Callable
 
+enum AiState { NONE, MOVE, ACTION, SPECIAL}
+var _ai_state: AiState = AiState.NONE
+
 func _ready():
     menuService.nextTurnActionInitiate.connect(nextTurn)
     menuService.moveActionInitiate.connect(doMove)
@@ -33,6 +36,7 @@ func _ready():
     moveService.setState(state)
     aiMoveService.setState(state)
     aiActionService.setState(state)
+    aiSpecialService.setState(state)
     deathService.setState(state)
     turnService.setState(state)
     turnService.update()
@@ -225,7 +229,7 @@ func nextTurn():
     else:
         _is_ai_turn = true
         menuService.disableAllButtons()
-        startAiMove()
+        nextAiStep()
     menuService.showCurrentTurn(current_turn_id)    
     return
 
@@ -237,6 +241,25 @@ func startAnimationDelay(delay: float):
 func startAiDelay():
     _ai_delay = _orig_ai_delay
     _do_ai_delay = true
+    return
+
+func nextAiStep():
+    if _ai_state == AiState.NONE:
+        _ai_state = AiState.MOVE
+        startAiMove()
+        return
+    if _ai_state == AiState.MOVE:
+        _ai_state = AiState.ACTION
+        startAiAction()
+        return
+    if _ai_state == AiState.ACTION:
+        _ai_state = AiState.SPECIAL
+        startAiSpecial()
+        return
+    if _ai_state == AiState.SPECIAL:
+        _ai_state = AiState.NONE
+        nextTurn()
+        return
     return
 
 func startAiMove():
@@ -259,14 +282,32 @@ func doAiAction():
     if location == Vector2i(999, 999):
         aiActionService.finish()
         if not checkDeaths():
-            nextTurn()
+            nextAiStep()
         return
     _ai_callable = func ():
         aiActionService.do_attack(location)
         aiActionService.finish()
         if not checkDeaths():
-            nextTurn()
+            nextAiStep()
     startAiDelay()
+    return
+
+func startAiSpecial():
+    aiSpecialService.start(currentEntity())
+    if aiSpecialService.counter() == 0:
+        menuService.set_mechanic_text(aiSpecialService.next_special_description())
+        nextAiStep()
+        return
+    aiSpecialService.special_targets()
+    _ai_callable = doAiSpecial
+    startAiDelay()
+    return
+
+func doAiSpecial():
+    aiSpecialService.special_effect()
+    aiSpecialService.finish()
+    if not checkDeaths():
+        nextAiStep()
     return
 
 func doMove():
@@ -285,7 +326,7 @@ func doneMove():
     currentEntity().sprite.doneMoving.disconnect(doneMove)
     if _is_ai_turn:
         aiMoveService.finish()
-        startAiAction()
+        nextAiStep()
     else:
         moveService.finish()
     highlightMap.highlight(currentEntity())
@@ -320,6 +361,6 @@ func processDeathsFinished():
         return
     menuService.restore_button_states()
     if _is_ai_turn:
-        nextTurn()
+        nextAiStep()
     return
     
