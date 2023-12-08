@@ -88,6 +88,7 @@ text = "Action2
 "
 
 [node name="Label2" type="Label" parent="Control/ActionContainer"]
+layout_mode = 0
 offset_left = 139.94
 offset_top = 23.5272
 offset_right = 191.94
@@ -95,6 +96,7 @@ offset_bottom = 49.5272
 text = "Cost:"
 
 [node name="Label3" type="Label" parent="Control/ActionContainer"]
+layout_mode = 0
 offset_left = 299.558
 offset_top = 23.3871
 offset_right = 351.558
@@ -102,6 +104,7 @@ offset_bottom = 49.3871
 text = "Cost:"
 
 [node name="Action1Cost" type="Label" parent="Control/ActionContainer"]
+layout_mode = 0
 offset_left = 197.103
 offset_top = 23.0203
 offset_right = 216.103
@@ -110,6 +113,7 @@ text = "0
 "
 
 [node name="Action2Cost" type="Label" parent="Control/ActionContainer"]
+layout_mode = 0
 offset_left = 350.667
 offset_top = 22.4021
 offset_right = 390.667

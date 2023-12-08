@@ -5,6 +5,7 @@ extends Node2D
 @onready var turnService: TurnService = $TurnService
 @onready var actionService: ActionService = $ActionService
 @onready var aiMoveService: AiMoveService = $AiMoveService
+@onready var aiActionService: AiActionService = $AiActionService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 var current_turn_id: int = -1
@@ -29,6 +30,7 @@ func _ready():
     actionService.setState(state)
     moveService.setState(state)
     aiMoveService.setState(state)
+    aiActionService.setState(state)
     turnService.setState(state)
     turnService.update()
     menuService.setState(state)
@@ -42,6 +44,8 @@ func _process(delta):
         if _ai_delay <= 0:
             _do_ai_delay = false
             ai_delay_done.emit()
+            _ai_callable.call()
+            
             
 func importTestData():
     var arr = []
@@ -147,8 +151,8 @@ func importTestData():
     _add_test_action(ent, "Titanium Bullet", 5, false, 0, 5, [], other_effect, true, ActionType.ACTION2)
     
     ent = _add_test_entity("Boss", 100, 6, 14, Vector2i(10,-3), "res://enemy1.tscn", false)
-    
-    arr = [Vector2i(1,-1), Vector2i(1,0), Vector2i(1,1)]
+    ent.damage += 2
+    _add_test_action(ent, "Attack", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
     return
 
 func _add_test_action(ent, display_name, range, self_castable, threat, cost, shape, effect, offensive, action_type):
@@ -212,7 +216,7 @@ func nextTurn():
     else:
         _is_ai_turn = true
         menuService.disableAllButtons()
-        doAiMove()
+        startAiMove()
     menuService.showCurrentTurn(current_turn_id)    
     return
     
@@ -221,19 +225,33 @@ func startAiDelay():
     _do_ai_delay = true
     return
 
-func doAiMove():
+func startAiMove():
     aiMoveService.start(currentEntity())
     var movePath = aiMoveService.find_move()
     _ai_callable = func ():
         aiMoveService.showPath(movePath)
         movesFound(tileMap.arrayToGlobal(movePath), movePath[-1])
-    ai_delay_done.connect(_ai_callable)
     startAiDelay()
     return
 
-func doneAiMove():
+func startAiAction():
+    aiActionService.start(currentEntity())
+    _ai_callable = doAiAction
+    startAiDelay()
     return
-    
+
+func doAiAction():
+    var location = aiActionService.find_attack_location()
+    if location == Vector2i(999, 999):
+        aiActionService.finish()
+        nextTurn()
+        return
+    _ai_callable = func ():
+        aiActionService.do_attack(location)
+        aiActionService.finish()
+        nextTurn()
+    startAiDelay()
+    return
 
 func doMove():
     moveService.start(currentEntity())
@@ -253,9 +271,8 @@ func movesFound(poses, destination):
 func doneMove():
     currentEntity().sprite.doneMoving.disconnect(doneMove)
     if _is_ai_turn:
-        ai_delay_done.disconnect(_ai_callable)
         aiMoveService.finish()
-        nextTurn()
+        startAiAction()
     else:
         moveService.finish()
     highlightMap.highlight(currentEntity())

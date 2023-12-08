@@ -1,5 +1,7 @@
 TODO
-AiActionService, maybe separate for attack and special spells
+Death mechanics
+AiSpecialActionService
+Description of actions / one service active at a time
 InteractService, basic version that can target 1 range
 Interactable, interactable simple entity
 Different target highlights for good/bad

@@ -5,7 +5,7 @@ var _enabled: bool = false
 var _entity: Entity
 var _action_type: int = -1
 var _previous_coords: Vector2i
-var _target_points: Array[Vector2i] = []
+var _target_points: Array = []
 var _map_bfs: MapBFS
 
 @onready var tileMap: MainTileMap = $"../TileMap"
@@ -26,22 +26,14 @@ func _input(event):
             if not _map_bfs.inRange(coords, action().self_castable):
                 return
             _previous_coords = coords
-            _target_points.append(coords)
-            var direction := findDirection(coords)
-            for vec in shape():
-                var v = computeRotatedVectors(vec, direction)
-                _target_points.append(coords+v)
+            _target_points = VectorHelpers.get_target_coords(_entity.location, coords, shape())
             fillTargetHighlights()
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
             MOUSE_BUTTON_LEFT:
                 if len(_target_points) <= 0:
                     return
-                var targets = []
-                for _ent in _state.entities.allData():
-                    if _ent.location in _target_points:
-                        targets.append(_ent)
-                action().effect.call(_entity, targets)
+                ActionCommon.do_action(_state, _entity,_target_points, action())
                 _entity.energy -= action().cost
                 finish()
                 return
@@ -50,38 +42,6 @@ func _input(event):
 func setState(state: State):
     _state = state
     return
-        
-func computeRotatedVectors(target: Vector2i, direction: Vector2i) -> Vector2i:
-    if direction == Vector2i(0,-1):
-        var rotVec = Vector2i(0,0)
-        rotVec.x = target.y
-        rotVec.y = -target.x
-        return rotVec
-    if direction == Vector2i(-1,0):
-        var rotVec = Vector2i(0,0)
-        rotVec.x = -target.x
-        rotVec.y = -target.y
-        return rotVec
-    if direction == Vector2i(0,1):
-        var rotVec = Vector2i(0,0)
-        rotVec.x = -target.y
-        rotVec.y = target.x
-        return rotVec
-    return target
-    
-
-func findDirection(target: Vector2i) -> Vector2i:
-    var x_diff = _entity.location.x - target.x
-    var y_diff = _entity.location.y - target.y
-    
-    if abs(x_diff) >= abs(y_diff):
-        if x_diff < 0:
-            return Vector2i(1,0)
-        return Vector2i(-1,0)
-        
-    if y_diff < 0:
-        return Vector2i(0,1)
-    return Vector2i(0,-1)
 
 func fillTargetHighlights():
     for point in _target_points:
