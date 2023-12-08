@@ -6,6 +6,7 @@ extends Node2D
 @onready var actionService: ActionService = $ActionService
 @onready var aiMoveService: AiMoveService = $AiMoveService
 @onready var aiActionService: AiActionService = $AiActionService
+@onready var aiSpecialService: AiSpecialService = $AiSpecialService
 @onready var deathService: DeathService = $DeathService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap

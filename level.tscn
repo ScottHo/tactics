@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq8xqg1q1wgxp"]
+[gd_scene load_steps=14 format=3 uid="uid://cq8xqg1q1wgxp"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_uypkh"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="2_df7di"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://AiMoveService.gd" id="10_lo4ht"]
 [ext_resource type="Script" path="res://AiActionService.gd" id="11_jfegk"]
 [ext_resource type="Script" path="res://DeathService.gd" id="12_4b2o3"]
+[ext_resource type="Script" path="res://AiSpecialService.gd" id="12_nmvgr"]
 
 [node name="MainService" type="Node2D"]
 y_sort_enabled = true
@@ -65,6 +66,9 @@ script = ExtResource("10_lo4ht")
 
 [node name="AiActionService" type="Node2D" parent="."]
 script = ExtResource("11_jfegk")
+
+[node name="AiSpecialService" type="Node2D" parent="."]
+script = ExtResource("12_nmvgr")
 
 [node name="DeathService" type="Node2D" parent="."]
 script = ExtResource("12_4b2o3")
