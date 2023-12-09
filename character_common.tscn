@@ -17,12 +17,24 @@ scale = Vector2(0.07, 0.07)
 texture_under = ExtResource("1_7ve84")
 texture_progress = ExtResource("2_p6bvf")
 
+[node name="Label2" type="Label" parent="."]
+offset_left = 0.198425
+offset_top = 6.74644
+offset_right = 40.1984
+offset_bottom = 29.7464
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 10
+text = "sdsa"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 0.0992126
-offset_top = 3.37322
-offset_right = 40.0992
-offset_bottom = 26.3732
+offset_left = 1.0
+offset_top = 20.0
+offset_right = 41.0
+offset_bottom = 43.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2

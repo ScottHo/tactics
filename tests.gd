@@ -23,6 +23,7 @@ func _ready():
     test_ID_Dict()
     test_turnService()
     test_vectorHelper()
+    test_state()
     $Label.text = "Good"
     return
     
@@ -100,4 +101,18 @@ func test_vectorHelper():
     v3 = VectorHelpers.computeRotatedVectors(Vector2i(2, -1), Vector2i(0, 1))
     assertEquals(v1, Vector2i(-1, 2))
     assertEquals(v3, Vector2i(1, 2))
+    return
+
+func test_state():
+    var state = State.new()
+    var ent1 = Entity.new()
+    ent1.threat = 2
+    var ent2 = Entity.new()
+    ent2.threat = 0
+    var ent3 = Entity.new()
+    ent3.threat = 1
+    state.addAlly(ent1)
+    state.addAlly(ent2)
+    state.addAlly(ent3)
+    assertEquals(state.threatOrder(), [ent1, ent3, ent2])
     return

@@ -36,6 +36,7 @@ func _find_target() -> Entity:
 
 func _find_closest() -> Vector2i:
     var highest_threat = _state.threatOrder()[0]
+    print(highest_threat.display_name)
     var loc = highest_threat.location
     return _map_bfs.closestInRange(loc)
 

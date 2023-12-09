@@ -12,6 +12,9 @@ signal actionInitiate
 @onready var attackButton: Button = $Control/ActionContainer/AttackButton
 @onready var action1Button: Button = $Control/ActionContainer/Action1Button
 @onready var action2Button: Button = $Control/ActionContainer/Action2Button
+@onready var action1Cost: Label = $Control/ActionContainer/Action1Cost
+@onready var action2Cost: Label = $Control/ActionContainer/Action2Cost
+@onready var currentEnergy: Label = $Control/ActionContainer/CurrentEnergy
 @onready var numMovesLabel: Label = $Control/NumMovesLabel
 @onready var currentTurnLabel: Label = $Control/TurnLabelsContainer/CurrentTurnLabel
 @onready var futureTurnsLabel: Label = $Control/TurnLabelsContainer/FutureTurnsLabel
@@ -47,11 +50,14 @@ func showCurrentTurn(turn: int):
     currentTurnLabel.text = _state.get_entity(turn).display_name
     disableActionButtons()
     if _state.isAlly(entity):
+        currentEnergy.text = str(entity.energy)
         attackButton.disabled = false
         action1Button.text = entity.action1.display_name
+        action1Cost.text = str(entity.action1.cost)
         if entity.action1.cost <= entity.energy:
             action1Button.disabled = false
         action2Button.text = entity.action2.display_name
+        action2Cost.text = str(entity.action2.cost)
         if entity.action2.cost <= entity.energy:
             action2Button.disabled = false
     return

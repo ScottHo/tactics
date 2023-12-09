@@ -121,6 +121,21 @@ offset_bottom = 54.0
 text = "0
 "
 
+[node name="Label4" type="Label" parent="Control/ActionContainer"]
+offset_left = 15.0
+offset_top = 29.0
+offset_right = 67.0
+offset_bottom = 55.0
+text = "Energy:"
+
+[node name="CurrentEnergy" type="Label" parent="Control/ActionContainer"]
+offset_left = 75.0
+offset_top = 28.0
+offset_right = 94.0
+offset_bottom = 54.0
+text = "0
+"
+
 [node name="TurnLabelsContainer" type="Control" parent="Control"]
 anchors_preset = 0
 offset_left = 163.0
@@ -176,6 +191,7 @@ offset_right = 45.0
 offset_bottom = 600.0
 
 [node name="Label" type="Label" parent="Control/MechanicContainer"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 4.0
 offset_right = 125.0
@@ -183,6 +199,7 @@ offset_bottom = 30.0
 text = "Next Mechanic:"
 
 [node name="MechanicLabel" type="Label" parent="Control/MechanicContainer"]
+layout_mode = 0
 offset_left = 138.0
 offset_top = 4.0
 offset_right = 338.0
@@ -198,6 +215,7 @@ offset_right = 68.0
 offset_bottom = 445.0
 
 [node name="DescriptionLabel" type="Label" parent="Control/DescriptionContainer"]
+layout_mode = 0
 offset_left = 8.0
 offset_top = -51.0
 offset_right = 228.0

@@ -62,7 +62,7 @@ func _process(delta):
 func importTestData():
     var arr = []
     var base_effect = func (user: Entity, targets: Array):
-        user.threat += user.damage
+        user.gainThreat(1)
         for _ent in targets:
             _ent.loseHP(user.damage)
         return
@@ -72,10 +72,9 @@ func importTestData():
     _add_test_action(ent, "Attack", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
     var other_effect = func (user: Entity, targets: Array):
         user.movement_penalty = 3
-        user.threat += 2
-        user.threat += user.damage
+        user.gainThreat(3)
         for _ent in targets:
-            _ent.loseHP(user.damage + 2)
+            _ent.loseHP(user.damage + 3)
         return
     _add_test_action(ent, "Exert", 1, false, 0, 3, [], other_effect, true, ActionType.ACTION1)
     other_effect = func (user: Entity, targets: Array):
@@ -87,6 +86,7 @@ func importTestData():
     ent = _add_test_entity("Oilee", 10, 5, 10, Vector2i(0, 2), "res://character_body_2d.tscn", true)
     _add_test_action(ent, "Attack", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
     other_effect = func (user: Entity, targets: Array):
+        user.gainThreat(1)
         for _ent in targets:
             _ent.loseHP(user.damage)
             _ent.movement_penalty = 3
@@ -101,6 +101,7 @@ func importTestData():
     ent = _add_test_entity("Electo", 10, 3, 10, Vector2i(0, 3), "res://character_body_2d.tscn", true)
     _add_test_action(ent, "Attack", 4, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
     other_effect = func (user: Entity, targets: Array):
+        user.gainThreat(2)
         for _ent in targets:
             _ent.loseHP(user.damage + 1)
         return
@@ -152,11 +153,13 @@ func importTestData():
     ent = _add_test_entity("Longshot", 10, 4, 10, Vector2i(0, 6), "res://character_body_2d.tscn", true)
     _add_test_action(ent, "Attack", 5, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
     other_effect = func (user: Entity, targets: Array):
+        user.gainThreat(1)
         for _ent in targets:
             _ent.loseHP(user.damage)
         return
     _add_test_action(ent, "Snipe", 8, false, 0, 1, [], other_effect, true, ActionType.ACTION1)
     other_effect = func (user: Entity, targets: Array):
+        user.gainThreat(3)
         for _ent in targets:
             _ent.loseHP(user.damage + 3)
         return
@@ -206,6 +209,7 @@ func _add_test_entity(display_name, health, movement, speed, location, sprite_pa
     sprite.setHP(ent.health)
     ent.sprite = sprite
     sprite.setLabel(ent.display_name)
+    ent.setThreat(0)    
     if ally:
         var _id = state.addAlly(ent)
     else:
@@ -224,6 +228,7 @@ func nextTurn():
     currentEntity().energy += 1
     menuService.setMoveNum(currentEntity().moves_left)
     if state.allies.has(current_turn_id):
+        currentEntity().loseThreat(1)
         _is_ai_turn = false
         menuService.enableAllButtons()
     else:

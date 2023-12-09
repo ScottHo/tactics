@@ -40,13 +40,13 @@ func isAlly(entity: Entity) -> bool:
     return allies.has(entity.id) 
 
 func sort_threat(a, b):
-    if a.threat < b.threat:
+    if a.threat > b.threat:
         return true
     return false
 
 func threatOrder() -> Array:
     var ret = allAllies()
-    allAllies().sort_custom(sort_threat)
+    ret.sort_custom(sort_threat)
     return ret
 
 func all_allies_dead() -> bool:

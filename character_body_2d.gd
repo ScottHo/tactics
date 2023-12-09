@@ -51,3 +51,7 @@ func setHP(hp: int):
 func setLabel(s):
     $TextureProgressBar.setLabel(s)
     return
+
+func setThreat(t):
+    $TextureProgressBar.setThreat(t)
+    return

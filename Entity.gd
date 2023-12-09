@@ -2,7 +2,7 @@ class_name Entity extends Node
 
 var id: int
 var display_name: String
-var alive: bool
+var alive: bool = true
 var max_health: int
 var health: int
 var movement: int
@@ -41,4 +41,23 @@ func gainHP(hp):
     if health > max_health:
         health = max_health
     sprite.setHP(health)
+    return
+
+func gainThreat(t):
+    threat += t
+    if threat > 5:
+        threat = 5
+    sprite.setThreat(threat)
+    return
+
+func loseThreat(t):
+    threat -= t
+    if threat < 0:
+        threat = 0
+    sprite.setThreat(threat)
+    return
+
+func setThreat(t):
+    threat = t
+    sprite.setThreat(threat)
     return

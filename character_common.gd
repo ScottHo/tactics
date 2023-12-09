@@ -12,3 +12,7 @@ func setMaxHP(hp: int):
 func setHP(hp: int):
     $TextureProgressBar.value = hp
     return
+
+func setThreat(t: int):
+    $Label2.text = "Threat: " + str(t) + "/5"
+    return
