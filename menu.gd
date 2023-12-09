@@ -111,6 +111,10 @@ func set_mechanic_text(t):
     $Control/MechanicContainer/MechanicLabel.text = t
     return
 
+func set_description_text(t):
+    $Control/DescriptionContainer/DescriptionLabel.text = t
+    return
+
 func win():
     disableActionButtons()
     $Control/GameOverLabel.text = "You win!"

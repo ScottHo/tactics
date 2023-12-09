@@ -186,8 +186,8 @@ offset_bottom = 73.0
 [node name="MechanicContainer" type="Control" parent="Control"]
 anchors_preset = 0
 offset_left = 5.0
-offset_top = 560.0
-offset_right = 45.0
+offset_top = 531.0
+offset_right = 247.0
 offset_bottom = 600.0
 
 [node name="Label" type="Label" parent="Control/MechanicContainer"]
@@ -202,9 +202,9 @@ text = "Next Mechanic:"
 layout_mode = 0
 offset_left = 138.0
 offset_top = 4.0
-offset_right = 338.0
-offset_bottom = 54.0
-text = "None"
+offset_right = 388.0
+offset_bottom = 104.0
+autowrap_mode = 2
 
 [node name="DescriptionContainer" type="Control" parent="Control"]
 layout_mode = 3
@@ -216,7 +216,8 @@ offset_bottom = 445.0
 
 [node name="DescriptionLabel" type="Label" parent="Control/DescriptionContainer"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = -51.0
-offset_right = 228.0
-offset_bottom = 149.0
+offset_left = -26.0
+offset_top = -66.0
+offset_right = 194.0
+offset_bottom = 134.0
+autowrap_mode = 2

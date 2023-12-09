@@ -60,135 +60,45 @@ func _process(delta):
     return
 
 func importTestData():
-    var arr = []
-    var base_effect = func (user: Entity, targets: Array):
-        user.gainThreat(1)
-        for _ent in targets:
-            _ent.loseHP(user.damage)
-        return
-        
-        
+    print("Importing Test Data")
     var ent = _add_test_entity("Brutis", 10, 4, 10, Vector2i(0, 1), "res://character_body_2d.tscn", true)
-    _add_test_action(ent, "Attack", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
-    var other_effect = func (user: Entity, targets: Array):
-        user.movement_penalty = 3
-        user.gainThreat(3)
-        for _ent in targets:
-            _ent.loseHP(user.damage + 3)
-        return
-    _add_test_action(ent, "Exert", 1, false, 0, 3, [], other_effect, true, ActionType.ACTION1)
-    other_effect = func (user: Entity, targets: Array):
-        user.immune_count = 1
-        return
-    _add_test_action(ent, "Take Cover", 0, true, 0, 2, [], other_effect, false, ActionType.ACTION2)
+    ActionFactory.add_base_attack(ent, 1)
+    ActionFactory.add_exert(ent, ActionType.ACTION1)
+    ActionFactory.add_take_cover(ent, ActionType.ACTION2)
     
     
     ent = _add_test_entity("Oilee", 10, 5, 10, Vector2i(0, 2), "res://character_body_2d.tscn", true)
-    _add_test_action(ent, "Attack", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
-    other_effect = func (user: Entity, targets: Array):
-        user.gainThreat(1)
-        for _ent in targets:
-            _ent.loseHP(user.damage)
-            _ent.movement_penalty = 3
-        return
-    _add_test_action(ent, "Sticky Grenade", 3, false, 0, 2, [], other_effect, true, ActionType.ACTION1)
-    other_effect = func (user: Entity, targets: Array):
-        user.moves_left = user.movement
-        return
-    _add_test_action(ent, "Refuel", 0, true, 0, 2, [], other_effect, true, ActionType.ACTION2)
-    
+    ActionFactory.add_base_attack(ent, 1)
+    ActionFactory.add_sticky_grenade(ent, ActionType.ACTION1)
+    ActionFactory.add_refuel(ent, ActionType.ACTION2)
+
     
     ent = _add_test_entity("Electo", 10, 3, 10, Vector2i(0, 3), "res://character_body_2d.tscn", true)
-    _add_test_action(ent, "Attack", 4, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
-    other_effect = func (user: Entity, targets: Array):
-        user.gainThreat(2)
-        for _ent in targets:
-            _ent.loseHP(user.damage + 1)
-        return
-    arr = [
-        Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
-        Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
-        ]
-    _add_test_action(ent, "Storm", 4, true, 0, 3, arr, other_effect, false, ActionType.ACTION1)
-    other_effect = func (user: Entity, targets: Array):
-        for _ent in targets:
-            _ent.shield_amount = 2
-            _ent.shield_count = 1
-        return
-    _add_test_action(ent, "Static Shield", 4, true, 0, 3, arr, other_effect, true, ActionType.ACTION2)
+    ActionFactory.add_base_attack(ent, 4)
+    ActionFactory.add_storm(ent, ActionType.ACTION1)
+    ActionFactory.add_static_shield(ent, ActionType.ACTION2)
     
     
     ent = _add_test_entity("Nano-nano", 10, 3, 10, Vector2i(0, 4), "res://character_body_2d.tscn", true)
-    _add_test_action(ent, "Attack", 4, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
-    other_effect = func (user: Entity, targets: Array):
-        for _ent in targets:
-            _ent.gainHP(6)
-        return
-    _add_test_action(ent, "Focused Repair", 4, true, 0, 2, [], other_effect, true, ActionType.ACTION1)
-    arr = [
-        Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
-        Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
-        ]
-    other_effect = func (user: Entity, targets: Array):
-        for _ent in targets:
-            _ent.gainHP(3)
-        return
-    _add_test_action(ent, "Nanofield", 4, true, 0, 2, arr, other_effect, true, ActionType.ACTION2)
-    
+    ActionFactory.add_base_attack(ent, 4)
+    ActionFactory.add_focused_repair(ent, ActionType.ACTION1)
+    ActionFactory.add_nano_field(ent, ActionType.ACTION2)
     
     ent = _add_test_entity("Smithy", 10, 4, 10, Vector2i(0, 5), "res://character_body_2d.tscn", true)
-    _add_test_action(ent, "Attack", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
-    other_effect = func (user: Entity, targets: Array):
-        for _ent in targets:
-            _ent.damage += 1
-        return
-    _add_test_action(ent, "Weapons Upgrade", 1, false, 0, 2, [], other_effect, true, ActionType.ACTION1)
-    other_effect = func (user: Entity, targets: Array):
-        for _ent in targets:
-            _ent.movement += 1
-        return
-    _add_test_action(ent, "Engine Upgrade", 1, false, 0, 2, [], base_effect, true, ActionType.ACTION2)
+    ActionFactory.add_base_attack(ent, 1)
+    ActionFactory.add_weapons_upgade(ent, ActionType.ACTION1)
+    ActionFactory.add_engine_upgrade(ent, ActionType.ACTION2)
 
 
     ent = _add_test_entity("Longshot", 10, 4, 10, Vector2i(0, 6), "res://character_body_2d.tscn", true)
-    _add_test_action(ent, "Attack", 5, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
-    other_effect = func (user: Entity, targets: Array):
-        user.gainThreat(1)
-        for _ent in targets:
-            _ent.loseHP(user.damage)
-        return
-    _add_test_action(ent, "Snipe", 8, false, 0, 1, [], other_effect, true, ActionType.ACTION1)
-    other_effect = func (user: Entity, targets: Array):
-        user.gainThreat(3)
-        for _ent in targets:
-            _ent.loseHP(user.damage + 3)
-        return
-    _add_test_action(ent, "Titanium Bullet", 5, false, 0, 5, [], other_effect, true, ActionType.ACTION2)
+    ActionFactory.add_base_attack(ent, 5)
+    ActionFactory.add_snipe(ent, ActionType.ACTION1)
+    ActionFactory.add_titanium_bullet(ent, ActionType.ACTION2)
+    
     
     ent = _add_test_entity("Boss", 100, 6, 14, Vector2i(10,-3), "res://enemy1.tscn", false)
     ent.damage += 2
-    _add_test_action(ent, "Attack", 1, false, 0, 0, [], base_effect, true, ActionType.ATTACK)
-    return
-
-func _add_test_action(ent, display_name, range, self_castable, threat, cost, shape, effect, offensive, action_type):
-    var action = Action.new()
-    action.range = range
-    action.shape = shape
-    action.effect = effect
-    action.threat = threat
-    action.cost = cost
-    action.self_castable = self_castable
-    action.display_name = display_name
-    if offensive:
-        action.target_color = Highlights.RED
-    else:
-        action.target_color = Highlights.BLUE
-    if action_type == ActionType.ATTACK:
-        ent.attack = action
-    if action_type == ActionType.ACTION1:
-        ent.action1 = action
-    if action_type == ActionType.ACTION2:
-        ent.action2 = action
+    ActionFactory.add_base_attack(ent, 1)
     return
 
 func _add_test_entity(display_name, health, movement, speed, location, sprite_path, ally):
@@ -339,6 +249,14 @@ func doneMove():
 
 func doAction(action_type: int):
     actionService.start(currentEntity(), action_type)
+    var d = ""
+    if action_type == ActionType.ATTACK:
+        d = currentEntity().attack.description
+    if action_type == ActionType.ACTION1:
+        d = currentEntity().action1.description
+    if action_type == ActionType.ACTION2:
+        d = currentEntity().action2.description
+    menuService.set_description_text(d)
     return
 
 func actionDone():

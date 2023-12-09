@@ -47,13 +47,13 @@ layer_0/z_index = 1
 script = ExtResource("4_fv11e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(137.927, 97.7729)
+position = Vector2(131, 95)
 
 [node name="MoveService" type="Node2D" parent="."]
 script = ExtResource("6_jpms6")
 
 [node name="MenuService" parent="." instance=ExtResource("7_psia6")]
-position = Vector2(-445.054, -240.566)
+position = Vector2(-436, -233)
 
 [node name="TurnService" type="Node2D" parent="."]
 script = ExtResource("8_5tca6")
