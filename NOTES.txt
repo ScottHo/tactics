@@ -1,10 +1,10 @@
 TODO
 Refactor to re-use more (highlightmap)
+Bug with highlight map for moving/targetting
+Different target highlights for good/bad
 Show HP Numbers
 InteractService, basic version that can target 1 range
 Interactable, interactable simple entity
-Different target highlights for good/bad
-Bug with highlight map for moving/targetting
 Choose different bots
 12 different bots
 Bot roulette
