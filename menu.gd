@@ -38,6 +38,10 @@ func setMoveNum(i: int):
     numMovesLabel.text = str(i)
     return
 
+func updateEnergy(e: int):
+    currentEnergy.text = str(e)
+    return
+
 func showTurns(turns: Array[int]):
     var t = ""
     for turn in turns:

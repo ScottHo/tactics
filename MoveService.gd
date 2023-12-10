@@ -2,7 +2,7 @@ class_name MoveService extends Node2D
 
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
-var enabled: = false
+var _enabled: = false
 var finishInProcess: = false
 var previous_coords: = Vector2i(-99,-99)
 var _points = []
@@ -18,7 +18,7 @@ func _ready():
     return
 
 func _input(event):
-    if not enabled:
+    if not _enabled:
         return
     if event is InputEventMouseMotion:
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
@@ -43,7 +43,7 @@ func _input(event):
                 _entity.moves_left -= len(_points)
                 _entity.location = _points[-1]
                 movesFound.emit(poses)
-                enabled = false
+                _enabled = false
                 return
 
 func highlightPath(clear: bool):
@@ -55,7 +55,9 @@ func highlightPath(clear: bool):
     return
 
 func finish():
-    _map_bfs.resetHighlights(false)
+    if _map_bfs != null:
+        _map_bfs.resetHighlights(false)
+    _enabled = false
     return
 
 func start(entity: Entity):
@@ -67,7 +69,7 @@ func start(entity: Entity):
     _map_bfs = MapBFS.new()
     _map_bfs.init(_starting_point, maxMoves, tileMap, highlightMap, Highlights.PURPLE, _state, false, false)
     _map_bfs.resetHighlights(true)
-    enabled = true    
+    _enabled = true    
     return
 
 func setState(state: State):

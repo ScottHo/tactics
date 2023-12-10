@@ -1,8 +1,5 @@
 TODO
-Description of actions / one service active at a time
 Refactor to re-use more (highlightmap)
-Energy Label
-Floating Effect Texts
 Show HP Numbers
 InteractService, basic version that can target 1 range
 Interactable, interactable simple entity

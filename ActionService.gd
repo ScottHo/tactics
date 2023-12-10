@@ -35,6 +35,7 @@ func _input(event):
                     return
                 ActionCommon.do_action(_state, _entity,_target_points, action())
                 _entity.energy -= action().cost
+                actionDone.emit()
                 finish()
                 return
     return
@@ -73,9 +74,9 @@ func action() -> Action:
     return null
 
 func finish():
-    _map_bfs.resetHighlights(false, action().self_castable)
+    if _map_bfs != null:
+        _map_bfs.resetHighlights(false, action().self_castable)
     _enabled = false
-    actionDone.emit()
     return
 
 func start(entity: Entity, action_type: int):

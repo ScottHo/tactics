@@ -18,6 +18,7 @@ texture_under = ExtResource("1_7ve84")
 texture_progress = ExtResource("2_p6bvf")
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 0.198425
 offset_top = 6.74644
 offset_right = 40.1984

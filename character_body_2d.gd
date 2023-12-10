@@ -45,6 +45,9 @@ func setMaxHP(hp: int):
     return
 
 func setHP(hp: int):
+    if $TextParent/TextAnimation != null:
+        $TextParent/TextAnimation.play()
+         
     $TextureProgressBar.setHP(hp)
     return
 
