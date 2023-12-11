@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8351ynvlqtpn"]
+
+[ext_resource type="Script" path="res://EntitySprite.gd" id="1_xn273"]
+[ext_resource type="PackedScene" uid="uid://b6iqxvpypem6r" path="res://CharacterCommon.tscn" id="2_ao2k8"]
+[ext_resource type="Texture2D" uid="uid://s6hhpycbmdr7" path="res://StickIdle1.png" id="2_of4h3"]
+
+[node name="Character1" type="Node2D"]
+script = ExtResource("1_xn273")
+
+[node name="CharacterCommon" parent="." instance=ExtResource("2_ao2k8")]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterCommon"]
+position = Vector2(0.515606, -10.5685)
+scale = Vector2(0.268302, 0.288834)
+texture = ExtResource("2_of4h3")

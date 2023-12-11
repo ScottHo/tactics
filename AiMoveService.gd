@@ -14,7 +14,8 @@ func setState(state: State):
 
 func find_move() -> Array:
     var path = _find_move()
-    _entity.location = path[-1]
+    if len(path) != 0:
+        _entity.location = path[-1]
     return path
 
 func _find_move() -> Array:

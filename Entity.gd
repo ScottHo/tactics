@@ -49,17 +49,14 @@ func gainThreat(t):
     threat += t
     if threat > 5:
         threat = 5
-    sprite.setThreat(threat)
     return
 
 func loseThreat(t):
     threat -= t
     if threat < 0:
         threat = 0
-    sprite.setThreat(threat)
     return
 
 func setThreat(t):
     threat = t
-    sprite.setThreat(threat)
     return

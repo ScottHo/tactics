@@ -1,11 +1,11 @@
-class_name EntitySprite extends CharacterBody2D
+class_name EntitySprite extends Node2D
 
 var original_position
 var target_position
 var moving = false
 var shouldMove = false
 var points = []
-var step
+var lerp_step: int = 0
 signal doneMoving
 
 func _process(_delta):
@@ -21,9 +21,9 @@ func _process(_delta):
     
 func _physics_process(_delta):
     if moving:
-        step += 1
-        global_position = original_position.lerp(target_position, .05*step)
-        if step == 20:
+        lerp_step += 1
+        global_position = original_position.lerp(target_position, .05*lerp_step)
+        if lerp_step == 20:
             moving = false
     return
 
@@ -36,25 +36,21 @@ func movePoints(_points: Array):
 func move(pos):
     original_position = global_position
     target_position = pos
-    step = 0
+    lerp_step = 0
     moving = true
     return
 
 func setMaxHP(hp: int):
-    $TextureProgressBar.setMaxHP(hp)
+    $CharacterCommon/TextureProgressBar.max_value = hp
     return
 
 func setHP(hp: int):
-    $TextureProgressBar.setHP(hp)
+    $CharacterCommon/TextureProgressBar.value = hp
     return
 
 func setLabel(s):
-    $TextureProgressBar.setLabel(s)
-    return
-
-func setThreat(t):
-    $TextureProgressBar.setThreat(t)
+    $CharacterCommon/Label.text = s
     return
 
 func textAnimation() -> TextAnimation:
-    return $TextParent/TextAnimation
+    return $CharacterCommon/TextParent/TextAnimation

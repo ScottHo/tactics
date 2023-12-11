@@ -23,7 +23,7 @@ static func add_exert(ent: Entity, type: int):
             _ent.loseHP(user.damage + 4)
         return
     var d = "Deals base damage + 4 to any target. Gains 3 Threat. Gains 3 movement penalty for 1 turn."
-    _add_test_action(ent, "Exert", d, 1, false, 0, [], effect, true, type)
+    _add_test_action(ent, "Exert", d, 1, false, 2, [], effect, true, type)
     return
 
 static func add_take_cover(ent: Entity, type: int):

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 
 [node name="Node2D" type="Node2D"]
+z_index = 10
 script = ExtResource("1_0qs77")
 
 [node name="Control" type="Control" parent="."]

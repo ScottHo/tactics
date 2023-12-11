@@ -23,9 +23,9 @@ func _input(event):
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if _previous_coords != coords:
             clearTargetHighlights()
+            _previous_coords = coords            
             if not _map_bfs.inRange(coords, action().self_castable):
                 return
-            _previous_coords = coords
             _target_points = VectorHelpers.get_target_coords(_entity.location, coords, shape())
             fillTargetHighlights()
     if event is InputEventMouseButton and event.is_pressed():

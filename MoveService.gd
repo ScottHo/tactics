@@ -24,9 +24,10 @@ func _input(event):
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if previous_coords != coords:
             highlightPath(true)
+            previous_coords = coords
+            _points = []            
             if not _map_bfs.inRange(coords):
                 return
-            previous_coords = coords
             var points = _map_bfs.getPath(coords)
             if len(points) == 0:
                 return
