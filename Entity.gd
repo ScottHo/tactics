@@ -33,6 +33,7 @@ func loseHP(hp):
     health -= hp
     if health < 0:
         health = 0
+    sprite.textAnimation().lose_health(hp)
     sprite.setHP(health)
     return
 
@@ -40,6 +41,7 @@ func gainHP(hp):
     health += hp
     if health > max_health:
         health = max_health
+    sprite.textAnimation().gain_health(hp)
     sprite.setHP(health)
     return
 

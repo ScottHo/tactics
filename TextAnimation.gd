@@ -2,8 +2,29 @@ class_name TextAnimation extends Label
 
 @onready var animationPlayer := $AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+
+func lose_health(h: int):
+    set_color(Color.RED)
+    text =  "-" + str(h) + " Health"
+    play()
+    return
+
+func gain_health(h: int):
+    set_color(Color.GREEN)
+    text = "+" + str(h) + " Health"
+    play()
+    return
+
+func gain_shields(s: int):
+    set_color(Color.CYAN)
+    text = "+" + str(s) + " Shield"
+    play()
+    return
+
+func gain_movement(m: int):
+    set_color(Color.PALE_GREEN)
+    text = "+" + str(m) + " Movement"
+    play()
     return
 
 func play():

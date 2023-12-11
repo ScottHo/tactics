@@ -45,9 +45,6 @@ func setMaxHP(hp: int):
     return
 
 func setHP(hp: int):
-    if $TextParent/TextAnimation != null:
-        $TextParent/TextAnimation.play()
-         
     $TextureProgressBar.setHP(hp)
     return
 
@@ -58,3 +55,6 @@ func setLabel(s):
 func setThreat(t):
     $TextureProgressBar.setThreat(t)
     return
+
+func textAnimation() -> TextAnimation:
+    return $TextParent/TextAnimation

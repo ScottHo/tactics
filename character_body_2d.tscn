@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_qayqg"]
 [ext_resource type="Texture2D" uid="uid://s6hhpycbmdr7" path="res://StickIdle1.png" id="2_q8223"]
 [ext_resource type="PackedScene" uid="uid://bab7tow8gdhok" path="res://character_common.tscn" id="3_n5s8g"]
-[ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="4_calti"]
+[ext_resource type="PackedScene" path="res://TextAnimation.tscn" id="4_calti"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449
