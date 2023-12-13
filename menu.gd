@@ -6,16 +6,16 @@ signal moveActionInitiate
 signal nextTurnActionInitiate
 signal interactActionInitiate
 signal actionInitiate
-@onready var moveButton: Button = $Control/MoveButton
-@onready var nextTurnButton: Button = $Control/TurnButton
-@onready var interactButton: Button = $Control/InteractButton
-@onready var attackButton: Button = $Control/ActionContainer/AttackButton
-@onready var action1Button: Button = $Control/ActionContainer/Action1Button
-@onready var action2Button: Button = $Control/ActionContainer/Action2Button
-@onready var action1Cost: Label = $Control/ActionContainer/Action1Cost
-@onready var action2Cost: Label = $Control/ActionContainer/Action2Cost
-@onready var currentEnergy: Label = $Control/ActionContainer/CurrentEnergy
-@onready var numMovesLabel: Label = $Control/NumMovesLabel
+@onready var moveButton: Button = $BottomBar/MoveButton
+@onready var nextTurnButton: Button = $BottomBar/TurnButton
+@onready var interactButton: Button = $BottomBar/InteractButton
+@onready var attackButton: Button = $BottomBar/ActionContainer/AttackButton
+@onready var action1Button: Button = $BottomBar/ActionContainer/Action1Button
+@onready var action2Button: Button = $BottomBar/ActionContainer/Action2Button
+@onready var action1Cost: Label = $BottomBar/ActionContainer/Action1Cost
+@onready var action2Cost: Label = $BottomBar/ActionContainer/Action2Cost
+@onready var currentEnergy: Label = $BottomBar/ActionContainer/CurrentEnergy
+@onready var numMovesLabel: Label = $BottomBar/NumMovesLabel
 @onready var currentTurnLabel: Label = $Control/TurnLabelsContainer/CurrentTurnLabel
 @onready var futureTurnsLabel: Label = $Control/TurnLabelsContainer/FutureTurnsLabel
 

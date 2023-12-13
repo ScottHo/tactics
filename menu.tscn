@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=3 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
+[ext_resource type="Texture2D" uid="uid://dsxu3cnidj7yl" path="res://Frame.png" id="2_fglvh"]
 
 [node name="Node2D" type="Node2D"]
 z_index = 10
@@ -12,139 +13,12 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="MoveButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 141.364
-offset_top = 110.68
-offset_right = 192.364
-offset_bottom = 141.68
-scale = Vector2(1.27043, 1.39487)
-text = "Move"
-
-[node name="TurnButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 24.0
-offset_right = 155.0
-offset_bottom = 96.0
-text = "NextTurn
-"
-
-[node name="NumMovesLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 317.042
-offset_top = 121.017
-offset_right = 357.042
-offset_bottom = 147.017
-text = "1"
-
-[node name="Label5" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 218.93
-offset_top = 122.252
-offset_right = 323.93
-offset_bottom = 148.252
-text = "Moves Left:"
-
-[node name="InteractButton" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 114.0
-offset_right = 120.0
-offset_bottom = 165.0
-text = "Interact
-"
-
-[node name="ActionContainer" type="Control" parent="Control"]
-anchors_preset = 0
-offset_left = -2.0
-offset_top = 142.0
-offset_right = 330.0
-offset_bottom = 217.0
-
-[node name="AttackButton" type="Button" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 53.0
-offset_right = 105.0
-offset_bottom = 117.0
-text = "Attack"
-
-[node name="Action1Button" type="Button" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 123.49
-offset_top = 55.857
-offset_right = 217.49
-offset_bottom = 119.857
-text = "Action 1
-"
-
-[node name="Action2Button" type="Button" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 250.49
-offset_top = 56.857
-offset_right = 344.49
-offset_bottom = 120.857
-text = "Action2
-"
-
-[node name="Label2" type="Label" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 29.0
-offset_right = 192.0
-offset_bottom = 55.0
-text = "Cost:"
-
-[node name="Label3" type="Label" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 258.0
-offset_top = 28.0
-offset_right = 310.0
-offset_bottom = 54.0
-text = "Cost:"
-
-[node name="Action1Cost" type="Label" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 183.0
-offset_top = 28.0
-offset_right = 202.0
-offset_bottom = 54.0
-text = "0
-"
-
-[node name="Action2Cost" type="Label" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 305.0
-offset_top = 28.0
-offset_right = 345.0
-offset_bottom = 54.0
-text = "0
-"
-
-[node name="Label4" type="Label" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 29.0
-offset_right = 67.0
-offset_bottom = 55.0
-text = "Energy:"
-
-[node name="CurrentEnergy" type="Label" parent="Control/ActionContainer"]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 28.0
-offset_right = 94.0
-offset_bottom = 54.0
-text = "0
-"
-
 [node name="TurnLabelsContainer" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 163.0
-offset_top = 10.0
-offset_right = 203.0
-offset_bottom = 50.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 41.0
 
 [node name="Label4" type="Label" parent="Control/TurnLabelsContainer"]
 layout_mode = 0
@@ -188,10 +62,10 @@ offset_bottom = 73.0
 
 [node name="MechanicContainer" type="Control" parent="Control"]
 anchors_preset = 0
-offset_left = 5.0
-offset_top = 531.0
-offset_right = 247.0
-offset_bottom = 600.0
+offset_left = 4.0
+offset_top = 304.0
+offset_right = 246.0
+offset_bottom = 373.0
 
 [node name="Label" type="Label" parent="Control/MechanicContainer"]
 layout_mode = 0
@@ -203,24 +77,165 @@ text = "Next Mechanic:"
 
 [node name="MechanicLabel" type="Label" parent="Control/MechanicContainer"]
 layout_mode = 0
-offset_left = 138.0
-offset_top = 4.0
-offset_right = 388.0
-offset_bottom = 104.0
+offset_left = -2.0
+offset_top = 31.0
+offset_right = 248.0
+offset_bottom = 131.0
 autowrap_mode = 2
 
 [node name="DescriptionContainer" type="Control" parent="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 28.0
-offset_top = 405.0
-offset_right = 68.0
-offset_bottom = 445.0
+offset_left = 13.0
+offset_top = 94.0
+offset_right = 53.0
+offset_bottom = 134.0
 
 [node name="DescriptionLabel" type="Label" parent="Control/DescriptionContainer"]
 layout_mode = 0
-offset_left = -26.0
-offset_top = -66.0
-offset_right = 194.0
-offset_bottom = 134.0
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 219.0
+offset_bottom = 203.0
 autowrap_mode = 2
+
+[node name="BottomBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 722.0
+offset_right = 45.0
+offset_bottom = 762.0
+
+[node name="Frame" type="Sprite2D" parent="BottomBar"]
+position = Vector2(97, 41)
+texture = ExtResource("2_fglvh")
+
+[node name="CharacterImage" type="Sprite2D" parent="BottomBar/Frame"]
+
+[node name="MoveButton" type="Button" parent="BottomBar"]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 13.9999
+offset_right = 270.0
+offset_bottom = 44.9999
+scale = Vector2(1.27043, 1.39487)
+text = "Move"
+
+[node name="TurnButton" type="Button" parent="BottomBar"]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 3.0
+offset_right = 1057.0
+offset_bottom = 75.0
+text = "NextTurn
+"
+
+[node name="NumMovesLabel" type="Label" parent="BottomBar"]
+layout_mode = 0
+offset_left = 319.112
+offset_top = 80.0
+offset_right = 359.112
+offset_bottom = 106.0
+text = "1"
+
+[node name="Label5" type="Label" parent="BottomBar"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 81.235
+offset_right = 326.0
+offset_bottom = 107.235
+text = "Moves Left:"
+
+[node name="InteractButton" type="Button" parent="BottomBar"]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 5.0
+offset_right = 860.0
+offset_bottom = 56.0
+text = "Interact
+"
+
+[node name="ActionContainer" type="Control" parent="BottomBar"]
+anchors_preset = 0
+offset_left = 359.0
+offset_top = -58.0
+offset_right = 691.0
+offset_bottom = 17.0
+
+[node name="AttackButton" type="Button" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 53.0
+offset_right = 105.0
+offset_bottom = 117.0
+text = "Attack"
+
+[node name="Action1Button" type="Button" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 123.49
+offset_top = 55.857
+offset_right = 217.49
+offset_bottom = 119.857
+text = "Action 1
+"
+
+[node name="Action2Button" type="Button" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 58.0
+offset_right = 365.0
+offset_bottom = 122.0
+text = "Action2
+"
+
+[node name="Label2" type="Label" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 139.0
+offset_right = 194.0
+offset_bottom = 165.0
+text = "Cost:"
+
+[node name="Label3" type="Label" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 280.51
+offset_top = 139.143
+offset_right = 332.51
+offset_bottom = 165.143
+text = "Cost:"
+
+[node name="Action1Cost" type="Label" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 138.0
+offset_right = 204.0
+offset_bottom = 164.0
+text = "0
+"
+
+[node name="Action2Cost" type="Label" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 327.51
+offset_top = 139.143
+offset_right = 367.51
+offset_bottom = 165.143
+text = "0
+"
+
+[node name="Label4" type="Label" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 139.0
+offset_right = 75.0
+offset_bottom = 165.0
+text = "Energy:"
+
+[node name="CurrentEnergy" type="Label" parent="BottomBar/ActionContainer"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 138.0
+offset_right = 96.0
+offset_bottom = 164.0
+text = "0
+"
