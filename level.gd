@@ -110,10 +110,7 @@ func _add_test_entity(display_name, health, movement, speed, location, sprite_pa
     var sprite: EntitySprite  = load(sprite_path).instantiate()
     add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(ent.location)
-    sprite.setMaxHP(ent.health)
-    sprite.setHP(ent.health)
     ent.sprite = sprite
-    sprite.setLabel(ent.display_name)
     ent.setThreat(0)    
     if ally:
         var _id = state.addAlly(ent)

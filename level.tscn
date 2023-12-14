@@ -21,6 +21,7 @@ metadata/_edit_horizontal_guides_ = [371.787]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
+scale = Vector2(1.2, 1.2)
 tile_set = ExtResource("2_df7di")
 cell_quadrant_size = 64
 format = 2
@@ -39,6 +40,7 @@ script = ExtResource("3_j2hyq")
 
 [node name="HighlightMap" type="TileMap" parent="."]
 y_sort_enabled = true
+scale = Vector2(1.2, 1.2)
 tile_set = ExtResource("3_ilats")
 cell_quadrant_size = 64
 format = 2
@@ -47,13 +49,13 @@ layer_0/z_index = 1
 script = ExtResource("4_fv11e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(90, 206)
+position = Vector2(228, 280)
 
 [node name="MoveService" type="Node2D" parent="."]
 script = ExtResource("6_jpms6")
 
 [node name="MenuService" parent="." instance=ExtResource("7_psia6")]
-position = Vector2(-678, -226)
+position = Vector2(-534, -154)
 
 [node name="TurnService" type="Node2D" parent="."]
 script = ExtResource("8_5tca6")

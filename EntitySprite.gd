@@ -40,17 +40,5 @@ func move(pos):
     moving = true
     return
 
-func setMaxHP(hp: int):
-    $CharacterCommon/TextureProgressBar.max_value = hp
-    return
-
-func setHP(hp: int):
-    $CharacterCommon/TextureProgressBar.value = hp
-    return
-
-func setLabel(s):
-    $CharacterCommon/Label.text = s
-    return
-
 func textAnimation() -> TextAnimation:
     return $CharacterCommon/TextParent/TextAnimation
