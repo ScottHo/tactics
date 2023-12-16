@@ -9,7 +9,7 @@ script = ExtResource("1_xn273")
 
 [node name="CharacterCommon" parent="." instance=ExtResource("2_ao2k8")]
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterCommon"]
+[node name="Sprite" type="Sprite2D" parent="CharacterCommon"]
 position = Vector2(0.515606, -10.5685)
 scale = Vector2(0.268302, 0.288834)
 texture = ExtResource("2_of4h3")

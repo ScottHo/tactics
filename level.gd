@@ -66,7 +66,7 @@ func importTestData():
     ActionFactory.add_exert(ent, ActionType.ACTION1)
     ActionFactory.add_take_cover(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Oilee", 10, 5, 10, Vector2i(0, 2), "res://character_1.tscn", true)
+    ent = _add_test_entity("Oilee", 10, 5, 10, Vector2i(0, 2), "res://oilee.tscn", true)
     ActionFactory.add_base_attack(ent, 1)
     ActionFactory.add_sticky_grenade(ent, ActionType.ACTION1)
     ActionFactory.add_refuel(ent, ActionType.ACTION2)
@@ -91,7 +91,7 @@ func importTestData():
     ActionFactory.add_snipe(ent, ActionType.ACTION1)
     ActionFactory.add_titanium_bullet(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Boss", 100, 6, 14, Vector2i(10,-3), "res://enemy_1.tscn", false)
+    ent = _add_test_entity("Boss", 100, 6, 12, Vector2i(10,-3), "res://enemy_1.tscn", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent, 1)
     return

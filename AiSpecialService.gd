@@ -75,11 +75,11 @@ func special_effect():
 
 func next_special_description():
     if (counter() + 1) % 2 == 0:
-        return "Elctric Barrage: Deals 6 damage spread over every
-         friendly unit in a 3x3 area centered on a random friendly unit"
+        return "Elctric Barrage:
+Deals 6 damage spread over everyfriendly unit in a 3x3 area centered on a random friendly unit"
     else:
-        return "Explosive Missles: Deals 2 damage to every friendly unit
-        in a 3x3 area centered on every friendly unit"
+        return "Explosive Missles:
+Deals 2 damage to every friendly unit in a 3x3 area centered on every friendly unit"
 
 func counter():
     return _counters.get(_entity.id, -1)

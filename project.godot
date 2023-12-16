@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1536
 window/size/viewport_height=864
 
+[gui]
+
+theme/custom_font="res://nulshock bd.otf"
+
 [input]
 
 move_down={

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvhthsjscodck"
-path="res://.godot/imported/LongBar.png-8e2644a9231b7f97c3e951a88306e943.ctex"
+uid="uid://b26gil3t3beok"
+path="res://.godot/imported/panel_buttons_background.png-bd20209beb2d297230ffe8f2725aa1d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://LongBar.png"
-dest_files=["res://.godot/imported/LongBar.png-8e2644a9231b7f97c3e951a88306e943.ctex"]
+source_file="res://panel_buttons_background.png"
+dest_files=["res://.godot/imported/panel_buttons_background.png-bd20209beb2d297230ffe8f2725aa1d3.ctex"]
 
 [params]
 

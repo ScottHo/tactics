@@ -12,13 +12,11 @@ signal actionInitiate
 @onready var attackButton: Button = $BottomBar/AttackButton
 @onready var action1Button: Button = $BottomBar/Action1Button
 @onready var action2Button: Button = $BottomBar/Action2Button
-@onready var action1Cost: Label = $BottomBar/Action1Cost
-@onready var action2Cost: Label = $BottomBar/Action2Cost
 @onready var currentEnergy: Label = $CharacterContainer/CurrentEnergy
 @onready var numMovesLabel: Label = $CharacterContainer/NumMovesLabel
-@onready var currentTurnLabel: Label = $Control/TurnLabelsContainer/CurrentTurnLabel
-@onready var futureTurnsLabel: Label = $Control/TurnLabelsContainer/FutureTurnsLabel
-
+@onready var currentTurnLabel: Label = $CharacterContainer/CurrentTurnLabel
+@onready var healthLabel: Label = $CharacterContainer/HealthLabel
+@onready var damageLabel: Label = $CharacterContainer/DamageLabel
 
 func _ready():
     moveButton.button_down.connect(func(): moveActionInitiate.emit())
@@ -43,27 +41,42 @@ func updateEnergy(e: int):
     return
 
 func showTurns(turns: Array[int]):
-    var t = ""
-    for turn in turns:
-        t += _state.get_entity(turn).display_name + " "
-    futureTurnsLabel.text = t
+    $TurnLabelsContainer/FutureTurnsLabel5.text = _state.get_entity(turns[0]).display_name
+    $TurnLabelsContainer/FutureTurnsLabel4.text = _state.get_entity(turns[1]).display_name
+    $TurnLabelsContainer/FutureTurnsLabel3.text = _state.get_entity(turns[2]).display_name
+    $TurnLabelsContainer/FutureTurnsLabel2.text = _state.get_entity(turns[3]).display_name
+    $TurnLabelsContainer/FutureTurnsLabel.text = _state.get_entity(turns[4]).display_name
     return
-
+    
 func showCurrentTurn(turn: int):
     var entity := _state.get_entity(turn)
     currentTurnLabel.text = _state.get_entity(turn).display_name
     disableActionButtons()
     if _state.isAlly(entity):
-        currentEnergy.text = str(entity.energy)
+        
         attackButton.disabled = false
-        action1Button.text = entity.action1.display_name
-        action1Cost.text = str(entity.action1.cost)
+        action1Button.text = entity.action1.display_name.replace(" ", "\n")
         if entity.action1.cost <= entity.energy:
             action1Button.disabled = false
-        action2Button.text = entity.action2.display_name
-        action2Cost.text = str(entity.action2.cost)
+        action2Button.text = entity.action2.display_name.replace(" ", "\n")
         if entity.action2.cost <= entity.energy:
             action2Button.disabled = false
+        updateEntityInfo(entity)
+        
+        set_description_text("No Action Selected")
+        
+    else:
+        currentEnergy.text = "-"
+        healthLabel.text = str(entity.health)
+        set_description_text("Enemy Turn")
+    $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
+    $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*3        
+    return
+
+func updateEntityInfo(entity):
+    currentEnergy.text = str(entity.energy)        
+    healthLabel.text = str(entity.health)
+    damageLabel.text = str(entity.damage)
     return
 
 func enableAllButtons():
@@ -112,19 +125,19 @@ func disableActionButtons():
     return
 
 func set_mechanic_text(t):
-    $Control/MechanicContainer/MechanicLabel.text = t
+    $MechanicContainer/MechanicLabel.text = t
     return
 
 func set_description_text(t):
-    $Control/DescriptionContainer/DescriptionLabel.text = t
+    $DescriptionContainer/DescriptionLabel.text = t
     return
 
 func win():
     disableActionButtons()
-    $Control/GameOverLabel.text = "You win!"
+    $GameOverLabel.text = "You win!"
     return
 
 func lose():
     disableActionButtons()
-    $Control/GameOverLabel.text = "You lose!"
+    $GameOverLabel.text = "You lose!"
     return

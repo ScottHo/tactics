@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxirdqevwnnvd"
-path="res://.godot/imported/long-vertical.png-736a2bdb71ee0d13951e3338b61a3de8.ctex"
+uid="uid://nbw3mhusx6ki"
+path="res://.godot/imported/Oilee.png-02af17604b154cd4b8a846a066907921.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://long-vertical.png"
-dest_files=["res://.godot/imported/long-vertical.png-736a2bdb71ee0d13951e3338b61a3de8.ctex"]
+source_file="res://Oilee.png"
+dest_files=["res://.godot/imported/Oilee.png-02af17604b154cd4b8a846a066907921.ctex"]
 
 [params]
 

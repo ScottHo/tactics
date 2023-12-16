@@ -29,6 +29,6 @@ func processDeaths():
     return
 
 func doDeathAnimation(entity: Entity):
-    entity.sprite.setLabel("Dead")
     print(entity.display_name + " Died!")
+    entity.sprite.show_death()
     return

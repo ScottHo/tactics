@@ -42,3 +42,17 @@ func move(pos):
 
 func textAnimation() -> TextAnimation:
     return $CharacterCommon/TextParent/TextAnimation
+
+func texture_resource() -> Texture2D:
+    if $CharacterCommon/Sprite != null:
+        return $CharacterCommon/Sprite.texture
+    return Texture2D.new()
+
+func texture_scale() -> Vector2:
+    if $CharacterCommon/Sprite != null:
+        return $CharacterCommon/Sprite.scale
+    return Vector2(1,1)
+
+func show_death():
+    $CharacterCommon/DeathSprite.visible = true
+    return

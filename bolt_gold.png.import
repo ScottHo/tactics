@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxirdqevwnnvd"
-path="res://.godot/imported/long-vertical.png-736a2bdb71ee0d13951e3338b61a3de8.ctex"
+uid="uid://r6kehdymiqr2"
+path="res://.godot/imported/bolt_gold.png-f00442c18bf8f4150df166fdaa7fd186.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://long-vertical.png"
-dest_files=["res://.godot/imported/long-vertical.png-736a2bdb71ee0d13951e3338b61a3de8.ctex"]
+source_file="res://bolt_gold.png"
+dest_files=["res://.godot/imported/bolt_gold.png-f00442c18bf8f4150df166fdaa7fd186.ctex"]
 
 [params]
 

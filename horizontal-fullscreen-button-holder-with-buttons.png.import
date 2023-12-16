@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxirdqevwnnvd"
-path="res://.godot/imported/long-vertical.png-736a2bdb71ee0d13951e3338b61a3de8.ctex"
+uid="uid://ddplqs8w1cxa0"
+path="res://.godot/imported/horizontal-fullscreen-button-holder-with-buttons.png-75485e67b75665ef6f0c08749ea38ccc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://long-vertical.png"
-dest_files=["res://.godot/imported/long-vertical.png-736a2bdb71ee0d13951e3338b61a3de8.ctex"]
+source_file="res://horizontal-fullscreen-button-holder-with-buttons.png"
+dest_files=["res://.godot/imported/horizontal-fullscreen-button-holder-with-buttons.png-75485e67b75665ef6f0c08749ea38ccc.ctex"]
 
 [params]
 
