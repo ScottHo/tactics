@@ -56,3 +56,13 @@ func texture_scale() -> Vector2:
 func show_death():
     $CharacterCommon/DeathSprite.visible = true
     return
+
+func update_hp(hp):
+    $CharacterCommon/HealthBar.value = hp
+    return
+
+func update_max_hp(hp):
+    print(hp)
+    $CharacterCommon/HealthBar.max_value = hp
+    return
+

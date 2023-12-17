@@ -8,6 +8,7 @@ extends Node2D
 @onready var aiActionService: AiActionService = $AiActionService
 @onready var aiSpecialService: AiSpecialService = $AiSpecialService
 @onready var deathService: DeathService = $DeathService
+@onready var infoService: InfoService = $InfoService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 var current_turn_id: int = -1
@@ -39,6 +40,8 @@ func _ready():
     aiSpecialService.setState(state)
     deathService.setState(state)
     turnService.setState(state)
+    infoService.setState(state)
+    infoService.start()
     turnService.update()
     menuService.setState(state)
     menuService.showTurns(turnService.next5Turns())
@@ -98,20 +101,20 @@ func importTestData():
 
 func _add_test_entity(display_name, health, movement, speed, location, sprite_path, ally):
     var ent = Entity.new()
+    var sprite: EntitySprite  = load(sprite_path).instantiate()
+    add_child(sprite)
+    sprite.global_position = tileMap.pointToGlobal(location)
+    ent.sprite = sprite
     ent.alive = true
     ent.damage = 2
     ent.display_name = display_name
-    ent.max_health = health
     ent.health = health
     ent.movement = movement
     ent.speed = speed
     ent.location = location
     ent.energy = 1
-    var sprite: EntitySprite  = load(sprite_path).instantiate()
-    add_child(sprite)
-    sprite.global_position = tileMap.pointToGlobal(ent.location)
-    ent.sprite = sprite
-    ent.setThreat(0)    
+    ent.set_max_hp(health)
+    ent.setThreat(0)
     if ally:
         var _id = state.addAlly(ent)
     else:

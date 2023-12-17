@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6iqxvpypem6r"]
+[gd_scene load_steps=6 format=3 uid="uid://b6iqxvpypem6r"]
 
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://skull.png" id="2_sbscd"]
+[ext_resource type="Texture2D" uid="uid://di2pvfhgjirl" path="res://Progress_Under.png" id="3_87rn2"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
+[ext_resource type="Texture2D" uid="uid://pgde8yg8u1fd" path="res://Progress_Over.png" id="4_bhbp5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449
@@ -37,3 +39,14 @@ z_index = 2
 position = Vector2(0, -11.3594)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_sbscd")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -13.3174
+offset_top = 2.55009
+offset_right = 286.683
+offset_bottom = 52.5501
+scale = Vector2(0.1, 0.1)
+value = 50.0
+texture_under = ExtResource("3_87rn2")
+texture_progress = ExtResource("4_bhbp5")

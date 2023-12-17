@@ -4,6 +4,7 @@ var entities: ID_Dict = ID_Dict.new()
 var allies: Array[int] = []
 var enemies: Array[int] = []
 
+
 func allAllies() -> Array:
     var ret = []
     for id in allies:
@@ -62,3 +63,9 @@ func all_enemies_dead() -> bool:
         if get_entity(id).alive:
             return false
     return ret
+
+func entity_on_tile(vector):
+    for _entity in entities.allData():
+        if _entity.location == vector:
+            return _entity
+    return null

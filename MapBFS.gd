@@ -62,10 +62,7 @@ func calcRange_bfs():
     return
 
 func _check_on_entity(vector):
-    for _entity in _state.entities.allData():
-        if _entity.location == vector:
-            return true
-    return false
+    return _state.entity_on_tile(vector) != null
 
 func inRange(vector: Vector2i, can_target_self := false) -> bool:
     return _bfs_points.has(vector) and (vector != _location or can_target_self)
