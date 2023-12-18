@@ -11,36 +11,28 @@ Bot roulette
 
 CLASS/ABILITY IDEAS
 
-Melee Bot 1 - 2 Damage
+Brutis - Melee Bot that is a manly tanky type
 Extert - +2 Damage, +2 Threat, -2 Movement
 Shield - Take no damage
 
-Rogue - 2 Damage
-Debilitate - Slow movement
-Nimble - Refill move bar
+Oilee - Melee Bot that specialized in oil based abilities 
+Sticky Bomb - Slow movement of all enemies hit
+Refuel - Refill movement tiles
 
-Blacksmith - 2 Damage
-Create Dummy - 
-Upgrade Weapon - Permanent +1 Damage to Weapon Class
+Smithy - Bot that upgrades other bots. Vibes like jarvis from Iron Man
+Upgrade Engines - Permanent +1 movement to other ally 
+Upgrade Weapon - Permanent +1 Damage to other ally
 
-Wizard - 2 Damage
+Electo - Lightning Wizard like bot that does AOE lightning stuff
 Lightning Storm - 3 Damage, AOE
 Barrier - -2 Damage to all in AOE till next turn
 
-Priest - 2 Damage
-Heal - Heal + 6 to one
-Bless - Heal + 3 to area 
+Nano-Nano - Uses nano bots to repair other bots
+Focused Repair - Heal + 6 to one
+Nanofield - Heal + 3 to area 
 
-Monk - 2 Damage
-Ashura Strike - +3 Damage Cone Punch
-Meditate - Full heal self
-
-Bard - 2 Damage
-Song of Healing - +1 Heal to all
-Song of Damage - +1 Damage to all
-
-Archer - 2 Damage
-High Velocity Shot - +3 Damage, straight shot no shoot through
-Rain of Arrows - +1 Damage, AOE
+Long Shot - Bot specializing in logn range
+Snipe - +1 Damage, far range shot
+Titanium Bullet - 5 Energy to do a lot of damage mid range
 
 

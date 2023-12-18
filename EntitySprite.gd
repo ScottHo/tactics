@@ -62,7 +62,6 @@ func update_hp(hp):
     return
 
 func update_max_hp(hp):
-    print(hp)
     $CharacterCommon/HealthBar.max_value = hp
     return
 

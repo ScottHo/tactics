@@ -1,0 +1,258 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1p2jhiw5fj1p"]
+
+[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://vertical-medium.png" id="1_qxhvw"]
+[ext_resource type="Script" path="res://HoverInfo.gd" id="2_gnyh0"]
+
+[node name="HoverInfo" type="Node2D"]
+script = ExtResource("2_gnyh0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qxhvw")
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -298.064
+offset_top = -514.899
+offset_right = -222.064
+offset_bottom = -486.899
+theme_override_font_sizes/font_size = 20
+text = "NAME"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -293.826
+offset_top = -457.688
+offset_right = -188.826
+offset_bottom = -429.688
+theme_override_font_sizes/font_size = 20
+text = "Health:"
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -172.474
+offset_top = -458.807
+offset_right = -110.474
+offset_bottom = -430.807
+theme_override_font_sizes/font_size = 20
+text = "10/10"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1.09741
+offset_top = -467.202
+offset_right = 109.097
+offset_bottom = -439.202
+theme_override_font_sizes/font_size = 20
+text = "Energy:"
+
+[node name="EnergyLabel" type="Label" parent="."]
+offset_left = 122.449
+offset_top = -468.321
+offset_right = 184.449
+offset_bottom = -440.321
+theme_override_font_sizes/font_size = 20
+text = "10/10"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -296.204
+offset_top = -417.255
+offset_right = -197.204
+offset_bottom = -389.255
+theme_override_font_sizes/font_size = 20
+text = "Threat"
+
+[node name="ThreatLabel" type="Label" parent="."]
+offset_left = -174.853
+offset_top = -418.374
+offset_right = -112.853
+offset_bottom = -390.374
+theme_override_font_sizes/font_size = 20
+text = "10/10"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = -0.0918274
+offset_top = -425.579
+offset_right = 113.908
+offset_bottom = -397.579
+theme_override_font_sizes/font_size = 20
+text = "Damage:"
+
+[node name="DamageLabel" type="Label" parent="."]
+offset_left = 121.26
+offset_top = -426.698
+offset_right = 171.26
+offset_bottom = -398.698
+theme_override_font_sizes/font_size = 20
+text = "3"
+
+[node name="Label5" type="Label" parent="."]
+offset_left = -297.394
+offset_top = -375.633
+offset_right = -134.394
+offset_bottom = -347.633
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="MovementLabel" type="Label" parent="."]
+offset_left = -127.284
+offset_top = -375.563
+offset_right = -77.2843
+offset_bottom = -347.563
+theme_override_font_sizes/font_size = 20
+text = "5"
+
+[node name="Effect0" type="Label" parent="."]
+offset_left = -291.044
+offset_top = -312.137
+offset_right = -128.044
+offset_bottom = -284.137
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect1" type="Label" parent="."]
+offset_left = -292.542
+offset_top = -277.676
+offset_right = -129.542
+offset_bottom = -249.676
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect2" type="Label" parent="."]
+offset_left = -297.037
+offset_top = -243.214
+offset_right = -134.037
+offset_bottom = -215.214
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect3" type="Label" parent="."]
+offset_left = -297.037
+offset_top = -204.259
+offset_right = -134.037
+offset_bottom = -176.259
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect4" type="Label" parent="."]
+offset_left = -297.037
+offset_top = -166.801
+offset_right = -134.037
+offset_bottom = -138.801
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect5" type="Label" parent="."]
+offset_left = -298.535
+offset_top = -127.845
+offset_right = -135.535
+offset_bottom = -99.8448
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect6" type="Label" parent="."]
+offset_left = -300.034
+offset_top = -93.3838
+offset_right = -137.034
+offset_bottom = -65.3838
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect7" type="Label" parent="."]
+offset_left = -304.529
+offset_top = -58.9227
+offset_right = -141.529
+offset_bottom = -30.9227
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect8" type="Label" parent="."]
+offset_left = -304.529
+offset_top = -19.9667
+offset_right = -141.529
+offset_bottom = 8.03333
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect9" type="Label" parent="."]
+offset_left = -304.529
+offset_top = 17.491
+offset_right = -141.529
+offset_bottom = 45.491
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect10" type="Label" parent="."]
+offset_left = -295.806
+offset_top = 56.1403
+offset_right = -132.806
+offset_bottom = 84.1403
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect11" type="Label" parent="."]
+offset_left = -297.304
+offset_top = 90.6014
+offset_right = -134.304
+offset_bottom = 118.601
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect12" type="Label" parent="."]
+offset_left = -301.799
+offset_top = 125.063
+offset_right = -138.799
+offset_bottom = 153.063
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect13" type="Label" parent="."]
+offset_left = -301.799
+offset_top = 164.018
+offset_right = -138.799
+offset_bottom = 192.018
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect14" type="Label" parent="."]
+offset_left = -301.799
+offset_top = 201.476
+offset_right = -138.799
+offset_bottom = 229.476
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect15" type="Label" parent="."]
+offset_left = -303.298
+offset_top = 240.432
+offset_right = -140.298
+offset_bottom = 268.432
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect16" type="Label" parent="."]
+offset_left = -304.796
+offset_top = 274.893
+offset_right = -141.796
+offset_bottom = 302.893
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect17" type="Label" parent="."]
+offset_left = -309.291
+offset_top = 309.354
+offset_right = -146.291
+offset_bottom = 337.354
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect18" type="Label" parent="."]
+offset_left = -309.291
+offset_top = 348.31
+offset_right = -146.291
+offset_bottom = 376.31
+theme_override_font_sizes/font_size = 20
+text = "Movement: "
+
+[node name="Effect19" type="Label" parent="."]
+offset_left = -309.291
+offset_top = 385.768
+offset_right = -146.291
+offset_bottom = 413.768
+theme_override_font_sizes/font_size = 20
+text = "Movement: "

@@ -5,14 +5,6 @@ var _state: State
 var _previous_coords: Vector2i = Vector2i(999,999)
 @onready var tileMap: MainTileMap = $"../TileMap"
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-    pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
-
 func _input(event):
     if not _enabled:
         return
