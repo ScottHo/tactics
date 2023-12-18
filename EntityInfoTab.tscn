@@ -1,0 +1,205 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbb2avwiipbtb"]
+
+[ext_resource type="Texture2D" uid="uid://cnkfypswwbhn3" path="res://hud_heartFull.png" id="1_ijwvg"]
+[ext_resource type="Script" path="res://EntityInfoTab.gd" id="1_r63co"]
+[ext_resource type="Texture2D" uid="uid://r6kehdymiqr2" path="res://bolt_gold.png" id="2_2cdhl"]
+[ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://arrow_reserve.png" id="3_yf7ib"]
+[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://item_sword.png" id="4_flx8q"]
+[ext_resource type="Texture2D" uid="uid://s6hhpycbmdr7" path="res://StickIdle1.png" id="5_88jl5"]
+
+[node name="EntityInfoTab" type="Node2D"]
+position = Vector2(0, -4)
+script = ExtResource("1_r63co")
+
+[node name="Stats" type="Node2D" parent="."]
+
+[node name="HeartSprite" type="Sprite2D" parent="Stats"]
+position = Vector2(87, 42)
+texture = ExtResource("1_ijwvg")
+
+[node name="HpLabel" type="Label" parent="Stats"]
+offset_left = 118.0
+offset_top = 27.0
+offset_right = 158.0
+offset_bottom = 51.0
+text = "4/5"
+
+[node name="EnergySprite" type="Sprite2D" parent="Stats"]
+position = Vector2(193, 42)
+texture = ExtResource("2_2cdhl")
+
+[node name="EnergyLabel" type="Label" parent="Stats"]
+offset_left = 217.0
+offset_top = 30.0
+offset_right = 257.0
+offset_bottom = 54.0
+text = "4/5"
+
+[node name="MovementSprite" type="Sprite2D" parent="Stats"]
+position = Vector2(307, 35)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_yf7ib")
+
+[node name="MovementLabel" type="Label" parent="Stats"]
+offset_left = 338.0
+offset_top = 28.0
+offset_right = 378.0
+offset_bottom = 52.0
+text = "5"
+
+[node name="DamageSprite" type="Sprite2D" parent="Stats"]
+position = Vector2(403, 40)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_flx8q")
+
+[node name="DamageLabel" type="Label" parent="Stats"]
+offset_left = 423.0
+offset_top = 27.0
+offset_right = 463.0
+offset_bottom = 51.0
+text = "2
+"
+
+[node name="ThreatSprite" type="Sprite2D" parent="Stats"]
+position = Vector2(466, 32)
+
+[node name="ThreatLabel" type="Label" parent="Stats"]
+offset_left = 501.0
+offset_top = 31.0
+offset_right = 541.0
+offset_bottom = 55.0
+text = "2/5"
+
+[node name="CharacterSprite" type="Sprite2D" parent="."]
+position = Vector2(39, 59)
+texture = ExtResource("5_88jl5")
+
+[node name="Buffs1" type="Node2D" parent="."]
+position = Vector2(84, 87)
+
+[node name="b0" type="Sprite2D" parent="Buffs1"]
+
+[node name="Label" type="Label" parent="Buffs1/b0"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b1" type="Sprite2D" parent="Buffs1"]
+position = Vector2(50, 0)
+
+[node name="Label" type="Label" parent="Buffs1/b1"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b2" type="Sprite2D" parent="Buffs1"]
+position = Vector2(100, 0)
+
+[node name="Label" type="Label" parent="Buffs1/b2"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b3" type="Sprite2D" parent="Buffs1"]
+position = Vector2(150, 0)
+
+[node name="Label" type="Label" parent="Buffs1/b3"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b4" type="Sprite2D" parent="Buffs1"]
+position = Vector2(200, 0)
+
+[node name="Label" type="Label" parent="Buffs1/b4"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b5" type="Sprite2D" parent="Buffs1"]
+position = Vector2(250, 0)
+
+[node name="Label" type="Label" parent="Buffs1/b5"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b6" type="Sprite2D" parent="Buffs1"]
+position = Vector2(300, 0)
+
+[node name="Label" type="Label" parent="Buffs1/b6"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b7" type="Sprite2D" parent="Buffs1"]
+position = Vector2(350, 0)
+
+[node name="Label" type="Label" parent="Buffs1/b7"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b8" type="Sprite2D" parent="Buffs1"]
+position = Vector2(400, 0)
+
+[node name="Label" type="Label" parent="Buffs1/b8"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="Buffs2" type="Node2D" parent="."]
+position = Vector2(84, 119)
+
+[node name="b0" type="Sprite2D" parent="Buffs2"]
+
+[node name="Label" type="Label" parent="Buffs2/b0"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b1" type="Sprite2D" parent="Buffs2"]
+position = Vector2(50, 0)
+
+[node name="Label" type="Label" parent="Buffs2/b1"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b2" type="Sprite2D" parent="Buffs2"]
+position = Vector2(100, 0)
+
+[node name="Label" type="Label" parent="Buffs2/b2"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b3" type="Sprite2D" parent="Buffs2"]
+position = Vector2(150, 0)
+
+[node name="Label" type="Label" parent="Buffs2/b3"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b4" type="Sprite2D" parent="Buffs2"]
+position = Vector2(200, 0)
+
+[node name="Label" type="Label" parent="Buffs2/b4"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b5" type="Sprite2D" parent="Buffs2"]
+position = Vector2(250, 0)
+
+[node name="Label" type="Label" parent="Buffs2/b5"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b6" type="Sprite2D" parent="Buffs2"]
+position = Vector2(300, 0)
+
+[node name="Label" type="Label" parent="Buffs2/b6"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b7" type="Sprite2D" parent="Buffs2"]
+position = Vector2(350, 0)
+
+[node name="Label" type="Label" parent="Buffs2/b7"]
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="b8" type="Sprite2D" parent="Buffs2"]
+position = Vector2(400, 0)
+
+[node name="Label" type="Label" parent="Buffs2/b8"]
+offset_right = 40.0
+offset_bottom = 21.0
