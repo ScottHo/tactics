@@ -2,6 +2,7 @@ class_name MenuService extends Node2D
 
 var _state: State
 var _button_state_cache: Array
+var _tab_dict: Dictionary = {}
 signal moveActionInitiate
 signal nextTurnActionInitiate
 signal interactActionInitiate
@@ -26,6 +27,7 @@ func _ready():
     action1Button.button_down.connect(func(): actionInitiate.emit(ActionType.ACTION1))
     action2Button.button_down.connect(func(): actionInitiate.emit(ActionType.ACTION2))
     cache_button_states()
+    _tab_dict = {}
     return
 
 func setState(state: State):
@@ -33,6 +35,14 @@ func setState(state: State):
     return
 
 func updateAllEntities():
+    if _tab_dict.is_empty():
+        _create_entity_tabs()
+    else:
+        for tab in _tab_dict.values():
+            tab.update()
+    return
+
+func _create_entity_tabs():
     var offset = 0
     for entity in _state.all_allies():
         var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
@@ -40,6 +50,7 @@ func updateAllEntities():
         $EntityTabContainer.add_child(tab)
         tab.position.y -= offset
         offset -= 75
+        _tab_dict[entity.id] = tab
     
     offset -= 50
     for entity in _state.all_enemies():
@@ -48,6 +59,7 @@ func updateAllEntities():
         $EntityTabContainer.add_child(tab)
         tab.position.y -= offset
         offset -= 75
+        _tab_dict[entity.id] = tab
     return
 
 func showTurns(turns: Array[int]):
@@ -62,7 +74,8 @@ func showCurrentTurn(turn: int):
     var entity := _state.get_entity(turn)
     currentTurnLabel.text = _state.get_entity(turn).display_name
     disableActionButtons()
-    if _state.isAlly(entity):
+    var is_ally := _state.isAlly(entity)
+    if is_ally:
         
         attackButton.disabled = false
         action1Button.text = entity.action1.display_name.replace(" ", "\n")
@@ -81,6 +94,10 @@ func showCurrentTurn(turn: int):
         set_description_text("Enemy Turn")
     $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
     $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*3.5
+    if not _tab_dict.is_empty():
+        for tab in _tab_dict.values():
+            tab.set_glow(false)
+        _tab_dict[entity.id].set_glow(true)
     return
 
 func updateEntityInfo(entity):

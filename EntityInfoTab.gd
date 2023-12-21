@@ -7,6 +7,8 @@ var damageLabel: Label
 var energyLabel: Label
 var threatLabel: Label
 var background: Sprite2D
+var _entity: Entity
+var _is_ally: bool
 
 func update_nodes():
     if hpLabel == null:
@@ -21,53 +23,73 @@ func update_nodes():
 
 func update_from_entity(entity: Entity, is_ally: bool):
     update_nodes()
-    charSprite.texture = entity.sprite.texture_resource()
-    charSprite.scale = entity.sprite.texture_scale()*1.3
-    hpLabel.text = str(entity.health)
-    moveLabel.text = str(entity.get_movement())
-    damageLabel.text = str(entity.get_damage())
-    if is_ally:
-        energyLabel.text = str(entity.energy)
-        threatLabel.text = str(entity.threat)
+    _entity = entity
+    _is_ally = is_ally
+    charSprite.texture = _entity.sprite.texture_resource()
+    charSprite.scale = _entity.sprite.texture_scale()*1.3
+    if _is_ally:
         background.texture = load("res://info_box.png")
+    else:
+        background.texture = load("res://info_box_enemy.png")
+    update()
+    return
+
+func update():
+    hpLabel.text = str(_entity.health)
+    moveLabel.text = str(_entity.get_movement())
+    damageLabel.text = str(_entity.get_damage())
+    if _is_ally:
+        energyLabel.text = str(_entity.energy)
+        threatLabel.text = str(_entity.threat)
     else:
         energyLabel.text = "-"
         threatLabel.text = "-"
-        background.texture = load("res://info_box_enemy.png")
-    _set_colors(entity, is_ally)
+    _set_colors()
     return
 
-func _set_colors(entity: Entity, isAlly: bool):
-    if entity.health < entity.get_low_health_threshold():
-        print("??")
+func set_glow(glow: bool):
+    if glow:
+        if _is_ally:
+            background.texture = load("res://info_box_glow.png")
+        else:
+            background.texture = load("res://info_box_glow_enemy.png")
+    else:
+        if _is_ally:
+            background.texture = load("res://info_box.png")
+        else:
+            background.texture = load("res://info_box_enemy.png")
+    return
+
+func _set_colors():
+    if _entity.health < _entity.get_low_health_threshold():
         _set_color(hpLabel, Color.RED)
-    elif entity.health == entity.max_health:
+    elif _entity.health == _entity.max_health:
         _set_color(hpLabel, Color.CYAN)
     else:
         _set_color(hpLabel, Color.WHITE)
         
-    if entity.movement > entity.get_movement():
+    if _entity.movement > _entity.get_movement():
         _set_color(moveLabel, Color.CYAN)
-    elif entity.movement < entity.get_movement():
+    elif _entity.movement < _entity.get_movement():
         _set_color(moveLabel, Color.RED)
     else:
         _set_color(moveLabel, Color.WHITE)
         
-    if entity.damage > entity.get_damage():
+    if _entity.damage > _entity.get_damage():
         _set_color(damageLabel, Color.CYAN)
-    elif entity.damage < entity.get_damage():
+    elif _entity.damage < _entity.get_damage():
         _set_color(damageLabel, Color.RED)
     else:
         _set_color(damageLabel, Color.WHITE)
 
-    if isAlly:
-        if entity.energy <=  1:
+    if _is_ally:
+        if _entity.energy <=  1:
             _set_color(energyLabel, Color.RED)
-        elif entity.energy == 5:
+        elif _entity.energy == 5:
             _set_color(energyLabel, Color.CYAN)
         else:
             _set_color(energyLabel, Color.WHITE)
-        if entity.threat == 5:
+        if _entity.threat == 5:
             _set_color(threatLabel, Color.RED)
         else:
             _set_color(energyLabel, Color.WHITE)
