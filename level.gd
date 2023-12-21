@@ -141,6 +141,7 @@ func nextTurn():
         _is_ai_turn = true
         menuService.disableAllButtons()
         nextAiStep()
+    menuService.updateAllEntities()
     menuService.showCurrentTurn(current_turn_id)    
     return
 
@@ -199,6 +200,7 @@ func doAiAction():
     _ai_callable = func ():
         aiActionService.do_attack(location)
         aiActionService.finish()
+        menuService.updateAllEntities()
         if not checkDeaths():
             nextAiStep()
     startAiDelay()
@@ -218,6 +220,7 @@ func startAiSpecial():
 func doAiSpecial():
     aiSpecialService.special_effect()
     aiSpecialService.finish()
+    menuService.updateAllEntities()
     if not checkDeaths():
         nextAiStep()
     return
@@ -226,7 +229,6 @@ func resetPlayerServices():
     moveService.finish()
     actionService.finish()
     highlightMap.highlight(currentEntity())
-    menuService.updateAllEntities()
     return
 
 func doMove():
@@ -252,6 +254,7 @@ func doneMove():
         nextAiStep()
     else:
         moveService.finish()
+    menuService.updateAllEntities()
     highlightMap.highlight(currentEntity())
     return
 
@@ -271,6 +274,7 @@ func doAction(action_type: int):
 func actionDone():
     menuService.disableActionButtons()
     menuService.updateEnergy(currentEntity().energy)
+    menuService.updateAllEntities()
     checkDeaths()
     return
 
