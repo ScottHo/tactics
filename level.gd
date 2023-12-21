@@ -130,9 +130,8 @@ func nextTurn():
     current_turn_id = turnService.startNextTurn()
     resetPlayerServices()
     menuService.showTurns(turnService.next5Turns())
-    currentEntity().moves_left = currentEntity().movement
+    currentEntity().moves_left = currentEntity().get_movement()
     currentEntity().energy += 1
-    menuService.setMoveNum(currentEntity().moves_left)
     if state.allies.has(current_turn_id):
         currentEntity().loseThreat(1)
         _is_ai_turn = false
@@ -141,7 +140,7 @@ func nextTurn():
         _is_ai_turn = true
         menuService.disableAllButtons()
         nextAiStep()
-    menuService.updateAllEntities()
+    update_character_menu()
     menuService.showCurrentTurn(current_turn_id)    
     return
 
@@ -194,13 +193,14 @@ func doAiAction():
     var location = aiActionService.find_attack_location()
     if location == Vector2i(999, 999):
         aiActionService.finish()
+        update_character_menu()
         if not checkDeaths():
             nextAiStep()
         return
     _ai_callable = func ():
         aiActionService.do_attack(location)
         aiActionService.finish()
-        menuService.updateAllEntities()
+        update_character_menu()
         if not checkDeaths():
             nextAiStep()
     startAiDelay()
@@ -220,7 +220,7 @@ func startAiSpecial():
 func doAiSpecial():
     aiSpecialService.special_effect()
     aiSpecialService.finish()
-    menuService.updateAllEntities()
+    update_character_menu()
     if not checkDeaths():
         nextAiStep()
     return
@@ -229,6 +229,11 @@ func resetPlayerServices():
     moveService.finish()
     actionService.finish()
     highlightMap.highlight(currentEntity())
+    return
+
+func update_character_menu():
+    menuService.updateEntityInfo(currentEntity())
+    menuService.updateAllEntities()    
     return
 
 func doMove():
@@ -240,21 +245,20 @@ func movesFound(poses):
     currentEntity().sprite.doneMoving.connect(doneMove)    
     if len(poses) > 0:
         currentEntity().sprite.movePoints(poses)
-        menuService.setMoveNum(currentEntity().moves_left)
-        if currentEntity().moves_left == 0:
-            menuService.disableMovesButton()
     else:
         doneMove()
     return
 
 func doneMove():
     currentEntity().sprite.doneMoving.disconnect(doneMove)
+    if currentEntity().moves_left == 0:
+        menuService.disableMovesButton()
     if _is_ai_turn:
         aiMoveService.finish()
         nextAiStep()
     else:
         moveService.finish()
-    menuService.updateAllEntities()
+    update_character_menu()
     highlightMap.highlight(currentEntity())
     return
 
@@ -273,8 +277,7 @@ func doAction(action_type: int):
 
 func actionDone():
     menuService.disableActionButtons()
-    menuService.updateEnergy(currentEntity().energy)
-    menuService.updateAllEntities()
+    update_character_menu()
     checkDeaths()
     return
 

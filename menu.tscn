@@ -151,7 +151,9 @@ offset_left = 60.7806
 offset_top = 10.9813
 offset_right = 200.781
 offset_bottom = 80.9813
+focus_mode = 0
 theme = ExtResource("4_cvwx3")
+toggle_mode = true
 text = "Move"
 
 [node name="InteractButton" type="Button" parent="BottomBar"]
@@ -160,7 +162,9 @@ offset_left = 205.407
 offset_top = 10.9813
 offset_right = 345.407
 offset_bottom = 80.9813
+focus_mode = 0
 theme = ExtResource("4_cvwx3")
+toggle_mode = true
 text = "Interact
 "
 
@@ -170,6 +174,7 @@ offset_left = 346.029
 offset_top = 10.9813
 offset_right = 486.029
 offset_bottom = 80.9813
+focus_mode = 0
 theme = ExtResource("4_cvwx3")
 text = "Next Turn
 "
@@ -180,7 +185,9 @@ offset_left = 60.7806
 offset_top = 85.9813
 offset_right = 200.781
 offset_bottom = 155.981
+focus_mode = 0
 theme = ExtResource("4_cvwx3")
+toggle_mode = true
 text = "Attack"
 
 [node name="Action1Button" type="Button" parent="BottomBar"]
@@ -189,7 +196,9 @@ offset_left = 205.407
 offset_top = 85.9813
 offset_right = 345.407
 offset_bottom = 155.981
+focus_mode = 0
 theme = ExtResource("4_cvwx3")
+toggle_mode = true
 text = "Action 1
 "
 
@@ -199,7 +208,9 @@ offset_left = 347.364
 offset_top = 85.9813
 offset_right = 487.364
 offset_bottom = 155.981
+focus_mode = 0
 theme = ExtResource("4_cvwx3")
+toggle_mode = true
 text = "Action2
 "
 
@@ -229,9 +240,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NumMovesLabel" type="Label" parent="CharacterContainer"]
-offset_left = -59.968
+offset_left = 12.4175
 offset_top = 113.0
-offset_right = -11.968
+offset_right = 60.4175
 offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 12
@@ -251,10 +262,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CurrentEnergy" type="Label" parent="CharacterContainer"]
-offset_left = 11.5
-offset_top = 111.0
-offset_right = 59.5
-offset_bottom = 149.0
+offset_left = -60.3287
+offset_top = 114.341
+offset_right = -12.3287
+offset_bottom = 152.341
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 12
 text = "88"
@@ -273,7 +284,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BoltGold" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(36.2322, 108.619)
+position = Vector2(-35.5965, 111.96)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("9_ywvmg")
 
@@ -283,7 +294,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_swt2d")
 
 [node name="MoveSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(-36.7323, 110.387)
+position = Vector2(35.6532, 110.387)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("9_ttsig")
 

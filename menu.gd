@@ -32,14 +32,6 @@ func setState(state: State):
     _state = state
     return
 
-func setMoveNum(i: int):
-    numMovesLabel.text = str(i)
-    return
-
-func updateEnergy(e: int):
-    currentEnergy.text = str(e)
-    return
-
 func updateAllEntities():
     var offset = 0
     for entity in _state.allAllies():
@@ -94,10 +86,21 @@ func showCurrentTurn(turn: int):
 func updateEntityInfo(entity):
     currentEnergy.text = str(entity.energy)        
     healthLabel.text = str(entity.health)
-    damageLabel.text = str(entity.damage)
+    damageLabel.text = str(entity.get_damage())
+    numMovesLabel.text = str(entity.moves_left)
+    return
+
+func unpress_all_buttons():
+    moveButton.set_pressed(false)
+    nextTurnButton.set_pressed(false)
+    interactButton.set_pressed(false)
+    attackButton.set_pressed(false)    
+    action1Button.set_pressed(false)
+    action2Button.set_pressed(false)
     return
 
 func enableAllButtons():
+    unpress_all_buttons()
     moveButton.disabled = false
     nextTurnButton.disabled = false
     interactButton.disabled = false
@@ -117,6 +120,7 @@ func cache_button_states():
     ]
 
 func restore_button_states():
+    unpress_all_buttons()
     moveButton.disabled = _button_state_cache[0]
     nextTurnButton.disabled = _button_state_cache[1]
     interactButton.disabled = _button_state_cache[2]
@@ -126,6 +130,7 @@ func restore_button_states():
     return
 
 func disableAllButtons():
+    unpress_all_buttons()
     nextTurnButton.disabled = true
     interactButton.disabled = true
     disableActionButtons()
@@ -133,10 +138,12 @@ func disableAllButtons():
     return
 
 func disableMovesButton():
+    unpress_all_buttons()
     moveButton.disabled = true
     return
 
 func disableActionButtons():
+    unpress_all_buttons()
     attackButton.disabled = true
     action1Button.disabled = true
     action2Button.disabled = true
