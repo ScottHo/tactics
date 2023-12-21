@@ -1,4 +1,5 @@
 TODO
+Re-use left tabs instead of spawning new ones
 Cost for actions
 Icons for current buffs
 Current Turn Glow on left tabs
