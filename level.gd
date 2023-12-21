@@ -95,7 +95,7 @@ func importTestData():
     ActionFactory.add_snipe(ent, ActionType.ACTION1)
     ActionFactory.add_titanium_bullet(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Boss", 100, 6, 12, Vector2i(10,-3), "res://enemy_1.tscn", false)
+    ent = _add_test_entity("Boss", 50, 6, 10, Vector2i(10,-3), "res://enemy_1.tscn", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent, 1)
     return

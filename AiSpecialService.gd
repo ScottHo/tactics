@@ -19,7 +19,7 @@ func mechanic_spread_targets():
         Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
         Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
         ]
-    for ent in _state.allAllies():
+    for ent in _state.all_allies_alive():
         _targets.append(ent.location)
         for vec in spread:
             _targets.append(ent.location + vec)
@@ -29,7 +29,7 @@ func mechanic_spread_targets():
 
 func mechanic_spread_effect():
     for vec in _targets:
-        for ent in _state.allAllies():
+        for ent in _state.all_allies_alive():
             if ent.location == vec:
                 ent.loseHP(2)
     return
@@ -40,7 +40,7 @@ func mechanic_soak_targets():
         Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
         Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
         ]
-    var target_ent = _state.allAllies()[randi_range(0, len(_state.allAllies())-1)]
+    var target_ent = _state.all_allies_alive()[randi_range(0, len(_state.all_allies_alive())-1)]
     _targets.append(target_ent.location)
     highlightMap.highlightVec(target_ent.location, Highlights.RED)
     for vec in spread:
@@ -51,7 +51,7 @@ func mechanic_soak_targets():
 func mechanic_soak_effect():
     var ents = []
     for vec in _targets:
-        for ent in _state.allAllies():
+        for ent in _state.all_allies_alive():
             if ent.location == vec:
                 ents.append(ent)
     var damage = ceili(6.0/len(ents))

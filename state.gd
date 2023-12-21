@@ -5,14 +5,26 @@ var allies: Array[int] = []
 var enemies: Array[int] = []
 
 
-func allAllies() -> Array:
+func all_allies() -> Array:
+    var ret = []
+    for id in allies:
+        ret.append(get_entity(id))
+    return ret
+
+func all_enemies() -> Array:
+    var ret = []
+    for id in enemies:
+        ret.append(get_entity(id))
+    return ret
+
+func all_allies_alive() -> Array:
     var ret = []
     for id in allies:
         if get_entity(id).alive:
             ret.append(get_entity(id))
     return ret
 
-func allEnemies() -> Array:
+func all_enemies_alive() -> Array:
     var ret = []
     for id in enemies:
         if get_entity(id).alive:
@@ -46,7 +58,7 @@ func sort_threat(a, b):
     return false
 
 func threatOrder() -> Array:
-    var ret = allAllies()
+    var ret = all_allies_alive()
     ret.sort_custom(sort_threat)
     return ret
 

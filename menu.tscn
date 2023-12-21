@@ -26,10 +26,10 @@ offset_bottom = 73.0
 [node name="TurnLabelsContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 303.346
-offset_top = 534.849
-offset_right = 343.346
-offset_bottom = 574.849
+offset_left = 302.157
+offset_top = 515.822
+offset_right = 342.157
+offset_bottom = 555.822
 
 [node name="FutureTurnsLabel" type="Label" parent="TurnLabelsContainer"]
 layout_mode = 0
@@ -112,10 +112,10 @@ autowrap_mode = 2
 [node name="DescriptionContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1153.72
-offset_top = 654.04
-offset_right = 1193.72
-offset_bottom = 694.04
+offset_left = 1155.84
+offset_top = 656.159
+offset_right = 1195.84
+offset_bottom = 696.159
 
 [node name="Sci-fi-ui-panels" type="Sprite2D" parent="DescriptionContainer"]
 position = Vector2(192.066, 66.4299)
@@ -135,21 +135,21 @@ autowrap_mode = 2
 [node name="BottomBar" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 633.246
-offset_top = 683.108
-offset_right = 673.246
-offset_bottom = 723.108
+offset_left = 647.149
+offset_top = 685.227
+offset_right = 687.149
+offset_bottom = 725.227
 
 [node name="LongBar" type="Sprite2D" parent="BottomBar"]
 position = Vector2(269.612, 79.2239)
-scale = Vector2(0.27, 0.27)
+scale = Vector2(0.26, 0.26)
 texture = ExtResource("3_5elim")
 
 [node name="MoveButton" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 60.7806
+offset_left = 65.0184
 offset_top = 10.9813
-offset_right = 200.781
+offset_right = 205.019
 offset_bottom = 80.9813
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -170,9 +170,9 @@ text = "Interact
 
 [node name="TurnButton" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 346.029
+offset_left = 343.91
 offset_top = 10.9813
-offset_right = 486.029
+offset_right = 483.91
 offset_bottom = 80.9813
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -181,9 +181,9 @@ text = "Next Turn
 
 [node name="AttackButton" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 60.7806
+offset_left = 65.0184
 offset_top = 85.9813
-offset_right = 200.781
+offset_right = 205.019
 offset_bottom = 155.981
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -204,9 +204,9 @@ text = "Action 1
 
 [node name="Action2Button" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 347.364
+offset_left = 345.245
 offset_top = 85.9813
-offset_right = 487.364
+offset_right = 485.245
 offset_bottom = 155.981
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -215,8 +215,8 @@ text = "Action2
 "
 
 [node name="CharacterContainer" type="Node2D" parent="."]
-position = Vector2(474.979, 742.089)
-scale = Vector2(0.8, 0.8)
+position = Vector2(484.514, 727.256)
+scale = Vector2(0.9, 0.9)
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
 scale = Vector2(0.27, 0.27)

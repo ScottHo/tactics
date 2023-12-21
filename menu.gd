@@ -34,7 +34,7 @@ func setState(state: State):
 
 func updateAllEntities():
     var offset = 0
-    for entity in _state.allAllies():
+    for entity in _state.all_allies():
         var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
         tab.update_from_entity(entity, true)
         $EntityTabContainer.add_child(tab)
@@ -42,7 +42,7 @@ func updateAllEntities():
         offset -= 75
     
     offset -= 50
-    for entity in _state.allEnemies():
+    for entity in _state.all_enemies():
         var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
         tab.update_from_entity(entity, false)
         $EntityTabContainer.add_child(tab)
