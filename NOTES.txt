@@ -7,6 +7,7 @@ Hover over details
 - Stats
 - Buffs/Debuffs
 - Text Box
+Queue system for effect text?
 Different target highlights for good/bad
 InteractService, basic version that can target 1 range
 Interactable, interactable simple entity

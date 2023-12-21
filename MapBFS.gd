@@ -83,8 +83,8 @@ func getPath(vector) -> Array:
 func resetHighlights(calcRange: bool, highlight_self := false):
     if calcRange:
         calcRange_bfs()
-    for i in range(0, 14):
-        for j in range(-5, 9):
+    for i in range(MainTileMap.MIN_X, MainTileMap.MAX_X + 1):
+        for j in range(MainTileMap.MIN_Y, MainTileMap.MAX_Y + 1):
             var curVec := Vector2i(i,j)
             if not highlight_self and curVec == _location:
                 continue

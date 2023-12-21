@@ -10,6 +10,7 @@ var background: Sprite2D
 var _entity: Entity
 var _is_ally: bool
 
+
 func update_nodes():
     if hpLabel == null:
         charSprite = $CharacterSprite

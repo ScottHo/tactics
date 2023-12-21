@@ -11,5 +11,5 @@ script = ExtResource("1_sfth6")
 
 [node name="Sprite" type="Sprite2D" parent="CharacterCommon"]
 position = Vector2(-0.133091, -17.5699)
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_nixbw")

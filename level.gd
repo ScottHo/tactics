@@ -65,37 +65,37 @@ func _process(delta):
 
 func importTestData():
     print("Importing Test Data")
-    var ent = _add_test_entity("Brutis", 10, 4, 10, Vector2i(0, 1), "res://brutus.tscn", true)
+    var ent = _add_test_entity("Brutis", 10, 4, 10, Vector2i(0, 3), "res://brutus.tscn", true)
     ActionFactory.add_base_attack(ent, 1)
     ActionFactory.add_exert(ent, ActionType.ACTION1)
     ActionFactory.add_take_cover(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Oilee", 10, 5, 10, Vector2i(0, 2), "res://oilee.tscn", true)
+    ent = _add_test_entity("Oilee", 10, 5, 10, Vector2i(0, 4), "res://oilee.tscn", true)
     ActionFactory.add_base_attack(ent, 1)
     ActionFactory.add_sticky_grenade(ent, ActionType.ACTION1)
     ActionFactory.add_refuel(ent, ActionType.ACTION2)
 
-    ent = _add_test_entity("Electo", 10, 3, 10, Vector2i(0, 3), "res://electo.tscn", true)
+    ent = _add_test_entity("Electo", 10, 3, 10, Vector2i(0, 5), "res://electo.tscn", true)
     ActionFactory.add_base_attack(ent, 4)
     ActionFactory.add_storm(ent, ActionType.ACTION1)
     ActionFactory.add_static_shield(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Nano-nano", 10, 3, 10, Vector2i(0, 4), "res://nanonano.tscn", true)
+    ent = _add_test_entity("Nano-nano", 10, 3, 10, Vector2i(0, 6), "res://nanonano.tscn", true)
     ActionFactory.add_base_attack(ent, 4)
     ActionFactory.add_focused_repair(ent, ActionType.ACTION1)
     ActionFactory.add_nano_field(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Smithy", 10, 4, 10, Vector2i(0, 5), "res://smithy.tscn", true)
+    ent = _add_test_entity("Smithy", 10, 4, 10, Vector2i(0, 7), "res://smithy.tscn", true)
     ActionFactory.add_base_attack(ent, 1)
     ActionFactory.add_weapons_upgade(ent, ActionType.ACTION1)
     ActionFactory.add_engine_upgrade(ent, ActionType.ACTION2)
 
-    ent = _add_test_entity("Longshot", 10, 4, 10, Vector2i(0, 6), "res://longshot.tscn", true)
+    ent = _add_test_entity("Longshot", 10, 4, 10, Vector2i(0, 8), "res://longshot.tscn", true)
     ActionFactory.add_base_attack(ent, 5)
     ActionFactory.add_snipe(ent, ActionType.ACTION1)
     ActionFactory.add_titanium_bullet(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Boss", 50, 6, 10, Vector2i(10,-3), "res://enemy_1.tscn", false)
+    ent = _add_test_entity("Boss", 50, 6, 10, Vector2i(11, -3), "res://enemy_1.tscn", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent, 1)
     return
@@ -208,8 +208,8 @@ func doAiAction():
 
 func startAiSpecial():
     aiSpecialService.start(currentEntity())
+    menuService.set_mechanic_text(aiSpecialService.next_special_description())
     if aiSpecialService.counter() == 0:
-        menuService.set_mechanic_text(aiSpecialService.next_special_description())
         nextAiStep()
         return
     aiSpecialService.special_targets()
