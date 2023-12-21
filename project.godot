@@ -22,7 +22,7 @@ window/size/viewport_height=864
 
 [gui]
 
-theme/custom_font="res://nulshock bd.otf"
+theme/custom_font="res://Themes/nulshock bd.otf"
 
 [input]
 

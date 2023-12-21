@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://EntitySprite.gd" id="1_g2csl"]
 [ext_resource type="PackedScene" uid="uid://b6iqxvpypem6r" path="res://CharacterCommon.tscn" id="2_ctskn"]
-[ext_resource type="Texture2D" uid="uid://de2dhfdkb3d0e" path="res://Brutus.png" id="3_kiian"]
+[ext_resource type="Texture2D" uid="uid://de2dhfdkb3d0e" path="res://Assets/Brutus.png" id="3_kiian"]
 
 [node name="Brutus" type="Node2D"]
 script = ExtResource("1_g2csl")

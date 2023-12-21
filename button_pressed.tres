@@ -1,6 +1,0 @@
-[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://de2pvt0cms2e1"]
-
-[ext_resource type="Texture2D" uid="uid://b3sg2e86h7w6h" path="res://blank-glowing-background.png" id="1_kdl2f"]
-
-[resource]
-texture = ExtResource("1_kdl2f")

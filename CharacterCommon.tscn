@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6iqxvpypem6r"]
 
-[ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://skull.png" id="2_sbscd"]
-[ext_resource type="Texture2D" uid="uid://di2pvfhgjirl" path="res://Progress_Under.png" id="3_87rn2"]
+[ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="2_sbscd"]
+[ext_resource type="Texture2D" uid="uid://di2pvfhgjirl" path="res://Assets/Progress_Under.png" id="3_87rn2"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
-[ext_resource type="Texture2D" uid="uid://pgde8yg8u1fd" path="res://Progress_Over.png" id="4_bhbp5"]
+[ext_resource type="Texture2D" uid="uid://pgde8yg8u1fd" path="res://Assets/Progress_Over.png" id="4_bhbp5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449

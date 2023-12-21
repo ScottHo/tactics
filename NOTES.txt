@@ -1,11 +1,12 @@
 TODO
+!! Animations
 Cost for actions
 Icons for current buffs
 Hover over details
 - Entity Name
 - Stats
 - Buffs/Debuffs
-
+- Text Box
 Different target highlights for good/bad
 InteractService, basic version that can target 1 range
 Interactable, interactable simple entity

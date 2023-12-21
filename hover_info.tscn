@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1p2jhiw5fj1p"]
 
-[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://vertical-medium.png" id="1_qxhvw"]
+[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/vertical-medium.png" id="1_qxhvw"]
 [ext_resource type="Script" path="res://HoverInfo.gd" id="2_gnyh0"]
 
 [node name="HoverInfo" type="Node2D"]

@@ -1,13 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://dbb2avwiipbtb"]
 
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="1_r63co"]
-[ext_resource type="Texture2D" uid="uid://bwcjqtrnb8v1q" path="res://info_box.png" id="2_syuky"]
-[ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://arrow_reserve.png" id="3_yf7ib"]
-[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://item_sword.png" id="4_flx8q"]
-[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://heart_white.png" id="4_reefb"]
-[ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://white_bolt.png" id="5_0vfv3"]
-[ext_resource type="Texture2D" uid="uid://s6hhpycbmdr7" path="res://StickIdle1.png" id="5_88jl5"]
-[ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://skull.png" id="8_3f53c"]
+[ext_resource type="Texture2D" uid="uid://bwcjqtrnb8v1q" path="res://Assets/info_box.png" id="2_syuky"]
+[ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://Assets/arrow_reserve.png" id="3_yf7ib"]
+[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="4_flx8q"]
+[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="4_reefb"]
+[ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/white_bolt.png" id="5_0vfv3"]
+[ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="8_3f53c"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sfged"]
 
 [node name="EntityInfoTab" type="Node2D"]
 position = Vector2(0, -4)
@@ -22,7 +23,7 @@ texture = ExtResource("2_syuky")
 [node name="CharacterSprite" type="Sprite2D" parent="."]
 position = Vector2(46.3175, 49.5612)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("5_88jl5")
+texture = SubResource("CompressedTexture2D_sfged")
 
 [node name="Stats" type="Node2D" parent="."]
 position = Vector2(40.787, 27.4483)

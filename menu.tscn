@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
-[ext_resource type="Texture2D" uid="uid://2ljolncf0onw" path="res://Large-screen-no-buttons.png" id="2_r5d02"]
-[ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://long-vertical.png" id="3_5elim"]
-[ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://MyTheme.tres" id="4_cvwx3"]
-[ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://nulshock bd.otf" id="5_n8sjp"]
-[ext_resource type="Texture2D" uid="uid://ddplqs8w1cxa0" path="res://horizontal-fullscreen-button-holder-with-buttons.png" id="5_ogyvc"]
-[ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://panel_buttons_background.png" id="6_j5syy"]
-[ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://short-panel.png" id="8_obv6c"]
-[ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://arrow_reserve.png" id="9_ttsig"]
-[ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://white_bolt.png" id="9_ywvmg"]
-[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://heart_white.png" id="10_swt2d"]
-[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://item_sword.png" id="12_k5wi2"]
+[ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
+[ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/long-vertical.png" id="3_5elim"]
+[ext_resource type="Texture2D" uid="uid://2ljolncf0onw" path="res://Assets/Large-screen-no-buttons.png" id="3_ththa"]
+[ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="4_cvwx3"]
+[ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="5_n8sjp"]
+[ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://Assets/panel_buttons_background.png" id="6_xc4a1"]
+[ext_resource type="Texture2D" uid="uid://ddplqs8w1cxa0" path="res://Assets/horizontal-fullscreen-button-holder-with-buttons.png" id="7_dt2eg"]
+[ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/white_bolt.png" id="9_vl4vh"]
+[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_slf17"]
+[ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://Assets/arrow_reserve.png" id="11_p5wk3"]
+[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="12_xlgau"]
 
 [node name="Node2D" type="Node2D"]
 z_index = 10
@@ -88,7 +88,7 @@ scale = Vector2(0.9, 0.9)
 [node name="Short-panel" type="Sprite2D" parent="MechanicContainer"]
 position = Vector2(72.8212, 70.0772)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("8_obv6c")
+texture = ExtResource("2_mrg4l")
 
 [node name="Label" type="Label" parent="MechanicContainer"]
 layout_mode = 0
@@ -120,7 +120,7 @@ offset_bottom = 696.159
 [node name="Sci-fi-ui-panels" type="Sprite2D" parent="DescriptionContainer"]
 position = Vector2(192.066, 66.4299)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_r5d02")
+texture = ExtResource("3_ththa")
 
 [node name="DescriptionLabel" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
@@ -220,7 +220,7 @@ scale = Vector2(0.9, 0.9)
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
 scale = Vector2(0.27, 0.27)
-texture = ExtResource("6_j5syy")
+texture = ExtResource("6_xc4a1")
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(0, -25)
@@ -228,7 +228,7 @@ position = Vector2(0, -25)
 [node name="TransparentCharacterFrame" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(0, 6.88647)
 scale = Vector2(0.27, 0.27)
-texture = ExtResource("5_ogyvc")
+texture = ExtResource("7_dt2eg")
 
 [node name="CurrentTurnLabel" type="Label" parent="CharacterContainer"]
 offset_left = -141.691
@@ -286,22 +286,22 @@ vertical_alignment = 1
 [node name="BoltGold" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(-35.5965, 111.96)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("9_ywvmg")
+texture = ExtResource("9_vl4vh")
 
 [node name="HudHeartFull" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(-110.098, 111.47)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_swt2d")
+texture = ExtResource("10_slf17")
 
 [node name="MoveSprite" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(35.6532, 110.387)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("9_ttsig")
+texture = ExtResource("11_p5wk3")
 
 [node name="ItemSword" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(109.756, 106.787)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_k5wi2")
+texture = ExtResource("12_xlgau")
 
 [node name="EntityTabContainer" type="ColorRect" parent="."]
 offset_right = 302.0

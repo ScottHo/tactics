@@ -27,10 +27,7 @@ func update_from_entity(entity: Entity, is_ally: bool):
     _is_ally = is_ally
     charSprite.texture = _entity.sprite.texture_resource()
     charSprite.scale = _entity.sprite.texture_scale()*1.3
-    if _is_ally:
-        background.texture = load("res://info_box.png")
-    else:
-        background.texture = load("res://info_box_enemy.png")
+    set_glow(false)
     update()
     return
 
@@ -50,14 +47,14 @@ func update():
 func set_glow(glow: bool):
     if glow:
         if _is_ally:
-            background.texture = load("res://info_box_glow.png")
+            background.texture = load("res://Assets/info_box_glow.png")
         else:
-            background.texture = load("res://info_box_glow_enemy.png")
+            background.texture = load("res://Assets/info_box_glow_enemy.png")
     else:
         if _is_ally:
-            background.texture = load("res://info_box.png")
+            background.texture = load("res://Assets/info_box.png")
         else:
-            background.texture = load("res://info_box_enemy.png")
+            background.texture = load("res://Assets/info_box_enemy.png")
     return
 
 func _set_colors():
