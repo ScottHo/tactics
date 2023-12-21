@@ -1,9 +1,12 @@
 TODO
 Cost for actions
 Icons for current buffs
-Preliminary sprites for 6 bots and boss
 Current Turn Glow on left tabs
 Hover over details
+- Entity Name
+- Stats
+- Buffs/Debuffs
+
 Different target highlights for good/bad
 InteractService, basic version that can target 1 range
 Interactable, interactable simple entity

@@ -80,7 +80,7 @@ func showCurrentTurn(turn: int):
         healthLabel.text = str(entity.health)
         set_description_text("Enemy Turn")
     $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
-    $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*3        
+    $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*3.5
     return
 
 func updateEntityInfo(entity):

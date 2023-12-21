@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcy25hnhlwa5e"]
+
+[ext_resource type="Script" path="res://EntitySprite.gd" id="1_c4vfl"]
+[ext_resource type="PackedScene" uid="uid://b6iqxvpypem6r" path="res://CharacterCommon.tscn" id="2_mfokg"]
+[ext_resource type="Texture2D" uid="uid://5slno62p0s40" path="res://LongShot.png" id="3_a5atq"]
+
+[node name="LongShot" type="Node2D"]
+script = ExtResource("1_c4vfl")
+
+[node name="CharacterCommon" parent="." instance=ExtResource("2_mfokg")]
+
+[node name="Sprite" type="Sprite2D" parent="CharacterCommon"]
+position = Vector2(0.432101, -17.2182)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_a5atq")
