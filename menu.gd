@@ -18,6 +18,10 @@ signal actionInitiate
 @onready var currentTurnLabel: Label = $CharacterContainer/CurrentTurnLabel
 @onready var healthLabel: Label = $CharacterContainer/HealthLabel
 @onready var damageLabel: Label = $CharacterContainer/DamageLabel
+@onready var buttonsBar: MenuContainer = $BottomBar
+@onready var mechanicsContainer: MenuContainer = $MechanicContainer
+@onready var characterContainer: MenuContainer = $CharacterContainer
+@onready var tabContainer: MenuContainer = $EntityTabContainer
 
 func _ready():
     moveButton.button_down.connect(func(): moveActionInitiate.emit())
@@ -28,6 +32,22 @@ func _ready():
     action2Button.button_down.connect(func(): actionInitiate.emit(ActionType.ACTION2))
     cache_button_states()
     _tab_dict = {}
+    return
+
+func _input(event):
+    if event is InputEventMouseMotion:
+        if buttonsBar.in_bounds():
+            print("buttons")
+            return
+        if mechanicsContainer.in_bounds():
+            print("mechs")
+            return
+        if characterContainer.in_bounds():
+            print("character")
+            return
+        if tabContainer.in_bounds():
+            print("tabs")
+            return
     return
 
 func setState(state: State):
@@ -135,6 +155,7 @@ func cache_button_states():
         action1Button.disabled,
         action2Button.disabled,
     ]
+    return
 
 func restore_button_states():
     unpress_all_buttons()

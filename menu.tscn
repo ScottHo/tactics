@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=14 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_slf17"]
 [ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://Assets/arrow_reserve.png" id="11_p5wk3"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="12_xlgau"]
+[ext_resource type="Script" path="res://MenuContainer.gd" id="13_m1fgd"]
 
 [node name="Node2D" type="Node2D"]
 z_index = 10
@@ -76,81 +77,78 @@ offset_bottom = 96.0
 theme_override_font_sizes/font_size = 11
 text = "1"
 
-[node name="MechanicContainer" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1286.75
-offset_top = 12.7268
-offset_right = 1528.75
-offset_bottom = 81.7268
+[node name="MechanicContainer" type="ReferenceRect" parent="."]
+offset_left = 1178.99
+offset_top = 2.62464
+offset_right = 1570.99
+offset_bottom = 157.625
 scale = Vector2(0.9, 0.9)
+script = ExtResource("13_m1fgd")
 
 [node name="Short-panel" type="Sprite2D" parent="MechanicContainer"]
-position = Vector2(72.8212, 70.0772)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_mrg4l")
+centered = false
 
 [node name="Label" type="Label" parent="MechanicContainer"]
 layout_mode = 0
-offset_left = -30.7325
-offset_top = -3.51647
-offset_right = 122.267
-offset_bottom = 22.4835
+offset_left = 84.0082
+offset_top = 6.46098
+offset_right = 313.008
+offset_bottom = 32.461
 text = "Boss Spell Incoming"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MechanicLabel" type="Label" parent="MechanicContainer"]
 layout_mode = 0
-offset_left = -80.6231
-offset_top = 28.1263
-offset_right = 229.377
-offset_bottom = 138.126
+offset_left = 40.3535
+offset_top = 38.1038
+offset_right = 350.354
+offset_bottom = 148.103
 theme_override_font_sizes/font_size = 12
 autowrap_mode = 2
 
-[node name="DescriptionContainer" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1155.84
-offset_top = 656.159
-offset_right = 1195.84
-offset_bottom = 696.159
+[node name="DescriptionContainer" type="ReferenceRect" parent="."]
+offset_left = 1173.3
+offset_top = 590.282
+offset_right = 1529.3
+offset_bottom = 856.282
+script = ExtResource("13_m1fgd")
 
 [node name="Sci-fi-ui-panels" type="Sprite2D" parent="DescriptionContainer"]
-position = Vector2(192.066, 66.4299)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_ththa")
+centered = false
 
 [node name="DescriptionLabel" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 46.9155
-offset_top = -52.978
-offset_right = 336.915
-offset_bottom = 187.022
+offset_left = 32.6289
+offset_top = 14.4865
+offset_right = 322.628
+offset_bottom = 254.486
 theme_override_font_sizes/font_size = 12
 text = "No Action Selected."
 autowrap_mode = 2
 
-[node name="BottomBar" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 647.149
-offset_top = 685.227
-offset_right = 687.149
-offset_bottom = 725.227
+[node name="BottomBar" type="ReferenceRect" parent="."]
+offset_left = 673.312
+offset_top = 681.691
+offset_right = 1163.31
+offset_bottom = 859.691
+script = ExtResource("13_m1fgd")
 
 [node name="LongBar" type="Sprite2D" parent="BottomBar"]
-position = Vector2(269.612, 79.2239)
 scale = Vector2(0.26, 0.26)
 texture = ExtResource("3_5elim")
+centered = false
 
 [node name="MoveButton" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 65.0184
-offset_top = 10.9813
-offset_right = 205.019
-offset_bottom = 80.9813
+offset_left = 33.1986
+offset_top = 18.0523
+offset_right = 173.199
+offset_bottom = 88.0523
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 toggle_mode = true
@@ -158,10 +156,10 @@ text = "Move"
 
 [node name="InteractButton" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 205.407
-offset_top = 10.9813
-offset_right = 345.407
-offset_bottom = 80.9813
+offset_left = 173.587
+offset_top = 18.0523
+offset_right = 313.587
+offset_bottom = 88.0523
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 toggle_mode = true
@@ -170,10 +168,10 @@ text = "Interact
 
 [node name="TurnButton" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 343.91
-offset_top = 10.9813
-offset_right = 483.91
-offset_bottom = 80.9813
+offset_left = 312.09
+offset_top = 18.0523
+offset_right = 452.09
+offset_bottom = 88.0523
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 text = "Next Turn
@@ -181,10 +179,10 @@ text = "Next Turn
 
 [node name="AttackButton" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 65.0184
-offset_top = 85.9813
-offset_right = 205.019
-offset_bottom = 155.981
+offset_left = 33.1986
+offset_top = 93.0523
+offset_right = 173.199
+offset_bottom = 163.052
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 toggle_mode = true
@@ -192,10 +190,10 @@ text = "Attack"
 
 [node name="Action1Button" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 205.407
-offset_top = 85.9813
-offset_right = 345.407
-offset_bottom = 155.981
+offset_left = 173.587
+offset_top = 93.0523
+offset_right = 313.587
+offset_bottom = 163.052
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 toggle_mode = true
@@ -204,46 +202,51 @@ text = "Action 1
 
 [node name="Action2Button" type="Button" parent="BottomBar"]
 layout_mode = 0
-offset_left = 345.245
-offset_top = 85.9813
-offset_right = 485.245
-offset_bottom = 155.981
+offset_left = 313.425
+offset_top = 93.0523
+offset_right = 453.425
+offset_bottom = 163.052
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 toggle_mode = true
 text = "Action2
 "
 
-[node name="CharacterContainer" type="Node2D" parent="."]
-position = Vector2(484.514, 727.256)
+[node name="CharacterContainer" type="ReferenceRect" parent="."]
+offset_left = 309.212
+offset_top = 610.388
+offset_right = 709.212
+offset_bottom = 890.388
 scale = Vector2(0.9, 0.9)
+script = ExtResource("13_m1fgd")
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
 scale = Vector2(0.27, 0.27)
 texture = ExtResource("6_xc4a1")
+centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(0, -25)
+centered = false
 
 [node name="TransparentCharacterFrame" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(0, 6.88647)
 scale = Vector2(0.27, 0.27)
 texture = ExtResource("7_dt2eg")
+centered = false
 
 [node name="CurrentTurnLabel" type="Label" parent="CharacterContainer"]
-offset_left = -141.691
-offset_top = -108.559
-offset_right = -101.691
-offset_bottom = -82.5588
+offset_left = 57.1958
+offset_top = 25.5548
+offset_right = 98.1958
+offset_bottom = 51.555
 text = "Guy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NumMovesLabel" type="Label" parent="CharacterContainer"]
-offset_left = 12.4175
-offset_top = 113.0
-offset_right = 60.4175
-offset_bottom = 151.0
+offset_left = 211.304
+offset_top = 247.114
+offset_right = 259.304
+offset_bottom = 285.114
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 12
 text = "88"
@@ -251,10 +254,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HealthLabel" type="Label" parent="CharacterContainer"]
-offset_left = -134.072
-offset_top = 113.5
-offset_right = -86.072
-offset_bottom = 151.5
+offset_left = 64.8148
+offset_top = 247.614
+offset_right = 112.815
+offset_bottom = 285.614
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 12
 text = "88"
@@ -262,10 +265,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CurrentEnergy" type="Label" parent="CharacterContainer"]
-offset_left = -60.3287
-offset_top = 114.341
-offset_right = -12.3287
-offset_bottom = 152.341
+offset_left = 138.558
+offset_top = 248.455
+offset_right = 186.558
+offset_bottom = 286.455
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 12
 text = "88"
@@ -273,10 +276,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DamageLabel" type="Label" parent="CharacterContainer"]
-offset_left = 86.1069
-offset_top = 112.0
-offset_right = 134.107
-offset_bottom = 150.0
+offset_left = 284.994
+offset_top = 246.114
+offset_right = 332.994
+offset_bottom = 284.114
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 12
 text = "88"
@@ -284,26 +287,30 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BoltGold" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(-35.5965, 111.96)
+position = Vector2(156.616, 236.804)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("9_vl4vh")
+centered = false
 
 [node name="HudHeartFull" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(-110.098, 111.47)
+position = Vector2(76.9236, 235.572)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_slf17")
+centered = false
 
 [node name="MoveSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(35.6532, 110.387)
+position = Vector2(221.562, 232.636)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("11_p5wk3")
+centered = false
 
 [node name="ItemSword" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(109.756, 106.787)
+position = Vector2(296.778, 230.889)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("12_xlgau")
+centered = false
 
-[node name="EntityTabContainer" type="ColorRect" parent="."]
+[node name="EntityTabContainer" type="ReferenceRect" parent="."]
 offset_right = 302.0
 offset_bottom = 864.0
-color = Color(0.196078, 0.192157, 0.180392, 1)
+script = ExtResource("13_m1fgd")
