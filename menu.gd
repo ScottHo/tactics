@@ -40,6 +40,24 @@ func updateEnergy(e: int):
     currentEnergy.text = str(e)
     return
 
+func updateAllEntities():
+    var offset = 0
+    for entity in _state.allAllies():
+        var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
+        tab.update_from_entity(entity, true)
+        $EntityTabContainer.add_child(tab)
+        tab.position.y -= offset
+        offset -= 75
+    
+    offset -= 50
+    for entity in _state.allEnemies():
+        var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
+        tab.update_from_entity(entity, false)
+        $EntityTabContainer.add_child(tab)
+        tab.position.y -= offset
+        offset -= 75
+    return
+
 func showTurns(turns: Array[int]):
     $TurnLabelsContainer/FutureTurnsLabel5.text = _state.get_entity(turns[0]).display_name
     $TurnLabelsContainer/FutureTurnsLabel4.text = _state.get_entity(turns[1]).display_name

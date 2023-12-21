@@ -44,6 +44,7 @@ func _ready():
     infoService.start()
     turnService.update()
     menuService.setState(state)
+    menuService.updateAllEntities()
     menuService.showTurns(turnService.next5Turns())
     nextTurn()
     return
@@ -154,6 +155,7 @@ func startAiDelay():
     return
 
 func nextAiStep():
+    menuService.updateAllEntities()
     if _ai_state == AiState.NONE:
         _ai_state = AiState.MOVE
         startAiMove()
@@ -224,6 +226,7 @@ func resetPlayerServices():
     moveService.finish()
     actionService.finish()
     highlightMap.highlight(currentEntity())
+    menuService.updateAllEntities()
     return
 
 func doMove():
