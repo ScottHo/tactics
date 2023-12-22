@@ -9,6 +9,7 @@ extends Node2D
 @onready var aiSpecialService: AiSpecialService = $AiSpecialService
 @onready var deathService: DeathService = $DeathService
 @onready var infoService: InfoService = $InfoService
+@onready var interactService: InteractService = $InteractService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 var current_turn_id: int = -1
@@ -29,8 +30,10 @@ func _ready():
     menuService.nextTurnActionInitiate.connect(nextTurn)
     menuService.moveActionInitiate.connect(doMove)
     menuService.actionInitiate.connect(doAction)
+    menuService.interactActionInitiate.connect(doInteract)
     moveService.movesFound.connect(movesFound)
     actionService.actionDone.connect(actionDone)
+    interactService.interactDone.connect(interactDone)
     importTestData()
     
     actionService.setState(state)
@@ -41,6 +44,7 @@ func _ready():
     deathService.setState(state)
     turnService.setState(state)
     infoService.setState(state)
+    interactService.setState(state)    
     infoService.start()
     turnService.update()
     menuService.setState(state)
@@ -98,6 +102,25 @@ func importTestData():
     ent = _add_test_entity("Boss", 50, 6, 10, Vector2i(11, 2), "res://enemy_1.tscn", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent, 1)
+    
+    var _inter = Interactable.new()
+    _inter.display_name = "Test"
+    _inter.description = "Test Interactable Description"
+    _inter.effect = func (user: Entity):
+        print("on pick up")
+        return
+    _inter.repeated_effect = func (user: Entity):
+        print("repeat")
+        return
+    _inter.storable = true
+    _inter.location = Vector2i(2,2)
+    var sprite: Sprite2D  = Sprite2D.new()
+    sprite.texture = load("res://Assets/item_sword.png")
+    sprite.scale = Vector2(.3, .3)
+    _inter.sprite = sprite
+    add_child(sprite)
+    sprite.global_position = tileMap.pointToGlobal(_inter.location)
+    state.add_interactable(_inter)
     return
 
 func _add_test_entity(display_name, health, movement, speed, location, sprite_path, ally):
@@ -133,6 +156,9 @@ func nextTurn():
     currentEntity().moves_left = currentEntity().get_movement()
     currentEntity().energy += 1
     if state.allies.has(current_turn_id):
+        if currentEntity().interactable != null:
+            if currentEntity().interactable.repeated_effect != null:
+                currentEntity().interactable.repeated_effect.call(currentEntity())
         currentEntity().loseThreat(1)
         _is_ai_turn = false
         menuService.enableAllButtons()
@@ -226,8 +252,10 @@ func doAiSpecial():
     return
 
 func resetPlayerServices():
+    menuService.set_description_text("No Action Selected.")
     moveService.finish()
     actionService.finish()
+    interactService.finish()
     highlightMap.highlight(currentEntity())
     return
 
@@ -236,8 +264,10 @@ func update_character_menu():
     menuService.updateAllEntities()    
     return
 
-func doMove():
-    resetPlayerServices()
+func doMove(on):
+    resetPlayerServices()    
+    if not on:
+        return
     moveService.start(currentEntity())
     return
 
@@ -262,8 +292,24 @@ func doneMove():
     highlightMap.highlight(currentEntity())
     return
 
-func doAction(action_type: int):
+func doInteract(on):
     resetPlayerServices()
+    if not on:
+        return
+    interactService.start(currentEntity())
+    menuService.set_description_text("Interact with objects")
+    return
+
+func interactDone():
+    interactService.finish()
+    update_character_menu()
+    checkDeaths()
+    return
+
+func doAction(on, action_type: int):
+    resetPlayerServices()
+    if not on:
+        return
     actionService.start(currentEntity(), action_type)
     var d = ""
     if action_type == ActionType.ATTACK:

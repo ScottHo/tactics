@@ -2,12 +2,14 @@ class_name Entity extends Node
 
 var id: int
 var display_name: String
+var sprite: Node2D
 var alive: bool = true
 var location: Vector2i
 var attack: Action
 var action1: Action
 var action2: Action
 var moves_left: int
+var interactable: Interactable
 
 # Variable Stats
 var threat: int
@@ -17,7 +19,6 @@ var health: int
 # Base Stats
 var max_health: int
 var movement: int
-var sprite: Node2D
 var speed: int # 10 is average, per 100 "cycles"
 var damage: int
 var armor: int

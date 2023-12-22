@@ -1,18 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=13 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
-[ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/long-vertical.png" id="3_5elim"]
 [ext_resource type="Texture2D" uid="uid://2ljolncf0onw" path="res://Assets/Large-screen-no-buttons.png" id="3_ththa"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="4_cvwx3"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="5_n8sjp"]
 [ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://Assets/panel_buttons_background.png" id="6_xc4a1"]
 [ext_resource type="Texture2D" uid="uid://ddplqs8w1cxa0" path="res://Assets/horizontal-fullscreen-button-holder-with-buttons.png" id="7_dt2eg"]
+[ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="8_pd4nx"]
 [ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/white_bolt.png" id="9_vl4vh"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_slf17"]
 [ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://Assets/arrow_reserve.png" id="11_p5wk3"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="12_xlgau"]
-[ext_resource type="Script" path="res://MenuContainer.gd" id="13_m1fgd"]
 
 [node name="Node2D" type="Node2D"]
 z_index = 10
@@ -83,7 +82,6 @@ offset_top = 2.62464
 offset_right = 1570.99
 offset_bottom = 157.625
 scale = Vector2(0.9, 0.9)
-script = ExtResource("13_m1fgd")
 
 [node name="Short-panel" type="Sprite2D" parent="MechanicContainer"]
 scale = Vector2(0.3, 0.3)
@@ -114,7 +112,6 @@ offset_left = 1173.3
 offset_top = 590.282
 offset_right = 1529.3
 offset_bottom = 856.282
-script = ExtResource("13_m1fgd")
 
 [node name="Sci-fi-ui-panels" type="Sprite2D" parent="DescriptionContainer"]
 scale = Vector2(0.2, 0.2)
@@ -131,17 +128,20 @@ theme_override_font_sizes/font_size = 12
 text = "No Action Selected."
 autowrap_mode = 2
 
-[node name="BottomBar" type="ReferenceRect" parent="."]
-offset_left = 673.312
-offset_top = 681.691
-offset_right = 1163.31
-offset_bottom = 859.691
-script = ExtResource("13_m1fgd")
+[node name="TurnButton" type="Button" parent="."]
+offset_left = 645.0
+offset_top = 21.0
+offset_right = 785.0
+offset_bottom = 91.0
+focus_mode = 0
+theme = ExtResource("4_cvwx3")
+text = "End Turn"
 
-[node name="LongBar" type="Sprite2D" parent="BottomBar"]
-scale = Vector2(0.26, 0.26)
-texture = ExtResource("3_5elim")
-centered = false
+[node name="BottomBar" type="ReferenceRect" parent="."]
+offset_left = 337.0
+offset_top = 691.0
+offset_right = 826.998
+offset_bottom = 869.0
 
 [node name="MoveButton" type="Button" parent="BottomBar"]
 layout_mode = 0
@@ -164,17 +164,6 @@ focus_mode = 0
 theme = ExtResource("4_cvwx3")
 toggle_mode = true
 text = "Interact
-"
-
-[node name="TurnButton" type="Button" parent="BottomBar"]
-layout_mode = 0
-offset_left = 312.09
-offset_top = 18.0523
-offset_right = 452.09
-offset_bottom = 88.0523
-focus_mode = 0
-theme = ExtResource("4_cvwx3")
-text = "Next Turn
 "
 
 [node name="AttackButton" type="Button" parent="BottomBar"]
@@ -213,12 +202,11 @@ text = "Action2
 "
 
 [node name="CharacterContainer" type="ReferenceRect" parent="."]
-offset_left = 309.212
-offset_top = 610.388
-offset_right = 709.212
-offset_bottom = 890.388
+offset_left = 8.0
+offset_top = 610.0
+offset_right = 408.0
+offset_bottom = 890.0
 scale = Vector2(0.9, 0.9)
-script = ExtResource("13_m1fgd")
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
 scale = Vector2(0.27, 0.27)
@@ -226,6 +214,9 @@ texture = ExtResource("6_xc4a1")
 centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(121.987, 15.1244)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_pd4nx")
 centered = false
 
 [node name="TransparentCharacterFrame" type="Sprite2D" parent="CharacterContainer"]
@@ -234,6 +225,7 @@ texture = ExtResource("7_dt2eg")
 centered = false
 
 [node name="CurrentTurnLabel" type="Label" parent="CharacterContainer"]
+layout_mode = 0
 offset_left = 57.1958
 offset_top = 25.5548
 offset_right = 98.1958
@@ -243,6 +235,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NumMovesLabel" type="Label" parent="CharacterContainer"]
+layout_mode = 0
 offset_left = 211.304
 offset_top = 247.114
 offset_right = 259.304
@@ -254,6 +247,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HealthLabel" type="Label" parent="CharacterContainer"]
+layout_mode = 0
 offset_left = 64.8148
 offset_top = 247.614
 offset_right = 112.815
@@ -265,6 +259,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CurrentEnergy" type="Label" parent="CharacterContainer"]
+layout_mode = 0
 offset_left = 138.558
 offset_top = 248.455
 offset_right = 186.558
@@ -276,6 +271,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DamageLabel" type="Label" parent="CharacterContainer"]
+layout_mode = 0
 offset_left = 284.994
 offset_top = 246.114
 offset_right = 332.994
@@ -313,4 +309,3 @@ centered = false
 [node name="EntityTabContainer" type="ReferenceRect" parent="."]
 offset_right = 302.0
 offset_bottom = 864.0
-script = ExtResource("13_m1fgd")

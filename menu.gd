@@ -8,7 +8,7 @@ signal nextTurnActionInitiate
 signal interactActionInitiate
 signal actionInitiate
 @onready var moveButton: Button = $BottomBar/MoveButton
-@onready var nextTurnButton: Button = $BottomBar/TurnButton
+@onready var nextTurnButton: Button = $TurnButton
 @onready var interactButton: Button = $BottomBar/InteractButton
 @onready var attackButton: Button = $BottomBar/AttackButton
 @onready var action1Button: Button = $BottomBar/Action1Button
@@ -18,36 +18,17 @@ signal actionInitiate
 @onready var currentTurnLabel: Label = $CharacterContainer/CurrentTurnLabel
 @onready var healthLabel: Label = $CharacterContainer/HealthLabel
 @onready var damageLabel: Label = $CharacterContainer/DamageLabel
-@onready var buttonsBar: MenuContainer = $BottomBar
-@onready var mechanicsContainer: MenuContainer = $MechanicContainer
-@onready var characterContainer: MenuContainer = $CharacterContainer
-@onready var tabContainer: MenuContainer = $EntityTabContainer
 
 func _ready():
-    moveButton.button_down.connect(func(): moveActionInitiate.emit())
     nextTurnButton.button_down.connect(func(): nextTurnActionInitiate.emit())
-    interactButton.button_down.connect(func(): interactActionInitiate.emit())
-    attackButton.button_down.connect(func(): actionInitiate.emit(ActionType.ATTACK))
-    action1Button.button_down.connect(func(): actionInitiate.emit(ActionType.ACTION1))
-    action2Button.button_down.connect(func(): actionInitiate.emit(ActionType.ACTION2))
+    
+    moveButton.toggled.connect(func(b): moveActionInitiate.emit(b))
+    interactButton.toggled.connect(func(b): interactActionInitiate.emit(b))
+    attackButton.toggled.connect(func(b): actionInitiate.emit(b, ActionType.ATTACK))
+    action1Button.toggled.connect(func(b): actionInitiate.emit(b, ActionType.ACTION1))
+    action2Button.toggled.connect(func(b): actionInitiate.emit(b, ActionType.ACTION2))
     cache_button_states()
     _tab_dict = {}
-    return
-
-func _input(event):
-    if event is InputEventMouseMotion:
-        if buttonsBar.in_bounds():
-            print("buttons")
-            return
-        if mechanicsContainer.in_bounds():
-            print("mechs")
-            return
-        if characterContainer.in_bounds():
-            print("character")
-            return
-        if tabContainer.in_bounds():
-            print("tabs")
-            return
     return
 
 func setState(state: State):
@@ -170,9 +151,13 @@ func restore_button_states():
 func disableAllButtons():
     unpress_all_buttons()
     nextTurnButton.disabled = true
-    interactButton.disabled = true
+    disableInteractButton()
     disableActionButtons()
     disableMovesButton()
+    return
+
+func disableInteractButton():
+    interactButton.disabled = true
     return
 
 func disableMovesButton():

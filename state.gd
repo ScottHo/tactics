@@ -3,6 +3,7 @@ class_name State extends Node
 var entities: ID_Dict = ID_Dict.new()
 var allies: Array[int] = []
 var enemies: Array[int] = []
+var interactables: Array = []
 
 
 func all_allies() -> Array:
@@ -81,3 +82,21 @@ func entity_on_tile(vector):
         if _entity.location == vector:
             return _entity
     return null
+    
+func interactable_on_tile(vector):
+    for _interactable in interactables:
+        print(_interactable.location)
+        if _interactable.location == vector:
+            print("!!")
+            return _interactable
+    return null
+
+func add_interactable(inter: Interactable):
+    interactables.append(inter)
+    return
+
+func remove_interactable(inter: Interactable):
+    interactables.remove_at(interactables.find(inter))
+    inter.sprite.queue_free()
+    return
+    
