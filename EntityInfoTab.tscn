@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bwcjqtrnb8v1q" path="res://Assets/info_box.png" id="2_syuky"]
 [ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://Assets/arrow_reserve.png" id="3_yf7ib"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="4_flx8q"]
-[ext_resource type="Texture2D" uid="uid://b0n75a3fumq10" path="res://Assets/Quest Panel.svg" id="4_k0ivy"]
+[ext_resource type="Texture2D" uid="uid://ctjjw0nskkdfw" path="res://Assets/small_panel.png" id="4_oc25q"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="4_reefb"]
 [ext_resource type="Script" path="res://DisplayHover.gd" id="4_wnaqp"]
 [ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/white_bolt.png" id="5_0vfv3"]
@@ -44,7 +44,7 @@ offset_bottom = 24.6241
 
 [node name="Sprite2D" type="Sprite2D" parent="Stats/HeartSprite/ReferenceRect"]
 visible = false
-texture = ExtResource("4_k0ivy")
+texture = ExtResource("4_oc25q")
 script = ExtResource("4_wnaqp")
 
 [node name="HpLabel" type="Label" parent="Stats"]

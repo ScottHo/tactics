@@ -74,9 +74,10 @@ func action() -> Action:
     return null
 
 func finish():
-    if _map_bfs != null:
-        _map_bfs.resetHighlights(false, action().self_castable)
-    _enabled = false
+    if _enabled:
+        if _map_bfs != null:
+            _map_bfs.resetHighlights(false, action().self_castable)
+        _enabled = false
     return
 
 func start(entity: Entity, action_type: int):

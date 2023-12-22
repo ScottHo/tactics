@@ -20,13 +20,26 @@ signal actionInitiate
 @onready var damageLabel: Label = $CharacterContainer/DamageLabel
 
 func _ready():
-    nextTurnButton.button_down.connect(func(): nextTurnActionInitiate.emit())
-    
-    moveButton.toggled.connect(func(b): moveActionInitiate.emit(b))
-    interactButton.toggled.connect(func(b): interactActionInitiate.emit(b))
-    attackButton.toggled.connect(func(b): actionInitiate.emit(b, ActionType.ATTACK))
-    action1Button.toggled.connect(func(b): actionInitiate.emit(b, ActionType.ACTION1))
-    action2Button.toggled.connect(func(b): actionInitiate.emit(b, ActionType.ACTION2))
+    nextTurnButton.button_down.connect(func():
+        unpress_all_buttons()
+        nextTurnActionInitiate.emit())
+
+    moveButton.toggled.connect(func(b):
+        unpress_all_buttons(moveButton)
+        moveActionInitiate.emit(b)
+        )
+    interactButton.toggled.connect(func(b):
+        unpress_all_buttons(interactButton)
+        interactActionInitiate.emit(b))
+    attackButton.toggled.connect(func(b):
+        unpress_all_buttons(attackButton)
+        actionInitiate.emit(b, ActionType.ATTACK))
+    action1Button.toggled.connect(func(b):
+        unpress_all_buttons(action1Button)
+        actionInitiate.emit(b, ActionType.ACTION1))
+    action2Button.toggled.connect(func(b):
+        unpress_all_buttons(action2Button)
+        actionInitiate.emit(b, ActionType.ACTION2))
     cache_button_states()
     _tab_dict = {}
     return
@@ -108,13 +121,17 @@ func updateEntityInfo(entity):
     numMovesLabel.text = str(entity.moves_left)
     return
 
-func unpress_all_buttons():
-    moveButton.set_pressed(false)
-    nextTurnButton.set_pressed(false)
-    interactButton.set_pressed(false)
-    attackButton.set_pressed(false)    
-    action1Button.set_pressed(false)
-    action2Button.set_pressed(false)
+func unpress_all_buttons(omit=null):
+    if omit != moveButton:
+        moveButton.set_pressed(false)
+    if omit != interactButton:
+        interactButton.set_pressed(false)
+    if omit != attackButton:
+        attackButton.set_pressed(false)    
+    if omit != action1Button:
+        action1Button.set_pressed(false)
+    if omit != action2Button:
+        action2Button.set_pressed(false)
     return
 
 func enableAllButtons():

@@ -44,7 +44,6 @@ func _input(event):
                 _entity.moves_left -= len(_points)
                 _entity.location = _points[-1]
                 movesFound.emit(poses)
-                _enabled = false
                 return
 
 func highlightPath(clear: bool):
@@ -56,9 +55,10 @@ func highlightPath(clear: bool):
     return
 
 func finish():
-    if _map_bfs != null:
-        _map_bfs.resetHighlights(false)
-    _enabled = false
+    if _enabled:
+        if _map_bfs != null:
+            _map_bfs.resetHighlights(false)
+        _enabled = false
     return
 
 func start(entity: Entity):

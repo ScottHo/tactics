@@ -68,9 +68,10 @@ func maxRange() -> int:
     return 1
 
 func finish():
-    if _map_bfs != null:
-        _map_bfs.resetHighlights(false)
-    _enabled = false
+    if _enabled:
+        if _map_bfs != null:
+            _map_bfs.resetHighlights(false)
+        _enabled = false
     return
 
 func start(entity: Entity):
