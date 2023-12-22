@@ -1,6 +1,5 @@
 TODO
-Button glow buggy
-Unselect Buttons
+Interactable Sprite put somewhere
 No Info on Disabled Buttons
 Undo Button
 Range and Base Range
