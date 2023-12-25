@@ -131,6 +131,7 @@ text = "No Action Selected."
 autowrap_mode = 2
 
 [node name="DescriptionCost" type="Label" parent="DescriptionContainer"]
+layout_mode = 0
 offset_left = 97.4044
 offset_top = 107.604
 offset_right = 98.4044

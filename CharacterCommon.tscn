@@ -44,27 +44,25 @@ scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_sbscd")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-visible = false
 z_index = 5
-offset_left = -32.1168
-offset_top = 3.494
-offset_right = 179.883
-offset_bottom = 33.494
+offset_left = -30.0
+offset_top = 10.0
+offset_right = 182.0
+offset_bottom = 40.0
 scale = Vector2(0.3, 0.3)
 value = 50.0
 texture_under = ExtResource("3_87rn2")
 texture_progress = ExtResource("4_y3co7")
 
 [node name="EnergyBar" type="TextureProgressBar" parent="."]
-visible = false
 z_index = 5
-offset_left = -31.859
-offset_top = 12.6685
-offset_right = 180.141
-offset_bottom = 42.6685
+offset_left = -30.0
+offset_top = 19.0
+offset_right = 182.0
+offset_bottom = 49.0
 scale = Vector2(0.3, 0.3)
 max_value = 5.0
-value = 2.0
+value = 3.0
 texture_under = ExtResource("3_87rn2")
 texture_progress = ExtResource("5_apc0l")
 

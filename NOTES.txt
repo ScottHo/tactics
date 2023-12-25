@@ -1,13 +1,9 @@
 TODO
-Interactable Sprite put somewhere
-No Info on Disabled Buttons
 Undo Button
 Range and Base Range
 Movement penalty never resets
 Animations
-Cost for actions
 Icons for current buffs
-GUI Overhaul: Less clutter, more hover, Bigger text, More Icons, Hover on Hover
 Queue system for effect text?
 Different target highlights for good/bad
 InteractService, basic version that can target 1 range

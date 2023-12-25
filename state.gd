@@ -42,12 +42,14 @@ func addAlly(entity: Entity) -> int:
     var id = entities.add_data(entity)
     allies.append(id)
     entity.id = id
+    entity.is_ally = true
     return id
 
 func addEnemy(entity: Entity) -> int:
     var id = entities.add_data(entity)
     enemies.append(id)
     entity.id = id
+    entity.is_ally = false
     return id
 
 func isAlly(entity: Entity) -> bool:

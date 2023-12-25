@@ -33,6 +33,9 @@ func _input(event):
             MOUSE_BUTTON_LEFT:
                 if len(_target_points) <= 0:
                     return
+                if len(_target_points) == 1:
+                    if not _state.entity_on_tile(_target_points[0]):
+                        return
                 ActionCommon.do_action(_state, _entity,_target_points, action())
                 _entity.update_energy(_entity.energy - action().cost)
                 actionDone.emit()

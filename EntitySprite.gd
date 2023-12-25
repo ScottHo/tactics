@@ -81,7 +81,8 @@ func add_interactable(inter: Interactable):
     inter.location = Vector2(999,999)
     return
 
-func show_bars(show: bool):
+func show_bars(show: bool, is_ally: bool):
     $CharacterCommon/HealthBar.visible = show
-    $CharacterCommon/EnergyBar.visible = show
+    if is_ally:
+        $CharacterCommon/EnergyBar.visible = show
     return

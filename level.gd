@@ -330,6 +330,7 @@ func doAction(on, action_type: int):
 
 func actionDone():
     menuService.disableActionButtons()
+    menuService.force_show_description = false
     update_character_menu()
     checkDeaths()
     return

@@ -9,6 +9,7 @@ var attack: Action
 var action1: Action
 var action2: Action
 var moves_left: int
+var is_ally: bool
 var interactable: Interactable
 
 # Variable Stats
@@ -137,6 +138,6 @@ func add_iteractable(inter: Interactable):
     return
     
 func show_bars(show: bool):
-    sprite.show_bars(show)
+    sprite.show_bars(show, is_ally)
     return
     
