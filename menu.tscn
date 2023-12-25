@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=18 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://cb20eq0yo3eql" path="res://Assets/pointer.png" id="12_kln7r"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="12_xlgau"]
 [ext_resource type="Texture2D" uid="uid://dhyotx8kv2bn1" path="res://Assets/expand-button.png" id="14_f8s5v"]
+[ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="14_t4p6o"]
+[ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/Health_Over.png" id="15_dpdc3"]
+[ext_resource type="Texture2D" uid="uid://dh7objn6mrlvt" path="res://Assets/Energy_Over.png" id="16_08yr0"]
 
 [node name="Node2D" type="Node2D"]
 z_index = 10
@@ -124,7 +127,7 @@ texture = ExtResource("6_xc4a1")
 centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(225.122, 79.8243)
+position = Vector2(210.284, 44.7213)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_pd4nx")
 centered = false
@@ -136,38 +139,15 @@ texture = ExtResource("7_eppjx")
 centered = false
 
 [node name="CurrentTurnLabel" type="Label" parent="CharacterContainer"]
+layout_direction = 3
 layout_mode = 0
-offset_left = 255.934
-offset_top = 53.104
-offset_right = 296.934
-offset_bottom = 79.1042
-theme_override_font_sizes/font_size = 16
+offset_left = 55.6133
+offset_top = 30.9673
+offset_right = 106.613
+offset_bottom = 55.9673
+theme_override_font_sizes/font_size = 20
 text = "Guy"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HealthLabel" type="Label" parent="CharacterContainer"]
-layout_mode = 0
-offset_left = 420.372
-offset_top = 70.2743
-offset_right = 468.373
-offset_bottom = 108.274
-theme_override_fonts/font = ExtResource("5_n8sjp")
-theme_override_font_sizes/font_size = 14
-text = "88"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CurrentEnergy" type="Label" parent="CharacterContainer"]
-layout_mode = 0
-offset_left = 420.372
-offset_top = 108.431
-offset_right = 468.372
-offset_bottom = 146.431
-theme_override_fonts/font = ExtResource("5_n8sjp")
-theme_override_font_sizes/font_size = 14
-text = "88"
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="DamageLabel" type="Label" parent="CharacterContainer"]
@@ -204,18 +184,6 @@ centered = false
 position = Vector2(392.372, 144.953)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_p5wk3")
-centered = false
-
-[node name="BoltGold" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(392.372, 104.019)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_vl4vh")
-centered = false
-
-[node name="HudHeartFull" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(397.934, 71.731)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("10_slf17")
 centered = false
 
 [node name="MoveButton" type="Button" parent="CharacterContainer"]
@@ -279,6 +247,41 @@ theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
 toggle_mode = true
 text = "SP 2"
+
+[node name="HudHeartFull" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(183.836, 216.656)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_slf17")
+centered = false
+
+[node name="HealthBar" type="TextureProgressBar" parent="CharacterContainer"]
+z_index = 5
+offset_left = 215.613
+offset_top = 226.322
+offset_right = 427.613
+offset_bottom = 256.322
+scale = Vector2(0.8, 0.6)
+value = 50.0
+texture_under = ExtResource("14_t4p6o")
+texture_progress = ExtResource("15_dpdc3")
+
+[node name="BoltGold" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(178.469, 236.446)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_vl4vh")
+centered = false
+
+[node name="EnergyBar" type="TextureProgressBar" parent="CharacterContainer"]
+z_index = 5
+offset_left = 214.619
+offset_top = 251.522
+offset_right = 426.619
+offset_bottom = 281.522
+scale = Vector2(0.8, 0.6)
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource("14_t4p6o")
+texture_progress = ExtResource("16_08yr0")
 
 [node name="EntityTabContainer" type="ReferenceRect" parent="."]
 offset_right = 302.0

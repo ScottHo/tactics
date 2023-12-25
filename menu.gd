@@ -16,11 +16,13 @@ signal actionInitiate
 @onready var attackButton: Button = $CharacterContainer/AttackButton
 @onready var action1Button: Button = $CharacterContainer/Action1Button
 @onready var action2Button: Button = $CharacterContainer/Action2Button
-@onready var currentEnergy: Label = $CharacterContainer/CurrentEnergy
+
 @onready var numMovesLabel: Label = $CharacterContainer/NumMovesLabel
 @onready var currentTurnLabel: Label = $CharacterContainer/CurrentTurnLabel
-@onready var healthLabel: Label = $CharacterContainer/HealthLabel
+@onready var healthBar: TextureProgressBar = $CharacterContainer/HealthBar
+@onready var energyBar: TextureProgressBar = $CharacterContainer/EnergyBar
 @onready var damageLabel: Label = $CharacterContainer/DamageLabel
+
 @onready var expandHover: Sprite2D = $TurnsContainer/ExpandHover
 @onready var turnSprites: Array = [$TurnsContainer/Turn0, $TurnsContainer/Turn1,
     $TurnsContainer/Turn2, $TurnsContainer/Turn3, $TurnsContainer/Turn4]
@@ -131,12 +133,9 @@ func showCurrentTurn(turn: int):
         #action2Button.text = entity.action2.display_name.replace(" ", "\n")
         if entity.action2.cost <= entity.energy:
             action2Button.disabled = false
-        updateEntityInfo(entity)
         setup_action_descriptions(entity)
         
-    else:
-        currentEnergy.text = "-"
-        healthLabel.text = str(entity.health)
+    updateEntityInfo(entity)
 
     show_description(false, null)
     $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
@@ -152,9 +151,10 @@ func setup_action_descriptions(entity: Entity):
     _action_costs[ActionType.ACTION2] = entity.action2.cost
     return
 
-func updateEntityInfo(entity):
-    currentEnergy.text = str(entity.energy)        
-    healthLabel.text = str(entity.health)
+func updateEntityInfo(entity: Entity):
+    healthBar.max_value = entity.max_health
+    healthBar.value = entity.health
+    energyBar.value = entity.energy
     damageLabel.text = str(entity.get_damage())
     numMovesLabel.text = str(entity.moves_left)
     return

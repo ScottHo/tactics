@@ -152,6 +152,7 @@ func _add_test_entity(display_name, health, movement, _range, speed, location, s
         var _id = state.addAlly(ent)
     else:
         var _id = state.addEnemy(ent)
+        ent.energy = 0
     return ent
 
 func currentEntity() -> Entity:
@@ -163,8 +164,8 @@ func nextTurn():
     resetPlayerServices()
     menuService.showTurns(turnService.next5Turns())
     currentEntity().moves_left = currentEntity().get_movement()
-    currentEntity().update_energy(currentEntity().energy + 1)
     if state.allies.has(current_turn_id):
+        currentEntity().update_energy(currentEntity().energy + 1)
         if currentEntity().interactable != null:
             if currentEntity().interactable.repeated_effect != null:
                 currentEntity().interactable.repeated_effect.call(currentEntity())

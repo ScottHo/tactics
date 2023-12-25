@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="1_r63co"]
 [ext_resource type="Texture2D" uid="uid://bhjd3o4d36dg7" path="res://Assets/info_box_expanded.png" id="2_tfr3r"]
-[ext_resource type="Texture2D" uid="uid://di2pvfhgjirl" path="res://Assets/Progress_Under.png" id="3_j5268"]
+[ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="3_wv88g"]
 [ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://Assets/arrow_reserve.png" id="3_yf7ib"]
 [ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/Health_Over.png" id="4_86m2k"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="4_flx8q"]
@@ -40,7 +40,7 @@ offset_right = 233.735
 offset_bottom = 114.794
 scale = Vector2(0.3, 0.3)
 value = 50.0
-texture_under = ExtResource("3_j5268")
+texture_under = ExtResource("3_wv88g")
 texture_progress = ExtResource("4_86m2k")
 
 [node name="Stats" type="Node2D" parent="."]
