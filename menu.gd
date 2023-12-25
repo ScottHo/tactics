@@ -21,6 +21,9 @@ signal actionInitiate
 @onready var currentTurnLabel: Label = $CharacterContainer/CurrentTurnLabel
 @onready var healthLabel: Label = $CharacterContainer/HealthLabel
 @onready var damageLabel: Label = $CharacterContainer/DamageLabel
+@onready var expandHover: Sprite2D = $TurnsContainer/ExpandHover
+@onready var turnSprites: Array = [$TurnsContainer/Turn0, $TurnsContainer/Turn1,
+    $TurnsContainer/Turn2, $TurnsContainer/Turn3, $TurnsContainer/Turn4]
 
 
 func _ready():
@@ -39,7 +42,10 @@ func _ready():
     setup_action_button(attackButton, ActionType.ATTACK)
     setup_action_button(action1Button, ActionType.ACTION1)
     setup_action_button(action2Button, ActionType.ACTION2)
-
+    $TurnsContainer/ExpandReference.mouse_entered.connect(func():
+        show_future_turns(true))
+    $TurnsContainer/ExpandReference.mouse_exited.connect(func():
+        show_future_turns(false))
     cache_button_states()
     _tab_dict = {}
     return
@@ -87,11 +93,28 @@ func _create_entity_tabs():
     return
 
 func showTurns(turns: Array[int]):
-    $TurnLabelsContainer/FutureTurnsLabel5.text = _state.get_entity(turns[0]).display_name
-    $TurnLabelsContainer/FutureTurnsLabel4.text = _state.get_entity(turns[1]).display_name
-    $TurnLabelsContainer/FutureTurnsLabel3.text = _state.get_entity(turns[2]).display_name
-    $TurnLabelsContainer/FutureTurnsLabel2.text = _state.get_entity(turns[3]).display_name
-    $TurnLabelsContainer/FutureTurnsLabel.text = _state.get_entity(turns[4]).display_name
+    _setup_turn_sprite(_state.get_entity(turns[0]), turnSprites[0])
+    _setup_turn_sprite(_state.get_entity(turns[1]), turnSprites[1])
+    _setup_turn_sprite(_state.get_entity(turns[2]), turnSprites[2])
+    _setup_turn_sprite(_state.get_entity(turns[3]), turnSprites[3])
+    _setup_turn_sprite(_state.get_entity(turns[4]), turnSprites[4])
+    return
+
+func _setup_turn_sprite(entity: Entity, sprite: Sprite2D):
+    sprite.texture = entity.sprite.texture_resource()
+    sprite.scale = entity.sprite.texture_scale()*1.3
+    return
+
+func show_future_turns(show):
+    #if show:
+    #    expandHover.texture = load("res://Assets/expand-button-glow.png")
+    #else:
+    #    expandHover.texture = load("res://Assets/expand-button.png")
+    turnSprites[0].visible = show
+    turnSprites[1].visible = show
+    turnSprites[2].visible = show
+    turnSprites[3].visible = show
+    turnSprites[4].visible = show
     return
     
 func showCurrentTurn(turn: int):

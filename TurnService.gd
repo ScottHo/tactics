@@ -16,12 +16,9 @@ func update(random=true):
         if _state.isAlly(entity) and random:
             turnNode.total = randi_range(1, 9) * 10
         _turnNodes.append(turnNode)
-        
-    _turnCache.append(findNextTurn())
-    _turnCache.append(findNextTurn())
-    _turnCache.append(findNextTurn())
-    _turnCache.append(findNextTurn())
-    _turnCache.append(findNextTurn())
+    
+    for i in range(5):
+        _turnCache.append(findNextTurn())
     return
 
 func updateDeaths():

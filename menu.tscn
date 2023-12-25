@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=15 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://Assets/arrow_reserve.png" id="11_p5wk3"]
 [ext_resource type="Texture2D" uid="uid://cb20eq0yo3eql" path="res://Assets/pointer.png" id="12_kln7r"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="12_xlgau"]
+[ext_resource type="Texture2D" uid="uid://dhyotx8kv2bn1" path="res://Assets/expand-button.png" id="14_f8s5v"]
 
 [node name="Node2D" type="Node2D"]
 z_index = 10
@@ -23,60 +24,6 @@ offset_left = 604.0
 offset_top = 50.0
 offset_right = 644.0
 offset_bottom = 73.0
-
-[node name="TurnLabelsContainer" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 893.752
-offset_top = 32.7025
-offset_right = 933.752
-offset_bottom = 72.7025
-
-[node name="FutureTurnsLabel" type="Label" parent="TurnLabelsContainer"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = -10.0
-offset_right = 57.0
-offset_bottom = 16.0
-theme_override_font_sizes/font_size = 11
-text = "1"
-
-[node name="FutureTurnsLabel2" type="Label" parent="TurnLabelsContainer"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 10.0
-offset_right = 57.0
-offset_bottom = 29.0
-theme_override_font_sizes/font_size = 11
-text = "1"
-
-[node name="FutureTurnsLabel3" type="Label" parent="TurnLabelsContainer"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 30.0
-offset_right = 57.0
-offset_bottom = 56.0
-theme_override_font_sizes/font_size = 11
-text = "1"
-
-[node name="FutureTurnsLabel4" type="Label" parent="TurnLabelsContainer"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 50.0
-offset_right = 57.0
-offset_bottom = 76.0
-theme_override_font_sizes/font_size = 11
-text = "1"
-
-[node name="FutureTurnsLabel5" type="Label" parent="TurnLabelsContainer"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 70.0
-offset_right = 57.0
-offset_bottom = 96.0
-theme_override_font_sizes/font_size = 11
-text = "1"
 
 [node name="MechanicContainer" type="ReferenceRect" parent="."]
 offset_left = 1177.1
@@ -336,3 +283,40 @@ text = "SP 2"
 [node name="EntityTabContainer" type="ReferenceRect" parent="."]
 offset_right = 302.0
 offset_bottom = 864.0
+
+[node name="TurnsContainer" type="ReferenceRect" parent="."]
+offset_left = 1050.52
+offset_top = 32.0361
+offset_right = 1090.52
+offset_bottom = 72.0361
+
+[node name="ExpandHover" type="Sprite2D" parent="TurnsContainer"]
+position = Vector2(8.88391, 19.1546)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("14_f8s5v")
+
+[node name="ExpandReference" type="ReferenceRect" parent="TurnsContainer"]
+offset_left = -19.5236
+offset_top = -10.1935
+offset_right = 40.4764
+offset_bottom = 49.8065
+
+[node name="Turn0" type="Sprite2D" parent="TurnsContainer"]
+visible = false
+position = Vector2(-45.4863, 17.8256)
+
+[node name="Turn1" type="Sprite2D" parent="TurnsContainer"]
+visible = false
+position = Vector2(-100.486, 17.8256)
+
+[node name="Turn2" type="Sprite2D" parent="TurnsContainer"]
+visible = false
+position = Vector2(-155.486, 17.8256)
+
+[node name="Turn3" type="Sprite2D" parent="TurnsContainer"]
+visible = false
+position = Vector2(-210.486, 17.8256)
+
+[node name="Turn4" type="Sprite2D" parent="TurnsContainer"]
+visible = false
+position = Vector2(-265.486, 17.8256)
