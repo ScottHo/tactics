@@ -48,7 +48,7 @@ position = Vector2(59.5253, 35.2265)
 scale = Vector2(0.67, 0.67)
 
 [node name="HeartSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(87.0245, 0)
+position = Vector2(85.3473, -2.23628)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_reefb")
 

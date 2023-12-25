@@ -3,6 +3,7 @@ class_name MenuService extends Node2D
 var _state: State
 var _button_state_cache: Array
 var _tab_dict: Dictionary = {}
+var _action_names: Dictionary = {}
 var _action_descriptions: Dictionary = {}
 var _action_costs: Dictionary = {}
 var force_show_description := false
@@ -17,11 +18,15 @@ signal actionInitiate
 @onready var action1Button: Button = $CharacterContainer/Action1Button
 @onready var action2Button: Button = $CharacterContainer/Action2Button
 
-@onready var numMovesLabel: Label = $CharacterContainer/NumMovesLabel
-@onready var currentTurnLabel: Label = $CharacterContainer/CurrentTurnLabel
+@onready var nameLabel: Label = $CharacterContainer/NameLabel
+@onready var movesLabel: Label = $CharacterContainer/MovesLabel
+@onready var damageLabel: Label = $CharacterContainer/DamageLabel
+@onready var speedLabel: Label = $CharacterContainer/SpeedLabel
+@onready var armorLabel: Label = $CharacterContainer/ArmorLabel
+@onready var rangeLabel: Label = $CharacterContainer/RangeLabel
+@onready var threatLabel: Label = $CharacterContainer/ThreatLabel
 @onready var healthBar: TextureProgressBar = $CharacterContainer/HealthBar
 @onready var energyBar: TextureProgressBar = $CharacterContainer/EnergyBar
-@onready var damageLabel: Label = $CharacterContainer/DamageLabel
 
 @onready var expandHover: Sprite2D = $TurnsContainer/ExpandHover
 @onready var turnSprites: Array = [$TurnsContainer/Turn0, $TurnsContainer/Turn1,
@@ -121,7 +126,7 @@ func show_future_turns(show):
     
 func showCurrentTurn(turn: int):
     var entity := _state.get_entity(turn)
-    currentTurnLabel.text = _state.get_entity(turn).display_name
+    nameLabel.text = _state.get_entity(turn).display_name
     disableActionButtons()
     var is_ally := _state.isAlly(entity)
     if is_ally:
@@ -143,6 +148,9 @@ func showCurrentTurn(turn: int):
     return
 
 func setup_action_descriptions(entity: Entity):
+    _action_names[ActionType.ATTACK] = entity.attack.display_name
+    _action_names[ActionType.ACTION1] = entity.action1.display_name
+    _action_names[ActionType.ACTION2] = entity.action2.display_name
     _action_descriptions[ActionType.ATTACK] = entity.attack.description
     _action_descriptions[ActionType.ACTION1] = entity.action1.description
     _action_descriptions[ActionType.ACTION2] = entity.action2.description
@@ -156,7 +164,13 @@ func updateEntityInfo(entity: Entity):
     healthBar.value = entity.health
     energyBar.value = entity.energy
     damageLabel.text = str(entity.get_damage())
-    numMovesLabel.text = str(entity.moves_left)
+    movesLabel.text = str(entity.moves_left)
+    speedLabel.text = str(entity.get_speed())
+    armorLabel.text = str(entity.get_armor())
+    rangeLabel.text = str(entity.get_range())
+    threatLabel.text = str(entity.threat)
+    if not entity.is_ally:
+        threatLabel.text = "-"
     return
 
 func unpress_all_buttons(omit=null):
@@ -247,6 +261,7 @@ func show_description(show, action_type):
     if not _action_descriptions.has(action_type):
         show = false
     if show:
+        $DescriptionContainer/DescriptionName.text = _action_names[action_type]
         $DescriptionContainer/DescriptionLabel.text = _action_descriptions[action_type]
         $DescriptionContainer/DescriptionCost.text = str(_action_costs[action_type])
     $DescriptionContainer.visible = show

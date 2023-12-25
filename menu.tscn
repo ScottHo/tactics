@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=22 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -10,13 +10,17 @@
 [ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="8_pd4nx"]
 [ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/white_bolt.png" id="9_vl4vh"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_slf17"]
-[ext_resource type="Texture2D" uid="uid://b8pefgb5l0j42" path="res://Assets/arrow_reserve.png" id="11_p5wk3"]
+[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="11_d8bxd"]
 [ext_resource type="Texture2D" uid="uid://cb20eq0yo3eql" path="res://Assets/pointer.png" id="12_kln7r"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="12_xlgau"]
+[ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="13_k180g"]
 [ext_resource type="Texture2D" uid="uid://dhyotx8kv2bn1" path="res://Assets/expand-button.png" id="14_f8s5v"]
+[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="14_m7c37"]
 [ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="14_t4p6o"]
 [ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/Health_Over.png" id="15_dpdc3"]
 [ext_resource type="Texture2D" uid="uid://dh7objn6mrlvt" path="res://Assets/Energy_Over.png" id="16_08yr0"]
+[ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="17_diddf"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="19_gtpi5"]
 
 [node name="Node2D" type="Node2D"]
 z_index = 10
@@ -60,47 +64,58 @@ theme_override_font_sizes/font_size = 12
 autowrap_mode = 2
 
 [node name="DescriptionContainer" type="ReferenceRect" parent="."]
-offset_left = 1139.17
-offset_top = 322.95
-offset_right = 1521.17
-offset_bottom = 462.95
+offset_left = 1115.52
+offset_top = 321.268
+offset_right = 1530.52
+offset_bottom = 471.268
 
 [node name="Sci-fi-ui-panels" type="Sprite2D" parent="DescriptionContainer"]
-scale = Vector2(0.2, 0.2)
+position = Vector2(0.84082, -0.840912)
+scale = Vector2(0.22, 0.22)
 texture = ExtResource("3_xttrl")
 centered = false
 
+[node name="DescriptionName" type="Label" parent="DescriptionContainer"]
+offset_left = 50.8832
+offset_top = 6.41843
+offset_right = 380.883
+offset_bottom = 26.4184
+theme_override_font_sizes/font_size = 15
+text = "Action"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="DescriptionLabel" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 32.6289
-offset_top = 14.4865
-offset_right = 342.629
-offset_bottom = 84.4865
+offset_left = 31.0947
+offset_top = 32.8981
+offset_right = 391.095
+offset_bottom = 115.898
 theme_override_font_sizes/font_size = 12
 text = "No Action Selected."
 autowrap_mode = 2
 
 [node name="DescriptionCost" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 97.4044
-offset_top = 107.604
-offset_right = 98.4044
-offset_bottom = 123.604
-theme_override_font_sizes/font_size = 12
+offset_left = 59.6177
+offset_top = 116.508
+offset_right = 60.6177
+offset_bottom = 137.508
 text = "5"
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 29.1353
-offset_top = 106.476
-offset_right = 88.1353
-offset_bottom = 127.476
-text = "Cost:"
+offset_left = 48.257
+offset_top = 116.291
+offset_right = 107.257
+offset_bottom = 137.291
+text = ":
+"
 
 [node name="Sprite2D" type="Sprite2D" parent="DescriptionContainer"]
-position = Vector2(114.617, 116.231)
-scale = Vector2(0.3, 0.3)
+position = Vector2(40.4616, 127.797)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("9_vl4vh")
 
 [node name="TurnButton" type="Button" parent="."]
@@ -127,7 +142,7 @@ texture = ExtResource("6_xc4a1")
 centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(210.284, 44.7213)
+position = Vector2(206.567, 37.8388)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_pd4nx")
 centered = false
@@ -138,7 +153,7 @@ scale = Vector2(0.42, 0.42)
 texture = ExtResource("7_eppjx")
 centered = false
 
-[node name="CurrentTurnLabel" type="Label" parent="CharacterContainer"]
+[node name="NameLabel" type="Label" parent="CharacterContainer"]
 layout_direction = 3
 layout_mode = 0
 offset_left = 55.6133
@@ -150,41 +165,105 @@ text = "Guy"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="DamageLabel" type="Label" parent="CharacterContainer"]
+[node name="MovesSprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(379.799, 54.6127)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_d8bxd")
+centered = false
+
+[node name="MovesLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 420.372
-offset_top = 187.255
-offset_right = 468.372
-offset_bottom = 225.255
+offset_left = 412.253
+offset_top = 61.3481
+offset_right = 460.252
+offset_bottom = 99.3481
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NumMovesLabel" type="Label" parent="CharacterContainer"]
-layout_mode = 0
-offset_left = 420.372
-offset_top = 152.802
-offset_right = 468.371
-offset_bottom = 190.802
-theme_override_fonts/font = ExtResource("5_n8sjp")
-theme_override_font_sizes/font_size = 14
-text = "88"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ItemSword" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(392.372, 180.055)
+[node name="DamageSprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(381.688, 92.9664)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_xlgau")
 centered = false
 
-[node name="MoveSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(392.372, 144.953)
+[node name="DamageLabel" type="Label" parent="CharacterContainer"]
+layout_mode = 0
+offset_left = 409.894
+offset_top = 96.694
+offset_right = 457.894
+offset_bottom = 134.694
+theme_override_fonts/font = ExtResource("5_n8sjp")
+theme_override_font_sizes/font_size = 14
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RangeSprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(404.15, 153.053)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_p5wk3")
-centered = false
+texture = ExtResource("17_diddf")
+
+[node name="RangeLabel" type="Label" parent="CharacterContainer"]
+offset_left = 410.044
+offset_top = 136.871
+offset_right = 458.043
+offset_bottom = 174.871
+theme_override_fonts/font = ExtResource("5_n8sjp")
+theme_override_font_sizes/font_size = 14
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedSprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(485.585, 79.0673)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19_gtpi5")
+
+[node name="SpeedLabel" type="Label" parent="CharacterContainer"]
+offset_left = 492.091
+offset_top = 62.469
+offset_right = 540.089
+offset_bottom = 100.469
+theme_override_fonts/font = ExtResource("5_n8sjp")
+theme_override_font_sizes/font_size = 14
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArmorSprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(484.313, 115.86)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_m7c37")
+
+[node name="ArmorLabel" type="Label" parent="CharacterContainer"]
+offset_left = 491.206
+offset_top = 97.3193
+offset_right = 539.205
+offset_bottom = 135.319
+theme_override_fonts/font = ExtResource("5_n8sjp")
+theme_override_font_sizes/font_size = 14
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ThreatSprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(486.089, 152.691)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_k180g")
+
+[node name="ThreatLabel" type="Label" parent="CharacterContainer"]
+offset_left = 490.328
+offset_top = 136.509
+offset_right = 538.326
+offset_bottom = 174.509
+theme_override_fonts/font = ExtResource("5_n8sjp")
+theme_override_font_sizes/font_size = 14
+text = "88"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MoveButton" type="Button" parent="CharacterContainer"]
 layout_mode = 0
@@ -196,7 +275,7 @@ focus_mode = 0
 theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
 toggle_mode = true
-icon = ExtResource("11_p5wk3")
+icon = ExtResource("11_d8bxd")
 icon_alignment = 1
 
 [node name="InteractButton" type="Button" parent="CharacterContainer"]
@@ -233,6 +312,7 @@ offset_bottom = 400.0
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 19
 toggle_mode = true
 text = "SP 1"
 
@@ -245,28 +325,29 @@ offset_bottom = 400.0
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 19
 toggle_mode = true
 text = "SP 2"
 
-[node name="HudHeartFull" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(183.836, 216.656)
-scale = Vector2(0.4, 0.4)
+[node name="HeartSprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(178.527, 209.717)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_slf17")
 centered = false
 
 [node name="HealthBar" type="TextureProgressBar" parent="CharacterContainer"]
 z_index = 5
 offset_left = 215.613
-offset_top = 226.322
+offset_top = 228.822
 offset_right = 427.613
-offset_bottom = 256.322
-scale = Vector2(0.8, 0.6)
+offset_bottom = 258.822
+scale = Vector2(0.7, 0.6)
 value = 50.0
 texture_under = ExtResource("14_t4p6o")
 texture_progress = ExtResource("15_dpdc3")
 
-[node name="BoltGold" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(178.469, 236.446)
+[node name="EnergySprite" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(178.469, 238.946)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_vl4vh")
 centered = false
@@ -274,10 +355,10 @@ centered = false
 [node name="EnergyBar" type="TextureProgressBar" parent="CharacterContainer"]
 z_index = 5
 offset_left = 214.619
-offset_top = 251.522
+offset_top = 254.022
 offset_right = 426.619
-offset_bottom = 281.522
-scale = Vector2(0.8, 0.6)
+offset_bottom = 284.022
+scale = Vector2(0.7, 0.6)
 max_value = 5.0
 value = 3.0
 texture_under = ExtResource("14_t4p6o")

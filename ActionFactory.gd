@@ -23,7 +23,7 @@ static func add_exert(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(user.get_damage() + 4)
         return
-    var d = "Deals base damage + 4 to any target. Gains 3 Threat. Gains 3 movement penalty for 1 turn."
+    var d = "Deals base damage x2 to any target. Gains 3 Threat. Gains 3 movement penalty for 1 turn."
     _add_test_action(ent, "Exert", d, 0, -1, false, 2, [], effect, true, type)
     return
 
@@ -61,7 +61,7 @@ static func add_storm(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(user.get_damage() + 2)
         return
-    var d = "Target a 3x3 area and deal base damage + 2. Gains 2 Threat."
+    var d = "Target a 3x3 area and deal base damage +2. Gains 2 Threat."
     _add_test_action(ent, "Storm", d, -0, -1, true, 3, shape_3x3, effect, false, type)
     return
 
@@ -98,7 +98,7 @@ static func add_weapons_upgade(ent: Entity, type: int):
         for _ent in targets:
             _ent.damage_modifier += 1
         return
-    var d = "Target unit permanenlty gains 1 base damage."
+    var d = "Target unit permanenlty gains +1 base damage."
     _add_test_action(ent, "Weapons Upgrade", d, 0, 1, false, 2, [], effect, true, type)
     return
 
@@ -107,7 +107,7 @@ static func add_engine_upgrade(ent: Entity, type: int):
         for _ent in targets:
             _ent.movement_modifier += 1
         return
-    var d = "Target unit permanently gain 1 movement."
+    var d = "Target unit permanently gain +1 movement."
     _add_test_action(ent, "Engine Upgrade", d, 0, 1, false, 2, [], effect, true, type)
     return
 
@@ -117,7 +117,7 @@ static func add_snipe(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(user.get_damage())
         return
-    var d = "Deals base damage to any target. Gains 1 Threat."
+    var d = "Deals base damage to any target with +3 Range. Gains 1 Threat."
     _add_test_action(ent, "Snipe", d, 3, -1, false, 1, [], effect, true, type)
     return
 
