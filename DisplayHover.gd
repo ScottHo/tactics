@@ -10,11 +10,9 @@ func _ready():
 
 
 func show_tooltip():
-    print("SHOW")
     visible = true
     return
 
 func hide_tooltip():
-    print("HIDE")
     visible = false
     return

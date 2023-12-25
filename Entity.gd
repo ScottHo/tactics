@@ -65,6 +65,7 @@ func loseHP(hp):
     if health < 0:
         health = 0
     sprite.textAnimation().lose_health(hp)
+    sprite.update_hp(health)
     return
 
 func lose_hp_modifiers():
@@ -83,10 +84,26 @@ func gainHP(hp):
     if health > max_health:
         health = max_health
     sprite.textAnimation().gain_health(hp)
+    sprite.update_hp(health)
     return
 
 func set_max_hp(hp):
     max_health = hp
+    sprite.update_max_hp(max_health)
+    return
+
+func set_hp(hp):
+    health = hp
+    sprite.update_hp(health)
+    return
+
+func update_energy(en):
+    energy = en
+    if energy < 0:
+        energy = 0
+    if energy > 5:
+        energy = 5
+    sprite.update_energy(energy)
     return
 
 func gainThreat(t):
@@ -104,3 +121,12 @@ func loseThreat(t):
 func setThreat(t):
     threat = t
     return
+
+func add_iteractable(inter: Interactable):
+    sprite.add_interactable(inter)
+    return
+    
+func show_bars(show: bool):
+    sprite.show_bars(show)
+    return
+    

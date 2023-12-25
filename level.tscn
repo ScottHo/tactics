@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://AiActionService.gd" id="11_jfegk"]
 [ext_resource type="Script" path="res://DeathService.gd" id="12_4b2o3"]
 [ext_resource type="Script" path="res://AiSpecialService.gd" id="12_nmvgr"]
-[ext_resource type="Script" path="res://InfoService.gd" id="14_x5dxj"]
+[ext_resource type="PackedScene" uid="uid://ba1kyg3k3o3c4" path="res://info_service.tscn" id="14_gjvj8"]
 [ext_resource type="Script" path="res://InteractService.gd" id="15_dm32j"]
 
 [node name="MainService" type="Node2D"]
@@ -74,8 +74,7 @@ script = ExtResource("12_nmvgr")
 [node name="DeathService" type="Node2D" parent="."]
 script = ExtResource("12_4b2o3")
 
-[node name="InfoService" type="Node2D" parent="."]
-script = ExtResource("14_x5dxj")
+[node name="InfoService" parent="." instance=ExtResource("14_gjvj8")]
 
 [node name="InteractService" type="Node2D" parent="."]
 script = ExtResource("15_dm32j")

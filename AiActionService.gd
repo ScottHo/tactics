@@ -45,7 +45,7 @@ func start(entity: Entity):
     _entity = entity
     _map_bfs = MapBFS.new()
     var _range = _entity.attack.range
-    _map_bfs.init(_entity.location, _range, tileMap, highlightMap, Highlights.PURPLE, _state, true, false)
+    _map_bfs.init(_entity.location, _range, tileMap, highlightMap, Highlights.PURPLE, _state, true, true, false)
     _map_bfs.resetHighlights(true)
     return
     

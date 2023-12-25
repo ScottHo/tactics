@@ -115,8 +115,8 @@ func importTestData():
     _inter.storable = true
     _inter.location = Vector2i(2,2)
     var sprite: Sprite2D  = Sprite2D.new()
-    sprite.texture = load("res://Assets/item_sword.png")
-    sprite.scale = Vector2(.3, .3)
+    sprite.texture = load("res://Assets/blue_orb.png")
+    sprite.scale = Vector2(.5, .5)
     _inter.sprite = sprite
     add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(_inter.location)
@@ -132,11 +132,11 @@ func _add_test_entity(display_name, health, movement, speed, location, sprite_pa
     ent.alive = true
     ent.damage = 2
     ent.display_name = display_name
-    ent.health = health
+    ent.set_hp(health)
     ent.movement = movement
     ent.speed = speed
     ent.location = location
-    ent.energy = 1
+    ent.update_energy(1)
     ent.set_max_hp(health)
     ent.setThreat(0)
     if ally:
@@ -154,7 +154,7 @@ func nextTurn():
     resetPlayerServices()
     menuService.showTurns(turnService.next5Turns())
     currentEntity().moves_left = currentEntity().get_movement()
-    currentEntity().energy += 1
+    currentEntity().update_energy(currentEntity().energy + 1)
     if state.allies.has(current_turn_id):
         if currentEntity().interactable != null:
             if currentEntity().interactable.repeated_effect != null:
@@ -302,6 +302,7 @@ func doInteract(on):
 
 func interactDone():
     interactService.finish()
+    menuService.disableInteractButton()
     update_character_menu()
     checkDeaths()
     return

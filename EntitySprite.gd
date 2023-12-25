@@ -8,6 +8,10 @@ var points = []
 var lerp_step: int = 0
 signal doneMoving
 
+func _ready():
+    $CharacterCommon.move_child($CharacterCommon/Sprite, 0)
+    return
+    
 func _process(_delta):
     if moving:
         return
@@ -65,3 +69,19 @@ func update_max_hp(hp):
     $CharacterCommon/HealthBar.max_value = hp
     return
 
+func update_energy(en):
+    $CharacterCommon/EnergyBar.value = en
+    return
+
+func add_interactable(inter: Interactable):
+    inter.sprite.get_parent().remove_child(inter.sprite)
+    $CharacterCommon/InteractableContainer.add_child(inter.sprite)
+    inter.sprite.position = Vector2(0,0)
+    inter.sprite.scale = inter.sprite.scale*.5
+    inter.location = Vector2(999,999)
+    return
+
+func show_bars(show: bool):
+    $CharacterCommon/HealthBar.visible = show
+    $CharacterCommon/EnergyBar.visible = show
+    return

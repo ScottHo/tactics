@@ -29,7 +29,6 @@ func _input(event):
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
             MOUSE_BUTTON_LEFT:
-                print(_target)
                 var _inter: Interactable = _state.interactable_on_tile(_target)
                 if _inter == null:
                     print("Could not find interactable")
@@ -39,10 +38,10 @@ func _input(event):
                     return
                 print("Interact with" + _inter.display_name)
                 _inter.effect.call(_entity)
+                _state.remove_interactable(_inter)                
                 if _inter.storable:
                     print("Stored")
-                    _entity.interactable = _inter
-                _state.remove_interactable(_inter)
+                    _entity.add_iteractable(_inter)
                 interactDone.emit()
                 finish()
                 return
@@ -77,7 +76,7 @@ func finish():
 func start(entity: Entity):
     _entity = entity
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_entity.location, 1, tileMap, highlightMap, Highlights.PURPLE, _state, false, false)
+    _map_bfs.init(_entity.location, 1, tileMap, highlightMap, Highlights.PURPLE, _state, false, true, false)
     _map_bfs.resetHighlights(true)
     _enabled = true
     return

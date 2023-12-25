@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pgde8yg8u1fd"
-path="res://.godot/imported/Progress_Over.png-530880389bd7051b0442d459b13d3b86.ctex"
+uid="uid://dh7objn6mrlvt"
+path="res://.godot/imported/Energy_Over.png-69b13551fff34bd318a8ddee3e2804af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Progress_Over.png"
-dest_files=["res://.godot/imported/Progress_Over.png-530880389bd7051b0442d459b13d3b86.ctex"]
+source_file="res://Assets/Energy_Over.png"
+dest_files=["res://.godot/imported/Energy_Over.png-69b13551fff34bd318a8ddee3e2804af.ctex"]
 
 [params]
 

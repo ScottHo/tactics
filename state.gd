@@ -85,9 +85,7 @@ func entity_on_tile(vector):
     
 func interactable_on_tile(vector):
     for _interactable in interactables:
-        print(_interactable.location)
         if _interactable.location == vector:
-            print("!!")
             return _interactable
     return null
 
@@ -97,6 +95,5 @@ func add_interactable(inter: Interactable):
 
 func remove_interactable(inter: Interactable):
     interactables.remove_at(interactables.find(inter))
-    inter.sprite.queue_free()
     return
     

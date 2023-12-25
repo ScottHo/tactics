@@ -7,6 +7,7 @@ var _highlight_map: HighlightMap
 var _range: int
 var _range_color: Vector2i
 var _ignore_entities: bool
+var _ignore_interactables: bool
 var _ignore_walls: bool
 var _state: State
 
@@ -18,6 +19,7 @@ func init(
         range_color: Vector2i,
         state: State,
         ignore_entities: bool,
+        ignore_interactables: bool,
         ignore_walls: bool):
     _location = start_location
     _range = max_range
@@ -26,6 +28,7 @@ func init(
     _range_color = range_color
     _state = state
     _ignore_entities = ignore_entities
+    _ignore_interactables = ignore_interactables
     _ignore_walls = ignore_walls
     return
 
@@ -57,12 +60,18 @@ func calcRange_bfs():
             if not _ignore_entities:
                 if _check_on_entity(neighbor):
                     continue
+            if not _ignore_interactables:
+                if _check_in_inter(neighbor):
+                    continue
             frontier.push_back(neighbor)
             _bfs_points[neighbor] = _bfs_points.get(current, []) + [neighbor]
     return
 
 func _check_on_entity(vector):
     return _state.entity_on_tile(vector) != null
+
+func _check_in_inter(vector):
+     return _state.interactable_on_tile(vector) != null
 
 func inRange(vector: Vector2i, can_target_self := false) -> bool:
     return _bfs_points.has(vector) and (vector != _location or can_target_self)

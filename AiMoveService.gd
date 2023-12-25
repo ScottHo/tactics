@@ -37,7 +37,6 @@ func _find_target() -> Entity:
 
 func _find_closest() -> Vector2i:
     var highest_threat = _state.threatOrder()[0]
-    print(highest_threat.display_name)
     var loc = highest_threat.location
     return _map_bfs.closestInRange(loc)
 
@@ -54,7 +53,7 @@ func finish():
 func start(entity: Entity):
     _entity = entity
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_entity.location, _entity.get_movement(), tileMap, highlightMap, Highlights.PURPLE, _state, false, false)
+    _map_bfs.init(_entity.location, _entity.get_movement(), tileMap, highlightMap, Highlights.PURPLE, _state, false, false, false)
     _map_bfs.resetHighlights(true)
     return
     

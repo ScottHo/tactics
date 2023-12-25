@@ -34,7 +34,7 @@ func _input(event):
                 if len(_target_points) <= 0:
                     return
                 ActionCommon.do_action(_state, _entity,_target_points, action())
-                _entity.energy -= action().cost
+                _entity.update_energy(_entity.energy - action().cost)
                 actionDone.emit()
                 finish()
                 return
@@ -84,7 +84,7 @@ func start(entity: Entity, action_type: int):
     _entity = entity
     _action_type = action_type
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, true, false)
+    _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, true, true, false)
     _map_bfs.resetHighlights(true, action().self_castable)
     _enabled = true
     return

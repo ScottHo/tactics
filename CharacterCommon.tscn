@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6iqxvpypem6r"]
+[gd_scene load_steps=7 format=3 uid="uid://b6iqxvpypem6r"]
 
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="2_sbscd"]
 [ext_resource type="Texture2D" uid="uid://di2pvfhgjirl" path="res://Assets/Progress_Under.png" id="3_87rn2"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
-[ext_resource type="Texture2D" uid="uid://pgde8yg8u1fd" path="res://Assets/Progress_Over.png" id="4_bhbp5"]
+[ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/Health_Over.png" id="4_y3co7"]
+[ext_resource type="Texture2D" uid="uid://dh7objn6mrlvt" path="res://Assets/Energy_Over.png" id="5_apc0l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449
-height = 20.0135
+height = 42.1811
 
 [node name="CharacterCommon" type="CharacterBody2D"]
 z_index = 2
@@ -30,8 +31,10 @@ shape = SubResource("CapsuleShape2D_mdc5f")
 position = Vector2(-33.9763, -22.7052)
 
 [node name="TextAnimation" parent="TextParent" instance=ExtResource("3_dh5hh")]
-offset_top = 0.0
-offset_bottom = 26.0001
+offset_left = -4.7098
+offset_top = -0.0796904
+offset_right = 63.2902
+offset_bottom = 25.9204
 
 [node name="DeathSprite" type="Sprite2D" parent="."]
 visible = false
@@ -42,11 +45,28 @@ texture = ExtResource("2_sbscd")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 visible = false
-offset_left = -13.3174
-offset_top = 2.55009
-offset_right = 286.683
-offset_bottom = 52.5501
-scale = Vector2(0.1, 0.1)
+z_index = 5
+offset_left = -32.1168
+offset_top = 3.494
+offset_right = 179.883
+offset_bottom = 33.494
+scale = Vector2(0.3, 0.3)
 value = 50.0
 texture_under = ExtResource("3_87rn2")
-texture_progress = ExtResource("4_bhbp5")
+texture_progress = ExtResource("4_y3co7")
+
+[node name="EnergyBar" type="TextureProgressBar" parent="."]
+visible = false
+z_index = 5
+offset_left = -31.859
+offset_top = 12.6685
+offset_right = 180.141
+offset_bottom = 42.6685
+scale = Vector2(0.3, 0.3)
+max_value = 5.0
+value = 2.0
+texture_under = ExtResource("3_87rn2")
+texture_progress = ExtResource("5_apc0l")
+
+[node name="InteractableContainer" type="Node2D" parent="."]
+position = Vector2(-3.25181, -44.6995)

@@ -13,3 +13,5 @@ script = ExtResource("1_33r4y")
 position = Vector2(1.29925, -12.7505)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_ewq67")
+
+[editable path="CharacterCommon"]

@@ -7,4 +7,3 @@ var repeated_effect: Callable
 var storable: bool
 var location: Vector2i
 var sprite: Node2D
-

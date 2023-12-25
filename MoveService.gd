@@ -68,7 +68,7 @@ func start(entity: Entity):
     _points = []
     previous_coords = Vector2i(-99,-99)
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_starting_point, maxMoves, tileMap, highlightMap, Highlights.PURPLE, _state, false, false)
+    _map_bfs.init(_starting_point, maxMoves, tileMap, highlightMap, Highlights.PURPLE, _state, false, false, false)
     _map_bfs.resetHighlights(true)
     _enabled = true    
     return
