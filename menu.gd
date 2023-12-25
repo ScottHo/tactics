@@ -7,12 +7,12 @@ signal moveActionInitiate
 signal nextTurnActionInitiate
 signal interactActionInitiate
 signal actionInitiate
-@onready var moveButton: Button = $BottomBar/MoveButton
+@onready var moveButton: Button = $CharacterContainer/MoveButton
 @onready var nextTurnButton: Button = $TurnButton
-@onready var interactButton: Button = $BottomBar/InteractButton
-@onready var attackButton: Button = $BottomBar/AttackButton
-@onready var action1Button: Button = $BottomBar/Action1Button
-@onready var action2Button: Button = $BottomBar/Action2Button
+@onready var interactButton: Button = $CharacterContainer/InteractButton
+@onready var attackButton: Button = $CharacterContainer/AttackButton
+@onready var action1Button: Button = $CharacterContainer/Action1Button
+@onready var action2Button: Button = $CharacterContainer/Action2Button
 @onready var currentEnergy: Label = $CharacterContainer/CurrentEnergy
 @onready var numMovesLabel: Label = $CharacterContainer/NumMovesLabel
 @onready var currentTurnLabel: Label = $CharacterContainer/CurrentTurnLabel
@@ -92,10 +92,10 @@ func showCurrentTurn(turn: int):
     if is_ally:
         
         attackButton.disabled = false
-        action1Button.text = entity.action1.display_name.replace(" ", "\n")
+        #action1Button.text = entity.action1.display_name.replace(" ", "\n")
         if entity.action1.cost <= entity.energy:
             action1Button.disabled = false
-        action2Button.text = entity.action2.display_name.replace(" ", "\n")
+        #action2Button.text = entity.action2.display_name.replace(" ", "\n")
         if entity.action2.cost <= entity.energy:
             action2Button.disabled = false
         updateEntityInfo(entity)
