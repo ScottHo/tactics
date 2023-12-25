@@ -10,6 +10,12 @@ var background: Sprite2D
 var _entity: Entity
 var _is_ally: bool
 
+func _ready():
+    var r : ReferenceRect = $ReferenceRect
+    r.mouse_entered.connect(expand)
+    r.mouse_exited.connect(unexpand)
+    unexpand()
+    return
 
 func update_nodes():
     if hpLabel == null:
@@ -27,8 +33,7 @@ func update_from_entity(entity: Entity, is_ally: bool):
     _entity = entity
     _is_ally = is_ally
     charSprite.texture = _entity.sprite.texture_resource()
-    charSprite.scale = _entity.sprite.texture_scale()*1.3
-    set_glow(false)
+    charSprite.scale = _entity.sprite.texture_scale()*1.2
     update()
     return
 
@@ -45,17 +50,21 @@ func update():
     _set_colors()
     return
 
-func set_glow(glow: bool):
-    if glow:
-        if _is_ally:
-            background.texture = load("res://Assets/info_box_glow.png")
-        else:
-            background.texture = load("res://Assets/info_box_glow_enemy.png")
+func expand():
+    $Stats.visible = true
+    $Buffs1.visible = true
+    $Buffs2.visible = true
+    if _is_ally:
+        background.texture = load("res://Assets/info_box_expanded.png")
     else:
-        if _is_ally:
-            background.texture = load("res://Assets/info_box.png")
-        else:
-            background.texture = load("res://Assets/info_box_enemy.png")
+        background.texture = load("res://Assets/info_box_enemy_expanded.png")
+    return
+
+func unexpand():
+    $Stats.visible = false
+    $Buffs1.visible = false
+    $Buffs2.visible = false
+    background.texture = load("res://Assets/info_box.png")
     return
 
 func _set_colors():

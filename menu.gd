@@ -63,16 +63,16 @@ func _create_entity_tabs():
         tab.update_from_entity(entity, true)
         $EntityTabContainer.add_child(tab)
         tab.position.y -= offset
-        offset -= 75
+        offset -= 90
         _tab_dict[entity.id] = tab
     
-    offset -= 50
+    offset -= 40
     for entity in _state.all_enemies():
         var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
         tab.update_from_entity(entity, false)
         $EntityTabContainer.add_child(tab)
         tab.position.y -= offset
-        offset -= 75
+        offset -= 90
         _tab_dict[entity.id] = tab
     return
 
@@ -106,10 +106,6 @@ func showCurrentTurn(turn: int):
     show_description(false)
     $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
     $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*3.5
-    if not _tab_dict.is_empty():
-        for tab in _tab_dict.values():
-            tab.set_glow(false)
-        _tab_dict[entity.id].set_glow(true)
     return
 
 func updateEntityInfo(entity):
