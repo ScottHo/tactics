@@ -105,15 +105,23 @@ func importTestData():
     
     var _inter = Interactable.new()
     _inter.display_name = "Test"
-    _inter.description = "Test Interactable Description"
+    _inter.description = "Blue Orb Buff Thing
+Pick up for +4 damage, but -4 movement"
     _inter.effect = func (user: Entity):
-        print("on pick up")
+        user.damage_modifier += 4
+        user.movement_modifier -= 4
         return
+
+    _inter.drop_effect = func (user: Entity):
+        user.damage_modifier -= 4
+        user.movement_modifier += 4
+        return
+
     _inter.repeated_effect = func (user: Entity):
         print("repeat")
         return
     _inter.storable = true
-    _inter.location = Vector2i(2,2)
+    _inter.location = Vector2i(4,2)
     var sprite: Sprite2D  = Sprite2D.new()
     sprite.texture = load("res://Assets/blue_orb.png")
     sprite.scale = Vector2(.5, .5)
@@ -162,6 +170,8 @@ func nextTurn():
         currentEntity().loseThreat(1)
         _is_ai_turn = false
         menuService.enableAllButtons()
+        if currentEntity().get_movement() == 0:
+            menuService.disableMovesButton()
     else:
         _is_ai_turn = true
         menuService.disableAllButtons()
@@ -169,6 +179,8 @@ func nextTurn():
     update_character_menu()
     menuService.showCurrentTurn(current_turn_id)    
     return
+
+
 
 func startAnimationDelay(delay: float):
     _do_animation_delay = delay
@@ -252,7 +264,8 @@ func doAiSpecial():
     return
 
 func resetPlayerServices():
-    menuService.show_description(false)
+    menuService.force_show_description = false
+    menuService.show_description(false, null)
     moveService.finish()
     actionService.finish()
     interactService.finish()
@@ -297,7 +310,6 @@ func doInteract(on):
     if not on:
         return
     interactService.start(currentEntity())
-    menuService.set_description_text("Interact with objects")
     return
 
 func interactDone():
@@ -312,15 +324,8 @@ func doAction(on, action_type: int):
     if not on:
         return
     actionService.start(currentEntity(), action_type)
-    var d = ""
-    if action_type == ActionType.ATTACK:
-        d = currentEntity().attack.description
-    if action_type == ActionType.ACTION1:
-        d = currentEntity().action1.description
-    if action_type == ActionType.ACTION2:
-        d = currentEntity().action2.description
-    menuService.set_description_text(d)
-    menuService.show_description(true)
+    menuService.force_show_description = true
+    menuService.show_description(true, action_type)
     return
 
 func actionDone():

@@ -3,6 +3,9 @@ class_name MenuService extends Node2D
 var _state: State
 var _button_state_cache: Array
 var _tab_dict: Dictionary = {}
+var _action_descriptions: Dictionary = {}
+var _action_costs: Dictionary = {}
+var force_show_description := false
 signal moveActionInitiate
 signal nextTurnActionInitiate
 signal interactActionInitiate
@@ -19,6 +22,7 @@ signal actionInitiate
 @onready var healthLabel: Label = $CharacterContainer/HealthLabel
 @onready var damageLabel: Label = $CharacterContainer/DamageLabel
 
+
 func _ready():
     nextTurnButton.button_down.connect(func():
         unpress_all_buttons()
@@ -31,17 +35,23 @@ func _ready():
     interactButton.toggled.connect(func(b):
         unpress_all_buttons(interactButton)
         interactActionInitiate.emit(b))
-    attackButton.toggled.connect(func(b):
-        unpress_all_buttons(attackButton)
-        actionInitiate.emit(b, ActionType.ATTACK))
-    action1Button.toggled.connect(func(b):
-        unpress_all_buttons(action1Button)
-        actionInitiate.emit(b, ActionType.ACTION1))
-    action2Button.toggled.connect(func(b):
-        unpress_all_buttons(action2Button)
-        actionInitiate.emit(b, ActionType.ACTION2))
+        
+    setup_action_button(attackButton, ActionType.ATTACK)
+    setup_action_button(action1Button, ActionType.ACTION1)
+    setup_action_button(action2Button, ActionType.ACTION2)
+
     cache_button_states()
     _tab_dict = {}
+    return
+
+func setup_action_button(button: Button, action_type):
+    button.toggled.connect(func(b):
+        unpress_all_buttons(button)
+        actionInitiate.emit(b, action_type))
+    button.mouse_entered.connect(func():
+        show_description(true, action_type))
+    button.mouse_exited.connect(func():
+        show_description(false, action_type))
     return
 
 func setState(state: State):
@@ -99,13 +109,24 @@ func showCurrentTurn(turn: int):
         if entity.action2.cost <= entity.energy:
             action2Button.disabled = false
         updateEntityInfo(entity)
+        setup_action_descriptions(entity)
+        
     else:
         currentEnergy.text = "-"
         healthLabel.text = str(entity.health)
 
-    show_description(false)
+    show_description(false, null)
     $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
     $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*3.5
+    return
+
+func setup_action_descriptions(entity: Entity):
+    _action_descriptions[ActionType.ATTACK] = entity.attack.description
+    _action_descriptions[ActionType.ACTION1] = entity.action1.description
+    _action_descriptions[ActionType.ACTION2] = entity.action2.description
+    _action_costs[ActionType.ATTACK] = entity.attack.cost
+    _action_costs[ActionType.ACTION1] = entity.action1.cost
+    _action_costs[ActionType.ACTION2] = entity.action2.cost
     return
 
 func updateEntityInfo(entity):
@@ -187,10 +208,6 @@ func set_mechanic_text(t):
     $MechanicContainer/MechanicLabel.text = t
     return
 
-func set_description_text(t):
-    $DescriptionContainer/DescriptionLabel.text = t
-    return
-
 func win():
     disableActionButtons()
     $GameOverLabel.text = "You win!"
@@ -201,6 +218,13 @@ func lose():
     $GameOverLabel.text = "You lose!"
     return
 
-func show_description(show):
+func show_description(show, action_type):
+    if force_show_description:
+        show = true
+    if not _action_descriptions.has(action_type):
+        show = false
+    if show:
+        $DescriptionContainer/DescriptionLabel.text = _action_descriptions[action_type]
+        $DescriptionContainer/DescriptionCost.text = str(_action_costs[action_type])
     $DescriptionContainer.visible = show
     return

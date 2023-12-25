@@ -30,8 +30,26 @@ func _input(event):
         match event.button_index:
             MOUSE_BUTTON_LEFT:
                 var _inter: Interactable = _state.interactable_on_tile(_target)
-                if _inter == null:
+                if _inter == null and _entity.interactable == null:
                     print("Could not find interactable")
+                    return
+                if _inter == null and _entity.interactable != null:
+                    print("Attempting to place interactable at " + str(_target))
+                    if _state.entity_on_tile(_target):
+                        return
+                    _inter = _entity.interactable
+                    _state.add_interactable(_inter)
+                    _inter.sprite.get_parent().remove_child(_inter.sprite)
+                    $"..".add_child(_inter.sprite)
+                    _inter.sprite.global_position = tileMap.pointToGlobal(_target)
+                    _inter.sprite.scale = _inter.sprite.scale*2
+                    _inter.location = _target
+                    _inter.drop_effect.call(_entity)
+                    
+                    _entity.interactable = null
+                    print("Interactable placed")
+                    interactDone.emit()
+                    finish()
                     return
                 if _entity.interactable != null and _inter.storable:
                     print("Already has item")

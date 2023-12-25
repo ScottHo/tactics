@@ -31,7 +31,7 @@ static func add_take_cover(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array):
         user.immune_count = 1
         return
-    var d = "Target self to be completely immune for 1 damage instance until the next turn"
+    var d = "Target self to be completely immune for one damage instance until the next turn"
     _add_test_action(ent, "Take Cover", d, 0, true, 2, [], effect, false, type)
     return
 

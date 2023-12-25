@@ -41,13 +41,22 @@ var shield_count: int
 var shield_value: int
 
 func get_damage() -> int:
-    return damage + damage_modifier
+    var ret = damage + damage_modifier
+    if ret < 0:
+        ret = 0
+    return ret
 
 func get_movement() -> int:
-    return movement + movement_modifier + move_buff_value - move_debuff_value
+    var ret = movement + movement_modifier + move_buff_value - move_debuff_value
+    if ret < 0:
+        ret = 0
+    return ret
 
 func get_speed() -> int:
-    return speed + speed_modifier
+    var ret = speed + speed_modifier
+    if ret < 0:
+        ret = 0
+    return ret
 
 func get_armor() -> int:
     return armor + armor_modifier - weakness_value + shield_value
@@ -123,6 +132,7 @@ func setThreat(t):
     return
 
 func add_iteractable(inter: Interactable):
+    interactable = inter
     sprite.add_interactable(inter)
     return
     

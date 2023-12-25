@@ -125,10 +125,32 @@ layout_mode = 0
 offset_left = 32.6289
 offset_top = 14.4865
 offset_right = 342.629
-offset_bottom = 124.486
+offset_bottom = 84.4865
 theme_override_font_sizes/font_size = 12
 text = "No Action Selected."
 autowrap_mode = 2
+
+[node name="DescriptionCost" type="Label" parent="DescriptionContainer"]
+offset_left = 97.4044
+offset_top = 107.604
+offset_right = 98.4044
+offset_bottom = 123.604
+theme_override_font_sizes/font_size = 12
+text = "5"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="DescriptionContainer"]
+layout_mode = 0
+offset_left = 29.1353
+offset_top = 106.476
+offset_right = 88.1353
+offset_bottom = 127.476
+text = "Cost:"
+
+[node name="Sprite2D" type="Sprite2D" parent="DescriptionContainer"]
+position = Vector2(114.617, 116.231)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_vl4vh")
 
 [node name="TurnButton" type="Button" parent="."]
 offset_left = 1350.73
