@@ -22,13 +22,15 @@ func _input(event):
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if _target != coords:
             clearTargetHighlights()
-            _target = coords            
+            _target = coords
             if not _map_bfs.inRange(_target):
                 return
             fillTargetHighlights()
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
             MOUSE_BUTTON_LEFT:
+                if not _map_bfs.inRange(_target):
+                    return
                 var _inter: Interactable = _state.interactable_on_tile(_target)
                 if _inter == null and _entity.interactable == null:
                     print("Could not find interactable")
