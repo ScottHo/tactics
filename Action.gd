@@ -1,6 +1,7 @@
 class_name Action extends Node
 
-var range: int
+var range_modifier: int
+var strict_range: int = -1
 var shape: Array
 var effect: Callable
 var cost: int

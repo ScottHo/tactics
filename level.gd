@@ -69,39 +69,39 @@ func _process(delta):
 
 func importTestData():
     print("Importing Test Data")
-    var ent = _add_test_entity("Brutis", 10, 4, 10, Vector2i(0, 0), "res://brutus.tscn", true)
-    ActionFactory.add_base_attack(ent, 1)
+    var ent = _add_test_entity("Brutis", 10, 4, 1, 10, Vector2i(0, 0), "res://brutus.tscn", true)
+    ActionFactory.add_base_attack(ent)
     ActionFactory.add_exert(ent, ActionType.ACTION1)
     ActionFactory.add_take_cover(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Oilee", 10, 5, 10, Vector2i(0, 1), "res://oilee.tscn", true)
-    ActionFactory.add_base_attack(ent, 1)
+    ent = _add_test_entity("Oilee", 10, 5, 1, 10, Vector2i(0, 1), "res://oilee.tscn", true)
+    ActionFactory.add_base_attack(ent)
     ActionFactory.add_sticky_grenade(ent, ActionType.ACTION1)
     ActionFactory.add_refuel(ent, ActionType.ACTION2)
 
-    ent = _add_test_entity("Electo", 10, 3, 10, Vector2i(0, 2), "res://electo.tscn", true)
-    ActionFactory.add_base_attack(ent, 4)
+    ent = _add_test_entity("Electo", 10, 3, 4, 10, Vector2i(0, 2), "res://electo.tscn", true)
+    ActionFactory.add_base_attack(ent)
     ActionFactory.add_storm(ent, ActionType.ACTION1)
     ActionFactory.add_static_shield(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Nano-nano", 10, 3, 10, Vector2i(0, 3), "res://nanonano.tscn", true)
-    ActionFactory.add_base_attack(ent, 4)
+    ent = _add_test_entity("Nano-nano", 10, 3, 4, 10, Vector2i(0, 3), "res://nanonano.tscn", true)
+    ActionFactory.add_base_attack(ent)
     ActionFactory.add_focused_repair(ent, ActionType.ACTION1)
     ActionFactory.add_nano_field(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Smithy", 10, 4, 10, Vector2i(0, 4), "res://smithy.tscn", true)
-    ActionFactory.add_base_attack(ent, 1)
+    ent = _add_test_entity("Smithy", 10, 4, 1, 10, Vector2i(0, 4), "res://smithy.tscn", true)
+    ActionFactory.add_base_attack(ent)
     ActionFactory.add_weapons_upgade(ent, ActionType.ACTION1)
     ActionFactory.add_engine_upgrade(ent, ActionType.ACTION2)
 
-    ent = _add_test_entity("Longshot", 10, 4, 10, Vector2i(0, 5), "res://longshot.tscn", true)
-    ActionFactory.add_base_attack(ent, 5)
+    ent = _add_test_entity("Longshot", 10, 4, 5, 10, Vector2i(0, 5), "res://longshot.tscn", true)
+    ActionFactory.add_base_attack(ent)
     ActionFactory.add_snipe(ent, ActionType.ACTION1)
     ActionFactory.add_titanium_bullet(ent, ActionType.ACTION2)
     
-    ent = _add_test_entity("Boss", 50, 6, 10, Vector2i(11, 2), "res://enemy_1.tscn", false)
+    ent = _add_test_entity("Boss", 50, 6, 1, 10, Vector2i(11, 2), "res://enemy_1.tscn", false)
     ent.damage += 2
-    ActionFactory.add_base_attack(ent, 1)
+    ActionFactory.add_base_attack(ent)
     
     var _inter = Interactable.new()
     _inter.display_name = "Test"
@@ -131,7 +131,7 @@ Pick up for +4 damage, but -4 movement"
     state.add_interactable(_inter)
     return
 
-func _add_test_entity(display_name, health, movement, speed, location, sprite_path, ally):
+func _add_test_entity(display_name, health, movement, _range, speed, location, sprite_path, ally):
     var ent = Entity.new()
     var sprite: EntitySprite  = load(sprite_path).instantiate()
     add_child(sprite)
@@ -142,6 +142,7 @@ func _add_test_entity(display_name, health, movement, speed, location, sprite_pa
     ent.display_name = display_name
     ent.set_hp(health)
     ent.movement = movement
+    ent.range = _range
     ent.speed = speed
     ent.location = location
     ent.update_energy(1)

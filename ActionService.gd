@@ -62,7 +62,9 @@ func clearTargetHighlights():
     return
 
 func maxRange() -> int:
-    return action().range
+    if action().strict_range != -1:
+        return action().strict_range
+    return _entity.get_range() + action().range_modifier
 
 func shape() -> Array:
     return action().shape

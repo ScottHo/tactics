@@ -23,12 +23,14 @@ var movement: int
 var speed: int # 10 is average, per 100 "cycles"
 var damage: int
 var armor: int
+var range: int
 
 # Permanent Modifiers
 var armor_modifier: int
 var movement_modifier: int
 var damage_modifier: int
 var speed_modifier: int
+var range_modifier: int
 
 # Temporary Modifiers
 var immune_count: int
@@ -51,6 +53,12 @@ func get_movement() -> int:
     var ret = movement + movement_modifier + move_buff_value - move_debuff_value
     if ret < 0:
         ret = 0
+    return ret
+
+func get_range() -> int:
+    var ret = range + range_modifier
+    if ret < 1:
+        ret = 1
     return ret
 
 func get_speed() -> int:
