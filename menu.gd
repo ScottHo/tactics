@@ -99,13 +99,11 @@ func showCurrentTurn(turn: int):
         if entity.action2.cost <= entity.energy:
             action2Button.disabled = false
         updateEntityInfo(entity)
-        
-        set_description_text("No Action Selected")
-        
     else:
         currentEnergy.text = "-"
         healthLabel.text = str(entity.health)
-        set_description_text("Enemy Turn")
+
+    show_description(false)
     $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
     $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*3.5
     if not _tab_dict.is_empty():
@@ -205,4 +203,8 @@ func win():
 func lose():
     disableActionButtons()
     $GameOverLabel.text = "You lose!"
+    return
+
+func show_description(show):
+    $DescriptionContainer.visible = show
     return

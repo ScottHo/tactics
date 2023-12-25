@@ -252,7 +252,7 @@ func doAiSpecial():
     return
 
 func resetPlayerServices():
-    menuService.set_description_text("No Action Selected.")
+    menuService.show_description(false)
     moveService.finish()
     actionService.finish()
     interactService.finish()
@@ -320,6 +320,7 @@ func doAction(on, action_type: int):
     if action_type == ActionType.ACTION2:
         d = currentEntity().action2.description
     menuService.set_description_text(d)
+    menuService.show_description(true)
     return
 
 func actionDone():
