@@ -1,4 +1,6 @@
 TODO
+Turn Order for Left Panels
+Right click drag to move camera
 Undo Button
 Range and Base Range
 Movement penalty never resets

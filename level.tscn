@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq8xqg1q1wgxp"]
+[gd_scene load_steps=17 format=3 uid="uid://cq8xqg1q1wgxp"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_uypkh"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="2_df7di"]
 [ext_resource type="TileSet" uid="uid://c71n7ovyb0chb" path="res://highlight_tiles.tres" id="3_ilats"]
 [ext_resource type="Script" path="res://TileMap.gd" id="3_j2hyq"]
 [ext_resource type="Script" path="res://HighlightMap.gd" id="4_fv11e"]
+[ext_resource type="Texture2D" uid="uid://dpbthq2mmtanf" path="res://Assets/space1.png" id="6_1ogou"]
 [ext_resource type="Script" path="res://MoveService.gd" id="6_jpms6"]
 [ext_resource type="PackedScene" uid="uid://ccrflxfdcwo3c" path="res://menu.tscn" id="7_psia6"]
 [ext_resource type="Script" path="res://TurnService.gd" id="8_5tca6"]
@@ -49,6 +50,15 @@ script = ExtResource("4_fv11e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(282.411, 217.886)
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0.247059)
+z_index = -1
+offset_left = -795.477
+offset_top = -452.885
+offset_right = 804.523
+offset_bottom = 1147.12
+texture = ExtResource("6_1ogou")
 
 [node name="MenuService" parent="." instance=ExtResource("7_psia6")]
 position = Vector2(-484.582, -214.121)
