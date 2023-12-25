@@ -47,6 +47,8 @@ func update():
     else:
         energyLabel.text = "-"
         threatLabel.text = "-"
+    $HealthBar.max_value = _entity.max_health
+    $HealthBar.value = _entity.health
     _set_colors()
     return
 
