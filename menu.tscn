@@ -176,6 +176,7 @@ offset_right = 119.048
 offset_bottom = 156.308
 
 [node name="Label2" type="Label" parent="DescriptionContainer/MoveContainer"]
+layout_mode = 0
 offset_left = -17.7704
 offset_right = 92.2296
 offset_bottom = 37.0

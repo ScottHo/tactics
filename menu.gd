@@ -303,9 +303,19 @@ func lose():
     $GameOverLabel.text = "You lose!"
     return
 
+func show_description_click(action_type):
+    force_show_description = false
+    show_description(true, action_type)    
+    force_show_description = true
+    return
+
 func show_description(show, action_type):
     if force_show_description:
-        show = true
+        $DescriptionContainer.visible = true
+        return
+    if not show:
+        $DescriptionContainer.visible = false
+        return
     if not _action_descriptions.has(action_type):
         if action_type == ActionType.MOVE:
             descName.text = "Move"

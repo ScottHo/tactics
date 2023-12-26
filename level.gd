@@ -280,8 +280,7 @@ func doMove(on):
     if not on:
         return
     if not _is_ai_turn:
-        menuService.force_show_description = true
-        menuService.show_description(true, ActionType.MOVE)
+        menuService.show_description_click(ActionType.MOVE)
     moveService.start(currentEntity())
     return
 
@@ -313,8 +312,7 @@ func doInteract(on):
     if not on:
         return
     interactService.start(currentEntity())
-    menuService.force_show_description = true
-    menuService.show_description(true, ActionType.INTERACT)
+    menuService.show_description_click(ActionType.INTERACT)
     return
 
 func interactDone():
@@ -331,8 +329,7 @@ func doAction(on, action_type: int):
     if not on:
         return
     actionService.start(currentEntity(), action_type)
-    menuService.force_show_description = true
-    menuService.show_description(true, action_type)
+    menuService.show_description_click(action_type)
     return
 
 func actionDone():
