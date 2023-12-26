@@ -38,6 +38,7 @@ func _input(event):
                     # Nothing on tile
                     hide_all()
         else:
+            _previous_coords = coords
             hide_all()
     return
 

@@ -17,7 +17,7 @@ func update(random=true):
             turnNode.total = randi_range(1, 9) * 10
         _turnNodes.append(turnNode)
     
-    for i in range(5):
+    for i in range(10):
         _turnCache.append(findNextTurn())
     return
 
@@ -56,5 +56,5 @@ func startNextTurn() -> int:
     _turnCache.append(findNextTurn())
     return ret
 
-func next5Turns() -> Array[int]:
+func next10Turns() -> Array[int]:
     return _turnCache

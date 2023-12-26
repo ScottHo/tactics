@@ -95,10 +95,10 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_reefb")
 
 [node name="HealthLabel" type="Label" parent="Stats"]
-offset_left = 34.8944
-offset_top = -7.75373
-offset_right = 88.8944
-offset_bottom = 19.2463
+offset_left = 35.1434
+offset_top = -9.74603
+offset_right = 89.1434
+offset_bottom = 17.254
 text = "999
 "
 label_settings = SubResource("LabelSettings_th8bq")
@@ -106,10 +106,10 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="SlashLabel" type="Label" parent="Stats"]
-offset_left = 88.2526
-offset_top = -7.75373
-offset_right = 102.253
-offset_bottom = 19.2463
+offset_left = 88.5016
+offset_top = -9.74603
+offset_right = 102.502
+offset_bottom = 17.254
 text = "/
 "
 label_settings = SubResource("LabelSettings_cqano")
@@ -117,10 +117,10 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="MaxHealthLabel" type="Label" parent="Stats"]
-offset_left = 104.331
-offset_top = -7.50272
-offset_right = 158.331
-offset_bottom = 19.4973
+offset_left = 104.58
+offset_top = -9.49502
+offset_right = 158.58
+offset_bottom = 17.505
 text = "999"
 label_settings = SubResource("LabelSettings_6r53r")
 vertical_alignment = 1

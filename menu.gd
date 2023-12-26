@@ -7,6 +7,8 @@ var _action_names: Dictionary = {}
 var _action_descriptions: Dictionary = {}
 var _action_costs: Dictionary = {}
 var force_show_description := false
+var _current_interactable: String = ""
+
 signal moveActionInitiate
 signal nextTurnActionInitiate
 signal interactActionInitiate
@@ -33,7 +35,16 @@ signal actionInitiate
 
 @onready var expandHover: Sprite2D = $TurnsContainer/ExpandHover
 @onready var turnSprites: Array = [$TurnsContainer/Turn0, $TurnsContainer/Turn1,
-    $TurnsContainer/Turn2, $TurnsContainer/Turn3, $TurnsContainer/Turn4]
+    $TurnsContainer/Turn2, $TurnsContainer/Turn3, $TurnsContainer/Turn4,
+    $TurnsContainer/Turn5, $TurnsContainer/Turn6, $TurnsContainer/Turn7,
+    $TurnsContainer/Turn8, $TurnsContainer/Turn9]
+
+@onready var descName: Label = $DescriptionContainer/DescriptionName
+@onready var descMain: Label = $DescriptionContainer/DescriptionLabel
+@onready var descCost: Label = $DescriptionContainer/CostContainer/Cost
+@onready var descMoves: Label = $DescriptionContainer/MoveContainer/MovesLeft
+@onready var descInter: Label = $DescriptionContainer/InteractMessage
+@onready var descContainer: Control = $DescriptionContainer
 
 
 func _ready():
@@ -41,23 +52,39 @@ func _ready():
         unpress_all_buttons()
         nextTurnActionInitiate.emit())
 
-    moveButton.toggled.connect(func(b):
-        unpress_all_buttons(moveButton)
-        moveActionInitiate.emit(b)
-        )
-    interactButton.toggled.connect(func(b):
-        unpress_all_buttons(interactButton)
-        interactActionInitiate.emit(b))
-        
+    setup_move_button()
+    setup_interact_button()
     setup_action_button(attackButton, ActionType.ATTACK)
     setup_action_button(action1Button, ActionType.ACTION1)
     setup_action_button(action2Button, ActionType.ACTION2)
+
     $TurnsContainer/ExpandReference.mouse_entered.connect(func():
         show_future_turns(true))
     $TurnsContainer/ExpandReference.mouse_exited.connect(func():
         show_future_turns(false))
+
     cache_button_states()
     _tab_dict = {}
+    return
+
+func setup_move_button():
+    moveButton.toggled.connect(func(b):
+        unpress_all_buttons(moveButton)
+        moveActionInitiate.emit(b))
+    moveButton.mouse_entered.connect(func():
+        show_description(true, ActionType.MOVE))
+    moveButton.mouse_exited.connect(func():
+        show_description(false, ActionType.MOVE))
+    return
+
+func setup_interact_button():
+    interactButton.toggled.connect(func(b):
+        unpress_all_buttons(interactButton)
+        interactActionInitiate.emit(b))
+    interactButton.mouse_entered.connect(func():
+        show_description(true, ActionType.INTERACT))
+    interactButton.mouse_exited.connect(func():
+        show_description(false, ActionType.INTERACT))
     return
 
 func setup_action_button(button: Button, action_type):
@@ -103,11 +130,8 @@ func _create_entity_tabs():
     return
 
 func showTurns(turns: Array[int]):
-    _setup_turn_sprite(_state.get_entity(turns[0]), turnSprites[0])
-    _setup_turn_sprite(_state.get_entity(turns[1]), turnSprites[1])
-    _setup_turn_sprite(_state.get_entity(turns[2]), turnSprites[2])
-    _setup_turn_sprite(_state.get_entity(turns[3]), turnSprites[3])
-    _setup_turn_sprite(_state.get_entity(turns[4]), turnSprites[4])
+    for i in range(10):
+        _setup_turn_sprite(_state.get_entity(turns[i]), turnSprites[i])
     return
 
 func _setup_turn_sprite(entity: Entity, sprite: Sprite2D):
@@ -120,11 +144,8 @@ func show_future_turns(show):
     #    expandHover.texture = load("res://Assets/expand-button-glow.png")
     #else:
     #    expandHover.texture = load("res://Assets/expand-button.png")
-    turnSprites[0].visible = show
-    turnSprites[1].visible = show
-    turnSprites[2].visible = show
-    turnSprites[3].visible = show
-    turnSprites[4].visible = show
+    for i in range(10):
+        turnSprites[i].visible = show
     return
     
 func showCurrentTurn(turn: int):
@@ -176,11 +197,14 @@ func updateEntityInfo(entity: Entity):
     healthBar.value = entity.health
     energyBar.value = entity.energy
     damageLabel.text = str(entity.get_damage())
-    movesLabel.text = str(entity.moves_left)
+    movesLabel.text = str(entity.get_movement())
+    descMoves.text = str(entity.moves_left)
     speedLabel.text = str(entity.get_speed())
     armorLabel.text = str(entity.get_armor())
     rangeLabel.text = str(entity.get_range())
     threatLabel.text = str(entity.threat)
+    if entity.interactable != null:
+        _current_interactable = entity.interactable.display_name
     if not entity.is_ally:
         threatLabel.text = "-"
     _set_colors(entity)
@@ -188,7 +212,8 @@ func updateEntityInfo(entity: Entity):
 
 func _set_colors(entity: Entity):
     Utils.set_label_color(healthLabel, Utils.health_color(entity))
-    Utils.set_label_color(movesLabel, Utils.movement_color(entity, true))
+    Utils.set_label_color(movesLabel, Utils.movement_color(entity, false))
+    Utils.set_label_color(descMoves, Utils.movement_color(entity, true))
     Utils.set_label_color(damageLabel, Utils.damage_color(entity))
     Utils.set_label_color(rangeLabel, Utils.range_color(entity))
     Utils.set_label_color(speedLabel, Utils.speed_color(entity))
@@ -282,10 +307,29 @@ func show_description(show, action_type):
     if force_show_description:
         show = true
     if not _action_descriptions.has(action_type):
-        show = false
-    if show:
-        $DescriptionContainer/DescriptionName.text = _action_names[action_type]
-        $DescriptionContainer/DescriptionLabel.text = _action_descriptions[action_type]
-        $DescriptionContainer/DescriptionCost.text = str(_action_costs[action_type])
+        if action_type == ActionType.MOVE:
+            descName.text = "Move"
+            descMain.text = ""
+            descCost.get_parent().visible = false
+            descMoves.get_parent().visible = true
+            descInter.visible = false
+        elif action_type == ActionType.INTERACT:
+            descName.text = "Interact"
+            if _current_interactable == "":
+                descMain.text = "Interact with or pick up a field object"
+            else:
+                descMain.text = "Drop the [" + _current_interactable + "] on the tile"
+            descCost.get_parent().visible = false
+            descMoves.get_parent().visible = false
+            descInter.visible = true
+        else:
+            show = false
+    else:
+        descName.text = _action_names[action_type]
+        descMain.text = _action_descriptions[action_type]
+        descCost.text = str(_action_costs[action_type])        
+        descCost.get_parent().visible = true
+        descMoves.get_parent().visible = false
+        descInter.visible = false
     $DescriptionContainer.visible = show
     return

@@ -49,7 +49,7 @@ func _ready():
     turnService.update()
     menuService.setState(state)
     menuService.updateAllEntities()
-    menuService.showTurns(turnService.next5Turns())
+    menuService.showTurns(turnService.next10Turns())
     nextTurn()
     return
 
@@ -162,7 +162,7 @@ func nextTurn():
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
     resetPlayerServices()
-    menuService.showTurns(turnService.next5Turns())
+    menuService.showTurns(turnService.next10Turns())
     currentEntity().moves_left = currentEntity().get_movement()
     if state.allies.has(current_turn_id):
         currentEntity().update_energy(currentEntity().energy + 1)
@@ -283,6 +283,9 @@ func doMove(on):
     resetPlayerServices()    
     if not on:
         return
+    if not _is_ai_turn:
+        menuService.force_show_description = true
+        menuService.show_description(true, ActionType.MOVE)
     moveService.start(currentEntity())
     return
 
@@ -302,6 +305,8 @@ func doneMove():
         aiMoveService.finish()
         nextAiStep()
     else:
+        menuService.show_description(false, null)
+        menuService.force_show_description = false
         moveService.finish()
     update_character_menu()
     highlightMap.highlight(currentEntity())
@@ -312,11 +317,15 @@ func doInteract(on):
     if not on:
         return
     interactService.start(currentEntity())
+    menuService.force_show_description = true
+    menuService.show_description(true, ActionType.INTERACT)
     return
 
 func interactDone():
     interactService.finish()
     menuService.disableInteractButton()
+    menuService.show_description(false, null)
+    menuService.force_show_description = false
     update_character_menu()
     checkDeaths()
     return
@@ -332,6 +341,7 @@ func doAction(on, action_type: int):
 
 func actionDone():
     menuService.disableActionButtons()
+    menuService.show_description(false, null)
     menuService.force_show_description = false
     update_character_menu()
     checkDeaths()

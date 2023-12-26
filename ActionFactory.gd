@@ -11,7 +11,7 @@ static func add_base_attack(ent: Entity):
         for _ent in targets:
             _ent.loseHP(user.get_damage())
         return
-    var d = "Deals base damage to any target. Gains 1 Threat."
+    var d = "Deals damage to any target. Gains 1 Threat."
     _add_test_action(ent, "Attack", d, 0, -1, false, 0, [], base_effect, true, ActionType.ATTACK)
     return
 
@@ -23,7 +23,7 @@ static func add_exert(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(user.get_damage() + 4)
         return
-    var d = "Deals base damage x2 to any target. Gains 3 Threat. Gains 3 movement penalty for 1 turn."
+    var d = "Deals damage x2 to any target. Gains 3 Threat. Gains 3 movement penalty for 1 turn."
     _add_test_action(ent, "Exert", d, 0, -1, false, 2, [], effect, true, type)
     return
 
@@ -43,7 +43,7 @@ static func add_sticky_grenade(ent: Entity, type: int):
             _ent.move_debuff_value = 3
             _ent.move_debuff_count = 1
         return
-    var d = "Throw a sticky bomb at target, dealing base damage. Inflicts 3 movement penalty to target for 1 turn"
+    var d = "Throw a sticky bomb at target, dealing damage. Inflicts 3 movement penalty to target for 1 turn"
     _add_test_action(ent, "Sticky Grenade", d, 2, -1, false, 2, [], effect, true, type)
     return
     
@@ -61,7 +61,7 @@ static func add_storm(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(user.get_damage() + 2)
         return
-    var d = "Target a 3x3 area and deal base damage +2. Gains 2 Threat."
+    var d = "Target a 3x3 area and deal damage +2. Gains 2 Threat."
     _add_test_action(ent, "Storm", d, -0, -1, true, 3, shape_3x3, effect, false, type)
     return
 
@@ -98,7 +98,7 @@ static func add_weapons_upgade(ent: Entity, type: int):
         for _ent in targets:
             _ent.damage_modifier += 1
         return
-    var d = "Target unit permanenlty gains +1 base damage."
+    var d = "Target unit permanenlty gains +1 damage."
     _add_test_action(ent, "Weapons Upgrade", d, 0, 1, false, 2, [], effect, true, type)
     return
 
@@ -117,7 +117,7 @@ static func add_snipe(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(user.get_damage())
         return
-    var d = "Deals base damage to any target with +3 Range. Gains 1 Threat."
+    var d = "Deals damage to any target with +3 Range. Gains 1 Threat."
     _add_test_action(ent, "Snipe", d, 3, -1, false, 1, [], effect, true, type)
     return
 
@@ -127,7 +127,7 @@ static func add_titanium_bullet(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(user.get_damage() + 3)
         return
-    var d = "Deals base damage + 6 to any target. Gains 3 Threat."
+    var d = "Deals damage + 6 to any target. Gains 3 Threat."
     _add_test_action(ent, "Titanium Bullet", d, 0, -1, false, 5, [], effect, true, type)
     return
 
