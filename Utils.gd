@@ -14,40 +14,40 @@ static func movement_color(entity: Entity, moves_left: bool = false) -> Color:
             return Color.RED
         else:
             return Color.WHITE
-    if entity.movement > entity.get_movement():
-        return Color.CYAN
-    elif entity.movement < entity.get_movement():
+    if entity.movement < entity.get_movement():
+        return Color.GREEN
+    elif entity.movement > entity.get_movement():
         return Color.RED
     else:
         return Color.WHITE
 
 static func range_color(entity: Entity) -> Color:
-    if entity.range > entity.get_range():
-        return Color.CYAN
-    elif entity.range < entity.get_range():
+    if entity.range < entity.get_range():
+        return Color.GREEN
+    elif entity.range > entity.get_range():
         return Color.RED
     else:
         return Color.WHITE
 
 static func damage_color(entity: Entity) -> Color:
-    if entity.damage > entity.get_damage():
-        return Color.CYAN
-    elif entity.damage < entity.get_damage():
+    if entity.damage < entity.get_damage():
+        return Color.GREEN
+    elif entity.damage > entity.get_damage():
         return Color.RED
     else:
         return Color.WHITE
 
 static func speed_color(entity: Entity) -> Color:
-    if entity.speed > entity.get_speed():
-        return Color.CYAN
-    elif entity.speed < entity.get_speed():
+    if entity.speed < entity.get_speed():
+        return Color.GREEN
+    elif entity.speed > entity.get_speed():
         return Color.RED
     else:
         return Color.WHITE
 
 static func armor_color(entity: Entity) -> Color:
     if entity.armor > 0:
-        return Color.CYAN
+        return Color.GREEN
     elif entity.armor < 0:
         return Color.RED
     else:
@@ -60,6 +60,16 @@ static func threat_color(entity: Entity) -> Color:
         return Color.ORANGE_RED
     elif entity.threat == 3:
         return Color.YELLOW
+    else:
+        return Color.WHITE
+
+static func health_color(entity: Entity) -> Color:
+    if entity.health <= int(entity.max_health*.4):
+        return Color.YELLOW
+    elif entity.health <= int(entity.max_health*.2):
+        return Color.ORANGE_RED
+    elif entity.health == 0:
+        return Color.RED
     else:
         return Color.WHITE
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbb2avwiipbtb"]
+[gd_scene load_steps=23 format=3 uid="uid://dbb2avwiipbtb"]
 
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="1_r63co"]
 [ext_resource type="Texture2D" uid="uid://bhjd3o4d36dg7" path="res://Assets/info_box_expanded.png" id="2_tfr3r"]
 [ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="3_wv88g"]
 [ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/Health_Over.png" id="4_86m2k"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="4_flx8q"]
+[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="4_reefb"]
 [ext_resource type="Texture2D" uid="uid://dh7objn6mrlvt" path="res://Assets/Energy_Over.png" id="5_nbtqd"]
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="6_ggr6d"]
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="8_3f53c"]
@@ -13,6 +14,33 @@
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="10_frk68"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sfged"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_th8bq"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_cqano"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_6r53r"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_3l3vu"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_qj82w"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_m81j4"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_e37sp"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_sa1lh"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_ip6cx"]
+font_size = 22
 
 [node name="EntityInfoTab" type="Node2D"]
 position = Vector2(0, -4)
@@ -58,105 +86,142 @@ texture_under = ExtResource("3_wv88g")
 texture_progress = ExtResource("5_nbtqd")
 
 [node name="Stats" type="Node2D" parent="."]
-position = Vector2(94.2334, 29.5534)
+position = Vector2(97.6046, 29.5534)
 scale = Vector2(0.67, 0.67)
 
-[node name="MoveSprite" type="Sprite2D" parent="Stats"]
+[node name="HealthSprite" type="Sprite2D" parent="Stats"]
 position = Vector2(19.9695, 1.37518)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_reefb")
+
+[node name="HealthLabel" type="Label" parent="Stats"]
+offset_left = 34.8944
+offset_top = -7.75373
+offset_right = 88.8944
+offset_bottom = 19.2463
+text = "999
+"
+label_settings = SubResource("LabelSettings_th8bq")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SlashLabel" type="Label" parent="Stats"]
+offset_left = 88.2526
+offset_top = -7.75373
+offset_right = 102.253
+offset_bottom = 19.2463
+text = "/
+"
+label_settings = SubResource("LabelSettings_cqano")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MaxHealthLabel" type="Label" parent="Stats"]
+offset_left = 104.331
+offset_top = -7.50272
+offset_right = 158.331
+offset_bottom = 19.4973
+text = "999"
+label_settings = SubResource("LabelSettings_6r53r")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MoveSprite" type="Sprite2D" parent="Stats"]
+position = Vector2(179.508, 3.70917)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_ggr6d")
 
 [node name="MoveLabel" type="Label" parent="Stats"]
-offset_left = 37.4972
-offset_top = -9.87504
-offset_right = 87.4972
-offset_bottom = 14.125
-theme_override_font_sizes/font_size = 18
+offset_left = 202.957
+offset_top = -8.5
+offset_right = 238.957
+offset_bottom = 18.5
 text = "99
 "
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="DamageSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(79.0977, 3.17744)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_flx8q")
-
-[node name="DamageLabel" type="Label" parent="Stats"]
-offset_left = 88.1674
-offset_top = -10.5626
-offset_right = 128.167
-offset_bottom = 13.4374
-theme_override_font_sizes/font_size = 18
-text = "99
-"
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="RangeSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(135.557, 1.17263)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_gw4b8")
-
-[node name="RangeLabel" type="Label" parent="Stats"]
-offset_left = 150.032
-offset_top = -10.5287
-offset_right = 190.032
-offset_bottom = 13.4713
-theme_override_font_sizes/font_size = 18
-text = "99
-"
+label_settings = SubResource("LabelSettings_3l3vu")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="SpeedSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(199.42, 0.858596)
-scale = Vector2(0.5, 0.5)
+position = Vector2(273.472, 3.68891)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_p0t2w")
 
 [node name="SpeedLabel" type="Label" parent="Stats"]
-offset_left = 215.434
-offset_top = -8.71138
-offset_right = 255.434
-offset_bottom = 15.2886
-theme_override_font_sizes/font_size = 18
+offset_left = 299.321
+offset_top = -8.5
+offset_right = 335.321
+offset_bottom = 18.5
 text = "99
 "
+label_settings = SubResource("LabelSettings_qj82w")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="DamageSprite" type="Sprite2D" parent="Stats"]
+position = Vector2(18.9409, 36.9497)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_flx8q")
+
+[node name="DamageLabel" type="Label" parent="Stats"]
+offset_left = 34.7591
+offset_top = 25.0
+offset_right = 70.7591
+offset_bottom = 52.0
+text = "99
+"
+label_settings = SubResource("LabelSettings_m81j4")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RangeSprite" type="Sprite2D" parent="Stats"]
+position = Vector2(99.7825, 35.504)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_gw4b8")
+
+[node name="RangeLabel" type="Label" parent="Stats"]
+offset_left = 122.124
+offset_top = 25.0
+offset_right = 158.124
+offset_bottom = 52.0
+text = "99
+"
+label_settings = SubResource("LabelSettings_e37sp")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ArmorSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(264.32, 1.81899)
-scale = Vector2(0.5, 0.5)
+position = Vector2(183.695, 39.3165)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("10_frk68")
 
 [node name="ArmorLabel" type="Label" parent="Stats"]
-offset_left = 277.982
-offset_top = -10.4302
-offset_right = 317.982
-offset_bottom = 13.5698
-theme_override_font_sizes/font_size = 18
+offset_left = 206.342
+offset_top = 25.0
+offset_right = 224.342
+offset_bottom = 52.0
 text = "9"
+label_settings = SubResource("LabelSettings_sa1lh")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ThreatSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(314.872, 2.0376)
-scale = Vector2(0.5, 0.5)
+position = Vector2(275.765, 37.0544)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_3f53c")
 
 [node name="ThreatLabel" type="Label" parent="Stats"]
-offset_left = 326.619
-offset_top = -9.50721
-offset_right = 366.619
-offset_bottom = 14.4928
-theme_override_font_sizes/font_size = 18
+offset_left = 298.733
+offset_top = 25.0
+offset_right = 316.733
+offset_bottom = 52.0
 text = "9"
+label_settings = SubResource("LabelSettings_ip6cx")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Buffs1" type="Node2D" parent="."]
-position = Vector2(116.131, 56.7226)
+position = Vector2(105.428, 81.6959)
 scale = Vector2(0.65, 0.65)
 
 [node name="b0" type="Sprite2D" parent="Buffs1"]
@@ -213,62 +278,12 @@ position = Vector2(280, 0)
 [node name="Label" type="Label" parent="Buffs1/b7"]
 offset_right = 40.0
 offset_bottom = 21.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Buffs2" type="Node2D" parent="."]
-position = Vector2(116.131, 74.9689)
-scale = Vector2(0.65, 0.65)
+[node name="b8" type="Sprite2D" parent="Buffs1"]
+position = Vector2(320, 0)
 
-[node name="b0" type="Sprite2D" parent="Buffs2"]
-
-[node name="Label" type="Label" parent="Buffs2/b0"]
+[node name="Label" type="Label" parent="Buffs1/b8"]
 offset_right = 40.0
 offset_bottom = 21.0
-
-[node name="b1" type="Sprite2D" parent="Buffs2"]
-position = Vector2(40, 0)
-
-[node name="Label" type="Label" parent="Buffs2/b1"]
-offset_right = 40.0
-offset_bottom = 21.0
-
-[node name="b2" type="Sprite2D" parent="Buffs2"]
-position = Vector2(80, 0)
-
-[node name="Label" type="Label" parent="Buffs2/b2"]
-offset_right = 40.0
-offset_bottom = 21.0
-
-[node name="b3" type="Sprite2D" parent="Buffs2"]
-position = Vector2(120, 0)
-
-[node name="Label" type="Label" parent="Buffs2/b3"]
-offset_right = 40.0
-offset_bottom = 21.0
-
-[node name="b4" type="Sprite2D" parent="Buffs2"]
-position = Vector2(160, 0)
-
-[node name="Label" type="Label" parent="Buffs2/b4"]
-offset_right = 40.0
-offset_bottom = 21.0
-
-[node name="b5" type="Sprite2D" parent="Buffs2"]
-position = Vector2(200, 0)
-
-[node name="Label" type="Label" parent="Buffs2/b5"]
-offset_right = 40.0
-offset_bottom = 21.0
-
-[node name="b6" type="Sprite2D" parent="Buffs2"]
-position = Vector2(240, 0)
-
-[node name="Label" type="Label" parent="Buffs2/b6"]
-offset_right = 40.0
-offset_bottom = 21.0
-
-[node name="b7" type="Sprite2D" parent="Buffs2"]
-position = Vector2(280, 0)
-
-[node name="Label" type="Label" parent="Buffs2/b7"]
-offset_right = 40.0
-offset_bottom = 21.0
+metadata/_edit_use_anchors_ = true

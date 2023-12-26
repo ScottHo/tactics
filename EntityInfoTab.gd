@@ -3,6 +3,9 @@ class_name EntityInfoTab extends Node2D
 var charSprite: Sprite2D
 var healthBar: TextureProgressBar
 var energyBar: TextureProgressBar
+var healthLabel: Label
+var slashLabel: Label
+var maxHealthLabel: Label
 var moveLabel: Label
 var damageLabel: Label
 var rangeLabel: Label
@@ -24,6 +27,9 @@ func update_nodes():
         charSprite = $CharacterSprite
         healthBar = $HealthBar
         energyBar = $EnergyBar
+        healthLabel = $Stats/HealthLabel
+        slashLabel = $Stats/SlashLabel
+        maxHealthLabel = $Stats/MaxHealthLabel
         moveLabel = $Stats/MoveLabel
         damageLabel = $Stats/DamageLabel
         rangeLabel = $Stats/RangeLabel
@@ -42,6 +48,13 @@ func update_from_entity(entity: Entity):
     return
 
 func update():
+    healthLabel.text = str(_entity.health)
+    healthLabel.reset_size()
+    var healthLabel_x = healthLabel.size.x
+    maxHealthLabel.position = healthLabel.position + Vector2(healthLabel_x+15, 0)
+    slashLabel.position = healthLabel.position + Vector2(healthLabel_x, 0)
+    maxHealthLabel.text = str(_entity.max_health)
+    
     moveLabel.text = str(_entity.get_movement())
     damageLabel.text = str(_entity.get_damage())    
     rangeLabel.text = str(_entity.get_range())
@@ -60,7 +73,6 @@ func update():
 func expand():
     $Stats.visible = true
     $Buffs1.visible = true
-    $Buffs2.visible = true
     if _entity.is_ally:
         energyBar.visible = true
         background.texture = load("res://Assets/info_box_expanded.png")
@@ -71,12 +83,12 @@ func expand():
 func unexpand():
     $Stats.visible = false
     $Buffs1.visible = false
-    $Buffs2.visible = false
     energyBar.visible = false
     background.texture = load("res://Assets/info_box.png")
     return
 
 func _set_colors():
+    Utils.set_label_color(healthLabel, Utils.health_color(_entity))
     Utils.set_label_color(moveLabel, Utils.movement_color(_entity))
     Utils.set_label_color(damageLabel, Utils.damage_color(_entity))
     Utils.set_label_color(rangeLabel, Utils.range_color(_entity))

@@ -19,6 +19,9 @@ signal actionInitiate
 @onready var action2Button: Button = $CharacterContainer/Action2Button
 
 @onready var nameLabel: Label = $CharacterContainer/NameLabel
+@onready var healthLabel: Label = $CharacterContainer/HealthLabel
+@onready var slashLabel: Label = $CharacterContainer/SlashLabel
+@onready var maxHealthLabel: Label = $CharacterContainer/MaxHealthLabel
 @onready var movesLabel: Label = $CharacterContainer/MovesLabel
 @onready var damageLabel: Label = $CharacterContainer/DamageLabel
 @onready var speedLabel: Label = $CharacterContainer/SpeedLabel
@@ -144,7 +147,7 @@ func showCurrentTurn(turn: int):
 
     show_description(false, null)
     $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
-    $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*3.5
+    $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*4
     return
 
 func setup_action_descriptions(entity: Entity):
@@ -160,6 +163,15 @@ func setup_action_descriptions(entity: Entity):
     return
 
 func updateEntityInfo(entity: Entity):
+    healthLabel.text = str(entity.health)
+    healthLabel.reset_size()
+    slashLabel.reset_size()
+    maxHealthLabel.reset_size()
+    var healthLabel_x = healthLabel.size.x
+    maxHealthLabel.position = healthLabel.position + Vector2(healthLabel_x+16, 0)
+    slashLabel.position = healthLabel.position + Vector2(healthLabel_x+1, 0)
+    maxHealthLabel.text = str(entity.max_health)
+    
     healthBar.max_value = entity.max_health
     healthBar.value = entity.health
     energyBar.value = entity.energy
@@ -175,6 +187,7 @@ func updateEntityInfo(entity: Entity):
     return
 
 func _set_colors(entity: Entity):
+    Utils.set_label_color(healthLabel, Utils.health_color(entity))
     Utils.set_label_color(movesLabel, Utils.movement_color(entity, true))
     Utils.set_label_color(damageLabel, Utils.damage_color(entity))
     Utils.set_label_color(rangeLabel, Utils.range_color(entity))
