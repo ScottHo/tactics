@@ -89,16 +89,16 @@ func test_turnService():
     return
 
 func test_vectorHelper():
-    var v1 = VectorHelpers.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, -1))
-    var v3 = VectorHelpers.computeRotatedVectors(Vector2i(2,-1), Vector2i(0, -1))
+    var v1 = Utils.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, -1))
+    var v3 = Utils.computeRotatedVectors(Vector2i(2,-1), Vector2i(0, -1))
     assertEquals(v1, Vector2i(1, -2))
     assertEquals(v3, Vector2i(-1, -2))
-    v1 = VectorHelpers.computeRotatedVectors(Vector2i(2, 1), Vector2i(-1, 0))
-    v3 = VectorHelpers.computeRotatedVectors(Vector2i(2, -1), Vector2i(-1, 0))
+    v1 = Utils.computeRotatedVectors(Vector2i(2, 1), Vector2i(-1, 0))
+    v3 = Utils.computeRotatedVectors(Vector2i(2, -1), Vector2i(-1, 0))
     assertEquals(v1, Vector2i(-2, -1))
     assertEquals(v3, Vector2i(-2, 1))
-    v1 = VectorHelpers.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, 1))
-    v3 = VectorHelpers.computeRotatedVectors(Vector2i(2, -1), Vector2i(0, 1))
+    v1 = Utils.computeRotatedVectors(Vector2i(2, 1), Vector2i(0, 1))
+    v3 = Utils.computeRotatedVectors(Vector2i(2, -1), Vector2i(0, 1))
     assertEquals(v1, Vector2i(-1, 2))
     assertEquals(v3, Vector2i(1, 2))
     return

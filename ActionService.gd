@@ -26,7 +26,7 @@ func _input(event):
             _previous_coords = coords            
             if not _map_bfs.inRange(coords, action().self_castable):
                 return
-            _target_points = VectorHelpers.get_target_coords(_entity.location, coords, shape())
+            _target_points = Utils.get_target_coords(_entity.location, coords, shape())
             fillTargetHighlights()
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:

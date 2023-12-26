@@ -30,7 +30,7 @@ func find_attack_location() -> Vector2i:
     return target_entity.location
 
 func do_attack(target: Vector2i):
-    var targets = VectorHelpers.get_target_coords(_entity.location, target, shape())
+    var targets = Utils.get_target_coords(_entity.location, target, shape())
     ActionCommon.do_action(_state, _entity, targets, _entity.attack)
     return
 

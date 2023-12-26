@@ -83,7 +83,7 @@ func _create_entity_tabs():
     var offset = 0
     for entity in _state.all_allies():
         var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
-        tab.update_from_entity(entity, true)
+        tab.update_from_entity(entity)
         $EntityTabContainer.add_child(tab)
         tab.position.y -= offset
         offset -= 90
@@ -92,7 +92,7 @@ func _create_entity_tabs():
     offset -= 40
     for entity in _state.all_enemies():
         var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
-        tab.update_from_entity(entity, false)
+        tab.update_from_entity(entity)
         $EntityTabContainer.add_child(tab)
         tab.position.y -= offset
         offset -= 90
@@ -171,6 +171,16 @@ func updateEntityInfo(entity: Entity):
     threatLabel.text = str(entity.threat)
     if not entity.is_ally:
         threatLabel.text = "-"
+    _set_colors(entity)
+    return
+
+func _set_colors(entity: Entity):
+    Utils.set_label_color(movesLabel, Utils.movement_color(entity, true))
+    Utils.set_label_color(damageLabel, Utils.damage_color(entity))
+    Utils.set_label_color(rangeLabel, Utils.range_color(entity))
+    Utils.set_label_color(speedLabel, Utils.speed_color(entity))
+    Utils.set_label_color(armorLabel, Utils.armor_color(entity))
+    Utils.set_label_color(threatLabel, Utils.threat_color(entity))
     return
 
 func unpress_all_buttons(omit=null):
