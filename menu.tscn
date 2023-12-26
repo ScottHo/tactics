@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=33 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -22,11 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="17_diddf"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="19_gtpi5"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_iftej"]
-font_size = 30
-
 [sub_resource type="LabelSettings" id="LabelSettings_jxedm"]
-font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_ffhj4"]
 font_size = 24
@@ -174,30 +170,35 @@ texture = ExtResource("9_vl4vh")
 [node name="MoveContainer" type="Control" parent="DescriptionContainer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 219.847
-offset_top = 60.8076
-offset_right = 259.847
-offset_bottom = 100.808
+offset_left = 79.0481
+offset_top = 116.308
+offset_right = 119.048
+offset_bottom = 156.308
+
+[node name="Label2" type="Label" parent="DescriptionContainer/MoveContainer"]
+offset_left = -17.7704
+offset_right = 92.2296
+offset_bottom = 37.0
+text = "Remaining:"
 
 [node name="MovesLeft" type="Label" parent="DescriptionContainer/MoveContainer"]
 layout_mode = 0
-offset_left = -47.6369
-offset_top = 1.26743
-offset_right = -46.6369
-offset_bottom = 38.2674
+offset_left = 104.079
+offset_top = 0.0174274
+offset_right = 105.079
+offset_bottom = 37.0174
 text = "5"
-label_settings = SubResource("LabelSettings_iftej")
 autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="DescriptionContainer/MoveContainer"]
-position = Vector2(0.682735, 17.7954)
-scale = Vector2(0.6, 0.6)
+position = Vector2(-37.2128, 10.432)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_d8bxd")
 
 [node name="Label" type="Label" parent="DescriptionContainer/MoveContainer"]
 layout_mode = 0
-offset_left = 36.579
-offset_right = 131.579
+offset_left = 3.87585
+offset_right = 107.876
 offset_bottom = 37.0
 label_settings = SubResource("LabelSettings_jxedm")
 
