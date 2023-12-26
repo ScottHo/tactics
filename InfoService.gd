@@ -28,7 +28,7 @@ func _input(event):
                 else:
                     var inter: Interactable = _state.interactable_on_tile(coords)
                     if inter != null:
-                        hoverLabel.text = inter.description
+                        hoverLabel.text = inter.display_name + "\n\n" + inter.description
                         hoverLabel.reset_size()
                         hoverPanel.size = hoverLabel.size + Vector2(10, 10)
                         hoverPanel.global_position = global_mouse

@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var moveService: MoveService = $MoveService
-@onready var menuService: MenuService = $MenuService
+@onready var menuService: MenuService = $Camera2D/CanvasLayer/MenuService
 @onready var turnService: TurnService = $TurnService
 @onready var actionService: ActionService = $ActionService
 @onready var aiMoveService: AiMoveService = $AiMoveService
@@ -104,9 +104,8 @@ func importTestData():
     ActionFactory.add_base_attack(ent)
     
     var _inter = Interactable.new()
-    _inter.display_name = "Test"
-    _inter.description = "Blue Orb Buff Thing
-Pick up for +4 damage, but -4 movement"
+    _inter.display_name = "Blue Orb Buff Thing"
+    _inter.description = "Pick up for +4 damage, but -4 movement"
     _inter.effect = func (user: Entity):
         user.damage_modifier += 4
         user.movement_modifier -= 4
@@ -159,17 +158,14 @@ func currentEntity() -> Entity:
     return state.entities.get_data(current_turn_id)
 
 func nextTurn():
+    if currentEntity() != null:
+        currentEntity().reset_buff_values()
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
     resetPlayerServices()
     menuService.showTurns(turnService.next10Turns())
-    currentEntity().moves_left = currentEntity().get_movement()
+    currentEntity().setup_next_turn()
     if state.allies.has(current_turn_id):
-        currentEntity().update_energy(currentEntity().energy + 1)
-        if currentEntity().interactable != null:
-            if currentEntity().interactable.repeated_effect != null:
-                currentEntity().interactable.repeated_effect.call(currentEntity())
-        currentEntity().loseThreat(1)
         _is_ai_turn = false
         menuService.enableAllButtons()
         if currentEntity().get_movement() == 0:

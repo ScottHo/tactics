@@ -1,13 +1,9 @@
 TODO
-Right click drag to move camera
-Undo Button
-Movement penalty never resets
-Animations
 Icons for current buffs
+Undo Button
+Animations
 Queue system for effect text?
 Different target highlights for good/bad
-InteractService, basic version that can target 1 range
-Interactable, interactable simple entity
 Choose different bots
 12 different bots
 Bot roulette

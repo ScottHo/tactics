@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cq8xqg1q1wgxp"]
+[gd_scene load_steps=18 format=3 uid="uid://cq8xqg1q1wgxp"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_uypkh"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="2_df7di"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://MoveService.gd" id="6_jpms6"]
 [ext_resource type="PackedScene" uid="uid://ccrflxfdcwo3c" path="res://menu.tscn" id="7_psia6"]
 [ext_resource type="Script" path="res://TurnService.gd" id="8_5tca6"]
+[ext_resource type="Script" path="res://DragService.gd" id="8_d2jpi"]
 [ext_resource type="Script" path="res://ActionService.gd" id="8_hhoig"]
 [ext_resource type="Script" path="res://AiMoveService.gd" id="10_lo4ht"]
 [ext_resource type="Script" path="res://AiActionService.gd" id="11_jfegk"]
@@ -24,7 +25,7 @@ metadata/_edit_horizontal_guides_ = [371.787]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
-scale = Vector2(1.65, 1.65)
+scale = Vector2(2, 2)
 tile_set = ExtResource("2_df7di")
 rendering_quadrant_size = 64
 format = 2
@@ -40,7 +41,7 @@ script = ExtResource("3_j2hyq")
 
 [node name="HighlightMap" type="TileMap" parent="."]
 y_sort_enabled = true
-scale = Vector2(1.65, 1.65)
+scale = Vector2(2, 2)
 tile_set = ExtResource("3_ilats")
 rendering_quadrant_size = 64
 format = 2
@@ -49,19 +50,25 @@ layer_0/z_index = 1
 script = ExtResource("4_fv11e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(282.411, 217.886)
+position = Vector2(265.795, 328.613)
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D"]
 modulate = Color(1, 1, 1, 0.247059)
-z_index = -1
-offset_left = -795.477
-offset_top = -452.885
-offset_right = 804.523
-offset_bottom = 1147.12
+z_index = -2
+offset_left = -1332.31
+offset_top = -1263.38
+offset_right = -820.312
+offset_bottom = -751.385
+scale = Vector2(5, 5)
 texture = ExtResource("6_1ogou")
 
-[node name="MenuService" parent="." instance=ExtResource("7_psia6")]
-position = Vector2(-484.582, -214.121)
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+layer = 2
+
+[node name="MenuService" parent="Camera2D/CanvasLayer" instance=ExtResource("7_psia6")]
+
+[node name="DragService" type="Node2D" parent="."]
+script = ExtResource("8_d2jpi")
 
 [node name="MoveService" type="Node2D" parent="."]
 script = ExtResource("6_jpms6")

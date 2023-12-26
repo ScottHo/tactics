@@ -36,12 +36,17 @@ var range_modifier: int
 var immune_count: int
 var weakness_count: int
 var weakness_value: int
+var shield_count: int
+var shield_value: int
 var move_buff_count: int
 var move_buff_value: int
 var move_debuff_count: int
 var move_debuff_value: int
-var shield_count: int
-var shield_value: int
+var damage_buff_count: int
+var damage_buff_value: int
+var damage_debuff_count: int
+var damage_debuff_value: int
+
 
 func get_damage() -> int:
     var ret = damage + damage_modifier
@@ -75,10 +80,8 @@ func get_low_health_threshold() -> int:
 
 func loseHP(hp):
     if immune_count > 0:
-        immune_count -= 1
         return
     hp -= get_armor()
-    lose_hp_modifiers()
     health -= hp
     if health < 0:
         health = 0
@@ -86,15 +89,53 @@ func loseHP(hp):
     sprite.update_hp(health)
     return
 
-func lose_hp_modifiers():
+func lose_defensive_buffs():
+    if immune_count > 0:
+        immune_count -= 1
     if shield_count > 0:
         shield_count -= 1
-        if shield_count == 0:
-            shield_value = 0
     if weakness_count > 0:
         weakness_count -= 1
-        if weakness_count == 0:
-            weakness_value = 0
+    return
+
+func lose_movement_buffs():
+    if move_buff_count > 0:
+        move_buff_count -= 1
+    if move_debuff_count > 0:
+        move_debuff_count -= 1
+    return
+
+func lose_damage_buffs():
+    if damage_buff_count > 0:
+        damage_buff_count -= 1
+    if damage_debuff_count > 0:
+        damage_debuff_count -= 1
+    return
+
+func lose_all_buffs():
+    lose_movement_buffs()
+    lose_defensive_buffs()
+    lose_damage_buffs()
+    return
+
+func reset_buff_values():
+    if weakness_count == 0:
+        weakness_value = 0
+        
+    if shield_count == 0:
+        shield_value = 0
+        
+    if damage_buff_count == 0:
+        damage_buff_value = 0
+        
+    if damage_debuff_count == 0:
+        damage_debuff_value = 0
+        
+    if move_debuff_count == 0:
+        move_debuff_value = 0
+        
+    if move_buff_count == 0:
+        move_buff_value = 0
     return
 
 func gainHP(hp):
@@ -148,4 +189,14 @@ func add_iteractable(inter: Interactable):
 func show_bars(show: bool):
     sprite.show_bars(show, is_ally)
     return
-    
+
+func setup_next_turn():
+    lose_all_buffs()
+    moves_left = get_movement()
+    if is_ally:
+        update_energy(energy + 1)
+        if interactable != null:
+            if interactable.repeated_effect != null:
+                interactable.repeated_effect.call(self)
+        loseThreat(1)
+    return

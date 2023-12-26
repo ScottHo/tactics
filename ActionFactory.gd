@@ -21,17 +21,17 @@ static func add_exert(ent: Entity, type: int):
         user.move_debuff_count = 1
         user.gainThreat(3)
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + 4)
+            _ent.loseHP(user.get_damage() + user.get_damage())
         return
     var d = "Deals damage x2 to any target. Gains 3 Threat. Gains 3 movement penalty for 1 turn."
-    _add_test_action(ent, "Exert", d, 0, -1, false, 2, [], effect, true, type)
+    _add_test_action(ent, "Exert", d, 0, -1, false, 3, [], effect, true, type)
     return
 
 static func add_take_cover(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array):
         user.immune_count = 1
         return
-    var d = "Target self to be completely immune for one damage instance until the next turn"
+    var d = "Target self to be completely immune for 1 turn"
     _add_test_action(ent, "Take Cover", d, 0, 0, true, 2, [], effect, false, type)
     return
 
@@ -69,9 +69,9 @@ static func add_static_shield(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array):
         for _ent in targets:
             _ent.shield_value = 2
-            _ent.shield_count = 1
+            _ent.shield_count = 2
         return
-    var d = "Target a 3x3 area and add Shield 2 to all units for 1 damage instance."
+    var d = "Target a 3x3 area and add Shield 2 to all units for 2 of it's turns."
     _add_test_action(ent, "Static Shield", d, 0, -1, true, 3, shape_3x3, effect, true, type)
     return
 
@@ -107,7 +107,7 @@ static func add_engine_upgrade(ent: Entity, type: int):
         for _ent in targets:
             _ent.movement_modifier += 1
         return
-    var d = "Target unit permanently gain +1 movement."
+    var d = "Target unit permanently gains +1 movement."
     _add_test_action(ent, "Engine Upgrade", d, 0, 1, false, 2, [], effect, true, type)
     return
 
