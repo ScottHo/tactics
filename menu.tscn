@@ -163,7 +163,7 @@ centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
 modulate = Color(1, 1, 1, 0.52549)
-position = Vector2(249.543, 55.1117)
+position = Vector2(258.462, 60.3145)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_pd4nx")
 centered = false
