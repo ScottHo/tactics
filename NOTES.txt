@@ -1,5 +1,4 @@
 TODO
-Turn Order for Left Panels
 Right click drag to move camera
 Undo Button
 Movement penalty never resets
