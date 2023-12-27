@@ -236,8 +236,8 @@ texture = ExtResource("6_xc4a1")
 centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
-modulate = Color(1, 1, 1, 0.52549)
-position = Vector2(213.435, 138.45)
+modulate = Color(1, 1, 1, 0.647059)
+position = Vector2(188.701, 168.92)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_pd4nx")
 centered = false
@@ -251,44 +251,44 @@ centered = false
 [node name="NameLabel" type="Label" parent="CharacterContainer"]
 layout_direction = 3
 layout_mode = 0
-offset_left = 77.0997
-offset_top = 357.977
-offset_right = 377.1
-offset_bottom = 387.977
+offset_left = 90.7344
+offset_top = 145.186
+offset_right = 390.735
+offset_bottom = 175.186
 text = "Guy"
 label_settings = SubResource("LabelSettings_ffhj4")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="HeartSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(193.916, 51.8682)
+position = Vector2(194.412, 54.3485)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("10_slf17")
 centered = false
 
 [node name="HealthBar" type="TextureProgressBar" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 242.534
-offset_top = 66.0952
-offset_right = 454.534
-offset_bottom = 96.0952
+offset_left = 243.03
+offset_top = 68.5755
+offset_right = 455.03
+offset_bottom = 98.5755
 scale = Vector2(1.3, 1.2)
 value = 50.0
 texture_under = ExtResource("14_t4p6o")
 texture_progress = ExtResource("11_60lyq")
 
 [node name="EnergySprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(194.143, 92.7722)
+position = Vector2(194.639, 95.2525)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_vl4vh")
 centered = false
 
 [node name="EnergyBar" type="TextureProgressBar" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 242.534
-offset_top = 103.074
-offset_right = 454.534
-offset_bottom = 133.074
+offset_left = 243.03
+offset_top = 105.555
+offset_right = 455.03
+offset_bottom = 135.555
 scale = Vector2(1.3, 1.2)
 max_value = 5.0
 value = 3.0
@@ -302,10 +302,10 @@ anchor_left = 0.488162
 anchor_top = 0.585268
 anchor_right = 0.496495
 anchor_bottom = 0.590268
-offset_left = 50.3401
-offset_top = -163.246
-offset_right = 89.3403
-offset_bottom = -142.246
+offset_left = 50.2463
+offset_top = -159.586
+offset_right = 89.2465
+offset_bottom = -138.586
 text = "999
 "
 label_settings = SubResource("LabelSettings_rmudl")
@@ -319,10 +319,10 @@ anchor_left = 0.475386
 anchor_top = 0.580934
 anchor_right = 0.475386
 anchor_bottom = 0.580934
-offset_left = 103.699
-offset_top = -163.246
-offset_right = 117.699
-offset_bottom = -136.246
+offset_left = 103.605
+offset_top = -159.586
+offset_right = 117.605
+offset_bottom = -132.586
 text = "/
 "
 label_settings = SubResource("LabelSettings_ga0sv")
@@ -335,25 +335,25 @@ anchor_left = 0.475386
 anchor_top = 0.580934
 anchor_right = 0.475386
 anchor_bottom = 0.580934
-offset_left = 119.777
-offset_top = -162.995
-offset_right = 173.777
-offset_bottom = -135.995
+offset_left = 119.683
+offset_top = -159.335
+offset_right = 173.683
+offset_bottom = -132.335
 text = "999"
 label_settings = SubResource("LabelSettings_fvr2p")
 vertical_alignment = 1
 
 [node name="MovesSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(190.442, 327.988)
+position = Vector2(400.69, 200.328)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_d8bxd")
 
 [node name="MovesLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 206.801
-offset_top = 316.562
-offset_right = 240.801
-offset_bottom = 341.562
+offset_left = 417.933
+offset_top = 188.902
+offset_right = 451.933
+offset_bottom = 213.902
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -361,16 +361,16 @@ label_settings = SubResource("LabelSettings_0jvi6")
 vertical_alignment = 1
 
 [node name="SpeedSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(258.685, 327.988)
+position = Vector2(478.239, 200.328)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_gtpi5")
 
 [node name="SpeedLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 273.253
-offset_top = 316.893
-offset_right = 307.253
-offset_bottom = 341.893
+offset_left = 491.26
+offset_top = 189.234
+offset_right = 525.26
+offset_bottom = 214.234
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -378,16 +378,16 @@ label_settings = SubResource("LabelSettings_gmwuo")
 vertical_alignment = 1
 
 [node name="DamageSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(320.005, 327.988)
+position = Vector2(403.683, 228.855)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_xlgau")
 
 [node name="DamageLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 328.403
-offset_top = 316.893
-offset_right = 362.403
-offset_bottom = 341.893
+offset_left = 417.826
+offset_top = 217.761
+offset_right = 451.826
+offset_bottom = 242.761
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -395,16 +395,16 @@ label_settings = SubResource("LabelSettings_ipxka")
 vertical_alignment = 1
 
 [node name="RangeSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(377.029, 327.988)
+position = Vector2(476.404, 229.445)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_diddf")
 
 [node name="RangeLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 391.315
-offset_top = 316.893
-offset_right = 425.315
-offset_bottom = 341.893
+offset_left = 491.353
+offset_top = 218.351
+offset_right = 525.353
+offset_bottom = 243.351
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -412,16 +412,16 @@ label_settings = SubResource("LabelSettings_5b8lp")
 vertical_alignment = 1
 
 [node name="ArmorSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(436.652, 327.988)
+position = Vector2(403.403, 260.038)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_m7c37")
 
 [node name="ArmorLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 449.184
-offset_top = 316.893
-offset_right = 483.184
-offset_bottom = 341.893
+offset_left = 417.923
+offset_top = 248.944
+offset_right = 451.923
+offset_bottom = 273.944
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -429,16 +429,16 @@ label_settings = SubResource("LabelSettings_367jj")
 vertical_alignment = 1
 
 [node name="ThreatSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(497.873, 327.988)
+position = Vector2(478.346, 258.944)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_k180g")
 
 [node name="ThreatLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 509.196
-offset_top = 316.893
-offset_right = 543.196
-offset_bottom = 341.893
+offset_left = 491.216
+offset_top = 247.85
+offset_right = 525.216
+offset_bottom = 272.85
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
