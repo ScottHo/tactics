@@ -256,6 +256,7 @@ func doAiAction():
     return
 
 func startAiSpecial():
+    cameraService.reset()
     aiSpecialService.start(currentEntity())
     menuService.set_mechanic_text(aiSpecialService.next_special_description())
     if aiSpecialService.counter() == 0:
@@ -289,7 +290,7 @@ func update_character_menu():
     return
 
 func doMove(on):
-    resetPlayerServices()    
+    resetPlayerServices()
     if not on:
         return
     if not _is_ai_turn:
@@ -298,14 +299,16 @@ func doMove(on):
     return
 
 func movesFound(poses):
-    currentEntity().sprite.doneMoving.connect(doneMove)    
+    currentEntity().sprite.doneMoving.connect(doneMove)
     if len(poses) > 0:
+        cameraService.lock_on(currentEntity().sprite)
         currentEntity().sprite.movePoints(poses)
     else:
         doneMove()
     return
 
 func doneMove():
+    cameraService.stop_lock()    
     currentEntity().sprite.doneMoving.disconnect(doneMove)
     if currentEntity().moves_left == 0:
         menuService.disableMovesButton()

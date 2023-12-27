@@ -5,9 +5,14 @@ var max_x := 0.0
 var max_y := 0.0
 var min_x := 0.0
 var min_y := 0.0
+var _target = null
+var _moved := false
+var original_position: Vector2
 @onready var cam = $"../Camera2D"
+@onready var tileMap: MainTileMap = $"../TileMap"
 
 func _ready():
+    original_position = cam.position
     max_x = cam.position.x + 1000
     max_y = cam.position.y + 600
     min_x = cam.position.x - 1000
@@ -17,11 +22,17 @@ func _ready():
         $Timer.stop())
     return
 
+func _process(delta):
+    if not _moved and _target != null:
+        cam.position = to_local(_target.global_position)
+    return
+
 func _input(event):
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
             MOUSE_BUTTON_RIGHT:
                 _right_click_down = true
+                _moved = true
                 return
             MOUSE_BUTTON_WHEEL_UP:
                 cam.zoom += Vector2(.05, .05)
@@ -40,6 +51,7 @@ func _input(event):
                 return
     if event is InputEventMouseMotion:
         if _right_click_down:
+            _moved = true
             var pos = cam.position - event.relative/2.0
             pos.x = min(max_x, pos.x)
             pos.x = max(min_x, pos.x)
@@ -49,9 +61,28 @@ func _input(event):
             return
 
 func move(pos: Vector2):
+    _moved = false
+    $Timer.stop()
     $Timer.start(1)
     var tween = get_tree().create_tween()
     cam.position_smoothing_enabled = true
     tween.tween_property(cam, "position", pos, .2)
     tween.play()
+    return
+
+func lock_on(node):
+    if _moved:
+        return
+    cam.position_smoothing_enabled = true
+    _target = node
+    return
+
+func stop_lock():
+    $Timer.stop()
+    $Timer.start(.4)
+    _target = null
+    return
+
+func reset():
+    move(original_position)
     return

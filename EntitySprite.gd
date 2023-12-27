@@ -1,47 +1,26 @@
 class_name EntitySprite extends Node2D
 
-var original_position
-var target_position
-var moving = false
-var shouldMove = false
 var points = []
-var lerp_step: int = 0
 signal doneMoving
 
 func _ready():
     $CharacterCommon.move_child($CharacterCommon/Sprite, 0)
     return
-    
-func _process(_delta):
-    if moving:
-        return
-    if shouldMove:
-        if len(points) == 0:
-            shouldMove = false
-            doneMoving.emit()
-            return
-        move(points.pop_front())
-    return
-    
-func _physics_process(_delta):
-    if moving:
-        lerp_step += 1
-        global_position = original_position.lerp(target_position, .05*lerp_step)
-        if lerp_step == 20:
-            moving = false
-    return
 
 func movePoints(_points: Array):
     points = _points
-    shouldMove = true
-    move(points.pop_front())
+    nextMove()
     return
 
-func move(pos):
-    original_position = global_position
-    target_position = pos
-    lerp_step = 0
-    moving = true
+func nextMove():
+    if len(points) == 0:
+        doneMoving.emit()
+        return
+    var pos = points.pop_front()
+    var tween = get_tree().create_tween()
+    tween.tween_property(self, "global_position", pos, .3)
+    tween.tween_callback(nextMove)
+    tween.play()
     return
 
 func textAnimation() -> TextAnimation:
