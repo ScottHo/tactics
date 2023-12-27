@@ -1,4 +1,4 @@
-extends Node2D
+class_name CameraService extends Node2D
 
 var _right_click_down := false
 var max_x := 0.0
@@ -12,6 +12,9 @@ func _ready():
     max_y = cam.position.y + 600
     min_x = cam.position.x - 1000
     min_y = cam.position.y - 600
+    $Timer.timeout.connect(func():
+        cam.position_smoothing_enabled = false
+        $Timer.stop())
     return
 
 func _input(event):
@@ -44,4 +47,11 @@ func _input(event):
             pos.y = max(min_y, pos.y)
             cam.position = pos
             return
-        
+
+func move(pos: Vector2):
+    $Timer.start(1)
+    var tween = get_tree().create_tween()
+    cam.position_smoothing_enabled = true
+    tween.tween_property(cam, "position", pos, .2)
+    tween.play()
+    return

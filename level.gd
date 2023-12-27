@@ -10,8 +10,10 @@ extends Node2D
 @onready var deathService: DeathService = $DeathService
 @onready var infoService: InfoService = $InfoService
 @onready var interactService: InteractService = $InteractService
+@onready var cameraService: CameraService = $CameraService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
+@onready var timer: Timer = $Timer
 var current_turn_id: int = -1
 var state: State = State.new()
 var _is_ai_turn := false
@@ -31,6 +33,7 @@ func _ready():
     menuService.moveActionInitiate.connect(doMove)
     menuService.actionInitiate.connect(doAction)
     menuService.interactActionInitiate.connect(doInteract)
+    menuService.menuAnimationsFinished.connect(doNextTurn)
     moveService.movesFound.connect(movesFound)
     actionService.actionDone.connect(actionDone)
     interactService.interactDone.connect(interactDone)
@@ -144,7 +147,7 @@ func _add_test_entity(display_name, health, movement, _range, speed, location, s
     ent.range = _range
     ent.speed = speed
     ent.location = location
-    ent.update_energy(1)
+    ent.set_energy(1)
     ent.set_max_hp(health)
     ent.setThreat(0)
     if ally:
@@ -158,27 +161,37 @@ func currentEntity() -> Entity:
     return state.entities.get_data(current_turn_id)
 
 func nextTurn():
+    menuService.disableAllButtons()
     if currentEntity() != null:
         currentEntity().reset_buff_values()
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
+    cameraService.move(tileMap.pointToGlobal(currentEntity().location))    
     resetPlayerServices()
     menuService.showTurns(turnService.next10Turns())
+    menuService.pre_showCurrentTurn(current_turn_id)
+    timer.timeout.connect(nextTurn_continued)
+    timer.start(.4)
+    return
+    
+
+func nextTurn_continued():
+    timer.stop()
+    timer.disconnect_all()
     currentEntity().setup_next_turn()
     if state.allies.has(current_turn_id):
         _is_ai_turn = false
-        menuService.enableAllButtons()
-        if currentEntity().get_movement() == 0:
-            menuService.disableMovesButton()
     else:
         _is_ai_turn = true
-        menuService.disableAllButtons()
-        nextAiStep()
     update_character_menu()
-    menuService.showCurrentTurn(current_turn_id)    
+    menuService.showCurrentTurn(current_turn_id)
     return
 
-
+func doNextTurn():
+    if _is_ai_turn:
+        menuService.disableTurnButton()
+        nextAiStep()
+    return
 
 func startAnimationDelay(delay: float):
     _do_animation_delay = delay

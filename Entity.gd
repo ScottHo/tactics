@@ -156,13 +156,17 @@ func set_hp(hp):
     sprite.update_hp(health)
     return
 
-func update_energy(en):
-    energy = en
+func set_energy(e):
+    energy = e
     if energy < 0:
         energy = 0
     if energy > 5:
         energy = 5
     sprite.update_energy(energy)
+
+func update_energy(energy_diff):
+    set_energy(energy + energy_diff)
+    sprite.textAnimation().update_energy(energy_diff)
     return
 
 func gainThreat(t):
@@ -194,7 +198,7 @@ func setup_next_turn():
     lose_all_buffs()
     moves_left = get_movement()
     if is_ally:
-        update_energy(energy + 1)
+        update_energy(1)
         if interactable != null:
             if interactable.repeated_effect != null:
                 interactable.repeated_effect.call(self)

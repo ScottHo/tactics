@@ -13,13 +13,17 @@ signal moveActionInitiate
 signal nextTurnActionInitiate
 signal interactActionInitiate
 signal actionInitiate
-@onready var moveButton: Button = $CharacterContainer/MoveButton
+signal menuAnimationsFinished
+
 @onready var nextTurnButton: Button = $TurnButton
+
+@onready var moveButton: Button = $CharacterContainer/MoveButton
 @onready var interactButton: Button = $CharacterContainer/InteractButton
 @onready var attackButton: Button = $CharacterContainer/AttackButton
 @onready var action1Button: Button = $CharacterContainer/Action1Button
 @onready var action2Button: Button = $CharacterContainer/Action2Button
 
+@onready var charSprite: Sprite2D = $CharacterContainer/CharacterSprite
 @onready var nameLabel: Label = $CharacterContainer/NameLabel
 @onready var healthLabel: Label = $CharacterContainer/HealthLabel
 @onready var slashLabel: Label = $CharacterContainer/SlashLabel
@@ -62,6 +66,8 @@ func _ready():
         show_future_turns(true))
     $TurnsContainer/ExpandReference.mouse_exited.connect(func():
         show_future_turns(false))
+
+    $Timer.timeout.connect(finish_menu_animations)
 
     cache_button_states()
     _tab_dict = {}
@@ -147,28 +153,59 @@ func show_future_turns(show):
     for i in range(10):
         turnSprites[i].visible = show
     return
+
+func pre_showCurrentTurn(turn: int):
+    var entity := _state.get_entity(turn)
+    nameLabel.text = entity.display_name
+    charSprite.texture = entity.sprite.texture_resource()
+    charSprite.scale = entity.sprite.texture_scale()*4
+    charSprite.modulate.a = 0
+    show_description(false, null)
+    updateEntityInfo(entity)
+    disableAllButtons()
+    var ap: AnimationPlayer = charSprite.get_child(0)
+    ap.current_animation = "fade_in"
+    ap.play()
+    return
     
 func showCurrentTurn(turn: int):
     var entity := _state.get_entity(turn)
-    nameLabel.text = _state.get_entity(turn).display_name
-    disableActionButtons()
-    var is_ally := _state.isAlly(entity)
+    var is_ally := entity.is_ally
     if is_ally:
-        
+        if entity.get_movement() > 0:
+            moveButton.disabled = false
+        interactButton.disabled = false
         attackButton.disabled = false
-        #action1Button.text = entity.action1.display_name.replace(" ", "\n")
         if entity.action1.cost <= entity.energy:
             action1Button.disabled = false
-        #action2Button.text = entity.action2.display_name.replace(" ", "\n")
         if entity.action2.cost <= entity.energy:
             action2Button.disabled = false
         setup_action_descriptions(entity)
-        
-    updateEntityInfo(entity)
+    
+    start_menu_animations()
+    return
 
-    show_description(false, null)
-    $CharacterContainer/CharacterSprite.texture = entity.sprite.texture_resource()
-    $CharacterContainer/CharacterSprite.scale = entity.sprite.texture_scale()*4
+func start_menu_animations():
+    _button_animations(moveButton)
+    _button_animations(interactButton)
+    _button_animations(attackButton)
+    _button_animations(action1Button)
+    _button_animations(action2Button)
+    $Timer.start(1)
+    return
+
+func _button_animations(button: Button):
+    if button.disabled:
+        return
+    var ap: AnimationPlayer = button.get_child(0)
+    ap.current_animation = "grow"
+    ap.play()
+    return
+
+func finish_menu_animations():
+    $Timer.stop()
+    nextTurnButton.disabled = false    
+    menuAnimationsFinished.emit()
     return
 
 func setup_action_descriptions(entity: Entity):
@@ -267,10 +304,14 @@ func restore_button_states():
 
 func disableAllButtons():
     unpress_all_buttons()
-    nextTurnButton.disabled = true
+    disableTurnButton()
     disableInteractButton()
     disableActionButtons()
     disableMovesButton()
+    return
+
+func disableTurnButton():
+    nextTurnButton.disabled = true
     return
 
 func disableInteractButton():

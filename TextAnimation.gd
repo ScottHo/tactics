@@ -15,6 +15,15 @@ func gain_health(h: int):
     play()
     return
 
+func update_energy(e: int):
+    set_color(Color.CYAN)
+    if e < 0:
+        text = "-" + str(e) + " Energy"
+    else:
+        text = "+" + str(e) + " Energy"
+    play()
+    return
+
 func gain_shields(s: int):
     set_color(Color.CYAN)
     text = "+" + str(s) + " Shield"
@@ -22,7 +31,7 @@ func gain_shields(s: int):
     return
 
 func gain_movement(m: int):
-    set_color(Color.PALE_GREEN)
+    set_color(Color.GOLD)
     text = "+" + str(m) + " Movement"
     play()
     return
