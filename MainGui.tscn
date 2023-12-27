@@ -420,17 +420,22 @@ texture = ExtResource("15_p3qwx")
 
 [node name="Label" type="Label" parent="ReferenceRect2"]
 layout_mode = 0
-offset_left = 588.517
-offset_top = 43.523
-offset_right = 888.517
-offset_bottom = 301.523
-text = "Boss 1
+offset_left = 576.044
+offset_top = -2.80389
+offset_right = 976.044
+offset_bottom = 375.196
+text = "Elctric Barrage:
+Deals 6 damage spread over every friendly unit in a 3x3 area centered on a random friendly unit
+
+Explosive Missles:
+Deals 2 damage to every friendly unit in a 3x3 area centered on every friendly unit
 
 Elctric Barrage:
 Deals 6 damage spread over every friendly unit in a 3x3 area centered on a random friendly unit
 
-Explosive Missles:
-Deals 2 damage to every friendly unit in a 3x3 area centered on every friendly unit"
+Elctric Barrage:
+Deals 6 damage spread over every friendly unit in a 3x3 area centered on a random friendly unit
+"
 label_settings = SubResource("LabelSettings_ufm1a")
 autowrap_mode = 2
 
