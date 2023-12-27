@@ -33,6 +33,7 @@ func _input(event):
             MOUSE_BUTTON_RIGHT:
                 _right_click_down = true
                 _moved = true
+                cam.position_smoothing_enabled = false
                 return
             MOUSE_BUTTON_WHEEL_UP:
                 cam.zoom += Vector2(.05, .05)
@@ -63,7 +64,7 @@ func _input(event):
 func move(pos: Vector2):
     _moved = false
     $Timer.stop()
-    $Timer.start(1)
+    $Timer.start(1.5)
     var tween = get_tree().create_tween()
     cam.position_smoothing_enabled = true
     tween.tween_property(cam, "position", pos, .2)
@@ -79,7 +80,7 @@ func lock_on(node):
 
 func stop_lock():
     $Timer.stop()
-    $Timer.start(.4)
+    $Timer.start(.5)
     _target = null
     return
 
