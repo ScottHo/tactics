@@ -12,7 +12,7 @@ static func add_base_attack(ent: Entity):
             _ent.loseHP(user.get_damage())
         return
     var d = "Deals damage to any target. Gains 1 Threat."
-    _add_test_action(ent, "Attack", d, 0, -1, false, 0, [], base_effect, true, ActionType.ATTACK)
+    _add_test_action(ent, "Normal Attack", d, 0, -1, false, 0, [], base_effect, true, ActionType.ATTACK)
     return
 
 static func add_exert(ent: Entity, type: int):

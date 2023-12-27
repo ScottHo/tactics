@@ -8,10 +8,10 @@ var min_y := 0.0
 @onready var cam = $"../Camera2D"
 
 func _ready():
-    max_x = cam.position.x + 300
-    max_y = cam.position.y + 200
-    min_x = cam.position.x - 300
-    min_y = cam.position.y - 200
+    max_x = cam.position.x + 1000
+    max_y = cam.position.y + 600
+    min_x = cam.position.x - 1000
+    min_y = cam.position.y - 600
     return
 
 func _input(event):
@@ -22,8 +22,8 @@ func _input(event):
                 return
             MOUSE_BUTTON_WHEEL_UP:
                 cam.zoom += Vector2(.05, .05)
-                cam.zoom.x = min(cam.zoom.x, 1)
-                cam.zoom.y = min(cam.zoom.y, 1)
+                cam.zoom.x = min(cam.zoom.x, 1.1)
+                cam.zoom.y = min(cam.zoom.y, 1.1)
                 return
             MOUSE_BUTTON_WHEEL_DOWN:
                 cam.zoom -= Vector2(.05, .05)
