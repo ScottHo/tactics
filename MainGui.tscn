@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cve4y2nbbwucg"]
+[gd_scene load_steps=20 format=3 uid="uid://cve4y2nbbwucg"]
 
 [ext_resource type="Texture2D" uid="uid://wbvtgiuj870u" path="res://Assets/large-panel.png" id="1_vtcpi"]
 [ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="2_1i3ah"]
@@ -10,13 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="7_oof0c"]
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="8_gqmkm"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="10_kg3oc"]
-[ext_resource type="Texture2D" uid="uid://d2vv25mrshlpr" path="res://Assets/Electo.png" id="11_nrb8h"]
+[ext_resource type="PackedScene" uid="uid://ct2wj06r38iul" path="res://upgrade_panel.tscn" id="11_okctx"]
 [ext_resource type="Texture2D" uid="uid://b1yd3r7k2ump0" path="res://Assets/blue_orb.png" id="11_w6csy"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="12_7qj6u"]
-[ext_resource type="Texture2D" uid="uid://5slno62p0s40" path="res://Assets/LongShot.png" id="12_8lio3"]
-[ext_resource type="Texture2D" uid="uid://0q8edujpan5v" path="res://Assets/NanoNano.png" id="13_h0x2r"]
-[ext_resource type="Texture2D" uid="uid://nbw3mhusx6ki" path="res://Assets/Oilee.png" id="14_ixxc7"]
-[ext_resource type="Texture2D" uid="uid://dm0l5lxd34tw0" path="res://Assets/Smithy.png" id="15_p3qwx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_h8uai"]
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_a3oru"]
 font_size = 20
@@ -30,88 +29,11 @@ font_size = 20
 [sub_resource type="LabelSettings" id="LabelSettings_7cbe8"]
 font_size = 20
 
-[sub_resource type="LabelSettings" id="LabelSettings_h8uai"]
-font_size = 20
-
 [sub_resource type="LabelSettings" id="LabelSettings_ufm1a"]
 line_spacing = 2.0
 font_size = 14
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_2bvaw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_35hib"]
-resource_name = "glow"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1.3, 1.3), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7d57o"]
-_data = {
-"RESET": SubResource("Animation_2bvaw"),
-"grow": SubResource("Animation_35hib")
-}
-
-[sub_resource type="Animation" id="Animation_ejaby"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_vjgrq"]
-resource_name = "glow"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.3, 0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1.3, 1.3), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fyyxq"]
-_data = {
-"RESET": SubResource("Animation_ejaby"),
-"grow": SubResource("Animation_vjgrq")
-}
 
 [node name="MainGui" type="Node2D"]
 position = Vector2(703.715, 549.559)
@@ -124,87 +46,124 @@ texture = ExtResource("1_vtcpi")
 [node name="EnemyContainer" type="Node2D" parent="."]
 position = Vector2(-727.488, -457.85)
 
-[node name="MovesSprite" type="Sprite2D" parent="EnemyContainer"]
-position = Vector2(93.0433, 312.196)
+[node name="GridContainer" type="GridContainer" parent="EnemyContainer"]
+offset_left = 139.042
+offset_top = 278.822
+offset_right = 319.042
+offset_bottom = 418.822
+theme_override_constants/h_separation = 90
+theme_override_constants/v_separation = 35
+columns = 3
+
+[node name="Control" type="Control" parent="EnemyContainer/GridContainer"]
+layout_mode = 2
+
+[node name="HealthSprite" type="Sprite2D" parent="EnemyContainer/GridContainer/Control"]
+position = Vector2(-16, 11)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_7qj6u")
+
+[node name="HealthLabel" type="Label" parent="EnemyContainer/GridContainer/Control"]
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("4_mfnqb")
+theme_override_font_sizes/font_size = 14
+text = "888"
+label_settings = SubResource("LabelSettings_h8uai")
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="EnemyContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MovesSprite" type="Sprite2D" parent="EnemyContainer/GridContainer/Control2"]
+position = Vector2(-16, 11)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_i12ml")
 
-[node name="MovesLabel" type="Label" parent="EnemyContainer"]
-offset_left = 110.286
-offset_top = 300.77
-offset_right = 144.286
-offset_bottom = 325.77
+[node name="MovesLabel" type="Label" parent="EnemyContainer/GridContainer/Control2"]
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("4_mfnqb")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_a3oru")
 vertical_alignment = 1
 
-[node name="SpeedSprite" type="Sprite2D" parent="EnemyContainer"]
-position = Vector2(170.592, 312.196)
+[node name="Control3" type="Control" parent="EnemyContainer/GridContainer"]
+layout_mode = 2
+
+[node name="SpeedSprite" type="Sprite2D" parent="EnemyContainer/GridContainer/Control3"]
+position = Vector2(-16, 11)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_6pbbk")
 
-[node name="SpeedLabel" type="Label" parent="EnemyContainer"]
-offset_left = 183.613
-offset_top = 301.102
-offset_right = 217.613
-offset_bottom = 326.102
+[node name="SpeedLabel" type="Label" parent="EnemyContainer/GridContainer/Control3"]
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("4_mfnqb")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_u5rlr")
 vertical_alignment = 1
 
-[node name="DamageSprite" type="Sprite2D" parent="EnemyContainer"]
-position = Vector2(233.524, 310.021)
+[node name="Control4" type="Control" parent="EnemyContainer/GridContainer"]
+layout_mode = 2
+
+[node name="DamageSprite" type="Sprite2D" parent="EnemyContainer/GridContainer/Control4"]
+position = Vector2(-16, 11)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_cgnfx")
 
-[node name="DamageLabel" type="Label" parent="EnemyContainer"]
-offset_left = 247.667
-offset_top = 298.927
-offset_right = 281.667
-offset_bottom = 323.927
+[node name="DamageLabel" type="Label" parent="EnemyContainer/GridContainer/Control4"]
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("4_mfnqb")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_7dolo")
 vertical_alignment = 1
 
-[node name="RangeSprite" type="Sprite2D" parent="EnemyContainer"]
-position = Vector2(306.245, 310.611)
+[node name="Control5" type="Control" parent="EnemyContainer/GridContainer"]
+layout_mode = 2
+
+[node name="RangeSprite" type="Sprite2D" parent="EnemyContainer/GridContainer/Control5"]
+position = Vector2(-16, 11)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_oof0c")
 
-[node name="RangeLabel" type="Label" parent="EnemyContainer"]
-offset_left = 321.194
-offset_top = 299.517
-offset_right = 355.194
-offset_bottom = 324.517
+[node name="RangeLabel" type="Label" parent="EnemyContainer/GridContainer/Control5"]
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("4_mfnqb")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_7cbe8")
 vertical_alignment = 1
 
-[node name="ArmorSprite" type="Sprite2D" parent="EnemyContainer"]
-position = Vector2(377.407, 309.168)
+[node name="Control6" type="Control" parent="EnemyContainer/GridContainer"]
+layout_mode = 2
+
+[node name="ArmorSprite" type="Sprite2D" parent="EnemyContainer/GridContainer/Control6"]
+position = Vector2(-16, 11)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_gqmkm")
 
-[node name="ArmorLabel" type="Label" parent="EnemyContainer"]
-offset_left = 391.927
-offset_top = 298.074
-offset_right = 425.927
-offset_bottom = 323.074
+[node name="ArmorLabel" type="Label" parent="EnemyContainer/GridContainer/Control6"]
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("4_mfnqb")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_h8uai")
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="EnemyContainer"]
+[node name="Description" type="Label" parent="EnemyContainer"]
 offset_left = 388.879
 offset_top = -8.17789
 offset_right = 788.879
@@ -224,7 +183,7 @@ Deals 6 damage spread over every friendly unit in a 3x3 area centered on a rando
 label_settings = SubResource("LabelSettings_ufm1a")
 autowrap_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="EnemyContainer"]
+[node name="BossSprite" type="Sprite2D" parent="EnemyContainer"]
 position = Vector2(238.862, 139.574)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_1i3ah")
@@ -232,7 +191,7 @@ texture = ExtResource("2_1i3ah")
 [node name="MapContainer" type="Node2D" parent="."]
 position = Vector2(-602.444, -28.4656)
 
-[node name="Label3" type="Label" parent="MapContainer"]
+[node name="Description" type="Label" parent="MapContainer"]
 offset_left = 264.646
 offset_top = -3.41736
 offset_right = 664.646
@@ -246,351 +205,226 @@ Deals 2 damage to every friendly unit in a 3x3 area centered on every friendly u
 label_settings = SubResource("LabelSettings_ufm1a")
 autowrap_mode = 2
 
-[node name="BlueOrb" type="Sprite2D" parent="MapContainer"]
+[node name="MapSprite" type="Sprite2D" parent="MapContainer"]
 position = Vector2(102.624, 102.107)
 scale = Vector2(3, 3)
 texture = ExtResource("11_w6csy")
 
-[node name="SelectedContainer" type="Node2D" parent="."]
-position = Vector2(59.0084, -191.351)
-
-[node name="Sprite2D2" type="Sprite2D" parent="SelectedContainer"]
-position = Vector2(135.744, 146.749)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_6ouxj")
-
-[node name="Label4" type="Label" parent="SelectedContainer"]
-offset_left = 359.591
-offset_top = 28.3406
-offset_right = 455.591
-offset_bottom = 62.3406
-text = "[][][]"
-
-[node name="Label5" type="Label" parent="SelectedContainer"]
-offset_left = 361.147
-offset_top = 108.186
-offset_right = 463.147
-offset_bottom = 129.186
-text = "[][][]"
-
-[node name="Action1Button" type="Button" parent="SelectedContainer"]
-offset_left = 254.139
-offset_top = -7.68423
-offset_right = 354.139
-offset_bottom = 92.3158
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("10_kg3oc")
-theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 19
-toggle_mode = true
-text = "SP 1"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedContainer/Action1Button"]
-libraries = {
-"": SubResource("AnimationLibrary_7d57o")
-}
-
-[node name="Action2Button" type="Button" parent="SelectedContainer"]
-offset_left = 254.251
-offset_top = 68.8895
-offset_right = 354.251
-offset_bottom = 168.889
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("10_kg3oc")
-theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 19
-toggle_mode = true
-text = "SP 2"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedContainer/Action2Button"]
-libraries = {
-"": SubResource("AnimationLibrary_7d57o")
-}
-
-[node name="AttackButton" type="Button" parent="SelectedContainer"]
-offset_left = 252.925
-offset_top = 149.17
-offset_right = 352.925
-offset_bottom = 249.17
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("10_kg3oc")
-theme_type_variation = &"FlatButton"
-toggle_mode = true
-icon = ExtResource("6_cgnfx")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedContainer/AttackButton"]
-libraries = {
-"": SubResource("AnimationLibrary_fyyxq")
-}
-
-[node name="MovesButton" type="Button" parent="SelectedContainer"]
-offset_left = 252.925
-offset_top = 243.457
-offset_right = 352.925
-offset_bottom = 343.457
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("10_kg3oc")
-theme_type_variation = &"FlatButton"
-toggle_mode = true
-icon = ExtResource("3_i12ml")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedContainer/MovesButton"]
-libraries = {
-"": SubResource("AnimationLibrary_fyyxq")
-}
-
-[node name="RangeButton" type="Button" parent="SelectedContainer"]
-offset_left = 417.927
-offset_top = 146.925
-offset_right = 517.927
-offset_bottom = 246.925
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("10_kg3oc")
-theme_type_variation = &"FlatButton"
-toggle_mode = true
-icon = ExtResource("7_oof0c")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedContainer/RangeButton"]
-libraries = {
-"": SubResource("AnimationLibrary_fyyxq")
-}
-
-[node name="ArmorButton" type="Button" parent="SelectedContainer"]
-offset_left = 415.682
-offset_top = 243.457
-offset_right = 515.682
-offset_bottom = 343.457
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("10_kg3oc")
-theme_type_variation = &"FlatButton"
-toggle_mode = true
-icon = ExtResource("8_gqmkm")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedContainer/ArmorButton"]
-libraries = {
-"": SubResource("AnimationLibrary_fyyxq")
-}
-
-[node name="Label6" type="Label" parent="SelectedContainer"]
-offset_left = 351.182
-offset_top = 184.747
-offset_right = 447.182
-offset_bottom = 218.747
-text = "[][][]"
-
-[node name="Label7" type="Label" parent="SelectedContainer"]
-offset_left = 351.182
-offset_top = 279.769
-offset_right = 447.182
-offset_bottom = 313.769
-text = "[][][]"
-
-[node name="Label8" type="Label" parent="SelectedContainer"]
-offset_left = 516.839
-offset_top = 184.747
-offset_right = 612.839
-offset_bottom = 218.747
-text = "[][][]"
-
-[node name="Label9" type="Label" parent="SelectedContainer"]
-offset_left = 515.157
-offset_top = 284.814
-offset_right = 611.157
-offset_bottom = 318.814
-text = "[][][]"
-
-[node name="AttackButton2" type="Button" parent="SelectedContainer"]
-offset_left = 418.9
-offset_top = -11.4409
-offset_right = 518.9
-offset_bottom = 88.5591
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("10_kg3oc")
-theme_type_variation = &"FlatButton"
-toggle_mode = true
-icon = ExtResource("12_7qj6u")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedContainer/AttackButton2"]
-libraries = {
-"": SubResource("AnimationLibrary_fyyxq")
-}
-
-[node name="Label10" type="Label" parent="SelectedContainer"]
-offset_left = 515.157
-offset_top = 24.1361
-offset_right = 611.157
-offset_bottom = 58.1361
-text = "[][][]"
-
-[node name="AttackButton3" type="Button" parent="SelectedContainer"]
-offset_left = 416.9
-offset_top = 66.7625
-offset_right = 516.9
-offset_bottom = 166.762
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("10_kg3oc")
-theme_type_variation = &"FlatButton"
-toggle_mode = true
-icon = ExtResource("6_cgnfx")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectedContainer/AttackButton3"]
-libraries = {
-"": SubResource("AnimationLibrary_fyyxq")
-}
-
-[node name="Label11" type="Label" parent="SelectedContainer"]
-offset_left = 515.157
-offset_top = 102.339
-offset_right = 611.157
-offset_bottom = 136.339
-text = "[][][]"
-
-[node name="Button" type="Button" parent="SelectedContainer"]
-offset_left = 55.1663
-offset_top = 257.027
-offset_right = 205.166
-offset_bottom = 337.027
-theme = ExtResource("10_kg3oc")
-text = "Deploy"
+[node name="SelectedContainer" parent="." instance=ExtResource("11_okctx")]
 
 [node name="CollectionContainer" type="Node2D" parent="."]
-position = Vector2(51.0978, -503.919)
+position = Vector2(70.8968, -509.576)
 
-[node name="Brutus2" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(45.5029, 54.6353)
+[node name="GridContainer" type="GridContainer" parent="CollectionContainer"]
+offset_left = 113.369
+offset_top = 42.6535
+offset_right = 613.369
+offset_bottom = 242.654
+theme_override_constants/h_separation = 95
+theme_override_constants/v_separation = 95
+columns = 6
+
+[node name="Control" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus3" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(621.729, 54.6353)
+[node name="Control2" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control2"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus4" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(505.849, 57.8101)
+[node name="Control3" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control3"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus5" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(285.2, 56.2227)
+[node name="Control4" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control4"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus6" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(396.318, 56.2227)
+[node name="Control5" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control5"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus7" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(161.383, 57.8101)
+[node name="Control6" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control6"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus8" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(39.0598, 137.579)
+[node name="Control7" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control7"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus9" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(615.286, 137.579)
+[node name="Control8" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control8"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus10" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(499.406, 140.754)
+[node name="Control9" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control9"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus11" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(278.757, 139.167)
+[node name="Control10" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control10"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus12" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(389.875, 139.167)
+[node name="Control11" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control11"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus13" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(154.94, 140.754)
+[node name="Control12" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control12"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus14" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(36.8098, 224.872)
+[node name="Control13" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control13"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus15" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(613.036, 224.872)
+[node name="Control14" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control14"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus16" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(497.156, 228.047)
+[node name="Control15" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control15"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus17" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(276.507, 226.459)
+[node name="Control16" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control16"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus18" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(387.625, 226.459)
+[node name="Control17" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control17"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
 
-[node name="Brutus19" type="Sprite2D" parent="CollectionContainer"]
-position = Vector2(152.69, 228.047)
+[node name="Control18" type="Control" parent="CollectionContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="CollectionContainer/GridContainer/Control18"]
 scale = Vector2(0.18, 0.18)
 texture = ExtResource("2_6ouxj")
+
+[node name="RightButton" type="Button" parent="CollectionContainer"]
+offset_left = 636.034
+offset_top = 121.586
+offset_right = 686.034
+offset_bottom = 171.586
+theme = ExtResource("10_kg3oc")
+theme_type_variation = &"TriangleButton"
+
+[node name="LeftButton" type="Button" parent="CollectionContainer"]
+offset_left = 67.6862
+offset_top = 170.664
+offset_right = 117.686
+offset_bottom = 220.664
+rotation = 3.14159
+theme = ExtResource("10_kg3oc")
+theme_type_variation = &"TriangleButton"
 
 [node name="DeployContainer" type="Node2D" parent="."]
 position = Vector2(40.9738, 172.016)
 
-[node name="Brutus" type="Sprite2D" parent="DeployContainer"]
-position = Vector2(216.709, 26.8997)
+[node name="GridContainer" type="GridContainer" parent="DeployContainer"]
+offset_left = 16.0181
+offset_top = 28.0316
+offset_right = 516.018
+offset_bottom = 68.0316
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 100
+columns = 6
+
+[node name="Control" type="Control" parent="DeployContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="DeployContainer/GridContainer/Control"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_6ouxj")
 
-[node name="Electo" type="Sprite2D" parent="DeployContainer"]
-position = Vector2(515.74, 26.5299)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("11_nrb8h")
+[node name="Control2" type="Control" parent="DeployContainer/GridContainer"]
+layout_mode = 2
 
-[node name="LongShot" type="Sprite2D" parent="DeployContainer"]
-position = Vector2(315.337, 21.6713)
+[node name="BotSprite" type="Sprite2D" parent="DeployContainer/GridContainer/Control2"]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("12_8lio3")
+texture = ExtResource("2_6ouxj")
 
-[node name="NanoNano" type="Sprite2D" parent="DeployContainer"]
-position = Vector2(420.655, 17.9106)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("13_h0x2r")
+[node name="Control3" type="Control" parent="DeployContainer/GridContainer"]
+layout_mode = 2
 
-[node name="Oilee" type="Sprite2D" parent="DeployContainer"]
-position = Vector2(129.579, 22.6242)
+[node name="BotSprite" type="Sprite2D" parent="DeployContainer/GridContainer/Control3"]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("14_ixxc7")
+texture = ExtResource("2_6ouxj")
 
-[node name="Smithy" type="Sprite2D" parent="DeployContainer"]
-position = Vector2(47.6345, 34.0972)
+[node name="Control4" type="Control" parent="DeployContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="DeployContainer/GridContainer/Control4"]
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("15_p3qwx")
+texture = ExtResource("2_6ouxj")
+
+[node name="Control5" type="Control" parent="DeployContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="DeployContainer/GridContainer/Control5"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6ouxj")
+
+[node name="Control6" type="Control" parent="DeployContainer/GridContainer"]
+layout_mode = 2
+
+[node name="BotSprite" type="Sprite2D" parent="DeployContainer/GridContainer/Control6"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_6ouxj")
 
 [node name="Button" type="Button" parent="DeployContainer"]
-offset_left = 576.039
-offset_top = -12.9226
-offset_right = 726.039
-offset_bottom = 67.0774
+offset_left = 569.432
+offset_top = -5.37157
+offset_right = 719.432
+offset_bottom = 74.6284
 theme = ExtResource("10_kg3oc")
 text = "GO"

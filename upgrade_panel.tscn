@@ -1,0 +1,324 @@
+[gd_scene load_steps=14 format=3 uid="uid://ct2wj06r38iul"]
+
+[ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
+[ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
+[ext_resource type="Texture2D" uid="uid://bfpyu6ktr6o0u" path="res://Assets/progress_under_123.png" id="3_00qqc"]
+[ext_resource type="Texture2D" uid="uid://cvlakupg0yib6" path="res://Assets/progress_over_1.png" id="4_x2q63"]
+[ext_resource type="Texture2D" uid="uid://w3mi05t3qwk3" path="res://Assets/progress_anim_123.png" id="5_jhbqx"]
+[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="6_6hr7q"]
+[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="7_khht8"]
+[ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="8_121h5"]
+[ext_resource type="Script" path="res://Upgrader.gd" id="9_mbcmb"]
+[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="9_nlkln"]
+[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_sji2x"]
+[ext_resource type="Texture2D" uid="uid://de2dhfdkb3d0e" path="res://Assets/Brutus.png" id="11_birb4"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="11_y8say"]
+
+[node name="SelectedContainer" type="Node2D"]
+position = Vector2(59.0084, -191.351)
+script = ExtResource("1_cil83")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 220.252
+offset_top = -7.20978
+offset_right = 580.252
+offset_bottom = 292.79
+theme_override_constants/h_separation = 120
+theme_override_constants/v_separation = 120
+columns = 4
+
+[node name="Health" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Health"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+icon = ExtResource("10_sji2x")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Health"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_progress = ExtResource("4_x2q63")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Health"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jhbqx")
+
+[node name="Armor" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Armor"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+icon = ExtResource("9_nlkln")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Armor"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_progress = ExtResource("4_x2q63")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Armor"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jhbqx")
+
+[node name="Movement" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Movement"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+icon = ExtResource("7_khht8")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Movement"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_progress = ExtResource("4_x2q63")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Movement"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jhbqx")
+
+[node name="Speed" type="Control" parent="GridContainer"]
+layout_mode = 2
+script = ExtResource("9_mbcmb")
+
+[node name="Button" type="Button" parent="GridContainer/Speed"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+icon = ExtResource("11_y8say")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Speed"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_progress = ExtResource("4_x2q63")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Speed"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jhbqx")
+
+[node name="Attack" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Attack"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+icon = ExtResource("6_6hr7q")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Attack"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_progress = ExtResource("4_x2q63")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Attack"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jhbqx")
+
+[node name="Action1" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Action1"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 19
+toggle_mode = true
+text = "SP 1"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Action1"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_progress = ExtResource("4_x2q63")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Action1"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jhbqx")
+
+[node name="Action2" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Action2"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 99.9995
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 19
+toggle_mode = true
+text = "SP 2"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Action2"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_progress = ExtResource("4_x2q63")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Action2"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jhbqx")
+
+[node name="Range" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Range"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+icon = ExtResource("8_121h5")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Range"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_progress = ExtResource("4_x2q63")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Range"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_jhbqx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(135.744, 146.749)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_birb4")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 55.1663
+offset_top = 257.027
+offset_right = 205.166
+offset_bottom = 337.027
+theme = ExtResource("2_j6fe4")
+text = "Deploy"
