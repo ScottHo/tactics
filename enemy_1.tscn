@@ -10,6 +10,6 @@ script = ExtResource("1_fsmkx")
 [node name="CharacterCommon" parent="." instance=ExtResource("2_i2cit")]
 
 [node name="Sprite" type="Sprite2D" parent="CharacterCommon"]
-position = Vector2(0.769935, -18.2405)
+position = Vector2(0.769935, -21.1488)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_j4qc6")

@@ -1,14 +1,54 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6iqxvpypem6r"]
+[gd_scene load_steps=23 format=3 uid="uid://b6iqxvpypem6r"]
 
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="2_sbscd"]
-[ext_resource type="Texture2D" uid="uid://di2pvfhgjirl" path="res://Assets/Progress_Under.png" id="3_87rn2"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
-[ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/Health_Over.png" id="4_y3co7"]
+[ext_resource type="Texture2D" uid="uid://hp656rxvw5df" path="res://Assets/Health_Over_Thick.png" id="4_fux7d"]
 [ext_resource type="Texture2D" uid="uid://dh7objn6mrlvt" path="res://Assets/Energy_Over.png" id="5_apc0l"]
+[ext_resource type="Script" path="res://EntityInfoTab.gd" id="6_m13e8"]
+[ext_resource type="Texture2D" uid="uid://cmlcf47flv4my" path="res://Assets/info_box_hover.png" id="6_v4rmv"]
+[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="9_ir6t0"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="10_h2kqm"]
+[ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="10_m1a84"]
+[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="11_kcro7"]
+[ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="12_v0dse"]
+[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="13_shgj1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449
 height = 42.1811
+
+[sub_resource type="LabelSettings" id="LabelSettings_f4ngt"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_6wlv5"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_24ao3"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_gga6n"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_msooa"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_7v0yr"]
+font_size = 22
+
+[sub_resource type="LabelSettings" id="LabelSettings_gu1px"]
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_emkyf"]
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pnrjd"]
+font_size = 15
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="CharacterCommon" type="CharacterBody2D"]
 z_index = 2
@@ -23,7 +63,7 @@ floor_snap_length = 32.0
 safe_margin = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.0947666, -3.8147e-06)
+position = Vector2(0.208486, -0.0978169)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mdc5f")
 
@@ -43,30 +83,197 @@ position = Vector2(0, -11.3594)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_sbscd")
 
-[node name="HealthBar" type="TextureProgressBar" parent="."]
-visible = false
-z_index = 5
-offset_left = -30.0
-offset_top = 10.0
-offset_right = 182.0
-offset_bottom = 40.0
-scale = Vector2(0.3, 0.3)
-value = 50.0
-texture_under = ExtResource("3_87rn2")
-texture_progress = ExtResource("4_y3co7")
-
-[node name="EnergyBar" type="TextureProgressBar" parent="."]
-visible = false
-z_index = 5
-offset_left = -30.0
-offset_top = 19.0
-offset_right = 182.0
-offset_bottom = 49.0
-scale = Vector2(0.3, 0.3)
-max_value = 5.0
-value = 3.0
-texture_under = ExtResource("3_87rn2")
-texture_progress = ExtResource("5_apc0l")
-
 [node name="InteractableContainer" type="Node2D" parent="."]
 position = Vector2(-3.25181, -44.6995)
+
+[node name="InfoBoxContainer" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(94.6259, -20.8391)
+script = ExtResource("6_m13e8")
+
+[node name="Background" type="Sprite2D" parent="InfoBoxContainer"]
+visible = false
+position = Vector2(-10.302, 0.0245952)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("6_v4rmv")
+
+[node name="Stats" type="GridContainer" parent="InfoBoxContainer"]
+visible = false
+offset_left = -41.1688
+offset_top = -18.7338
+offset_right = 108.831
+offset_bottom = 67.2662
+scale = Vector2(0.35, 0.35)
+theme_override_constants/h_separation = 150
+theme_override_constants/v_separation = 43
+columns = 2
+
+[node name="Control" type="Control" parent="InfoBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="MoveSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control"]
+position = Vector2(-16.9496, 11.0892)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_ir6t0")
+
+[node name="MoveLabel" type="Label" parent="InfoBoxContainer/Stats/Control"]
+layout_mode = 2
+offset_right = 36.0
+offset_bottom = 27.0
+text = "99
+"
+label_settings = SubResource("LabelSettings_f4ngt")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control2" type="Control" parent="InfoBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="SpeedSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control2"]
+position = Vector2(-16.9496, 11.0892)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("10_h2kqm")
+
+[node name="SpeedLabel" type="Label" parent="InfoBoxContainer/Stats/Control2"]
+layout_mode = 2
+offset_right = 36.0
+offset_bottom = 27.0
+text = "99
+"
+label_settings = SubResource("LabelSettings_6wlv5")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control3" type="Control" parent="InfoBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="DamageSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control3"]
+position = Vector2(-16.9496, 11.0892)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_kcro7")
+
+[node name="DamageLabel" type="Label" parent="InfoBoxContainer/Stats/Control3"]
+layout_mode = 2
+offset_right = 36.0
+offset_bottom = 27.0
+text = "99
+"
+label_settings = SubResource("LabelSettings_24ao3")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control4" type="Control" parent="InfoBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="RangeSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control4"]
+position = Vector2(-16.9496, 11.0892)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("12_v0dse")
+
+[node name="RangeLabel" type="Label" parent="InfoBoxContainer/Stats/Control4"]
+layout_mode = 2
+offset_right = 36.0
+offset_bottom = 27.0
+text = "99
+"
+label_settings = SubResource("LabelSettings_gga6n")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control5" type="Control" parent="InfoBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="ArmorSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control5"]
+position = Vector2(-16.9496, 11.0892)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("13_shgj1")
+
+[node name="ArmorLabel" type="Label" parent="InfoBoxContainer/Stats/Control5"]
+layout_mode = 2
+offset_right = 18.0
+offset_bottom = 27.0
+text = "9"
+label_settings = SubResource("LabelSettings_msooa")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control6" type="Control" parent="InfoBoxContainer/Stats"]
+layout_mode = 2
+
+[node name="ThreatSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control6"]
+position = Vector2(-16.9496, 11.0892)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_sbscd")
+
+[node name="ThreatLabel" type="Label" parent="InfoBoxContainer/Stats/Control6"]
+layout_mode = 2
+offset_right = 18.0
+offset_bottom = 27.0
+text = "9"
+label_settings = SubResource("LabelSettings_7v0yr")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="TextureProgressBar" parent="InfoBoxContainer"]
+visible = false
+z_index = 5
+offset_left = -136.444
+offset_top = 26.3881
+offset_right = 75.5564
+offset_bottom = 56.3881
+scale = Vector2(0.4, 0.6)
+value = 50.0
+texture_under = ExtResource("10_m1a84")
+texture_progress = ExtResource("4_fux7d")
+
+[node name="HealthLabel" type="Label" parent="InfoBoxContainer/HealthBar"]
+layout_mode = 0
+offset_left = 72.7876
+offset_top = 5.9668
+offset_right = 108.788
+offset_bottom = 24.9668
+text = "999
+"
+label_settings = SubResource("LabelSettings_gu1px")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SlashLabel" type="Label" parent="InfoBoxContainer/HealthBar"]
+layout_mode = 0
+offset_left = 108.064
+offset_top = 5.24297
+offset_right = 118.064
+offset_bottom = 24.243
+text = "/
+"
+label_settings = SubResource("LabelSettings_emkyf")
+vertical_alignment = 1
+
+[node name="MaxHealthLabel" type="Label" parent="InfoBoxContainer/HealthBar"]
+layout_mode = 0
+offset_left = 119.319
+offset_top = 6.247
+offset_right = 155.319
+offset_bottom = 25.247
+text = "999"
+label_settings = SubResource("LabelSettings_pnrjd")
+vertical_alignment = 1
+
+[node name="EnergyBar" type="TextureProgressBar" parent="InfoBoxContainer"]
+visible = false
+z_index = 5
+offset_left = -136.444
+offset_top = 42.6168
+offset_right = 75.5564
+offset_bottom = 72.6168
+scale = Vector2(0.4, 0.4)
+max_value = 5.0
+value = 3.0
+texture_under = ExtResource("10_m1a84")
+texture_progress = ExtResource("5_apc0l")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="InfoBoxContainer"]
+offset_left = -119.403
+offset_top = -29.143
+offset_right = -69.4031
+offset_bottom = 28.857

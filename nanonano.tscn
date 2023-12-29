@@ -10,6 +10,6 @@ script = ExtResource("1_uqdkb")
 [node name="CharacterCommon" parent="." instance=ExtResource("2_0qlms")]
 
 [node name="Sprite" type="Sprite2D" parent="CharacterCommon"]
-position = Vector2(1.29925, -12.7505)
+position = Vector2(0.649639, -19.7633)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_5w41q")

@@ -28,12 +28,12 @@ signal menuAnimationsFinished
 @onready var healthLabel: Label = $CharacterContainer/HealthLabel
 @onready var slashLabel: Label = $CharacterContainer/SlashLabel
 @onready var maxHealthLabel: Label = $CharacterContainer/MaxHealthLabel
-@onready var movesLabel: Label = $CharacterContainer/MovesLabel
-@onready var damageLabel: Label = $CharacterContainer/DamageLabel
-@onready var speedLabel: Label = $CharacterContainer/SpeedLabel
-@onready var armorLabel: Label = $CharacterContainer/ArmorLabel
-@onready var rangeLabel: Label = $CharacterContainer/RangeLabel
-@onready var threatLabel: Label = $CharacterContainer/ThreatLabel
+@onready var movesLabel: Label = $CharacterContainer/Stats/Moves/Label
+@onready var damageLabel: Label = $CharacterContainer/Stats/Damage/Label
+@onready var speedLabel: Label = $CharacterContainer/Stats/Speed/Label
+@onready var armorLabel: Label = $CharacterContainer/Stats/Armor/Label
+@onready var rangeLabel: Label = $CharacterContainer/Stats/Range/Label
+@onready var threatLabel: Label = $CharacterContainer/Stats/Threat/Label
 @onready var healthBar: TextureProgressBar = $CharacterContainer/HealthBar
 @onready var energyBar: TextureProgressBar = $CharacterContainer/EnergyBar
 
@@ -108,6 +108,8 @@ func setState(state: State):
     return
 
 func updateAllEntities():
+    return
+    # Not used
     if _tab_dict.is_empty():
         _create_entity_tabs()
     else:

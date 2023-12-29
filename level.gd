@@ -155,6 +155,7 @@ func _add_test_entity(display_name, health, movement, _range, speed, location, s
     else:
         var _id = state.addEnemy(ent)
         ent.energy = 0
+    ent.update_sprite()    
     return ent
 
 func currentEntity() -> Entity:

@@ -47,6 +47,9 @@ var damage_buff_value: int
 var damage_debuff_count: int
 var damage_debuff_value: int
 
+func update_sprite():
+    sprite.update_from_entity(self)
+    return
 
 func get_damage() -> int:
     var ret = damage + damage_modifier
@@ -143,17 +146,14 @@ func gainHP(hp):
     if health > max_health:
         health = max_health
     sprite.textAnimation().gain_health(hp)
-    sprite.update_hp(health)
     return
 
 func set_max_hp(hp):
     max_health = hp
-    sprite.update_max_hp(max_health)
     return
 
 func set_hp(hp):
     health = hp
-    sprite.update_hp(health)
     return
 
 func set_energy(e):
@@ -162,7 +162,7 @@ func set_energy(e):
         energy = 0
     if energy > 5:
         energy = 5
-    sprite.update_energy(energy)
+    return
 
 func update_energy(energy_diff):
     set_energy(energy + energy_diff)
@@ -188,10 +188,6 @@ func setThreat(t):
 func add_iteractable(inter: Interactable):
     interactable = inter
     sprite.add_interactable(inter)
-    return
-    
-func show_bars(show: bool):
-    sprite.show_bars(show, is_ally)
     return
 
 func setup_next_turn():

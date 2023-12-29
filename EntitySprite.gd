@@ -40,16 +40,8 @@ func show_death():
     $CharacterCommon/DeathSprite.visible = true
     return
 
-func update_hp(hp):
-    $CharacterCommon/HealthBar.value = hp
-    return
-
-func update_max_hp(hp):
-    $CharacterCommon/HealthBar.max_value = hp
-    return
-
-func update_energy(en):
-    $CharacterCommon/EnergyBar.value = en
+func update_from_entity(entity: Entity):
+    $CharacterCommon/InfoBoxContainer.update_from_entity(entity)
     return
 
 func add_interactable(inter: Interactable):
@@ -58,10 +50,4 @@ func add_interactable(inter: Interactable):
     inter.sprite.position = Vector2(0,0)
     inter.sprite.scale = inter.sprite.scale*.5
     inter.location = Vector2(999,999)
-    return
-
-func show_bars(show: bool, is_ally: bool):
-    $CharacterCommon/HealthBar.visible = show
-    if is_ally:
-        $CharacterCommon/EnergyBar.visible = show
     return

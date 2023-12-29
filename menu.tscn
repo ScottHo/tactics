@@ -311,7 +311,7 @@ centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
 modulate = Color(1, 1, 1, 0.647059)
-position = Vector2(188.701, 168.92)
+position = Vector2(226.402, 190.747)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_pd4nx")
 centered = false
@@ -422,102 +422,123 @@ text = "999"
 label_settings = SubResource("LabelSettings_fvr2p")
 vertical_alignment = 1
 
-[node name="MovesSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(400.69, 200.328)
+[node name="Stats" type="GridContainer" parent="CharacterContainer"]
+layout_mode = 0
+offset_left = 442.644
+offset_top = 170.497
+offset_right = 482.644
+offset_bottom = 345.497
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 35
+
+[node name="Moves" type="Control" parent="CharacterContainer/Stats"]
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Moves"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("11_d8bxd")
 
-[node name="MovesLabel" type="Label" parent="CharacterContainer"]
+[node name="Label" type="Label" parent="CharacterContainer/Stats/Moves"]
 layout_mode = 0
-offset_left = 417.933
-offset_top = 188.902
-offset_right = 451.933
-offset_bottom = 213.902
+offset_left = 17.8786
+offset_top = -10.5946
+offset_right = 51.8786
+offset_bottom = 14.4054
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_0jvi6")
 vertical_alignment = 1
 
-[node name="SpeedSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(478.239, 200.328)
+[node name="Speed" type="Control" parent="CharacterContainer/Stats"]
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Speed"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_gtpi5")
 
-[node name="SpeedLabel" type="Label" parent="CharacterContainer"]
+[node name="Label" type="Label" parent="CharacterContainer/Stats/Speed"]
 layout_mode = 0
-offset_left = 491.26
-offset_top = 189.234
-offset_right = 525.26
-offset_bottom = 214.234
+offset_left = 17.8786
+offset_top = -10.5946
+offset_right = 51.8786
+offset_bottom = 14.4054
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_gmwuo")
 vertical_alignment = 1
 
-[node name="DamageSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(403.683, 228.855)
+[node name="Damage" type="Control" parent="CharacterContainer/Stats"]
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Damage"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("12_xlgau")
 
-[node name="DamageLabel" type="Label" parent="CharacterContainer"]
+[node name="Label" type="Label" parent="CharacterContainer/Stats/Damage"]
 layout_mode = 0
-offset_left = 417.826
-offset_top = 217.761
-offset_right = 451.826
-offset_bottom = 242.761
+offset_left = 17.8786
+offset_top = -10.5946
+offset_right = 51.8786
+offset_bottom = 14.4054
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_ipxka")
 vertical_alignment = 1
 
-[node name="RangeSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(476.404, 229.445)
+[node name="Range" type="Control" parent="CharacterContainer/Stats"]
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Range"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_diddf")
 
-[node name="RangeLabel" type="Label" parent="CharacterContainer"]
+[node name="Label" type="Label" parent="CharacterContainer/Stats/Range"]
 layout_mode = 0
-offset_left = 491.353
-offset_top = 218.351
-offset_right = 525.353
-offset_bottom = 243.351
+offset_left = 17.8786
+offset_top = -10.5946
+offset_right = 51.8786
+offset_bottom = 14.4054
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_5b8lp")
 vertical_alignment = 1
 
-[node name="ArmorSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(403.403, 260.038)
+[node name="Armor" type="Control" parent="CharacterContainer/Stats"]
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Armor"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_m7c37")
 
-[node name="ArmorLabel" type="Label" parent="CharacterContainer"]
+[node name="Label" type="Label" parent="CharacterContainer/Stats/Armor"]
 layout_mode = 0
-offset_left = 417.923
-offset_top = 248.944
-offset_right = 451.923
-offset_bottom = 273.944
+offset_left = 17.8786
+offset_top = -10.5946
+offset_right = 51.8786
+offset_bottom = 14.4054
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
 label_settings = SubResource("LabelSettings_367jj")
 vertical_alignment = 1
 
-[node name="ThreatSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(478.346, 258.944)
+[node name="Threat" type="Control" parent="CharacterContainer/Stats"]
+layout_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Threat"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("13_k180g")
 
-[node name="ThreatLabel" type="Label" parent="CharacterContainer"]
+[node name="Label" type="Label" parent="CharacterContainer/Stats/Threat"]
 layout_mode = 0
-offset_left = 491.216
-offset_top = 247.85
-offset_right = 525.216
-offset_bottom = 272.85
+offset_left = 17.8786
+offset_top = -10.5946
+offset_right = 51.8786
+offset_bottom = 14.4054
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -617,10 +638,6 @@ text = "SP 2"
 libraries = {
 "": SubResource("AnimationLibrary_fyyxq")
 }
-
-[node name="EntityTabContainer" type="ReferenceRect" parent="."]
-offset_right = 302.0
-offset_bottom = 864.0
 
 [node name="TurnsContainer" type="ReferenceRect" parent="."]
 offset_left = 1133.05

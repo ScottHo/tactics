@@ -43,13 +43,11 @@ func _input(event):
     return
 
 func show_ent(ent: Entity):
-    ent.show_bars(true)
     _previous_ent = ent
     return
 
 func hide_ent():
     if _previous_ent != null:
-        _previous_ent.show_bars(false)
         _previous_ent = null
     return
 
@@ -63,7 +61,7 @@ func hide_all():
     return
 
 func start():
-    _enabled = true    
+    #_enabled = true    
     return
 
 func setState(state: State):

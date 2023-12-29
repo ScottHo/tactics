@@ -37,8 +37,8 @@ func _input(event):
                 return
             MOUSE_BUTTON_WHEEL_UP:
                 cam.zoom += Vector2(.05, .05)
-                cam.zoom.x = min(cam.zoom.x, 1.1)
-                cam.zoom.y = min(cam.zoom.y, 1.1)
+                cam.zoom.x = min(cam.zoom.x, 1.0)
+                cam.zoom.y = min(cam.zoom.y, 1.0)
                 return
             MOUSE_BUTTON_WHEEL_DOWN:
                 cam.zoom -= Vector2(.05, .05)

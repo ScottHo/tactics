@@ -1,6 +1,5 @@
 class_name EntityInfoTab extends Node2D
 
-var charSprite: Sprite2D
 var healthBar: TextureProgressBar
 var energyBar: TextureProgressBar
 var healthLabel: Label
@@ -15,35 +14,32 @@ var threatLabel: Label
 var background: Sprite2D
 var _entity: Entity
 
+
 func _ready():
     var r : ReferenceRect = $ReferenceRect
     r.mouse_entered.connect(expand)
     r.mouse_exited.connect(unexpand)
-    unexpand()
     return
 
 func update_nodes():
     if moveLabel == null:
-        charSprite = $CharacterSprite
         healthBar = $HealthBar
         energyBar = $EnergyBar
-        healthLabel = $Stats/HealthLabel
-        slashLabel = $Stats/SlashLabel
-        maxHealthLabel = $Stats/MaxHealthLabel
-        moveLabel = $Stats/MoveLabel
-        damageLabel = $Stats/DamageLabel
-        rangeLabel = $Stats/RangeLabel
-        speedLabel = $Stats/SpeedLabel
-        armorLabel = $Stats/ArmorLabel
-        threatLabel = $Stats/ThreatLabel
+        healthLabel = $HealthBar/HealthLabel
+        slashLabel = $HealthBar/SlashLabel
+        maxHealthLabel = $HealthBar/MaxHealthLabel
+        moveLabel = $Stats/Control/MoveLabel
+        speedLabel = $Stats/Control2/SpeedLabel        
+        damageLabel = $Stats/Control3/DamageLabel
+        rangeLabel = $Stats/Control4/RangeLabel
+        armorLabel = $Stats/Control5/ArmorLabel
+        threatLabel = $Stats/Control6/ThreatLabel
         background = $Background
     return
 
 func update_from_entity(entity: Entity):
     update_nodes()
     _entity = entity
-    charSprite.texture = _entity.sprite.texture_resource()
-    charSprite.scale = _entity.sprite.texture_scale()*1.2
     update()
     return
 
@@ -62,7 +58,9 @@ func update():
     armorLabel.text = str(_entity.get_armor())
     if _entity.is_ally:
         threatLabel.text = str(_entity.threat)
+        background.texture = load("res://Assets/info_box_hover.png")
     else:
+        background.texture = load("res://Assets/info_box_enemy_hover.png")
         threatLabel.text = "-"
     healthBar.max_value = _entity.max_health
     healthBar.value = _entity.health
@@ -71,20 +69,18 @@ func update():
     return
 
 func expand():
+    background.visible = true
+    healthBar.visible = true
     $Stats.visible = true
-    $Buffs1.visible = true
     if _entity.is_ally:
         energyBar.visible = true
-        background.texture = load("res://Assets/info_box_expanded.png")
-    else:
-        background.texture = load("res://Assets/info_box_enemy_expanded.png")
     return
 
 func unexpand():
+    background.visible = false
+    healthBar.visible = false
     $Stats.visible = false
-    $Buffs1.visible = false
     energyBar.visible = false
-    background.texture = load("res://Assets/info_box.png")
     return
 
 func _set_colors():

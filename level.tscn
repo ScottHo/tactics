@@ -26,6 +26,7 @@ metadata/_edit_horizontal_guides_ = [371.787]
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
+position = Vector2(-47.5682, -40.433)
 scale = Vector2(2, 2)
 tile_set = ExtResource("2_df7di")
 rendering_quadrant_size = 64
@@ -42,6 +43,7 @@ script = ExtResource("3_j2hyq")
 
 [node name="HighlightMap" type="TileMap" parent="."]
 y_sort_enabled = true
+position = Vector2(-47.5682, -40.433)
 scale = Vector2(2, 2)
 tile_set = ExtResource("3_ilats")
 rendering_quadrant_size = 64
