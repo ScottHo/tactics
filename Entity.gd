@@ -89,7 +89,6 @@ func loseHP(hp):
     if health < 0:
         health = 0
     sprite.textAnimation().lose_health(hp)
-    sprite.update_hp(health)
     return
 
 func lose_defensive_buffs():

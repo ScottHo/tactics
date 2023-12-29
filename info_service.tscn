@@ -7,7 +7,6 @@
 script = ExtResource("1_jqq8g")
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 z_index = 15
 offset_right = 128.0
 offset_bottom = 78.0

@@ -7,4 +7,9 @@ var drop_effect: Callable
 var repeated_effect: Callable
 var storable: bool
 var location: Vector2i
-var sprite: Node2D
+var sprite: InteractableSprite
+
+func set_sprite(s):
+    sprite = s
+    sprite.inter = self
+    return

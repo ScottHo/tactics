@@ -8,7 +8,6 @@ extends Node2D
 @onready var aiActionService: AiActionService = $AiActionService
 @onready var aiSpecialService: AiSpecialService = $AiSpecialService
 @onready var deathService: DeathService = $DeathService
-@onready var infoService: InfoService = $InfoService
 @onready var interactService: InteractService = $InteractService
 @onready var cameraService: CameraService = $CameraService
 @onready var tileMap: MainTileMap = $TileMap
@@ -46,9 +45,7 @@ func _ready():
     aiSpecialService.setState(state)
     deathService.setState(state)
     turnService.setState(state)
-    infoService.setState(state)
     interactService.setState(state)    
-    infoService.start()
     turnService.update()
     menuService.setState(state)
     menuService.updateAllEntities()
@@ -124,10 +121,9 @@ func importTestData():
         return
     _inter.storable = true
     _inter.location = Vector2i(4,2)
-    var sprite: Sprite2D  = Sprite2D.new()
-    sprite.texture = load("res://Assets/blue_orb.png")
-    sprite.scale = Vector2(.5, .5)
-    _inter.sprite = sprite
+    var sprite: InteractableSprite  = load("res://interactable_sprite.tscn").instantiate()
+    sprite.set_texture(load("res://Assets/blue_orb.png"))
+    _inter.set_sprite(sprite)
     add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(_inter.location)
     state.add_interactable(_inter)
