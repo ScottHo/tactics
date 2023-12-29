@@ -138,13 +138,13 @@ func _add_test_entity(display_name, health, movement, _range, speed, location, s
     ent.alive = true
     ent.damage = 2
     ent.display_name = display_name
-    ent.set_hp(health)
     ent.movement = movement
     ent.range = _range
     ent.speed = speed
     ent.location = location
     ent.set_energy(1)
-    ent.set_max_hp(health)
+    ent.set_max_health(health)
+    ent.set_hp(health)    
     ent.setThreat(0)
     if ally:
         var _id = state.addAlly(ent)

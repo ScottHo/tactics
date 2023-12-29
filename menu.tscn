@@ -178,10 +178,10 @@ theme_override_font_sizes/font_size = 12
 autowrap_mode = 2
 
 [node name="DescriptionContainer" type="ReferenceRect" parent="."]
-offset_left = 1111.95
-offset_top = 346.241
-offset_right = 1526.95
-offset_bottom = 496.241
+offset_left = 1198.96
+offset_top = 391.368
+offset_right = 1528.96
+offset_bottom = 541.368
 
 [node name="Sci-fi-ui-panels" type="Sprite2D" parent="DescriptionContainer"]
 position = Vector2(0.84082, -0.840912)
@@ -191,11 +191,11 @@ centered = false
 
 [node name="DescriptionName" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 50.8832
+offset_left = 37.669
 offset_top = 6.41843
-offset_right = 380.883
+offset_right = 297.669
 offset_bottom = 26.4184
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 18
 text = "Action"
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -204,9 +204,9 @@ autowrap_mode = 2
 layout_mode = 0
 offset_left = 31.0947
 offset_top = 32.8981
-offset_right = 391.095
+offset_right = 306.095
 offset_bottom = 115.898
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 11
 text = "No Action Selected."
 autowrap_mode = 2
 
@@ -297,21 +297,21 @@ theme_override_font_sizes/font_size = 18
 text = "End Turn"
 
 [node name="CharacterContainer" type="ReferenceRect" parent="."]
-offset_left = 1052.68
-offset_top = 540.724
-offset_right = 1652.68
-offset_bottom = 940.724
+offset_left = 1055.51
+offset_top = 547.331
+offset_right = 1655.51
+offset_bottom = 947.331
 scale = Vector2(0.8, 0.8)
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(-24.7308, -42.6557)
+position = Vector2(-31.2645, 8.29172)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("6_xc4a1")
 centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
 modulate = Color(1, 1, 1, 0.647059)
-position = Vector2(226.402, 190.747)
+position = Vector2(247.601, 205.479)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("8_pd4nx")
 centered = false
@@ -322,7 +322,7 @@ libraries = {
 }
 
 [node name="TransparentCharacterFrame" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(-24.7308, -42.6557)
+position = Vector2(-31.2645, 8.29172)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("7_eppjx")
 centered = false
@@ -330,45 +330,45 @@ centered = false
 [node name="NameLabel" type="Label" parent="CharacterContainer"]
 layout_direction = 3
 layout_mode = 0
-offset_left = 90.7344
-offset_top = 145.186
-offset_right = 390.735
-offset_bottom = 175.186
+offset_left = 178.994
+offset_top = 189.96
+offset_right = 398.994
+offset_bottom = 219.96
 text = "Guy"
 label_settings = SubResource("LabelSettings_ffhj4")
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HeartSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(194.412, 54.3485)
+position = Vector2(186.153, 102.433)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("10_slf17")
 centered = false
 
 [node name="HealthBar" type="TextureProgressBar" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 243.03
-offset_top = 68.5755
-offset_right = 455.03
-offset_bottom = 98.5755
+offset_left = 234.771
+offset_top = 116.66
+offset_right = 446.771
+offset_bottom = 146.66
 scale = Vector2(1.3, 1.2)
 value = 50.0
 texture_under = ExtResource("14_t4p6o")
 texture_progress = ExtResource("11_60lyq")
 
 [node name="EnergySprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(194.639, 95.2525)
+position = Vector2(186.38, 140.688)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_vl4vh")
 centered = false
 
 [node name="EnergyBar" type="TextureProgressBar" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 243.03
-offset_top = 105.555
-offset_right = 455.03
-offset_bottom = 135.555
-scale = Vector2(1.3, 1.2)
+offset_left = 234.771
+offset_top = 153.639
+offset_right = 446.771
+offset_bottom = 183.639
+scale = Vector2(1.3, 1)
 max_value = 5.0
 value = 3.0
 texture_under = ExtResource("14_t4p6o")
@@ -381,10 +381,10 @@ anchor_left = 0.488162
 anchor_top = 0.585268
 anchor_right = 0.496495
 anchor_bottom = 0.590268
-offset_left = 50.2463
-offset_top = -159.586
-offset_right = 89.2465
-offset_bottom = -138.586
+offset_left = 41.9876
+offset_top = -111.502
+offset_right = 80.9879
+offset_bottom = -90.5015
 text = "999
 "
 label_settings = SubResource("LabelSettings_rmudl")
@@ -398,10 +398,10 @@ anchor_left = 0.475386
 anchor_top = 0.580934
 anchor_right = 0.475386
 anchor_bottom = 0.580934
-offset_left = 103.605
-offset_top = -159.586
-offset_right = 117.605
-offset_bottom = -132.586
+offset_left = 95.3463
+offset_top = -111.502
+offset_right = 109.346
+offset_bottom = -84.5015
 text = "/
 "
 label_settings = SubResource("LabelSettings_ga0sv")
@@ -414,22 +414,22 @@ anchor_left = 0.475386
 anchor_top = 0.580934
 anchor_right = 0.475386
 anchor_bottom = 0.580934
-offset_left = 119.683
-offset_top = -159.335
-offset_right = 173.683
-offset_bottom = -132.335
+offset_left = 111.424
+offset_top = -111.251
+offset_right = 165.424
+offset_bottom = -84.2505
 text = "999"
 label_settings = SubResource("LabelSettings_fvr2p")
 vertical_alignment = 1
 
 [node name="Stats" type="GridContainer" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 442.644
-offset_top = 170.497
-offset_right = 482.644
-offset_bottom = 345.497
+offset_left = 449.953
+offset_top = 198.717
+offset_right = 489.952
+offset_bottom = 373.717
 theme_override_constants/h_separation = 50
-theme_override_constants/v_separation = 35
+theme_override_constants/v_separation = 32
 
 [node name="Moves" type="Control" parent="CharacterContainer/Stats"]
 layout_mode = 2
@@ -547,10 +547,10 @@ vertical_alignment = 1
 
 [node name="MoveButton" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 59.5731
-offset_top = 177.44
-offset_right = 159.573
-offset_bottom = 277.44
+offset_left = 51.3144
+offset_top = 228.173
+offset_right = 151.314
+offset_bottom = 328.173
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -566,10 +566,10 @@ libraries = {
 
 [node name="InteractButton" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 59.0625
-offset_top = 62.1875
-offset_right = 159.063
-offset_bottom = 162.188
+offset_left = 50.8038
+offset_top = 112.921
+offset_right = 150.804
+offset_bottom = 212.921
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -585,10 +585,10 @@ libraries = {
 
 [node name="AttackButton" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 179.687
-offset_top = -42.8125
-offset_right = 279.688
-offset_bottom = 57.1875
+offset_left = 171.428
+offset_top = 7.92068
+offset_right = 271.429
+offset_bottom = 107.921
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -603,10 +603,10 @@ libraries = {
 
 [node name="Action1Button" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 295.937
-offset_top = -45.9375
-offset_right = 395.937
-offset_bottom = 54.0625
+offset_left = 287.678
+offset_top = 4.79568
+offset_right = 387.678
+offset_bottom = 104.796
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -622,10 +622,10 @@ libraries = {
 
 [node name="Action2Button" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 410.773
-offset_top = -45.7664
-offset_right = 510.773
-offset_bottom = 54.2336
+offset_left = 402.514
+offset_top = 4.96678
+offset_right = 502.514
+offset_bottom = 104.967
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -640,10 +640,10 @@ libraries = {
 }
 
 [node name="TurnsContainer" type="ReferenceRect" parent="."]
-offset_left = 1133.05
-offset_top = 792.391
-offset_right = 1173.05
-offset_bottom = 832.391
+offset_left = 1082.08
+offset_top = 801.83
+offset_right = 1122.08
+offset_bottom = 841.83
 
 [node name="ExpandHover" type="Sprite2D" parent="TurnsContainer"]
 position = Vector2(8.88391, 19.1546)

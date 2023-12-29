@@ -8,6 +8,18 @@ class_name UpgradePanel extends Node2D
 @onready var action1_c = $GridContainer/Action1
 @onready var action2_c = $GridContainer/Action2
 @onready var range_c = $GridContainer/Range
+@onready var skill_points_label = $SkillPointsLabel
+
+var health_mod: int
+var armor_mod: int
+var movement_mod: int
+var speed_mod: int
+var attack_mod: int
+var special1_mod: int
+var special2_mod: int
+var range_mod: int
+
+var _entity: Entity
 
 func _ready():
     var containers = [
@@ -23,7 +35,12 @@ func _ready():
     for container in containers:
         button(container).pressed.connect(func():
             skill_point_added(container))
-        
+    return
+
+func set_entity(entity: Entity):
+    _entity = entity
+    skill_points_label = _entity.level * 2
+    return
         
 func button(container) -> Button:
     return container.get_child(0)
@@ -48,3 +65,34 @@ func skill_point_added(container):
         tween.tween_property(anim(container), "modulate:a", 0, .5) 
         tween.play()
     return
+
+func update_mods(container):
+    match container:
+        health_c:
+            health_mod += 1
+        armor_c:
+            armor_mod += 1
+        movement_c:
+            movement_mod += 1
+        speed_c:
+            speed_mod += 1
+        attack_c:
+            attack_mod += 1
+        action1_c:
+            special1_mod += 1
+        action2_c:
+            special2_mod += 1
+        range_c:
+            range_mod += 1
+    return
+
+func deploy():
+    _entity.armor_modifier = health_mod
+    _entity.armor_modifier = armor_mod
+    _entity.movement_modifier = movement_mod
+    _entity.speed_modifier += speed_mod
+    _entity.damage_modifier += attack_mod
+    _entity.action1.level += special1_mod
+    _entity.action2.level += special2_mod
+    _entity.range_modifier = range_mod
+

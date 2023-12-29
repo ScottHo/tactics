@@ -11,6 +11,7 @@ var action2: Action
 var moves_left: int
 var is_ally: bool
 var interactable: Interactable
+var level: int
 
 # Variable Stats
 var threat: int
@@ -31,6 +32,7 @@ var movement_modifier: int
 var damage_modifier: int
 var speed_modifier: int
 var range_modifier: int
+var health_modifier: int
 
 # Temporary Modifiers
 var immune_count: int
@@ -79,7 +81,10 @@ func get_armor() -> int:
     return armor + armor_modifier - weakness_value + shield_value
 
 func get_low_health_threshold() -> int:
-    return int(max_health/5)
+    return int(get_max_health()/5)
+
+func get_max_health():
+    return max_health + health_modifier
 
 func loseHP(hp):
     if immune_count > 0:
@@ -142,16 +147,20 @@ func reset_buff_values():
 
 func gainHP(hp):
     health += hp
-    if health > max_health:
-        health = max_health
+    if health > get_max_health():
+        health = get_max_health()
     sprite.textAnimation().gain_health(hp)
     return
 
-func set_max_hp(hp):
+func set_max_health(hp):
     max_health = hp
     return
 
 func set_hp(hp):
+    if hp <= 0:
+        hp = 0
+    if hp >= get_max_health():
+        hp = get_max_health()
     health = hp
     return
 

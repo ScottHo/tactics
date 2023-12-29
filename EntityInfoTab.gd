@@ -49,7 +49,7 @@ func update():
     var healthLabel_x = healthLabel.size.x
     maxHealthLabel.position = healthLabel.position + Vector2(healthLabel_x+15, 0)
     slashLabel.position = healthLabel.position + Vector2(healthLabel_x, 0)
-    maxHealthLabel.text = str(_entity.max_health)
+    maxHealthLabel.text = str(_entity.get_max_health())
     
     moveLabel.text = str(_entity.get_movement())
     damageLabel.text = str(_entity.get_damage())    
@@ -62,7 +62,7 @@ func update():
     else:
         background.texture = load("res://Assets/info_box_enemy_hover.png")
         threatLabel.text = "-"
-    healthBar.max_value = _entity.max_health
+    healthBar.max_value = _entity.get_max_health()
     healthBar.value = _entity.health
     energyBar.value = _entity.energy    
     _set_colors()

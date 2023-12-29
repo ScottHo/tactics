@@ -160,7 +160,7 @@ func pre_showCurrentTurn(turn: int):
     var entity := _state.get_entity(turn)
     nameLabel.text = entity.display_name
     charSprite.texture = entity.sprite.texture_resource()
-    charSprite.scale = entity.sprite.texture_scale()*4
+    charSprite.scale = entity.sprite.texture_scale()*2.8
     charSprite.modulate.a = 0
     show_description(false, null)
     updateEntityInfo(entity)
@@ -230,9 +230,9 @@ func updateEntityInfo(entity: Entity):
     var healthLabel_x = healthLabel.size.x
     maxHealthLabel.position = healthLabel.position + Vector2(healthLabel_x+16, 0)
     slashLabel.position = healthLabel.position + Vector2(healthLabel_x+1, 0)
-    maxHealthLabel.text = str(entity.max_health)
+    maxHealthLabel.text = str(entity.get_max_health())
     
-    healthBar.max_value = entity.max_health
+    healthBar.max_value = entity.get_max_health()
     healthBar.value = entity.health
     energyBar.value = entity.energy
     damageLabel.text = str(entity.get_damage())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ct2wj06r38iul"]
+[gd_scene load_steps=19 format=3 uid="uid://ct2wj06r38iul"]
 
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
@@ -13,21 +13,33 @@
 [ext_resource type="Script" path="res://Upgrader.gd" id="9_mbcmb"]
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="9_nlkln"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_sji2x"]
-[ext_resource type="Texture2D" uid="uid://de2dhfdkb3d0e" path="res://Assets/Brutus.png" id="11_birb4"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="11_y8say"]
 [ext_resource type="Texture2D" uid="uid://c8qs5sie5ong8" path="res://Assets/progress_over_2.png" id="12_xu75s"]
+[ext_resource type="Texture2D" uid="uid://5slno62p0s40" path="res://Assets/LongShot.png" id="16_1qsnh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k38d3"]
+font_size = 20
+font_color = Color(1, 0.862745, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vxghf"]
+font_size = 20
+font_color = Color(1, 0.862745, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="SelectedContainer" type="Node2D"]
 position = Vector2(59.0084, -191.351)
 script = ExtResource("1_cil83")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 220.252
-offset_top = -7.20978
-offset_right = 580.252
-offset_bottom = 292.79
+offset_left = 20.8479
+offset_top = 8.34659
+offset_right = 380.848
+offset_bottom = 308.346
 theme_override_constants/h_separation = 120
-theme_override_constants/v_separation = 120
+theme_override_constants/v_separation = 85
 columns = 4
 
 [node name="Health" type="Control" parent="GridContainer"]
@@ -42,7 +54,6 @@ pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
-toggle_mode = true
 icon = ExtResource("10_sji2x")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Health"]
@@ -76,7 +87,6 @@ pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
-toggle_mode = true
 icon = ExtResource("9_nlkln")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Armor"]
@@ -111,7 +121,6 @@ pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
-toggle_mode = true
 icon = ExtResource("7_khht8")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Movement"]
@@ -147,7 +156,6 @@ pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
-toggle_mode = true
 icon = ExtResource("11_y8say")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Speed"]
@@ -182,7 +190,6 @@ pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
-toggle_mode = true
 icon = ExtResource("6_6hr7q")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Attack"]
@@ -218,7 +225,6 @@ focus_mode = 0
 theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 19
-toggle_mode = true
 text = "SP 1"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Action1"]
@@ -254,7 +260,6 @@ focus_mode = 0
 theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 19
-toggle_mode = true
 text = "SP 2"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Action2"]
@@ -289,7 +294,6 @@ pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
-toggle_mode = true
 icon = ExtResource("8_121h5")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Range"]
@@ -312,15 +316,39 @@ position = Vector2(99.0636, 50.0406)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(135.744, 146.749)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_birb4")
-
 [node name="Button" type="Button" parent="."]
-offset_left = 55.1663
-offset_top = 257.027
-offset_right = 205.166
-offset_bottom = 337.027
+offset_left = 150.924
+offset_top = 226.0
+offset_right = 270.924
+offset_bottom = 286.0
 theme = ExtResource("2_j6fe4")
 text = "Deploy"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 283.905
+offset_top = 244.65
+offset_right = 469.905
+offset_bottom = 269.65
+text = "SKILL POINTS: "
+label_settings = SubResource("LabelSettings_k38d3")
+
+[node name="SkillPointsLabel" type="Label" parent="."]
+offset_left = 470.851
+offset_top = 244.65
+offset_right = 510.851
+offset_bottom = 269.65
+text = "99"
+label_settings = SubResource("LabelSettings_vxghf")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 32.1302
+offset_top = 226.0
+offset_right = 152.13
+offset_bottom = 286.0
+theme = ExtResource("2_j6fe4")
+text = "Reset"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(597.656, 144.453)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("16_1qsnh")

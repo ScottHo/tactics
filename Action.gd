@@ -9,3 +9,4 @@ var display_name: String
 var description: String
 var self_castable: bool
 var target_color: Vector2i
+var level := 1
