@@ -1,7 +1,8 @@
 TODO
-Icons for current buffs
 Undo Button
 Animations
+Confirm Popup windows where relevant
+"Popup" for current action
 Different target highlights for good/bad
 Choose different bots
 12 different bots

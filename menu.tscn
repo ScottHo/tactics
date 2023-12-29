@@ -647,7 +647,7 @@ offset_bottom = 841.83
 
 [node name="ExpandHover" type="Sprite2D" parent="TurnsContainer"]
 position = Vector2(8.88391, 19.1546)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("14_f8s5v")
 
 [node name="ExpandReference" type="ReferenceRect" parent="TurnsContainer"]

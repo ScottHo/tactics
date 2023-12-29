@@ -1,0 +1,387 @@
+[gd_scene load_steps=5 format=3 uid="uid://c82hspet5gfvc"]
+
+[ext_resource type="Texture2D" uid="uid://5ishrvrpc8ew" path="res://Assets/Unknown.png" id="1_k21am"]
+[ext_resource type="Script" path="res://collection_panel.gd" id="1_yr6j0"]
+[ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_es5up"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_glcvm"]
+font_size = 13
+font_color = Color(0.050221, 0.656411, 0.0415306, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CollectionContainer" type="Node2D"]
+script = ExtResource("1_yr6j0")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 111.369
+offset_top = 5.6535
+offset_right = 611.369
+offset_bottom = 205.654
+theme_override_constants/h_separation = 95
+theme_override_constants/v_separation = 95
+columns = 5
+
+[node name="Control" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control"]
+
+[node name="Label" type="Label" parent="GridContainer/Control"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control2" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control2"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control2"]
+
+[node name="Label" type="Label" parent="GridContainer/Control2"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control3" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control3"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control3"]
+
+[node name="Label" type="Label" parent="GridContainer/Control3"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control4" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control4"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control4"]
+
+[node name="Label" type="Label" parent="GridContainer/Control4"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control5" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control5"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control5"]
+
+[node name="Label" type="Label" parent="GridContainer/Control5"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control6" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control6"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control6"]
+
+[node name="Label" type="Label" parent="GridContainer/Control6"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control7" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control7"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control7"]
+
+[node name="Label" type="Label" parent="GridContainer/Control7"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control8" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control8"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control8"]
+
+[node name="Label" type="Label" parent="GridContainer/Control8"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control9" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control9"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control9"]
+
+[node name="Label" type="Label" parent="GridContainer/Control9"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control10" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control10"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control10"]
+
+[node name="Label" type="Label" parent="GridContainer/Control10"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control11" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control11"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control11"]
+
+[node name="Label" type="Label" parent="GridContainer/Control11"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control12" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control12"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control12"]
+
+[node name="Label" type="Label" parent="GridContainer/Control12"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control13" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control13"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control13"]
+
+[node name="Label" type="Label" parent="GridContainer/Control13"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control14" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control14"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control14"]
+
+[node name="Label" type="Label" parent="GridContainer/Control14"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control15" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control15"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control15"]
+
+[node name="Label" type="Label" parent="GridContainer/Control15"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="RightButton" type="Button" parent="."]
+visible = false
+offset_left = 571.353
+offset_top = 92.7755
+offset_right = 671.353
+offset_bottom = 192.775
+theme = ExtResource("2_es5up")
+theme_type_variation = &"TriangleButton"
+
+[node name="LeftButton" type="Button" parent="."]
+visible = false
+offset_left = 103.259
+offset_top = 191.808
+offset_right = 203.259
+offset_bottom = 291.808
+rotation = 3.14159
+theme = ExtResource("2_es5up")
+theme_type_variation = &"TriangleButton"

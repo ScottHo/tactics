@@ -1,7 +1,9 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://d3xlkfucuimn7"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://d3xlkfucuimn7"]
 
+[ext_resource type="StyleBox" uid="uid://8beooxr6ba16" path="res://Themes/bot_button.tres" id="1_a8y5b"]
 [ext_resource type="StyleBox" uid="uid://c3vaiadrtevf" path="res://Themes/button_normal.tres" id="1_da8vl"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="1_pp17p"]
+[ext_resource type="StyleBox" uid="uid://cpgpa20tc84gw" path="res://Themes/bot_button_pressed.tres" id="2_1ixwx"]
 [ext_resource type="StyleBox" uid="uid://de2pvt0cms2e1" path="res://Themes/button_pressed.tres" id="2_wqisb"]
 [ext_resource type="Texture2D" uid="uid://j1xlahvtb07t" path="res://Assets/hoverbox.png" id="3_31wt4"]
 [ext_resource type="StyleBox" uid="uid://b0x6o50ei0e6o" path="res://Themes/small_button.tres" id="4_txl7r"]
@@ -21,6 +23,18 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
 [resource]
+BotButton/base_type = &"Button"
+BotButton/colors/icon_disabled_color = Color(1, 1, 1, 0.392157)
+BotButton/colors/icon_focus_color = Color(1, 1, 1, 0.784314)
+BotButton/colors/icon_hover_color = Color(1, 1, 1, 0.784314)
+BotButton/colors/icon_hover_pressed_color = Color(1, 1, 1, 0.784314)
+BotButton/colors/icon_normal_color = Color(1, 1, 1, 0.784314)
+BotButton/colors/icon_pressed_color = Color(1, 1, 1, 0.784314)
+BotButton/styles/disabled = ExtResource("1_a8y5b")
+BotButton/styles/focus = ExtResource("2_1ixwx")
+BotButton/styles/hover = ExtResource("2_1ixwx")
+BotButton/styles/normal = ExtResource("1_a8y5b")
+BotButton/styles/pressed = ExtResource("2_1ixwx")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.32549, 0.32549, 0.32549, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)

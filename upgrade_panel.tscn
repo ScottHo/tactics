@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ct2wj06r38iul"]
+[gd_scene load_steps=22 format=3 uid="uid://ct2wj06r38iul"]
 
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
@@ -10,23 +10,34 @@
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="8_121h5"]
 [ext_resource type="Texture2D" uid="uid://bkhvt5qn0lq2s" path="res://Assets/progress_over_3.png" id="8_bo7rt"]
 [ext_resource type="Texture2D" uid="uid://dhqmp1ddkb3d7" path="res://Assets/progress_over_4.png" id="8_stpfw"]
-[ext_resource type="Script" path="res://Upgrader.gd" id="9_mbcmb"]
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="9_nlkln"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_sji2x"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="11_y8say"]
 [ext_resource type="Texture2D" uid="uid://c8qs5sie5ong8" path="res://Assets/progress_over_2.png" id="12_xu75s"]
-[ext_resource type="Texture2D" uid="uid://5slno62p0s40" path="res://Assets/LongShot.png" id="16_1qsnh"]
+[ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="16_y510m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0yp65"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_vue42"]
+font_size = 20
+font_color = Color(1, 0.843137, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bioa"]
+font_color = Color(1, 0.862745, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4px13"]
+font_size = 20
+font_color = Color(1, 0.843137, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_k38d3"]
 font_size = 20
-font_color = Color(1, 0.862745, 0, 1)
-outline_size = 2
+font_color = Color(1, 0.843137, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vxghf"]
 font_size = 20
-font_color = Color(1, 0.862745, 0, 1)
-outline_size = 2
+font_color = Color(1, 0.843137, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [node name="SelectedContainer" type="Node2D"]
@@ -39,7 +50,7 @@ offset_top = 8.34659
 offset_right = 380.848
 offset_bottom = 308.346
 theme_override_constants/h_separation = 120
-theme_override_constants/v_separation = 85
+theme_override_constants/v_separation = 120
 columns = 4
 
 [node name="Health" type="Control" parent="GridContainer"]
@@ -69,45 +80,46 @@ fill_mode = 3
 texture_under = ExtResource("3_00qqc")
 texture_progress = ExtResource("5_j6fm3")
 
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Health"]
+[node name="Anim" type="Sprite2D" parent="GridContainer/Health"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(99.0636, 50.0406)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
-[node name="Armor" type="Control" parent="GridContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="GridContainer/Armor"]
+[node name="Label" type="Label" parent="GridContainer/Health"]
 layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("2_j6fe4")
-theme_type_variation = &"FlatButton"
-icon = ExtResource("9_nlkln")
+offset_left = 26.1499
+offset_top = 82.2883
+offset_right = 76.1499
+offset_bottom = 107.288
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "888"
+label_settings = SubResource("LabelSettings_0yp65")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Armor"]
+[node name="ModifierLabel" type="Label" parent="GridContainer/Health"]
+offset_left = 76.5379
+offset_top = 81.7843
+offset_right = 126.538
+offset_bottom = 106.784
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "(+1)"
+label_settings = SubResource("LabelSettings_vue42")
+vertical_alignment = 1
+
+[node name="MaxedLabel" type="Label" parent="GridContainer/Health"]
 layout_mode = 0
-offset_left = 84.1272
-offset_top = -14.4594
-offset_right = 114.127
-offset_bottom = 113.541
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(15, 64)
-max_value = 4.0
-fill_mode = 3
-texture_under = ExtResource("3_00qqc")
-texture_over = ExtResource("8_stpfw")
-texture_progress = ExtResource("5_j6fm3")
-
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Armor"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(99.0636, 50.0406)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("5_jhbqx")
+offset_left = 21.193
+offset_top = 109.204
+offset_right = 97.193
+offset_bottom = 130.204
+text = "Maxed"
+label_settings = SubResource("LabelSettings_1bioa")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Movement" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -137,15 +149,47 @@ texture_under = ExtResource("3_00qqc")
 texture_over = ExtResource("12_xu75s")
 texture_progress = ExtResource("5_j6fm3")
 
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Movement"]
+[node name="Anim" type="Sprite2D" parent="GridContainer/Movement"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(99.0636, 50.0406)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
+[node name="Label" type="Label" parent="GridContainer/Movement"]
+offset_left = 26.1499
+offset_top = 82.2883
+offset_right = 76.1499
+offset_bottom = 107.288
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "888"
+label_settings = SubResource("LabelSettings_0yp65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModifierLabel" type="Label" parent="GridContainer/Movement"]
+offset_left = 76.5379
+offset_top = 81.7843
+offset_right = 126.538
+offset_bottom = 106.784
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "(+1)"
+label_settings = SubResource("LabelSettings_vue42")
+vertical_alignment = 1
+
+[node name="MaxedLabel" type="Label" parent="GridContainer/Movement"]
+offset_left = 21.193
+offset_top = 109.204
+offset_right = 97.193
+offset_bottom = 130.204
+text = "Maxed"
+label_settings = SubResource("LabelSettings_1bioa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Speed" type="Control" parent="GridContainer"]
 layout_mode = 2
-script = ExtResource("9_mbcmb")
 
 [node name="Button" type="Button" parent="GridContainer/Speed"]
 layout_mode = 0
@@ -172,11 +216,44 @@ texture_under = ExtResource("3_00qqc")
 texture_over = ExtResource("8_bo7rt")
 texture_progress = ExtResource("5_j6fm3")
 
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Speed"]
+[node name="Anim" type="Sprite2D" parent="GridContainer/Speed"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(99.0636, 50.0406)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
+
+[node name="Label" type="Label" parent="GridContainer/Speed"]
+offset_left = 26.1499
+offset_top = 82.2883
+offset_right = 76.1499
+offset_bottom = 107.288
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "888"
+label_settings = SubResource("LabelSettings_0yp65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModifierLabel" type="Label" parent="GridContainer/Speed"]
+offset_left = 76.5379
+offset_top = 81.7843
+offset_right = 126.538
+offset_bottom = 106.784
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "(+1)"
+label_settings = SubResource("LabelSettings_vue42")
+vertical_alignment = 1
+
+[node name="MaxedLabel" type="Label" parent="GridContainer/Speed"]
+offset_left = 21.193
+offset_top = 109.204
+offset_right = 97.193
+offset_bottom = 130.204
+text = "Maxed"
+label_settings = SubResource("LabelSettings_1bioa")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Attack" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -206,11 +283,178 @@ texture_under = ExtResource("3_00qqc")
 texture_over = ExtResource("8_bo7rt")
 texture_progress = ExtResource("5_j6fm3")
 
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Attack"]
+[node name="Anim" type="Sprite2D" parent="GridContainer/Attack"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(99.0636, 50.0406)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
+
+[node name="Label" type="Label" parent="GridContainer/Attack"]
+offset_left = 26.1499
+offset_top = 82.2883
+offset_right = 76.1499
+offset_bottom = 107.288
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "888"
+label_settings = SubResource("LabelSettings_0yp65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModifierLabel" type="Label" parent="GridContainer/Attack"]
+offset_left = 76.5379
+offset_top = 81.7843
+offset_right = 126.538
+offset_bottom = 106.784
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "(+1)"
+label_settings = SubResource("LabelSettings_vue42")
+vertical_alignment = 1
+
+[node name="MaxedLabel" type="Label" parent="GridContainer/Attack"]
+offset_left = 21.193
+offset_top = 109.204
+offset_right = 97.193
+offset_bottom = 130.204
+text = "Maxed"
+label_settings = SubResource("LabelSettings_1bioa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Range" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Range"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+icon = ExtResource("8_121h5")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Range"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 2.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_over = ExtResource("12_xu75s")
+texture_progress = ExtResource("5_j6fm3")
+
+[node name="Anim" type="Sprite2D" parent="GridContainer/Range"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_jhbqx")
+
+[node name="Label" type="Label" parent="GridContainer/Range"]
+offset_left = 26.1499
+offset_top = 82.2883
+offset_right = 76.1499
+offset_bottom = 107.288
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "888"
+label_settings = SubResource("LabelSettings_0yp65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModifierLabel" type="Label" parent="GridContainer/Range"]
+offset_left = 76.5379
+offset_top = 81.7843
+offset_right = 126.538
+offset_bottom = 106.784
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "(+1)"
+label_settings = SubResource("LabelSettings_vue42")
+vertical_alignment = 1
+
+[node name="MaxedLabel" type="Label" parent="GridContainer/Range"]
+offset_left = 21.193
+offset_top = 109.204
+offset_right = 97.193
+offset_bottom = 130.204
+text = "Maxed"
+label_settings = SubResource("LabelSettings_1bioa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armor" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Armor"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("2_j6fe4")
+theme_type_variation = &"FlatButton"
+icon = ExtResource("9_nlkln")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Armor"]
+layout_mode = 0
+offset_left = 84.1272
+offset_top = -14.4594
+offset_right = 114.127
+offset_bottom = 113.541
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(15, 64)
+max_value = 4.0
+fill_mode = 3
+texture_under = ExtResource("3_00qqc")
+texture_over = ExtResource("8_stpfw")
+texture_progress = ExtResource("5_j6fm3")
+
+[node name="Anim" type="Sprite2D" parent="GridContainer/Armor"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(99.0636, 50.0406)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_jhbqx")
+
+[node name="Label" type="Label" parent="GridContainer/Armor"]
+offset_left = 26.1499
+offset_top = 82.2883
+offset_right = 76.1499
+offset_bottom = 107.288
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "888"
+label_settings = SubResource("LabelSettings_0yp65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModifierLabel" type="Label" parent="GridContainer/Armor"]
+offset_left = 76.5379
+offset_top = 81.7843
+offset_right = 126.538
+offset_bottom = 106.784
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "(+1)"
+label_settings = SubResource("LabelSettings_vue42")
+vertical_alignment = 1
+
+[node name="MaxedLabel" type="Label" parent="GridContainer/Armor"]
+offset_left = 21.193
+offset_top = 109.204
+offset_right = 97.193
+offset_bottom = 130.204
+text = "Maxed"
+label_settings = SubResource("LabelSettings_1bioa")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Action1" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -241,11 +485,44 @@ texture_under = ExtResource("3_00qqc")
 texture_over = ExtResource("12_xu75s")
 texture_progress = ExtResource("5_j6fm3")
 
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Action1"]
+[node name="Anim" type="Sprite2D" parent="GridContainer/Action1"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(99.0636, 50.0406)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
+
+[node name="Label" type="Label" parent="GridContainer/Action1"]
+offset_left = 12.2414
+offset_top = 83.7966
+offset_right = 94.2414
+offset_bottom = 108.797
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "Level"
+label_settings = SubResource("LabelSettings_0yp65")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModifierLabel" type="Label" parent="GridContainer/Action1"]
+offset_left = 100.536
+offset_top = 82.9557
+offset_right = 150.536
+offset_bottom = 107.956
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "1"
+label_settings = SubResource("LabelSettings_4px13")
+vertical_alignment = 1
+
+[node name="MaxedLabel" type="Label" parent="GridContainer/Action1"]
+offset_left = 21.193
+offset_top = 109.204
+offset_right = 97.193
+offset_bottom = 130.204
+text = "Maxed"
+label_settings = SubResource("LabelSettings_1bioa")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Action2" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -276,79 +553,81 @@ texture_under = ExtResource("3_00qqc")
 texture_over = ExtResource("12_xu75s")
 texture_progress = ExtResource("5_j6fm3")
 
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Action2"]
+[node name="Anim" type="Sprite2D" parent="GridContainer/Action2"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(99.0636, 50.0406)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
-[node name="Range" type="Control" parent="GridContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="GridContainer/Action2"]
+offset_left = 12.2414
+offset_top = 83.7966
+offset_right = 94.2414
+offset_bottom = 108.797
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "Level"
+label_settings = SubResource("LabelSettings_0yp65")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button" type="Button" parent="GridContainer/Range"]
-layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
-scale = Vector2(0.7, 0.7)
-pivot_offset = Vector2(50, 50)
-focus_mode = 0
-theme = ExtResource("2_j6fe4")
-theme_type_variation = &"FlatButton"
-icon = ExtResource("8_121h5")
+[node name="ModifierLabel" type="Label" parent="GridContainer/Action2"]
+offset_left = 100.536
+offset_top = 82.9557
+offset_right = 150.536
+offset_bottom = 107.956
+theme_override_fonts/font = ExtResource("16_y510m")
+theme_override_font_sizes/font_size = 14
+text = "1"
+label_settings = SubResource("LabelSettings_4px13")
+vertical_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Range"]
-layout_mode = 0
-offset_left = 84.1272
-offset_top = -14.4594
-offset_right = 114.127
-offset_bottom = 113.541
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(15, 64)
-max_value = 2.0
-fill_mode = 3
-texture_under = ExtResource("3_00qqc")
-texture_over = ExtResource("12_xu75s")
-texture_progress = ExtResource("5_j6fm3")
+[node name="MaxedLabel" type="Label" parent="GridContainer/Action2"]
+offset_left = 21.193
+offset_top = 109.204
+offset_right = 97.193
+offset_bottom = 130.204
+text = "Maxed"
+label_settings = SubResource("LabelSettings_1bioa")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Range"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(99.0636, 50.0406)
-scale = Vector2(0.55, 0.55)
-texture = ExtResource("5_jhbqx")
+[node name="Bottom" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 36.8654
+offset_top = 272.328
+offset_right = 76.8654
+offset_bottom = 312.328
 
-[node name="Button" type="Button" parent="."]
-offset_left = 150.924
-offset_top = 226.0
-offset_right = 270.924
-offset_bottom = 286.0
+[node name="DeployButton" type="Button" parent="Bottom"]
+offset_left = 105.734
+offset_top = -3.51694
+offset_right = 225.734
+offset_bottom = 56.4831
 theme = ExtResource("2_j6fe4")
 text = "Deploy"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 283.905
-offset_top = 244.65
-offset_right = 469.905
-offset_bottom = 269.65
+[node name="Label" type="Label" parent="Bottom"]
+offset_left = 238.715
+offset_top = 15.1331
+offset_right = 424.715
+offset_bottom = 40.1331
 text = "SKILL POINTS: "
 label_settings = SubResource("LabelSettings_k38d3")
 
-[node name="SkillPointsLabel" type="Label" parent="."]
-offset_left = 470.851
-offset_top = 244.65
-offset_right = 510.851
-offset_bottom = 269.65
+[node name="SkillPointsLabel" type="Label" parent="Bottom"]
+offset_left = 425.661
+offset_top = 15.1331
+offset_right = 465.661
+offset_bottom = 40.1331
 text = "99"
 label_settings = SubResource("LabelSettings_vxghf")
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 32.1302
-offset_top = 226.0
-offset_right = 152.13
-offset_bottom = 286.0
+[node name="ResetButton" type="Button" parent="Bottom"]
+offset_left = -13.0597
+offset_top = -3.51694
+offset_right = 106.94
+offset_bottom = 56.4831
 theme = ExtResource("2_j6fe4")
 text = "Reset"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(597.656, 144.453)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("16_1qsnh")

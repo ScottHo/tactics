@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cpgpa20tc84gw"]
+
+[ext_resource type="Texture2D" uid="uid://bafloqpjrawkr" path="res://Assets/bot-button-glow.png" id="1_lo6le"]
+
+[resource]
+texture = ExtResource("1_lo6le")
