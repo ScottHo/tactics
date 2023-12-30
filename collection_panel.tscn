@@ -20,7 +20,7 @@ offset_right = 611.369
 offset_bottom = 205.654
 theme_override_constants/h_separation = 95
 theme_override_constants/v_separation = 95
-columns = 5
+columns = 8
 
 [node name="Control" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -367,21 +367,44 @@ offset_bottom = 49.8617
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 
+[node name="Control16" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control16"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.14, 0.14)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control16"]
+
+[node name="Label" type="Label" parent="GridContainer/Control16"]
+layout_mode = 0
+offset_left = -6.05371
+offset_top = 32.8617
+offset_right = 78.9463
+offset_bottom = 49.8617
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
 [node name="RightButton" type="Button" parent="."]
 visible = false
-offset_left = 571.353
-offset_top = 92.7755
-offset_right = 671.353
-offset_bottom = 192.775
+offset_left = 839.55
+offset_top = 46.328
+offset_right = 939.55
+offset_bottom = 146.327
 theme = ExtResource("2_es5up")
 theme_type_variation = &"TriangleButton"
 
 [node name="LeftButton" type="Button" parent="."]
 visible = false
-offset_left = 103.259
-offset_top = 191.808
-offset_right = 203.259
-offset_bottom = 291.808
+offset_left = 110.751
+offset_top = 145.36
+offset_right = 210.751
+offset_bottom = 245.36
 rotation = 3.14159
 theme = ExtResource("2_es5up")
 theme_type_variation = &"TriangleButton"

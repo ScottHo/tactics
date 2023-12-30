@@ -36,7 +36,9 @@ func _ready():
     moveService.movesFound.connect(movesFound)
     actionService.actionDone.connect(actionDone)
     interactService.interactDone.connect(interactDone)
+    
     importTestData()
+    setup_entities()
     
     actionService.setState(state)
     moveService.setState(state)
@@ -99,11 +101,23 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
     add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(location)
     ent.location = location
-    if ent.ally:
+    if ent.is_ally:
         var _id = state.addAlly(ent)
     else:
         var _id = state.addEnemy(ent)
+    ent.sprite = sprite
     ent.update_sprite()
+    return
+
+func setup_entities():
+    var allies = Globals.entities_to_deploy
+    setup_entity_for_level(allies[0], Vector2i(0, 0))
+    setup_entity_for_level(allies[1], Vector2i(0, 1))
+    setup_entity_for_level(allies[2], Vector2i(0, 2))
+    setup_entity_for_level(allies[3], Vector2i(0, 3))
+    setup_entity_for_level(allies[4], Vector2i(0, 4))
+    setup_entity_for_level(allies[5], Vector2i(0, 5))
+    setup_entity_for_level(EntityFactory.create_boss_1(), Vector2i(11, 2))
     return
 
 func currentEntity() -> Entity:

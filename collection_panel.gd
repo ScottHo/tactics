@@ -1,8 +1,9 @@
 class_name CollectionPanel extends Node2D
 
 @onready var grid = $GridContainer
-@onready var entities := []
+var entities := []
 var page := 1
+var deploy_full := false
 
 signal entity_selected
 
@@ -26,7 +27,7 @@ func deployedLabel(c) -> Label:
 func container(idx: int) -> Control:
     return grid.get_child(idx)
 
-func populate_entities():
+func start():
     # TODO: Get these from persistent data
     entities = []
     entities.append(EntityFactory.create_brutus())
@@ -43,7 +44,7 @@ func populate_entities():
         print(entities[i].sprite_path)
         deployedLabel(c).visible = false
     
-    for i in range(len(entities), 15):
+    for i in range(len(entities), 16):
         var c = container(i)
         button(c).disabled = true
         button(c).icon = load("res://Assets/Unknown.png")
@@ -51,7 +52,7 @@ func populate_entities():
     return
 
 func entity_clicked(idx: int):
-    for i in range(0, 15):
+    for i in range(0, 16):
         if i == idx:
             continue
         var c = container(i)
@@ -59,4 +60,14 @@ func entity_clicked(idx: int):
     entity_selected.emit(entities[idx])
     return
 
+func entity_deployed(ent: Entity):
+    var c = container(entities.find(ent))
+    deployedLabel(c).visible = true
+    button(c).disabled = true
+    return
 
+func entity_undeployed(ent: Entity):
+    var c = container(entities.find(ent))
+    deployedLabel(c).visible = false
+    button(c).disabled = false
+    return

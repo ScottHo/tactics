@@ -63,4 +63,5 @@ static func _create_entity(display_name, health, movement, _range, speed, sprite
     ent.set_hp(health)    
     ent.setThreat(0)
     ent.energy = 0
+    ent.is_ally = ally
     return ent

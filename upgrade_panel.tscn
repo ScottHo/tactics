@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ct2wj06r38iul"]
+[gd_scene load_steps=24 format=3 uid="uid://ct2wj06r38iul"]
 
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_sji2x"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="11_y8say"]
 [ext_resource type="Texture2D" uid="uid://c8qs5sie5ong8" path="res://Assets/progress_over_2.png" id="12_xu75s"]
+[ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="16_epibs"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="16_y510m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0yp65"]
@@ -40,18 +41,21 @@ font_size = 20
 font_color = Color(1, 0.843137, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cso6f"]
+font_size = 20
+
 [node name="SelectedContainer" type="Node2D"]
 position = Vector2(59.0084, -191.351)
 script = ExtResource("1_cil83")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 20.8479
-offset_top = 8.34659
-offset_right = 380.848
-offset_bottom = 308.346
-theme_override_constants/h_separation = 120
+offset_left = -516.655
+offset_top = 29.7653
+offset_right = 393.345
+offset_bottom = 329.765
+theme_override_constants/h_separation = 130
 theme_override_constants/v_separation = 120
-columns = 4
+columns = 8
 
 [node name="Health" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -100,6 +104,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ModifierLabel" type="Label" parent="GridContainer/Health"]
+layout_mode = 0
 offset_left = 76.5379
 offset_top = 81.7843
 offset_right = 126.538
@@ -156,6 +161,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
 [node name="Label" type="Label" parent="GridContainer/Movement"]
+layout_mode = 0
 offset_left = 26.1499
 offset_top = 82.2883
 offset_right = 76.1499
@@ -168,6 +174,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ModifierLabel" type="Label" parent="GridContainer/Movement"]
+layout_mode = 0
 offset_left = 76.5379
 offset_top = 81.7843
 offset_right = 126.538
@@ -179,6 +186,7 @@ label_settings = SubResource("LabelSettings_vue42")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Movement"]
+layout_mode = 0
 offset_left = 21.193
 offset_top = 109.204
 offset_right = 97.193
@@ -223,6 +231,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
 [node name="Label" type="Label" parent="GridContainer/Speed"]
+layout_mode = 0
 offset_left = 26.1499
 offset_top = 82.2883
 offset_right = 76.1499
@@ -235,6 +244,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ModifierLabel" type="Label" parent="GridContainer/Speed"]
+layout_mode = 0
 offset_left = 76.5379
 offset_top = 81.7843
 offset_right = 126.538
@@ -246,6 +256,7 @@ label_settings = SubResource("LabelSettings_vue42")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Speed"]
+layout_mode = 0
 offset_left = 21.193
 offset_top = 109.204
 offset_right = 97.193
@@ -290,6 +301,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
 [node name="Label" type="Label" parent="GridContainer/Attack"]
+layout_mode = 0
 offset_left = 26.1499
 offset_top = 82.2883
 offset_right = 76.1499
@@ -302,6 +314,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ModifierLabel" type="Label" parent="GridContainer/Attack"]
+layout_mode = 0
 offset_left = 76.5379
 offset_top = 81.7843
 offset_right = 126.538
@@ -313,6 +326,7 @@ label_settings = SubResource("LabelSettings_vue42")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Attack"]
+layout_mode = 0
 offset_left = 21.193
 offset_top = 109.204
 offset_right = 97.193
@@ -357,6 +371,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
 [node name="Label" type="Label" parent="GridContainer/Range"]
+layout_mode = 0
 offset_left = 26.1499
 offset_top = 82.2883
 offset_right = 76.1499
@@ -369,6 +384,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ModifierLabel" type="Label" parent="GridContainer/Range"]
+layout_mode = 0
 offset_left = 76.5379
 offset_top = 81.7843
 offset_right = 126.538
@@ -380,6 +396,7 @@ label_settings = SubResource("LabelSettings_vue42")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Range"]
+layout_mode = 0
 offset_left = 21.193
 offset_top = 109.204
 offset_right = 97.193
@@ -424,6 +441,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
 [node name="Label" type="Label" parent="GridContainer/Armor"]
+layout_mode = 0
 offset_left = 26.1499
 offset_top = 82.2883
 offset_right = 76.1499
@@ -436,6 +454,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ModifierLabel" type="Label" parent="GridContainer/Armor"]
+layout_mode = 0
 offset_left = 76.5379
 offset_top = 81.7843
 offset_right = 126.538
@@ -447,6 +466,7 @@ label_settings = SubResource("LabelSettings_vue42")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Armor"]
+layout_mode = 0
 offset_left = 21.193
 offset_top = 109.204
 offset_right = 97.193
@@ -492,9 +512,10 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
 [node name="Label" type="Label" parent="GridContainer/Action1"]
-offset_left = 12.2414
+layout_mode = 0
+offset_left = 7.47919
 offset_top = 83.7966
-offset_right = 94.2414
+offset_right = 89.4792
 offset_bottom = 108.797
 theme_override_fonts/font = ExtResource("16_y510m")
 theme_override_font_sizes/font_size = 14
@@ -504,9 +525,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ModifierLabel" type="Label" parent="GridContainer/Action1"]
-offset_left = 100.536
+layout_mode = 0
+offset_left = 95.7738
 offset_top = 82.9557
-offset_right = 150.536
+offset_right = 145.774
 offset_bottom = 107.956
 theme_override_fonts/font = ExtResource("16_y510m")
 theme_override_font_sizes/font_size = 14
@@ -515,6 +537,7 @@ label_settings = SubResource("LabelSettings_4px13")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Action1"]
+layout_mode = 0
 offset_left = 21.193
 offset_top = 109.204
 offset_right = 97.193
@@ -560,9 +583,10 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
 [node name="Label" type="Label" parent="GridContainer/Action2"]
-offset_left = 12.2414
+layout_mode = 0
+offset_left = 7.47919
 offset_top = 83.7966
-offset_right = 94.2414
+offset_right = 89.4792
 offset_bottom = 108.797
 theme_override_fonts/font = ExtResource("16_y510m")
 theme_override_font_sizes/font_size = 14
@@ -572,9 +596,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ModifierLabel" type="Label" parent="GridContainer/Action2"]
-offset_left = 100.536
+layout_mode = 0
+offset_left = 95.7738
 offset_top = 82.9557
-offset_right = 150.536
+offset_right = 145.774
 offset_bottom = 107.956
 theme_override_fonts/font = ExtResource("16_y510m")
 theme_override_font_sizes/font_size = 14
@@ -583,6 +608,7 @@ label_settings = SubResource("LabelSettings_4px13")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Action2"]
+layout_mode = 0
 offset_left = 21.193
 offset_top = 109.204
 offset_right = 97.193
@@ -595,39 +621,67 @@ vertical_alignment = 1
 [node name="Bottom" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 36.8654
-offset_top = 272.328
-offset_right = 76.8654
-offset_bottom = 312.328
+offset_left = -119.365
+offset_top = 180.354
+offset_right = -79.3649
+offset_bottom = 220.354
 
 [node name="DeployButton" type="Button" parent="Bottom"]
-offset_left = 105.734
-offset_top = -3.51694
-offset_right = 225.734
-offset_bottom = 56.4831
+layout_mode = 0
+offset_left = 472.962
+offset_top = -0.548434
+offset_right = 622.962
+offset_bottom = 74.4516
 theme = ExtResource("2_j6fe4")
+theme_override_font_sizes/font_size = 20
 text = "Deploy"
 
 [node name="Label" type="Label" parent="Bottom"]
-offset_left = 238.715
-offset_top = 15.1331
-offset_right = 424.715
-offset_bottom = 40.1331
+layout_mode = 0
+offset_left = 11.2065
+offset_top = 13.752
+offset_right = 197.206
+offset_bottom = 38.752
 text = "SKILL POINTS: "
 label_settings = SubResource("LabelSettings_k38d3")
 
 [node name="SkillPointsLabel" type="Label" parent="Bottom"]
-offset_left = 425.661
-offset_top = 15.1331
-offset_right = 465.661
-offset_bottom = 40.1331
+layout_mode = 0
+offset_left = 198.152
+offset_top = 13.752
+offset_right = 238.152
+offset_bottom = 38.752
 text = "99"
 label_settings = SubResource("LabelSettings_vxghf")
 
 [node name="ResetButton" type="Button" parent="Bottom"]
-offset_left = -13.0597
-offset_top = -3.51694
-offset_right = 106.94
-offset_bottom = 56.4831
+layout_mode = 0
+offset_left = 298.346
+offset_top = 0.451566
+offset_right = 448.346
+offset_bottom = 75.4516
 theme = ExtResource("2_j6fe4")
+theme_override_font_sizes/font_size = 20
 text = "Reset"
+
+[node name="EntityContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 628.577
+offset_top = 108.78
+offset_right = 668.577
+offset_bottom = 148.78
+
+[node name="Sprite2D" type="Sprite2D" parent="EntityContainer"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("16_epibs")
+
+[node name="Label" type="Label" parent="EntityContainer"]
+layout_mode = 0
+offset_left = -110.977
+offset_top = 80.1012
+offset_right = 109.023
+offset_bottom = 110.101
+text = "-"
+label_settings = SubResource("LabelSettings_cso6f")
+horizontal_alignment = 1

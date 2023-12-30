@@ -11,7 +11,6 @@ var action2: Action
 var moves_left: int
 var is_ally: bool
 var interactable: Interactable
-var level: int
 var sprite_path: String
 var icon_path: String
 
