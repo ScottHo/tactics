@@ -11,8 +11,8 @@ static func create_brutus():
 static func create_oilee():
     var ent = _create_entity("Oilee", 10, 5, 1, 10, "res://oilee.tscn", "res://Assets/Oilee.png", true)
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_sticky_grenade(ent, ActionType.ACTION1)
-    ActionFactory.add_refuel(ent, ActionType.ACTION2)
+    ActionFactory.add_oil_bomb(ent, ActionType.ACTION1)
+    ActionFactory.add_lubricate(ent, ActionType.ACTION2)
     return ent
 
 static func create_electro():

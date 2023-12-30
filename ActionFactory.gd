@@ -6,149 +6,218 @@ static var shape_3x3 = [
         ]
 
 static func add_base_attack(ent: Entity):
-    var base_effect = func (user: Entity, targets: Array):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Cost": 0,
+        "Threat Gain": 1,
+    }
+    var base_effect = func (user: Entity, targets: Array, action: Action):
         user.gainThreat(1)
         for _ent in targets:
             _ent.loseHP(user.get_damage())
         return
-    var d = "Deals damage to any target. Gains 1 Threat."
-    _add_test_action(ent, "Normal Attack", d, 0, -1, false, 0, [], base_effect, true, ActionType.ATTACK)
+    var d = "Deals damage to any target"
+    _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats)
     return
 
 static func add_exert(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
-        user.move_debuff_value = 3
-        user.move_debuff_count = 1
-        user.gainThreat(3)
+    var stats = {
+        "Affects": "Enemy Units",
+        "Cost": 3,
+        "Damage Amp": [2, 2, 3, 3, 4],
+        "Movement Penalty": [3, 2, 2, 1, 1],
+        "Movement Penalty Duration": 1,
+        "Threat Gain": 3,
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        user.move_debuff_value =  action.get_from_stats("Movement Penalty")
+        user.move_debuff_count = action.get_from_stats("Movement Penalty Duration")
+        user.gainThreat(action.get_from_stats("Threat Gain"))
         for _ent in targets:
             _ent.loseHP(user.get_damage() + user.get_damage())
         return
-    var d = "Deals damage x2 to any target. Gains 3 Threat. Gains 3 movement penalty for 1 turn."
-    _add_test_action(ent, "Exert", d, 0, -1, false, 3, [], effect, true, type)
+    var d = "Brutus Exterts Itself And hits so hard its wheels break down for a turn."
+    
+    _add_action(ent, "Exert", d, [], effect, type, stats)
     return
 
 static func add_take_cover(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
-        user.immune_count = 1
+    var stats = {
+        "Affects": "Self",
+        "Cost": 1,
+        "Shield Amount": [2, 4, 6, 8, 10],
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        user.shield_count = action.stats["Shield Amount"][action.level]
         return
-    var d = "Target self to be completely immune for 1 turn"
-    _add_test_action(ent, "Take Cover", d, 0, 0, true, 2, [], effect, false, type)
+    var d = "Manuever itself and shows its hard exterior, shielding itself for a turn"
+    _add_action(ent, "Take Cover", d, [], effect, type, stats)
     return
 
-static func add_sticky_grenade(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
+static func add_oil_bomb(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Cost": 2,
+        "Range Modifier": 2,
+        "Damage Modifier": [0, 1, 2, 3, 4],
+        "Movement Debuff": [2, 2, 3, 3, 3],
+        "Movement Debuff Duration": 1,
+        "Threat Gain": 1,
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
         user.gainThreat(1)
         for _ent in targets:
-            _ent.loseHP(user.damage)
-            _ent.move_debuff_value = 3
+            _ent.loseHP(user.damage + action.stats["Damage Modifier"][action.level])
+            _ent.move_debuff_value = action.stats["Movement Debuff"][action.level]
             _ent.move_debuff_count = 1
         return
-    var d = "Throw a sticky bomb at target, dealing damage. Inflicts 3 movement penalty to target for 1 turn"
-    _add_test_action(ent, "Sticky Grenade", d, 2, -1, false, 2, [], effect, true, type)
+    var d = "Cover a target with its old oil, slowing it's movement"
+    _add_action(ent, "Oil Bomb", d, [], effect, type, stats)
     return
     
-static func add_refuel(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
-        user.moves_left = user.get_movement()
+static func add_lubricate(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Self",
+        "Cost": 1,
+        "Extra Moves": [2,3,4,5,6] 
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        user.moves_left += action.stats["Extra Moves"][action.level]
         return
-    var d = "Target self to refill movement tiles"
-    _add_test_action(ent, "Refuel", d, 0, 0, true, 2, [], effect, true, type)
+    var d = "Lubricate your axles to gain extra movement for the turn"
+    _add_action(ent, "Lubricate", d, [], effect, type, stats)
     return
 
 static func add_storm(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
+    var stats = {
+        "Affects": "All Units",
+        "Cost": 2,
+        "Damage Modifier": [2, 3, 4, 5, 6],
+        "Threat Gain": 2,
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
         user.gainThreat(2)
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + 2)
+            _ent.loseHP(user.get_damage() + action.stats["Damage Modifier"][action.level])
         return
-    var d = "Target a 3x3 area and deal damage +2. Gains 2 Threat."
-    _add_test_action(ent, "Storm", d, -0, -1, true, 3, shape_3x3, effect, false, type)
+    var d = "Create an unstable electro magnetic field and make everything not work"
+    _add_action(ent, "Storm", d, shape_3x3, effect, type, stats)
     return
 
 static func add_static_shield(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
+    var stats = {
+        "Affects": "All Units",
+        "Cost": 2,
+        "Shield Amount": [2, 3, 4, 5, 6],
+        "Shield Duration": 2
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.shield_value = 2
+            _ent.shield_value = action.stats["Shield Amount"][action.level]
             _ent.shield_count = 2
         return
-    var d = "Target a 3x3 area and add Shield 2 to all units for 2 of it's turns."
-    _add_test_action(ent, "Static Shield", d, 0, -1, true, 3, shape_3x3, effect, true, type)
+    var d = "Create a stable electro magnetic field and shield everything"
+    _add_action(ent, "Static Shield", d, shape_3x3, effect, type, stats)
     return
 
 static func add_focused_repair(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
+    var stats = {
+        "Affects": "All Friendly Units",
+        "Cost": 2,
+        "Heal Amount": [5, 7, 9, 11, 13],
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.gainHP(6)
+            _ent.gainHP(action.stats["Heal Amount"][action.level])
         return
-    var d = "Target a unit and gain 6 health."
-    _add_test_action(ent, "Focused Repair", d, 0, -1, true, 2, [], effect, true, type)
+    var d = "Summon all the nanobots to heal one friend"
+    _add_action(ent, "Focused Repair", d, [], effect, type, stats)
     return
 
 static func add_nano_field(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
+    var stats = {
+        "Affects": "All Friendly Units",
+        "Cost": 2,
+        "Heal Amount": [3, 4, 5, 6, 7],
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.gainHP(3)
+            _ent.gainHP(action.stats["Heal Amount"][action.level])
         return
-    var d = "All units in a 3x3 area gain 3 health"
-    _add_test_action(ent, "Nanofield", d, 0, -1, true, 2, shape_3x3, effect, true, type)
+    var d = "Order the nanobots to heal any friend in the area"
+    _add_action(ent, "Nanofield", d, shape_3x3, effect, type, stats)
     return
 
 static func add_weapons_upgade(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
+    var stats = {
+        "Affects": "Other Friendly Units",
+        "Cost": [5,4,3,2,1],
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
             _ent.damage_modifier += 1
         return
-    var d = "Target unit permanenlty gains +1 damage."
-    _add_test_action(ent, "Weapons Upgrade", d, 0, 1, false, 2, [], effect, true, type)
+    var d = "Make your friends hurt more"
+    _add_action(ent, "Weapons Upgrade", d, [], effect, type, stats)
     return
 
 static func add_engine_upgrade(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
+    var stats = {
+        "Affects": "Other Friendly Units",
+        "Cost": [5,4,3,2,1],
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
             _ent.movement_modifier += 1
         return
-    var d = "Target unit permanently gains +1 movement."
-    _add_test_action(ent, "Engine Upgrade", d, 0, 1, false, 2, [], effect, true, type)
+    var d = "Make your friends move more"
+    _add_action(ent, "Engine Upgrade", d, [], effect, type, stats)
     return
 
 static func add_snipe(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
-        user.gainThreat(1)
+    var stats = {
+        "Affects": "Enemy Units",
+        "Range Modifier": [3,3,4,4,5],
+        "Damage Modifier": [0,1,1,2,2],
+        "Threat Gain": 1,
+        "Cost": 1
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        user.gainThreat(action.stats["Threat Gain"])
         for _ent in targets:
-            _ent.loseHP(user.get_damage())
+            _ent.loseHP(user.get_damage() + action.stats["Heal Amount"][action.level])
         return
-    var d = "Deals damage to any target with +3 Range. Gains 1 Threat."
-    _add_test_action(ent, "Snipe", d, 3, -1, false, 1, [], effect, true, type)
+    var d = "Extend the barrel and snipe"
+    _add_action(ent, "Snipe", d, [], effect, type, stats)
     return
 
 static func add_titanium_bullet(ent: Entity, type: int):
-    var effect = func (user: Entity, targets: Array):
-        user.gainThreat(3)
+    var stats = {
+        "Affects": "Enemy Units",
+        "Damage Modifier": [6,8,12,14,16],
+        "Threat Gain": 3,
+        "Cost": 5
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        user.gainThreat(action.stats["Threat Gain"])
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + 3)
+            _ent.loseHP(user.get_damage() + action.stats["Damage Modifier"][action.level])
         return
-    var d = "Deals damage + 6 to any target. Gains 3 Threat."
-    _add_test_action(ent, "Titanium Bullet", d, 0, -1, false, 5, [], effect, true, type)
+    var d = ""
+    _add_action(ent, "Titanium Bullet", d, [], effect, type, stats)
     return
 
-static func _add_test_action(ent, display_name, description, range_modifier, strict_range, self_castable, cost, shape, effect, offensive, action_type):
+static func _add_action(ent, display_name, description, shape, effect, action_type, stats):
     var action = Action.new()
-    action.range_modifier = range_modifier
-    action.strict_range = strict_range
     action.shape = shape
     action.effect = effect
-    action.cost = cost
-    action.self_castable = self_castable
     action.display_name = display_name
     action.description = description
-    if offensive:
-        action.target_color = Highlights.RED
-    else:
-        action.target_color = Highlights.BLUE
     if action_type == ActionType.ATTACK:
         ent.attack = action
     if action_type == ActionType.ACTION1:
         ent.action1 = action
     if action_type == ActionType.ACTION2:
         ent.action2 = action
+    action.stats = stats
     return

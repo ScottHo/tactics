@@ -64,7 +64,8 @@ func update():
         threatLabel.text = "-"
     healthBar.max_value = _entity.get_max_health()
     healthBar.value = _entity.health
-    energyBar.value = _entity.energy    
+    energyBar.value = _entity.energy
+    print(_entity.energy)    
     _set_colors()
     return
 

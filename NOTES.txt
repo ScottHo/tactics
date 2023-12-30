@@ -18,6 +18,7 @@ ART
 - Animations
 
 POLISH
+- Better backgrounds/layout for deploy/mission GUI
 - Confirm Popup windows where relevant
 - "Popup" for current action
 - Different target highlights for good/bad

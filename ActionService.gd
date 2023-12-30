@@ -24,7 +24,7 @@ func _input(event):
         if _previous_coords != coords:
             clearTargetHighlights()
             _previous_coords = coords            
-            if not _map_bfs.inRange(coords, action().self_castable):
+            if not _map_bfs.inRange(coords, action().self_castable()):
                 return
             _target_points = Utils.get_target_coords(_entity.location, coords, shape())
             fillTargetHighlights()
@@ -37,7 +37,7 @@ func _input(event):
                     if not _state.entity_on_tile(_target_points[0]):
                         return
                 ActionCommon.do_action(_state, _entity,_target_points, action())
-                _entity.update_energy(-action().cost)
+                _entity.update_energy(-action().cost())
                 actionDone.emit()
                 finish()
                 return
@@ -54,7 +54,7 @@ func fillTargetHighlights():
 
 func clearTargetHighlights():
     for point in _target_points:
-        if _map_bfs.inRange(point, action().self_castable):
+        if _map_bfs.inRange(point, action().self_castable()):
             highlightMap.set_cell(0, point, 0, Highlights.PURPLE, 0)
         else:
             highlightMap.set_cell(0, point, 0, Highlights.EMPTY, 0)
@@ -62,9 +62,10 @@ func clearTargetHighlights():
     return
 
 func maxRange() -> int:
-    if action().strict_range != -1:
-        return action().strict_range
-    return _entity.get_range() + action().range_modifier
+    if action().self_cast_only():
+        return 0
+    print(action().range_modifier())
+    return _entity.get_range() + action().range_modifier()
 
 func shape() -> Array:
     return action().shape
@@ -81,7 +82,7 @@ func action() -> Action:
 func finish():
     if _enabled:
         if _map_bfs != null:
-            _map_bfs.resetHighlights(false, action().self_castable)
+            _map_bfs.resetHighlights(false, action().self_castable())
         _enabled = false
     return
 
@@ -90,6 +91,6 @@ func start(entity: Entity, action_type: int):
     _action_type = action_type
     _map_bfs = MapBFS.new()
     _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, true, true, false)
-    _map_bfs.resetHighlights(true, action().self_castable)
+    _map_bfs.resetHighlights(true, action().self_castable())
     _enabled = true
     return

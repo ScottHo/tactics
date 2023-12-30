@@ -3,9 +3,7 @@ class_name MenuService extends Node2D
 var _state: State
 var _button_state_cache: Array
 var _tab_dict: Dictionary = {}
-var _action_names: Dictionary = {}
-var _action_descriptions: Dictionary = {}
-var _action_costs: Dictionary = {}
+var _actions: Dictionary = {}
 var force_show_description := false
 var _current_interactable: String = ""
 
@@ -43,12 +41,16 @@ signal menuAnimationsFinished
     $TurnsContainer/Turn5, $TurnsContainer/Turn6, $TurnsContainer/Turn7,
     $TurnsContainer/Turn8, $TurnsContainer/Turn9]
 
+@onready var descTallPanel: Sprite2D = $DescriptionContainer/TallPanel
+@onready var descShortPanel: Sprite2D = $DescriptionContainer/ShortPanel
 @onready var descName: Label = $DescriptionContainer/DescriptionName
 @onready var descMain: Label = $DescriptionContainer/DescriptionLabel
-@onready var descCost: Label = $DescriptionContainer/CostContainer/Cost
+@onready var descStats: Label = $DescriptionContainer/StatsLabel
 @onready var descMoves: Label = $DescriptionContainer/MoveContainer/MovesLeft
 @onready var descInter: Label = $DescriptionContainer/InteractMessage
 @onready var descContainer: Control = $DescriptionContainer
+@onready var descMoveInterName: Label = $DescriptionContainer/MoveInteractName
+@onready var descInterDesc: Label = $DescriptionContainer/InteractDescription
 
 
 func _ready():
@@ -178,9 +180,9 @@ func showCurrentTurn(turn: int):
             moveButton.disabled = false
         interactButton.disabled = false
         attackButton.disabled = false
-        if entity.action1.cost <= entity.energy:
+        if entity.action1.cost() <= entity.energy:
             action1Button.disabled = false
-        if entity.action2.cost <= entity.energy:
+        if entity.action2.cost() <= entity.energy:
             action2Button.disabled = false
         setup_action_descriptions(entity)
     
@@ -211,15 +213,9 @@ func finish_menu_animations():
     return
 
 func setup_action_descriptions(entity: Entity):
-    _action_names[ActionType.ATTACK] = entity.attack.display_name
-    _action_names[ActionType.ACTION1] = entity.action1.display_name
-    _action_names[ActionType.ACTION2] = entity.action2.display_name
-    _action_descriptions[ActionType.ATTACK] = entity.attack.description
-    _action_descriptions[ActionType.ACTION1] = entity.action1.description
-    _action_descriptions[ActionType.ACTION2] = entity.action2.description
-    _action_costs[ActionType.ATTACK] = entity.attack.cost
-    _action_costs[ActionType.ACTION1] = entity.action1.cost
-    _action_costs[ActionType.ACTION2] = entity.action2.cost
+    _actions[ActionType.ATTACK] = entity.attack
+    _actions[ActionType.ACTION1] = entity.action1
+    _actions[ActionType.ACTION2] = entity.action2
     return
 
 func updateEntityInfo(entity: Entity):
@@ -359,30 +355,42 @@ func show_description(show, action_type):
     if not show:
         $DescriptionContainer.visible = false
         return
-    if not _action_descriptions.has(action_type):
+    descStats.visible = false
+    descName.visible = false
+    descMain.visible = false
+    descInterDesc.visible = false
+    descMoveInterName.visible = false
+    descInter.visible = false
+    descTallPanel.visible = false
+    descShortPanel.visible = false
+    descMoves.get_parent().visible = false
+    if not _actions.has(action_type):
+        
+        descShortPanel.visible = true
         if action_type == ActionType.MOVE:
-            descName.text = "Move"
-            descMain.text = ""
-            descCost.get_parent().visible = false
+            descMoveInterName.visible = true
             descMoves.get_parent().visible = true
-            descInter.visible = false
+            descInterDesc.visible = true
+            descMoveInterName.text = "Move"
+            descInterDesc.text = "Moves are not depleted upon using other actions"
         elif action_type == ActionType.INTERACT:
-            descName.text = "Interact"
+            descMoveInterName.visible = true
+            descInterDesc.visible = true
+            descInter.visible = true            
+            descMoveInterName.text = "Interact"
             if _current_interactable == "":
-                descMain.text = "Interact with or pick up a field object"
+                descInterDesc.text = "Interact with or pick up a field object"
             else:
-                descMain.text = "Drop the [" + _current_interactable + "] on the tile"
-            descCost.get_parent().visible = false
-            descMoves.get_parent().visible = false
-            descInter.visible = true
+                descInterDesc.text = "Drop the [" + _current_interactable + "] on the tile"
         else:
             show = false
     else:
-        descName.text = _action_names[action_type]
-        descMain.text = _action_descriptions[action_type]
-        descCost.text = str(_action_costs[action_type])        
-        descCost.get_parent().visible = true
-        descMoves.get_parent().visible = false
-        descInter.visible = false
+        descTallPanel.visible = true
+        descName.visible = true
+        descMain.visible = true
+        descStats.visible = true
+        descName.text = _actions[action_type].display_name
+        descMain.text = _actions[action_type].description
+        descStats.text = _actions[action_type].stats_to_string()
     $DescriptionContainer.visible = show
     return

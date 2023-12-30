@@ -234,7 +234,8 @@ func resetPlayerServices():
 
 func update_character_menu():
     menuService.updateEntityInfo(currentEntity())
-    menuService.updateAllEntities()    
+    #menuService.updateAllEntities()
+    currentEntity().update_sprite()
     return
 
 func doMove(on):
