@@ -37,7 +37,6 @@ func _ready():
     actionService.actionDone.connect(actionDone)
     interactService.interactDone.connect(interactDone)
     
-    importTestData()
     setup_entities()
     
     actionService.setState(state)
@@ -69,31 +68,14 @@ func _process(delta):
     
     return
 
-func importTestData():
-    var _inter = Interactable.new()
-    _inter.display_name = "Blue Orb Buff Thing"
-    _inter.description = "Pick up for +4 damage, but -4 movement"
-    _inter.effect = func (user: Entity):
-        user.damage_modifier += 4
-        user.movement_modifier -= 4
-        return
-
-    _inter.drop_effect = func (user: Entity):
-        user.damage_modifier -= 4
-        user.movement_modifier += 4
-        return
-
-    _inter.repeated_effect = func (user: Entity):
-        print("repeat")
-        return
-    _inter.storable = true
-    _inter.location = Vector2i(4,2)
-    var sprite: InteractableSprite  = load("res://interactable_sprite.tscn").instantiate()
-    sprite.set_texture(load("res://Assets/blue_orb.png"))
-    _inter.set_sprite(sprite)
+func setup_interactable_for_level(inter: Interactable, location: Vector2i):
+    inter.location = location
+    var sprite: InteractableSprite  = load(inter.sprite_path).instantiate()
+    sprite.set_texture(load(inter.icon_path))
+    inter.set_sprite(sprite)
     add_child(sprite)
-    sprite.global_position = tileMap.pointToGlobal(_inter.location)
-    state.add_interactable(_inter)
+    sprite.global_position = tileMap.pointToGlobal(inter.location)
+    state.add_interactable(inter)
     return
 
 func setup_entity_for_level(ent: Entity, location: Vector2i):
@@ -110,13 +92,16 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
     return
 
 func setup_entities():
-    var allies = Globals.entities_to_deploy
-    setup_entity_for_level(allies[0], Vector2i(0, 0))
-    setup_entity_for_level(allies[1], Vector2i(0, 1))
-    setup_entity_for_level(allies[2], Vector2i(0, 2))
-    setup_entity_for_level(allies[3], Vector2i(0, 3))
-    setup_entity_for_level(allies[4], Vector2i(0, 4))
-    setup_entity_for_level(allies[5], Vector2i(0, 5))
+    if Globals.level_debug_mode:
+        setup_entity_for_level(EntityFactory.create_oilee(), Vector2i(0,3))
+    else:
+        # TODO Custom deploy tiles
+        var allies = Globals.entities_to_deploy
+        for i in range(len(allies)):
+            setup_entity_for_level(allies[i], Vector2i(0, i))
+        
+        # TODO Setup service to randomly put these down
+        setup_interactable_for_level(Globals.curent_mission.buffs[0], Vector2i(3,3))
     setup_entity_for_level(EntityFactory.create_boss_1(), Vector2i(11, 2))
     return
 

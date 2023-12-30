@@ -39,6 +39,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0crdc")
 
 [node name="Button" type="Button" parent="GridContainer/Control2"]
+layout_mode = 0
 offset_left = -41.4183
 offset_top = -43.5978
 offset_right = 38.5817
@@ -53,6 +54,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0crdc")
 
 [node name="Button" type="Button" parent="GridContainer/Control3"]
+layout_mode = 0
 offset_left = -41.4183
 offset_top = -43.5978
 offset_right = 38.5817
@@ -67,6 +69,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0crdc")
 
 [node name="Button" type="Button" parent="GridContainer/Control4"]
+layout_mode = 0
 offset_left = -41.4183
 offset_top = -43.5978
 offset_right = 38.5817
@@ -81,6 +84,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0crdc")
 
 [node name="Button" type="Button" parent="GridContainer/Control5"]
+layout_mode = 0
 offset_left = -41.4183
 offset_top = -43.5978
 offset_right = 38.5817
@@ -95,6 +99,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0crdc")
 
 [node name="Button" type="Button" parent="GridContainer/Control6"]
+layout_mode = 0
 offset_left = -41.4183
 offset_top = -43.5978
 offset_right = 38.5817

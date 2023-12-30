@@ -1,4 +1,4 @@
-class_name MainGui extends Node2D
+class_name DeployGui extends Node2D
 
 var collectionPanel: CollectionPanel
 var upgradePanel: UpgradePanel
@@ -18,7 +18,7 @@ func _ready():
     return
 
 func start():
-    upgradePanel.skill_points_base = 10
+    upgradePanel.skill_points_base = Globals.skill_points
     collectionPanel.start()
     upgradePanel.reset()
     deployPanel.start()
@@ -41,6 +41,11 @@ func entity_removed_from_deploy(ent: Entity):
     return
 
 func startMission():
-    Globals.entities_to_deploy = deployPanel._entities
+    Globals.level_debug_mode = false
+    var entities_to_deploy = []
+    for ent in deployPanel._entities:
+        if ent != null:
+            entities_to_deploy.append(ent)
+    Globals.entities_to_deploy = entities_to_deploy
     get_tree().change_scene_to_file("res://level.tscn")
     return

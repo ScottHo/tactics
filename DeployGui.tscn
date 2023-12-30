@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cve4y2nbbwucg"]
+
+[ext_resource type="Script" path="res://DeployGui.gd" id="1_1roly"]
+[ext_resource type="PackedScene" uid="uid://ct2wj06r38iul" path="res://upgrade_panel.tscn" id="11_q353u"]
+[ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="12_os86a"]
+[ext_resource type="PackedScene" uid="uid://b5r70vpa8c172" path="res://DeployPanel.tscn" id="13_e71vw"]
+[ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="14_qdrbl"]
+
+[node name="DeployGui" type="Node2D"]
+position = Vector2(703.715, 549.559)
+script = ExtResource("1_1roly")
+
+[node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
+position = Vector2(4.81561, -155.347)
+
+[node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
+position = Vector2(-639.666, -442.793)
+scale = Vector2(1.5, 1.5)
+
+[node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
+position = Vector2(42.8556, 227.31)
+
+[node name="StartMission" type="Button" parent="."]
+offset_left = 522.353
+offset_top = 160.142
+offset_right = 722.353
+offset_bottom = 260.142
+theme = ExtResource("14_qdrbl")
+theme_override_font_sizes/font_size = 20
+text = "START
+MISSION"

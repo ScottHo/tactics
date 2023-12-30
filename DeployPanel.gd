@@ -5,7 +5,6 @@ var _entities = [null, null, null, null, null, null]
 
 signal entity_removed
 
-static var BOT_NONE := "res://Assets/None.png"
 
 func _ready():
     for i in range(len(_entities)):
@@ -16,7 +15,7 @@ func _ready():
     
 func start():
     for c in grid.get_children():
-        sprite(c).texture = load(BOT_NONE)
+        sprite(c).texture = load(Globals.NO_BOT_ICON_PATH)
         button(c).disabled = true
     return
 
@@ -34,7 +33,7 @@ func remove_entity(idx: int):
     var entity = _entities[idx]
     _entities[idx] = null
     var c = container(idx)
-    sprite(c).texture = load(BOT_NONE)
+    sprite(c).texture = load(Globals.NO_BOT_ICON_PATH)
     button(c).disabled = true
     entity_removed.emit(entity)
     return

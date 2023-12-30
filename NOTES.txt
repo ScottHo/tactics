@@ -4,9 +4,10 @@ Animations
 Confirm Popup windows where relevant
 "Popup" for current action
 Different target highlights for good/bad
-Choose different bots
 12 different bots
 Bot roulette
+Special Level Up
+Randomly spawn buffs
 
 CLASS/ABILITY IDEAS
 

@@ -13,6 +13,7 @@ var is_ally: bool
 var interactable: Interactable
 var sprite_path: String
 var icon_path: String
+var description: String
 
 # Variable Stats
 var threat: int

@@ -209,7 +209,7 @@ func reset():
         modifierLabel(container).text = ""
         statLabel(container).text = ""
     
-    entity_sprite.texture = load("res://Assets/None.png")
+    entity_sprite.texture = load(Globals.NO_BOT_ICON_PATH)
     entity_label.text = "NONE SELECTED"
     reset_button.disabled = true
     deploy_button.disabled = true

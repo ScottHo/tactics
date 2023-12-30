@@ -2,7 +2,13 @@ extends Node
 
 var current_scene = null
 var entities_to_deploy = []
+var interactables_to_deploy = []
+var level_debug_mode = true
+var curent_mission: Mission
+var skill_points := 10
 
+static var UNKNOWN_BOT_ICON_PATH = "res://Assets/Unknown.png"
+static var NO_BOT_ICON_PATH = "res://Assets/None.png"
 
 func _ready():
     var root = get_tree().root
@@ -19,7 +25,6 @@ func goto_scene(path):
     # we can be sure that no code from the current scene is running:
 
     call_deferred("_deferred_goto_scene", path)
-
 
 func _deferred_goto_scene(path):
     # It is now safe to remove the current scene.

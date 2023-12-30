@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ct2wj06r38iul"]
+[gd_scene load_steps=25 format=3 uid="uid://ct2wj06r38iul"]
 
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
@@ -27,7 +27,11 @@ font_color = Color(1, 0.843137, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_1bioa"]
 font_color = Color(1, 0.862745, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_4px13"]
+[sub_resource type="LabelSettings" id="LabelSettings_x517l"]
+font_size = 20
+font_color = Color(1, 0.843137, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uyclf"]
 font_size = 20
 font_color = Color(1, 0.843137, 0, 1)
 
@@ -533,7 +537,7 @@ offset_bottom = 107.956
 theme_override_fonts/font = ExtResource("16_y510m")
 theme_override_font_sizes/font_size = 14
 text = "1"
-label_settings = SubResource("LabelSettings_4px13")
+label_settings = SubResource("LabelSettings_x517l")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Action1"]
@@ -604,7 +608,7 @@ offset_bottom = 107.956
 theme_override_fonts/font = ExtResource("16_y510m")
 theme_override_font_sizes/font_size = 14
 text = "1"
-label_settings = SubResource("LabelSettings_4px13")
+label_settings = SubResource("LabelSettings_uyclf")
 vertical_alignment = 1
 
 [node name="MaxedLabel" type="Label" parent="GridContainer/Action2"]

@@ -47,7 +47,7 @@ func start():
     for i in range(len(entities), 16):
         var c = container(i)
         button(c).disabled = true
-        button(c).icon = load("res://Assets/Unknown.png")
+        button(c).icon = load(Globals.UNKNOWN_BOT_ICON_PATH)
         deployedLabel(c).visible = false
     return
 
