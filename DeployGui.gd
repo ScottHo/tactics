@@ -22,13 +22,15 @@ func start():
     collectionPanel.start()
     upgradePanel.reset()
     deployPanel.start()
+    startMissionButton.disabled = true
     return
 
 func entity_selected(ent: Entity):
-    upgradePanel.set_entity(ent)
+    upgradePanel.start(ent)
     return
 
 func entity_deployed(ent: Entity):
+    startMissionButton.disabled = false
     collectionPanel.entity_deployed(ent)
     deployPanel.add_entity(ent)
     if deployPanel.is_full():
@@ -38,6 +40,8 @@ func entity_deployed(ent: Entity):
 func entity_removed_from_deploy(ent: Entity):
     collectionPanel.entity_undeployed(ent)
     collectionPanel.deploy_full = false
+    if deployPanel.is_empty():
+        startMissionButton.disabled = true
     return
 
 func startMission():

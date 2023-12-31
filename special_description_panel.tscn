@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://7ah3bf7cn7a"]
+
+[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/vertical-medium.png" id="1_48ejq"]
+[ext_resource type="Script" path="res://special_description_panel.gd" id="1_kbi01"]
+[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="2_mqpc5"]
+[ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/white_bolt.png" id="3_6bhbo"]
+[ext_resource type="PackedScene" uid="uid://dq28ygginmj7" path="res://stat_container.tscn" id="5_v2w3d"]
+
+[node name="SpecialPanel" type="Node2D"]
+script = ExtResource("1_kbi01")
+
+[node name="TallPanel" type="Sprite2D" parent="."]
+position = Vector2(1.29574, 1.62759)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_48ejq")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 35.8798
+offset_top = 41.2246
+offset_right = 80.8798
+offset_bottom = 62.2246
+theme_override_font_sizes/font_size = 12
+text = "Cost:"
+
+[node name="CostLabel" type="Label" parent="."]
+offset_left = 84.4632
+offset_top = 41.2246
+offset_right = 98.4632
+offset_bottom = 62.2246
+theme_override_font_sizes/font_size = 12
+text = "5
+"
+
+[node name="WhiteBolt" type="Sprite2D" parent="."]
+position = Vector2(102.577, 49.1766)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_6bhbo")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 36.1132
+offset_top = 56.4943
+offset_right = 110.113
+offset_bottom = 77.4943
+theme_override_font_sizes/font_size = 12
+text = "Affects:"
+
+[node name="AffectsLabel" type="Label" parent="."]
+offset_left = 110.55
+offset_top = 56.4943
+offset_right = 266.55
+offset_bottom = 77.4943
+theme_override_font_sizes/font_size = 12
+text = "All Friendly Units"
+
+[node name="DescriptionName" type="Label" parent="."]
+offset_left = 38.3808
+offset_top = 12.2252
+offset_right = 263.381
+offset_bottom = 35.2252
+theme_override_font_sizes/font_size = 18
+text = "Action"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="."]
+offset_left = 38.1652
+offset_top = 77.2335
+offset_right = 273.165
+offset_bottom = 155.234
+theme_override_fonts/font = ExtResource("2_mqpc5")
+theme_override_font_sizes/font_size = 13
+text = "No Action Selected."
+autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 42.1456
+offset_top = 363.478
+offset_right = 42.1456
+offset_bottom = 363.478
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = -35
+
+[node name="StatContainer" parent="GridContainer" instance=ExtResource("5_v2w3d")]
+layout_mode = 2
+
+[node name="StatContainer2" parent="GridContainer" instance=ExtResource("5_v2w3d")]
+layout_mode = 2
+
+[node name="StatContainer3" parent="GridContainer" instance=ExtResource("5_v2w3d")]
+layout_mode = 2
+
+[node name="StatContainer4" parent="GridContainer" instance=ExtResource("5_v2w3d")]
+layout_mode = 2
+
+[node name="StatContainer5" parent="GridContainer" instance=ExtResource("5_v2w3d")]
+layout_mode = 2
+
+[node name="StatContainer6" parent="GridContainer" instance=ExtResource("5_v2w3d")]
+layout_mode = 2
+
+[node name="StatContainer7" parent="GridContainer" instance=ExtResource("5_v2w3d")]
+layout_mode = 2

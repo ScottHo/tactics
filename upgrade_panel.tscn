@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ct2wj06r38iul"]
+[gd_scene load_steps=26 format=3 uid="uid://ct2wj06r38iul"]
 
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="10_sji2x"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="11_y8say"]
 [ext_resource type="Texture2D" uid="uid://c8qs5sie5ong8" path="res://Assets/progress_over_2.png" id="12_xu75s"]
+[ext_resource type="PackedScene" uid="uid://7ah3bf7cn7a" path="res://special_description_panel.tscn" id="16_31s5c"]
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="16_epibs"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="16_y510m"]
 
@@ -551,6 +552,10 @@ label_settings = SubResource("LabelSettings_1bioa")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SpecialPanel" parent="GridContainer/Action1" instance=ExtResource("16_31s5c")]
+z_index = 10
+position = Vector2(110.322, -271.384)
+
 [node name="Action2" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -621,6 +626,10 @@ text = "Maxed"
 label_settings = SubResource("LabelSettings_1bioa")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpecialPanel" parent="GridContainer/Action2" instance=ExtResource("16_31s5c")]
+z_index = 10
+position = Vector2(110.322, -271.384)
 
 [node name="Bottom" type="Control" parent="."]
 layout_mode = 3

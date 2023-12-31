@@ -1,15 +1,14 @@
 BUGS
-- Bug with zero deploys
+- Oilee Moves disable if refuel with 0 movement
 
 NEEDS
-- Special Level Up
+- GUI backgrounds for deploy/mission GUI
+- Start Screen
+- Splash Screen
 
 NEEDS BUT LATER
 - Undo Button
-- Increase Skill Points
 - 3 Levels
-- Start Screen
-- Splash Screen
 - 12 different bots
 - Get new bots
 - Randomly spawn buffs

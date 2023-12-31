@@ -12,10 +12,6 @@ var _entity
 
 func _ready():
     return
-    
-func start():
-    clear()
-    return
 
 func clear():
     maxHealthLabel.text = "-"
@@ -28,7 +24,7 @@ func clear():
     bossName.text = "-"
     return
 
-func set_entity(e: Entity):
+func start(e: Entity):
     _entity = e
     maxHealthLabel.text = str(_entity.get_max_health())
     moveLabel.text = str(_entity.get_movement())

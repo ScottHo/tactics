@@ -18,7 +18,6 @@ func _ready():
 
 func start():
     environmentPanel.start()
-    enemyPanel.start()
     clear_specials()
     
     var mission: Mission = MissionFactory.mission_1()
@@ -27,7 +26,7 @@ func start():
 
 func setup_mission(mission: Mission):
     _mission = mission
-    enemyPanel.set_entity(mission.boss)
+    enemyPanel.start(mission.boss)
     bossDescription.text = mission.boss.description
     missionDescription.text = mission.description
     for i in range(len(mission.specials)):

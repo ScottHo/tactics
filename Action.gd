@@ -32,19 +32,12 @@ func self_castable():
 func affects():
     return get_from_stats("Affects", "All Units")
 
-func stats_to_string() -> String:
-    var ret = ""
-    for k in stats.keys():
-        ret += k
-        ret += ": "
-        ret += key_suffix(k)
-        ret += str(get_from_stats(k))
-        ret += "\n"
-    return ret
-
-func key_suffix(k) -> String:
-    if k in ["Range Modifier", "Damage Modifier"]:
-        return "+"
-    return ""
-        
-        
+func clone() -> Action:
+    var a = Action.new()
+    a.shape = shape
+    a.effect = effect
+    a.display_name = display_name
+    a.description = description
+    a.stats = stats
+    a.level = level
+    return a

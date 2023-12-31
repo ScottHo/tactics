@@ -1,11 +1,12 @@
-[gd_scene load_steps=40 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=41 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
-[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/vertical-medium.png" id="3_k5oan"]
+[ext_resource type="PackedScene" uid="uid://7ah3bf7cn7a" path="res://special_description_panel.tscn" id="3_kx1y6"]
 [ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/long-vertical.png" id="3_xttrl"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="4_cvwx3"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="5_n8sjp"]
+[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="6_246xv"]
 [ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://Assets/panel_buttons_background.png" id="6_xc4a1"]
 [ext_resource type="Texture2D" uid="uid://b7k4df1af7n00" path="res://Assets/panel_buttons.png" id="7_eppjx"]
 [ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="8_pd4nx"]
@@ -148,10 +149,10 @@ offset_right = 644.0
 offset_bottom = 73.0
 
 [node name="MechanicContainer" type="ReferenceRect" parent="."]
-offset_left = 1178.09
-offset_top = 4.84729
-offset_right = 1570.09
-offset_bottom = 159.847
+offset_left = 1175.57
+offset_top = -0.192383
+offset_right = 1567.57
+offset_bottom = 154.807
 scale = Vector2(0.9, 0.9)
 
 [node name="Short-panel" type="Sprite2D" parent="MechanicContainer"]
@@ -184,48 +185,13 @@ offset_top = 391.368
 offset_right = 1528.96
 offset_bottom = 541.368
 
-[node name="TallPanel" type="Sprite2D" parent="DescriptionContainer"]
-position = Vector2(26.7228, -237.811)
-scale = Vector2(0.34, 0.34)
-texture = ExtResource("3_k5oan")
-centered = false
+[node name="SpecialPanel" parent="DescriptionContainer" instance=ExtResource("3_kx1y6")]
+position = Vector2(16.1832, -248.757)
 
 [node name="ShortPanel" type="Sprite2D" parent="DescriptionContainer"]
 position = Vector2(159.855, 80.182)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("3_xttrl")
-
-[node name="DescriptionName" type="Label" parent="DescriptionContainer"]
-layout_mode = 0
-offset_left = 63.8078
-offset_top = -214.6
-offset_right = 288.808
-offset_bottom = -191.6
-theme_override_font_sizes/font_size = 16
-text = "Action"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="DescriptionLabel" type="Label" parent="DescriptionContainer"]
-layout_mode = 0
-offset_left = 63.0625
-offset_top = -171.973
-offset_right = 291.062
-offset_bottom = -88.9734
-theme_override_font_sizes/font_size = 11
-text = "No Action Selected."
-autowrap_mode = 2
-
-[node name="StatsLabel" type="Label" parent="DescriptionContainer"]
-offset_left = 64.829
-offset_top = -52.3471
-offset_right = 292.829
-offset_bottom = 147.653
-theme_override_font_sizes/font_size = 11
-text = "STATS
-"
-vertical_alignment = 2
-autowrap_mode = 2
 
 [node name="MoveContainer" type="Control" parent="DescriptionContainer"]
 layout_mode = 3
@@ -265,29 +231,33 @@ label_settings = SubResource("LabelSettings_jxedm")
 
 [node name="InteractMessage" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 56.7369
+offset_left = 95.4073
 offset_top = 129.431
-offset_right = 258.737
+offset_right = 297.407
 offset_bottom = 145.431
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 13
 text = "Interact once per turn"
 
 [node name="MoveInteractName" type="Label" parent="DescriptionContainer"]
+layout_mode = 0
 offset_left = 46.1689
-offset_top = 15.9659
+offset_top = 15.3713
 offset_right = 271.169
-offset_bottom = 38.9659
-theme_override_font_sizes/font_size = 16
+offset_bottom = 38.3713
+theme_override_font_sizes/font_size = 18
 text = "Action"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="InteractDescription" type="Label" parent="DescriptionContainer"]
+layout_mode = 0
 offset_left = 24.3521
 offset_top = 42.9358
 offset_right = 298.352
 offset_bottom = 125.936
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 13
 text = "No Action Selected."
 autowrap_mode = 2
 
@@ -302,10 +272,10 @@ theme_override_font_sizes/font_size = 18
 text = "End Turn"
 
 [node name="CharacterContainer" type="ReferenceRect" parent="."]
-offset_left = 1055.51
-offset_top = 547.331
-offset_right = 1655.51
-offset_bottom = 947.331
+offset_left = 1058.47
+offset_top = 549.058
+offset_right = 1658.47
+offset_bottom = 949.058
 scale = Vector2(0.8, 0.8)
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
@@ -645,10 +615,10 @@ libraries = {
 }
 
 [node name="TurnsContainer" type="ReferenceRect" parent="."]
-offset_left = 1082.08
-offset_top = 801.83
-offset_right = 1122.08
-offset_bottom = 841.83
+offset_left = 1085.04
+offset_top = 803.557
+offset_right = 1125.04
+offset_bottom = 843.557
 
 [node name="ExpandHover" type="Sprite2D" parent="TurnsContainer"]
 position = Vector2(8.88391, 19.1546)

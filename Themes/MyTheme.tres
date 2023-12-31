@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://d3xlkfucuimn7"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://d3xlkfucuimn7"]
 
 [ext_resource type="StyleBox" uid="uid://8beooxr6ba16" path="res://Themes/bot_button.tres" id="1_a8y5b"]
 [ext_resource type="StyleBox" uid="uid://c3vaiadrtevf" path="res://Themes/button_normal.tres" id="1_da8vl"]
@@ -17,8 +17,6 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0yha"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4nll"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gcly3"]
 content_margin_left = 5.0
 content_margin_top = 5.0
@@ -30,16 +28,26 @@ texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u82aj"]
-
 [resource]
+default_font = ExtResource("1_pp17p")
 BotButton/base_type = &"Button"
+BotButton/colors/font_color = Color(0, 0, 0, 1)
+BotButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+BotButton/colors/font_focus_color = Color(0, 0, 0, 1)
+BotButton/colors/font_hover_color = Color(0, 0, 0, 1)
+BotButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+BotButton/colors/font_outline_color = Color(0, 0, 0, 1)
+BotButton/colors/font_pressed_color = Color(0, 0, 0, 1)
 BotButton/colors/icon_disabled_color = Color(0.509804, 0.509804, 0.509804, 1)
 BotButton/colors/icon_focus_color = Color(0.85098, 0.85098, 0.85098, 0.823529)
 BotButton/colors/icon_hover_color = Color(1, 1, 1, 1)
 BotButton/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 BotButton/colors/icon_normal_color = Color(0.85098, 0.85098, 0.85098, 0.823529)
 BotButton/colors/icon_pressed_color = Color(1, 1, 1, 1)
+BotButton/constants/h_separation = 0
+BotButton/constants/icon_max_width = 0
+BotButton/constants/outline_size = 0
+BotButton/font_sizes/font_size = 16
 BotButton/styles/disabled = ExtResource("1_g127u")
 BotButton/styles/hover = ExtResource("2_1ixwx")
 BotButton/styles/normal = ExtResource("1_a8y5b")
@@ -90,14 +98,13 @@ FlatButton/constants/outline_size = 0
 FlatButton/font_sizes/font_size = 16
 FlatButton/fonts/font = ExtResource("1_pp17p")
 FlatButton/styles/disabled = ExtResource("4_txl7r")
-FlatButton/styles/focus = SubResource("StyleBoxEmpty_c4nll")
 FlatButton/styles/hover = ExtResource("5_l3c1q")
 FlatButton/styles/normal = ExtResource("4_txl7r")
 FlatButton/styles/pressed = ExtResource("5_l3c1q")
+Label/fonts/font = ExtResource("1_pp17p")
 Panel/styles/panel = SubResource("StyleBoxTexture_gcly3")
 TriangleButton/base_type = &"Button"
 TriangleButton/styles/disabled = ExtResource("7_gkjjj")
-TriangleButton/styles/focus = SubResource("StyleBoxEmpty_u82aj")
 TriangleButton/styles/hover = ExtResource("8_npgn5")
 TriangleButton/styles/normal = ExtResource("7_gkjjj")
 TriangleButton/styles/pressed = ExtResource("8_npgn5")

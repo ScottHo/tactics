@@ -41,11 +41,8 @@ signal menuAnimationsFinished
     $TurnsContainer/Turn5, $TurnsContainer/Turn6, $TurnsContainer/Turn7,
     $TurnsContainer/Turn8, $TurnsContainer/Turn9]
 
-@onready var descTallPanel: Sprite2D = $DescriptionContainer/TallPanel
+@onready var descSpecialPanel: SpecialDescriptionPanel = $DescriptionContainer/SpecialPanel
 @onready var descShortPanel: Sprite2D = $DescriptionContainer/ShortPanel
-@onready var descName: Label = $DescriptionContainer/DescriptionName
-@onready var descMain: Label = $DescriptionContainer/DescriptionLabel
-@onready var descStats: Label = $DescriptionContainer/StatsLabel
 @onready var descMoves: Label = $DescriptionContainer/MoveContainer/MovesLeft
 @onready var descInter: Label = $DescriptionContainer/InteractMessage
 @onready var descContainer: Control = $DescriptionContainer
@@ -355,17 +352,13 @@ func show_description(show, action_type):
     if not show:
         $DescriptionContainer.visible = false
         return
-    descStats.visible = false
-    descName.visible = false
-    descMain.visible = false
     descInterDesc.visible = false
     descMoveInterName.visible = false
     descInter.visible = false
-    descTallPanel.visible = false
+    descSpecialPanel.visible = false
     descShortPanel.visible = false
     descMoves.get_parent().visible = false
     if not _actions.has(action_type):
-        
         descShortPanel.visible = true
         if action_type == ActionType.MOVE:
             descMoveInterName.visible = true
@@ -385,12 +378,7 @@ func show_description(show, action_type):
         else:
             show = false
     else:
-        descTallPanel.visible = true
-        descName.visible = true
-        descMain.visible = true
-        descStats.visible = true
-        descName.text = _actions[action_type].display_name
-        descMain.text = _actions[action_type].description
-        descStats.text = _actions[action_type].stats_to_string()
+        descSpecialPanel.visible = true
+        descSpecialPanel.set_action(_actions[action_type])
     $DescriptionContainer.visible = show
     return

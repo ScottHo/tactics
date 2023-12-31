@@ -41,6 +41,9 @@ func remove_entity(idx: int):
 func is_full() -> bool:
     return not _entities.has(null)
 
+func is_empty() -> bool:
+    return _entities.count(null) == len(_entities)
+
 func sprite(c) -> Sprite2D:
     return c.get_child(0)
 

@@ -14,8 +14,12 @@ class_name UpgradePanel extends Node2D
 @onready var deploy_button = $Bottom/DeployButton
 @onready var entity_sprite = $EntityContainer/Sprite2D
 @onready var entity_label = $EntityContainer/Label
+@onready var action1_description: SpecialDescriptionPanel = $GridContainer/Action1/SpecialPanel
+@onready var action2_description: SpecialDescriptionPanel = $GridContainer/Action2/SpecialPanel
 
 var containers = []
+
+# Modification and max values
 var health_mod: int
 var armor_mod: int
 var movement_mod: int
@@ -30,12 +34,14 @@ var movement_max := 2
 var movement_max_melee := 4
 var speed_max := 3
 var attack_max := 3
-var special1_max := 5
-var special2_max := 5
+var special1_max := 4
+var special2_max := 4
 var range_max := 2
 var skill_points_base := 0
 
 var _entity: Entity
+var action1_copy: Action
+var action2_copy: Action
 
 signal deployed
 
@@ -50,16 +56,34 @@ func _ready():
         action2_c,
         range_c
     ]
-    for container in containers:
-        button(container).pressed.connect(func():
-            skill_point_added(container))
-    
-    reset_button.pressed.connect(redo)
-    deploy_button.pressed.connect(deploy)
+    action1_description.visible = false
+    action2_description.visible = false
+    set_button_signals()
     reset()
     return
 
-func set_entity(entity: Entity):
+func set_button_signals():
+    for container in containers:
+        button(container).pressed.connect(func():
+            skill_point_added(container))
+            
+    description_hover_signal(button(action1_c), action1_description)
+    description_hover_signal(button(action2_c), action2_description)
+    
+    reset_button.pressed.connect(redo)
+    deploy_button.pressed.connect(deploy)
+    return
+
+func description_hover_signal(b: Button, d: SpecialDescriptionPanel):
+    b.mouse_entered.connect(func():
+        if b.disabled:
+            return
+        d.visible = true)
+    b.mouse_exited.connect(func():
+        d.visible = false)
+    return
+
+func start(entity: Entity):
     _entity = entity
     reset()
     setup_entity()
@@ -152,6 +176,7 @@ func update_mods(container):
             if special1_mod == special1_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
+            update_action_descriptions()
         action2_c:
             special2_mod += 1
             modifierLabel(container).text = str(special2_mod)
@@ -159,6 +184,7 @@ func update_mods(container):
             if special2_mod == special2_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
+            update_action_descriptions()
         range_c:
             range_mod += 1
             modifierLabel(container).text = "(+%d)" % range_mod
@@ -176,10 +202,10 @@ func deploy():
     _entity.armor_modifier = health_mod
     _entity.armor_modifier = armor_mod
     _entity.movement_modifier = movement_mod
-    _entity.speed_modifier += speed_mod
-    _entity.damage_modifier += attack_mod
-    _entity.action1.level += special1_mod
-    _entity.action2.level += special2_mod
+    _entity.speed_modifier = speed_mod
+    _entity.damage_modifier = attack_mod
+    _entity.action1.level = special1_mod
+    _entity.action2.level = special2_mod
     _entity.range_modifier = range_mod
     deployed.emit(_entity)
     _entity = null
@@ -234,6 +260,10 @@ func setup_entity():
     modifierLabel(action2_c).text = str(_entity.action2.level)
     statLabel(range_c).text = str(_entity.range)
     
+    action1_copy = _entity.action1.clone()
+    action2_copy = _entity.action2.clone()
+    update_action_descriptions()
+
     for container in containers:
         modifierLabel(container).label_settings.font_color = Color.WHITE
         button(container).disabled = false
@@ -246,5 +276,12 @@ func setup_entity():
     entity_label.text = _entity.display_name
     reset_button.disabled = false
     deploy_button.disabled = false
+    return
+
+func update_action_descriptions():
+    action1_copy.level = special1_mod
+    action2_copy.level = special2_mod
+    action1_description.set_action(action1_copy)
+    action2_description.set_action(action2_copy)    
     return
 
