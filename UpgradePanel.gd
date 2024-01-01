@@ -3,7 +3,7 @@ class_name UpgradePanel extends Node2D
 @onready var health_c = $GridContainer/Health
 @onready var armor_c = $GridContainer/Armor
 @onready var movement_c = $GridContainer/Movement
-@onready var speed_c = $GridContainer/Speed
+@onready var initiative_c = $GridContainer/Initiative
 @onready var attack_c = $GridContainer/Attack
 @onready var action1_c = $GridContainer/Action1
 @onready var action2_c = $GridContainer/Action2
@@ -23,7 +23,7 @@ var containers = []
 var health_mod: int
 var armor_mod: int
 var movement_mod: int
-var speed_mod: int
+var initiative_mod: int
 var attack_mod: int
 var special1_mod: int
 var special2_mod: int
@@ -32,7 +32,7 @@ var health_max := 10
 var armor_max := 2
 var movement_max := 2
 var movement_max_melee := 4
-var speed_max := 3
+var initiative_max := 3
 var attack_max := 3
 var special1_max := 4
 var special2_max := 4
@@ -50,7 +50,7 @@ func _ready():
         health_c,
         armor_c,
         movement_c,
-        speed_c,
+        initiative_c,
         attack_c,
         action1_c,
         action2_c,
@@ -155,11 +155,11 @@ func update_mods(container):
                 if movement_mod == movement_max_melee:
                     maxedLabel(container).visible = true
                     button(container).disabled = true
-        speed_c:
-            speed_mod += 1
-            modifierLabel(container).text = "(+%d)" % speed_mod
+        initiative_c:
+            initiative_mod += 1
+            modifierLabel(container).text = "(+%d)" % initiative_mod
             modifierLabel(container).label_settings.font_color = Color.GOLD
-            if speed_mod == speed_max:
+            if initiative_mod == initiative_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
         attack_c:
@@ -202,7 +202,7 @@ func deploy():
     _entity.armor_modifier = health_mod
     _entity.armor_modifier = armor_mod
     _entity.movement_modifier = movement_mod
-    _entity.speed_modifier = speed_mod
+    _entity.initiative_modifier = initiative_mod
     _entity.damage_modifier = attack_mod
     _entity.action1.level = special1_mod
     _entity.action2.level = special2_mod
@@ -221,7 +221,7 @@ func reset():
     health_mod = 0
     armor_mod = 0
     movement_mod = 0
-    speed_mod = 0
+    initiative_mod = 0
     attack_mod = 0
     special1_mod = 1
     special2_mod = 1
@@ -254,7 +254,7 @@ func setup_entity():
     statLabel(health_c).text = str(_entity.max_health)
     statLabel(armor_c).text = str(_entity.armor)
     statLabel(movement_c).text = str(_entity.movement)
-    statLabel(speed_c).text = str(_entity.speed)
+    statLabel(initiative_c).text = str(_entity.initiative)
     statLabel(attack_c).text = str(_entity.damage)
     modifierLabel(action1_c).text = str(_entity.action1.level)
     modifierLabel(action2_c).text = str(_entity.action2.level)

@@ -8,7 +8,7 @@ var maxHealthLabel: Label
 var moveLabel: Label
 var damageLabel: Label
 var rangeLabel: Label
-var speedLabel: Label
+var initiativeLabel: Label
 var armorLabel: Label
 var threatLabel: Label
 var background: Sprite2D
@@ -29,7 +29,7 @@ func update_nodes():
         slashLabel = $HealthBar/SlashLabel
         maxHealthLabel = $HealthBar/MaxHealthLabel
         moveLabel = $Stats/Control/MoveLabel
-        speedLabel = $Stats/Control2/SpeedLabel        
+        initiativeLabel = $Stats/Control2/InitiativeLabel        
         damageLabel = $Stats/Control3/DamageLabel
         rangeLabel = $Stats/Control4/RangeLabel
         armorLabel = $Stats/Control5/ArmorLabel
@@ -54,7 +54,7 @@ func update():
     moveLabel.text = str(_entity.get_movement())
     damageLabel.text = str(_entity.get_damage())    
     rangeLabel.text = str(_entity.get_range())
-    speedLabel.text = str(_entity.get_speed())
+    initiativeLabel.text = str(_entity.get_initiative())
     armorLabel.text = str(_entity.get_armor())
     if _entity.is_ally:
         threatLabel.text = str(_entity.threat)
@@ -88,7 +88,7 @@ func _set_colors():
     Utils.set_label_color(moveLabel, Utils.movement_color(_entity))
     Utils.set_label_color(damageLabel, Utils.damage_color(_entity))
     Utils.set_label_color(rangeLabel, Utils.range_color(_entity))
-    Utils.set_label_color(speedLabel, Utils.speed_color(_entity))
+    Utils.set_label_color(initiativeLabel, Utils.initiative_color(_entity))
     Utils.set_label_color(armorLabel, Utils.armor_color(_entity))
     Utils.set_label_color(threatLabel, Utils.threat_color(_entity))
     return

@@ -58,7 +58,7 @@ func test_turnService():
     var state = State.new()
     for i in range(3):
         var entity = Entity.new()
-        entity.speed = 10
+        entity.initiative = 10
         entity.alive = true
         state.addAlly(entity)
     ts.setState(state)
@@ -68,7 +68,7 @@ func test_turnService():
     assertEquals(ts.startNextTurn(), 1)
     assertEquals(ts.next5Turns(), [2,0,1,2,0])
     var entity = Entity.new()
-    entity.speed = 15
+    entity.initiative = 15
     entity.alive = true
     state.addAlly(entity)
     ts.update(false)

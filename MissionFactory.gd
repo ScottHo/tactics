@@ -41,14 +41,14 @@ static func mission_2():
     m.buffs = [InteractableFactory.create_blue_orb_thing()]
     
     var s1 = Special.new()
-    s1.display_name = "Fast as !@#$"
-    s1.description = "Gains 1 initiative and 1 movement"
+    s1.display_name = "Ramp up"
+    s1.description = "Gains 1 initiative"
     s1.target = Special.Target.SELF
     s1.shape = Special.Shape.SINGLE
     s1.mechanic = Special.Mechanic.BUFF
     s1.damage = 0
     s1.effect = func(ent: Entity):
-        ent.speed_modifier += 1
+        ent.update_initiative(1)
 
     var s2 = Special.new()
     s2.display_name = "Big bot energy"
@@ -58,7 +58,7 @@ static func mission_2():
     s2.mechanic = Special.Mechanic.BUFF
     s2.damage = 0
     s2.effect = func(ent: Entity):
-        ent.damage_modifier += 1
+        ent.update_damage(1)
     
     m.specials = [s1, s2]
     return m
@@ -78,7 +78,9 @@ static func mission_3():
     s1.target = Special.Target.RANDOM
     s1.shape = Special.Shape.DIAMOND_3x3
     s1.mechanic = Special.Mechanic.SOAK
-    s1.damage = 4
+    s1.damage = 10
+    s1.effect = func(ent: Entity):
+        return
 
     var s2 = Special.new()
     s2.display_name = "Widespread destruction"
@@ -87,17 +89,19 @@ static func mission_3():
     s2.shape = Special.Shape.DIAMOND_3x3
     s2.mechanic = Special.Mechanic.SPREAD
     s2.damage = 2
+    s2.effect = func(ent: Entity):
+        return
 
     var s3 = Special.new()
-    s1.display_name = "Omnipotentency"
-    s1.description = "Gains 1 initiative and 1 damage"
-    s1.target = Special.Target.SELF
-    s1.shape = Special.Shape.SINGLE
-    s1.mechanic = Special.Mechanic.BUFF
-    s1.damage = 0
-    s1.effect = func(ent: Entity):
-        ent.speed_modifier += 1
-        ent.damage_modifier += 1
+    s3.display_name = "Big Bot Energy"
+    s3.description = "Gains 1 initiative and 1 damage"
+    s3.target = Special.Target.SELF
+    s3.shape = Special.Shape.SINGLE
+    s3.mechanic = Special.Mechanic.BUFF
+    s3.damage = 0
+    s3.effect = func(ent: Entity):
+        ent.update_initiative(1)
+        ent.update_damage(1)
 
     
     m.specials = [s1, s2]

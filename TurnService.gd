@@ -11,7 +11,7 @@ func update(random=true):
         var turnNode = TurnNode.new()
         var entity: Entity = _state.get_entity(entity_id)
         turnNode.entity_id = entity_id
-        turnNode.step = entity.speed
+        turnNode.step = entity.initiative
         turnNode.total = 0
         if _state.isAlly(entity) and random:
             turnNode.total = randi_range(1, 9) * 10

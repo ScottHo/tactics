@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="6_ggr6d"]
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="8_3f53c"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="8_gw4b8"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/speed.png" id="9_p0t2w"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="9_p0t2w"]
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="10_frk68"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sfged"]
@@ -142,12 +142,12 @@ label_settings = SubResource("LabelSettings_3l3vu")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="SpeedSprite" type="Sprite2D" parent="Stats"]
+[node name="InitiativeSprite" type="Sprite2D" parent="Stats"]
 position = Vector2(273.472, 3.68891)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_p0t2w")
 
-[node name="SpeedLabel" type="Label" parent="Stats"]
+[node name="InitiativeLabel" type="Label" parent="Stats"]
 offset_left = 299.321
 offset_top = -8.5
 offset_right = 335.321

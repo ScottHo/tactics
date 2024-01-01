@@ -41,7 +41,6 @@ func start():
         var c = container(i)
         button(c).disabled = false
         button(c).icon = load(entities[i].icon_path)
-        print(entities[i].sprite_path)
         deployedLabel(c).visible = false
     
     for i in range(len(entities), 16):

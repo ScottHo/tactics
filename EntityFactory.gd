@@ -63,7 +63,7 @@ static func create_boss_3():
     ActionFactory.add_base_attack(ent)
     return ent
 
-static func _create_entity(display_name, health, movement, _range, speed, sprite_path, icon_path, ally):
+static func _create_entity(display_name, health, movement, _range, initiative, sprite_path, icon_path, ally):
     var ent = Entity.new()
     ent.sprite_path = sprite_path
     ent.icon_path = icon_path
@@ -72,7 +72,7 @@ static func _create_entity(display_name, health, movement, _range, speed, sprite
     ent.display_name = display_name
     ent.movement = movement
     ent.range = _range
-    ent.speed = speed
+    ent.initiative = initiative
     ent.set_max_health(health)
     ent.set_hp(health)    
     ent.setThreat(0)

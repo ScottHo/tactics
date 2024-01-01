@@ -2,7 +2,7 @@ class_name MissionEnemyPanel extends Control
 
 @onready var maxHealthLabel = $GridContainer/Health/Label
 @onready var moveLabel = $GridContainer/Movement/Label
-@onready var speedLabel = $GridContainer/Speed/Label
+@onready var initiativeLabel = $GridContainer/Initiative/Label
 @onready var damageLabel = $GridContainer/Damage/Label
 @onready var rangeLabel = $GridContainer/Range/Label
 @onready var armorLabel = $GridContainer/Armor/Label
@@ -18,7 +18,7 @@ func clear():
     moveLabel.text = "-"
     damageLabel.text = "-"
     rangeLabel.text = "-"
-    speedLabel.text = "-"
+    initiativeLabel.text = "-"
     armorLabel.text = "-"
     bossSprite.texture = load(Globals.NO_BOT_ICON_PATH)
     bossName.text = "-"
@@ -30,7 +30,7 @@ func start(e: Entity):
     moveLabel.text = str(_entity.get_movement())
     damageLabel.text = str(_entity.get_damage())    
     rangeLabel.text = str(_entity.get_range())
-    speedLabel.text = str(_entity.get_speed())
+    initiativeLabel.text = str(_entity.get_initiative())
     armorLabel.text = str(_entity.get_armor())
     bossSprite.texture = load(_entity.icon_path)
     bossName.text = _entity.display_name

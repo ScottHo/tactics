@@ -5,13 +5,13 @@ static func create_blue_orb_thing() -> Interactable:
     inter.display_name = "Blue Orb Buff Thing"
     inter.description = "Pick up for +4 damage, but -4 movement"
     inter.effect = func (user: Entity):
-        user.damage_modifier += 4
-        user.movement_modifier -= 4
+        user.update_damage(4)
+        user.update_movement(-4)
         return
 
     inter.drop_effect = func (user: Entity):
-        user.damage_modifier -= 4
-        user.movement_modifier += 4
+        user.update_damage(-4)
+        user.update_movement(4)
         return
 
     inter.repeated_effect = func (user: Entity):

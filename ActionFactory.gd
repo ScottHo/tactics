@@ -156,7 +156,7 @@ static func add_weapons_upgade(ent: Entity, type: int):
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.damage_modifier += action.get_from_stats("Added Damage")
+            _ent.update_damage(action.get_from_stats("Added Damage"))
         return
     var d = "Add permanent base damage to friendly unit"
     _add_action(ent, "Weapons Upgrade", d, [], effect, type, stats)

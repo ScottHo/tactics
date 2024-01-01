@@ -37,10 +37,10 @@ static func damage_color(entity: Entity) -> Color:
     else:
         return Color.WHITE
 
-static func speed_color(entity: Entity) -> Color:
-    if entity.speed < entity.get_speed():
+static func initiative_color(entity: Entity) -> Color:
+    if entity.initiative < entity.get_initiative():
         return Color.GREEN
-    elif entity.speed > entity.get_speed():
+    elif entity.initiative > entity.get_initiative():
         return Color.RED
     else:
         return Color.WHITE

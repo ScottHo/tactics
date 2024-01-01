@@ -28,7 +28,7 @@ signal menuAnimationsFinished
 @onready var maxHealthLabel: Label = $CharacterContainer/MaxHealthLabel
 @onready var movesLabel: Label = $CharacterContainer/Stats/Moves/Label
 @onready var damageLabel: Label = $CharacterContainer/Stats/Damage/Label
-@onready var speedLabel: Label = $CharacterContainer/Stats/Speed/Label
+@onready var initiativeLabel: Label = $CharacterContainer/Stats/Initiative/Label
 @onready var armorLabel: Label = $CharacterContainer/Stats/Armor/Label
 @onready var rangeLabel: Label = $CharacterContainer/Stats/Range/Label
 @onready var threatLabel: Label = $CharacterContainer/Stats/Threat/Label
@@ -201,7 +201,7 @@ func updateEntityInfo(entity: Entity):
     damageLabel.text = str(entity.get_damage())
     movesLabel.text = str(entity.get_movement())
     descMoves.text = str(entity.moves_left)
-    speedLabel.text = str(entity.get_speed())
+    initiativeLabel.text = str(entity.get_initiative())
     armorLabel.text = str(entity.get_armor())
     rangeLabel.text = str(entity.get_range())
     threatLabel.text = str(entity.threat)
@@ -221,7 +221,7 @@ func _set_colors(entity: Entity):
     Utils.set_label_color(descMoves, Utils.movement_color(entity, true))
     Utils.set_label_color(damageLabel, Utils.damage_color(entity))
     Utils.set_label_color(rangeLabel, Utils.range_color(entity))
-    Utils.set_label_color(speedLabel, Utils.speed_color(entity))
+    Utils.set_label_color(initiativeLabel, Utils.initiative_color(entity))
     Utils.set_label_color(armorLabel, Utils.armor_color(entity))
     Utils.set_label_color(threatLabel, Utils.threat_color(entity))
     return

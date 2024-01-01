@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="14_m7c37"]
 [ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="14_t4p6o"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="17_diddf"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/speed.png" id="19_gtpi5"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="19_gtpi5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxedm"]
 
@@ -430,14 +430,14 @@ text = "88"
 label_settings = SubResource("LabelSettings_0jvi6")
 vertical_alignment = 1
 
-[node name="Speed" type="Control" parent="CharacterContainer/Stats"]
+[node name="Initiative" type="Control" parent="CharacterContainer/Stats"]
 layout_mode = 2
 
-[node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Speed"]
+[node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Initiative"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("19_gtpi5")
 
-[node name="Label" type="Label" parent="CharacterContainer/Stats/Speed"]
+[node name="Label" type="Label" parent="CharacterContainer/Stats/Initiative"]
 layout_mode = 0
 offset_left = 17.8786
 offset_top = -10.5946

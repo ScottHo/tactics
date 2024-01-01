@@ -23,7 +23,7 @@ var health: int
 # Base Stats
 var max_health: int
 var movement: int
-var speed: int # 10 is average, per 100 "cycles"
+var initiative: int # 10 is average, per 100 "cycles"
 var damage: int
 var armor: int
 var range: int
@@ -32,7 +32,7 @@ var range: int
 var armor_modifier: int
 var movement_modifier: int
 var damage_modifier: int
-var speed_modifier: int
+var initiative_modifier: int
 var range_modifier: int
 var health_modifier: int
 
@@ -73,8 +73,8 @@ func get_range() -> int:
         ret = 1
     return ret
 
-func get_speed() -> int:
-    var ret = speed + speed_modifier
+func get_initiative() -> int:
+    var ret = initiative + initiative_modifier
     if ret < 0:
         ret = 0
     return ret
@@ -95,7 +95,7 @@ func loseHP(hp):
     health -= hp
     if health < 0:
         health = 0
-    sprite.textAnimation().lose_health(hp)
+    sprite.textAnimation().update_health(-hp)
     return
 
 func lose_defensive_buffs():
@@ -151,7 +151,7 @@ func gainHP(hp):
     health += hp
     if health > get_max_health():
         health = get_max_health()
-    sprite.textAnimation().gain_health(hp)
+    sprite.textAnimation().update_health(hp)
     return
 
 func set_max_health(hp):
@@ -177,6 +177,38 @@ func set_energy(e):
 func update_energy(energy_diff):
     set_energy(energy + energy_diff)
     sprite.textAnimation().update_energy(energy_diff)
+    return
+
+func update_damage(damage_diff):
+    damage_modifier += damage_diff
+    sprite.textAnimation().update_damage(damage_diff)
+    return
+
+func update_range(range_diff):
+    range_modifier += range_diff
+    sprite.textAnimation().update_range(range_diff)
+    return
+    
+func update_initiative(initiative_diff):
+    initiative_modifier += initiative_diff
+    sprite.textAnimation().update_initiative(initiative_diff)
+    return
+
+func update_armor(armor_diff):
+    armor_modifier += armor_diff
+    sprite.textAnimation().update_armor(armor_diff)
+    return
+
+func update_max_health(health_diff):
+    health_modifier += health_diff
+    if health > get_max_health():
+        health = get_max_health()
+    sprite.textAnimation().update_max_health(health_diff)
+    return
+
+func update_movement(movement_diff):
+    movement_modifier += movement_diff
+    sprite.textAnimation().update_movement(movement_diff)
     return
 
 func gainThreat(t):

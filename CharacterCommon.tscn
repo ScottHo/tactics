@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="6_m13e8"]
 [ext_resource type="Texture2D" uid="uid://cmlcf47flv4my" path="res://Assets/info_box_hover.png" id="6_v4rmv"]
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="9_ir6t0"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/speed.png" id="10_h2kqm"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="10_h2kqm"]
 [ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="10_m1a84"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="11_kcro7"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="12_v0dse"]
@@ -83,7 +83,7 @@ position = Vector2(0, -22.6046)
 texture = ExtResource("2_sbscd")
 
 [node name="InteractableContainer" type="Node2D" parent="."]
-position = Vector2(-3.25181, -44.6995)
+position = Vector2(-0.182508, -56.9488)
 
 [node name="InfoBoxContainer" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.862745)
@@ -128,12 +128,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Control2" type="Control" parent="InfoBoxContainer/Stats"]
 layout_mode = 2
 
-[node name="SpeedSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control2"]
+[node name="InitiativeSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control2"]
 position = Vector2(-16.9496, 11.0892)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("10_h2kqm")
 
-[node name="SpeedLabel" type="Label" parent="InfoBoxContainer/Stats/Control2"]
+[node name="InitiativeLabel" type="Label" parent="InfoBoxContainer/Stats/Control2"]
 layout_mode = 2
 offset_right = 36.0
 offset_bottom = 27.0

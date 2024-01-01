@@ -93,6 +93,7 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
 
 func setup_entities():
     if Globals.level_debug_mode:
+        Globals.curent_mission = MissionFactory.mission_3()
         setup_entity_for_level(EntityFactory.create_oilee(), Vector2i(0,3))
     else:
         # TODO Custom deploy tiles
@@ -100,9 +101,10 @@ func setup_entities():
         for i in range(len(allies)):
             setup_entity_for_level(allies[i], Vector2i(0, i))
         
-        # TODO Setup service to randomly put these down
-        setup_interactable_for_level(Globals.curent_mission.buffs[0], Vector2i(3,3))
-    setup_entity_for_level(EntityFactory.create_boss_1(), Vector2i(11, 2))
+    # TODO Setup service to randomly put these down
+    setup_interactable_for_level(Globals.curent_mission.buffs[0], Vector2i(3,3))
+    
+    setup_entity_for_level(Globals.curent_mission.boss, Vector2i(9, 2))
     return
 
 func currentEntity() -> Entity:

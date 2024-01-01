@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dhqmp1ddkb3d7" path="res://Assets/progress_over_4.png" id="8_stpfw"]
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="9_nlkln"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/health.png" id="10_sji2x"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/speed.png" id="11_y8say"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="11_y8say"]
 [ext_resource type="Texture2D" uid="uid://c8qs5sie5ong8" path="res://Assets/progress_over_2.png" id="12_xu75s"]
 [ext_resource type="PackedScene" uid="uid://7ah3bf7cn7a" path="res://special_description_panel.tscn" id="16_31s5c"]
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="16_epibs"]
@@ -201,10 +201,10 @@ label_settings = SubResource("LabelSettings_1bioa")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Speed" type="Control" parent="GridContainer"]
+[node name="Initiative" type="Control" parent="GridContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="GridContainer/Speed"]
+[node name="Button" type="Button" parent="GridContainer/Initiative"]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 100.0
@@ -215,7 +215,7 @@ theme = ExtResource("2_j6fe4")
 theme_type_variation = &"FlatButton"
 icon = ExtResource("11_y8say")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Speed"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="GridContainer/Initiative"]
 layout_mode = 0
 offset_left = 84.1272
 offset_top = -14.4594
@@ -229,13 +229,13 @@ texture_under = ExtResource("3_00qqc")
 texture_over = ExtResource("8_bo7rt")
 texture_progress = ExtResource("5_j6fm3")
 
-[node name="Anim" type="Sprite2D" parent="GridContainer/Speed"]
+[node name="Anim" type="Sprite2D" parent="GridContainer/Initiative"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(99.0636, 50.0406)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_jhbqx")
 
-[node name="Label" type="Label" parent="GridContainer/Speed"]
+[node name="Label" type="Label" parent="GridContainer/Initiative"]
 layout_mode = 0
 offset_left = 26.1499
 offset_top = 82.2883
@@ -248,7 +248,7 @@ label_settings = SubResource("LabelSettings_0yp65")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ModifierLabel" type="Label" parent="GridContainer/Speed"]
+[node name="ModifierLabel" type="Label" parent="GridContainer/Initiative"]
 layout_mode = 0
 offset_left = 76.5379
 offset_top = 81.7843
@@ -260,7 +260,7 @@ text = "(+1)"
 label_settings = SubResource("LabelSettings_vue42")
 vertical_alignment = 1
 
-[node name="MaxedLabel" type="Label" parent="GridContainer/Speed"]
+[node name="MaxedLabel" type="Label" parent="GridContainer/Initiative"]
 layout_mode = 0
 offset_left = 21.193
 offset_top = 109.204

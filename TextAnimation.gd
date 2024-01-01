@@ -1,56 +1,84 @@
 class_name TextAnimation extends Label
 
-@onready var animationPlayer := $AnimationPlayer
 
 var data = []
+var tween: Tween
+var original_position: Vector2
 
 func _ready():
-    animationPlayer.animation_changed.connect(switch_data)
+    original_position = position
+    return
 
-func switch_data(_old, _new):
+func queue_tween(c: Color, t: String):
+    data.append([c, t])
+    return
+
+func play_tween():
+    if len(data) == 0:
+        return
     var color_and_text = data.pop_front()
-    set_color(color_and_text[0])
-    text = color_and_text[1]
+    var c = color_and_text[0]
+    var t = color_and_text[1]
+    var faded_color = Color.BLACK
+    faded_color.a = 0
+    tween = get_tree().create_tween()    
+    tween.tween_property(self, "position:y", original_position.y, 0)
+    tween.tween_property(self, "text", t, 0)    
+    tween.tween_property(self, "modulate", c, 0)
+    tween.tween_property(self, "position:y", original_position.y-15, 0.15)
+    tween.tween_interval(.45)
+    tween.tween_property(self, "modulate", faded_color, 0.15)
+    tween.tween_callback(play_tween)
+    tween.play()
     return
 
 func queue_animation(c, t):
-    data.append([c, t])    
-    if animationPlayer.is_playing():
-        animationPlayer.queue("Float")
+    if tween == null or not tween.is_valid():
+        queue_tween(c, t)
+        play_tween()
     else:
-        switch_data("", "")
-        animationPlayer.play("Float")
+        queue_tween(c, t)
     return
 
-func lose_health(h: int):
-    queue_animation(Color.RED, "-" + str(h) + " Health")
+func update_health(value: int):
+    update_stat(value, "Health")
     return
 
-func gain_health(h: int):
-    queue_animation(Color.GREEN, "+" + str(h) + " Health")
+func update_energy(value: int):
+    if value < 1:
+        return
+    update_stat(value, "Energy")
     return
 
-func update_energy(e: int):
-    var t = ""
-    if e < 0:
-        t = "-" + str(e) + " Energy"
-    else:
-        t = "+" + str(e) + " Energy"
-    queue_animation(Color.CYAN, t)
-    return
-
-func gain_shields(s: int):
-    queue_animation(Color.CYAN, "+" + str(s) + " Shield")
-    return
-
-func gain_movement(m: int):
-    queue_animation(Color.GOLD, "+" + str(m) + " Movement")
-    return
-
-func set_color(c: Color):
-    var ani : Animation = animationPlayer.get_animation("Float")
-    var idx = ani.find_track(^".:theme_override_colors/font_color", Animation.TYPE_VALUE)
-    var k := ani.track_find_key(idx, .55)
-    ani.track_set_key_value(idx, k, c)
+func update_stat(value: int, stat: String):
+    var c = Color.WHITE
+    var pre = "+"
+    if value < 0:
+        c = Color.RED
+        pre = ""
+    queue_animation(c, pre + str(value)  + " " + stat)
     return
     
+func update_armor(value: int):
+    update_stat(value, "Armor")
+    return
+
+func update_movement(value: int):
+    update_stat(value, "Movement")
+    return
+
+func update_initiative(value: int):
+    update_stat(value, "Initiative")
+    return
+
+func update_damage(value: int):
+    update_stat(value, "Damage")
+    return
+
+func update_range(value: int):
+    update_stat(value, "Range")
+    return
+    
+func update_max_health(value: int):
+    update_stat(value, "Max Health")
+    return
