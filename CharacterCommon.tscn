@@ -79,8 +79,7 @@ offset_bottom = 25.9204
 [node name="DeathSprite" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
-position = Vector2(0, -11.3594)
-scale = Vector2(0.15, 0.15)
+position = Vector2(0, -22.6046)
 texture = ExtResource("2_sbscd")
 
 [node name="InteractableContainer" type="Node2D" parent="."]

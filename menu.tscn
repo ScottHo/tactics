@@ -143,6 +143,7 @@ z_index = 10
 script = ExtResource("1_0qs77")
 
 [node name="GameOverLabel" type="Label" parent="."]
+visible = false
 offset_left = 470.448
 offset_top = 325.923
 offset_right = 1034.45
@@ -681,6 +682,9 @@ position = Vector2(-540, 17)
 [node name="Timer2" type="Timer" parent="."]
 
 [node name="Fader" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+visible = false
+offset_left = -33.6738
+offset_top = -31.4289
+offset_right = 1566.33
+offset_bottom = 968.571
 color = Color(0, 0, 0, 0)
