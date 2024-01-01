@@ -58,7 +58,7 @@ static func create_punch_e():
     return ent
 
 static func create_peppershot():
-    var ent = _create_entity("Peppershot", 10, 3, 4, 10, "res://pepeershot.tscn", "res://Assets/peppershot.png", true)
+    var ent = _create_entity("Peppershot", 10, 3, 4, 10, "res://peppershot.tscn", "res://Assets/peppershot.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_scatter_shot(ent, ActionType.ACTION1)
     ActionFactory.add_spray_and_pray(ent, ActionType.ACTION2)
