@@ -46,7 +46,7 @@ static func create_longshot():
 static func create_boss_1():
     var ent = _create_entity("Boss", 50, 6, 1, 10, "res://enemy_1.tscn", "res://Assets/Boss1.png", false)
     ent.description = "Intimidating Placeholder Text"
-    ent.damage += 2
+    ent.damage += 1
     ActionFactory.add_base_attack(ent)
     return ent
 

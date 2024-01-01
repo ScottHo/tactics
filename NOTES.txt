@@ -1,5 +1,6 @@
 BUGS
 - Oilee Moves disable if refuel with 0 movement
+- Highlight tiles show offscreen on AOE
 
 NEEDS
 - GUI backgrounds for mission GUI
