@@ -11,7 +11,7 @@ static func mission_1():
     
     var s1 = Special.new()
     s1.display_name = "Big Electric Blast"
-    s1.description = "Deals 4 damage spread over every friendly unit in a 3x3 area centered on a random friendly unit"
+    s1.description = "Deals 4 damage spread over every allied unit in a 3x3 area centered on a random allied unit"
     s1.target = Special.Target.RANDOM
     s1.shape = Special.Shape.SQUARE_3x3
     s1.mechanic = Special.Mechanic.SOAK
@@ -21,7 +21,7 @@ static func mission_1():
 
     var s2 = Special.new()
     s2.display_name = "Missles For Everyone"
-    s2.description = "Deals 1 damage to every friendly unit in a 3x3 area centered on every friendly unit"
+    s2.description = "Deals 1 damage to every allied unit in a 3x3 area, centered on every allied unit"
     s2.target = Special.Target.ALL
     s2.shape = Special.Shape.SQUARE_3x3
     s2.mechanic = Special.Mechanic.SPREAD
@@ -74,7 +74,7 @@ static func mission_3():
     
     var s1 = Special.new()
     s1.display_name = "Massive Nuke"
-    s1.description = "Deals 10 damage spread over every friendly unit in a 13 area centered on a random friendly unit"
+    s1.description = "Deals 10 damage spread over every allied unit in a 13 area, centered on a random allied unit"
     s1.target = Special.Target.RANDOM
     s1.shape = Special.Shape.DIAMOND_3x3
     s1.mechanic = Special.Mechanic.SOAK
@@ -84,7 +84,7 @@ static func mission_3():
 
     var s2 = Special.new()
     s2.display_name = "Widespread destruction"
-    s2.description = "Deals 2 damage to every friendly unit in a 13 square area centered on every friendly unit"
+    s2.description = "Deals 2 damage to every allied unit in a 13 square area, centered on every allied unit"
     s2.target = Special.Target.ALL
     s2.shape = Special.Shape.DIAMOND_3x3
     s2.mechanic = Special.Mechanic.SPREAD

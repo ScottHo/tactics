@@ -25,18 +25,17 @@ static func add_exert(ent: Entity, type: int):
         "Affects": "Enemy Units",
         "Cost": 3,
         "Damage Amp": [2, 2, 3, 3],
-        "Movement Penalty": [3, 2, 2, 1],
-        "Movement Penalty Duration": 1,
+        "Self Cripple": 3,
+        "Cripple Duration": 1,
         "Threat Gain": 3,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
-        user.move_debuff_value =  action.get_from_stats("Movement Penalty")
-        user.move_debuff_count = action.get_from_stats("Movement Penalty Duration")
+        user.crippled(action.get_from_stats("Cripple"), action.get_from_stats("Cripple Duration"))
         user.gainThreat(action.get_from_stats("Threat Gain"))
         for _ent in targets:
             _ent.loseHP(user.get_damage() + user.get_damage())
         return
-    var d = "Brutus Exterts Itself And hits so hard its wheels break down for a turn."
+    var d = "Brutus Exterts itself so hard it cripples itself."
     
     _add_action(ent, "Exert", d, [], effect, type, stats)
     return
@@ -68,8 +67,8 @@ static func add_oil_bomb(ent: Entity, type: int):
         user.gainThreat(1)
         for _ent in targets:
             _ent.loseHP(user.damage + action.get_from_stats("Additional Damage"))
-            _ent.crippled(action.get_from_stats("Movement Debuff"),
-                    action.get_from_stats("Movement Debuff Duration"))
+            _ent.crippled(action.get_from_stats("Cripple"),
+                    action.get_from_stats("Cripple Duration"))
         return
     var d = "Throw an oil bomb, crippling it's movement"
     _add_action(ent, "Oil Bomb", d, [], effect, type, stats)
@@ -79,7 +78,7 @@ static func add_lubricate(ent: Entity, type: int):
     var stats = {
         "Affects": "Self",
         "Cost": 1,
-        "Extra Moves": [2,3,4,5] 
+        "Extra Moves": [3,4,5,6] 
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         user.moves_left += action.get_from_stats("Extra Moves")
@@ -108,13 +107,13 @@ static func add_static_shield(ent: Entity, type: int):
     var stats = {
         "Affects": "All Units",
         "Cost": 2,
-        "Shield Amount": [2, 3, 4, 5],
+        "Shield Amount": [1, 2, 3, 4],
         "Shield Duration": 2
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.shield_value = action.get_from_stats("Shield Amount")
-            _ent.shield_count = 2
+            _ent.shielded(action.get_from_stats("Shield Amount"),
+                    action.get_from_stats("Shield Duration"))
         return
     var d = "Create a stable electro magnetic field and shield everything"
     _add_action(ent, "Static Shield", d, shape_3x3, effect, type, stats)
@@ -122,35 +121,35 @@ static func add_static_shield(ent: Entity, type: int):
 
 static func add_focused_repair(ent: Entity, type: int):
     var stats = {
-        "Affects": "All Friendly Units",
+        "Affects": "All Allied Units",
         "Cost": 2,
-        "Heal Amount": [5, 7, 9, 11],
+        "Heal Amount": [4, 6, 8, 10],
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
             _ent.gainHP(action.get_from_stats("Heal Amount"))
         return
-    var d = "Summon all the nanobots to heal one friend"
+    var d = "Summon all the nanobots to heal one ally"
     _add_action(ent, "Focused Repair", d, [], effect, type, stats)
     return
 
 static func add_nano_field(ent: Entity, type: int):
     var stats = {
-        "Affects": "All Friendly Units",
+        "Affects": "All Allied Units",
         "Cost": 2,
-        "Heal Amount": [3, 4, 5, 6],
+        "Heal Amount": [2, 3, 4, 5],
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
             _ent.gainHP(action.get_from_stats("Heal Amount"))
         return
-    var d = "Order the nanobots to heal any friend in the area"
+    var d = "Order the nanobots to heal any ally in the area"
     _add_action(ent, "Nanofield", d, shape_3x3, effect, type, stats)
     return
 
 static func add_weapons_upgade(ent: Entity, type: int):
     var stats = {
-        "Affects": "Other Friendly Units",
+        "Affects": "Other Allied Units",
         "Added Damage": [1,2,3,4],
         "Cost": 2,
     }
@@ -158,13 +157,13 @@ static func add_weapons_upgade(ent: Entity, type: int):
         for _ent in targets:
             _ent.update_damage(action.get_from_stats("Added Damage"))
         return
-    var d = "Add permanent base damage to friendly unit"
+    var d = "Add permanent base damage to an allied unit"
     _add_action(ent, "Weapons Upgrade", d, [], effect, type, stats)
     return
 
 static func add_engine_upgrade(ent: Entity, type: int):
     var stats = {
-        "Affects": "Other Friendly Units",
+        "Affects": "Other Allied Units",
         "Added Movement": [1,2,3,4],
         "Cost": 2,
     }
@@ -172,7 +171,7 @@ static func add_engine_upgrade(ent: Entity, type: int):
         for _ent in targets:
             _ent.movement_modifier += action.get_from_stats("Added Movement")
         return
-    var d = "Make your friends move more"
+    var d = "Add permanent movement to an allied unit"
     _add_action(ent, "Engine Upgrade", d, [], effect, type, stats)
     return
 

@@ -53,5 +53,5 @@ func status_effect(value: int, status: String):
     var c = Color.WHITE
     if value < 0:
         c = Color.RED
-    queue_animation(c, status)
+    queue_animation(c, status + " " + str(abs(value)))
     return

@@ -212,7 +212,13 @@ func setThreat(t):
 func crippled(value, count):
     crippled_value = value
     crippled_count = count
-    sprite.textAnimation().status_effect(-1, "Crippled")
+    sprite.textAnimation().status_effect(-value, "Crippled")
+    return
+
+func shielded(value, count):
+    shield_value = value
+    shield_count = count
+    sprite.textAnimation().status_effect(value, "Shielded")
     return
 
 func add_iteractable(inter: Interactable):

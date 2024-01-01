@@ -27,7 +27,7 @@ func cost():
 
 func self_castable():
     var a = affects()
-    return a == "Self" or a == "All Friendly Units" or a == "All Units"
+    return a == "Self" or a == "All Allied Units" or a == "All Units"
 
 func affects():
     return get_from_stats("Affects", "All Units")

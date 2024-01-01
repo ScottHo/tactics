@@ -120,6 +120,6 @@ func key_prefix(k) -> String:
     return ""
 
 func key_suffix(k) -> String:
-    if k in []:
+    if k in ["Damage Amp"]:
         return "x"
     return ""
