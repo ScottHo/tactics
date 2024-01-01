@@ -50,13 +50,19 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mdc5f")
 
 [node name="TextParent" type="Node2D" parent="."]
-position = Vector2(-33.4607, -43.4848)
+position = Vector2(0.141331, -45.1868)
 
 [node name="TextAnimation" parent="TextParent" instance=ExtResource("3_dh5hh")]
-offset_left = -4.7098
-offset_top = -0.0796904
-offset_right = 63.2902
-offset_bottom = 25.9204
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_alignment = 1
 
 [node name="DeathSprite" type="Sprite2D" parent="."]
 visible = false

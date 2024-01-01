@@ -60,18 +60,18 @@ static func add_oil_bomb(ent: Entity, type: int):
         "Cost": 2,
         "Additional Range": 2,
         "Additional Damage": [0, 1, 2, 3],
-        "Movement Debuff": [2, 2, 3, 3],
-        "Movement Debuff Duration": 1,
+        "Cripple": [2, 2, 3, 3],
+        "Cripple Duration": 1,
         "Threat Gain": 1,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         user.gainThreat(1)
         for _ent in targets:
             _ent.loseHP(user.damage + action.get_from_stats("Additional Damage"))
-            _ent.move_debuff_value = action.get_from_stats("Movement Debuff")
-            _ent.move_debuff_count = action.get_from_stats("Movement Debuff Duration")
+            _ent.crippled(action.get_from_stats("Movement Debuff"),
+                    action.get_from_stats("Movement Debuff Duration"))
         return
-    var d = "Cover a target with its old oil, slowing it's movement"
+    var d = "Throw an oil bomb, crippling it's movement"
     _add_action(ent, "Oil Bomb", d, [], effect, type, stats)
     return
     

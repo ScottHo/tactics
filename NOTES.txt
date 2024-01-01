@@ -1,9 +1,6 @@
 BUGS
-- Effect text colors sometimes wrong
 
 NEEDS
-- Effect texts for shield/buffs/etc.
-- 3 Levels
 - 12 different bots
 - Get new bots
 

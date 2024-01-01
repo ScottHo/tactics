@@ -42,10 +42,8 @@ var weakness_count: int
 var weakness_value: int
 var shield_count: int
 var shield_value: int
-var move_buff_count: int
-var move_buff_value: int
-var move_debuff_count: int
-var move_debuff_value: int
+var crippled_count: int
+var crippled_value: int
 var damage_buff_count: int
 var damage_buff_value: int
 var damage_debuff_count: int
@@ -62,7 +60,7 @@ func get_damage() -> int:
     return ret
 
 func get_movement() -> int:
-    var ret = movement + movement_modifier + move_buff_value - move_debuff_value
+    var ret = movement + movement_modifier - crippled_value
     if ret < 0:
         ret = 0
     return ret
@@ -88,43 +86,19 @@ func get_low_health_threshold() -> int:
 func get_max_health():
     return max_health + health_modifier
 
-func loseHP(hp):
-    if immune_count > 0:
-        return
-    hp -= get_armor()
-    health -= hp
-    if health < 0:
-        health = 0
-    sprite.textAnimation().update_health(-hp)
-    return
-
-func lose_defensive_buffs():
+func lose_all_buffs():
+    if damage_buff_count > 0:
+        damage_buff_count -= 1
+    if damage_debuff_count > 0:
+        damage_debuff_count -= 1
     if immune_count > 0:
         immune_count -= 1
     if shield_count > 0:
         shield_count -= 1
     if weakness_count > 0:
         weakness_count -= 1
-    return
-
-func lose_movement_buffs():
-    if move_buff_count > 0:
-        move_buff_count -= 1
-    if move_debuff_count > 0:
-        move_debuff_count -= 1
-    return
-
-func lose_damage_buffs():
-    if damage_buff_count > 0:
-        damage_buff_count -= 1
-    if damage_debuff_count > 0:
-        damage_debuff_count -= 1
-    return
-
-func lose_all_buffs():
-    lose_movement_buffs()
-    lose_defensive_buffs()
-    lose_damage_buffs()
+    if crippled_count > 0:
+        crippled_count -= 1
     return
 
 func reset_buff_values():
@@ -140,18 +114,25 @@ func reset_buff_values():
     if damage_debuff_count == 0:
         damage_debuff_value = 0
         
-    if move_debuff_count == 0:
-        move_debuff_value = 0
-        
-    if move_buff_count == 0:
-        move_buff_value = 0
+    if crippled_count == 0:
+        crippled_value = 0
+    return
+
+func loseHP(hp):
+    if immune_count > 0:
+        return
+    hp -= get_armor()
+    health -= hp
+    if health < 0:
+        health = 0
+    sprite.textAnimation().update_stat(-hp, "Health")
     return
 
 func gainHP(hp):
     health += hp
     if health > get_max_health():
         health = get_max_health()
-    sprite.textAnimation().update_health(hp)
+    sprite.textAnimation().update_stat(hp, "Health")
     return
 
 func set_max_health(hp):
@@ -174,41 +155,42 @@ func set_energy(e):
         energy = 5
     return
 
-func update_energy(energy_diff):
-    set_energy(energy + energy_diff)
-    sprite.textAnimation().update_energy(energy_diff)
+func update_energy(value):
+    set_energy(energy + value)
+    if value > 0:
+        sprite.textAnimation().update_stat(value, "Energy")
     return
 
-func update_damage(damage_diff):
-    damage_modifier += damage_diff
-    sprite.textAnimation().update_damage(damage_diff)
+func update_damage(value):
+    damage_modifier += value
+    sprite.textAnimation().update_stat(value, "Damage")
     return
 
-func update_range(range_diff):
-    range_modifier += range_diff
-    sprite.textAnimation().update_range(range_diff)
+func update_range(value):
+    range_modifier += value
+    sprite.textAnimation().update_stat(value, "Range")
     return
     
-func update_initiative(initiative_diff):
-    initiative_modifier += initiative_diff
-    sprite.textAnimation().update_initiative(initiative_diff)
+func update_initiative(value):
+    initiative_modifier += value
+    sprite.textAnimation().update_stat(value, "Initiative")
     return
 
-func update_armor(armor_diff):
-    armor_modifier += armor_diff
-    sprite.textAnimation().update_armor(armor_diff)
+func update_armor(value):
+    armor_modifier += value
+    sprite.textAnimation().update_stat(value, "Armor")
     return
 
-func update_max_health(health_diff):
-    health_modifier += health_diff
+func update_max_health(value):
+    health_modifier += value
     if health > get_max_health():
         health = get_max_health()
-    sprite.textAnimation().update_max_health(health_diff)
+    sprite.textAnimation().update_stat(value, "Max Health")
     return
 
-func update_movement(movement_diff):
-    movement_modifier += movement_diff
-    sprite.textAnimation().update_movement(movement_diff)
+func update_movement(value):
+    movement_modifier += value
+    sprite.textAnimation().update_stat(value, "Movement")
     return
 
 func gainThreat(t):
@@ -225,6 +207,12 @@ func loseThreat(t):
 
 func setThreat(t):
     threat = t
+    return
+
+func crippled(value, count):
+    crippled_value = value
+    crippled_count = count
+    sprite.textAnimation().status_effect(-1, "Crippled")
     return
 
 func add_iteractable(inter: Interactable):

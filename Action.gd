@@ -15,7 +15,7 @@ func get_from_stats(key, default=0):
     return default
 
 func range_modifier():
-    return get_from_stats("Range Modifier")
+    return get_from_stats("Additional Range")
 
 func self_cast_only():
     if get_from_stats("Affects", "All Units") == "Self":

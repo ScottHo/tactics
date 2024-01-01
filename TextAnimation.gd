@@ -26,8 +26,8 @@ func play_tween():
     tween.tween_property(self, "text", t, 0)    
     tween.tween_property(self, "modulate", c, 0)
     tween.tween_property(self, "position:y", original_position.y-15, 0.15)
-    tween.tween_interval(.45)
-    tween.tween_property(self, "modulate", faded_color, 0.15)
+    tween.tween_interval(.5)
+    tween.tween_property(self, "modulate", faded_color, 0.1)
     tween.tween_callback(play_tween)
     tween.play()
     return
@@ -40,16 +40,6 @@ func queue_animation(c, t):
         queue_tween(c, t)
     return
 
-func update_health(value: int):
-    update_stat(value, "Health")
-    return
-
-func update_energy(value: int):
-    if value < 1:
-        return
-    update_stat(value, "Energy")
-    return
-
 func update_stat(value: int, stat: String):
     var c = Color.WHITE
     var pre = "+"
@@ -58,27 +48,10 @@ func update_stat(value: int, stat: String):
         pre = ""
     queue_animation(c, pre + str(value)  + " " + stat)
     return
-    
-func update_armor(value: int):
-    update_stat(value, "Armor")
-    return
 
-func update_movement(value: int):
-    update_stat(value, "Movement")
-    return
-
-func update_initiative(value: int):
-    update_stat(value, "Initiative")
-    return
-
-func update_damage(value: int):
-    update_stat(value, "Damage")
-    return
-
-func update_range(value: int):
-    update_stat(value, "Range")
-    return
-    
-func update_max_health(value: int):
-    update_stat(value, "Max Health")
+func status_effect(value: int, status: String):
+    var c = Color.WHITE
+    if value < 0:
+        c = Color.RED
+    queue_animation(c, status)
     return
