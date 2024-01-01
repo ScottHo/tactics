@@ -60,7 +60,7 @@ func _input(event):
                 _inter.effect.call(_entity)
                 _state.remove_interactable(_inter)                
                 if _inter.storable:
-                    print("Stored")
+                    print("Interactable Stored")
                     _entity.add_iteractable(_inter)
                 interactDone.emit()
                 finish()

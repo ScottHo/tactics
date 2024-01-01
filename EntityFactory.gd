@@ -44,7 +44,20 @@ static func create_longshot():
     return ent
 
 static func create_boss_1():
-    var ent = _create_entity("Boss", 50, 6, 1, 10, "res://enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Evil Red", 30, 5, 1, 10, "res://enemy_1.tscn", "res://Assets/Boss1.png", false)
+    ent.description = "Intimidating Placeholder Text"
+    ent.damage += 1
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_2():
+    var ent = _create_entity("Evil Pink", 70, 2, 1, 8, "res://enemy_2.tscn", "res://Assets/boss2.png", false)
+    ent.description = "Intimidating Placeholder Text"
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_3():
+    var ent = _create_entity("Evil Orange", 100, 6, 1, 10, "res://enemy_3.tscn", "res://Assets/boss3.png", false)
     ent.description = "Intimidating Placeholder Text"
     ent.damage += 1
     ActionFactory.add_base_attack(ent)

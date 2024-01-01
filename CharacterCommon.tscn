@@ -68,7 +68,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mdc5f")
 
 [node name="TextParent" type="Node2D" parent="."]
-position = Vector2(-33.9763, -43.9908)
+position = Vector2(-33.4607, -43.4848)
 
 [node name="TextAnimation" parent="TextParent" instance=ExtResource("3_dh5hh")]
 offset_left = -4.7098

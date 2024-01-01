@@ -21,15 +21,31 @@ func targets_per_entity(target_entity: Entity) -> Array:
         Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
         Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
         ]
-        for i in len(vecs):
-            vecs[i] += target_entity.location
+    if special().shape == Special.Shape.SINGLE:
+        vecs = [Vector2i(0,0)]
+    if special().shape == Special.Shape.DIAMOND_3x3:
+        vecs = [Vector2i(0,0),
+        Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
+        Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1),
+        Vector2i(2,0), Vector2i(0,2), Vector2i(-2,0), Vector2i(0,-2)
+        ]
+    for i in len(vecs):
+        vecs[i] += target_entity.location
     return vecs
+
+func mechanic_buff_effect():
+    for vec in _targets:
+        for ent in _state.all_enemies_alive():
+            if ent.location == vec:
+                special().effect.call(ent)
+    return
 
 func mechanic_spread_effect():
     for vec in _targets:
         for ent in _state.all_allies_alive():
             if ent.location == vec:
                 ent.loseHP(special().damage)
+                special().effect.call(ent)
     return
 
 func mechanic_soak_effect():
@@ -42,10 +58,14 @@ func mechanic_soak_effect():
     damage = ceili(damage/len(ents))
     for ent in ents:
         ent.loseHP(damage)
+        special().effect.call(ent)
     return
 
 func find_special_targets():
     _targets = []
+    if special().target == Special.Target.SELF:
+        _targets = targets_per_entity(_entity)
+        
     if special().target == Special.Target.ALL:
         for ent in _state.all_allies_alive():
             _targets.append_array(targets_per_entity(ent))
@@ -63,6 +83,8 @@ func find_special_targets():
     return
     
 func do_special_effect():
+    if special().mechanic == Special.Mechanic.BUFF:
+        mechanic_buff_effect()
     if special().mechanic == Special.Mechanic.SOAK:
         mechanic_soak_effect()
     if special().mechanic == Special.Mechanic.SPREAD:

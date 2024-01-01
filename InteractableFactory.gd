@@ -15,7 +15,7 @@ static func create_blue_orb_thing() -> Interactable:
         return
 
     inter.repeated_effect = func (user: Entity):
-        print("repeat")
+        print("Interactable repeated effect")
         return
 
     inter.storable = true
