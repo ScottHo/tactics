@@ -1,11 +1,8 @@
 class_name Utils extends Node
 
 static func set_label_color(label: Label, color: Color):
-    var s : LabelSettings = label.get_label_settings()
-    if s == null:
-        s = LabelSettings.new()
-    s.font_color = color
-    label.set_label_settings(s)
+    label.add_theme_color_override("font_color", Color.WHITE)
+    label.modulate = color
     return
     
 static func movement_color(entity: Entity, moves_left: bool = false) -> Color:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b6iqxvpypem6r"]
+[gd_scene load_steps=17 format=3 uid="uid://b6iqxvpypem6r"]
 
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="2_sbscd"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
@@ -16,24 +16,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449
 height = 42.1811
-
-[sub_resource type="LabelSettings" id="LabelSettings_f4ngt"]
-font_size = 22
-
-[sub_resource type="LabelSettings" id="LabelSettings_6wlv5"]
-font_size = 22
-
-[sub_resource type="LabelSettings" id="LabelSettings_24ao3"]
-font_size = 22
-
-[sub_resource type="LabelSettings" id="LabelSettings_gga6n"]
-font_size = 22
-
-[sub_resource type="LabelSettings" id="LabelSettings_msooa"]
-font_size = 22
-
-[sub_resource type="LabelSettings" id="LabelSettings_7v0yr"]
-font_size = 22
 
 [sub_resource type="LabelSettings" id="LabelSettings_gu1px"]
 font_size = 15
@@ -119,9 +101,9 @@ texture = ExtResource("9_ir6t0")
 layout_mode = 2
 offset_right = 36.0
 offset_bottom = 27.0
+theme_override_font_sizes/font_size = 22
 text = "99
 "
-label_settings = SubResource("LabelSettings_f4ngt")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -137,9 +119,9 @@ texture = ExtResource("10_h2kqm")
 layout_mode = 2
 offset_right = 36.0
 offset_bottom = 27.0
+theme_override_font_sizes/font_size = 22
 text = "99
 "
-label_settings = SubResource("LabelSettings_6wlv5")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -155,9 +137,9 @@ texture = ExtResource("11_kcro7")
 layout_mode = 2
 offset_right = 36.0
 offset_bottom = 27.0
+theme_override_font_sizes/font_size = 22
 text = "99
 "
-label_settings = SubResource("LabelSettings_24ao3")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -173,9 +155,9 @@ texture = ExtResource("12_v0dse")
 layout_mode = 2
 offset_right = 36.0
 offset_bottom = 27.0
+theme_override_font_sizes/font_size = 22
 text = "99
 "
-label_settings = SubResource("LabelSettings_gga6n")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -191,8 +173,8 @@ texture = ExtResource("13_shgj1")
 layout_mode = 2
 offset_right = 18.0
 offset_bottom = 27.0
+theme_override_font_sizes/font_size = 22
 text = "9"
-label_settings = SubResource("LabelSettings_msooa")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -208,8 +190,8 @@ texture = ExtResource("2_sbscd")
 layout_mode = 2
 offset_right = 18.0
 offset_bottom = 27.0
+theme_override_font_sizes/font_size = 22
 text = "9"
-label_settings = SubResource("LabelSettings_7v0yr")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
