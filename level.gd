@@ -49,7 +49,6 @@ func _ready():
     interactService.setState(state)    
     turnService.update()
     menuService.setState(state)
-    menuService.updateAllEntities()
     menuService.showTurns(turnService.next10Turns())
     nextTurn()
     return
@@ -152,7 +151,6 @@ func startAiDelay():
     return
 
 func nextAiStep():
-    menuService.updateAllEntities()
     if _ai_state == AiState.NONE:
         _ai_state = AiState.MOVE
         startAiMove()
@@ -234,7 +232,6 @@ func resetPlayerServices():
 
 func update_character_menu():
     menuService.updateEntityInfo(currentEntity())
-    #menuService.updateAllEntities()
     currentEntity().update_sprite()
     return
 

@@ -187,7 +187,7 @@ static func add_snipe(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array, action: Action):
         user.gainThreat(action.stats["Threat Gain"])
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + action.stats["Heal Amount"][action.level])
+            _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
         return
     var d = "Extend the barrel and snipe"
     _add_action(ent, "Snipe", d, [], effect, type, stats)
@@ -203,7 +203,7 @@ static func add_titanium_bullet(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array, action: Action):
         user.gainThreat(action.stats["Threat Gain"])
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + action.stats["Additional Damage"][action.level])
+            _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
         return
     var d = ""
     _add_action(ent, "Titanium Bullet", d, [], effect, type, stats)

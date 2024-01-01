@@ -106,36 +106,6 @@ func setState(state: State):
     _state = state
     return
 
-func updateAllEntities():
-    return
-    # Not used
-    if _tab_dict.is_empty():
-        _create_entity_tabs()
-    else:
-        for tab in _tab_dict.values():
-            tab.update()
-    return
-
-func _create_entity_tabs():
-    var offset = 0
-    for entity in _state.all_allies():
-        var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
-        tab.update_from_entity(entity)
-        $EntityTabContainer.add_child(tab)
-        tab.position.y -= offset
-        offset -= 90
-        _tab_dict[entity.id] = tab
-    
-    offset -= 40
-    for entity in _state.all_enemies():
-        var tab: EntityInfoTab  = load("res://EntityInfoTab.tscn").instantiate()
-        tab.update_from_entity(entity)
-        $EntityTabContainer.add_child(tab)
-        tab.position.y -= offset
-        offset -= 90
-        _tab_dict[entity.id] = tab
-    return
-
 func showTurns(turns: Array[int]):
     for i in range(10):
         _setup_turn_sprite(_state.get_entity(turns[i]), turnSprites[i])

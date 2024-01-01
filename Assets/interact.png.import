@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i5cao7fn5vrc"
-path="res://.godot/imported/white_bolt.png-ad685829ba88d5230b3c7eba35144b34.ctex"
+uid="uid://cb20eq0yo3eql"
+path="res://.godot/imported/interact.png-d3795a0c1e3c321b90a42a77a1a18e0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/white_bolt.png"
-dest_files=["res://.godot/imported/white_bolt.png-ad685829ba88d5230b3c7eba35144b34.ctex"]
+source_file="res://Assets/interact.png"
+dest_files=["res://.godot/imported/interact.png-d3795a0c1e3c321b90a42a77a1a18e0f.ctex"]
 
 [params]
 

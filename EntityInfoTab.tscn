@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="3_wv88g"]
 [ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/Health_Over.png" id="4_86m2k"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="4_flx8q"]
-[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/heart_white.png" id="4_reefb"]
+[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/health.png" id="4_reefb"]
 [ext_resource type="Texture2D" uid="uid://dh7objn6mrlvt" path="res://Assets/Energy_Over.png" id="5_nbtqd"]
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="6_ggr6d"]
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="8_3f53c"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="8_gw4b8"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="9_p0t2w"]
-[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="10_frk68"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/speed.png" id="9_p0t2w"]
+[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="10_frk68"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sfged"]
 

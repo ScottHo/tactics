@@ -7,11 +7,11 @@
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="6_m13e8"]
 [ext_resource type="Texture2D" uid="uid://cmlcf47flv4my" path="res://Assets/info_box_hover.png" id="6_v4rmv"]
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="9_ir6t0"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/arrow.png" id="10_h2kqm"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/speed.png" id="10_h2kqm"]
 [ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="10_m1a84"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="11_kcro7"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="12_v0dse"]
-[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/Shield.png" id="13_shgj1"]
+[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="13_shgj1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/vertical-medium.png" id="1_48ejq"]
 [ext_resource type="Script" path="res://special_description_panel.gd" id="1_kbi01"]
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="2_mqpc5"]
-[ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/white_bolt.png" id="3_6bhbo"]
+[ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/energy.png" id="3_hq8kc"]
 [ext_resource type="PackedScene" uid="uid://dq28ygginmj7" path="res://stat_container.tscn" id="5_v2w3d"]
 
 [node name="SpecialPanel" type="Node2D"]
@@ -35,7 +35,7 @@ text = "5
 [node name="WhiteBolt" type="Sprite2D" parent="."]
 position = Vector2(102.577, 49.1766)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_6bhbo")
+texture = ExtResource("3_hq8kc")
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 36.1132
