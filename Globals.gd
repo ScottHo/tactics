@@ -5,7 +5,8 @@ var entities_to_deploy = []
 var interactables_to_deploy = []
 var level_debug_mode = true
 var curent_mission: Mission
-var skill_points := 10
+var skill_points := 5
+var levels_complete = 0
 
 static var UNKNOWN_BOT_ICON_PATH = "res://Assets/Unknown.png"
 static var NO_BOT_ICON_PATH = "res://Assets/None.png"

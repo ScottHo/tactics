@@ -302,11 +302,26 @@ func set_mechanic_text(t):
 func win():
     disableActionButtons()
     $GameOverLabel.text = "You win!"
+    $Timer2.timeout.connect(func():
+        get_tree().change_scene_to_file("res://demo_main_menu.tscn")
+        )
+    $Timer2.start(2)
+    Globals.levels_complete += 1
+    Globals.skill_points += 5
+    var tween = get_tree().create_tween()
+    tween.tween_property($Fader, "color:a", 1, 2)
     return
 
 func lose():
     disableActionButtons()
     $GameOverLabel.text = "You lose!"
+    $Timer2.timeout.connect(func():
+        get_tree().change_scene_to_file("res://demo_main_menu.tscn")
+        )
+    $Timer2.start(2)
+    var c: ColorRect = $Fader
+    var tween = get_tree().create_tween()
+    tween.tween_property($Fader, "color:a", 1, 2)
     return
 
 func show_description_click(action_type):

@@ -27,3 +27,9 @@ static func mission_1():
     
     m.specials = [s1, s2]
     return m
+
+static func mission_2():
+    return mission_1()
+
+static func mission_3():
+    return mission_1()

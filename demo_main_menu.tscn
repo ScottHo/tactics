@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://co6uw02ob1vr"]
+
+[ext_resource type="Texture2D" uid="uid://dpbthq2mmtanf" path="res://Assets/space1.png" id="1_c5d58"]
+[ext_resource type="Script" path="res://demo_main_menu.gd" id="1_l175m"]
+[ext_resource type="Texture2D" uid="uid://5slno62p0s40" path="res://Assets/LongShot.png" id="3_pyfrk"]
+[ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="4_3dbph"]
+
+[node name="DemoMainMenu" type="Node2D"]
+script = ExtResource("1_l175m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.647059)
+position = Vector2(768.314, 279.387)
+scale = Vector2(3, 3)
+texture = ExtResource("1_c5d58")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 448.453
+offset_top = 192.651
+offset_right = 1031.45
+offset_bottom = 253.651
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 50
+text = "COOL GAME NAME"
+
+[node name="Control" type="GridContainer" parent="."]
+offset_left = 56.3852
+offset_top = 276.485
+offset_right = 96.3852
+offset_bottom = 476.485
+theme_override_constants/v_separation = 100
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/Control"]
+layout_mode = 2
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 26
+text = "Level 1"
+
+[node name="Control2" type="Control" parent="Control"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/Control2"]
+layout_mode = 2
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 26
+text = "Level 2"
+
+[node name="Control3" type="Control" parent="Control"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/Control3"]
+layout_mode = 2
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 26
+text = "Level 3"
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 56.9357
+offset_top = 717.303
+offset_right = 256.936
+offset_bottom = 817.303
+theme_override_font_sizes/font_size = 26
+text = "Exit"
+
+[node name="LongShot" type="Sprite2D" parent="."]
+position = Vector2(646.667, 528.038)
+rotation = 3.14159
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_pyfrk")
+
+[node name="Boss1" type="Sprite2D" parent="."]
+position = Vector2(1156.26, 553.899)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_3dbph")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 467.76
+offset_top = 791.764
+offset_right = 1132.76
+offset_bottom = 816.764
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "GGs, thanks for playing! Feedback appreciated"

@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cve4y2nbbwucg"]
+[gd_scene load_steps=8 format=3 uid="uid://cve4y2nbbwucg"]
 
 [ext_resource type="Script" path="res://DeployGui.gd" id="1_1roly"]
+[ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="6_0ivkj"]
+[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="7_rdu5m"]
 [ext_resource type="PackedScene" uid="uid://ct2wj06r38iul" path="res://upgrade_panel.tscn" id="11_q353u"]
 [ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="12_os86a"]
 [ext_resource type="PackedScene" uid="uid://b5r70vpa8c172" path="res://DeployPanel.tscn" id="13_e71vw"]
@@ -11,21 +13,73 @@ position = Vector2(703.715, 549.559)
 script = ExtResource("1_1roly")
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(4.81561, -155.347)
+position = Vector2(80.2061, -178.504)
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(-639.666, -442.793)
+position = Vector2(-547.457, -455.971)
 scale = Vector2(1.5, 1.5)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(42.8556, 227.31)
+position = Vector2(127.579, 253.126)
 
 [node name="StartMission" type="Button" parent="."]
-offset_left = 522.353
-offset_top = 160.142
-offset_right = 722.353
-offset_bottom = 260.142
+offset_left = 607.076
+offset_top = 185.958
+offset_right = 807.076
+offset_bottom = 285.958
 theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
 text = "START
 MISSION"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -130.723
+offset_top = -526.161
+offset_right = 234.277
+offset_bottom = -477.161
+theme_override_font_sizes/font_size = 36
+text = "MISSION BRIEF"
+horizontal_alignment = 1
+
+[node name="EnemyPanel" parent="." instance=ExtResource("6_0ivkj")]
+offset_left = -542.953
+offset_top = 118.79
+offset_right = -542.953
+offset_bottom = 118.79
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -195.379
+offset_top = 203.284
+offset_right = -140.379
+offset_bottom = 243.284
+theme_override_font_sizes/font_size = 32
+text = "VS"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -666.084
+offset_top = -438.815
+offset_right = -626.084
+offset_bottom = -398.815
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+theme_override_font_sizes/font_size = 20
+text = "Objectives:"
+
+[node name="Objectives" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 36.5102
+offset_right = 90.0
+offset_bottom = 171.51
+theme_override_fonts/font = ExtResource("7_rdu5m")
+theme_override_font_sizes/font_size = 18
+text = "Kill the boss
+Kill the boss
+Kill the boss
+
+Kill the boss
+Kill the boss"

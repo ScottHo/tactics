@@ -76,7 +76,7 @@ func set_button_signals():
 
 func description_hover_signal(b: Button, d: SpecialDescriptionPanel):
     b.mouse_entered.connect(func():
-        if b.disabled:
+        if deploy_button.disabled:
             return
         d.visible = true)
     b.mouse_exited.connect(func():

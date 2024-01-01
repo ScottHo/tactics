@@ -4,12 +4,18 @@ var collectionPanel: CollectionPanel
 var upgradePanel: UpgradePanel
 var deployPanel: DeployPanel
 var startMissionButton: Button
+var enemyPanel: MissionEnemyPanel
+var objectiveLabel: Label
+var mission: Mission
+
 
 func _ready():
     collectionPanel = $CollectionContainer
     upgradePanel = $SelectedContainer
     deployPanel = $DeployContainer
     startMissionButton = $StartMission
+    enemyPanel = $EnemyPanel
+    objectiveLabel = $Control/Objectives
     collectionPanel.entity_selected.connect(entity_selected)
     upgradePanel.deployed.connect(entity_deployed)
     deployPanel.entity_removed.connect(entity_removed_from_deploy)
@@ -18,10 +24,13 @@ func _ready():
     return
 
 func start():
+    mission = Globals.curent_mission    
     upgradePanel.skill_points_base = Globals.skill_points
     collectionPanel.start()
     upgradePanel.reset()
     deployPanel.start()
+    enemyPanel.start(mission.boss)
+    objectiveLabel.text = mission.description
     startMissionButton.disabled = true
     return
 

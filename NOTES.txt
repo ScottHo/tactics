@@ -2,9 +2,10 @@ BUGS
 - Oilee Moves disable if refuel with 0 movement
 
 NEEDS
-- GUI backgrounds for deploy/mission GUI
-- Start Screen
+- GUI backgrounds for mission GUI
+- Better Start Screen
 - Splash Screen
+- Decide how story progress will work
 
 NEEDS BUT LATER
 - Undo Button
@@ -21,6 +22,7 @@ POLISH
 - Confirm Popup windows where relevant
 - "Popup" for current action
 - Different target highlights for good/bad
+- Spawn hover boxes on left/right depending on camera position
 
 
 CLASS/ABILITY IDEAS

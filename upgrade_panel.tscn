@@ -554,7 +554,7 @@ vertical_alignment = 1
 
 [node name="SpecialPanel" parent="GridContainer/Action1" instance=ExtResource("16_31s5c")]
 z_index = 10
-position = Vector2(110.322, -271.384)
+position = Vector2(-294.655, -254.047)
 
 [node name="Action2" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -629,7 +629,7 @@ vertical_alignment = 1
 
 [node name="SpecialPanel" parent="GridContainer/Action2" instance=ExtResource("16_31s5c")]
 z_index = 10
-position = Vector2(110.322, -271.384)
+position = Vector2(-294.655, -254.047)
 
 [node name="Bottom" type="Control" parent="."]
 layout_mode = 3
