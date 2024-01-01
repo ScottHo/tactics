@@ -3,7 +3,6 @@ class_name CollectionPanel extends Node2D
 @onready var grid = $GridContainer
 var entities := []
 var page := 1
-var deploy_full := false
 
 signal entity_selected
 

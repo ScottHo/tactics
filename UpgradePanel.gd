@@ -38,6 +38,7 @@ var special1_max := 4
 var special2_max := 4
 var range_max := 2
 var skill_points_base := 0
+var deploy_full := false
 
 var _entity: Entity
 var action1_copy: Action
@@ -76,7 +77,7 @@ func set_button_signals():
 
 func description_hover_signal(b: Button, d: SpecialDescriptionPanel):
     b.mouse_entered.connect(func():
-        if deploy_button.disabled:
+        if reset_button.disabled:
             return
         d.visible = true)
     b.mouse_exited.connect(func():
@@ -275,7 +276,8 @@ func setup_entity():
     entity_sprite.texture = load(_entity.icon_path)
     entity_label.text = _entity.display_name
     reset_button.disabled = false
-    deploy_button.disabled = false
+    if not deploy_full:
+        deploy_button.disabled = false
     return
 
 func update_action_descriptions():
@@ -283,5 +285,13 @@ func update_action_descriptions():
     action2_copy.level = special2_mod
     action1_description.set_action(action1_copy)
     action2_description.set_action(action2_copy)    
+    return
+
+func set_deploy_full(full: bool):
+    deploy_full = full
+    if deploy_full or reset_button.disabled:
+        deploy_button.disabled = true
+    else:
+        deploy_button.disabled = false
     return
 

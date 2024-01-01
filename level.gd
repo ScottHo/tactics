@@ -99,7 +99,8 @@ func setup_entities():
         # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
         for i in range(len(allies)):
-            setup_entity_for_level(allies[i], Vector2i(0, i))
+            if allies[i] != null:
+                setup_entity_for_level(allies[i], Vector2i(0, i))
         
     # TODO Setup service to randomly put these down
     setup_interactable_for_level(Globals.curent_mission.buffs[0], Vector2i(3,3))

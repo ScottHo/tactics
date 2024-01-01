@@ -43,12 +43,12 @@ func entity_deployed(ent: Entity):
     collectionPanel.entity_deployed(ent)
     deployPanel.add_entity(ent)
     if deployPanel.is_full():
-        collectionPanel.deploy_full = true
+        upgradePanel.set_deploy_full(true)
     return
 
 func entity_removed_from_deploy(ent: Entity):
     collectionPanel.entity_undeployed(ent)
-    collectionPanel.deploy_full = false
+    upgradePanel.set_deploy_full(false)
     if deployPanel.is_empty():
         startMissionButton.disabled = true
     return
