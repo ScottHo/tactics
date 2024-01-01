@@ -221,6 +221,12 @@ func shielded(value, count):
     sprite.textAnimation().status_effect(value, "Shielded")
     return
 
+func weakened(value, count):
+    weakness_value = value
+    weakness_count = count
+    sprite.textAnimation().status_effect(value, "Weakened")
+    return
+
 func add_iteractable(inter: Interactable):
     interactable = inter
     sprite.add_interactable(inter)

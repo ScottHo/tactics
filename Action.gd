@@ -14,8 +14,11 @@ func get_from_stats(key, default=0):
         return stats[key]
     return default
 
-func range_modifier():
+func range_modifier() -> int:
     return get_from_stats("Additional Range")
+
+func threat() -> int:
+    return get_from_stats("Threat Gain", 0)
 
 func self_cast_only():
     if get_from_stats("Affects", "All Units") == "Self":

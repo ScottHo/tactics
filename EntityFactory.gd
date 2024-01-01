@@ -23,7 +23,7 @@ static func create_electro():
     return ent
 
 static func create_nanonano():
-    var ent = _create_entity("Nano-nano", 10, 3, 4, 10, "res://nanonano.tscn", "res://Assets/NanoNano.png", true)
+    var ent = _create_entity("Nano-nano", 10, 3, 3, 10, "res://nanonano.tscn", "res://Assets/NanoNano.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_focused_repair(ent, ActionType.ACTION1)
     ActionFactory.add_nano_field(ent, ActionType.ACTION2)
@@ -42,6 +42,28 @@ static func create_longshot():
     ActionFactory.add_snipe(ent, ActionType.ACTION1)
     ActionFactory.add_titanium_bullet(ent, ActionType.ACTION2)
     return ent
+
+static func create_batterie():
+    var ent = _create_entity("Batterie", 10, 3, 3, 10, "res://batterie.tscn", "res://Assets/batterie.png", true)
+    ActionFactory.add_base_attack(ent)
+    ActionFactory.add_power_up(ent, ActionType.ACTION1)
+    ActionFactory.add_shock_therapy(ent, ActionType.ACTION2)
+    return ent
+
+static func create_punch_e():
+    var ent = _create_entity("Punch-E", 10, 5, 1, 10, "res://punch-e.tscn", "res://Assets/punch-e.png", true)
+    ActionFactory.add_base_attack(ent)
+    ActionFactory.add_precise_strike(ent, ActionType.ACTION1)
+    ActionFactory.add_robo_punch(ent, ActionType.ACTION2)
+    return ent
+
+static func create_peppershot():
+    var ent = _create_entity("Peppershot", 10, 3, 4, 10, "res://pepeershot.tscn", "res://Assets/peppershot.png", true)
+    ActionFactory.add_base_attack(ent)
+    ActionFactory.add_scatter_shot(ent, ActionType.ACTION1)
+    ActionFactory.add_spray_and_pray(ent, ActionType.ACTION2)
+    return ent
+
 
 static func create_boss_1():
     var ent = _create_entity("Evil Red", 30, 5, 1, 10, "res://enemy_1.tscn", "res://Assets/Boss1.png", false)
