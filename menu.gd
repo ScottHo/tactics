@@ -298,7 +298,8 @@ func disableActionButtons():
     action2Button.disabled = true
     return
 
-func set_mechanic_text(t):
+func set_mechanic_text(n, t):
+    $MechanicContainer/MechanicName.text = n
     $MechanicContainer/MechanicLabel.text = t
     return
 

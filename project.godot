@@ -24,7 +24,7 @@ Globals="*res://Globals.gd"
 window/size/viewport_width=1536
 window/size/viewport_height=864
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 
 [gui]
 

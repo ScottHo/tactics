@@ -93,7 +93,11 @@ func do_special_effect():
 
 func next_special_description():
     var s: Special = next_special()
-    return s.display_name + "\n" + s.description
+    return  s.description
+
+func next_special_name():
+    var s: Special = next_special()
+    return s.display_name
 
 func special() -> Special:
     return _specials[counter() % len(_specials)]

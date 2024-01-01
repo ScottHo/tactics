@@ -209,7 +209,8 @@ func startAiSpecial():
     cameraService.reset()
     aiSpecialService.start(currentEntity(), Globals.curent_mission)
     if aiSpecialService.counter() == -1:
-        menuService.set_mechanic_text(aiSpecialService.next_special_description())    
+        menuService.set_mechanic_text(aiSpecialService.next_special_name(),
+                aiSpecialService.next_special_description())    
         nextAiStep()
         return
     aiSpecialService.find_special_targets()
@@ -219,7 +220,8 @@ func startAiSpecial():
 
 func doAiSpecial():
     aiSpecialService.do_special_effect()
-    menuService.set_mechanic_text(aiSpecialService.next_special_description())    
+    menuService.set_mechanic_text(aiSpecialService.next_special_name(),
+            aiSpecialService.next_special_description())
     aiSpecialService.finish()
     update_character_menu()
     if not checkDeaths():

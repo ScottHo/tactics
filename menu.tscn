@@ -174,12 +174,22 @@ text = "Boss Spell Incoming"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="MechanicName" type="Label" parent="MechanicContainer"]
+offset_left = 40.597
+offset_top = 28.8102
+offset_right = 335.597
+offset_bottom = 50.8102
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="MechanicLabel" type="Label" parent="MechanicContainer"]
 layout_mode = 0
-offset_left = 40.597
-offset_top = 32.9724
-offset_right = 335.597
-offset_bottom = 132.972
+offset_left = 41.1916
+offset_top = 51.4051
+offset_right = 336.192
+offset_bottom = 133.405
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 13
 autowrap_mode = 2
