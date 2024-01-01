@@ -84,6 +84,7 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
     ent.location = location
     if ent.is_ally:
         var _id = state.addAlly(ent)
+        ent.set_energy(1)
     else:
         var _id = state.addEnemy(ent)
     ent.sprite = sprite

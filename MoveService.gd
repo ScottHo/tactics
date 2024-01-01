@@ -51,7 +51,7 @@ func highlightPath(clear: bool):
     if clear:
         color = Highlights.PURPLE
     for point in _points:
-        highlightMap.set_cell(0, point , 0, color, 0)
+        highlightMap.highlightVec(point, color)
     return
 
 func finish():

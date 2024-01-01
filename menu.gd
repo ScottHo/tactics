@@ -210,6 +210,9 @@ func updateEntityInfo(entity: Entity):
     if not entity.is_ally:
         threatLabel.text = "-"
     _set_colors(entity)
+
+    if entity.moves_left > 0 and entity.is_ally:
+        moveButton.disabled = false
     return
 
 func _set_colors(entity: Entity):

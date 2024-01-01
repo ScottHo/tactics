@@ -26,7 +26,7 @@ func find_attack_location() -> Vector2i:
     if target_entity == null:
         return Vector2i(999, 999)
     target_entity.threat -= 2
-    highlightMap.set_cell(0, target_entity.location, 0, Highlights.RED, 0)
+    highlightMap.highlightVec(target_entity.location,Highlights.RED)
     return target_entity.location
 
 func do_attack(target: Vector2i):

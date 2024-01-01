@@ -1,19 +1,20 @@
 BUGS
-- Oilee Moves disable if refuel with 0 movement
-- Highlight tiles show offscreen on AOE
+- Effect text colors sometimes wrong
 
 NEEDS
-- GUI backgrounds for mission GUI
-- Better Start Screen
-- Splash Screen
-- Decide how story progress will work
-
-NEEDS BUT LATER
-- Undo Button
+- Effect texts for shield/buffs/etc.
 - 3 Levels
 - 12 different bots
 - Get new bots
+
+
+NEEDS BUT LATER
+- Decide how story progress will work
+- Better Start Screen
+- Splash Screen
+- Undo Button
 - Randomly spawn buffs
+- GUI backgrounds for mission GUI
 
 ART
 - Animations

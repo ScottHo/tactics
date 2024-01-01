@@ -49,15 +49,15 @@ func setState(state: State):
 
 func fillTargetHighlights():
     for point in _target_points:
-        highlightMap.set_cell(0, point, 0, Highlights.RED, 0)
+        highlightMap.highlightVec(point, Highlights.RED)
     return
 
 func clearTargetHighlights():
     for point in _target_points:
         if _map_bfs.inRange(point, action().self_castable()):
-            highlightMap.set_cell(0, point, 0, Highlights.PURPLE, 0)
+            highlightMap.highlightVec(point, Highlights.PURPLE)
         else:
-            highlightMap.set_cell(0, point, 0, Highlights.EMPTY, 0)
+              highlightMap.highlightVec(point, Highlights.EMPTY)
     _target_points = []
     return
 

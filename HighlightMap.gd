@@ -1,7 +1,7 @@
 class_name HighlightMap extends TileMap
 
 var lastLocation
-
+@onready var tileMap: TileMap = $"../TileMap"
 
 func highlight(entity: Entity):
     clearHighlight()
@@ -16,5 +16,6 @@ func clearHighlight():
     return
 
 func highlightVec(location, color):
-    set_cell(0, location, 0, color, 0)
+    if tileMap.in_range(location):
+        set_cell(0, location, 0, color, 0)
     return

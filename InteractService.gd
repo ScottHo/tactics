@@ -72,14 +72,14 @@ func setState(state: State):
     return
 
 func fillTargetHighlights():
-    highlightMap.set_cell(0, _target, 0, Highlights.RED, 0)
+    highlightMap.highlightVec(_target, Highlights.RED)
     return
 
 func clearTargetHighlights():
     if _map_bfs.inRange(_target):
-        highlightMap.set_cell(0, _target, 0, Highlights.PURPLE, 0)
+        highlightMap.highlightVec(_target, Highlights.PURPLE)
     else:
-        highlightMap.set_cell(0, _target, 0, Highlights.EMPTY, 0)
+        highlightMap.highlightVec(_target, Highlights.EMPTY)
     _target = Vector2i(999,999)
     return
 
