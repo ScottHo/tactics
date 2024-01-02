@@ -54,7 +54,7 @@ offset_top = -526.161
 offset_right = 234.277
 offset_bottom = -477.161
 theme_override_font_sizes/font_size = 36
-text = "MISSION BRIEF"
+text = "MISSION BRIEFING"
 horizontal_alignment = 1
 
 [node name="EnemyPanel" parent="." instance=ExtResource("6_0ivkj")]

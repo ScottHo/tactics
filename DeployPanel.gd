@@ -18,6 +18,7 @@ func start():
     for c in grid.get_children():
         sprite(c).texture = load(Globals.NO_BOT_ICON_PATH)
         button(c).disabled = true
+    update_count()
     return
 
 func add_entity(entity: Entity):
@@ -27,7 +28,7 @@ func add_entity(entity: Entity):
             var c = container(i)
             sprite(c).texture = load(entity.icon_path)
             button(c).disabled = false
-            set_count()
+            update_count()
             return 
     return
 
@@ -37,7 +38,7 @@ func remove_entity(idx: int):
     var c = container(idx)
     sprite(c).texture = load(Globals.NO_BOT_ICON_PATH)
     button(c).disabled = true
-    set_count()
+    update_count()
     entity_removed.emit(entity)
     return
 
@@ -47,12 +48,12 @@ func is_full() -> bool:
 func is_empty() -> bool:
     return _entities.count(null) == len(_entities)
 
-func set_count():
+func update_count():
     countLabel.text = str(abs(_entities.count(null)-6)) + "/" + str(len(_entities))
     if is_full():
-        countLabel.modulate = Color.GREEN
+        countLabel.modulate = Color.LAWN_GREEN
     elif is_empty():
-        countLabel.modulate = Color.RED
+        countLabel.modulate = Color.DARK_RED
     else:
         countLabel.modulate = Color.WHITE
     return
