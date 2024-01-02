@@ -57,8 +57,6 @@ func _ready():
         action2_c,
         range_c
     ]
-    action1_description.visible = false
-    action2_description.visible = false
     set_button_signals()
     reset()
     return
@@ -67,15 +65,26 @@ func set_button_signals():
     for container in containers:
         button(container).pressed.connect(func():
             skill_point_added(container))
-            
-    description_hover_signal(button(action1_c), action1_description)
-    description_hover_signal(button(action2_c), action2_description)
+        if container == action1_c:
+            description_hover_signal(button(container), action1_description)
+        elif container == action2_c:
+            description_hover_signal(button(container), action2_description)
+        else:
+            description_hover_signal(button(container), stat_hover_panel(container))
+        stat_hover_panel(container).visible = false
+
+    stat_hover_panel(health_c).show_health() 
+    stat_hover_panel(armor_c).show_armor()
+    stat_hover_panel(movement_c).show_movement()
+    stat_hover_panel(initiative_c).show_initiative()
+    stat_hover_panel(attack_c).show_damage()
+    stat_hover_panel(range_c).show_range()
     
     reset_button.pressed.connect(redo)
     deploy_button.pressed.connect(deploy)
     return
 
-func description_hover_signal(b: Button, d: SpecialDescriptionPanel):
+func description_hover_signal(b: Button, d: Node2D):
     b.mouse_entered.connect(func():
         if reset_button.disabled:
             return
@@ -107,6 +116,9 @@ func modifierLabel(container) -> Label:
 
 func maxedLabel(container) -> Label:
     return container.get_child(5)
+
+func stat_hover_panel(container) -> Node2D:
+    return container.get_child(6)
 
 func skill_point_added(container):
     var _progress = progress(container) 
@@ -257,6 +269,8 @@ func setup_entity():
     statLabel(movement_c).text = str(_entity.movement)
     statLabel(initiative_c).text = str(_entity.initiative)
     statLabel(attack_c).text = str(_entity.damage)
+    statLabel(action1_c).text = _entity.action1.display_name
+    statLabel(action2_c).text = _entity.action2.display_name
     modifierLabel(action1_c).text = str(_entity.action1.level)
     modifierLabel(action2_c).text = str(_entity.action2.level)
     statLabel(range_c).text = str(_entity.range)
@@ -270,8 +284,6 @@ func setup_entity():
         button(container).disabled = false
         if container == range_c and _entity.range == 1:
             button(container).disabled = true
-        if container == action1_c or container == action2_c:
-            statLabel(container).text = "Level"
         
     entity_sprite.texture = load(_entity.icon_path)
     entity_label.text = _entity.display_name

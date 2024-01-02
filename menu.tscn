@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=40 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://chkt1na1as41e" path="res://Assets/Energy_Over_Thick.png" id="12_otygi"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="12_xlgau"]
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="13_k180g"]
-[ext_resource type="Texture2D" uid="uid://dhyotx8kv2bn1" path="res://Assets/expand-button.png" id="14_f8s5v"]
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="14_m7c37"]
 [ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="14_t4p6o"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="17_diddf"]
@@ -175,6 +174,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MechanicName" type="Label" parent="MechanicContainer"]
+layout_mode = 0
 offset_left = 40.597
 offset_top = 28.8102
 offset_right = 335.597
@@ -630,62 +630,80 @@ libraries = {
 }
 
 [node name="TurnsContainer" type="ReferenceRect" parent="."]
-offset_left = 1085.04
-offset_top = 803.557
-offset_right = 1125.04
-offset_bottom = 843.557
+offset_left = 1085.71
+offset_top = 796.883
+offset_right = 1125.71
+offset_bottom = 836.883
 
-[node name="ExpandHover" type="Sprite2D" parent="TurnsContainer"]
-position = Vector2(8.88391, 19.1546)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("14_f8s5v")
-
-[node name="ExpandReference" type="ReferenceRect" parent="TurnsContainer"]
+[node name="ShowTurnsButton" type="Button" parent="TurnsContainer"]
 layout_mode = 0
-offset_left = -19.5236
-offset_top = -10.1935
-offset_right = 40.4764
-offset_bottom = 49.8065
+offset_left = -69.3241
+offset_top = -26.3303
+offset_right = 30.6759
+offset_bottom = 73.6697
+theme_type_variation = &"TriangleButton"
+toggle_mode = true
 
-[node name="Turn0" type="Sprite2D" parent="TurnsContainer"]
+[node name="GridContainer" type="GridContainer" parent="TurnsContainer"]
 visible = false
-position = Vector2(-45, 17)
+layout_direction = 3
+layout_mode = 0
+offset_left = 140.273
+offset_top = 21.0
+offset_right = 950.273
+offset_bottom = 21.0
+theme_override_constants/h_separation = 76
+columns = 10
 
-[node name="Turn1" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-100, 17)
+[node name="Control" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
 
-[node name="Turn2" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-155, 17)
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control"]
 
-[node name="Turn3" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-210, 17)
+[node name="Control2" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
 
-[node name="Turn4" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-265, 17)
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control2"]
 
-[node name="Turn5" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-320, 17)
+[node name="Control3" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
 
-[node name="Turn6" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-375, 17)
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control3"]
 
-[node name="Turn7" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-430, 17)
+[node name="Control4" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
 
-[node name="Turn8" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-485, 17)
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control4"]
 
-[node name="Turn9" type="Sprite2D" parent="TurnsContainer"]
-visible = false
-position = Vector2(-540, 17)
+[node name="Control5" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control5"]
+
+[node name="Control6" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control6"]
+
+[node name="Control7" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control7"]
+
+[node name="Control8" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control8"]
+
+[node name="Control9" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control9"]
+
+[node name="Control10" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control10"]
 
 [node name="Timer" type="Timer" parent="."]
 

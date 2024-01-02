@@ -29,17 +29,17 @@ static func add_exert(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
         "Cost": 3,
-        "Damage Amp": [2, 2, 3, 3],
+        "Damage Amp": [2, 2, 3, 4],
         "Self Cripple": 3,
         "Cripple Duration": 1,
         "Threat Gain": 3,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
-        user.crippled(action.get_from_stats("Cripple"), action.get_from_stats("Cripple Duration"))
+        user.crippled(action.get_from_stats("Self Cripple"), action.get_from_stats("Cripple Duration"))
         for _ent in targets:
             _ent.loseHP(user.get_damage() + user.get_damage())
         return
-    var d = "Brutus Exterts itself so hard it cripples itself."
+    var d = "Brutus exterts and swings hard, cripplig its own movement for next turn"
     
     _add_action(ent, "Exert", d, [], effect, type, stats)
     return
@@ -48,7 +48,7 @@ static func add_take_cover(ent: Entity, type: int):
     var stats = {
         "Affects": "Self",
         "Cost": 1,
-        "Shield Amount": [2, 4, 6, 8],
+        "Shield Amount": [4, 8, 12, 16],
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         user.shield_count = action.get_from_stats("Shield Amount")
@@ -61,15 +61,15 @@ static func add_oil_bomb(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
         "Cost": 2,
-        "Additional Range": 2,
-        "Additional Damage": [0, 1, 2, 3],
+        "Extra Range": 2,
+        "Extra Damage": [0, 1, 2, 3],
         "Cripple": [2, 2, 3, 3],
         "Cripple Duration": 1,
         "Threat Gain": 1,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.loseHP(user.damage + action.get_from_stats("Additional Damage"))
+            _ent.loseHP(user.damage + action.get_from_stats("Extra Damage"))
             _ent.crippled(action.get_from_stats("Cripple"),
                     action.get_from_stats("Cripple Duration"))
         return
@@ -101,7 +101,7 @@ static func add_storm(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
         return
-    var d = "Create an unstable electro magnetic field and make everything not work"
+    var d = "Create an unstable electro magnetic field and electrocute everything"
     _add_action(ent, "Storm", d, shape_3x3, effect, type, stats)
     return
 
@@ -109,7 +109,7 @@ static func add_static_shield(ent: Entity, type: int):
     var stats = {
         "Affects": "All Units",
         "Cost": 2,
-        "Shield Amount": [1, 2, 3, 4],
+        "Shield Amount": [2, 4, 6, 8],
         "Shield Duration": 2
     }
     var effect = func (user: Entity, targets: Array, action: Action):
@@ -139,7 +139,7 @@ static func add_nano_field(ent: Entity, type: int):
     var stats = {
         "Affects": "All Allied Units",
         "Cost": 2,
-        "Heal Amount": [2, 3, 4, 5],
+        "Heal Amount": [4, 6, 8, 10],
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
@@ -180,29 +180,29 @@ static func add_engine_upgrade(ent: Entity, type: int):
 static func add_snipe(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
-        "Additional Range": [3,3,4,4],
-        "Additional Damage": [0,1,1,2],
+        "Extra Range": [3,3,4,4],
+        "Extra Damage": [1,2,3,4],
         "Threat Gain": 1,
         "Cost": 1
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
+            _ent.loseHP(user.get_damage() + action.get_from_stats("Extra Damage"))
         return
-    var d = "Extend the barrel and snipe"
+    var d = "Extend the barrel and snipe em"
     _add_action(ent, "Snipe", d, [], effect, type, stats)
     return
 
 static func add_titanium_bullet(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
-        "Additional Damage": [6,8,12,14],
+        "Extra Damage": [6,9,12,15],
         "Threat Gain": 3,
         "Cost": 5
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
+            _ent.loseHP(user.get_damage() + action.get_from_stats("Extra Damage"))
         return
     var d = "Fire a huge titanium bullet at an enemy"
     _add_action(ent, "Titanium Bullet", d, [], effect, type, stats)
@@ -218,7 +218,7 @@ static func add_power_up(ent: Entity, type: int):
         for _ent in targets:
             _ent.update_energy(action.get_from_stats("Energy Gain"))
         return
-    var d = "Give energy to an allied unit"
+    var d = "Siphon energy to an allied unit"
     _add_action(ent, "Power Up", d, [], effect, type, stats)
     return
 
@@ -227,7 +227,7 @@ static func add_shock_therapy(ent: Entity, type: int):
         "Affects": "All Units",
         "Health Gain": [1,2,3,4],
         "Energy Gain": 1,
-        "Additional Damage": [0,1,2,3],
+        "Extra Damage": [0,1,2,3],
         "Cost": 3,
         "Threat Gain": 1
     }
@@ -237,7 +237,7 @@ static func add_shock_therapy(ent: Entity, type: int):
                 _ent.update_energy(action.get_from_stats("Energy Gain"))
                 _ent.gainHP(action.get_from_stats("Health Gain"))
             else:
-                _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
+                _ent.loseHP(user.get_damage() + action.get_from_stats("Extra Damage"))
         return
     var d = "Shock an area with extreme precision, giving health and energy to allies and damaging enemies"
     _add_action(ent, "Shock Therapy", d, diamond, effect, type, stats)
@@ -246,22 +246,25 @@ static func add_shock_therapy(ent: Entity, type: int):
 static func add_scatter_shot(ent: Entity, type: int):
     var stats = {
         "Affects": "All Units",
-        "Additional Damage": [0,1,2,3],
-        "Cost": 1,
+        "Extra Damage": 2,
+        "Number of Attacks": [2,3,4,5],
+        "Hit Chance": "33%",        
+        "Cost": 2,
         "Threat Gain": 1
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
+            if randi_range(0, 2) == 0:
+                    _ent.loseHP(user.get_damage() + action.get_from_stats("Extra Damage"))
         return
-    var d = "Spray an area with loosely targetted bullets"
+    var d = "Blanket an area with loosely targetted bullets"
     _add_action(ent, "Scatter Shot", d, diamond, effect, type, stats)
     return
 
 static func add_spray_and_pray(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
-        "Additional Damage": 1,
+        "Extra Damage": 2,
         "Number of Attacks": [2,3,4,5],
         "Hit Chance": "50%",
         "Cost": 2,
@@ -271,10 +274,10 @@ static func add_spray_and_pray(ent: Entity, type: int):
         for _ent in targets:
             for i in range(action.get_from_stats("Number of Attacks")):
                 if randi_range(0, 1) == 0:
-                    _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
+                    _ent.loseHP(user.get_damage() + action.get_from_stats("Extra Damage"))
         return
     var d = "Fire a lot of bullets at an enemy with questionable accuracy"
-    _add_action(ent, "Spray and Pray", d, diamond, effect, type, stats)
+    _add_action(ent, "Spray and Pray", d, [], effect, type, stats)
     return
 
 static func add_precise_strike(ent: Entity, type: int):

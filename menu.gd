@@ -35,11 +35,8 @@ signal menuAnimationsFinished
 @onready var healthBar: TextureProgressBar = $CharacterContainer/HealthBar
 @onready var energyBar: TextureProgressBar = $CharacterContainer/EnergyBar
 
-@onready var expandHover: Sprite2D = $TurnsContainer/ExpandHover
-@onready var turnSprites: Array = [$TurnsContainer/Turn0, $TurnsContainer/Turn1,
-    $TurnsContainer/Turn2, $TurnsContainer/Turn3, $TurnsContainer/Turn4,
-    $TurnsContainer/Turn5, $TurnsContainer/Turn6, $TurnsContainer/Turn7,
-    $TurnsContainer/Turn8, $TurnsContainer/Turn9]
+@onready var showTurnsButton: Button = $TurnsContainer/ShowTurnsButton
+@onready var turnSpriteContainer: Control = $TurnsContainer/GridContainer
 
 @onready var descSpecialPanel: SpecialDescriptionPanel = $DescriptionContainer/SpecialPanel
 @onready var descShortPanel: Sprite2D = $DescriptionContainer/ShortPanel
@@ -61,10 +58,8 @@ func _ready():
     setup_action_button(action1Button, ActionType.ACTION1)
     setup_action_button(action2Button, ActionType.ACTION2)
 
-    $TurnsContainer/ExpandReference.mouse_entered.connect(func():
-        show_future_turns(true))
-    $TurnsContainer/ExpandReference.mouse_exited.connect(func():
-        show_future_turns(false))
+    showTurnsButton.toggled.connect(func(b):
+        show_future_turns(b))
 
     $Timer.timeout.connect(finish_menu_animations)
 
@@ -108,7 +103,7 @@ func setState(state: State):
 
 func showTurns(turns: Array[int]):
     for i in range(10):
-        _setup_turn_sprite(_state.get_entity(turns[i]), turnSprites[i])
+        _setup_turn_sprite(_state.get_entity(turns[i]), turnSpriteContainer.get_child(i).get_child(0))
     return
 
 func _setup_turn_sprite(entity: Entity, sprite: Sprite2D):
@@ -117,12 +112,7 @@ func _setup_turn_sprite(entity: Entity, sprite: Sprite2D):
     return
 
 func show_future_turns(show):
-    #if show:
-    #    expandHover.texture = load("res://Assets/expand-button-glow.png")
-    #else:
-    #    expandHover.texture = load("res://Assets/expand-button.png")
-    for i in range(10):
-        turnSprites[i].visible = show
+    turnSpriteContainer.visible = show
     return
 
 func pre_showCurrentTurn(turn: int):
@@ -363,7 +353,7 @@ func show_description(show, action_type):
         elif action_type == ActionType.INTERACT:
             descMoveInterName.visible = true
             descInterDesc.visible = true
-            descInter.visible = true            
+            descInter.visible = true
             descMoveInterName.text = "Interact"
             if _current_interactable == "":
                 descInterDesc.text = "Interact with or pick up a field object"

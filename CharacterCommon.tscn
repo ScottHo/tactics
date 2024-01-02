@@ -75,6 +75,7 @@ position = Vector2(-0.182508, -56.9488)
 
 [node name="InfoBoxContainer" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.862745)
+z_index = 10
 position = Vector2(94.6259, -20.8391)
 script = ExtResource("6_m13e8")
 

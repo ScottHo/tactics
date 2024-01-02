@@ -2,6 +2,7 @@ class_name DeployPanel extends Node2D
 
 var _entities = [null, null, null, null, null, null]
 @onready var grid = $GridContainer
+@onready var countLabel = $Label
 
 signal entity_removed
 
@@ -26,6 +27,7 @@ func add_entity(entity: Entity):
             var c = container(i)
             sprite(c).texture = load(entity.icon_path)
             button(c).disabled = false
+            set_count()
             return 
     return
 
@@ -35,6 +37,7 @@ func remove_entity(idx: int):
     var c = container(idx)
     sprite(c).texture = load(Globals.NO_BOT_ICON_PATH)
     button(c).disabled = true
+    set_count()
     entity_removed.emit(entity)
     return
 
@@ -43,6 +46,16 @@ func is_full() -> bool:
 
 func is_empty() -> bool:
     return _entities.count(null) == len(_entities)
+
+func set_count():
+    countLabel.text = str(abs(_entities.count(null)-6)) + "/" + str(len(_entities))
+    if is_full():
+        countLabel.modulate = Color.GREEN
+    elif is_empty():
+        countLabel.modulate = Color.RED
+    else:
+        countLabel.modulate = Color.WHITE
+    return
 
 func sprite(c) -> Sprite2D:
     return c.get_child(0)

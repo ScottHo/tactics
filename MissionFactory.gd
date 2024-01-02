@@ -66,7 +66,7 @@ static func mission_3():
     
     var s1 = Special.new()
     s1.display_name = "Massive Nuke"
-    s1.description = "Deals 10 damage spread over every allied unit in a 13 area, centered on a random allied unit"
+    s1.description = "Deals 10 damage spread over every allied unit in a 13 tile area, centered on a random allied unit"
     s1.target = Special.Target.RANDOM
     s1.shape = Special.Shape.DIAMOND_3x3
     s1.mechanic = Special.Mechanic.SOAK
@@ -76,7 +76,7 @@ static func mission_3():
 
     var s2 = Special.new()
     s2.display_name = "Widespread destruction"
-    s2.description = "Deals 2 damage to every allied unit in a 13 square area, centered on every allied unit"
+    s2.description = "Deals 2 damage to every allied unit in a 13 tile area, centered on every allied unit"
     s2.target = Special.Target.ALL
     s2.shape = Special.Shape.DIAMOND_3x3
     s2.mechanic = Special.Mechanic.SPREAD
@@ -92,7 +92,7 @@ static func mission_3():
     s3.mechanic = Special.Mechanic.BUFF
     s3.damage = 0
     s3.effect = func(ent: Entity):
-        ent.update_initiative(1)
+        ent.update_initiative(2)
 
     
     m.specials = [s1, s2, s3]

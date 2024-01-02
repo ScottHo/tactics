@@ -105,3 +105,13 @@ offset_top = -43.5978
 offset_right = 38.5817
 offset_bottom = 46.4022
 theme_type_variation = &"BotDeployButton"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 461.2
+offset_top = -45.1898
+offset_right = 549.2
+offset_bottom = 3.81015
+theme_override_font_sizes/font_size = 36
+text = "0/6"
+horizontal_alignment = 1
+vertical_alignment = 1

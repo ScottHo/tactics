@@ -15,7 +15,7 @@ func get_from_stats(key, default=0):
     return default
 
 func range_modifier() -> int:
-    return get_from_stats("Additional Range")
+    return get_from_stats("Extra Range")
 
 func threat() -> int:
     return get_from_stats("Threat Gain", 0)

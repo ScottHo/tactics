@@ -3,7 +3,7 @@ BUGS
 NEEDS
 - 12 different bots
 - Get new bots
-
+- permanence for bot stats
 
 NEEDS BUT LATER
 - Decide how story progress will work

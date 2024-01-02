@@ -16,41 +16,41 @@ texture = ExtResource("1_48ejq")
 centered = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 16.5246
-offset_top = 40.5572
-offset_right = 61.5246
-offset_bottom = 61.5572
-theme_override_font_sizes/font_size = 12
+offset_left = 14.2973
+offset_top = 38.33
+offset_right = 62.2973
+offset_bottom = 59.33
+theme_override_font_sizes/font_size = 13
 text = "Cost:"
 
 [node name="CostLabel" type="Label" parent="."]
-offset_left = 65.108
-offset_top = 40.5572
-offset_right = 79.108
-offset_bottom = 61.5572
-theme_override_font_sizes/font_size = 12
+offset_left = 66.8898
+offset_top = 38.33
+offset_right = 80.8898
+offset_bottom = 59.33
+theme_override_font_sizes/font_size = 13
 text = "5
 "
 
 [node name="WhiteBolt" type="Sprite2D" parent="."]
-position = Vector2(83.2218, 48.5092)
+position = Vector2(85.0036, 47.6183)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_hq8kc")
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 15.0322
-offset_top = 55.7459
-offset_right = 89.0322
-offset_bottom = 76.7459
-theme_override_font_sizes/font_size = 12
+offset_left = 14.1413
+offset_top = 56.6368
+offset_right = 94.1413
+offset_bottom = 77.6368
+theme_override_font_sizes/font_size = 13
 text = "Affects:"
 
 [node name="AffectsLabel" type="Label" parent="."]
-offset_left = 91.5904
-offset_top = 55.7459
-offset_right = 247.59
-offset_bottom = 76.7459
-theme_override_font_sizes/font_size = 12
+offset_left = 96.0449
+offset_top = 56.6368
+offset_right = 264.045
+offset_bottom = 77.6368
+theme_override_font_sizes/font_size = 13
 text = "All Friendly Units"
 
 [node name="DescriptionName" type="Label" parent="."]
@@ -69,7 +69,7 @@ offset_top = 74.5638
 offset_right = 279.88
 offset_bottom = 156.564
 theme_override_fonts/font = ExtResource("2_mqpc5")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 15
 text = "No Action Selected."
 autowrap_mode = 2
 

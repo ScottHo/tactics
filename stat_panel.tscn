@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0qvsjt3mlt55"]
+
+[ext_resource type="Script" path="res://stat_panel.gd" id="1_7lc2j"]
+[ext_resource type="Texture2D" uid="uid://io7lwolpslpq" path="res://Assets/short-no-border.png" id="2_6vwvp"]
+[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="2_grmf7"]
+
+[node name="StatPanel" type="Node2D"]
+script = ExtResource("1_7lc2j")
+
+[node name="Panel" type="Sprite2D" parent="."]
+position = Vector2(201.336, 68.5889)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_6vwvp")
+
+[node name="Name" type="Label" parent="."]
+offset_left = 70.1342
+offset_top = 12.0064
+offset_right = 330.134
+offset_bottom = 35.0064
+theme_override_font_sizes/font_size = 18
+text = "Name"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+offset_left = 56.6151
+offset_top = 38.4276
+offset_right = 346.615
+offset_bottom = 98.4276
+theme_override_fonts/font = ExtResource("2_grmf7")
+theme_override_font_sizes/font_size = 15
+text = "Description"
+autowrap_mode = 2

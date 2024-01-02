@@ -12,48 +12,12 @@
 position = Vector2(703.715, 549.559)
 script = ExtResource("1_1roly")
 
-[node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(80.2061, -178.504)
-
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
 position = Vector2(-547.457, -455.971)
 scale = Vector2(1.5, 1.5)
 
-[node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(127.579, 253.126)
-
-[node name="StartMission" type="Button" parent="."]
-offset_left = 607.076
-offset_top = 185.958
-offset_right = 807.076
-offset_bottom = 285.958
-theme = ExtResource("14_qdrbl")
-theme_override_font_sizes/font_size = 20
-text = "START
-MISSION"
-
-[node name="Label" type="Label" parent="."]
-offset_left = -130.723
-offset_top = -526.161
-offset_right = 234.277
-offset_bottom = -477.161
-theme_override_font_sizes/font_size = 36
-text = "MISSION BRIEF"
-horizontal_alignment = 1
-
-[node name="EnemyPanel" parent="." instance=ExtResource("6_0ivkj")]
-offset_left = -542.953
-offset_top = 118.79
-offset_right = -542.953
-offset_bottom = 118.79
-
-[node name="Label2" type="Label" parent="."]
-offset_left = -195.379
-offset_top = 203.284
-offset_right = -140.379
-offset_bottom = 243.284
-theme_override_font_sizes/font_size = 32
-text = "VS"
+[node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
+position = Vector2(80.2061, -176.6)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -83,3 +47,39 @@ Kill the boss
 
 Kill the boss
 Kill the boss"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -130.723
+offset_top = -526.161
+offset_right = 234.277
+offset_bottom = -477.161
+theme_override_font_sizes/font_size = 36
+text = "MISSION BRIEF"
+horizontal_alignment = 1
+
+[node name="EnemyPanel" parent="." instance=ExtResource("6_0ivkj")]
+offset_left = -591.229
+offset_top = 113.133
+offset_right = -591.229
+offset_bottom = 113.133
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -243.656
+offset_top = 197.627
+offset_right = -188.656
+offset_bottom = 237.627
+theme_override_font_sizes/font_size = 32
+text = "VS"
+
+[node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
+position = Vector2(48.3831, 247.469)
+
+[node name="StartMission" type="Button" parent="."]
+offset_left = 607.076
+offset_top = 185.958
+offset_right = 807.076
+offset_bottom = 285.958
+theme = ExtResource("14_qdrbl")
+theme_override_font_sizes/font_size = 20
+text = "START
+MISSION"
