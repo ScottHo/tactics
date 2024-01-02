@@ -2,7 +2,7 @@ class_name EntityFactory
 
 
 static func create_brutus():
-    var ent = _create_entity("Brutis", 22, 4, 1, 10, "res://brutus.tscn", "res://Assets/Brutus.png", true)
+    var ent = _create_entity("Brutis", 21, 4, 1, 10, "res://brutus.tscn", "res://Assets/Brutus.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_exert(ent, ActionType.ACTION1)
     ActionFactory.add_take_cover(ent, ActionType.ACTION2)
@@ -44,7 +44,7 @@ static func create_longshot():
     return ent
 
 static func create_batterie():
-    var ent = _create_entity("Batterie", 18, 3, 3, 10, "res://batterie.tscn", "res://Assets/batterie.png", true)
+    var ent = _create_entity("Batterie", 17, 3, 3, 10, "res://batterie.tscn", "res://Assets/batterie.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_power_up(ent, ActionType.ACTION1)
     ActionFactory.add_shock_therapy(ent, ActionType.ACTION2)

@@ -1,9 +1,18 @@
 BUGS
+- Move hover overwrites highlights when already moving
+- Sometimes boss runs away?
 
 NEEDS
-- 12 different bots
+- permanence for bot stats and previous deployed
+- Tanky bots
 - Get new bots
 - permanence for bot stats
+- end of mission stats panel
+- deploy to slot alternative
+- slight animation for mechanic container
+- more button available animations
+- show moves on hover
+- boss with adds mechanic
 
 NEEDS BUT LATER
 - Decide how story progress will work
