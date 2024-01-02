@@ -14,7 +14,7 @@ func setState(state: State):
 
 func find_attack_location() -> Vector2i:
     var target_entity: Entity = null
-    for _ent in _state.entities.allData():
+    for _ent in _state.all_allies_alive():
         if not _map_bfs.inRange(_ent.location):
             continue    
         if target_entity == null:
@@ -25,7 +25,7 @@ func find_attack_location() -> Vector2i:
             continue
     if target_entity == null:
         return Vector2i(999, 999)
-    target_entity.threat -= 2
+    target_entity.loseThreat(1)
     highlightMap.highlightVec(target_entity.location,Highlights.RED)
     return target_entity.location
 

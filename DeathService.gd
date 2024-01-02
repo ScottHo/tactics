@@ -31,4 +31,10 @@ func processDeaths():
 func doDeathAnimation(entity: Entity):
     print(entity.display_name + " Died!")
     entity.sprite.show_death()
+    var tween = get_tree().create_tween()
+    tween.tween_interval(1)
+    tween.tween_property(entity.sprite, "modulate:a", 0, 1)
+    tween.tween_callback(func():
+        entity.sprite.queue_free()
+        entity.location = Vector2i(999,999))
     return

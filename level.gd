@@ -145,7 +145,7 @@ func doNextTurn():
     return
 
 func startAnimationDelay(delay: float):
-    _do_animation_delay = delay
+    _animation_delay = delay
     _do_animation_delay = true
     return
 
@@ -164,6 +164,10 @@ func nextAiStep():
         startAiAction()
         return
     if _ai_state == AiState.ACTION:
+        if currentEntity().is_add:
+            _ai_state = AiState.NONE
+            nextTurn()
+            return
         _ai_state = AiState.SPECIAL
         startAiSpecial()
         return
@@ -223,6 +227,7 @@ func doAiSpecial():
     menuService.set_mechanic_text(aiSpecialService.next_special_name(),
             aiSpecialService.next_special_description())
     aiSpecialService.finish()
+    turnService.update_new()
     update_character_menu()
     if not checkDeaths():
         nextAiStep()
@@ -240,7 +245,8 @@ func resetPlayerServices():
 func update_character_menu():
     menuService.updateEntityInfo(currentEntity())
     for entity in state.all_entities():
-        entity.update_sprite()
+        if entity.alive:
+            entity.update_sprite()
     return
 
 func doMove(on):
@@ -262,8 +268,9 @@ func movesFound(poses):
     return
 
 func doneMove():
-    cameraService.stop_lock()    
-    currentEntity().sprite.doneMoving.disconnect(doneMove)
+    cameraService.stop_lock()
+    for c in currentEntity().sprite.doneMoving.get_connections():
+        currentEntity().sprite.doneMoving.disconnect(c["callable"])
     if currentEntity().moves_left == 0:
         menuService.disableMovesButton()
     if _is_ai_turn:
@@ -318,7 +325,7 @@ func checkDeaths():
     _animation_callback = processDeathsFinished
     menuService.cache_button_states()
     menuService.disableAllButtons()
-    startAnimationDelay(1)
+    startAnimationDelay(2)
     return true
 
 func processDeathsFinished():

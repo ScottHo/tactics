@@ -76,6 +76,19 @@ func _check_in_inter(vector):
 func inRange(vector: Vector2i, can_target_self := false) -> bool:
     return _bfs_points.has(vector) and (vector != _location or can_target_self)
     
+func in_melee_range(vector: Vector2i):
+    var b = (_bfs_points.has(vector) or \
+            _bfs_points.has(vector + Vector2i(1,0)) or \
+            _bfs_points.has(vector + Vector2i(0,1)) or \
+            _bfs_points.has(vector + Vector2i(-1,0)) or \
+            _bfs_points.has(vector + Vector2i(0,-1))) and \
+            ((vector != _location) and \
+            (vector + Vector2i(1,0) != _location) and \
+            (vector + Vector2i(0,1) != _location) and \
+            (vector + Vector2i(-1,0) != _location) and \
+            (vector + Vector2i(0,-1) != _location))
+    return b
+
 func closestInRange(vector) -> Vector2i:
     var minVec:= Vector2i(9999, 9999)
     var curMin:= 9999

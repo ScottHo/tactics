@@ -10,25 +10,39 @@ var _counters := {}
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
 
+static var layer_0 = [Vector2i(0,0)]
+static var layer_1 = [Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1)]
+static var layer_2 = [Vector2i(1,1), Vector2i(-1,1), Vector2i(-1,-1), Vector2i(1,-1)]
+static var layer_3 = [Vector2i(2,0), Vector2i(0,2), Vector2i(-2,0), Vector2i(0,-2)]
+static var layer_4 = [Vector2i(2,1), Vector2i(1,2), Vector2i(-1, 2), Vector2i(-2,1),
+                      Vector2i(-2,-1), Vector2i(-1,-2), Vector2i(1,-2), Vector2i(2,-1)]
+
 func setState(state: State):
     _state = state
     return
 
 func targets_per_entity(target_entity: Entity) -> Array:
     var vecs = [] 
-    if special().shape == Special.Shape.SQUARE_3x3:
-        vecs = [Vector2i(0,0),
-        Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
-        Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1)
-        ]
     if special().shape == Special.Shape.SINGLE:
-        vecs = [Vector2i(0,0)]
+        vecs.append_array(layer_0)
+    if special().shape == Special.Shape.CROSS:
+        vecs.append_array(layer_0)
+        vecs.append_array(layer_1)
+    if special().shape == Special.Shape.SQUARE_3x3:
+        vecs.append_array(layer_0)
+        vecs.append_array(layer_1)
+        vecs.append_array(layer_2)
     if special().shape == Special.Shape.DIAMOND_3x3:
-        vecs = [Vector2i(0,0),
-        Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1),
-        Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1),
-        Vector2i(2,0), Vector2i(0,2), Vector2i(-2,0), Vector2i(0,-2)
-        ]
+        vecs.append_array(layer_0)
+        vecs.append_array(layer_1)
+        vecs.append_array(layer_2)
+        vecs.append_array(layer_3)
+    if special().shape == Special.Shape.OCTAGON:
+        vecs.append_array(layer_0)
+        vecs.append_array(layer_1)
+        vecs.append_array(layer_2)
+        vecs.append_array(layer_3)
+        vecs.append_array(layer_4)
     for i in len(vecs):
         vecs[i] += target_entity.location
     return vecs
@@ -61,6 +75,26 @@ func mechanic_soak_effect():
         special().effect.call(ent)
     return
 
+func mechanic_spawn_effect():
+    for i in range(len(_targets)):
+        spawn_entity(_targets[i], special().spawns[i])
+    return
+
+func spawn_entity(location: Vector2i, e: Entity):
+    var ent := e.clone()
+    var sprite: EntitySprite  = load(ent.sprite_path).instantiate()
+    $"..".add_child(sprite)
+    sprite.global_position = tileMap.pointToGlobal(location)
+    ent.location = location
+    if ent.is_ally:
+        _state.addAlly(ent)
+        ent.set_energy(1)
+    else:
+        _state.addEnemy(ent)
+    ent.sprite = sprite
+    ent.update_sprite()
+    return
+
 func find_special_targets():
     _targets = []
     if special().target == Special.Target.SELF:
@@ -77,11 +111,32 @@ func find_special_targets():
     if special().target == Special.Target.THREAT:
         var ent = _state.threatOrder()[0]
         _targets = targets_per_entity(ent)
+    
+    if special().target == Special.Target.SPAWN_CLOSE:
+        spawn_targets(_entity)
+    
+    if special().target == Special.Target.SPAWN_RANDOM:
+        var ent = _state.all_allies_alive()[randi_range(0, len(_state.all_allies_alive())-1)]
+        spawn_targets(ent)
 
     for v in _targets:
         highlightMap.highlightVec(v, Highlights.RED)
     return
-    
+
+func spawn_targets(ent):
+    var numSpawns = len(special().spawns)
+    if len(_state.all_enemies_alive()) > 10:
+        return
+    if numSpawns == 0:
+        return
+    for vec in targets_per_entity(ent):
+        if _state.entity_on_tile(vec) == null:
+            _targets.append(vec)
+            numSpawns -= 1
+            if numSpawns == 0:
+                return
+    return
+
 func do_special_effect():
     if special().mechanic == Special.Mechanic.BUFF:
         mechanic_buff_effect()
@@ -89,6 +144,8 @@ func do_special_effect():
         mechanic_soak_effect()
     if special().mechanic == Special.Mechanic.SPREAD:
         mechanic_spread_effect()
+    if special().mechanic == Special.Mechanic.SPAWN:
+        mechanic_spawn_effect()
     return
 
 func next_special_description():

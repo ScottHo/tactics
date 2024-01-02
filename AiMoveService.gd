@@ -22,16 +22,15 @@ func _find_move() -> Array:
     var target := _find_target()
     if target == null:
         return _map_bfs.getPath(_find_closest())
-    var path := _map_bfs.getPath(target.location)
-    if len(path) <= 1:
+    var path := _map_bfs.getPath(_map_bfs.closestInRange(target.location))
+    if len(path) < 1:
         return [_entity.location]
-    path.pop_back()
     _entity.location = path[-1]
     return path
 
 func _find_target() -> Entity:
     for ent in _state.threatOrder():
-        if _map_bfs.inRange(ent.location):
+        if _map_bfs.in_melee_range(ent.location):
             return ent
     return null
 

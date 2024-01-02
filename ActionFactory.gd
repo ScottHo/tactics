@@ -32,29 +32,31 @@ static func add_exert(ent: Entity, type: int):
         "Damage Amp": [2, 2, 3, 4],
         "Self Cripple": 3,
         "Cripple Duration": 1,
-        "Threat Gain": 3,
+        "Threat Gain": 1,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         user.crippled(action.get_from_stats("Self Cripple"), action.get_from_stats("Cripple Duration"))
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + user.get_damage())
+            _ent.loseHP(user.get_damage() * action.get_from_stats("Damage Amp"))
         return
     var d = "Brutus exterts and swings hard, cripplig its own movement for next turn"
     
     _add_action(ent, "Exert", d, [], effect, type, stats)
     return
 
-static func add_take_cover(ent: Entity, type: int):
+static func add_bolster(ent: Entity, type: int):
     var stats = {
         "Affects": "Self",
-        "Cost": 1,
+        "Cost": 3,
         "Shield Amount": [4, 8, 12, 16],
+        "Shield Duration": 1,
+        "Threat Gain": 4,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
-        user.shield_count = action.get_from_stats("Shield Amount")
+        user.shielded(action.get_from_stats("Shield Amount"), action.get_from_stats("Shield Duration"))
         return
-    var d = "Manuever itself and shows its hard exterior, shielding itself for a turn"
-    _add_action(ent, "Take Cover", d, [], effect, type, stats)
+    var d = "Bolster your defensives and attempt to goad the enemy into attacking you"
+    _add_action(ent, "Bolster", d, [], effect, type, stats)
     return
 
 static func add_oil_bomb(ent: Entity, type: int):
@@ -94,12 +96,12 @@ static func add_storm(ent: Entity, type: int):
     var stats = {
         "Affects": "All Units",
         "Cost": 2,
-        "Additional Damage": [2, 3, 4, 5],
-        "Threat Gain": 2,
+        "Extra Damage": [2, 4, 6, 8],
+        "Threat Gain": 1,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.loseHP(user.get_damage() + action.get_from_stats("Additional Damage"))
+            _ent.loseHP(user.get_damage() + action.get_from_stats("Extra Damage"))
         return
     var d = "Create an unstable electro magnetic field and electrocute everything"
     _add_action(ent, "Storm", d, shape_3x3, effect, type, stats)
@@ -125,7 +127,7 @@ static func add_focused_repair(ent: Entity, type: int):
     var stats = {
         "Affects": "All Allied Units",
         "Cost": 2,
-        "Heal Amount": [4, 6, 8, 10],
+        "Heal Amount": [6, 12, 18, 24],
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
@@ -171,7 +173,7 @@ static func add_engine_upgrade(ent: Entity, type: int):
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.movement_modifier += action.get_from_stats("Added Movement")
+            _ent.update_movement(action.get_from_stats("Added Movement"))
         return
     var d = "Add permanent movement to an allied unit"
     _add_action(ent, "Engine Upgrade", d, [], effect, type, stats)
@@ -180,7 +182,7 @@ static func add_engine_upgrade(ent: Entity, type: int):
 static func add_snipe(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
-        "Extra Range": [3,3,4,4],
+        "Extra Range": [2,3,4,5],
         "Extra Damage": [1,2,3,4],
         "Threat Gain": 1,
         "Cost": 1
@@ -196,7 +198,7 @@ static func add_snipe(ent: Entity, type: int):
 static func add_titanium_bullet(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
-        "Extra Damage": [6,9,12,15],
+        "Extra Damage": [6,10,14,18],
         "Threat Gain": 3,
         "Cost": 5
     }
@@ -255,7 +257,7 @@ static func add_scatter_shot(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
             if randi_range(0, 2) == 0:
-                    _ent.loseHP(user.get_damage() + action.get_from_stats("Extra Damage"))
+                _ent.loseHP(user.get_damage() + action.get_from_stats("Extra Damage"))
         return
     var d = "Blanket an area with loosely targetted bullets"
     _add_action(ent, "Scatter Shot", d, diamond, effect, type, stats)

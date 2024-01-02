@@ -1,6 +1,6 @@
 class_name Entity extends Node
 
-var id: int
+var id: int = -1
 var display_name: String
 var sprite: Node2D
 var alive: bool = true
@@ -10,6 +10,7 @@ var action1: Action
 var action2: Action
 var moves_left: int
 var is_ally: bool
+var is_add: bool = false
 var interactable: Interactable
 var sprite_path: String
 var icon_path: String
@@ -50,7 +51,8 @@ var damage_debuff_count: int
 var damage_debuff_value: int
 
 func update_sprite():
-    sprite.update_from_entity(self)
+    if sprite != null:
+        sprite.update_from_entity(self)
     return
 
 func get_damage() -> int:
@@ -242,3 +244,34 @@ func setup_next_turn():
                 interactable.repeated_effect.call(self)
         loseThreat(1)
     return
+
+func clone() -> Entity:
+    var e = Entity.new()
+    e.display_name = display_name
+    e.attack = attack
+    if action1 != null:
+        e.action1 = action1.clone()
+    if action1 != null:
+        e.action2 = action2.clone()
+    e.is_ally = is_ally
+    e.is_add = is_add
+    e.sprite_path = sprite_path
+    e.icon_path = icon_path
+    e.description = description
+    e.health = health
+    e.max_health = max_health
+    e.movement = movement
+    e.initiative = initiative
+    e.damage = damage
+    e.armor = armor
+    e.range = range
+    return e
+    
+    
+    
+    
+    
+    
+    
+    
+    

@@ -5,7 +5,7 @@ static func create_brutus():
     var ent = _create_entity("Brutis", 21, 4, 1, 10, "res://brutus.tscn", "res://Assets/Brutus.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_exert(ent, ActionType.ACTION1)
-    ActionFactory.add_take_cover(ent, ActionType.ACTION2)
+    ActionFactory.add_bolster(ent, ActionType.ACTION2)
     return ent
     
 static func create_oilee():
@@ -68,7 +68,7 @@ static func create_peppershot():
 static func create_boss_1():
     var ent = _create_entity("Evil Red", 60, 5, 1, 10, "res://enemy_1.tscn", "res://Assets/Boss1.png", false)
     ent.description = "Intimidating Placeholder Text"
-    ent.damage += 1
+    ent.damage += 2
     ActionFactory.add_base_attack(ent)
     return ent
 
@@ -81,7 +81,15 @@ static func create_boss_2():
 static func create_boss_3():
     var ent = _create_entity("Evil Orange", 300, 5, 1, 10, "res://enemy_3.tscn", "res://Assets/boss3.png", false)
     ent.description = "Intimidating Placeholder Text"
+    ent.damage += 4
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_spawn_1():
+    var ent = _create_entity("Mini Evil Gray", 8, 3, 1, 10, "res://boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    ent.description = "Intimidating Placeholder Text"
     ent.damage += 2
+    ent.is_add = true
     ActionFactory.add_base_attack(ent)
     return ent
 
@@ -96,7 +104,7 @@ static func _create_entity(display_name, health, movement, _range, initiative, s
     ent.range = _range
     ent.initiative = initiative
     ent.set_max_health(health)
-    ent.set_hp(health)    
+    ent.set_hp(health)
     ent.setThreat(0)
     ent.energy = 0
     ent.is_ally = ally
