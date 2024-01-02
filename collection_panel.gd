@@ -10,7 +10,7 @@ func _ready():
     for i in range(0, 15):
         var c = container(i)
         button(c).toggled.connect(func(t):
-            if t: 
+            if t:
                 entity_clicked(i))
     return
 
@@ -64,6 +64,7 @@ func entity_clicked(idx: int):
 func entity_deployed(ent: Entity):
     var c = container(entities.find(ent))
     deployedLabel(c).visible = true
+    button(c).set_pressed(false)
     button(c).disabled = true
     return
 

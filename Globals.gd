@@ -7,6 +7,7 @@ var level_debug_mode = true
 var curent_mission: Mission
 var skill_points := 5
 var levels_complete = 0
+var entity_skill_point_distributions: Dictionary
 
 static var UNKNOWN_BOT_ICON_PATH = "res://Assets/Unknown.png"
 static var NO_BOT_ICON_PATH = "res://Assets/None.png"

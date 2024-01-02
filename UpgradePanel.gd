@@ -138,28 +138,39 @@ func skill_point_added(container):
         tween.tween_property(anim(container), "scale", prev_scale, .2)
         tween.tween_property(anim(container), "modulate:a", 0, .5) 
         tween.play()
+
+    update_to_global(container)
     return
 
 func update_mods(container):
     match container:
         health_c:
-            health_mod += 1            
-            modifierLabel(container).text = "(+%d)" % health_mod
+            health_mod += 1
+            if health_mod == 0:
+                modifierLabel(container).text = ""
+            else:
+                modifierLabel(container).text = "(+%d)" % health_mod
             modifierLabel(container).label_settings.font_color = Color.GOLD
             if health_mod == health_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
         armor_c:
             armor_mod += 1
-            modifierLabel(container).text = "(+%d)" % armor_mod
-            modifierLabel(container).label_settings.font_color = Color.GOLD
+            if armor_mod == 0:
+                modifierLabel(container).text = ""
+            else:
+                modifierLabel(container).text = "(+%d)" % armor_mod
+                modifierLabel(container).label_settings.font_color = Color.GOLD
             if armor_mod == armor_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
         movement_c:
             movement_mod += 1
-            modifierLabel(container).text = "(+%d)" % movement_mod
-            modifierLabel(container).label_settings.font_color = Color.GOLD
+            if movement_mod == 0:
+                modifierLabel(container).text = ""
+            else:
+                modifierLabel(container).text = "(+%d)" % movement_mod
+                modifierLabel(container).label_settings.font_color = Color.GOLD
             if _entity.range == 1:
                 if movement_mod == movement_max:
                     maxedLabel(container).visible = true
@@ -170,22 +181,29 @@ func update_mods(container):
                     button(container).disabled = true
         initiative_c:
             initiative_mod += 1
-            modifierLabel(container).text = "(+%d)" % initiative_mod
-            modifierLabel(container).label_settings.font_color = Color.GOLD
+            if initiative_mod == 0:
+                modifierLabel(container).text = ""
+            else:
+                modifierLabel(container).text = "(+%d)" % initiative_mod
+                modifierLabel(container).label_settings.font_color = Color.GOLD
             if initiative_mod == initiative_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
         attack_c:
             attack_mod += 1
-            modifierLabel(container).text = "(+%d)" % attack_mod
-            modifierLabel(container).label_settings.font_color = Color.GOLD
+            if attack_mod == 0:
+                modifierLabel(container).text = ""
+            else:
+                modifierLabel(container).text = "(+%d)" % attack_mod
+                modifierLabel(container).label_settings.font_color = Color.GOLD
             if attack_mod == attack_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
         action1_c:
             special1_mod += 1
             modifierLabel(container).text = str(special1_mod)
-            modifierLabel(container).label_settings.font_color = Color.GOLD
+            if special1_mod > 1:
+                modifierLabel(container).label_settings.font_color = Color.GOLD
             if special1_mod == special1_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
@@ -193,18 +211,53 @@ func update_mods(container):
         action2_c:
             special2_mod += 1
             modifierLabel(container).text = str(special2_mod)
-            modifierLabel(container).label_settings.font_color = Color.GOLD
+            if special2_mod > 1:
+                modifierLabel(container).label_settings.font_color = Color.GOLD
             if special2_mod == special2_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
             update_action_descriptions()
         range_c:
             range_mod += 1
-            modifierLabel(container).text = "(+%d)" % range_mod
+            if range_mod == 0:
+                modifierLabel(container).text = ""
+            else:
+                modifierLabel(container).text = "(+%d)" % range_mod
             modifierLabel(container).label_settings.font_color = Color.GOLD
             if range_mod == range_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
+    return
+
+func update_to_global(container):
+    var key = _entity.display_name
+    var points_data: SkillPointData = Globals.entity_skill_point_distributions[key]
+    points_data.total += 1
+    match container:
+        health_c:
+            points_data.health_level = health_mod
+            points_data.health_points = progress(container).value
+        armor_c:
+            points_data.armor_level = armor_mod
+            points_data.armor_points = progress(container).value
+        movement_c:
+            points_data.movement_level = movement_mod
+            points_data.movement_points = progress(container).value
+        initiative_c:
+            points_data.initiative_level = initiative_mod
+            points_data.initiative_points = progress(container).value
+        attack_c:
+            points_data.attack_level = attack_mod
+            points_data.attack_points = progress(container).value
+        action1_c:
+            points_data.action1_level = special1_mod
+            points_data.action1_points = progress(container).value
+        action2_c:
+            points_data.action2_level = special2_mod
+            points_data.action2_points = progress(container).value
+        range_c:
+            points_data.range_level = range_mod
+            points_data.range_points = progress(container).value
     return
 
 func deploy():
@@ -226,6 +279,7 @@ func deploy():
     return
 
 func redo():
+    Globals.entity_skill_point_distributions[_entity.display_name] = SkillPointData.new()
     reset()
     setup_entity()
     return
@@ -290,6 +344,38 @@ func setup_entity():
     reset_button.disabled = false
     if not deploy_full:
         deploy_button.disabled = false
+    update_from_global()
+    return
+
+func update_from_global():
+    var key = _entity.display_name
+    if not Globals.entity_skill_point_distributions.has(key):
+        Globals.entity_skill_point_distributions[key] = SkillPointData.new()
+    var point_data: SkillPointData = Globals.entity_skill_point_distributions[key]
+    progress(health_c).value = point_data.health_points
+    progress(armor_c).value = point_data.armor_points
+    progress(movement_c).value = point_data.movement_points
+    progress(initiative_c).value = point_data.initiative_points
+    progress(attack_c).value = point_data.attack_points
+    progress(action1_c).value = point_data.action1_points
+    progress(action2_c).value = point_data.action2_points
+    progress(range_c).value = point_data.range_points
+    
+    # Subtract 1 because update_mods() increases it by 1, but I'm too lazy to fix
+    health_mod = point_data.health_level - 1
+    armor_mod = point_data.armor_level - 1
+    movement_mod = point_data.movement_level - 1
+    initiative_mod = point_data.initiative_level - 1
+    attack_mod = point_data.attack_level - 1
+    special1_mod = point_data.action1_level - 1
+    special2_mod = point_data.action2_level - 1
+    range_mod = point_data.range_level - 1
+    for container in containers:
+        update_mods(container)
+    var points_left = skill_points_base - point_data.total
+    skill_points_label.text = str(points_left)
+    if points_left == 0:
+        disable_all_stat_buttons()
     return
 
 func update_action_descriptions():
