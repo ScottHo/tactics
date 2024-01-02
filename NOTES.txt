@@ -1,18 +1,19 @@
 BUGS
 - Move hover overwrites highlights when already moving
-- Sometimes boss runs away?
+- Ai Non-random specials should camera move to target
 
 NEEDS
-- permanence for bot stats and previous deployed
+- Action buttons being enabled need animations
+- "Popup" for current action/event
 - Tanky bots
 - Get new bots
-- permanence for bot stats
 - end of mission stats panel
 - deploy to slot alternative
 - slight animation for mechanic container
 - more button available animations
 - show moves on hover
 - boss with adds mechanic
+- show status effects on hover
 
 NEEDS BUT LATER
 - Decide how story progress will work
@@ -28,9 +29,7 @@ ART
 POLISH
 - Better backgrounds/layout for deploy/mission GUI
 - Confirm Popup windows where relevant
-- "Popup" for current action
 - Different target highlights for good/bad
-- Spawn hover boxes on left/right depending on camera position
 
 
 CLASS/ABILITY IDEAS
