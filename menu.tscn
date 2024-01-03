@@ -689,6 +689,15 @@ layout_mode = 2
 
 [node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control7"]
 
+[node name="AbortMissionButton" type="Button" parent="."]
+offset_left = 8.47571
+offset_top = 7.41624
+offset_right = 128.476
+offset_bottom = 67.4162
+theme_override_font_sizes/font_size = 16
+text = "ABORT
+MISSION"
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Timer2" type="Timer" parent="."]

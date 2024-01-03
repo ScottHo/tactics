@@ -4,8 +4,10 @@ var collectionPanel: CollectionPanel
 var upgradePanel: UpgradePanel
 var deployPanel: DeployPanel
 var startMissionButton: Button
+var abortMissionButton: Button
 var enemyPanel: MissionEnemyPanel
 var objectiveLabel: Label
+var specialsLabel: Label
 var mission: Mission
 
 
@@ -14,12 +16,15 @@ func _ready():
     upgradePanel = $SelectedContainer
     deployPanel = $DeployContainer
     startMissionButton = $StartMission
+    abortMissionButton = $AbortMission
     enemyPanel = $EnemyPanel
     objectiveLabel = $Control/Objectives
+    specialsLabel = $Control/SpecialsLabel
     collectionPanel.entity_selected.connect(entity_selected)
     upgradePanel.deployed.connect(entity_deployed)
     deployPanel.entity_removed.connect(entity_removed_from_deploy)
     startMissionButton.pressed.connect(startMission)
+    abortMissionButton.pressed.connect(abortMission)
     start()
     return
 
@@ -31,6 +36,14 @@ func start():
     deployPanel.start()
     enemyPanel.start(mission.boss)
     objectiveLabel.text = mission.description
+    var t = ""
+    for i in mission.specials:
+        var s: Special = i 
+        t += s.display_name
+        t += "\n"
+        t += s.description
+        t += "\n\n"
+    specialsLabel.text = t
     startMissionButton.disabled = true
     return
 
@@ -61,4 +74,8 @@ func startMission():
             entities_to_deploy.append(ent)
     Globals.entities_to_deploy = entities_to_deploy
     get_tree().change_scene_to_file("res://level.tscn")
+    return
+
+func abortMission():
+    get_tree().change_scene_to_file("res://demo_main_menu.tscn")
     return

@@ -22,10 +22,10 @@ position = Vector2(80.2061, -176.6)
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -666.084
-offset_top = -438.815
-offset_right = -626.084
-offset_bottom = -398.815
+offset_left = -682.235
+offset_top = -410.274
+offset_right = -642.235
+offset_bottom = -370.274
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
@@ -37,16 +37,37 @@ text = "Objectives:"
 [node name="Objectives" type="Label" parent="Control"]
 layout_mode = 0
 offset_top = 36.5102
-offset_right = 90.0
-offset_bottom = 171.51
+offset_right = 220.0
+offset_bottom = 108.51
 theme_override_fonts/font = ExtResource("7_rdu5m")
 theme_override_font_sizes/font_size = 18
+text = "Kill the boss
+Kill the boss
+Kill the boss"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Control"]
+offset_left = -1.12247
+offset_top = 131.196
+offset_right = 159.878
+offset_bottom = 156.196
+theme_override_font_sizes/font_size = 20
+text = "Abilities:"
+
+[node name="SpecialsLabel" type="Label" parent="Control"]
+offset_left = -1.12247
+offset_top = 160.214
+offset_right = 238.878
+offset_bottom = 480.214
+theme_override_fonts/font = ExtResource("7_rdu5m")
+theme_override_font_sizes/font_size = 16
 text = "Kill the boss
 Kill the boss
 Kill the boss
 
 Kill the boss
 Kill the boss"
+autowrap_mode = 2
 
 [node name="Label" type="Label" parent="."]
 offset_left = -130.723
@@ -83,3 +104,12 @@ theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
 text = "START
 MISSION"
+
+[node name="AbortMission" type="Button" parent="."]
+offset_left = -693.094
+offset_top = -530.731
+offset_right = -493.094
+offset_bottom = -430.731
+theme = ExtResource("14_qdrbl")
+theme_override_font_sizes/font_size = 20
+text = "Back"

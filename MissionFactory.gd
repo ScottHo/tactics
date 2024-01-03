@@ -3,7 +3,7 @@ class_name MissionFactory
 static func mission_1():
     var m = Mission.new()
     m.display_name = "Mission 1"
-    m.description = "Kill the boss"
+    m.description = "Kill the boss."
     m.boss = EntityFactory.create_boss_1()
     
     
@@ -27,7 +27,7 @@ static func mission_1():
 static func mission_2():
     var m = Mission.new()
     m.display_name = "Mission 2"
-    m.description = "Kill the boss"
+    m.description = "Kill the boss."
     m.boss = EntityFactory.create_boss_2()
     
     m.buffs = [InteractableFactory.create_blue_orb_thing()]
@@ -39,9 +39,8 @@ static func mission_2():
     s1.shape = Special.Shape.SINGLE
     s1.mechanic = Special.Mechanic.SPREAD
     s1.damage = 18
-    s1.spawns = [EntityFactory.create_boss_spawn_1(), EntityFactory.create_boss_spawn_1(), EntityFactory.create_boss_spawn_1()]
     s1.effect = func(ent: Entity):
-        ent.threat = 0
+        ent.setThreat(0)
         return
 
     var s2 = Special.new()    
@@ -59,7 +58,7 @@ static func mission_2():
 static func mission_3():
     var m = Mission.new()
     m.display_name = "Mission 3"
-    m.description = "Kill the boss"
+    m.description = "Kill the boss."
     m.boss = EntityFactory.create_boss_3()
     
     

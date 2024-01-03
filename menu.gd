@@ -48,6 +48,7 @@ signal menuAnimationsFinished
 
 
 func _ready():
+    $AbortMissionButton.pressed.connect(lose)
     nextTurnButton.button_down.connect(func():
         unpress_all_buttons()
         nextTurnActionInitiate.emit())
@@ -302,7 +303,6 @@ func win():
         )
     $Timer2.start(5)
     Globals.levels_complete += 1
-    Globals.skill_points += 5
     $Fader.visible = true
     var tween = get_tree().create_tween()
     tween.tween_interval(3)

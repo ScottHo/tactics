@@ -5,7 +5,7 @@ var entities_to_deploy = []
 var interactables_to_deploy = []
 var level_debug_mode = true
 var curent_mission: Mission
-var skill_points := 5
+var skill_points := 15
 var levels_complete = 0
 var entity_skill_point_distributions: Dictionary
 
