@@ -49,7 +49,7 @@ func _ready():
     interactService.setState(state)    
     turnService.update()
     menuService.setState(state)
-    menuService.showTurns(turnService.next10Turns())
+    menuService.showTurns(turnService.next7Turns())
     nextTurn()
     return
 

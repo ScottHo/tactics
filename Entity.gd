@@ -76,7 +76,7 @@ func get_range() -> int:
 func get_initiative() -> int:
     var ret = initiative + initiative_modifier
     if ret < 0:
-        ret = 0
+        ret = 1
     return ret
 
 func get_armor() -> int:

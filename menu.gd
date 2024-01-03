@@ -102,7 +102,7 @@ func setState(state: State):
     return
 
 func showTurns(turns: Array[int]):
-    for i in range(10):
+    for i in range(7):
         _setup_turn_sprite(_state.get_entity(turns[i]), turnSpriteContainer.get_child(i).get_child(0))
     return
 

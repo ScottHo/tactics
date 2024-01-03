@@ -645,7 +645,6 @@ theme_type_variation = &"TriangleButton"
 toggle_mode = true
 
 [node name="GridContainer" type="GridContainer" parent="TurnsContainer"]
-visible = false
 layout_direction = 3
 layout_mode = 0
 offset_left = 140.273
@@ -689,21 +688,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control7"]
-
-[node name="Control8" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control8"]
-
-[node name="Control9" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control9"]
-
-[node name="Control10" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control10"]
 
 [node name="Timer" type="Timer" parent="."]
 

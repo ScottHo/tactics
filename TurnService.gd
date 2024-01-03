@@ -11,37 +11,27 @@ func update(random=true):
         var turnNode = TurnNode.new()
         var entity: Entity = _state.get_entity(entity_id)
         turnNode.entity_id = entity_id
-        turnNode.step = entity.initiative
         turnNode.total = 0
         if _state.isAlly(entity) and random:
             turnNode.total = randi_range(0, 90)
         elif random:
             turnNode.total = randi_range(1, 9) + 90
-
         _turnNodes.append(turnNode)
     
-    for i in range(10):
+    for i in range(7):
         _turnCache.append(findNextTurn())
     return
 
 func update_new():
-    var num_alive = 0
     for entity_id in _state.entities.allKeys():
-        num_alive += 1
         if has_turn_node(entity_id):
             continue
         var turnNode = TurnNode.new()
         var entity: Entity = _state.get_entity(entity_id)
-        turnNode.entity_id = entity_id
-        turnNode.step = entity.initiative
-        turnNode.total = randi_range(0, 99)
-        _turnNodes.append(turnNode)
-    var nodes_to_cut = 10 - num_alive + 1
-    if nodes_to_cut > 0:
-        for i in range(nodes_to_cut):
-            _turnCache.pop_back()
-    for i in range(nodes_to_cut):
-        _turnCache.append(findNextTurn())            
+        if entity.alive:
+            turnNode.entity_id = entity_id
+            turnNode.total = randi_range(95, 99)
+            _turnNodes.append(turnNode)
     return
 
 func has_turn_node(entity_id: int):
@@ -73,7 +63,7 @@ func findNextTurn():
             turnNode.total -= 100
             return turnNode.entity_id
     for turnNode in _turnNodes:
-        turnNode.total += turnNode.step
+        turnNode.total += _state.get_entity(turnNode.entity_id).get_initiative()
     return findNextTurn()
 
 func setState(state: State):
@@ -85,5 +75,5 @@ func startNextTurn() -> int:
     _turnCache.append(findNextTurn())
     return ret
 
-func next10Turns() -> Array[int]:
+func next7Turns() -> Array[int]:
     return _turnCache

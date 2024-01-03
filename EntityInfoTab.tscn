@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dbb2avwiipbtb"]
+[gd_scene load_steps=23 format=3 uid="uid://cbvfj606ltver"]
 
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="1_r63co"]
 [ext_resource type="Texture2D" uid="uid://bhjd3o4d36dg7" path="res://Assets/info_box_expanded.png" id="2_tfr3r"]
