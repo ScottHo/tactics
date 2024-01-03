@@ -61,16 +61,15 @@ static func mission_3():
     m.description = "Kill the boss."
     m.boss = EntityFactory.create_boss_3()
     
-    
     m.buffs = [InteractableFactory.create_blue_orb_thing()]
     
     var s1 = Special.new()
     s1.display_name = "Massive Nuke"
-    s1.description = "Deals 25 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+    s1.description = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
     s1.target = Special.Target.RANDOM
     s1.shape = Special.Shape.DIAMOND_3x3
     s1.mechanic = Special.Mechanic.SOAK
-    s1.damage = 25
+    s1.damage = 21
     s1.effect = func(ent: Entity):
         return
 

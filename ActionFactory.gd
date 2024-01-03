@@ -307,7 +307,7 @@ static func add_spray_and_pray(ent: Entity, type: int):
 static func add_precise_strike(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
-        "Weaken": [1,2,3,4],
+        "Weaken": [2,3,4,5],
         "Weaken Duration": 2,
         "Cost": 1,
         "Threat Gain": 2
@@ -317,7 +317,7 @@ static func add_precise_strike(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(damage)
             user.damage_done += damage
-            _ent.weakened(action.get_from_stats("Weaken"), action.get_from_stats("Weaken Damage"))
+            _ent.weakened(action.get_from_stats("Weaken"), action.get_from_stats("Weaken Duration"))
         return
     var d = "A precise strike that weakens the enemy, causing them to take more damage"
     _add_action(ent, "Precise Strike", d, [], effect, type, stats)
