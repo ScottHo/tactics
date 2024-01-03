@@ -58,13 +58,13 @@ func isAlly(entity: Entity) -> bool:
 func sort_threat(a, b):
     if a.threat > b.threat:
         return true
-    if a.threat == b.threat:
-        if randi_range(0,1) == 0:
-            return true
     return false
 
 func threatOrder() -> Array:
-    var ret = all_allies_alive()
+    var ret := []
+    for i in all_allies_alive():
+        ret.append(i)
+    ret.shuffle()
     ret.sort_custom(sort_threat)
     return ret
 
