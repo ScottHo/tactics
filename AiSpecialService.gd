@@ -145,6 +145,7 @@ func spawn_targets(ent):
     return
 
 func do_special_effect():
+    cameraService.stop_lock()    
     if special().mechanic == Special.Mechanic.BUFF:
         mechanic_buff_effect()
     if special().mechanic == Special.Mechanic.SOAK:
