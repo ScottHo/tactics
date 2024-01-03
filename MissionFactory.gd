@@ -11,7 +11,7 @@ static func mission_1():
     
     var s1 = Special.new()
     s1.display_name = "Big Bot Energy"
-    s1.description = "Gains 1 initiative, 1 movement, and 1 damage"
+    s1.description = "Gains 1 initiative, 1 movement, 1 armor, and 1 damage"
     s1.target = Special.Target.SELF
     s1.shape = Special.Shape.SINGLE
     s1.mechanic = Special.Mechanic.BUFF
@@ -20,6 +20,7 @@ static func mission_1():
         ent.update_initiative(1)
         ent.update_movement(1)
         ent.update_damage(1)
+        ent.update_armor(1)
 
     m.specials = [s1]
     return m
