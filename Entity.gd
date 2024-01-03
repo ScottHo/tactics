@@ -137,6 +137,10 @@ func gainHP(hp):
     sprite.textAnimation().update_stat(hp, "Health")
     return
 
+func miss():
+    sprite.textAnimation().other_text("Miss!", Color.WHITE)
+    return
+
 func set_max_health(hp):
     max_health = hp
     return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ct2wj06r38iul"]
+[gd_scene load_steps=28 format=3 uid="uid://ct2wj06r38iul"]
 
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="9_nlkln"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/health.png" id="10_sji2x"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="11_y8say"]
+[ext_resource type="Texture2D" uid="uid://dhqmp1ddkb3d7" path="res://Assets/progress_over_4.png" id="12_khkpp"]
 [ext_resource type="Texture2D" uid="uid://c8qs5sie5ong8" path="res://Assets/progress_over_2.png" id="12_xu75s"]
 [ext_resource type="PackedScene" uid="uid://7ah3bf7cn7a" path="res://special_description_panel.tscn" id="16_31s5c"]
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="16_epibs"]
@@ -158,10 +159,10 @@ offset_right = 114.127
 offset_bottom = 113.541
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(15, 64)
-max_value = 2.0
+max_value = 3.0
 fill_mode = 3
 texture_under = ExtResource("3_00qqc")
-texture_over = ExtResource("12_xu75s")
+texture_over = ExtResource("8_bo7rt")
 texture_progress = ExtResource("5_j6fm3")
 
 [node name="Anim" type="Sprite2D" parent="GridContainer/Movement"]
@@ -232,10 +233,10 @@ offset_right = 114.127
 offset_bottom = 113.541
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(15, 64)
-max_value = 3.0
+max_value = 4.0
 fill_mode = 3
 texture_under = ExtResource("3_00qqc")
-texture_over = ExtResource("8_bo7rt")
+texture_over = ExtResource("12_khkpp")
 texture_progress = ExtResource("5_j6fm3")
 
 [node name="Anim" type="Sprite2D" parent="GridContainer/Initiative"]
@@ -454,10 +455,10 @@ offset_right = 114.127
 offset_bottom = 113.541
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(15, 64)
-max_value = 3.0
+max_value = 2.0
 fill_mode = 3
 texture_under = ExtResource("3_00qqc")
-texture_over = ExtResource("8_bo7rt")
+texture_over = ExtResource("12_xu75s")
 texture_progress = ExtResource("5_j6fm3")
 
 [node name="Anim" type="Sprite2D" parent="GridContainer/Armor"]
@@ -529,10 +530,10 @@ offset_right = 114.127
 offset_bottom = 113.541
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(15, 64)
-max_value = 2.0
+max_value = 3.0
 fill_mode = 3
 texture_under = ExtResource("3_00qqc")
-texture_over = ExtResource("12_xu75s")
+texture_over = ExtResource("8_bo7rt")
 texture_progress = ExtResource("5_j6fm3")
 
 [node name="Anim" type="Sprite2D" parent="GridContainer/Action1"]
@@ -607,10 +608,10 @@ offset_right = 114.127
 offset_bottom = 113.541
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(15, 64)
-max_value = 2.0
+max_value = 3.0
 fill_mode = 3
 texture_under = ExtResource("3_00qqc")
-texture_over = ExtResource("12_xu75s")
+texture_over = ExtResource("8_bo7rt")
 texture_progress = ExtResource("5_j6fm3")
 
 [node name="Anim" type="Sprite2D" parent="GridContainer/Action2"]

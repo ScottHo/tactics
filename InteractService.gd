@@ -56,7 +56,7 @@ func _input(event):
                 if _entity.interactable != null and _inter.storable:
                     print_debug("Already has item")
                     return
-                print_debug("Interact with " + _inter.display_name)
+                print_debug("Interact with" + _inter.display_name)
                 _inter.effect.call(_entity)
                 _state.remove_interactable(_inter)                
                 if _inter.storable:

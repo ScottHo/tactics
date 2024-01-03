@@ -55,3 +55,7 @@ func status_effect(value: int, status: String):
         c = Color.RED
     queue_animation(c, status + " " + str(abs(value)))
     return
+
+func other_text(string: String, color: Color):
+    queue_animation(color, string)
+    return
