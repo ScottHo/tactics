@@ -29,7 +29,7 @@ func processDeaths():
     return
 
 func doDeathAnimation(entity: Entity):
-    print(entity.display_name + " Died!")
+    print_debug(entity.display_name + " Died!")
     entity.sprite.show_death()
     var tween = get_tree().create_tween()
     tween.tween_interval(1)

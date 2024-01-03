@@ -33,10 +33,10 @@ func _input(event):
                     return
                 var _inter: Interactable = _state.interactable_on_tile(_target)
                 if _inter == null and _entity.interactable == null:
-                    print("Could not find interactable")
+                    print_debug("Could not find interactable")
                     return
                 if _inter == null and _entity.interactable != null:
-                    print("Attempting to place interactable at " + str(_target))
+                    print_debug("Attempting to place interactable at " + str(_target))
                     if _state.entity_on_tile(_target):
                         return
                     _inter = _entity.interactable
@@ -49,18 +49,18 @@ func _input(event):
                     _inter.drop_effect.call(_entity)
                     
                     _entity.interactable = null
-                    print("Interactable placed")
+                    print_debug("Interactable placed")
                     interactDone.emit()
                     finish()
                     return
                 if _entity.interactable != null and _inter.storable:
-                    print("Already has item")
+                    print_debug("Already has item")
                     return
-                print("Interact with" + _inter.display_name)
+                print_debug("Interact with " + _inter.display_name)
                 _inter.effect.call(_entity)
                 _state.remove_interactable(_inter)                
                 if _inter.storable:
-                    print("Interactable Stored")
+                    print_debug("Interactable Stored")
                     _entity.add_iteractable(_inter)
                 interactDone.emit()
                 finish()

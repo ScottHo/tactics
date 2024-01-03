@@ -119,7 +119,7 @@ func nextTurn():
     current_turn_id = turnService.startNextTurn()
     cameraService.move(tileMap.pointToGlobal(currentEntity().location))    
     resetPlayerServices()
-    menuService.showTurns(turnService.next10Turns())
+    menuService.showTurns(turnService.next7Turns())
     menuService.pre_showCurrentTurn(current_turn_id)
     timer.timeout.connect(nextTurn_continued)
     timer.start(.4)

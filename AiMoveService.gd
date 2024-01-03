@@ -21,6 +21,7 @@ func find_move() -> Array:
 func _find_move() -> Array:
     var target := _find_target()
     if target == null:
+        print_debug("Could not find a target in range")
         return _map_bfs.getPath(_find_closest())
     var path := _map_bfs.getPath(_map_bfs.closestInRange(target.location))
     if len(path) < 1:
@@ -31,6 +32,7 @@ func _find_move() -> Array:
 func _find_target() -> Entity:
     for ent in _state.threatOrder():
         if _map_bfs.in_melee_range(ent.location):
+            print_debug("Found enemy " + ent.display_name + " with threat " + str(ent.threat))
             return ent
     return null
 
