@@ -47,6 +47,7 @@ Kill the boss"
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = -1.12247
 offset_top = 131.196
 offset_right = 159.878
@@ -55,6 +56,7 @@ theme_override_font_sizes/font_size = 20
 text = "Abilities:"
 
 [node name="SpecialsLabel" type="Label" parent="Control"]
+layout_mode = 0
 offset_left = -1.12247
 offset_top = 160.214
 offset_right = 238.878
