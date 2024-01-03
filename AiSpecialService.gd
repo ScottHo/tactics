@@ -9,6 +9,7 @@ var _counters := {}
 
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
+@onready var cameraService: CameraService = $"../CameraService"
 
 static var layer_0 = [Vector2i(0,0)]
 static var layer_1 = [Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1)]
@@ -99,25 +100,31 @@ func find_special_targets():
     _targets = []
     if special().target == Special.Target.SELF:
         _targets = targets_per_entity(_entity)
+        cameraService.lock_on(_entity.sprite)
         
     if special().target == Special.Target.ALL:
         for ent in _state.all_allies_alive():
             _targets.append_array(targets_per_entity(ent))
+        cameraService.reset()
 
     if special().target == Special.Target.RANDOM:
         var ent = _state.all_allies_alive()[randi_range(0, len(_state.all_allies_alive())-1)]
         _targets = targets_per_entity(ent)
+        cameraService.lock_on(ent.sprite)
 
     if special().target == Special.Target.THREAT:
         var ent = _state.threatOrder()[0]
         _targets = targets_per_entity(ent)
+        cameraService.lock_on(ent.sprite)
     
     if special().target == Special.Target.SPAWN_CLOSE:
         spawn_targets(_entity)
+        cameraService.lock_on(_entity.sprite)
     
     if special().target == Special.Target.SPAWN_RANDOM:
         var ent = _state.all_allies_alive()[randi_range(0, len(_state.all_allies_alive())-1)]
         spawn_targets(ent)
+        cameraService.lock_on(ent.sprite)
 
     for v in _targets:
         highlightMap.highlightVec(v, Highlights.RED)

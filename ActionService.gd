@@ -36,7 +36,7 @@ func _input(event):
                 if len(_target_points) == 1:
                     if not _state.entity_on_tile(_target_points[0]):
                         return
-                ActionCommon.do_action(_state, _entity,_target_points, action())
+                ActionCommon.do_action(_state, _entity, _target_points, action())
                 _entity.gainThreat(action().threat())
                 _entity.update_energy(-action().cost())
                 actionDone.emit()

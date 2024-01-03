@@ -10,6 +10,7 @@ extends Node2D
 @onready var deathService: DeathService = $DeathService
 @onready var interactService: InteractService = $InteractService
 @onready var cameraService: CameraService = $CameraService
+@onready var scoreService: ScoreService = $Camera2D/CanvasLayer/ScoreService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 @onready var timer: Timer = $Timer
@@ -47,6 +48,7 @@ func _ready():
     deathService.setState(state)
     turnService.setState(state)
     interactService.setState(state)    
+    scoreService.setState(state)
     turnService.update()
     menuService.setState(state)
     menuService.showTurns(turnService.next7Turns())
@@ -89,6 +91,7 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
         var _id = state.addEnemy(ent)
     ent.sprite = sprite
     ent.update_sprite()
+    ent.damage_done = 0
     return
 
 func setup_entities():
@@ -112,6 +115,7 @@ func currentEntity() -> Entity:
     return state.entities.get_data(current_turn_id)
 
 func nextTurn():
+    scoreService.turn_taken()
     menuService.disableAllButtons()
     if currentEntity() != null:
         currentEntity().reset_buff_values()
@@ -210,7 +214,6 @@ func doAiAction():
     return
 
 func startAiSpecial():
-    cameraService.reset()
     aiSpecialService.start(currentEntity(), Globals.curent_mission)
     if aiSpecialService.counter() == -1:
         menuService.set_mechanic_text(aiSpecialService.next_special_name(),

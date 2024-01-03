@@ -34,23 +34,23 @@ static func mission_2():
 
     var s1 = Special.new()
     s1.display_name = "Hater Missle"
-    s1.description = "Deal 18 damage to the highest threat target, then removing all it's threat"
+    s1.description = "Deal 12 damage to the highest threat target, then removing all it's threat"
     s1.target = Special.Target.THREAT
     s1.shape = Special.Shape.SINGLE
     s1.mechanic = Special.Mechanic.SPREAD
-    s1.damage = 18
+    s1.damage = 12
     s1.effect = func(ent: Entity):
         ent.setThreat(0)
         return
 
     var s2 = Special.new()    
     s2.display_name = "Deploy Minions"
-    s2.description = "Deploy 4 minions with high base damage"
+    s2.description = "Deploy 3 minions with high base damage"
     s2.target = Special.Target.SPAWN_CLOSE
     s2.shape = Special.Shape.OCTAGON
     s2.mechanic = Special.Mechanic.SPAWN
     s2.spawns = [EntityFactory.create_boss_spawn_1(), EntityFactory.create_boss_spawn_1(),
-            EntityFactory.create_boss_spawn_1(), EntityFactory.create_boss_spawn_1()]
+            EntityFactory.create_boss_spawn_1()]
     
     m.specials = [s1, s2]
     return m

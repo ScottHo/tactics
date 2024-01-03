@@ -46,6 +46,8 @@ signal menuAnimationsFinished
 @onready var descMoveInterName: Label = $DescriptionContainer/MoveInteractName
 @onready var descInterDesc: Label = $DescriptionContainer/InteractDescription
 
+@onready var scoreService: ScoreService = $"../ScoreService"
+
 
 func _ready():
     $AbortMissionButton.pressed.connect(lose)
@@ -298,29 +300,15 @@ func win():
     disableActionButtons()
     $GameOverLabel.visible = true
     $GameOverLabel.text = "Mission success"
-    $Timer2.timeout.connect(func():
-        get_tree().change_scene_to_file("res://demo_main_menu.tscn")
-        )
-    $Timer2.start(5)
     Globals.levels_complete += 1
-    $Fader.visible = true
-    var tween = get_tree().create_tween()
-    tween.tween_interval(3)
-    tween.tween_property($Fader, "color:a", 1, 2)
+    scoreService.show_score()
     return
 
 func lose():
     disableActionButtons()
     $GameOverLabel.visible = true
     $GameOverLabel.text = "Mission fail"
-    $Timer2.timeout.connect(func():
-        get_tree().change_scene_to_file("res://demo_main_menu.tscn")
-        )
-    $Timer2.start(5)
-    $Fader.visible = true
-    var tween = get_tree().create_tween()
-    tween.tween_interval(3)
-    tween.tween_property($Fader, "color:a", 1, 2)
+    scoreService.show_score()
     return
 
 func show_description_click(action_type):

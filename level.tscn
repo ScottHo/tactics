@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cq8xqg1q1wgxp"]
+[gd_scene load_steps=19 format=3 uid="uid://cq8xqg1q1wgxp"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_uypkh"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="2_df7di"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://TurnService.gd" id="8_5tca6"]
 [ext_resource type="Script" path="res://CameraService.gd" id="8_d2jpi"]
 [ext_resource type="Script" path="res://ActionService.gd" id="8_hhoig"]
+[ext_resource type="PackedScene" uid="uid://crc35ul2k5iwb" path="res://ScoreService.tscn" id="8_hlxi6"]
 [ext_resource type="Script" path="res://AiMoveService.gd" id="10_lo4ht"]
 [ext_resource type="Script" path="res://AiActionService.gd" id="11_jfegk"]
 [ext_resource type="Script" path="res://DeathService.gd" id="12_4b2o3"]
@@ -68,6 +69,9 @@ texture = ExtResource("6_1ogou")
 layer = 2
 
 [node name="MenuService" parent="Camera2D/CanvasLayer" instance=ExtResource("7_psia6")]
+
+[node name="ScoreService" parent="Camera2D/CanvasLayer" instance=ExtResource("8_hlxi6")]
+visible = false
 
 [node name="CameraService" type="Node2D" parent="."]
 script = ExtResource("8_d2jpi")

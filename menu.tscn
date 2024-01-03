@@ -143,10 +143,10 @@ script = ExtResource("1_0qs77")
 
 [node name="GameOverLabel" type="Label" parent="."]
 visible = false
-offset_left = 470.448
-offset_top = 325.923
-offset_right = 1034.45
-offset_bottom = 386.923
+offset_left = 495.846
+offset_top = 186.232
+offset_right = 1059.85
+offset_bottom = 247.232
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
@@ -699,13 +699,3 @@ text = "ABORT
 MISSION"
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="Timer2" type="Timer" parent="."]
-
-[node name="Fader" type="ColorRect" parent="."]
-visible = false
-offset_left = -33.6738
-offset_top = -31.4289
-offset_right = 1566.33
-offset_bottom = 968.571
-color = Color(0, 0, 0, 0)
