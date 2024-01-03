@@ -121,10 +121,16 @@ func reset_buff_values():
         crippled_value = 0
     return
 
+func damage_preview(hp) -> int:
+    hp -= get_armor()
+    if hp < 0:
+        hp = 0
+    return hp
+
 func loseHP(hp):
     if immune_count > 0:
         return
-    hp -= get_armor()
+    hp = damage_preview(hp)
     health -= hp
     if health < 0:
         health = 0
