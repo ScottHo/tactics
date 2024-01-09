@@ -12,11 +12,11 @@ position = Vector2(703.715, 549.559)
 script = ExtResource("1_1roly")
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(-758.905, -464.632)
+position = Vector2(-753.566, -464.632)
 scale = Vector2(1.5, 1.5)
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(-131.999, -169.954)
+position = Vector2(-101.298, -192.647)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
 position = Vector2(-255.323, 222.956)
