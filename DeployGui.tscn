@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cve4y2nbbwucg"]
+[gd_scene load_steps=7 format=3 uid="uid://cve4y2nbbwucg"]
 
 [ext_resource type="Script" path="res://DeployGui.gd" id="1_1roly"]
-[ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="6_0ivkj"]
-[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="7_rdu5m"]
+[ext_resource type="PackedScene" uid="uid://bxp0hhpdubjky" path="res://detailed_room_info.tscn" id="6_27vo8"]
 [ext_resource type="PackedScene" uid="uid://ct2wj06r38iul" path="res://upgrade_panel.tscn" id="11_q353u"]
 [ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="12_os86a"]
 [ext_resource type="PackedScene" uid="uid://b5r70vpa8c172" path="res://DeployPanel.tscn" id="13_e71vw"]
@@ -13,105 +12,33 @@ position = Vector2(703.715, 549.559)
 script = ExtResource("1_1roly")
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(-547.457, -455.971)
+position = Vector2(-758.905, -464.632)
 scale = Vector2(1.5, 1.5)
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(80.2061, -176.6)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -682.235
-offset_top = -410.274
-offset_right = -642.235
-offset_bottom = -370.274
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 21.0
-theme_override_font_sizes/font_size = 20
-text = "Objectives:"
-
-[node name="Objectives" type="Label" parent="Control"]
-layout_mode = 0
-offset_top = 36.5102
-offset_right = 220.0
-offset_bottom = 108.51
-theme_override_fonts/font = ExtResource("7_rdu5m")
-theme_override_font_sizes/font_size = 18
-text = "Kill the boss
-Kill the boss
-Kill the boss"
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -1.12247
-offset_top = 131.196
-offset_right = 159.878
-offset_bottom = 156.196
-theme_override_font_sizes/font_size = 20
-text = "Abilities:"
-
-[node name="SpecialsLabel" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = -1.12247
-offset_top = 160.214
-offset_right = 238.878
-offset_bottom = 480.214
-theme_override_fonts/font = ExtResource("7_rdu5m")
-theme_override_font_sizes/font_size = 16
-text = "Kill the boss
-Kill the boss
-Kill the boss
-
-Kill the boss
-Kill the boss"
-autowrap_mode = 2
-
-[node name="Label" type="Label" parent="."]
-offset_left = -130.723
-offset_top = -526.161
-offset_right = 234.277
-offset_bottom = -477.161
-theme_override_font_sizes/font_size = 36
-text = "MISSION BRIEFING"
-horizontal_alignment = 1
-
-[node name="EnemyPanel" parent="." instance=ExtResource("6_0ivkj")]
-offset_left = -591.229
-offset_top = 113.133
-offset_right = -591.229
-offset_bottom = 113.133
-
-[node name="Label2" type="Label" parent="."]
-offset_left = -243.656
-offset_top = 197.627
-offset_right = -188.656
-offset_bottom = 237.627
-theme_override_font_sizes/font_size = 32
-text = "VS"
+position = Vector2(-131.999, -169.954)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(48.3831, 247.469)
+position = Vector2(-255.323, 222.956)
 
 [node name="StartMission" type="Button" parent="."]
-offset_left = 607.076
-offset_top = 185.958
-offset_right = 807.076
-offset_bottom = 285.958
+offset_left = 369.564
+offset_top = 156.184
+offset_right = 569.564
+offset_bottom = 256.184
 theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
 text = "START
 MISSION"
 
 [node name="AbortMission" type="Button" parent="."]
-offset_left = -693.094
-offset_top = -530.731
-offset_right = -493.094
-offset_bottom = -430.731
+offset_left = 618.216
+offset_top = 182.697
+offset_right = 758.216
+offset_bottom = 252.697
 theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
-text = "Back"
+text = "Abort"
+
+[node name="DetailedRoomInfo" parent="." instance=ExtResource("6_27vo8")]
+position = Vector2(351.121, -517.243)

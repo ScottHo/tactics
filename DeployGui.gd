@@ -5,9 +5,7 @@ var upgradePanel: UpgradePanel
 var deployPanel: DeployPanel
 var startMissionButton: Button
 var abortMissionButton: Button
-var enemyPanel: MissionEnemyPanel
-var objectiveLabel: Label
-var specialsLabel: Label
+var detailedRoomInfo: DetailedRoomInfo
 var mission: Mission
 
 
@@ -17,9 +15,7 @@ func _ready():
     deployPanel = $DeployContainer
     startMissionButton = $StartMission
     abortMissionButton = $AbortMission
-    enemyPanel = $EnemyPanel
-    objectiveLabel = $Control/Objectives
-    specialsLabel = $Control/SpecialsLabel
+    detailedRoomInfo = $DetailedRoomInfo
     collectionPanel.entity_selected.connect(entity_selected)
     upgradePanel.deployed.connect(entity_deployed)
     deployPanel.entity_removed.connect(entity_removed_from_deploy)
@@ -29,21 +25,12 @@ func _ready():
     return
 
 func start():
-    mission = Globals.curent_mission    
+    mission = Globals.current_mission    
     upgradePanel.skill_points_base = Globals.skill_points
     collectionPanel.start()
     upgradePanel.reset()
     deployPanel.start()
-    enemyPanel.start(mission.boss)
-    objectiveLabel.text = mission.description
-    var t = ""
-    for i in mission.specials:
-        var s: Special = i 
-        t += s.display_name
-        t += "\n"
-        t += s.description
-        t += "\n\n"
-    specialsLabel.text = t
+    detailedRoomInfo.start(mission, "")
     startMissionButton.disabled = true
     return
 

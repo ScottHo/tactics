@@ -20,12 +20,12 @@ texture = ExtResource("1_c5d58")
 [node name="Label" type="Label" parent="."]
 offset_left = 448.453
 offset_top = 192.651
-offset_right = 1031.45
+offset_right = 984.453
 offset_bottom = 253.651
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 50
-text = "COOL GAME NAME"
+text = "FOUNDRY BREAK"
 
 [node name="Control" type="GridContainer" parent="."]
 offset_left = 56.3852
@@ -38,6 +38,7 @@ theme_override_constants/v_separation = 100
 layout_mode = 2
 
 [node name="Boss2" type="Sprite2D" parent="Control/Control"]
+visible = false
 position = Vector2(236.888, 149.43)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("4_3dbph")
@@ -48,9 +49,10 @@ offset_top = 100.0
 offset_right = 200.0
 offset_bottom = 200.0
 theme_override_font_sizes/font_size = 26
-text = "Level 1"
+text = "PLAY"
 
 [node name="Control2" type="Control" parent="Control"]
+visible = false
 layout_mode = 2
 
 [node name="Boss3" type="Sprite2D" parent="Control/Control2"]
@@ -67,6 +69,7 @@ theme_override_font_sizes/font_size = 26
 text = "Level 2"
 
 [node name="Control3" type="Control" parent="Control"]
+visible = false
 layout_mode = 2
 
 [node name="Boss4" type="Sprite2D" parent="Control/Control3"]

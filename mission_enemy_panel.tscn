@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b220oo4s6vl43"]
+[gd_scene load_steps=14 format=3 uid="uid://b220oo4s6vl43"]
 
 [ext_resource type="Script" path="res://MissionEnemyPanel.gd" id="1_cgn1b"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/health.png" id="2_3mu84"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="6_skltb"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="7_kw8vt"]
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="8_wx8d0"]
-[ext_resource type="Texture2D" uid="uid://5ishrvrpc8ew" path="res://Assets/Unknown.png" id="9_4oyxx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3qud2"]
 font_size = 20
@@ -36,10 +35,10 @@ script = ExtResource("1_cgn1b")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 168.27
-offset_top = 40.0623
-offset_right = 348.27
-offset_bottom = 180.062
+offset_left = 8.31918
+offset_top = 38.3786
+offset_right = 188.319
+offset_bottom = 178.378
 theme_override_constants/h_separation = 90
 theme_override_constants/v_separation = 35
 columns = 2
@@ -152,17 +151,12 @@ text = "88"
 label_settings = SubResource("LabelSettings_3qud2")
 vertical_alignment = 1
 
-[node name="BossSprite" type="Sprite2D" parent="."]
-position = Vector2(37.627, 74.0142)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("9_4oyxx")
-
 [node name="BossName" type="Label" parent="."]
 layout_mode = 0
-offset_left = 142.068
-offset_top = -33.2066
-offset_right = 362.068
-offset_bottom = 28.7934
-theme_override_font_sizes/font_size = 20
+offset_left = -18.6138
+offset_top = -42.9942
+offset_right = 207.386
+offset_bottom = 37.0058
+theme_override_font_sizes/font_size = 30
 text = "BOSS NAME"
-vertical_alignment = 2
+autowrap_mode = 2

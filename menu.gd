@@ -300,7 +300,7 @@ func win():
     disableActionButtons()
     $GameOverLabel.visible = true
     $GameOverLabel.text = "Mission success"
-    Globals.levels_complete += 1
+    Globals.current_level += 1
     scoreService.show_score()
     return
 

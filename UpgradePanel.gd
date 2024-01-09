@@ -303,7 +303,7 @@ func reset():
         statLabel(container).text = ""
     
     entity_sprite.texture = load(Globals.NO_BOT_ICON_PATH)
-    entity_label.text = "NONE SELECTED"
+    entity_label.text = "NONE"
     reset_button.disabled = true
     deploy_button.disabled = true
     skill_points_label.text = ""

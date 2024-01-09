@@ -7,7 +7,7 @@ var page := 1
 signal entity_selected
 
 func _ready():
-    for i in range(0, 15):
+    for i in range(0, grid.get_child_count()):
         var c = container(i)
         button(c).toggled.connect(func(t):
             if t:
@@ -45,7 +45,7 @@ func start():
         button(c).icon = load(entities[i].icon_path)
         deployedLabel(c).visible = false
     
-    for i in range(len(entities), 16):
+    for i in range(len(entities), grid.get_child_count()):
         var c = container(i)
         button(c).disabled = true
         button(c).icon = load(Globals.UNKNOWN_BOT_ICON_PATH)
@@ -53,7 +53,7 @@ func start():
     return
 
 func entity_clicked(idx: int):
-    for i in range(0, 16):
+    for i in range(0, grid.get_child_count()):
         if i == idx:
             continue
         var c = container(i)

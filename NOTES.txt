@@ -1,35 +1,38 @@
 BUGS
 - Move hover overwrites highlights when already moving
-- Ai Non-random specials should camera move to target
 
-NEEDS
+TODO
+- More specials
+- Specials based on foundry
+- Special/Boss scaling based on floors/foundry
+- More Bosses
+- Double/Triple specials
+- Random bot recruit
+- More Interactables
+- Random Interactables, maybe per foundry
+- Skill Points based on score
+- Animations
+- Aura of interactables
 - Action buttons being enabled need animations
 - "Popup" for current action/event
 - Tanky bots
 - Get new bots
-- end of mission stats panel
 - deploy to slot alternative
 - slight animation for mechanic container
 - more button available animations
 - show moves on hover
-- boss with adds mechanic
 - show status effects on hover
-
-NEEDS BUT LATER
-- Decide how story progress will work
 - Better Start Screen
 - Splash Screen
 - Undo Button
-- Randomly spawn buffs
 - GUI backgrounds for mission GUI
-
-ART
-- Animations
-
-POLISH
 - Better backgrounds/layout for deploy/mission GUI
 - Confirm Popup windows where relevant
 - Different target highlights for good/bad
+
+
+IDEAS
+
 
 
 CLASS/ABILITY IDEAS

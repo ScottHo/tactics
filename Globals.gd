@@ -1,13 +1,16 @@
 extends Node
 
 var current_scene = null
+
 var entities_to_deploy = []
 var interactables_to_deploy = []
 var level_debug_mode = true
-var curent_mission: Mission
+var current_mission: Mission
+var current_recruit: Entity
 var skill_points := 15
-var levels_complete = 0
 var entity_skill_point_distributions: Dictionary
+var current_level := 0
+var current_foundry := "None"
 
 static var UNKNOWN_BOT_ICON_PATH = "res://Assets/Unknown.png"
 static var NO_BOT_ICON_PATH = "res://Assets/None.png"

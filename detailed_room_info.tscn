@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxp0hhpdubjky"]
+
+[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/vertical-medium.png" id="1_0vjqg"]
+[ext_resource type="Script" path="res://detailed_room_info.gd" id="1_kltg5"]
+[ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="2_m4fqc"]
+[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="3_sgklb"]
+[ext_resource type="Texture2D" uid="uid://5ishrvrpc8ew" path="res://Assets/Unknown.png" id="4_l5xc7"]
+
+[node name="DetailedRoomInfo" type="Node2D"]
+script = ExtResource("1_kltg5")
+
+[node name="Vertical-medium" type="Sprite2D" parent="."]
+position = Vector2(233.109, 320.231)
+scale = Vector2(0.54, 0.54)
+texture = ExtResource("1_0vjqg")
+
+[node name="RoomName" type="Label" parent="."]
+offset_left = 83.3531
+offset_top = 20.7334
+offset_right = 382.353
+offset_bottom = 52.7334
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 26
+text = "ROOM A"
+horizontal_alignment = 1
+
+[node name="EnemyPanel" parent="." instance=ExtResource("2_m4fqc")]
+offset_left = 247.403
+offset_top = 120.214
+offset_right = 247.403
+offset_bottom = 120.214
+scale = Vector2(0.8, 0.8)
+
+[node name="SpecialsGrid" type="GridContainer" parent="."]
+offset_left = 39.3292
+offset_top = 249.336
+offset_right = 79.3292
+offset_bottom = 519.336
+theme_override_constants/v_separation = 90
+
+[node name="Special1" type="Control" parent="SpecialsGrid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="SpecialsGrid/Special1"]
+layout_mode = 0
+offset_left = -6.34049
+offset_right = 393.66
+offset_bottom = 21.0
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="SpecialsGrid/Special1"]
+layout_mode = 0
+offset_left = -5.2973
+offset_top = 22.1552
+offset_right = 394.703
+offset_bottom = 110.155
+theme_override_fonts/font = ExtResource("3_sgklb")
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="Special2" type="Control" parent="SpecialsGrid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="SpecialsGrid/Special2"]
+layout_mode = 0
+offset_left = -6.34049
+offset_right = 393.66
+offset_bottom = 21.0
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="SpecialsGrid/Special2"]
+layout_mode = 0
+offset_left = -5.2973
+offset_top = 22.1552
+offset_right = 394.703
+offset_bottom = 110.155
+theme_override_fonts/font = ExtResource("3_sgklb")
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="Special3" type="Control" parent="SpecialsGrid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="SpecialsGrid/Special3"]
+layout_mode = 0
+offset_left = -6.34049
+offset_right = 393.66
+offset_bottom = 21.0
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="SpecialsGrid/Special3"]
+layout_mode = 0
+offset_left = -5.2973
+offset_top = 22.1552
+offset_right = 394.703
+offset_bottom = 110.155
+theme_override_fonts/font = ExtResource("3_sgklb")
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="Special4" type="Control" parent="SpecialsGrid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="SpecialsGrid/Special4"]
+layout_mode = 0
+offset_left = -6.34049
+offset_right = 393.66
+offset_bottom = 21.0
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="SpecialsGrid/Special4"]
+layout_mode = 0
+offset_left = -5.2973
+offset_top = 22.1552
+offset_right = 394.703
+offset_bottom = 110.155
+theme_override_fonts/font = ExtResource("3_sgklb")
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="BossSprite" type="Sprite2D" parent="."]
+position = Vector2(132.54, 152.726)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_l5xc7")
