@@ -27,17 +27,9 @@ func container(idx: int) -> Control:
     return grid.get_child(idx)
 
 func start():
-    # TODO: Get these from persistent data
     entities = []
-    entities.append(EntityFactory.create_batterie())
-    entities.append(EntityFactory.create_brutus())
-    entities.append(EntityFactory.create_electro())
-    entities.append(EntityFactory.create_longshot())
-    entities.append(EntityFactory.create_nanonano())
-    entities.append(EntityFactory.create_oilee())
-    entities.append(EntityFactory.create_peppershot())
-    entities.append(EntityFactory.create_punch_e())
-    entities.append(EntityFactory.create_smithy())
+    for bot in Globals.bots_collected:
+        entities.append(EntityFactory.create_bot(bot))
     
     for i in range(len(entities)):
         var c = container(i)

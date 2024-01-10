@@ -341,6 +341,63 @@ static func add_robo_punch(ent: Entity, type: int):
     _add_action(ent, "Robo Punch!", d, [], effect, type, stats)
     return
 
+static func add_double_strike(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Number of Attacks": 2,
+        "Extra Damage": [-1, 0, 1, 2],
+        "Cost": 2,
+        "Threat Gain": 2
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        var damage = user.get_damage() + action.get_from_stats("Extra Damage")
+        for _ent in targets:
+            _ent.loseHP(damage)
+            _ent.loseHP(damage)
+            user.damage_done += _ent.damage_preview(damage)
+            user.damage_done += _ent.damage_preview(damage)
+        return
+    var d = "Hit them with the good ol' one-two"
+    _add_action(ent, "Double Strike", d, [], effect, type, stats)
+    return
+
+static func add_bootleg_upgrades(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Self",
+        "Added Movement": "-1 / 1",
+        "Added Initiative": "-1 / 1",
+        "Added Damage": "-1 / 1",
+        "Added Armor": "-1 / 1",
+        "Chance for each Upgrade": ["50%", "60%", "70%", "80%"],
+        "Cost": 1,
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        var l = action.level + 4
+        
+        if randi_range(1, 10) > l:
+            user.update_movement(-1)
+        else:
+            user.update_movement(1)
+        
+        if randi_range(1, 10) > l:
+            user.update_initiative(-1)
+        else:
+            user.update_initiative(1)
+        
+        if randi_range(1, 10) > l:
+            user.update_damage(-1)
+        else:
+            user.update_damage(1)
+        
+        if randi_range(1, 10) > l:
+            user.update_armor(-1)
+        else:
+            user.update_armor(1)
+        return
+    var d = "Put some bootleg parts on, resulting in added or removed stats"
+    _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats)
+    return
+
 static func _add_action(ent, display_name, description, shape, effect, action_type, stats):
     var action = Action.new()
     action.shape = shape

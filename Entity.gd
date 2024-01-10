@@ -149,6 +149,10 @@ func miss():
     sprite.textAnimation().other_text("Miss!", Color.WHITE)
     return
 
+func failed():
+    sprite.textAnimation().other_text("Failed.", Color.RED)
+    return
+
 func set_max_health(hp):
     max_health = hp
     return

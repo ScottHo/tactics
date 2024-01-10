@@ -153,11 +153,26 @@ theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 50
 text = "Mission Success"
 
+[node name="RecruitLabel" type="Label" parent="."]
+visible = false
+offset_left = 494.511
+offset_top = 350.417
+offset_right = 1058.52
+offset_bottom = 411.417
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "Mission Success"
+
 [node name="MechanicContainer" type="ReferenceRect" parent="."]
-offset_left = 1517.08
-offset_top = 2.63284
-offset_right = 1917.08
-offset_bottom = 167.633
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1517.29
+offset_top = 1.42838
+offset_right = 1917.29
+offset_bottom = 166.429
+grow_horizontal = 0
 
 [node name="Long" type="Node2D" parent="MechanicContainer"]
 
@@ -334,10 +349,17 @@ offset_right = 400.0
 offset_bottom = 160.0
 
 [node name="DescriptionContainer" type="ReferenceRect" parent="."]
-offset_left = 1452.46
-offset_top = 208.404
-offset_right = 1912.46
-offset_bottom = 698.404
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1452.51
+offset_top = 203.599
+offset_right = 1912.51
+offset_bottom = 693.599
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="SpecialPanel" parent="DescriptionContainer" instance=ExtResource("3_kx1y6")]
 position = Vector2(122.566, 10.7562)
@@ -417,20 +439,34 @@ text = "No Action Selected."
 autowrap_mode = 2
 
 [node name="TurnButton" type="Button" parent="."]
-offset_left = 815.353
-offset_top = 855.94
-offset_right = 985.353
-offset_bottom = 945.94
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 900.634
+offset_top = 835.645
+offset_right = 1070.63
+offset_bottom = 925.645
+grow_horizontal = 2
+grow_vertical = 0
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 theme_override_font_sizes/font_size = 18
 text = "End Turn"
 
 [node name="CharacterContainer" type="ReferenceRect" parent="."]
-offset_left = 1318.84
-offset_top = 679.752
-offset_right = 1918.84
-offset_bottom = 1079.75
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1318.97
+offset_top = 678.702
+offset_right = 1918.97
+offset_bottom = 1078.7
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(-31.2645, 8.29172)
@@ -440,8 +476,8 @@ centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
 modulate = Color(1, 1, 1, 0.647059)
-position = Vector2(247.601, 205.479)
-scale = Vector2(0.25, 0.25)
+position = Vector2(216.647, 183.255)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_pd4nx")
 centered = false
 
@@ -769,10 +805,17 @@ libraries = {
 }
 
 [node name="TurnsContainer" type="ReferenceRect" parent="."]
-offset_left = 695.386
-offset_top = 950.846
-offset_right = 1445.39
-offset_bottom = 1070.85
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 684.942
+offset_top = 959.235
+offset_right = 1434.95
+offset_bottom = 1079.24
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="ShowTurnsButton" type="Button" parent="TurnsContainer"]
 layout_mode = 0

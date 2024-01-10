@@ -1,6 +1,41 @@
 class_name EntityFactory
 
+enum Bot {BRUTUS, OILEE, ELECTO, NANONANO, SMITHY, LONGSHOT, BATTERIE, PUNCHE, PEPPERSHOT, BUSTER}
 
+static func create_bot(bot: Bot) -> Entity:
+    if bot == Bot.BRUTUS:
+        return create_brutus()
+    if bot == Bot.OILEE:
+        return create_oilee()
+    if bot == Bot.ELECTO:
+        return create_electo()
+    if bot == Bot.NANONANO:
+        return create_nanonano()
+    if bot == Bot.SMITHY:
+        return create_smithy()
+    if bot == Bot.LONGSHOT:
+        return create_longshot()
+    if bot == Bot.BATTERIE:
+        return create_batterie()
+    if bot == Bot.PUNCHE:
+        return create_punch_e()
+    if bot == Bot.PEPPERSHOT:
+        return create_peppershot()
+    if bot == Bot.BUSTER:
+        return create_buster()
+    return Entity.new()
+    
+static func new_recruits() -> Array:
+    var all_bots = EntityFactory.Bot.values()
+    all_bots.shuffle()
+    var ret = []
+    for b in all_bots:
+        if b not in Globals.bots_collected:
+            ret.append(b)
+            if len(ret) == 3:
+                return ret
+    return ret
+        
 static func create_brutus():
     var ent = _create_entity("Brutis", 21, 4, 1, 10, "res://brutus.tscn", "res://Assets/Brutus.png", true)
     ActionFactory.add_base_attack(ent)
@@ -15,7 +50,7 @@ static func create_oilee():
     ActionFactory.add_lubricate(ent, ActionType.ACTION2)
     return ent
 
-static func create_electro():
+static func create_electo():
     var ent = _create_entity("Electo", 18, 3, 4, 10, "res://electo.tscn", "res://Assets/Electo.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_storm(ent, ActionType.ACTION1)
@@ -53,7 +88,7 @@ static func create_batterie():
 static func create_punch_e():
     var ent = _create_entity("Punch-E", 18, 5, 1, 10, "res://punch-e.tscn", "res://Assets/punch-e.png", true)
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_precise_strike(ent, ActionType.ACTION1)
+    ActionFactory.add_exert(ent, ActionType.ACTION1)
     ActionFactory.add_robo_punch(ent, ActionType.ACTION2)
     return ent
 
@@ -64,9 +99,15 @@ static func create_peppershot():
     ActionFactory.add_spray_and_pray(ent, ActionType.ACTION2)
     return ent
 
+static func create_buster():
+    var ent = _create_entity("Buster", 16, 3, 4, 10, "res://buster.tscn", "res://Assets/bot_template.png", true)
+    ActionFactory.add_base_attack(ent)
+    ActionFactory.add_double_strike(ent, ActionType.ACTION1)
+    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION2)
+    return ent
 
 static func create_boss_1():
-    var ent = _create_entity("Evil Red", 200, 3, 1, 10, "res://enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Evil Red", 10, 3, 1, 10, "res://enemy_1.tscn", "res://Assets/Boss1.png", false)
     ent.description = "Intimidating Placeholder Text"
     ent.damage += 4
     ActionFactory.add_base_attack(ent)

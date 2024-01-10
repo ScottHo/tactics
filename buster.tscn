@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4oqyg37i21rs"]
+
+[ext_resource type="Script" path="res://EntitySprite.gd" id="1_0q4ms"]
+[ext_resource type="PackedScene" uid="uid://b6iqxvpypem6r" path="res://CharacterCommon.tscn" id="2_skvj3"]
+[ext_resource type="Texture2D" uid="uid://bdysrxsobqmfj" path="res://Assets/bot_template2.png" id="3_lecil"]
+[ext_resource type="Texture2D" uid="uid://c202rby2ophqj" path="res://Assets/bot_template.png" id="4_8wrh8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b16s7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_lecil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8wrh8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Buster" type="Node2D"]
+script = ExtResource("1_0q4ms")
+
+[node name="CharacterCommon" parent="." instance=ExtResource("2_skvj3")]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="CharacterCommon"]
+position = Vector2(1.08247, -22.7497)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_b16s7")
+autoplay = "default"
+frame_progress = 0.0920743

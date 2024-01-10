@@ -12,6 +12,9 @@ var title: Label
 var mission1: Mission
 var mission2: Mission
 var mission3: Mission
+var e_recruit_bot_1: EntityFactory.Bot
+var e_recruit_bot_2: EntityFactory.Bot
+var e_recruit_bot_3: EntityFactory.Bot
 
 
 func button(container) -> Button:
@@ -46,17 +49,18 @@ func setup_nodes():
     recruit_1.visible = true
     recruit_2.visible = true
     recruit_3.visible = true
+    Globals.current_recruit = -1
     button(recruit_1).pressed.connect(func():
         Globals.current_mission = mission1
-        Globals.current_recruit = EntityFactory.create_batterie()
+        Globals.current_recruit = e_recruit_bot_1
         get_tree().change_scene_to_file("res://DeployGui.tscn"))
     button(recruit_2).pressed.connect(func():
         Globals.current_mission = mission2
-        Globals.current_recruit = EntityFactory.create_punch_e()
+        Globals.current_recruit = e_recruit_bot_2
         get_tree().change_scene_to_file("res://DeployGui.tscn"))
     button(recruit_3).pressed.connect(func():
         Globals.current_mission = mission3
-        Globals.current_recruit = EntityFactory.create_peppershot()
+        Globals.current_recruit = e_recruit_bot_3
         get_tree().change_scene_to_file("res://DeployGui.tscn"))
     return
 
@@ -113,18 +117,39 @@ func setup_floor(level: int, floor):
     elif level <= 12:
         missions = MissionFactory.foundry_3_floors(floor)
 
+    var bots = EntityFactory.new_recruits()
+    if len(bots) >= 1:
+        e_recruit_bot_1 = bots[0]
+        e_recruit_bot_2 = bots[0]
+        e_recruit_bot_3 = bots[0]
+        var ent = EntityFactory.create_bot(bots[0])
+        label(recruit_1).text = ent.display_name
+        sprite(recruit_1).texture = load(ent.icon_path)
+        label(recruit_2).text = ent.display_name
+        sprite(recruit_2).texture = load(ent.icon_path)
+        label(recruit_3).text = ent.display_name
+        sprite(recruit_3).texture = load(ent.icon_path)
+    if len(bots) >= 2:
+        e_recruit_bot_2 = bots[1]
+        e_recruit_bot_3 = bots[1]
+        var ent = EntityFactory.create_bot(bots[1])
+        label(recruit_2).text = ent.display_name
+        sprite(recruit_2).texture = load(ent.icon_path)
+        label(recruit_3).text = ent.display_name
+        sprite(recruit_3).texture = load(ent.icon_path)
+    if len(bots) >= 3:
+        e_recruit_bot_3 = bots[2]
+        var ent = EntityFactory.create_bot(bots[2])
+        label(recruit_3).text = ent.display_name
+        sprite(recruit_3).texture = load(ent.icon_path)
+    
+
     room_info1.start(missions[0], "ROOM A")
-    label(recruit_2).text = "None"
-    sprite(recruit_2).texture = load(Globals.NO_BOT_ICON_PATH)
     mission1 = missions[0]
 
     room_info2.start(missions[1], "ROOM B")
-    label(recruit_2).text = "None"
-    sprite(recruit_2).texture = load(Globals.NO_BOT_ICON_PATH)
     mission2 = missions[1]
 
     room_info3.start(missions[2], "ROOM C")
-    label(recruit_2).text = "None"
-    sprite(recruit_2).texture = load(Globals.NO_BOT_ICON_PATH)
     mission3 = missions[2]
     return

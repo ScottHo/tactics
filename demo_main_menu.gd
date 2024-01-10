@@ -12,6 +12,10 @@ func _ready():
     )
     $ExitButton.pressed.connect(func():
         get_tree().quit())
+    if len(Globals.bots_collected) == 0:
+        var b = EntityFactory.Bot.values()
+        b.shuffle()
+        Globals.bots_collected = b.slice(0, 6)
     return
     
 func _process(delta):

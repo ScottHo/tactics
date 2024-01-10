@@ -152,7 +152,6 @@ func pre_showCurrentTurn(turn: int):
     var entity := _state.get_entity(turn)
     nameLabel.text = entity.display_name
     charSprite.texture = load(entity.icon_path)
-    charSprite.scale = entity.sprite.texture_scale()*2.8
     charSprite.modulate.a = 0
     show_description(false, null)
     updateEntityInfo(entity)
@@ -344,6 +343,12 @@ func win():
     $GameOverLabel.visible = true
     $GameOverLabel.text = "Mission success"
     Globals.current_level += 1
+    if Globals.current_recruit != -1:
+        Globals.bots_collected.append(Globals.current_recruit)
+        var n = EntityFactory.create_bot(Globals.current_recruit).display_name
+        $RecruitLabel.visible = true
+        $RecruitLabel.text = "New Recruit!\n" + n
+        Globals.current_recruit = -1        
     scoreService.show_score()
     return
 
