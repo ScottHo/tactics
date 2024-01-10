@@ -16,6 +16,7 @@ var interactable: Interactable
 var sprite_path: String
 var icon_path: String
 var description: String
+var specials_left := 1
 
 # Variable Stats
 var threat: int

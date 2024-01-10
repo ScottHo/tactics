@@ -2,7 +2,6 @@ BUGS
 - Move hover overwrites highlights when already moving
 
 DO NEXT
-- Double/Triple specials
 - Random bot recruit
 - More Interactables
 - Random Interactables, maybe per foundry

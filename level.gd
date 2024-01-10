@@ -15,8 +15,11 @@ extends Node2D
 @onready var highlightMap: HighlightMap = $HighlightMap
 @onready var timer: Timer = $Timer
 var current_turn_id: int = -1
+var _mission: Mission
 var state: State = State.new()
+var _is_first_turn := true 
 var _is_ai_turn := false
+var _special_texts_set := true
 var _orig_ai_delay := 2.0
 var _ai_delay := 0.0
 var _do_ai_delay := false
@@ -104,11 +107,13 @@ func setup_entities():
         for i in range(len(allies)):
             if allies[i] != null:
                 setup_entity_for_level(allies[i], Vector2i(0, i))
-        
-    # TODO Setup service to randomly put these down
-    setup_interactable_for_level(Globals.current_mission.buffs[0], Vector2i(3,3))
     
-    setup_entity_for_level(Globals.current_mission.boss, Vector2i(9, 2))
+    _mission = Globals.current_mission
+    
+    # TODO Setup service to randomly put these down
+    setup_interactable_for_level(_mission.buffs[0], Vector2i(3,3))
+    
+    setup_entity_for_level(_mission.boss, Vector2i(9, 2))
     return
 
 func currentEntity() -> Entity:
@@ -121,8 +126,13 @@ func nextTurn():
         currentEntity().reset_buff_values()
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
-    cameraService.move(tileMap.pointToGlobal(currentEntity().location))    
+    cameraService.move(tileMap.pointToGlobal(currentEntity().location))
     resetPlayerServices()
+    if not currentEntity().is_ally and not currentEntity().is_add:
+        _special_texts_set = false
+        if not _is_first_turn:
+            currentEntity().specials_left = _mission.specials_per_turn
+    _is_first_turn = false
     menuService.showTurns(turnService.next7Turns())
     menuService.pre_showCurrentTurn(current_turn_id)
     timer.timeout.connect(nextTurn_continued)
@@ -176,8 +186,13 @@ func nextAiStep():
         startAiSpecial()
         return
     if _ai_state == AiState.SPECIAL:
-        _ai_state = AiState.NONE
-        nextTurn()
+        currentEntity().specials_left -= 1
+        if currentEntity().specials_left <= 0:
+            currentEntity().specials_left = 0
+            _ai_state = AiState.NONE
+            nextTurn()
+        else:
+            startAiSpecial()
         return
     return
 
@@ -214,10 +229,9 @@ func doAiAction():
     return
 
 func startAiSpecial():
-    aiSpecialService.start(currentEntity(), Globals.current_mission)
+    aiSpecialService.start(currentEntity(), _mission)
     if aiSpecialService.counter() == -1:
-        menuService.set_mechanic_text(aiSpecialService.next_special_name(),
-                aiSpecialService.next_special_description())    
+        set_ai_special_mechanic_texts()
         nextAiStep()
         return
     aiSpecialService.find_special_targets()
@@ -227,13 +241,26 @@ func startAiSpecial():
 
 func doAiSpecial():
     aiSpecialService.do_special_effect()
-    menuService.set_mechanic_text(aiSpecialService.next_special_name(),
-            aiSpecialService.next_special_description())
+    set_ai_special_mechanic_texts()
     aiSpecialService.finish()
     turnService.update_new()
     update_character_menu()
     if not checkDeaths():
         nextAiStep()
+    return
+
+func set_ai_special_mechanic_texts():
+    if _special_texts_set:
+        return
+    _special_texts_set = true
+    menuService.set_mechanic_text_1(aiSpecialService.n_special_name(),
+        aiSpecialService.n_special_description())
+    if _mission.specials_per_turn > 1:
+        menuService.set_mechanic_text_2(aiSpecialService.nn_special_name(),
+                aiSpecialService.nn_special_description())
+    if _mission.specials_per_turn > 2:
+        menuService.set_mechanic_text_3(aiSpecialService.nnn_special_name(),
+                aiSpecialService.nnn_special_description())
     return
 
 func resetPlayerServices():

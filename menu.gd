@@ -46,6 +46,16 @@ signal menuAnimationsFinished
 @onready var descMoveInterName: Label = $DescriptionContainer/MoveInteractName
 @onready var descInterDesc: Label = $DescriptionContainer/InteractDescription
 
+@onready var mech_1_name_short = $MechanicContainer/Short/Grid/Mechanic/Name
+@onready var mech_2_name_short = $MechanicContainer/Short/Grid/Mechanic2/Name
+@onready var mech_3_name_short = $MechanicContainer/Short/Grid/Mechanic3/Name
+@onready var mech_1_name_tall = $MechanicContainer/Long/Grid/Mechanic/Name
+@onready var mech_2_name_tall = $MechanicContainer/Long/Grid/Mechanic2/Name
+@onready var mech_3_name_tall = $MechanicContainer/Long/Grid/Mechanic3/Name
+@onready var mech_1_description_tall = $MechanicContainer/Long/Grid/Mechanic/Label
+@onready var mech_2_description_tall = $MechanicContainer/Long/Grid/Mechanic2/Label
+@onready var mech_3_description_tall = $MechanicContainer/Long/Grid/Mechanic3/Label
+
 @onready var scoreService: ScoreService = $"../ScoreService"
 
 
@@ -55,12 +65,13 @@ func _ready():
         unpress_all_buttons()
         nextTurnActionInitiate.emit())
 
+    setup_mechanic_container()
     setup_move_button()
     setup_interact_button()
     setup_action_button(attackButton, ActionType.ATTACK)
     setup_action_button(action1Button, ActionType.ACTION1)
     setup_action_button(action2Button, ActionType.ACTION2)
-
+    
     showTurnsButton.toggled.connect(func(b):
         show_future_turns(b))
 
@@ -68,6 +79,25 @@ func _ready():
 
     cache_button_states()
     _tab_dict = {}
+    return
+
+func setup_mechanic_container():
+    mech_1_name_short.text = ""
+    mech_2_name_short.text = ""
+    mech_3_name_short.text = ""
+    mech_1_name_tall.text = ""
+    mech_2_name_tall.text = ""
+    mech_3_name_tall.text = ""
+    mech_1_description_tall.text = ""
+    mech_2_description_tall.text = ""
+    mech_3_description_tall.text = ""
+    $MechanicContainer/Long.visible = false
+    $MechanicContainer/MechReference.mouse_entered.connect(func():
+        $MechanicContainer/Long.visible = true
+        $MechanicContainer/Short.visible = false)
+    $MechanicContainer/MechReference.mouse_exited.connect(func():
+        $MechanicContainer/Long.visible = false
+        $MechanicContainer/Short.visible = true)
     return
 
 func setup_move_button():
@@ -291,9 +321,22 @@ func disableActionButtons():
     action2Button.disabled = true
     return
 
-func set_mechanic_text(n, t):
-    $MechanicContainer/MechanicName.text = n
-    $MechanicContainer/MechanicLabel.text = t
+func set_mechanic_text_1(n, t):
+    mech_1_name_tall.text = n
+    mech_1_name_short.text = n
+    mech_1_description_tall.text = t
+    return
+
+func set_mechanic_text_2(n, t):
+    mech_2_name_tall.text = n
+    mech_2_name_short.text = n
+    mech_2_description_tall.text = t
+    return
+
+func set_mechanic_text_3(n, t):
+    mech_3_name_tall.text = n
+    mech_3_name_short.text = n
+    mech_3_description_tall.text = t
     return
 
 func win():

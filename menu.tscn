@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=41 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
 [ext_resource type="PackedScene" uid="uid://7ah3bf7cn7a" path="res://special_description_panel.tscn" id="3_kx1y6"]
 [ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/long-vertical.png" id="3_xttrl"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="4_cvwx3"]
+[ext_resource type="Texture2D" uid="uid://3k0xhd74sl8t" path="res://Assets/tall-short-panel.png" id="4_yabl6"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="5_n8sjp"]
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="6_246xv"]
 [ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://Assets/panel_buttons_background.png" id="6_xc4a1"]
@@ -158,48 +159,185 @@ offset_top = 2.63284
 offset_right = 1917.08
 offset_bottom = 167.633
 
-[node name="Short-panel" type="Sprite2D" parent="MechanicContainer"]
+[node name="Long" type="Node2D" parent="MechanicContainer"]
+
+[node name="Short-panel2" type="Sprite2D" parent="MechanicContainer/Long"]
+position = Vector2(-1.5874, 0.793701)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_yabl6")
+centered = false
+
+[node name="Label" type="Label" parent="MechanicContainer/Long"]
+offset_left = 50.6776
+offset_top = 8.17645
+offset_right = 350.678
+offset_bottom = 34.1765
+text = "Boss Specials Incoming"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="MechanicContainer/Long"]
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 226.0
+theme_override_constants/v_separation = 108
+
+[node name="Mechanic" type="Control" parent="MechanicContainer/Long/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MechanicContainer/Long/Grid/Mechanic"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 28.955
+offset_right = 375.0
+offset_bottom = 50.955
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 18
+text = "TEST"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="MechanicContainer/Long/Grid/Mechanic"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 54.7498
+offset_right = 375.0
+offset_bottom = 117.75
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 15
+text = "test
+test
+test"
+autowrap_mode = 2
+
+[node name="Mechanic2" type="Control" parent="MechanicContainer/Long/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MechanicContainer/Long/Grid/Mechanic2"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 28.955
+offset_right = 375.0
+offset_bottom = 50.955
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 18
+text = "TEST"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="MechanicContainer/Long/Grid/Mechanic2"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 54.7498
+offset_right = 375.0
+offset_bottom = 117.75
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 15
+text = "test
+test
+test"
+autowrap_mode = 2
+
+[node name="Mechanic3" type="Control" parent="MechanicContainer/Long/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MechanicContainer/Long/Grid/Mechanic3"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 28.955
+offset_right = 375.0
+offset_bottom = 50.955
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 18
+text = "TEST"
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="MechanicContainer/Long/Grid/Mechanic3"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 54.7498
+offset_right = 375.0
+offset_bottom = 117.75
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 15
+text = "test
+test
+test"
+autowrap_mode = 2
+
+[node name="Short" type="Node2D" parent="MechanicContainer"]
+
+[node name="Short-panel" type="Sprite2D" parent="MechanicContainer/Short"]
 position = Vector2(-1.5874, 0.793701)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_mrg4l")
 centered = false
 
-[node name="Label" type="Label" parent="MechanicContainer"]
-layout_mode = 0
+[node name="Label" type="Label" parent="MechanicContainer/Short"]
 offset_left = 50.6776
 offset_top = 8.17645
 offset_right = 350.678
 offset_bottom = 34.1765
-text = "Boss Spell Incoming"
+text = "Boss Specials Incoming"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MechanicName" type="Label" parent="MechanicContainer"]
+[node name="Grid" type="GridContainer" parent="MechanicContainer/Short"]
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 70.0
+theme_override_constants/v_separation = 30
+
+[node name="Mechanic" type="Control" parent="MechanicContainer/Short/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MechanicContainer/Short/Grid/Mechanic"]
 layout_mode = 0
-offset_left = 23.6275
-offset_top = 28.9546
-offset_right = 373.628
-offset_bottom = 50.9546
+offset_left = 25.0
+offset_top = 28.955
+offset_right = 375.0
+offset_bottom = 50.955
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
-horizontal_alignment = 1
+text = "TEST"
 autowrap_mode = 2
 
-[node name="MechanicLabel" type="Label" parent="MechanicContainer"]
+[node name="Mechanic2" type="Control" parent="MechanicContainer/Short/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MechanicContainer/Short/Grid/Mechanic2"]
 layout_mode = 0
-offset_left = 26.1263
-offset_top = 51.5753
-offset_right = 376.126
-offset_bottom = 133.575
+offset_left = 25.0
+offset_top = 28.955
+offset_right = 375.0
+offset_bottom = 50.955
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 18
+text = "TEST"
 autowrap_mode = 2
+
+[node name="Mechanic3" type="Control" parent="MechanicContainer/Short/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MechanicContainer/Short/Grid/Mechanic3"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 28.955
+offset_right = 375.0
+offset_bottom = 50.955
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 18
+text = "TEST"
+autowrap_mode = 2
+
+[node name="MechReference" type="ReferenceRect" parent="MechanicContainer"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 160.0
 
 [node name="DescriptionContainer" type="ReferenceRect" parent="."]
 offset_left = 1452.46
-offset_top = 196.75
+offset_top = 208.404
 offset_right = 1912.46
-offset_bottom = 686.75
+offset_bottom = 698.404
 
 [node name="SpecialPanel" parent="DescriptionContainer" instance=ExtResource("3_kx1y6")]
 position = Vector2(122.566, 10.7562)

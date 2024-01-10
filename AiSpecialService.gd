@@ -156,12 +156,28 @@ func do_special_effect():
         mechanic_spawn_effect()
     return
 
-func next_special_description():
-    var s: Special = next_special()
+func n_special_description():
+    var s: Special = next_special(1)
     return  s.description
 
-func next_special_name():
-    var s: Special = next_special()
+func n_special_name():
+    var s: Special = next_special(1)
+    return s.display_name
+
+func nn_special_description():
+    var s: Special = next_special(2)
+    return  s.description
+
+func nn_special_name():
+    var s: Special = next_special(2)
+    return s.display_name
+
+func nnn_special_description():
+    var s: Special = next_special(3)
+    return  s.description
+
+func nnn_special_name():
+    var s: Special = next_special(3)
     return s.display_name
 
 func special() -> Special:
@@ -175,8 +191,8 @@ func cycle_special():
     _counters[_entity.id] = counter() + 1
     return
 
-func next_special():
-    return _specials[(counter() + 1) % len(_specials)]
+func next_special(i: int):
+    return _specials[(counter() + i) % len(_specials)]
     
 func finish():
     for vec in _targets:
