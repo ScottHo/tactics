@@ -3,7 +3,7 @@ class_name MissionFactory
 static func foundry_1_final_boss() -> Mission:
     var m = Mission.new()
     m.boss = EntityFactory.create_boss_1()
-    m.buffs = [InteractableFactory.create_blue_orb_thing()]
+    m.buffs = InteractableFactory.random_set()
     m.specials_per_turn = 2
 
     var s1 = Special.new()
@@ -26,7 +26,7 @@ static func foundry_1_final_boss() -> Mission:
 static func foundry_2_final_boss() -> Mission:
     var m = Mission.new()
     m.boss = EntityFactory.create_boss_2()
-    m.buffs = [InteractableFactory.create_blue_orb_thing()]
+    m.buffs = InteractableFactory.random_set()
     m.specials_per_turn = 3
 
     var s1 = Special.new()    
@@ -56,7 +56,7 @@ static func foundry_2_final_boss() -> Mission:
 static func foundry_3_final_boss() -> Mission:
     var m = Mission.new()
     m.boss = EntityFactory.create_boss_3()
-    m.buffs = [InteractableFactory.create_blue_orb_thing()]
+    m.buffs = InteractableFactory.random_set()
     m.specials_per_turn = 3
 
     var s1 = Special.new()
@@ -101,7 +101,7 @@ static func foundry_1_floors(floor: int) -> Array:
         var m = Mission.new()
         m.boss = EntityFactory.create_boss_1()
         m.specials = [specs[i]]
-        m.buffs = [InteractableFactory.create_blue_orb_thing()]
+        m.buffs = InteractableFactory.random_set()
         m.specials_per_turn = 1
         ret.append(m)
     return ret
@@ -114,7 +114,7 @@ static func foundry_2_floors(floor: int) -> Array:
         var m = Mission.new()
         m.boss = EntityFactory.create_boss_2()
         m.specials = [specs[ i * 2 ], specs[i * 2 + 1]]
-        m.buffs = [InteractableFactory.create_blue_orb_thing()]
+        m.buffs = InteractableFactory.random_set()
         m.specials_per_turn = 2
         ret.append(m)
     return ret
@@ -127,7 +127,7 @@ static func foundry_3_floors(floor: int) -> Array:
         var m = Mission.new()
         m.boss = EntityFactory.create_boss_3()
         m.specials = [specs[ i * 3 ], specs[i * 3 + 1], specs[i * 3 + 2]]
-        m.buffs = [InteractableFactory.create_blue_orb_thing()]
+        m.buffs = InteractableFactory.random_set()
         m.specials_per_turn = 3
         ret.append(m)
     return ret

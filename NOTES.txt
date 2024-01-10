@@ -3,18 +3,19 @@ BUGS
 
 DO NEXT
 - Random bot recruit
-- More Interactables
-- Random Interactables, maybe per foundry
-- Aura of interactables
+- Animations
 
 DO LATER
+- Aura of interactables?
+- Allow movement through allies/interactables
+- Procedurally generated maps
+- Walls in tilemaps
 - Scale tilemap
 - More specials
 - Specials based on foundry
 - Special/Boss scaling based on floors/foundry
 - More Bosses
 - Skill Points based on score
-- Animations
 - Action buttons being enabled need animations
 - "Popup" for current action/event
 - Tanky bots

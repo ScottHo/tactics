@@ -25,7 +25,7 @@ func _input(event):
         if previous_coords != coords:
             highlightPath(true)
             previous_coords = coords
-            _points = []            
+            _points = []
             if not _map_bfs.inRange(coords):
                 return
             var points = _map_bfs.getPath(coords)

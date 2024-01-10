@@ -101,4 +101,4 @@ func add_interactable(inter: Interactable):
 func remove_interactable(inter: Interactable):
     interactables.remove_at(interactables.find(inter))
     return
-    
+

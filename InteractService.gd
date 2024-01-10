@@ -3,9 +3,9 @@ class_name InteractService extends Node2D
 var _state: State
 var _enabled: bool = false
 var _entity: Entity
-var _action_type: int = -1
 var _target: Vector2i
 var _map_bfs: MapBFS
+var _num_inters := 0
 
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
@@ -91,6 +91,36 @@ func finish():
         if _map_bfs != null:
             _map_bfs.resetHighlights(false)
         _enabled = false
+    return
+
+func spawn_interactable(mission: Mission):
+    var tiles: Array = tileMap.all_tiles()
+    tiles.shuffle()
+    var i = 0
+    while true:
+        print(str(tiles[i]))
+        i += 1
+        if i > len(tiles):
+            print_debug("No tiles available to spawn interactable")
+            break
+        if _state.entity_on_tile(tiles[i]):
+            continue
+        if _state.interactable_on_tile(tiles[i]):
+            continue
+        print_debug("Spawning Interactable at " + str(tiles[i]))
+        setup_interactable_for_level(mission.buffs[_num_inters], tiles[i])
+        return tiles[i]
+    return
+
+func setup_interactable_for_level(inter: Interactable, location: Vector2i):
+    inter.location = location
+    var sprite: InteractableSprite  = load(inter.sprite_path).instantiate()
+    sprite.load_texture(inter.icon_path, inter.color)
+    inter.set_sprite(sprite)
+    get_parent().add_child(sprite)
+    sprite.global_position = tileMap.pointToGlobal(inter.location)
+    _state.add_interactable(inter)
+    _num_inters += 1
     return
 
 func start(entity: Entity):

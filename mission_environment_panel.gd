@@ -32,7 +32,7 @@ func _set_buff(inter: Interactable, container: Control):
     container.visible = true
     name_label(container).text = inter.display_name
     description_label(container).text = inter.description
-    sprite(container).texture = load(inter.icon_path)
+    sprite(container).load_texture(inter.icon_path, inter.color)
     return
 
 func _clear_buff(container: Control):
@@ -45,5 +45,5 @@ func name_label(c) -> Label:
 func description_label(c) -> Label:
     return c.get_child(1)
     
-func sprite(c) -> Sprite2D:
+func sprite(c) -> InteractableSprite:
     return c.get_child(4)

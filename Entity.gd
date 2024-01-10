@@ -257,6 +257,13 @@ func setup_next_turn():
         loseThreat(1)
     return
 
+func done_turn():
+    if is_ally:
+        if interactable != null:
+            if interactable.repeated_end_effect != null:
+                interactable.repeated_end_effect.call(self)
+    return
+
 func clone() -> Entity:
     var e = Entity.new()
     e.display_name = display_name

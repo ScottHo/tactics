@@ -17,7 +17,7 @@ extends Node2D
 var current_turn_id: int = -1
 var _mission: Mission
 var state: State = State.new()
-var _is_first_turn := true 
+var _is_first_turn := true
 var _is_ai_turn := false
 var _special_texts_set := true
 var _orig_ai_delay := 2.0
@@ -72,16 +72,6 @@ func _process(delta):
     
     return
 
-func setup_interactable_for_level(inter: Interactable, location: Vector2i):
-    inter.location = location
-    var sprite: InteractableSprite  = load(inter.sprite_path).instantiate()
-    sprite.set_texture(load(inter.icon_path))
-    inter.set_sprite(sprite)
-    add_child(sprite)
-    sprite.global_position = tileMap.pointToGlobal(inter.location)
-    state.add_interactable(inter)
-    return
-
 func setup_entity_for_level(ent: Entity, location: Vector2i):
     var sprite: EntitySprite  = load(ent.sprite_path).instantiate()
     add_child(sprite)
@@ -110,9 +100,6 @@ func setup_entities():
     
     _mission = Globals.current_mission
     
-    # TODO Setup service to randomly put these down
-    setup_interactable_for_level(_mission.buffs[0], Vector2i(3,3))
-    
     setup_entity_for_level(_mission.boss, Vector2i(9, 2))
     return
 
@@ -120,10 +107,24 @@ func currentEntity() -> Entity:
     return state.entities.get_data(current_turn_id)
 
 func nextTurn():
+    if [5, 10, 15].has(scoreService.turnsTaken):
+        var location = interactService.spawn_interactable(_mission)
+        cameraService.move(tileMap.pointToGlobal(location))
+        timer.timeout.connect(nextTurn_continued)
+        timer.start(1.6)
+        return
+    nextTurn_continued()
+    return
+
+func nextTurn_continued():
+    timer.stop()
+    timer.disconnect_all()
+
     scoreService.turn_taken()
     menuService.disableAllButtons()
     if currentEntity() != null:
         currentEntity().reset_buff_values()
+        currentEntity().done_turn()
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
     cameraService.move(tileMap.pointToGlobal(currentEntity().location))
@@ -135,12 +136,11 @@ func nextTurn():
     _is_first_turn = false
     menuService.showTurns(turnService.next7Turns())
     menuService.pre_showCurrentTurn(current_turn_id)
-    timer.timeout.connect(nextTurn_continued)
+    timer.timeout.connect(nextTurn_continued2)
     timer.start(.4)
     return
-    
 
-func nextTurn_continued():
+func nextTurn_continued2():
     timer.stop()
     timer.disconnect_all()
     currentEntity().setup_next_turn()

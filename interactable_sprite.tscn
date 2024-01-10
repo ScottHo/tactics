@@ -1,33 +1,46 @@
 [gd_scene load_steps=4 format=3 uid="uid://okcwn6p1bt7m"]
 
 [ext_resource type="Script" path="res://InteractableSprite.gd" id="1_p2jq1"]
-[ext_resource type="Texture2D" uid="uid://bogxkjfacikwf" path="res://icon.svg" id="1_r6bgl"]
-[ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="3_tjdht"]
+[ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_dttd2"]
+[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="3_8viki"]
 
-[node name="InteractableSprite" type="Sprite2D"]
-texture = ExtResource("1_r6bgl")
+[node name="InteractableSprite" type="Node2D"]
 script = ExtResource("1_p2jq1")
 
-[node name="Panel" type="Panel" parent="."]
-visible = false
-z_index = 15
-offset_left = 41.5311
-offset_top = -44.8985
-offset_right = 169.531
-offset_bottom = 33.1015
-theme = ExtResource("3_tjdht")
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 2
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 45.0
-offset_bottom = 26.0
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 offset_left = -51.6721
 offset_top = -51.6721
 offset_right = 48.3279
 offset_bottom = 48.3279
+
+[node name="Hover" type="Node2D" parent="."]
+visible = false
+position = Vector2(44, -81)
+
+[node name="Panel" type="Sprite2D" parent="Hover"]
+position = Vector2(201, 81)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_dttd2")
+
+[node name="Name" type="Label" parent="Hover"]
+offset_left = 54.0
+offset_top = 9.0
+offset_right = 354.0
+offset_bottom = 28.0
+text = "TEST"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Hover"]
+offset_left = 35.5
+offset_top = 36.5
+offset_right = 365.5
+offset_bottom = 136.5
+theme_override_fonts/font = ExtResource("3_8viki")
+theme_override_font_sizes/font_size = 15
+text = "test
+test
+test
+test"
+autowrap_mode = 2
