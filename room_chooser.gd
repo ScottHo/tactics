@@ -86,13 +86,13 @@ func setup_panels(level: int, floor):
 
 func setup_title(level: int, floor: int):
     if level <= 4:
-        title.text = "NICKEL FOUNDRY - FLOOR " + str(floor)
+        title.text = "BRONZE FOUNDRY - FLOOR " + str(floor)
     elif level <= 8:
-        title.text = "IRON FOUNDRY - FLOOR " + str(floor)
-    elif level <= 12:
         title.text = "STEEL FOUNDRY - FLOOR " + str(floor)
+    elif level <= 12:
+        title.text = "CHROME FOUNDRY - FLOOR " + str(floor)
     else:
-        title.text = "TITANIUM FOUNDRY - FLOOR " + str(floor)
+        title.text = "CHROME FOUNDRY - FLOOR " + str(floor)
     return
 
 func setup_foundry_boss_panels():

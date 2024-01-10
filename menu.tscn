@@ -153,68 +153,69 @@ theme_override_font_sizes/font_size = 50
 text = "Mission Success"
 
 [node name="MechanicContainer" type="ReferenceRect" parent="."]
-offset_left = 1159.52
-offset_top = -0.192383
-offset_right = 1551.52
-offset_bottom = 154.807
+offset_left = 1517.08
+offset_top = 2.63284
+offset_right = 1917.08
+offset_bottom = 167.633
 
 [node name="Short-panel" type="Sprite2D" parent="MechanicContainer"]
-scale = Vector2(0.28, 0.28)
+position = Vector2(-1.5874, 0.793701)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_mrg4l")
 centered = false
 
 [node name="Label" type="Label" parent="MechanicContainer"]
 layout_mode = 0
-offset_left = 44.4806
-offset_top = 7.12416
-offset_right = 332.481
-offset_bottom = 33.1242
+offset_left = 50.6776
+offset_top = 8.17645
+offset_right = 350.678
+offset_bottom = 34.1765
 text = "Boss Spell Incoming"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MechanicName" type="Label" parent="MechanicContainer"]
 layout_mode = 0
-offset_left = 40.597
-offset_top = 28.8102
-offset_right = 335.597
-offset_bottom = 50.8102
+offset_left = 23.6275
+offset_top = 28.9546
+offset_right = 373.628
+offset_bottom = 50.9546
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="MechanicLabel" type="Label" parent="MechanicContainer"]
 layout_mode = 0
-offset_left = 41.1916
-offset_top = 51.4051
-offset_right = 336.192
-offset_bottom = 133.405
+offset_left = 26.1263
+offset_top = 51.5753
+offset_right = 376.126
+offset_bottom = 133.575
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 15
 autowrap_mode = 2
 
 [node name="DescriptionContainer" type="ReferenceRect" parent="."]
-offset_left = 1198.96
-offset_top = 391.368
-offset_right = 1528.96
-offset_bottom = 541.368
+offset_left = 1452.46
+offset_top = 196.75
+offset_right = 1912.46
+offset_bottom = 686.75
 
 [node name="SpecialPanel" parent="DescriptionContainer" instance=ExtResource("3_kx1y6")]
-position = Vector2(16.1832, -239.767)
+position = Vector2(122.566, 10.7562)
 
 [node name="ShortPanel" type="Sprite2D" parent="DescriptionContainer"]
-position = Vector2(159.855, 80.182)
-scale = Vector2(0.22, 0.22)
+position = Vector2(233.344, 371.548)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_xttrl")
 
 [node name="MoveContainer" type="Control" parent="DescriptionContainer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 122.22
-offset_top = 125.912
-offset_right = 162.22
-offset_bottom = 165.912
+offset_left = 195.124
+offset_top = 442.15
+offset_right = 235.124
+offset_bottom = 482.15
 
 [node name="Label2" type="Label" parent="DescriptionContainer/MoveContainer"]
 layout_mode = 0
@@ -246,20 +247,21 @@ label_settings = SubResource("LabelSettings_jxedm")
 
 [node name="InteractMessage" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 95.4073
-offset_top = 129.431
-offset_right = 297.407
-offset_bottom = 145.431
+offset_left = 59.0147
+offset_top = 443.056
+offset_right = 409.015
+offset_bottom = 463.056
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 16
 text = "Interact once per turn"
+horizontal_alignment = 1
 
 [node name="MoveInteractName" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 46.1689
-offset_top = 15.3713
-offset_right = 271.169
-offset_bottom = 38.3713
+offset_left = 60.1207
+offset_top = 272.937
+offset_right = 410.121
+offset_bottom = 295.937
 theme_override_font_sizes/font_size = 18
 text = "Action"
 horizontal_alignment = 1
@@ -267,31 +269,30 @@ autowrap_mode = 2
 
 [node name="InteractDescription" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 24.3521
-offset_top = 42.9358
-offset_right = 298.352
-offset_bottom = 125.936
+offset_left = 26.3267
+offset_top = 321.637
+offset_right = 446.327
+offset_bottom = 404.637
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 15
 text = "No Action Selected."
 autowrap_mode = 2
 
 [node name="TurnButton" type="Button" parent="."]
-offset_left = 667.028
-offset_top = 684.307
-offset_right = 837.028
-offset_bottom = 774.307
+offset_left = 815.353
+offset_top = 855.94
+offset_right = 985.353
+offset_bottom = 945.94
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
 theme_override_font_sizes/font_size = 18
 text = "End Turn"
 
 [node name="CharacterContainer" type="ReferenceRect" parent="."]
-offset_left = 1058.47
-offset_top = 549.058
-offset_right = 1658.47
-offset_bottom = 949.058
-scale = Vector2(0.8, 0.8)
+offset_left = 1318.84
+offset_top = 679.752
+offset_right = 1918.84
+offset_bottom = 1079.75
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(-31.2645, 8.29172)
@@ -630,28 +631,28 @@ libraries = {
 }
 
 [node name="TurnsContainer" type="ReferenceRect" parent="."]
-offset_left = 1085.71
-offset_top = 796.883
-offset_right = 1125.71
-offset_bottom = 836.883
+offset_left = 695.386
+offset_top = 950.846
+offset_right = 1445.39
+offset_bottom = 1070.85
 
 [node name="ShowTurnsButton" type="Button" parent="TurnsContainer"]
 layout_mode = 0
-offset_left = -69.3241
-offset_top = -26.3303
-offset_right = 30.6759
-offset_bottom = 73.6697
+offset_left = 576.731
+offset_top = 13.1119
+offset_right = 686.731
+offset_bottom = 123.112
 theme_type_variation = &"TriangleButton"
 toggle_mode = true
 
 [node name="GridContainer" type="GridContainer" parent="TurnsContainer"]
 layout_direction = 3
 layout_mode = 0
-offset_left = 140.273
-offset_top = 21.0
-offset_right = 950.273
-offset_bottom = 21.0
-theme_override_constants/h_separation = 76
+offset_left = 205.342
+offset_top = 66.1119
+offset_right = 685.342
+offset_bottom = 66.1119
+theme_override_constants/h_separation = 80
 columns = 10
 
 [node name="Control" type="Control" parent="TurnsContainer/GridContainer"]
@@ -692,8 +693,8 @@ layout_mode = 2
 [node name="AbortMissionButton" type="Button" parent="."]
 offset_left = 8.47571
 offset_top = 7.41624
-offset_right = 128.476
-offset_bottom = 67.4162
+offset_right = 178.476
+offset_bottom = 97.4162
 theme_override_font_sizes/font_size = 16
 text = "ABORT
 MISSION"

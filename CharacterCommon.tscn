@@ -64,6 +64,8 @@ grow_horizontal = 2
 grow_vertical = 2
 vertical_alignment = 1
 
+[node name="CanvasLayer" type="CanvasLayer" parent="TextParent"]
+
 [node name="DeathSprite" type="Sprite2D" parent="."]
 visible = false
 z_index = 2

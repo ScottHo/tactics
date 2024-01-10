@@ -110,7 +110,7 @@ func showTurns(turns: Array[int]):
     return
 
 func _setup_turn_sprite(entity: Entity, sprite: Sprite2D):
-    sprite.texture = entity.sprite.texture_resource()
+    sprite.texture = load(entity.icon_path)
     sprite.scale = entity.sprite.texture_scale()*1.3
     return
 
@@ -121,7 +121,7 @@ func show_future_turns(show):
 func pre_showCurrentTurn(turn: int):
     var entity := _state.get_entity(turn)
     nameLabel.text = entity.display_name
-    charSprite.texture = entity.sprite.texture_resource()
+    charSprite.texture = load(entity.icon_path)
     charSprite.scale = entity.sprite.texture_scale()*2.8
     charSprite.modulate.a = 0
     show_description(false, null)

@@ -56,10 +56,11 @@ position = Vector2(59.0084, -191.351)
 script = ExtResource("1_cil83")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = -516.655
-offset_top = 29.7653
-offset_right = 393.345
-offset_bottom = 329.765
+offset_left = -597.655
+offset_top = 31.7653
+offset_right = 312.345
+offset_bottom = 331.765
+scale = Vector2(1.2, 1.2)
 theme_override_constants/h_separation = 130
 theme_override_constants/v_separation = 130
 columns = 4
@@ -434,9 +435,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StatPanel" parent="GridContainer/Range" instance=ExtResource("8_adid2")]
-visible = false
 z_index = 10
-position = Vector2(-113.6, -127.345)
+position = Vector2(-155.979, -125.579)
 
 [node name="Armor" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -588,9 +588,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SpecialPanel" parent="GridContainer/Action1" instance=ExtResource("16_31s5c")]
-visible = false
 z_index = 10
-position = Vector2(-82.5304, -387.263)
+position = Vector2(-117.55, -459.66)
 
 [node name="Action2" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -667,52 +666,51 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SpecialPanel" parent="GridContainer/Action2" instance=ExtResource("16_31s5c")]
-visible = false
 z_index = 10
-position = Vector2(-82.5304, -387.263)
+position = Vector2(-117.55, -459.66)
 
 [node name="Bottom" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 211.126
-offset_top = 71.3051
-offset_right = 251.126
-offset_bottom = 111.305
-
-[node name="DeployButton" type="Button" parent="Bottom"]
-layout_mode = 0
-offset_left = -10.1704
-offset_top = 111.535
-offset_right = 139.83
-offset_bottom = 186.535
-theme = ExtResource("2_j6fe4")
-theme_override_font_sizes/font_size = 20
-text = "Deploy"
+offset_left = 33.0805
+offset_top = 62.0248
+offset_right = 73.0805
+offset_bottom = 102.025
 
 [node name="Label" type="Label" parent="Bottom"]
 layout_mode = 0
-offset_left = -39.8534
-offset_top = -3.17443
-offset_right = 138.147
-offset_bottom = 21.8256
+offset_left = -17.1888
+offset_top = 258.397
+offset_right = 160.812
+offset_bottom = 283.397
 text = "Skill Points:"
 label_settings = SubResource("LabelSettings_k38d3")
 
 [node name="SkillPointsLabel" type="Label" parent="Bottom"]
 layout_mode = 0
-offset_left = 141.105
-offset_top = -3.43594
-offset_right = 181.105
-offset_bottom = 21.5641
+offset_left = 163.77
+offset_top = 258.136
+offset_right = 203.77
+offset_bottom = 283.136
 text = "99"
 label_settings = SubResource("LabelSettings_vxghf")
 
+[node name="DeployButton" type="Button" parent="Bottom"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 141.492
+offset_right = 175.0
+offset_bottom = 231.492
+theme = ExtResource("2_j6fe4")
+theme_override_font_sizes/font_size = 20
+text = "Deploy"
+
 [node name="ResetButton" type="Button" parent="Bottom"]
 layout_mode = 0
-offset_left = -9.40399
-offset_top = 33.8793
-offset_right = 140.596
-offset_bottom = 108.879
+offset_left = 5.0
+offset_top = -14.553
+offset_right = 175.0
+offset_bottom = 75.447
 theme = ExtResource("2_j6fe4")
 theme_override_font_sizes/font_size = 20
 text = "Reset"
@@ -720,21 +718,22 @@ text = "Reset"
 [node name="EntityContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 90.8923
-offset_top = 145.053
-offset_right = 130.892
-offset_bottom = 185.053
+offset_left = -674.511
+offset_top = 177.277
+offset_right = -634.511
+offset_bottom = 217.277
 
 [node name="Sprite2D" type="Sprite2D" parent="EntityContainer"]
-scale = Vector2(0.3, 0.3)
+position = Vector2(-25, -14)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("16_epibs")
 
 [node name="Label" type="Label" parent="EntityContainer"]
 layout_mode = 0
-offset_left = -110.977
-offset_top = 80.1012
-offset_right = 109.023
-offset_bottom = 110.101
+offset_left = -137.378
+offset_top = 95.8319
+offset_right = 82.6219
+offset_bottom = 125.832
 text = "-"
 label_settings = SubResource("LabelSettings_cso6f")
 horizontal_alignment = 1

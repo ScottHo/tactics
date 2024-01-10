@@ -1,18 +1,21 @@
 BUGS
 - Move hover overwrites highlights when already moving
 
-TODO
-- More specials
-- Specials based on foundry
-- Special/Boss scaling based on floors/foundry
-- More Bosses
+DO NEXT
 - Double/Triple specials
 - Random bot recruit
 - More Interactables
 - Random Interactables, maybe per foundry
+- Aura of interactables
+
+DO LATER
+- Scale tilemap
+- More specials
+- Specials based on foundry
+- Special/Boss scaling based on floors/foundry
+- More Bosses
 - Skill Points based on score
 - Animations
-- Aura of interactables
 - Action buttons being enabled need animations
 - "Popup" for current action/event
 - Tanky bots

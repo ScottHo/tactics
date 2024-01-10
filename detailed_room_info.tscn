@@ -10,15 +10,15 @@
 script = ExtResource("1_kltg5")
 
 [node name="Vertical-medium" type="Sprite2D" parent="."]
-position = Vector2(233.109, 320.231)
-scale = Vector2(0.54, 0.54)
+position = Vector2(296.897, 403.402)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("1_0vjqg")
 
 [node name="RoomName" type="Label" parent="."]
-offset_left = 83.3531
-offset_top = 20.7334
-offset_right = 382.353
-offset_bottom = 52.7334
+offset_left = 87.8255
+offset_top = 12.3485
+offset_right = 507.826
+offset_bottom = 44.3484
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 26
@@ -26,37 +26,39 @@ text = "ROOM A"
 horizontal_alignment = 1
 
 [node name="EnemyPanel" parent="." instance=ExtResource("2_m4fqc")]
-offset_left = 247.403
-offset_top = 120.214
-offset_right = 247.403
-offset_bottom = 120.214
+offset_left = 363.603
+offset_top = 88.8896
+offset_right = 363.603
+offset_bottom = 88.8896
 scale = Vector2(0.8, 0.8)
 
 [node name="SpecialsGrid" type="GridContainer" parent="."]
-offset_left = 39.3292
-offset_top = 249.336
-offset_right = 79.3292
-offset_bottom = 519.336
-theme_override_constants/v_separation = 90
+offset_left = 33.5872
+offset_top = 231.936
+offset_right = 33.5872
+offset_bottom = 731.936
+theme_override_constants/v_separation = 88
 
 [node name="Special1" type="Control" parent="SpecialsGrid"]
 layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special1"]
 layout_mode = 0
-offset_left = -6.34049
-offset_right = 393.66
-offset_bottom = 21.0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special1"]
 layout_mode = 0
-offset_left = -5.2973
-offset_top = 22.1552
-offset_right = 394.703
-offset_bottom = 110.155
+offset_left = 2.44421
+offset_top = 7.01337
+offset_right = 522.444
+offset_bottom = 79.0134
 theme_override_fonts/font = ExtResource("3_sgklb")
+theme_override_font_sizes/font_size = 16
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -65,19 +67,21 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special2"]
 layout_mode = 0
-offset_left = -6.34049
-offset_right = 393.66
-offset_bottom = 21.0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special2"]
 layout_mode = 0
-offset_left = -5.2973
-offset_top = 22.1552
-offset_right = 394.703
-offset_bottom = 110.155
+offset_left = 2.44421
+offset_top = 7.01337
+offset_right = 522.444
+offset_bottom = 79.0134
 theme_override_fonts/font = ExtResource("3_sgklb")
+theme_override_font_sizes/font_size = 16
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -86,19 +90,21 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special3"]
 layout_mode = 0
-offset_left = -6.34049
-offset_right = 393.66
-offset_bottom = 21.0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special3"]
 layout_mode = 0
-offset_left = -5.2973
-offset_top = 22.1552
-offset_right = 394.703
-offset_bottom = 110.155
+offset_left = 2.44421
+offset_top = 7.01337
+offset_right = 522.444
+offset_bottom = 79.0134
 theme_override_fonts/font = ExtResource("3_sgklb")
+theme_override_font_sizes/font_size = 16
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -107,23 +113,71 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special4"]
 layout_mode = 0
-offset_left = -6.34049
-offset_right = 393.66
-offset_bottom = 21.0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special4"]
 layout_mode = 0
-offset_left = -5.2973
-offset_top = 22.1552
-offset_right = 394.703
-offset_bottom = 110.155
+offset_left = 2.44421
+offset_top = 7.01337
+offset_right = 522.444
+offset_bottom = 79.0134
 theme_override_fonts/font = ExtResource("3_sgklb")
+theme_override_font_sizes/font_size = 16
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="Special5" type="Control" parent="SpecialsGrid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="SpecialsGrid/Special5"]
+layout_mode = 0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="SpecialsGrid/Special5"]
+layout_mode = 0
+offset_left = 2.44421
+offset_top = 7.01337
+offset_right = 522.444
+offset_bottom = 79.0134
+theme_override_fonts/font = ExtResource("3_sgklb")
+theme_override_font_sizes/font_size = 16
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="Special6" type="Control" parent="SpecialsGrid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="SpecialsGrid/Special6"]
+layout_mode = 0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="SpecialsGrid/Special6"]
+layout_mode = 0
+offset_left = 2.44421
+offset_top = 7.01337
+offset_right = 522.444
+offset_bottom = 79.0134
+theme_override_fonts/font = ExtResource("3_sgklb")
+theme_override_font_sizes/font_size = 16
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
 [node name="BossSprite" type="Sprite2D" parent="."]
-position = Vector2(132.54, 152.726)
+position = Vector2(159.289, 134.656)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_l5xc7")

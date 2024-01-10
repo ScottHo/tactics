@@ -27,7 +27,7 @@ metadata/_edit_horizontal_guides_ = [371.787]
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 position = Vector2(-47.5682, -40.433)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 tile_set = ExtResource("2_df7di")
 rendering_quadrant_size = 64
 format = 2
@@ -44,7 +44,7 @@ script = ExtResource("3_j2hyq")
 [node name="HighlightMap" type="TileMap" parent="."]
 y_sort_enabled = true
 position = Vector2(-47.5682, -40.433)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 tile_set = ExtResource("3_ilats")
 rendering_quadrant_size = 64
 format = 2
@@ -58,11 +58,11 @@ position = Vector2(265.795, 328.613)
 [node name="TextureRect" type="TextureRect" parent="Camera2D"]
 modulate = Color(1, 1, 1, 0.247059)
 z_index = -2
-offset_left = -1332.31
-offset_top = -1263.38
-offset_right = -820.312
-offset_bottom = -751.385
-scale = Vector2(5, 5)
+offset_left = -1692.53
+offset_top = -1424.42
+offset_right = -1180.53
+offset_bottom = -912.418
+scale = Vector2(7, 7)
 texture = ExtResource("6_1ogou")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]

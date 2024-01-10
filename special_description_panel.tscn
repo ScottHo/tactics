@@ -11,63 +11,63 @@ script = ExtResource("1_kbi01")
 
 [node name="TallPanel" type="Sprite2D" parent="."]
 position = Vector2(1.29574, 1.62759)
-scale = Vector2(0.34, 0.34)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_48ejq")
 centered = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 14.2973
-offset_top = 38.33
-offset_right = 62.2973
-offset_bottom = 59.33
-theme_override_font_sizes/font_size = 13
+offset_left = 13.8254
+offset_top = 44.4652
+offset_right = 65.8254
+offset_bottom = 65.4652
+theme_override_font_sizes/font_size = 14
 text = "Cost:"
 
 [node name="CostLabel" type="Label" parent="."]
-offset_left = 66.8898
-offset_top = 38.33
-offset_right = 80.8898
-offset_bottom = 59.33
-theme_override_font_sizes/font_size = 13
+offset_left = 69.5963
+offset_top = 44.4652
+offset_right = 83.5963
+offset_bottom = 65.4652
+theme_override_font_sizes/font_size = 14
 text = "5
 "
 
 [node name="WhiteBolt" type="Sprite2D" parent="."]
-position = Vector2(85.0036, 47.6183)
-scale = Vector2(0.3, 0.3)
+position = Vector2(91.2664, 53.7535)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_hq8kc")
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 14.1413
-offset_top = 56.6368
-offset_right = 94.1413
-offset_bottom = 77.6368
-theme_override_font_sizes/font_size = 13
+offset_left = 13.6694
+offset_top = 62.772
+offset_right = 99.6694
+offset_bottom = 83.772
+theme_override_font_sizes/font_size = 14
 text = "Affects:"
 
 [node name="AffectsLabel" type="Label" parent="."]
-offset_left = 96.0449
-offset_top = 56.6368
-offset_right = 264.045
-offset_bottom = 77.6368
-theme_override_font_sizes/font_size = 13
+offset_left = 102.869
+offset_top = 62.772
+offset_right = 283.869
+offset_bottom = 83.772
+theme_override_font_sizes/font_size = 14
 text = "All Friendly Units"
 
 [node name="DescriptionName" type="Label" parent="."]
-offset_left = 36.1536
-offset_top = 11.1116
-offset_right = 254.154
-offset_bottom = 34.1116
-theme_override_font_sizes/font_size = 15
+offset_left = 39.5248
+offset_top = 13.4713
+offset_right = 299.525
+offset_bottom = 36.4713
+theme_override_font_sizes/font_size = 18
 text = "Action"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="DescriptionLabel" type="Label" parent="."]
 offset_left = 14.8804
-offset_top = 74.5638
+offset_top = 85.8871
 offset_right = 279.88
-offset_bottom = 156.564
+offset_bottom = 167.887
 theme_override_fonts/font = ExtResource("2_mqpc5")
 theme_override_font_sizes/font_size = 15
 text = "No Action Selected."
@@ -75,9 +75,9 @@ autowrap_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_left = 16.6744
-offset_top = 338.337
+offset_top = 385.006
 offset_right = 16.6744
-offset_bottom = 338.337
+offset_bottom = 385.006
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = -35
 
@@ -97,4 +97,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="StatContainer6" parent="GridContainer" instance=ExtResource("5_v2w3d")]
+layout_mode = 2
+
+[node name="StatContainer7" parent="GridContainer" instance=ExtResource("5_v2w3d")]
 layout_mode = 2

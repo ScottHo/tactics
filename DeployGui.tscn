@@ -12,33 +12,33 @@ position = Vector2(703.715, 549.559)
 script = ExtResource("1_1roly")
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(-753.566, -464.632)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-769.046, -418.182)
+scale = Vector2(1.25, 1.25)
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(-101.298, -192.647)
+position = Vector2(186.021, -137.088)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(-255.323, 222.956)
+position = Vector2(-247.567, 337.378)
 
 [node name="StartMission" type="Button" parent="."]
-offset_left = 369.564
-offset_top = 156.184
-offset_right = 569.564
-offset_bottom = 256.184
+offset_left = -181.875
+offset_top = 412.322
+offset_right = -11.8755
+offset_bottom = 502.322
 theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
 text = "START
 MISSION"
 
 [node name="AbortMission" type="Button" parent="."]
-offset_left = 618.216
-offset_top = 182.697
-offset_right = 758.216
-offset_bottom = 252.697
+offset_left = -691.712
+offset_top = -523.15
+offset_right = -521.712
+offset_bottom = -433.15
 theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
 text = "Abort"
 
 [node name="DetailedRoomInfo" parent="." instance=ExtResource("6_27vo8")]
-position = Vector2(351.121, -517.243)
+position = Vector2(584.524, -414.848)

@@ -7,24 +7,37 @@
 [node name="RoomChooser" type="Node2D"]
 script = ExtResource("1_lm1uq")
 
+[node name="Title" type="Label" parent="."]
+offset_left = 556.092
+offset_top = 17.1333
+offset_right = 1356.09
+offset_bottom = 54.1333
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "Metal Foundry - Level 1"
+horizontal_alignment = 1
+
 [node name="DetailedRoomInfo" parent="." instance=ExtResource("1_0yuhc")]
-position = Vector2(39.5728, 61.7553)
+position = Vector2(39.5728, 76.0258)
 
 [node name="DetailedRoomInfo2" parent="." instance=ExtResource("1_0yuhc")]
-position = Vector2(539.604, 61.7553)
+position = Vector2(663.186, 76.0258)
 
 [node name="DetailedRoomInfo3" parent="." instance=ExtResource("1_0yuhc")]
-position = Vector2(1036.45, 61.7553)
+position = Vector2(1289.73, 76.0258)
 
 [node name="Recruit1" type="Node2D" parent="."]
-position = Vector2(57.3701, 718.828)
+position = Vector2(150.713, 902.777)
 
 [node name="Button" type="Button" parent="Recruit1"]
 offset_left = 228.694
 offset_top = 6.57214
-offset_right = 408.694
-offset_bottom = 106.572
+offset_right = 398.694
+offset_bottom = 96.5721
+theme_override_font_sizes/font_size = 24
 text = "GO"
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Recruit1"]
 position = Vector2(136.742, 62.9763)
@@ -37,6 +50,7 @@ offset_top = 23.2234
 offset_right = 68.6663
 offset_bottom = 44.2234
 text = "RECRUIT:"
+metadata/_edit_use_anchors_ = true
 
 [node name="Name" type="Label" parent="Recruit1"]
 offset_left = -19.8472
@@ -44,17 +58,18 @@ offset_top = 51.46
 offset_right = 38.1528
 offset_bottom = 72.46
 text = "NONE"
+metadata/_edit_use_anchors_ = true
 
 [node name="Recruit2" type="Node2D" parent="."]
-position = Vector2(567.069, 718.828)
+position = Vector2(778.615, 902.777)
 
 [node name="Button" type="Button" parent="Recruit2"]
 offset_left = 228.694
 offset_top = 6.57214
-offset_right = 408.694
-offset_bottom = 106.572
+offset_right = 398.694
+offset_bottom = 96.5721
+theme_override_font_sizes/font_size = 24
 text = "GO"
-metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Recruit2"]
 position = Vector2(136.742, 62.9763)
@@ -76,13 +91,14 @@ offset_bottom = 72.46
 text = "NONE"
 
 [node name="Recruit3" type="Node2D" parent="."]
-position = Vector2(1061.55, 718.828)
+position = Vector2(1402.95, 902.777)
 
 [node name="Button" type="Button" parent="Recruit3"]
 offset_left = 228.694
 offset_top = 6.57214
-offset_right = 408.694
-offset_bottom = 106.572
+offset_right = 398.694
+offset_bottom = 96.5721
+theme_override_font_sizes/font_size = 24
 text = "GO"
 
 [node name="Sprite" type="Sprite2D" parent="Recruit3"]
@@ -103,14 +119,3 @@ offset_top = 51.46
 offset_right = 38.1528
 offset_bottom = 72.46
 text = "NONE"
-
-[node name="Title" type="Label" parent="."]
-offset_left = 511.947
-offset_top = 12.2804
-offset_right = 1011.95
-offset_bottom = 49.2804
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 30
-text = "Metal Foundry - Level 1"
-horizontal_alignment = 1

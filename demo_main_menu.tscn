@@ -13,15 +13,15 @@ script = ExtResource("1_l175m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.647059)
-position = Vector2(768.314, 279.387)
-scale = Vector2(3, 3)
+position = Vector2(974.941, 372.621)
+scale = Vector2(4, 4)
 texture = ExtResource("1_c5d58")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 448.453
-offset_top = 192.651
-offset_right = 984.453
-offset_bottom = 253.651
+offset_left = 637.037
+offset_top = 201.127
+offset_right = 1173.04
+offset_bottom = 262.127
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 50
@@ -94,21 +94,21 @@ theme_override_font_sizes/font_size = 26
 text = "Exit"
 
 [node name="LongShot" type="Sprite2D" parent="."]
-position = Vector2(646.667, 528.038)
+position = Vector2(786.516, 661.53)
 rotation = 3.14159
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_pyfrk")
 
 [node name="Boss1" type="Sprite2D" parent="."]
-position = Vector2(1156.26, 553.899)
+position = Vector2(1482.57, 604.753)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_g1nmo")
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 467.76
-offset_top = 791.764
-offset_right = 1132.76
-offset_bottom = 816.764
+offset_left = 605.49
+offset_top = 931.613
+offset_right = 1270.49
+offset_bottom = 956.613
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
