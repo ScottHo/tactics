@@ -14,4 +14,4 @@ position = Vector2(1.84614, -17.223)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_ewq67")
 
-[editable path="CharacterCommon"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterCommon/Sprite"]

@@ -73,7 +73,7 @@ func _process(delta):
     return
 
 func setup_entity_for_level(ent: Entity, location: Vector2i):
-    var sprite: EntitySprite  = load(ent.sprite_path).instantiate()
+    var sprite: EntitySprite = load(ent.sprite_path).instantiate()
     add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(location)
     ent.location = location
@@ -89,8 +89,8 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
 
 func setup_entities():
     if Globals.level_debug_mode:
-        Globals.current_mission = MissionFactory.foundry_3_final_boss()
-        setup_entity_for_level(EntityFactory.create_oilee(), Vector2i(0,3))
+        Globals.current_mission = MissionFactory.foundry_1_final_boss()
+        setup_entity_for_level(EntityFactory.create_buster(), Vector2i(4,4))
     else:
         # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
@@ -110,7 +110,7 @@ func nextTurn():
     if [5, 10, 15].has(scoreService.turnsTaken):
         var location = interactService.spawn_interactable(_mission)
         cameraService.move(tileMap.pointToGlobal(location))
-        timer.timeout.connect(nextTurn_continued)
+        timer.timeout.connect(nextTurn_continued, CONNECT_ONE_SHOT)
         timer.start(1.6)
         return
     nextTurn_continued()
@@ -118,7 +118,6 @@ func nextTurn():
 
 func nextTurn_continued():
     timer.stop()
-    timer.disconnect_all()
 
     scoreService.turn_taken()
     menuService.disableAllButtons()
@@ -136,13 +135,12 @@ func nextTurn_continued():
     _is_first_turn = false
     menuService.showTurns(turnService.next7Turns())
     menuService.pre_showCurrentTurn(current_turn_id)
-    timer.timeout.connect(nextTurn_continued2)
+    timer.timeout.connect(nextTurn_continued2, CONNECT_ONE_SHOT)
     timer.start(.4)
     return
 
 func nextTurn_continued2():
     timer.stop()
-    timer.disconnect_all()
     currentEntity().setup_next_turn()
     if state.allies.has(current_turn_id):
         _is_ai_turn = false
@@ -289,7 +287,7 @@ func doMove(on):
     return
 
 func movesFound(poses):
-    currentEntity().sprite.doneMoving.connect(doneMove)
+    currentEntity().sprite.doneMoving.connect(doneMove, CONNECT_ONE_SHOT)
     if len(poses) > 0:
         cameraService.lock_on(currentEntity().sprite)
         currentEntity().sprite.movePoints(poses)
@@ -299,8 +297,6 @@ func movesFound(poses):
 
 func doneMove():
     cameraService.stop_lock()
-    for c in currentEntity().sprite.doneMoving.get_connections():
-        currentEntity().sprite.doneMoving.disconnect(c["callable"])
     if currentEntity().moves_left == 0:
         menuService.disableMovesButton()
     if _is_ai_turn:

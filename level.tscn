@@ -87,6 +87,9 @@ script = ExtResource("8_5tca6")
 [node name="ActionService" type="Node2D" parent="."]
 script = ExtResource("8_hhoig")
 
+[node name="Effects" type="Node2D" parent="ActionService"]
+z_index = 9
+
 [node name="AiMoveService" type="Node2D" parent="."]
 script = ExtResource("10_lo4ht")
 

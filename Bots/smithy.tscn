@@ -13,3 +13,5 @@ script = ExtResource("1_eqi7n")
 position = Vector2(3.46858, -15.2905)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_eqwa6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterCommon/Sprite"]

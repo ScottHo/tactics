@@ -10,6 +10,7 @@ var _map_bfs: MapBFS
 
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
+@onready var effects : Node2D = $Effects
 
 signal actionDone
 
@@ -36,12 +37,33 @@ func _input(event):
                 if len(_target_points) == 1:
                     if not _state.entity_on_tile(_target_points[0]):
                         return
-                ActionCommon.do_action(_state, _entity, _target_points, action())
-                _entity.gainThreat(action().threat())
                 _entity.update_energy(-action().cost())
-                actionDone.emit()
-                finish()
+                _entity.action_animation(action_animation_effects)
+                _enabled = false
                 return
+    return
+
+func action_animation_effects():
+    var animation_signal_connected = false
+    var node = Node2D.new()
+    effects.add_child(node)
+    if action().animation_path != "":
+        for point in _target_points:
+            var s: EffectsAnimation = load(action().animation_path).instantiate()
+            node.add_child(s)
+            s.global_position = tileMap.pointToGlobal(point)
+            s.position.y -= 40
+            if not animation_signal_connected:
+                s.done.connect(action_animation_done)
+                animation_signal_connected = true
+    return
+
+func action_animation_done():
+    ActionCommon.do_action(_state, _entity, _target_points, action())
+    _entity.gainThreat(action().threat())
+    effects.get_child(0).queue_free()
+    actionDone.emit()
+    finish()
     return
 
 func setState(state: State):
@@ -80,10 +102,9 @@ func action() -> Action:
     return null
 
 func finish():
-    if _enabled:
-        if _map_bfs != null:
-            _map_bfs.resetHighlights(false, action().self_castable())
-        _enabled = false
+    if _map_bfs != null:
+        _map_bfs.resetHighlights(false, action().self_castable())
+    _enabled = false
     return
 
 func start(entity: Entity, action_type: int):

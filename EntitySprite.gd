@@ -1,10 +1,12 @@
 class_name EntitySprite extends Node2D
 
+var animationPlayer: AnimationPlayer
 var points = []
 signal doneMoving
 
 func _ready():
     $CharacterCommon.move_child($CharacterCommon/Sprite, 0)
+    animationPlayer = $CharacterCommon/Sprite/AnimationPlayer
     return
 
 func movePoints(_points: Array):
@@ -21,6 +23,19 @@ func nextMove():
     tween.tween_property(self, "global_position", pos, .3)
     tween.tween_callback(nextMove)
     tween.play()
+    return
+
+func play_action_animation(callback):
+    if animationPlayer.has_animation("Action"):
+        animationPlayer.play("Action")
+        animationPlayer.animation_finished.connect(func(s):
+            callback.call(), CONNECT_ONE_SHOT)
+    else:
+        var timer = get_tree().create_timer(.5)
+        timer.timeout.connect(func():
+            callback.call()
+            timer.queue_free()
+            , CONNECT_ONE_SHOT)
     return
 
 func textAnimation() -> TextAnimation:

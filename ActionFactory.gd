@@ -24,7 +24,7 @@ static func add_base_attack(ent: Entity):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Deals damage to any target"
-    _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats)
+    _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats, "res://explosion_yellow.tscn")
     return
 
 static func add_exert(ent: Entity, type: int):
@@ -112,7 +112,7 @@ static func add_storm(ent: Entity, type: int):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Create an unstable electro magnetic field and electrocute everything"
-    _add_action(ent, "Storm", d, shape_3x3, effect, type, stats)
+    _add_action(ent, "Storm", d, shape_3x3, effect, type, stats, "res://explosion_yellow.tscn")
     return
 
 static func add_static_shield(ent: Entity, type: int):
@@ -398,7 +398,7 @@ static func add_bootleg_upgrades(ent: Entity, type: int):
     _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats)
     return
 
-static func _add_action(ent, display_name, description, shape, effect, action_type, stats):
+static func _add_action(ent, display_name, description, shape, effect, action_type, stats, animation_path = ""):
     var action = Action.new()
     action.shape = shape
     action.effect = effect
@@ -411,4 +411,5 @@ static func _add_action(ent, display_name, description, shape, effect, action_ty
     if action_type == ActionType.ACTION2:
         ent.action2 = action
     action.stats = stats
+    action.animation_path = animation_path
     return

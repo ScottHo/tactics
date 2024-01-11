@@ -2,7 +2,7 @@ class_name Entity extends Node
 
 var id: int = -1
 var display_name: String
-var sprite: Node2D
+var sprite: EntitySprite
 var alive: bool = true
 var location: Vector2i
 var attack: Action
@@ -266,6 +266,10 @@ func done_turn():
         if interactable != null:
             if interactable.repeated_end_effect != null:
                 interactable.repeated_end_effect.call(self)
+    return
+
+func action_animation(callback):
+    sprite.play_action_animation(callback)
     return
 
 func clone() -> Entity:
