@@ -18,6 +18,7 @@ static func foundry_1_final_boss() -> Mission:
         ent.update_movement(1)
         ent.update_damage(1)
         ent.update_armor(1)
+    s1.animation_path = "res://Effects/upgrade_effect.tscn"
     
 
     m.specials = [s1]
@@ -49,6 +50,7 @@ static func foundry_2_final_boss() -> Mission:
     s2.effect = func(ent: Entity):
         ent.setThreat(0)
         return
+    s2.animation_path = "res://Effects/explosion_yellow.tscn"
     
     m.specials = [s1, s2]
     return m
@@ -68,6 +70,7 @@ static func foundry_3_final_boss() -> Mission:
     s1.damage = 21
     s1.effect = func(ent: Entity):
         return
+    s1.animation_path = "res://Effects/explosion_yellow.tscn"
 
     var s2 = Special.new()
     s2.display_name = "Widespread destruction"
@@ -78,6 +81,7 @@ static func foundry_3_final_boss() -> Mission:
     s2.damage = 7
     s2.effect = func(ent: Entity):
         return
+    s2.animation_path = "res://Effects/explosion_yellow.tscn"
 
     var s3 = Special.new()
     s3.display_name = "Overclock"
@@ -88,6 +92,7 @@ static func foundry_3_final_boss() -> Mission:
     s3.damage = 0
     s3.effect = func(ent: Entity):
         ent.update_initiative(2)
+    s3.animation_path = "res://Effects/upgrade_effect.tscn"
 
     
     m.specials = [s1, s2, s3]
@@ -146,6 +151,7 @@ static func foundry_1_specials(floor: int) -> Array:
         ent.update_movement(1)
         ent.update_damage(1)
         ent.update_armor(1)
+    s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
         
     s = Special.new()
@@ -157,6 +163,7 @@ static func foundry_1_specials(floor: int) -> Array:
     s.damage = 21
     s.effect = func(ent: Entity):
         return
+    s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
 
     s = Special.new()
@@ -168,6 +175,7 @@ static func foundry_1_specials(floor: int) -> Array:
     s.damage = 7
     s.effect = func(ent: Entity):
         return
+    s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
 
     s = Special.new()
@@ -180,6 +188,7 @@ static func foundry_1_specials(floor: int) -> Array:
     s.effect = func(ent: Entity):
         ent.update_initiative(2)
         return
+    s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
 
     s = Special.new()    
@@ -203,6 +212,7 @@ static func foundry_1_specials(floor: int) -> Array:
         ent.setThreat(0)
         return
     ret.append(s)
+    s.animation_path = "res://Effects/explosion_yellow.tscn"
     return ret
 
 static func foundry_2_specials(floor: int) -> Array:

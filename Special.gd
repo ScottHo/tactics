@@ -12,4 +12,5 @@ var shape: Shape
 var target: Target
 var effect: Callable
 var spawns: Array = [] # of Entities
+var animation_path: String = ""
 

@@ -4,9 +4,11 @@ var _state: State
 var _enabled: bool = false
 var _entity: Entity
 var _map_bfs: MapBFS
+var _targets: Array
 
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
+@onready var effects : Node2D = $Effects
 
 func setState(state: State):
     _state = state
@@ -30,8 +32,12 @@ func find_attack_location() -> Vector2i:
     return target_entity.location
 
 func do_attack(target: Vector2i):
-    var targets = Utils.get_target_coords(_entity.location, target, shape())
-    ActionCommon.do_action(_state, _entity, targets, _entity.attack)
+    _targets = Utils.get_target_coords(_entity.location, target, shape())
+    ActionCommon.do_action_animation(effects, _entity.attack, _targets, tileMap, action_animation_done)
+    return
+
+func action_animation_done():
+    ActionCommon.do_action(_state, _entity, _targets, _entity.attack)
     return
 
 func shape():

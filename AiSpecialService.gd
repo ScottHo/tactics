@@ -10,6 +10,7 @@ var _counters := {}
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
 @onready var cameraService: CameraService = $"../CameraService"
+@onready var effects : Node2D = $Effects
 
 static var layer_0 = [Vector2i(0,0)]
 static var layer_1 = [Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1)]
@@ -145,7 +146,11 @@ func spawn_targets(ent):
     return
 
 func do_special_effect():
-    cameraService.stop_lock()    
+    cameraService.stop_lock()
+    ActionCommon.do_action_animation(effects, special(), _targets, tileMap, special_animation_done)
+    return
+
+func special_animation_done():
     if special().mechanic == Special.Mechanic.BUFF:
         mechanic_buff_effect()
     if special().mechanic == Special.Mechanic.SOAK:

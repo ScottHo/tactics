@@ -96,8 +96,14 @@ script = ExtResource("10_lo4ht")
 [node name="AiActionService" type="Node2D" parent="."]
 script = ExtResource("11_jfegk")
 
+[node name="Effects" type="Node2D" parent="AiActionService"]
+z_index = 9
+
 [node name="AiSpecialService" type="Node2D" parent="."]
 script = ExtResource("12_nmvgr")
+
+[node name="Effects" type="Node2D" parent="AiSpecialService"]
+z_index = 9
 
 [node name="DeathService" type="Node2D" parent="."]
 script = ExtResource("12_4b2o3")

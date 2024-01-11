@@ -44,18 +44,7 @@ func _input(event):
     return
 
 func action_animation_effects():
-    var animation_signal_connected = false
-    var node = Node2D.new()
-    effects.add_child(node)
-    if action().animation_path != "":
-        for point in _target_points:
-            var s: EffectsAnimation = load(action().animation_path).instantiate()
-            node.add_child(s)
-            s.global_position = tileMap.pointToGlobal(point)
-            s.position.y -= 40
-            if not animation_signal_connected:
-                s.done.connect(action_animation_done)
-                animation_signal_connected = true
+    ActionCommon.do_action_animation(effects, action(), _target_points, tileMap, action_animation_done)
     return
 
 func action_animation_done():

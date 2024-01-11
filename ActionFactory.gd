@@ -24,7 +24,7 @@ static func add_base_attack(ent: Entity):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Deals damage to any target"
-    _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats, "res://explosion_yellow.tscn")
+    _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_exert(ent: Entity, type: int):
@@ -45,7 +45,7 @@ static func add_exert(ent: Entity, type: int):
         return
     var d = "Brutus exterts and swings hard, cripplig its own movement for next turn"
     
-    _add_action(ent, "Exert", d, [], effect, type, stats)
+    _add_action(ent, "Exert", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_bolster(ent: Entity, type: int):
@@ -60,7 +60,7 @@ static func add_bolster(ent: Entity, type: int):
         user.shielded(action.get_from_stats("Shield Amount"), action.get_from_stats("Shield Duration"))
         return
     var d = "Bolster your defensives and attempt to goad the enemy into attacking you"
-    _add_action(ent, "Bolster", d, [], effect, type, stats)
+    _add_action(ent, "Bolster", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_oil_bomb(ent: Entity, type: int):
@@ -82,7 +82,7 @@ static func add_oil_bomb(ent: Entity, type: int):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Throw an oil bomb at an enemy, crippling it's movement"
-    _add_action(ent, "Oil Bomb", d, [], effect, type, stats)
+    _add_action(ent, "Oil Bomb", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
     
 static func add_lubricate(ent: Entity, type: int):
@@ -95,7 +95,7 @@ static func add_lubricate(ent: Entity, type: int):
         user.moves_left += action.get_from_stats("Extra Moves")
         return
     var d = "Lubricate axles to gain extra movement for the turn"
-    _add_action(ent, "Lubricate", d, [], effect, type, stats)
+    _add_action(ent, "Lubricate", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_storm(ent: Entity, type: int):
@@ -128,7 +128,7 @@ static func add_static_shield(ent: Entity, type: int):
                     action.get_from_stats("Shield Duration"))
         return
     var d = "Create a stable electro magnetic field and shield everything"
-    _add_action(ent, "Static Shield", d, shape_3x3, effect, type, stats)
+    _add_action(ent, "Static Shield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_focused_repair(ent: Entity, type: int):
@@ -142,7 +142,7 @@ static func add_focused_repair(ent: Entity, type: int):
             _ent.gainHP(action.get_from_stats("Heal Amount"))
         return
     var d = "Summon all the nanobots to heal one ally"
-    _add_action(ent, "Focused Repair", d, [], effect, type, stats)
+    _add_action(ent, "Focused Repair", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_nano_field(ent: Entity, type: int):
@@ -156,7 +156,7 @@ static func add_nano_field(ent: Entity, type: int):
             _ent.gainHP(action.get_from_stats("Heal Amount"))
         return
     var d = "Order the nanobots to heal any ally in the area"
-    _add_action(ent, "Nanofield", d, shape_3x3, effect, type, stats)
+    _add_action(ent, "Nanofield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_weapons_upgade(ent: Entity, type: int):
@@ -170,7 +170,7 @@ static func add_weapons_upgade(ent: Entity, type: int):
             _ent.update_damage(action.get_from_stats("Added Damage"))
         return
     var d = "Add permanent base damage to an allied unit"
-    _add_action(ent, "Weapons Upgrade", d, [], effect, type, stats)
+    _add_action(ent, "Weapons Upgrade", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_engine_upgrade(ent: Entity, type: int):
@@ -184,7 +184,7 @@ static func add_engine_upgrade(ent: Entity, type: int):
             _ent.update_movement(action.get_from_stats("Added Movement"))
         return
     var d = "Add permanent movement to an allied unit"
-    _add_action(ent, "Engine Upgrade", d, [], effect, type, stats)
+    _add_action(ent, "Engine Upgrade", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_snipe(ent: Entity, type: int):
@@ -202,7 +202,7 @@ static func add_snipe(ent: Entity, type: int):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Extend the barrel and snipe em"
-    _add_action(ent, "Snipe", d, [], effect, type, stats)
+    _add_action(ent, "Snipe", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_titanium_bullet(ent: Entity, type: int):
@@ -219,7 +219,7 @@ static func add_titanium_bullet(ent: Entity, type: int):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Fire a huge titanium bullet at an enemy"
-    _add_action(ent, "Titanium Bullet", d, [], effect, type, stats)
+    _add_action(ent, "Titanium Bullet", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_power_up(ent: Entity, type: int):
@@ -233,7 +233,7 @@ static func add_power_up(ent: Entity, type: int):
             _ent.update_energy(action.get_from_stats("Energy Gain"))
         return
     var d = "Siphon energy to an allied unit"
-    _add_action(ent, "Power Up", d, [], effect, type, stats)
+    _add_action(ent, "Power Up", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_shock_therapy(ent: Entity, type: int):
@@ -256,7 +256,7 @@ static func add_shock_therapy(ent: Entity, type: int):
                 user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Shock an area with extreme precision, giving health and energy to allies and damaging enemies"
-    _add_action(ent, "Shock Therapy", d, diamond, effect, type, stats)
+    _add_action(ent, "Shock Therapy", d, diamond, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_scatter_shot(ent: Entity, type: int):
@@ -279,7 +279,7 @@ static func add_scatter_shot(ent: Entity, type: int):
                     _ent.miss()
         return
     var d = "Blanket an area with loosely targetted bullets"
-    _add_action(ent, "Scatter Shot", d, diamond, effect, type, stats)
+    _add_action(ent, "Scatter Shot", d, diamond, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_spray_and_pray(ent: Entity, type: int):
@@ -302,7 +302,7 @@ static func add_spray_and_pray(ent: Entity, type: int):
                     _ent.miss()
         return
     var d = "Fire a lot of bullets at an enemy with questionable accuracy"
-    _add_action(ent, "Spray and Pray", d, [], effect, type, stats)
+    _add_action(ent, "Spray and Pray", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_precise_strike(ent: Entity, type: int):
@@ -321,7 +321,7 @@ static func add_precise_strike(ent: Entity, type: int):
             _ent.weakened(action.get_from_stats("Weaken"), action.get_from_stats("Weaken Duration"))
         return
     var d = "A precise strike that weakens the enemy, causing them to take more damage"
-    _add_action(ent, "Precise Strike", d, [], effect, type, stats)
+    _add_action(ent, "Precise Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_robo_punch(ent: Entity, type: int):
@@ -338,7 +338,7 @@ static func add_robo_punch(ent: Entity, type: int):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "An extremely high energy powered punch"
-    _add_action(ent, "Robo Punch!", d, [], effect, type, stats)
+    _add_action(ent, "Robo Punch!", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_double_strike(ent: Entity, type: int):
@@ -358,7 +358,7 @@ static func add_double_strike(ent: Entity, type: int):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Hit them with the good ol' one-two"
-    _add_action(ent, "Double Strike", d, [], effect, type, stats)
+    _add_action(ent, "Double Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_bootleg_upgrades(ent: Entity, type: int):
@@ -395,7 +395,7 @@ static func add_bootleg_upgrades(ent: Entity, type: int):
             user.update_armor(1)
         return
     var d = "Put some bootleg parts on, resulting in added or removed stats"
-    _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats)
+    _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func _add_action(ent, display_name, description, shape, effect, action_type, stats, animation_path = ""):
