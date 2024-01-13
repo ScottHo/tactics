@@ -40,6 +40,7 @@ func _ready():
     moveService.movesFound.connect(movesFound)
     actionService.actionDone.connect(actionDone)
     interactService.interactDone.connect(interactDone)
+    aiSpecialService.special_done.connect(continue_doAiSpecial)
     
     setup_entities()
     
@@ -91,6 +92,8 @@ func setup_entities():
     if Globals.level_debug_mode:
         Globals.current_mission = MissionFactory.foundry_1_final_boss()
         setup_entity_for_level(EntityFactory.create_buster(), Vector2i(4,4))
+        setup_entity_for_level(EntityFactory.create_nanonano(), Vector2i(1,1))
+        
     else:
         # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
@@ -190,6 +193,7 @@ func nextAiStep():
             _ai_state = AiState.NONE
             nextTurn()
         else:
+            _special_texts_set = false
             startAiSpecial()
         return
     return
@@ -230,6 +234,7 @@ func startAiSpecial():
     aiSpecialService.start(currentEntity(), _mission)
     if aiSpecialService.counter() == -1:
         set_ai_special_mechanic_texts()
+        currentEntity().specials_left = 0
         nextAiStep()
         return
     aiSpecialService.find_special_targets()
@@ -239,6 +244,9 @@ func startAiSpecial():
 
 func doAiSpecial():
     aiSpecialService.do_special_effect()
+    return
+
+func continue_doAiSpecial():
     set_ai_special_mechanic_texts()
     aiSpecialService.finish()
     turnService.update_new()

@@ -21,4 +21,6 @@ static func do_action_animation(parent: Node2D, action, _targets: Array, tileMap
             if not animation_signal_connected:
                 s.done.connect(callback)
                 animation_signal_connected = true
+    else:
+        callback.call()
     return

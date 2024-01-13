@@ -95,6 +95,18 @@ layout_mode = 2
 [node name="Damage6" type="Label" parent="GridContainer"]
 layout_mode = 2
 
+[node name="SpLabel" type="Label" parent="GridContainer"]
+modulate = Color(1, 0.843137, 0, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Skill Points
+Earned"
+
+[node name="SkillPointsEarned" type="Label" parent="GridContainer"]
+modulate = Color(1, 0.843137, 0, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
 [node name="OkButton" type="Button" parent="."]
 offset_left = 244.659
 offset_top = 554.372

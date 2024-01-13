@@ -112,7 +112,7 @@ static func add_storm(ent: Entity, type: int):
             user.damage_done += _ent.damage_preview(damage)
         return
     var d = "Create an unstable electro magnetic field and electrocute everything"
-    _add_action(ent, "Storm", d, shape_3x3, effect, type, stats, "res://explosion_yellow.tscn")
+    _add_action(ent, "Storm", d, shape_3x3, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_static_shield(ent: Entity, type: int):
@@ -225,7 +225,7 @@ static func add_titanium_bullet(ent: Entity, type: int):
 static func add_power_up(ent: Entity, type: int):
     var stats = {
         "Affects": "Other Allied Units",
-        "Energy Gain": [1,2,3,4],
+        "Energy Gain": [2,3,4,5],
         "Cost": 2
     }
     var effect = func (user: Entity, targets: Array, action: Action):
@@ -302,7 +302,7 @@ static func add_spray_and_pray(ent: Entity, type: int):
                     _ent.miss()
         return
     var d = "Fire a lot of bullets at an enemy with questionable accuracy"
-    _add_action(ent, "Spray and Pray", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    _add_action(ent, "Spray and Pray", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     return
 
 static func add_precise_strike(ent: Entity, type: int):

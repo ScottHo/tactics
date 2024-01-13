@@ -36,6 +36,7 @@ func show_score():
     if len(_state.allies) > 5:
         $"GridContainer/Bot Name6".text = _state.get_entity(_state.allies[5]).display_name
         $GridContainer/Damage6.text = str(_state.get_entity(_state.allies[5]).damage_done)
+    $GridContainer/SkillPointsEarned.text = str(calc_points())
     visible = true
     return
 
@@ -48,3 +49,12 @@ func return_to_menu():
     var tween = get_tree().create_tween()
     tween.tween_property($Fader, "color:a", 1, 2)
     return
+
+func calc_points() -> int:
+    if turnsTaken < 10:
+        return 4
+    if turnsTaken < 25:
+        return 3
+    if turnsTaken < 50:
+        return 2
+    return 1

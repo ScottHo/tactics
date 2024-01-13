@@ -12,6 +12,8 @@ var _counters := {}
 @onready var cameraService: CameraService = $"../CameraService"
 @onready var effects : Node2D = $Effects
 
+signal special_done
+
 static var layer_0 = [Vector2i(0,0)]
 static var layer_1 = [Vector2i(1,0), Vector2i(0,1), Vector2i(-1,0), Vector2i(0,-1)]
 static var layer_2 = [Vector2i(1,1), Vector2i(-1,1), Vector2i(-1,-1), Vector2i(1,-1)]
@@ -151,6 +153,7 @@ func do_special_effect():
     return
 
 func special_animation_done():
+    effects.get_child(0).queue_free()
     if special().mechanic == Special.Mechanic.BUFF:
         mechanic_buff_effect()
     if special().mechanic == Special.Mechanic.SOAK:
@@ -159,6 +162,7 @@ func special_animation_done():
         mechanic_spread_effect()
     if special().mechanic == Special.Mechanic.SPAWN:
         mechanic_spawn_effect()
+    special_done.emit()
     return
 
 func n_special_description():

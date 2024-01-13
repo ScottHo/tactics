@@ -129,6 +129,7 @@ func damage_preview(hp) -> int:
     return hp
 
 func loseHP(hp):
+    print_debug("Losing HP " + display_name + " " + str(hp))
     if immune_count > 0:
         return
     hp = damage_preview(hp)

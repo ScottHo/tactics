@@ -88,7 +88,7 @@ static func create_batterie():
 static func create_punch_e():
     var ent = _create_entity("Punch-E", 18, 5, 1, 10, "res://Bots/punch-e.tscn", "res://Assets/punch-e.png", true)
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_exert(ent, ActionType.ACTION1)
+    ActionFactory.add_precise_strike(ent, ActionType.ACTION1)
     ActionFactory.add_robo_punch(ent, ActionType.ACTION2)
     return ent
 
@@ -100,16 +100,33 @@ static func create_peppershot():
     return ent
 
 static func create_buster():
-    var ent = _create_entity("Buster", 16, 3, 4, 10, "res://Bots/buster.tscn", "res://Assets/bot_template.png", true)
+    var ent = _create_entity("Buster", 20, 5, 1, 10, "res://Bots/buster.tscn", "res://Assets/bot_template.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_double_strike(ent, ActionType.ACTION1)
     ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION2)
     return ent
 
-static func create_boss_1():
-    var ent = _create_entity("Evil Red", 10, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+static func create_boss_1_1():
+    var ent = _create_entity("Evil Red", 25, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ent.description = "Intimidating Placeholder Text"
-    ent.damage += 4
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_1_2():
+    var ent = _create_entity("Evil Pink", 36, 3, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    ent.description = "Intimidating Placeholder Text"
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_1_3():
+    var ent = _create_entity("Evil Orange", 50, 3, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    ent.description = "Intimidating Placeholder Text"
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_1_f():
+    var ent = _create_entity("Big Evil Red", 100, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    ent.description = "Intimidating Placeholder Text"
     ActionFactory.add_base_attack(ent)
     return ent
 
@@ -128,7 +145,7 @@ static func create_boss_3():
     return ent
 
 static func create_boss_spawn_1():
-    var ent = _create_entity("Mini Evil Gray", 15, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    var ent = _create_entity("Mini Evil Gray", 8, 3, 1, 8, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
     ent.description = "Intimidating Placeholder Text"
     ent.damage += 4
     ent.is_add = true
