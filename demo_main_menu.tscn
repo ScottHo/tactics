@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://co6uw02ob1vr"]
 
-[ext_resource type="Texture2D" uid="uid://dpbthq2mmtanf" path="res://Assets/space1.png" id="1_c5d58"]
 [ext_resource type="Script" path="res://demo_main_menu.gd" id="1_l175m"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_gua28"]
 [ext_resource type="Texture2D" uid="uid://5slno62p0s40" path="res://Assets/LongShot.png" id="3_pyfrk"]
 [ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="4_3dbph"]
 [ext_resource type="Texture2D" uid="uid://ky4egufwvaqq" path="res://Assets/boss2.png" id="4_jdhk7"]
@@ -12,10 +12,9 @@
 script = ExtResource("1_l175m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.647059)
-position = Vector2(974.941, 372.621)
-scale = Vector2(4, 4)
-texture = ExtResource("1_c5d58")
+modulate = Color(0.72549, 0.72549, 0.72549, 1)
+texture = ExtResource("2_gua28")
+centered = false
 
 [node name="Label" type="Label" parent="."]
 offset_left = 637.037

@@ -4,7 +4,7 @@ var collectionPanel: CollectionPanel
 var upgradePanel: UpgradePanel
 var deployPanel: DeployPanel
 var startMissionButton: Button
-var abortMissionButton: Button
+var backButton: Button
 var detailedRoomInfo: DetailedRoomInfo
 var mission: Mission
 
@@ -14,13 +14,13 @@ func _ready():
     upgradePanel = $SelectedContainer
     deployPanel = $DeployContainer
     startMissionButton = $StartMission
-    abortMissionButton = $AbortMission
+    backButton = $BackButton
     detailedRoomInfo = $DetailedRoomInfo
     collectionPanel.entity_selected.connect(entity_selected)
     upgradePanel.deployed.connect(entity_deployed)
     deployPanel.entity_removed.connect(entity_removed_from_deploy)
     startMissionButton.pressed.connect(startMission)
-    abortMissionButton.pressed.connect(abortMission)
+    backButton.pressed.connect(back_to_headquarters)
     start()
     return
 
@@ -63,6 +63,6 @@ func startMission():
     get_tree().change_scene_to_file("res://level.tscn")
     return
 
-func abortMission():
-    get_tree().change_scene_to_file("res://demo_main_menu.tscn")
+func back_to_headquarters():
+    get_tree().change_scene_to_file("res://Headquarters.tscn")
     return

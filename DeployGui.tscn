@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cve4y2nbbwucg"]
+[gd_scene load_steps=8 format=3 uid="uid://cve4y2nbbwucg"]
 
 [ext_resource type="Script" path="res://DeployGui.gd" id="1_1roly"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_q1skw"]
 [ext_resource type="PackedScene" uid="uid://bxp0hhpdubjky" path="res://detailed_room_info.tscn" id="6_27vo8"]
 [ext_resource type="PackedScene" uid="uid://ct2wj06r38iul" path="res://upgrade_panel.tscn" id="11_q353u"]
 [ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="12_os86a"]
@@ -8,37 +9,40 @@
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="14_qdrbl"]
 
 [node name="DeployGui" type="Node2D"]
-position = Vector2(703.715, 549.559)
 script = ExtResource("1_1roly")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.72549, 0.72549, 0.72549, 1)
+texture = ExtResource("2_q1skw")
+centered = false
+
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(-769.046, -418.182)
-scale = Vector2(1.25, 1.25)
+position = Vector2(103.856, 44.537)
+scale = Vector2(1.2, 1.2)
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(186.021, -137.088)
+position = Vector2(927.105, 439.882)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(-247.567, 337.378)
+position = Vector2(493.517, 890.537)
 
 [node name="StartMission" type="Button" parent="."]
-offset_left = -181.875
-offset_top = 412.322
-offset_right = -11.8755
-offset_bottom = 502.322
+offset_left = 559.209
+offset_top = 946.41
+offset_right = 729.208
+offset_bottom = 1036.41
 theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
 text = "START
 MISSION"
 
-[node name="AbortMission" type="Button" parent="."]
-offset_left = -691.712
-offset_top = -523.15
-offset_right = -521.712
-offset_bottom = -433.15
-theme = ExtResource("14_qdrbl")
-theme_override_font_sizes/font_size = 20
-text = "Abort"
-
 [node name="DetailedRoomInfo" parent="." instance=ExtResource("6_27vo8")]
-position = Vector2(584.524, -414.848)
+position = Vector2(1234.75, 100.52)
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 7.14996
+offset_top = 3.93852
+offset_right = 177.15
+offset_bottom = 93.9385
+theme_override_font_sizes/font_size = 20
+text = "Back"

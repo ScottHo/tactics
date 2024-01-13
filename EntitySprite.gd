@@ -34,7 +34,6 @@ func play_action_animation(callback):
         var timer = get_tree().create_timer(.5)
         timer.timeout.connect(func():
             callback.call()
-            timer.queue_free()
             , CONNECT_ONE_SHOT)
     return
 

@@ -57,7 +57,7 @@ offset_right = 34.0
 offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("3_31kgf")
 theme_override_font_sizes/font_size = 14
-text = "888"
+text = "-"
 label_settings = SubResource("LabelSettings_3qud2")
 vertical_alignment = 1
 
@@ -75,7 +75,7 @@ offset_right = 34.0
 offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("3_31kgf")
 theme_override_font_sizes/font_size = 14
-text = "88"
+text = "-"
 label_settings = SubResource("LabelSettings_8xgxx")
 vertical_alignment = 1
 
@@ -93,7 +93,7 @@ offset_right = 34.0
 offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("3_31kgf")
 theme_override_font_sizes/font_size = 14
-text = "88"
+text = "-"
 label_settings = SubResource("LabelSettings_wdw6e")
 vertical_alignment = 1
 
@@ -111,7 +111,7 @@ offset_right = 34.0
 offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("3_31kgf")
 theme_override_font_sizes/font_size = 14
-text = "88"
+text = "-"
 label_settings = SubResource("LabelSettings_u1r30")
 vertical_alignment = 1
 
@@ -129,7 +129,7 @@ offset_right = 34.0
 offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("3_31kgf")
 theme_override_font_sizes/font_size = 14
-text = "88"
+text = "-"
 label_settings = SubResource("LabelSettings_6d3nh")
 vertical_alignment = 1
 
@@ -147,7 +147,7 @@ offset_right = 34.0
 offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("3_31kgf")
 theme_override_font_sizes/font_size = 14
-text = "88"
+text = "-"
 label_settings = SubResource("LabelSettings_3qud2")
 vertical_alignment = 1
 
@@ -155,8 +155,7 @@ vertical_alignment = 1
 layout_mode = 0
 offset_left = -18.6138
 offset_top = -42.9942
-offset_right = 207.386
+offset_right = 231.386
 offset_bottom = 37.0058
 theme_override_font_sizes/font_size = 30
-text = "BOSS NAME"
 autowrap_mode = 2

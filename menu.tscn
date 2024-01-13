@@ -455,6 +455,73 @@ theme = ExtResource("4_cvwx3")
 theme_override_font_sizes/font_size = 18
 text = "End Turn"
 
+[node name="TurnsContainer" type="ReferenceRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 684.942
+offset_top = 959.235
+offset_right = 1434.95
+offset_bottom = 1079.24
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ShowTurnsButton" type="Button" parent="TurnsContainer"]
+layout_mode = 0
+offset_left = 576.731
+offset_top = 13.1119
+offset_right = 686.731
+offset_bottom = 123.112
+theme_type_variation = &"TriangleButton"
+toggle_mode = true
+
+[node name="GridContainer" type="GridContainer" parent="TurnsContainer"]
+layout_direction = 3
+layout_mode = 0
+offset_left = 205.342
+offset_top = 66.1119
+offset_right = 685.342
+offset_bottom = 66.1119
+theme_override_constants/h_separation = 80
+columns = 10
+
+[node name="Control" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control"]
+
+[node name="Control2" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control2"]
+
+[node name="Control3" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control3"]
+
+[node name="Control4" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control4"]
+
+[node name="Control5" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control5"]
+
+[node name="Control6" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control6"]
+
+[node name="Control7" type="Control" parent="TurnsContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control7"]
+
 [node name="CharacterContainer" type="ReferenceRect" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
@@ -803,73 +870,6 @@ text = "SP 2"
 libraries = {
 "": SubResource("AnimationLibrary_fyyxq")
 }
-
-[node name="TurnsContainer" type="ReferenceRect" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 684.942
-offset_top = 959.235
-offset_right = 1434.95
-offset_bottom = 1079.24
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="ShowTurnsButton" type="Button" parent="TurnsContainer"]
-layout_mode = 0
-offset_left = 576.731
-offset_top = 13.1119
-offset_right = 686.731
-offset_bottom = 123.112
-theme_type_variation = &"TriangleButton"
-toggle_mode = true
-
-[node name="GridContainer" type="GridContainer" parent="TurnsContainer"]
-layout_direction = 3
-layout_mode = 0
-offset_left = 205.342
-offset_top = 66.1119
-offset_right = 685.342
-offset_bottom = 66.1119
-theme_override_constants/h_separation = 80
-columns = 10
-
-[node name="Control" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control"]
-
-[node name="Control2" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control2"]
-
-[node name="Control3" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control3"]
-
-[node name="Control4" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control4"]
-
-[node name="Control5" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control5"]
-
-[node name="Control6" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control6"]
-
-[node name="Control7" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control7"]
 
 [node name="AbortMissionButton" type="Button" parent="."]
 offset_left = 8.47571

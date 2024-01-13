@@ -350,6 +350,7 @@ func win():
         $RecruitLabel.text = "New Recruit!\n" + n
         Globals.current_recruit = -1        
     scoreService.show_score()
+    Globals.skill_points += scoreService.calc_points()
     return
 
 func lose():

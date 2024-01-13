@@ -19,7 +19,7 @@ offset_right = 711.369
 offset_bottom = 255.654
 theme_override_constants/h_separation = 120
 theme_override_constants/v_separation = 120
-columns = 8
+columns = 6
 
 [node name="Control" type="Control" parent="GridContainer"]
 layout_mode = 2
@@ -381,6 +381,52 @@ icon = ExtResource("1_k21am")
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control16"]
 
 [node name="Label" type="Label" parent="GridContainer/Control16"]
+layout_mode = 0
+offset_left = -1.82417
+offset_top = 35.9678
+offset_right = 103.176
+offset_bottom = 56.9678
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control17" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control17"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.1, 0.1)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control17"]
+
+[node name="Label" type="Label" parent="GridContainer/Control17"]
+layout_mode = 0
+offset_left = -1.82417
+offset_top = 35.9678
+offset_right = 103.176
+offset_bottom = 56.9678
+text = "DEPLOYED"
+label_settings = SubResource("LabelSettings_glcvm")
+
+[node name="Control18" type="Control" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GridContainer/Control18"]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 600.0
+scale = Vector2(0.1, 0.1)
+theme_type_variation = &"BotButton"
+toggle_mode = true
+icon = ExtResource("1_k21am")
+
+[node name="Sprite2D" type="Sprite2D" parent="GridContainer/Control18"]
+
+[node name="Label" type="Label" parent="GridContainer/Control18"]
 layout_mode = 0
 offset_left = -1.82417
 offset_top = 35.9678

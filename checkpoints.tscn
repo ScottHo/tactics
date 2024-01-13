@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3k0do70v6qoo"]
+
+[ext_resource type="Script" path="res://checkpoints.gd" id="1_cgqql"]
+[ext_resource type="Texture2D" uid="uid://cuoe0iexyycii" path="res://Assets/Foundrys/platinum_foundry.png" id="1_jrucg"]
+[ext_resource type="Texture2D" uid="uid://b7x5bb4mhrt5l" path="res://Assets/Foundrys/checkpoint_line.png" id="2_0trda"]
+[ext_resource type="Texture2D" uid="uid://ixw85xk3pwic" path="res://Assets/Foundrys/checkpoint.png" id="3_v3vdy"]
+[ext_resource type="Texture2D" uid="uid://cxa0fpsxc6ias" path="res://Assets/Foundrys/steel_foundry.png" id="4_v061i"]
+[ext_resource type="Texture2D" uid="uid://qlxo50t5rak5" path="res://Assets/Foundrys/iron_foundry.png" id="5_s8xi4"]
+[ext_resource type="Texture2D" uid="uid://deeqqocdeubhv" path="res://Assets/Foundrys/bronze_foundry.png" id="6_jjrkq"]
+[ext_resource type="Texture2D" uid="uid://2cxixfl57qv2" path="res://Assets/Foundrys/checkpoint_highlight.png" id="8_r28xc"]
+
+[node name="Checkpoints" type="Node2D"]
+position = Vector2(117.595, -9.42566)
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_cgqql")
+
+[node name="PlatinumFoundry" type="Sprite2D" parent="."]
+position = Vector2(1666, 256)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jrucg")
+
+[node name="CheckpointLine" type="Sprite2D" parent="PlatinumFoundry"]
+position = Vector2(-4, 0)
+texture = ExtResource("2_0trda")
+
+[node name="Checkpoint4" type="Sprite2D" parent="PlatinumFoundry"]
+position = Vector2(0, 318)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint3" type="Sprite2D" parent="PlatinumFoundry"]
+position = Vector2(0, 190)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint2" type="Sprite2D" parent="PlatinumFoundry"]
+position = Vector2(0, 62)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint" type="Sprite2D" parent="PlatinumFoundry"]
+position = Vector2(0, -66)
+texture = ExtResource("3_v3vdy")
+
+[node name="SteelFoundry" type="Sprite2D" parent="."]
+position = Vector2(1196, 256)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_v061i")
+
+[node name="CheckpointLine" type="Sprite2D" parent="SteelFoundry"]
+position = Vector2(-4, 0)
+texture = ExtResource("2_0trda")
+
+[node name="Checkpoint4" type="Sprite2D" parent="SteelFoundry"]
+position = Vector2(0, 318)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint3" type="Sprite2D" parent="SteelFoundry"]
+position = Vector2(0, 190)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint2" type="Sprite2D" parent="SteelFoundry"]
+position = Vector2(0, 62)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint" type="Sprite2D" parent="SteelFoundry"]
+position = Vector2(0, -66)
+texture = ExtResource("3_v3vdy")
+
+[node name="IronFoundry" type="Sprite2D" parent="."]
+position = Vector2(726, 256)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_s8xi4")
+
+[node name="CheckpointLine" type="Sprite2D" parent="IronFoundry"]
+position = Vector2(-4, 0)
+texture = ExtResource("2_0trda")
+
+[node name="Checkpoint4" type="Sprite2D" parent="IronFoundry"]
+position = Vector2(0, 318)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint3" type="Sprite2D" parent="IronFoundry"]
+position = Vector2(0, 190)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint2" type="Sprite2D" parent="IronFoundry"]
+position = Vector2(0, 62)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint" type="Sprite2D" parent="IronFoundry"]
+position = Vector2(0, -66)
+texture = ExtResource("3_v3vdy")
+
+[node name="BronzeFoundry" type="Sprite2D" parent="."]
+position = Vector2(256, 256)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_jjrkq")
+
+[node name="CheckpointLine" type="Sprite2D" parent="BronzeFoundry"]
+position = Vector2(-4, 0)
+texture = ExtResource("2_0trda")
+
+[node name="Checkpoint4" type="Sprite2D" parent="BronzeFoundry"]
+position = Vector2(0, 318)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint3" type="Sprite2D" parent="BronzeFoundry"]
+position = Vector2(0, 190)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint2" type="Sprite2D" parent="BronzeFoundry"]
+position = Vector2(0, 62)
+texture = ExtResource("3_v3vdy")
+
+[node name="Checkpoint" type="Sprite2D" parent="BronzeFoundry"]
+position = Vector2(0, -66)
+texture = ExtResource("3_v3vdy")
+
+[node name="Start" type="Sprite2D" parent="."]
+position = Vector2(28.1059, 415.221)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_r28xc")
+
+[node name="Final" type="Sprite2D" parent="."]
+position = Vector2(1898.76, 423.845)
+texture = ExtResource("3_v3vdy")

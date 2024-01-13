@@ -28,10 +28,9 @@ func label(container) -> Label:
 
 func _ready():
     var level = Globals.current_level
-    var floor = (level % 4) + 1    
+    var floor = level % 4
     
     setup_nodes()
-    setup_title(level, floor)
     setup_panels(level, floor)
     return
 
@@ -65,6 +64,7 @@ func setup_nodes():
     return
 
 func setup_panels(level: int, floor):
+    title.text = Utils.floor_title(level, floor)    
     if level == 4:
         setup_foundry_boss_panels()
         var m = MissionFactory.foundry_1_final_boss()
@@ -80,24 +80,18 @@ func setup_panels(level: int, floor):
         var m = MissionFactory.foundry_3_final_boss()
         room_info2.start(m, "FOUNDRY BOSS")
         mission2 = m
-    #elif level == 16:
-    #    setup_foundry_boss_panels()
-    #    var m = MissionFactory.foundry_3_final_boss()
-    #    room_info2.start(m, "FOUNDRY BOSS")
-    #    mission2 = m
+    elif level == 16:
+        setup_foundry_boss_panels()
+        var m = MissionFactory.foundry_3_final_boss()
+        room_info2.start(m, "FOUNDRY BOSS")
+        mission2 = m
+    elif level == 17:
+        setup_foundry_boss_panels()
+        var m = MissionFactory.foundry_3_final_boss()
+        room_info2.start(m, "THE FINAL FOUNDRY")
+        mission2 = m
     else:
         setup_floor(level, floor)
-
-func setup_title(level: int, floor: int):
-    if level <= 4:
-        title.text = "BRONZE FOUNDRY - FLOOR " + str(floor)
-    elif level <= 8:
-        title.text = "STEEL FOUNDRY - FLOOR " + str(floor)
-    elif level <= 12:
-        title.text = "CHROME FOUNDRY - FLOOR " + str(floor)
-    else:
-        title.text = "CHROME FOUNDRY - FLOOR " + str(floor)
-    return
 
 func setup_foundry_boss_panels():
     recruit_1.visible = false

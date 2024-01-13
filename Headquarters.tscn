@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1engaodp4cyu"]
+
+[ext_resource type="Script" path="res://Headquarters.gd" id="1_clf1y"]
+[ext_resource type="PackedScene" uid="uid://d3k0do70v6qoo" path="res://checkpoints.tscn" id="1_r11n2"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_hi6xu"]
+[ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="2_yhgcx"]
+[ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="3_joss2"]
+[ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="4_60k36"]
+[ext_resource type="PackedScene" uid="uid://7ah3bf7cn7a" path="res://special_description_panel.tscn" id="5_mcj8g"]
+
+[node name="Headquarters" type="Node2D"]
+script = ExtResource("1_clf1y")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.72549, 0.72549, 0.72549, 1)
+texture = ExtResource("2_hi6xu")
+centered = false
+
+[node name="Checkpoints" parent="." instance=ExtResource("1_r11n2")]
+position = Vector2(125.205, -26.3053)
+
+[node name="FloorLabel" type="Label" parent="."]
+offset_left = 499.984
+offset_top = 421.02
+offset_right = 1200.98
+offset_bottom = 470.02
+theme_override_font_sizes/font_size = 40
+text = "BRONZE FOUNDRY - LEVEL 1"
+
+[node name="EnterFloorButton" type="Button" parent="."]
+offset_left = 1240.22
+offset_top = 406.588
+offset_right = 1410.22
+offset_bottom = 496.588
+theme_override_font_sizes/font_size = 20
+text = "ENTER
+FLOOR"
+
+[node name="CollectionContainer" parent="." instance=ExtResource("2_yhgcx")]
+position = Vector2(-105.53, 605.715)
+scale = Vector2(1.2, 1.2)
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 7.14996
+offset_top = 3.93852
+offset_right = 177.15
+offset_bottom = 93.9385
+theme_override_font_sizes/font_size = 20
+text = "Back"
+
+[node name="EnemyPanel" parent="." instance=ExtResource("3_joss2")]
+offset_left = 930.135
+offset_top = 892.757
+offset_right = 930.135
+offset_bottom = 892.757
+
+[node name="BotIcon" type="Sprite2D" parent="."]
+position = Vector2(975.576, 736.406)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_60k36")
+
+[node name="SpecialPanel" parent="." instance=ExtResource("5_mcj8g")]
+position = Vector2(1208.75, 585.032)
+
+[node name="SpecialPanel2" parent="." instance=ExtResource("5_mcj8g")]
+position = Vector2(1564.67, 585.032)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1202.11
+offset_top = 546.507
+offset_right = 1903.11
+offset_bottom = 583.507
+theme_override_font_sizes/font_size = 30
+text = "SPECIAL ATTACKS"
+horizontal_alignment = 1

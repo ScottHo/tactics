@@ -7,10 +7,13 @@ var level_debug_mode = true
 var current_mission: Mission
 var current_recruit: int = -1
 var bots_collected := []
-var skill_points := 15
+var skill_points := 1
 var entity_skill_point_distributions: Dictionary
-var current_level := 0
+var current_level := 1
 var current_foundry := "None"
+var recruiting_1 := Entity
+var recruiting_2 := Entity
+var recruiting_3 := Entity
 
 
 

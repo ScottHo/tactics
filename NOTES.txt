@@ -3,11 +3,14 @@ BUGS
 
 DO NEXT
 - Animations
-- More specials
-- Specials based on foundry
-- Special/Boss scaling based on floors/foundry
+- 1 More bot
+- Orbs kinda bad
+- Save states
+- Pre room
+
 
 DO LATER
+- Side Quest
 - Animations for new recruits
 - Aura of interactables?
 - Allow movement through allies/interactables

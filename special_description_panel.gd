@@ -44,6 +44,15 @@ func set_action(action: Action):
     parse_stats(action)
     return
 
+func clear():
+    for c in grid.get_children():
+        c.visible = false
+    descName.text = "-"
+    descMain.text = "-"
+    costLabel.text = "-"
+    affectsLabel.text = "-"
+    return
+
 func parse_stats(action: Action):
     var index = grid.get_child_count() - 1
     var stats: Dictionary = action.stats

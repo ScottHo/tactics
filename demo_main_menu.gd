@@ -4,11 +4,11 @@ extends Node2D
 @onready var sprite2 = $Boss1
 func _ready():
     $Label2.visible = false    
-    if Globals.current_level == 13:
+    if Globals.current_level > 4:
         $Control/Control/Button.disabled = true
         $Label2.visible = true
     $Control/Control/Button.pressed.connect(func():
-        get_tree().change_scene_to_file("res://room_chooser.tscn")
+        get_tree().change_scene_to_file("res://Headquarters.tscn")
     )
     $ExitButton.pressed.connect(func():
         get_tree().quit())

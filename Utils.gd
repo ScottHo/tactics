@@ -109,3 +109,15 @@ static func get_target_coords(source: Vector2i, target: Vector2i, shape: Array) 
         var v = Utils.computeRotatedVectors(vec, direction)
         _target_coords.append(target+v)
     return _target_coords
+
+static func floor_title(level: int, floor: int):
+    if level <= 4:
+        return "BRONZE FOUNDRY - FLOOR " + str(floor)
+    elif level <= 8:
+        return "IRON FOUNDRY - FLOOR " + str(floor)
+    elif level <= 12:
+        return "STEEL FOUNDRY - FLOOR " + str(floor)
+    elif level <= 16:
+        return "PLATINUM FOUNDRY - FLOOR " + str(floor)
+    else:
+        return "THE FINAL FOUNDRY"

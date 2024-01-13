@@ -5,8 +5,8 @@
 [ext_resource type="TileSet" uid="uid://c71n7ovyb0chb" path="res://highlight_tiles.tres" id="3_ilats"]
 [ext_resource type="Script" path="res://TileMap.gd" id="3_j2hyq"]
 [ext_resource type="Script" path="res://HighlightMap.gd" id="4_fv11e"]
-[ext_resource type="Texture2D" uid="uid://dpbthq2mmtanf" path="res://Assets/space1.png" id="6_1ogou"]
 [ext_resource type="Script" path="res://MoveService.gd" id="6_jpms6"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="6_pxvlp"]
 [ext_resource type="PackedScene" uid="uid://ccrflxfdcwo3c" path="res://menu.tscn" id="7_psia6"]
 [ext_resource type="Script" path="res://TurnService.gd" id="8_5tca6"]
 [ext_resource type="Script" path="res://CameraService.gd" id="8_d2jpi"]
@@ -56,14 +56,14 @@ script = ExtResource("4_fv11e")
 position = Vector2(265.795, 328.613)
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D"]
-modulate = Color(1, 1, 1, 0.247059)
+modulate = Color(0.631373, 0.631373, 0.631373, 1)
 z_index = -2
-offset_left = -1692.53
-offset_top = -1424.42
-offset_right = -1180.53
-offset_bottom = -912.418
-scale = Vector2(7, 7)
-texture = ExtResource("6_1ogou")
+offset_left = -1645.74
+offset_top = -873.616
+offset_right = 274.262
+offset_bottom = 206.384
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("6_pxvlp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 layer = 2
