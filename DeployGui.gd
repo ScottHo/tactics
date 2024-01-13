@@ -64,5 +64,5 @@ func startMission():
     return
 
 func back_to_headquarters():
-    get_tree().change_scene_to_file("res://Headquarters.tscn")
+    get_tree().change_scene_to_file("res://room_chooser.tscn")
     return

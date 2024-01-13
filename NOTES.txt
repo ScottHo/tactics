@@ -6,8 +6,8 @@ DO NEXT
 - 1 More bot
 - Orbs kinda bad
 - Save states
-- Pre room
-
+- Save references to room/recruit info
+- Add reset all stats button
 
 DO LATER
 - Side Quest

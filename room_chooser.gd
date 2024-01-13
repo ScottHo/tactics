@@ -1,4 +1,6 @@
 extends Node2D
+
+var back_button: Button
 var room_info1: DetailedRoomInfo
 var room_info2: DetailedRoomInfo
 var room_info3: DetailedRoomInfo
@@ -35,6 +37,7 @@ func _ready():
     return
 
 func setup_nodes():
+    back_button = $BackButton    
     room_info1 = $DetailedRoomInfo
     room_info2 = $DetailedRoomInfo2
     room_info3 = $DetailedRoomInfo3
@@ -61,6 +64,8 @@ func setup_nodes():
         Globals.current_mission = mission3
         Globals.current_recruit = e_recruit_bot_3
         get_tree().change_scene_to_file("res://DeployGui.tscn"))
+    back_button.pressed.connect(func():
+        get_tree().change_scene_to_file("res://Headquarters.tscn"))
     return
 
 func setup_panels(level: int, floor):
