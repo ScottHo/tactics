@@ -8,63 +8,31 @@ DO NEXT
 - Save states
 - Save references to room/recruit info
 - Add reset all stats button
+- Allow movement through allies/interactables
 
 DO LATER
-- Side Quest
+- Side Missions
 - Animations for new recruits
-- Aura of interactables?
-- Allow movement through allies/interactables
 - Procedurally generated maps
 - Walls in tilemaps
 - Scale tilemap
-- More Bosses
 - Skill Points based on score
 - Action buttons being enabled need animations
 - "Popup" for current action/event
-- Tanky bots
+- Tanky Bots
+- Healy Bots
 - Get new bots
 - deploy to slot alternative
 - slight animation for mechanic container
 - more button available animations
 - show moves on hover
 - show status effects on hover
-- Better Start Screen
 - Splash Screen
 - Undo Button
-- GUI backgrounds for mission GUI
 - Better backgrounds/layout for deploy/mission GUI
 - Confirm Popup windows where relevant
 - Different target highlights for good/bad
 
 
 IDEAS
-
-
-
-CLASS/ABILITY IDEAS
-
-Brutis - Melee Bot that is a manly tanky type
-Extert - +2 Damage, +2 Threat, -2 Movement
-Shield - Take no damage
-
-Oilee - Melee Bot that specialized in oil based abilities 
-Sticky Bomb - Slow movement of all enemies hit
-Refuel - Refill movement tiles
-
-Smithy - Bot that upgrades other bots. Vibes like jarvis from Iron Man
-Upgrade Engines - Permanent +1 movement to other ally 
-Upgrade Weapon - Permanent +1 Damage to other ally
-
-Electo - Lightning Wizard like bot that does AOE lightning stuff
-Lightning Storm - 3 Damage, AOE
-Barrier - -2 Damage to all in AOE till next turn
-
-Nano-Nano - Uses nano bots to repair other bots
-Focused Repair - Heal + 6 to one
-Nanofield - Heal + 3 to area 
-
-Long Shot - Bot specializing in logn range
-Snipe - +1 Damage, far range shot
-Titanium Bullet - 5 Energy to do a lot of damage mid range
-
 
