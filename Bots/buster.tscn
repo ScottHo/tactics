@@ -45,14 +45,16 @@ _data = {
 [node name="Buster" type="Node2D"]
 script = ExtResource("1_3v35o")
 
-[node name="CharacterCommon" parent="." instance=ExtResource("2_7h730")]
-
-[node name="Sprite" type="Sprite2D" parent="CharacterCommon"]
-position = Vector2(1.08247, -22.7497)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_wn22h")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterCommon/Sprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
 libraries = {
 "": SubResource("AnimationLibrary_qclg3")
 }
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(2.0994, -44.9595)
+scale = Vector2(0.193945, 0.197627)
+texture = ExtResource("3_wn22h")
+
+[node name="CharacterCommon" parent="." instance=ExtResource("2_7h730")]

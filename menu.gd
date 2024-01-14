@@ -141,7 +141,7 @@ func showTurns(turns: Array[int]):
 
 func _setup_turn_sprite(entity: Entity, sprite: Sprite2D):
     sprite.texture = load(entity.icon_path)
-    sprite.scale = entity.sprite.texture_scale()*1.3
+    sprite.scale = entity.sprite.texture_scale()*.8
     return
 
 func show_future_turns(show):

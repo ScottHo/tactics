@@ -5,11 +5,11 @@ var points = []
 signal doneMoving
 
 func _ready():
-    $CharacterCommon.move_child($CharacterCommon/Sprite, 0)
-    animationPlayer = $CharacterCommon/Sprite/AnimationPlayer
+    animationPlayer = $AnimationPlayer
     return
 
 func movePoints(_points: Array):
+    play_move_animation()
     points = _points
     nextMove()
     return
@@ -37,17 +37,21 @@ func play_action_animation(callback):
             , CONNECT_ONE_SHOT)
     return
 
+func play_move_animation():
+    if animationPlayer.has_animation("Action"):
+        animationPlayer.play("Action")
+    return
+        
+func stop_animations():
+    animationPlayer.stop()
+    return    
+
 func textAnimation() -> TextAnimation:
     return $CharacterCommon/TextParent/TextAnimation
 
-func texture_resource() -> Texture2D:
-    if $CharacterCommon/Sprite != null:
-        return $CharacterCommon/Sprite.texture
-    return Texture2D.new()
-
 func texture_scale() -> Vector2:
-    if $CharacterCommon/Sprite != null:
-        return $CharacterCommon/Sprite.scale
+    if $Sprite != null:
+        return $Sprite.scale
     return Vector2(1,1)
 
 func show_death():

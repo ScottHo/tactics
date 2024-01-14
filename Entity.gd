@@ -275,6 +275,10 @@ func action_animation(callback):
     sprite.play_action_animation(callback)
     return
 
+func stop_animations():
+    sprite.stop_animations()
+    return
+
 func clone() -> Entity:
     var e = Entity.new()
     e.display_name = display_name

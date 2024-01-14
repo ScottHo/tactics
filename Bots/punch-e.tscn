@@ -7,11 +7,13 @@
 [node name="Punch-E" type="Node2D"]
 script = ExtResource("1_rsu1c")
 
-[node name="CharacterCommon" parent="." instance=ExtResource("2_k0mon")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
 
-[node name="Sprite" type="Sprite2D" parent="CharacterCommon"]
-position = Vector2(3.46858, -15.2905)
-scale = Vector2(0.1, 0.1)
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(6.72714, -30.2182)
+scale = Vector2(0.193945, 0.197627)
 texture = ExtResource("3_adm7s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterCommon/Sprite"]
+[node name="CharacterCommon" parent="." instance=ExtResource("2_k0mon")]

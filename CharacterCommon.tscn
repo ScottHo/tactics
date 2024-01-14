@@ -267,3 +267,4 @@ offset_left = -119.403
 offset_top = -29.143
 offset_right = -69.4031
 offset_bottom = 28.857
+border_color = Color(1, 0, 0, 0)

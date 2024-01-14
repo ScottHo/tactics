@@ -332,6 +332,7 @@ func movesFound(poses):
     return
 
 func doneMove():
+    currentEntity().stop_animations()
     print_debug("Done Move")
     cameraService.stop_lock()
     if currentEntity().moves_left == 0:
