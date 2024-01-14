@@ -76,11 +76,15 @@ func all_allies_dead() -> bool:
     return ret
 
 func all_enemies_dead() -> bool:
-    var ret = true
     for id in enemies:
         if get_entity(id).alive:
             return false
-    return ret
+    return true
+
+func boss_dead() -> bool:
+    if get_entity(enemies[0]).alive:
+        return false
+    return true
 
 func entity_on_tile(vector):
     for _entity in entities.allData():

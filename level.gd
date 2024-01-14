@@ -91,9 +91,25 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
 func setup_entities():
     if Globals.level_debug_mode:
         Globals.current_mission = MissionFactory.foundry_1_final_boss()
-        setup_entity_for_level(EntityFactory.create_buster(), Vector2i(4,4))
-        setup_entity_for_level(EntityFactory.create_nanonano(), Vector2i(1,1))
-        
+        var e := EntityFactory.create_bot(EntityFactory.Bot.LONGSHOT)
+        e.damage += 1
+        setup_entity_for_level(e, Vector2i(0,0))
+        var e1 := EntityFactory.create_bot(EntityFactory.Bot.PEPPERSHOT)
+        e1.action2.level += 1
+        setup_entity_for_level(e1, Vector2i(0,1))
+        var e2 := EntityFactory.create_bot(EntityFactory.Bot.BRUTUS)
+        e2.armor += 1
+        setup_entity_for_level(e2, Vector2i(0,2))
+        var e3 := EntityFactory.create_bot(EntityFactory.Bot.ELECTO)
+        e3.damage += 1
+        setup_entity_for_level(e3, Vector2i(0,3))
+        var e4 := EntityFactory.create_bot(EntityFactory.Bot.BATTERIE)
+        e4.action1.level += 1
+        setup_entity_for_level(e4, Vector2i(0,4))
+        var e5 := EntityFactory.create_bot(EntityFactory.Bot.NANONANO)
+        e5.action2.level += 2
+        setup_entity_for_level(e5, Vector2i(0,5))
+        #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,4))
     else:
         # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
@@ -110,8 +126,12 @@ func currentEntity() -> Entity:
     return state.entities.get_data(current_turn_id)
 
 func nextTurn():
-    if [5, 10, 15].has(scoreService.turnsTaken):
+    print_debug("Next Turn")
+    if [5, 10, 15, 20, 25, 30].has(scoreService.turnsTaken):
         var location = interactService.spawn_interactable(_mission)
+        if location == Vector2i(999,999):
+            nextTurn_continued()
+            return
         cameraService.move(tileMap.pointToGlobal(location))
         timer.timeout.connect(nextTurn_continued, CONNECT_ONE_SHOT)
         timer.start(1.6)
@@ -199,6 +219,7 @@ func nextAiStep():
     return
 
 func startAiMove():
+    print_debug("Start AI Move")
     aiMoveService.start(currentEntity())
     var movePath = aiMoveService.find_move()
     _ai_callable = func ():
@@ -208,12 +229,14 @@ func startAiMove():
     return
 
 func startAiAction():
+    print_debug("Start AI Action")
     aiActionService.start(currentEntity())
     _ai_callable = doAiAction
     startAiDelay()
     return
 
 func doAiAction():
+    print_debug("Do AI Action")
     var location = aiActionService.find_attack_location()
     if location == Vector2i(999, 999):
         aiActionService.finish()
@@ -231,6 +254,7 @@ func doAiAction():
     return
 
 func startAiSpecial():
+    print_debug("Start AI Special")
     aiSpecialService.start(currentEntity(), _mission)
     if aiSpecialService.counter() == -1:
         set_ai_special_mechanic_texts()
@@ -243,10 +267,12 @@ func startAiSpecial():
     return
 
 func doAiSpecial():
+    print_debug("Do AI Special")
     aiSpecialService.do_special_effect()
     return
 
 func continue_doAiSpecial():
+    print_debug("Continue Do AI Special")
     set_ai_special_mechanic_texts()
     aiSpecialService.finish()
     turnService.update_new()
@@ -286,6 +312,7 @@ func update_character_menu():
     return
 
 func doMove(on):
+    print_debug("Do Move")
     resetPlayerServices()
     if not on:
         return
@@ -295,6 +322,7 @@ func doMove(on):
     return
 
 func movesFound(poses):
+    print_debug("Moves Found")
     currentEntity().sprite.doneMoving.connect(doneMove, CONNECT_ONE_SHOT)
     if len(poses) > 0:
         cameraService.lock_on(currentEntity().sprite)
@@ -304,6 +332,7 @@ func movesFound(poses):
     return
 
 func doneMove():
+    print_debug("Done Move")
     cameraService.stop_lock()
     if currentEntity().moves_left == 0:
         menuService.disableMovesButton()
@@ -319,6 +348,7 @@ func doneMove():
     return
 
 func doInteract(on):
+    print_debug("Do Interact")
     resetPlayerServices()
     if not on:
         return
@@ -327,6 +357,7 @@ func doInteract(on):
     return
 
 func interactDone():
+    print_debug("Interact Done")
     interactService.finish()
     menuService.disableInteractButton()
     menuService.show_description(false, null)
@@ -336,6 +367,7 @@ func interactDone():
     return
 
 func doAction(on, action_type: int):
+    print_debug("Do Action")
     resetPlayerServices()
     if not on:
         return
@@ -344,6 +376,7 @@ func doAction(on, action_type: int):
     return
 
 func actionDone():
+    print_debug("Action Done")
     menuService.disableActionButtons()
     menuService.show_description(false, null)
     menuService.force_show_description = false
@@ -352,6 +385,7 @@ func actionDone():
     return
 
 func checkDeaths():
+    print_debug("Check Deaths")
     if not deathService.checkDeaths():
         return false
     deathService.processDeaths()
@@ -363,10 +397,11 @@ func checkDeaths():
     return true
 
 func processDeathsFinished():
+    print_debug("Process Deaths Finished")
     if state.all_allies_dead():
         menuService.lose()
         return
-    if state.all_enemies_dead():
+    if state.boss_dead():
         menuService.win()
         return
     menuService.restore_button_states()

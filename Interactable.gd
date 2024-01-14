@@ -18,3 +18,17 @@ func set_sprite(s):
     sprite = s
     sprite.set_inter(self)
     return
+
+func shallow_copy() -> Interactable:
+    var ret = Interactable.new()
+    ret.display_name = display_name
+    ret.description = description
+    ret.effect = effect
+    ret.drop_effect = drop_effect
+    ret.repeated_effect = repeated_effect
+    ret.repeated_end_effect = repeated_end_effect
+    ret.storable = storable
+    ret.icon_path = icon_path
+    ret.sprite_path = sprite_path
+    ret.color = color
+    return ret

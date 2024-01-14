@@ -5,6 +5,8 @@ var _enabled: bool = false
 var _deaths_to_process: Array
 var _graveyard: Array
 
+@onready var interactService: InteractService = $"../InteractService"
+
 func setState(state: State):
     _state = state
     return
@@ -36,5 +38,12 @@ func doDeathAnimation(entity: Entity):
     tween.tween_property(entity.sprite, "modulate:a", 0, 1)
     tween.tween_callback(func():
         entity.sprite.queue_free()
-        entity.location = Vector2i(999,999))
+        if entity.spawn_on_death != null:
+            spawn_interactable(entity.spawn_on_death, entity.location)
+        entity.location = Vector2i(999,999)
+            )
+    return
+
+func spawn_interactable(inter, location):
+    interactService.setup_interactable_for_level(inter.shallow_copy(), location, false)
     return

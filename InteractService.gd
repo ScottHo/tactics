@@ -44,7 +44,7 @@ func _input(event):
                     _inter.sprite.get_parent().remove_child(_inter.sprite)
                     $"..".add_child(_inter.sprite)
                     _inter.sprite.global_position = tileMap.pointToGlobal(_target)
-                    _inter.sprite.scale = _inter.sprite.scale*2
+                    _inter.sprite.scale = _inter.sprite.scale*4
                     _inter.location = _target
                     _inter.drop_effect.call(_entity)
                     
@@ -94,11 +94,12 @@ func finish():
     return
 
 func spawn_interactable(mission: Mission):
+    if _num_inters >= len(mission.buffs):
+        return Vector2i(999,999)
     var tiles: Array = tileMap.all_tiles()
     tiles.shuffle()
     var i = 0
     while true:
-        print(str(tiles[i]))
         i += 1
         if i > len(tiles):
             print_debug("No tiles available to spawn interactable")
@@ -107,12 +108,12 @@ func spawn_interactable(mission: Mission):
             continue
         if _state.interactable_on_tile(tiles[i]):
             continue
-        print_debug("Spawning Interactable at " + str(tiles[i]))
         setup_interactable_for_level(mission.buffs[_num_inters], tiles[i])
         return tiles[i]
-    return
+    return Vector2i(999,999)
 
-func setup_interactable_for_level(inter: Interactable, location: Vector2i):
+func setup_interactable_for_level(inter: Interactable, location: Vector2i, increment=true):
+    print_debug("Spawning Interactable at " + str(location))    
     inter.location = location
     var sprite: InteractableSprite  = load(inter.sprite_path).instantiate()
     sprite.load_texture(inter.icon_path, inter.color)
@@ -120,7 +121,8 @@ func setup_interactable_for_level(inter: Interactable, location: Vector2i):
     get_parent().add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(inter.location)
     _state.add_interactable(inter)
-    _num_inters += 1
+    if increment:
+        _num_inters += 1
     return
 
 func start(entity: Entity):

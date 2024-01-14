@@ -62,6 +62,6 @@ func add_interactable(inter: Interactable):
     inter.sprite.get_parent().remove_child(inter.sprite)
     $CharacterCommon/InteractableContainer.add_child(inter.sprite)
     inter.sprite.position = Vector2(0,0)
-    inter.sprite.scale = inter.sprite.scale*.5
+    inter.sprite.scale = inter.sprite.scale*.25
     inter.location = Vector2(999,999)
     return

@@ -102,6 +102,29 @@ static func orb_of_sacrifice() -> Interactable:
     inter.color = Color.DIM_GRAY
     return inter
 
+static func bronze_soul() -> Interactable:
+    var inter = Interactable.new()
+    inter.display_name = "Bronze Soul"
+    inter.description = "Lose 3 hp at the end of every turn."
+    inter.effect = func (user: Entity):
+        return
+
+    inter.drop_effect = func (user: Entity):
+        return
+
+    inter.repeated_effect = func (user: Entity):
+        return
+    
+    inter.repeated_end_effect = func (user: Entity):
+        user.loseHP(3)
+        return
+
+    inter.storable = true
+    inter.sprite_path = "res://interactable_sprite.tscn"
+    inter.icon_path = "res://Assets/Objects/soul.png"
+    inter.color = Color.SADDLE_BROWN
+    return inter
+
 static func random_set():
     var ret = [orb_of_destruction(), orb_of_energy(), orb_of_roots(), orb_of_sacrifice()]
     ret.shuffle()

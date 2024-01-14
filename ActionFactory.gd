@@ -119,8 +119,8 @@ static func add_static_shield(ent: Entity, type: int):
     var stats = {
         "Affects": "All Units",
         "Cost": 2,
-        "Shield Amount": [3, 6, 9, 12],
-        "Shield Duration": 2
+        "Shield Amount": [3, 6, 9, 10],
+        "Shield Duration": 1
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
@@ -135,7 +135,7 @@ static func add_focused_repair(ent: Entity, type: int):
     var stats = {
         "Affects": "All Allied Units",
         "Cost": 2,
-        "Heal Amount": [8, 12, 16, 20],
+        "Heal Amount": [6, 10, 14, 18],
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
@@ -149,7 +149,7 @@ static func add_nano_field(ent: Entity, type: int):
     var stats = {
         "Affects": "All Allied Units",
         "Cost": 2,
-        "Heal Amount": [3, 6, 9, 12],
+        "Heal Amount": [3, 5, 7, 9],
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
@@ -225,7 +225,7 @@ static func add_titanium_bullet(ent: Entity, type: int):
 static func add_power_up(ent: Entity, type: int):
     var stats = {
         "Affects": "Other Allied Units",
-        "Energy Gain": [2,3,4,5],
+        "Energy Gain": [1,2,3,4],
         "Cost": 2
     }
     var effect = func (user: Entity, targets: Array, action: Action):
@@ -233,7 +233,7 @@ static func add_power_up(ent: Entity, type: int):
             _ent.update_energy(action.get_from_stats("Energy Gain"))
         return
     var d = "Siphon energy to an allied unit"
-    _add_action(ent, "Power Up", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    _add_action(ent, "Siphon Energy", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
 static func add_shock_therapy(ent: Entity, type: int):

@@ -73,7 +73,7 @@ position = Vector2(0, -22.6046)
 texture = ExtResource("2_sbscd")
 
 [node name="InteractableContainer" type="Node2D" parent="."]
-position = Vector2(-0.182508, -56.9488)
+position = Vector2(-24.2459, -6.10185)
 
 [node name="InfoBoxContainer" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.862745)

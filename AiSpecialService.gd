@@ -84,6 +84,17 @@ func mechanic_spawn_effect():
         spawn_entity(_targets[i], special().spawns[i])
     return
 
+func mechanic_spawn_effect_inters():
+    # Remove the interactables before spawning
+    var inters = _state.interactables
+    for _inter in inters:
+        if _inter.display_name == special().target_interactable:
+            _state.remove_interactable(_inter)
+            _inter.sprite.queue_free()
+    for i in range(len(_targets)):
+        spawn_entity(_targets[i], special().spawns[0])
+    return
+
 func spawn_entity(location: Vector2i, e: Entity):
     var ent := e.clone()
     var sprite: EntitySprite  = load(ent.sprite_path).instantiate()
@@ -128,6 +139,12 @@ func find_special_targets():
         var ent = _state.all_allies_alive()[randi_range(0, len(_state.all_allies_alive())-1)]
         spawn_targets(ent)
         cameraService.lock_on(ent.sprite)
+    
+    if special().target == Special.Target.INTERACTABLES:
+        var inters = _state.interactables
+        for _inter in inters:
+            if _inter.display_name == special().target_interactable:
+                _targets.append(_inter.location)
 
     for v in _targets:
         highlightMap.highlightVec(v, Highlights.RED)
@@ -140,7 +157,7 @@ func spawn_targets(ent):
     if numSpawns == 0:
         return
     for vec in targets_per_entity(ent):
-        if _state.entity_on_tile(vec) == null:
+        if _state.entity_on_tile(vec) == null and _state.interactable_on_tile(vec) == null:
             _targets.append(vec)
             numSpawns -= 1
             if numSpawns == 0:
@@ -161,7 +178,10 @@ func special_animation_done():
     if special().mechanic == Special.Mechanic.SPREAD:
         mechanic_spread_effect()
     if special().mechanic == Special.Mechanic.SPAWN:
-        mechanic_spawn_effect()
+        if special().target == Special.Target.INTERACTABLES:
+            mechanic_spawn_effect_inters()
+        else:
+            mechanic_spawn_effect()
     special_done.emit()
     return
 

@@ -3,47 +3,44 @@ class_name MissionFactory
 static func foundry_1_final_boss() -> Mission:
     var m = Mission.new()
     m.boss = EntityFactory.create_boss_1_f()
-    m.buffs = InteractableFactory.random_set()
+    m.buffs = [InteractableFactory.bronze_soul()]
     m.specials_per_turn = 2
 
     var s1 = Special.new()
-    s1.display_name = "Speed up"
-    s1.description = "Gains 2 initiative"
-    s1.target = Special.Target.SELF
-    s1.shape = Special.Shape.SINGLE
-    s1.mechanic = Special.Mechanic.BUFF
-    s1.damage = 0
-    s1.effect = func(ent: Entity):
-        ent.update_initiative(2)
-    s1.animation_path = "res://Effects/upgrade_effect.tscn"
+    s1.display_name = "Deploy Minions"
+    s1.description = "Deploy 2 minions that spawn Bronze Souls on death"
+    s1.target = Special.Target.SPAWN_CLOSE
+    s1.shape = Special.Shape.OCTAGON
+    s1.mechanic = Special.Mechanic.SPAWN
+    s1.spawns = [EntityFactory.create_boss_spawn_1_f(), EntityFactory.create_boss_spawn_1_f()]
 
     var s2 = Special.new()
     s2.display_name = "Heatseaking Missles"
-    s2.description = "Deals 2 damage to every allied unit in a square area, centered on every allied unit"
+    s2.description = "Deals 3 damage to every allied unit in a square area, centered on every allied unit"
     s2.target = Special.Target.ALL
     s2.shape = Special.Shape.SQUARE_3x3
     s2.mechanic = Special.Mechanic.SPREAD
-    s2.damage = 2
+    s2.damage = 3
     s2.effect = func(ent: Entity):
         return
     s2.animation_path = "res://Effects/explosion_yellow.tscn"
 
     var s3 = Special.new()
-    s3.display_name = "Deploy Minions"
-    s3.description = "Deploy 3 minions with high base damage"
-    s3.target = Special.Target.SPAWN_CLOSE
-    s3.shape = Special.Shape.OCTAGON
+    s3.display_name = "Revive Souls"
+    s3.description = "For every bronze soul on the ground, create a minion"
+    s3.target = Special.Target.INTERACTABLES
+    s3.shape = Special.Shape.SINGLE
     s3.mechanic = Special.Mechanic.SPAWN
-    s3.spawns = [EntityFactory.create_boss_spawn_1(), EntityFactory.create_boss_spawn_1(),
-            EntityFactory.create_boss_spawn_1()]
+    s3.target_interactable = "Bronze Soul"
+    s3.spawns = [EntityFactory.create_boss_spawn_1_f()]
 
     var s4 = Special.new()
     s4.display_name = "Big Ol' Missle"
-    s4.description = "Deals 12 damage spread over every allied unit in a diamond area, centered on a random allied unit"
+    s4.description = "Deals 9 damage spread over every allied unit in a diamond area, centered on a random allied unit"
     s4.target = Special.Target.RANDOM
     s4.shape = Special.Shape.DIAMOND_3x3
     s4.mechanic = Special.Mechanic.SOAK
-    s4.damage = 12
+    s4.damage = 9
     s4.effect = func(ent: Entity):
         return
     s4.animation_path = "res://Effects/explosion_yellow.tscn"

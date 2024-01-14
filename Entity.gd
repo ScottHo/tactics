@@ -17,6 +17,7 @@ var sprite_path: String
 var icon_path: String
 var description: String
 var specials_left := 1
+var spawn_on_death: Interactable
 
 # Variable Stats
 var threat: int
@@ -38,6 +39,7 @@ var damage_modifier: int
 var initiative_modifier: int
 var range_modifier: int
 var health_modifier: int
+
 
 # Temporary Modifiers
 var immune_count: int
@@ -293,6 +295,8 @@ func clone() -> Entity:
     e.damage = damage
     e.armor = armor
     e.range = range
+    if spawn_on_death != null:
+        e.spawn_on_death = spawn_on_death.shallow_copy()
     return e
     
     
