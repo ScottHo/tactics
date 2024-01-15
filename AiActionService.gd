@@ -10,6 +10,8 @@ var _targets: Array
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
 @onready var effects : Node2D = $Effects
 
+signal done
+
 func setState(state: State):
     _state = state
     return
@@ -33,11 +35,14 @@ func find_attack_location() -> Vector2i:
 
 func do_attack(target: Vector2i):
     _targets = Utils.get_target_coords(_entity.location, target, shape())
-    ActionCommon.do_action_animation(effects, _entity.attack, _targets, tileMap, action_animation_done)
+    _entity.action_animation(func():
+        ActionCommon.do_action_animation(effects, _entity.attack, _targets, tileMap, action_animation_done)
+        )
     return
 
 func action_animation_done():
     ActionCommon.do_action(_state, _entity, _targets, _entity.attack)
+    done.emit()
     return
 
 func shape():

@@ -40,6 +40,7 @@ func _ready():
     moveService.movesFound.connect(movesFound)
     actionService.actionDone.connect(actionDone)
     interactService.interactDone.connect(interactDone)
+    aiActionService.done.connect(aiActionDone)
     aiSpecialService.special_done.connect(continue_doAiSpecial)
     
     setup_entities()
@@ -93,23 +94,23 @@ func setup_entities():
         Globals.current_mission = MissionFactory.foundry_1_final_boss()
         var e := EntityFactory.create_bot(EntityFactory.Bot.LONGSHOT)
         e.damage += 1
-        setup_entity_for_level(e, Vector2i(0,0))
         var e1 := EntityFactory.create_bot(EntityFactory.Bot.PEPPERSHOT)
         e1.action2.level += 1
-        setup_entity_for_level(e1, Vector2i(0,1))
         var e2 := EntityFactory.create_bot(EntityFactory.Bot.BRUTUS)
         e2.armor += 1
-        setup_entity_for_level(e2, Vector2i(0,2))
         var e3 := EntityFactory.create_bot(EntityFactory.Bot.ELECTO)
         e3.damage += 1
-        setup_entity_for_level(e3, Vector2i(0,3))
         var e4 := EntityFactory.create_bot(EntityFactory.Bot.BATTERIE)
         e4.action1.level += 1
-        setup_entity_for_level(e4, Vector2i(0,4))
         var e5 := EntityFactory.create_bot(EntityFactory.Bot.NANONANO)
         e5.action2.level += 2
-        setup_entity_for_level(e5, Vector2i(0,5))
-        #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,4))
+        #setup_entity_for_level(e, Vector2i(0,0))        
+        #setup_entity_for_level(e1, Vector2i(0,1))        
+        #setup_entity_for_level(e2, Vector2i(0,2))        
+        #setup_entity_for_level(e3, Vector2i(0,3))        
+        #setup_entity_for_level(e4, Vector2i(0,4))        
+        #setup_entity_for_level(e5, Vector2i(0,5))
+        setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,4))
     else:
         # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
@@ -244,13 +245,16 @@ func doAiAction():
         if not checkDeaths():
             nextAiStep()
         return
-    _ai_callable = func ():
-        aiActionService.do_attack(location)
-        aiActionService.finish()
-        update_character_menu()
-        if not checkDeaths():
-            nextAiStep()
-    startAiDelay()
+    aiActionService.do_attack(location)
+    return
+
+func aiActionDone():
+    print_debug("AI Action Done")
+    aiActionService.finish()
+    update_character_menu()
+    if not checkDeaths():
+        nextAiStep()
+        return
     return
 
 func startAiSpecial():

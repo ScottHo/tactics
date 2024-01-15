@@ -38,8 +38,8 @@ func play_action_animation(callback):
     return
 
 func play_move_animation():
-    if animationPlayer.has_animation("Action"):
-        animationPlayer.play("Action")
+    if animationPlayer.has_animation("Move"):
+        animationPlayer.play("Move")
     return
         
 func stop_animations():

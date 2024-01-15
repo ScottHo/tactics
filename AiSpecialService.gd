@@ -166,7 +166,9 @@ func spawn_targets(ent):
 
 func do_special_effect():
     cameraService.stop_lock()
-    ActionCommon.do_action_animation(effects, special(), _targets, tileMap, special_animation_done)
+    _entity.action_animation(func():
+        ActionCommon.do_action_animation(effects, special(), _targets, tileMap, special_animation_done)
+        )
     return
 
 func special_animation_done():
