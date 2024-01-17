@@ -54,6 +54,7 @@ script = ExtResource("4_fv11e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(265.795, 328.613)
+zoom = Vector2(0.9, 0.9)
 
 [node name="TextureRect" type="TextureRect" parent="Camera2D"]
 modulate = Color(0.631373, 0.631373, 0.631373, 1)
