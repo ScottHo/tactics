@@ -104,13 +104,13 @@ func setup_entities():
         e4.action1.level += 1
         var e5 := EntityFactory.create_bot(EntityFactory.Bot.NANONANO)
         e5.action2.level += 2
-        #setup_entity_for_level(e, Vector2i(0,0))        
-        #setup_entity_for_level(e1, Vector2i(0,1))        
-        #setup_entity_for_level(e2, Vector2i(0,2))        
-        #setup_entity_for_level(e3, Vector2i(0,3))        
-        #setup_entity_for_level(e4, Vector2i(0,4))        
-        #setup_entity_for_level(e5, Vector2i(0,5))
-        setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,4))
+        setup_entity_for_level(e, Vector2i(0,0))        
+        setup_entity_for_level(e1, Vector2i(0,1))        
+        setup_entity_for_level(e2, Vector2i(0,2))        
+        setup_entity_for_level(e3, Vector2i(0,3))        
+        setup_entity_for_level(e4, Vector2i(0,4))        
+        setup_entity_for_level(e5, Vector2i(0,5))
+        #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,4))
     else:
         # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
@@ -330,14 +330,24 @@ func movesFound(poses):
     currentEntity().sprite.doneMoving.connect(doneMove, CONNECT_ONE_SHOT)
     if len(poses) > 0:
         cameraService.lock_on(currentEntity().sprite)
-        currentEntity().sprite.movePoints(poses)
+        var moved_ents = []
+        for pose in poses:
+            var tile = tileMap.globalToPoint(pose)
+            var ent = state.entity_on_tile(tile)
+            if ent != null and currentEntity() !=  ent:
+                if currentEntity().is_ally == ent.is_ally:
+                    moved_ents.append(ent)
+                    continue
+            moved_ents.append(null)
+        print(moved_ents)
+        currentEntity().sprite.movePoints(poses, moved_ents)
     else:
         doneMove()
     return
 
 func doneMove():
+    print_debug("Done Move")    
     currentEntity().stop_animations()
-    print_debug("Done Move")
     cameraService.stop_lock()
     if currentEntity().moves_left == 0:
         menuService.disableMovesButton()

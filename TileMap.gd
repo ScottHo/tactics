@@ -7,7 +7,7 @@ static var MAX_Y: int = 8
 
 var _all_tiles = []
 
-func globalToPoint(pos: Vector2i) -> Vector2:
+func globalToPoint(pos: Vector2) -> Vector2i:
     return local_to_map(to_local(pos))
 
 func pointToGlobal(point: Vector2i) -> Vector2:

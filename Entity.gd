@@ -278,6 +278,10 @@ func action_animation(callback):
 func stop_animations():
     sprite.stop_animations()
     return
+    
+func shift_animation():
+    sprite.play_shift_animation()
+    return
 
 func clone() -> Entity:
     var e = Entity.new()

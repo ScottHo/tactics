@@ -1,5 +1,4 @@
 BUGS
-- Move hover overwrites highlights when already moving
 
 DO NEXT
 - Animations
@@ -8,7 +7,6 @@ DO NEXT
 - Save states
 - Save references to room/recruit info
 - Add reset all stats button
-- Allow movement through allies/interactables
 
 DO LATER
 - Side Missions

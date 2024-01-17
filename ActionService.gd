@@ -100,7 +100,7 @@ func start(entity: Entity, action_type: int):
     _entity = entity
     _action_type = action_type
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, true, true, false)
+    _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, MapBFS.BFS_MODE.Attack)
     _map_bfs.resetHighlights(true, action().self_castable())
     _enabled = true
     return

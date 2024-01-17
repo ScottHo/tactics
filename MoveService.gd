@@ -4,7 +4,7 @@ class_name MoveService extends Node2D
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
 var _enabled: = false
 var finishInProcess: = false
-var previous_coords: = Vector2i(-99,-99)
+var previous_coords: = Vector2i(999,999)
 var _points = []
 var _starting_point = Vector2i(0, 0)
 var _state: State
@@ -44,6 +44,7 @@ func _input(event):
                 _entity.moves_left -= len(_points)
                 _entity.location = _points[-1]
                 movesFound.emit(poses)
+                _enabled = false
                 return
 
 func highlightPath(clear: bool):
@@ -55,10 +56,10 @@ func highlightPath(clear: bool):
     return
 
 func finish():
-    if _enabled:
-        if _map_bfs != null:
-            _map_bfs.resetHighlights(false)
-        _enabled = false
+    if _map_bfs != null:
+        _map_bfs.resetHighlights(false)
+    _enabled = false
+        
     return
 
 func start(entity: Entity):
@@ -66,12 +67,13 @@ func start(entity: Entity):
     _starting_point = entity.location
     maxMoves = entity.moves_left
     _points = []
-    previous_coords = Vector2i(-99,-99)
+    previous_coords = Vector2i(999,999)
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_starting_point, maxMoves, tileMap, highlightMap, Highlights.PURPLE, _state, false, false, false)
+    _map_bfs.init(_starting_point, maxMoves, tileMap, highlightMap, Highlights.PURPLE, _state, MapBFS.BFS_MODE.AllyMove)
     _map_bfs.resetHighlights(true)
     _enabled = true    
     return
+    
 
 func setState(state: State):
     _state = state

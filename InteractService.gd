@@ -128,7 +128,7 @@ func setup_interactable_for_level(inter: Interactable, location: Vector2i, incre
 func start(entity: Entity):
     _entity = entity
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_entity.location, 1, tileMap, highlightMap, Highlights.PURPLE, _state, false, true, false)
+    _map_bfs.init(_entity.location, 1, tileMap, highlightMap, Highlights.PURPLE, _state, MapBFS.BFS_MODE.Interact)
     _map_bfs.resetHighlights(true)
     _enabled = true
     return

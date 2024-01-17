@@ -6,10 +6,11 @@ var _tile_map: TileMap
 var _highlight_map: HighlightMap
 var _range: int
 var _range_color: Vector2i
-var _ignore_entities: bool
-var _ignore_interactables: bool
-var _ignore_walls: bool
+var _mode: BFS_MODE
 var _state: State
+
+
+enum BFS_MODE { Attack, EnemyMove, AllyMove, Interact}
 
 func init(
         start_location: Vector2i,
@@ -18,21 +19,18 @@ func init(
         highlight_map: HighlightMap,
         range_color: Vector2i,
         state: State,
-        ignore_entities: bool,
-        ignore_interactables: bool,
-        ignore_walls: bool):
+        mode: BFS_MODE):
     _location = start_location
     _range = max_range
     _tile_map = tileMap
     _highlight_map = highlight_map
     _range_color = range_color
     _state = state
-    _ignore_entities = ignore_entities
-    _ignore_interactables = ignore_interactables
-    _ignore_walls = ignore_walls
+    _mode = mode
     return
 
 func calcRange_bfs():
+    var to_remove = []
     _bfs_points = {_location: [] }
     var frontier: Array[Vector2i] = [_location]
     while len(frontier) > 0:
@@ -50,22 +48,32 @@ func calcRange_bfs():
         for neighbor in neighbors:
             if _bfs_points.has(neighbor):
                 continue
-            var tile_data: TileData = _tile_map.get_cell_tile_data(0, neighbor)
-            if tile_data == null:
+            if not path_good(neighbor):
                 continue
-            if not _ignore_walls:
-                var tile_level: int = tile_data.get_custom_data("Level")
-                if tile_level == -1:
-                    continue
-            if not _ignore_entities:
-                if _check_on_entity(neighbor):
-                    continue
-            if not _ignore_interactables:
-                if _check_in_inter(neighbor):
-                    continue
             frontier.push_back(neighbor)
             _bfs_points[neighbor] = _bfs_points.get(current, []) + [neighbor]
+    
+    if _mode == BFS_MODE.AllyMove or _mode == BFS_MODE.EnemyMove:
+        for key in _bfs_points.keys():
+            if _check_on_entity(key) or _check_in_inter(key):
+                _bfs_points.erase(key)
     return
+
+func path_good(neighbor):
+    var tile_data: TileData = _tile_map.get_cell_tile_data(0, neighbor)
+    if tile_data == null:
+        return false
+    if not _mode == BFS_MODE.Attack:
+        var tile_level: int = tile_data.get_custom_data("Level")
+        if tile_level == -1:
+            return false
+        var ent: Entity = _state.entity_on_tile(neighbor)
+        if ent != null:
+            if ent.is_ally and _mode == BFS_MODE.EnemyMove:
+                return false
+            if not ent.is_ally and _mode == BFS_MODE.AllyMove:
+                return false
+    return true
 
 func _check_on_entity(vector):
     return _state.entity_on_tile(vector) != null

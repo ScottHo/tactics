@@ -15,7 +15,7 @@ func update(random=true):
         if _state.isAlly(entity) and random:
             turnNode.total = randi_range(0, 90)
         elif random:
-            turnNode.total = randi_range(1, 9) + 90
+            turnNode.total = 0 #randi_range(1, 9) + 90
         _turnNodes.append(turnNode)
     
     for i in range(7):
