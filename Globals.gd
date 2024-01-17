@@ -11,11 +11,9 @@ var skill_points := 1
 var entity_skill_point_distributions: Dictionary
 var current_level := 1
 var current_foundry := "None"
-var recruiting_1 := Entity
-var recruiting_2 := Entity
-var recruiting_3 := Entity
-
-
+var missions_found := false
+var mission_options := []
+var recruit_options := []
 
 static var UNKNOWN_BOT_ICON_PATH = "res://Assets/Unknown.png"
 static var NO_BOT_ICON_PATH = "res://Assets/None.png"

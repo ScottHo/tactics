@@ -69,32 +69,23 @@ func setup_nodes():
     return
 
 func setup_panels(level: int, floor):
-    title.text = Utils.floor_title(level, floor)    
-    if level == 4:
+    title.text = Utils.floor_title(level, floor)
+    if [4,8,12,16,17].has(level):
+        var m: Mission
+        if level == 4:
+            m = MissionFactory.foundry_1_final_boss()
+        elif level == 8:
+            m = MissionFactory.foundry_2_final_boss()
+        elif level == 12:
+            m = MissionFactory.foundry_3_final_boss()
+        elif level == 16:
+            m = MissionFactory.foundry_3_final_boss()
+        elif level == 17:
+            m = MissionFactory.foundry_3_final_boss()
         setup_foundry_boss_panels()
-        var m = MissionFactory.foundry_1_final_boss()
         room_info2.start(m, "FOUNDRY BOSS")
         mission2 = m
-    elif level == 8:
-        setup_foundry_boss_panels()
-        var m = MissionFactory.foundry_2_final_boss()
-        room_info2.start(m, "FOUNDRY BOSS")
-        mission2 = m
-    elif level == 12:
-        setup_foundry_boss_panels()
-        var m = MissionFactory.foundry_3_final_boss()
-        room_info2.start(m, "FOUNDRY BOSS")
-        mission2 = m
-    elif level == 16:
-        setup_foundry_boss_panels()
-        var m = MissionFactory.foundry_3_final_boss()
-        room_info2.start(m, "FOUNDRY BOSS")
-        mission2 = m
-    elif level == 17:
-        setup_foundry_boss_panels()
-        var m = MissionFactory.foundry_3_final_boss()
-        room_info2.start(m, "THE FINAL FOUNDRY")
-        mission2 = m
+
     else:
         setup_floor(level, floor)
 
@@ -108,6 +99,18 @@ func setup_foundry_boss_panels():
     return
 
 func setup_floor(level: int, floor):
+    if Globals.missions_found:
+        mission1 = Globals.mission_options[0]
+        mission2 = Globals.mission_options[1]
+        mission3 = Globals.mission_options[2]
+        e_recruit_bot_1 = Globals.recruit_options[0]
+        e_recruit_bot_2 = Globals.recruit_options[1]
+        e_recruit_bot_3 = Globals.recruit_options[2]
+        
+        setup_floor_missions()
+        setup_floor_recruits()
+        return
+        
     var missions = []
     if level <= 4:
         missions = MissionFactory.foundry_1_floors(floor)
@@ -115,40 +118,47 @@ func setup_floor(level: int, floor):
         missions = MissionFactory.foundry_2_floors(floor)
     elif level <= 12:
         missions = MissionFactory.foundry_3_floors(floor)
+    elif level <= 16:
+        missions = MissionFactory.foundry_3_floors(floor)
 
     var bots = EntityFactory.new_recruits()
     if len(bots) >= 1:
+        # Fill all bots up so that if there is only 1 left to recruit all rooms can recruit
         e_recruit_bot_1 = bots[0]
         e_recruit_bot_2 = bots[0]
         e_recruit_bot_3 = bots[0]
-        var ent = EntityFactory.create_bot(bots[0])
-        label(recruit_1).text = ent.display_name
-        sprite(recruit_1).texture = load(ent.icon_path)
-        label(recruit_2).text = ent.display_name
-        sprite(recruit_2).texture = load(ent.icon_path)
-        label(recruit_3).text = ent.display_name
-        sprite(recruit_3).texture = load(ent.icon_path)
     if len(bots) >= 2:
         e_recruit_bot_2 = bots[1]
         e_recruit_bot_3 = bots[1]
-        var ent = EntityFactory.create_bot(bots[1])
-        label(recruit_2).text = ent.display_name
-        sprite(recruit_2).texture = load(ent.icon_path)
-        label(recruit_3).text = ent.display_name
-        sprite(recruit_3).texture = load(ent.icon_path)
     if len(bots) >= 3:
         e_recruit_bot_3 = bots[2]
-        var ent = EntityFactory.create_bot(bots[2])
-        label(recruit_3).text = ent.display_name
-        sprite(recruit_3).texture = load(ent.icon_path)
     
-
-    room_info1.start(missions[0], "ROOM A")
     mission1 = missions[0]
-
-    room_info2.start(missions[1], "ROOM B")
     mission2 = missions[1]
-
-    room_info3.start(missions[2], "ROOM C")
     mission3 = missions[2]
+
+    setup_floor_missions()
+    setup_floor_recruits()
+    
+    Globals.missions_found = true
+    Globals.mission_options = missions
+    Globals.recruit_options = [e_recruit_bot_1, e_recruit_bot_2, e_recruit_bot_3] 
+    return
+    
+func setup_floor_missions():
+    room_info1.start(mission1, "ROOM A")
+    room_info2.start(mission2, "ROOM B")
+    room_info3.start(mission3, "ROOM C")
+    return
+
+func setup_floor_recruits():
+    setup_recruit(recruit_1, e_recruit_bot_1)
+    setup_recruit(recruit_2, e_recruit_bot_2)
+    setup_recruit(recruit_3, e_recruit_bot_3)
+    return
+
+func setup_recruit(container: Node2D, bot: EntityFactory.Bot):
+    var ent = EntityFactory.create_bot(bot)
+    label(container).text = ent.display_name
+    sprite(container).texture = load(ent.icon_path)
     return

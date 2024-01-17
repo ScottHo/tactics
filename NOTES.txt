@@ -1,25 +1,20 @@
 BUGS
+- Buttons need to be disabled when things are happening
 
 DO NEXT
-- Animations
-- 1 More bot
 - Orbs kinda bad
-- Save states
-- Save references to room/recruit info
 - Add reset all stats button
 
 DO LATER
+- Save states
+- Animations
 - Side Missions
 - Animations for new recruits
 - Procedurally generated maps
-- Walls in tilemaps
+- Obstructions
 - Scale tilemap
-- Skill Points based on score
 - Action buttons being enabled need animations
 - "Popup" for current action/event
-- Tanky Bots
-- Healy Bots
-- Get new bots
 - deploy to slot alternative
 - slight animation for mechanic container
 - more button available animations
@@ -27,7 +22,6 @@ DO LATER
 - show status effects on hover
 - Splash Screen
 - Undo Button
-- Better backgrounds/layout for deploy/mission GUI
 - Confirm Popup windows where relevant
 - Different target highlights for good/bad
 

@@ -351,6 +351,9 @@ func win():
         Globals.current_recruit = -1        
     scoreService.show_score()
     Globals.skill_points += scoreService.calc_points()
+    Globals.missions_found = false
+    Globals.mission_options = []
+    Globals.recruit_options = []
     return
 
 func lose():
