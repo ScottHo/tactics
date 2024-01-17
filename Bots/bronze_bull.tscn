@@ -581,7 +581,7 @@ rotation = -1.05361
 texture = ExtResource("5_xsydx")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/SW"]
-position = Vector2(88.381, -133.069)
+position = Vector2(88.3811, -133.069)
 rotation = 0.187235
 scale = Vector2(0.999706, 0.999706)
 texture = ExtResource("5_xsydx")
