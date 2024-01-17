@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6iqxvpypem6r"]
+[gd_scene load_steps=18 format=3 uid="uid://b6iqxvpypem6r"]
 
+[ext_resource type="Texture2D" uid="uid://ds3e6oihl70tf" path="res://Assets/Bots/shadow.png" id="1_rpbxn"]
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="2_sbscd"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
 [ext_resource type="Texture2D" uid="uid://hp656rxvw5df" path="res://Assets/Health_Over_Thick.png" id="4_fux7d"]
@@ -48,6 +49,12 @@ safe_margin = 0.01
 position = Vector2(0.208486, -0.0978169)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mdc5f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-0.0567804, -23.5884)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("1_rpbxn")
 
 [node name="TextParent" type="Node2D" parent="."]
 position = Vector2(0.141331, -45.1868)

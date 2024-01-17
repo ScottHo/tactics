@@ -11,7 +11,7 @@ func _ready():
     return
 
 func movePoints(_points: Array, _moved_entities: Array):
-    z_index += 1
+    z_index = 3
     play_move_animation()
     points = _points
     moved_entities = _moved_entities
