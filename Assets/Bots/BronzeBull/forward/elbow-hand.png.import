@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dev2nkebuy2ke"
-path="res://.godot/imported/elbow.png-49af6a7b54dd89be80146a541be9ba16.ctex"
+path="res://.godot/imported/elbow-hand.png-317aa79afacc72d91a70dc6ebfe3f8b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bots/BronzeBull/forward/elbow.png"
-dest_files=["res://.godot/imported/elbow.png-49af6a7b54dd89be80146a541be9ba16.ctex"]
+source_file="res://Assets/Bots/BronzeBull/forward/elbow-hand.png"
+dest_files=["res://.godot/imported/elbow-hand.png-317aa79afacc72d91a70dc6ebfe3f8b0.ctex"]
 
 [params]
 

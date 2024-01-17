@@ -5,20 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://cauv0nro4urfs" path="res://Assets/Bots/BronzeBull/forward/body.png" id="2_maj6w"]
 [ext_resource type="Texture2D" uid="uid://dtfkwvs8i3cag" path="res://Assets/Bots/BronzeBull/forward/bicep.png" id="2_or0a7"]
 [ext_resource type="Texture2D" uid="uid://b0ufegki5i2wy" path="res://Assets/Bots/BronzeBull/forward/neck.png" id="3_g5eca"]
-[ext_resource type="Texture2D" uid="uid://ciieprl0yd0oy" path="res://Assets/Bots/BronzeBull/forward/right-shoulder.png" id="3_wq5o8"]
+[ext_resource type="Texture2D" uid="uid://ciieprl0yd0oy" path="res://Assets/Bots/BronzeBull/forward/left_shoulder.png" id="3_wq5o8"]
 [ext_resource type="Texture2D" uid="uid://m2rdpqkggntg" path="res://Assets/Bots/BronzeBull/forward/back.png" id="4_dgtl5"]
-[ext_resource type="Texture2D" uid="uid://cyqw7tm8tery5" path="res://Assets/Bots/BronzeBull/forward/fore-arm.png" id="4_gpts5"]
-[ext_resource type="Texture2D" uid="uid://dev2nkebuy2ke" path="res://Assets/Bots/BronzeBull/forward/elbow.png" id="5_xsydx"]
+[ext_resource type="Texture2D" uid="uid://cyqw7tm8tery5" path="res://Assets/Bots/BronzeBull/forward/forearm.png" id="4_gpts5"]
+[ext_resource type="Texture2D" uid="uid://dev2nkebuy2ke" path="res://Assets/Bots/BronzeBull/forward/elbow-hand.png" id="5_xsydx"]
 [ext_resource type="Texture2D" uid="uid://bc05jptt72huw" path="res://Assets/Bots/BronzeBull/forward/wheel.png" id="6_66gxu"]
 [ext_resource type="Texture2D" uid="uid://b2ja1yvnccvs5" path="res://Assets/Bots/BronzeBull/forward/head.png" id="7_824bv"]
-[ext_resource type="Texture2D" uid="uid://bkpgmqy6nh77e" path="res://Assets/Bots/BronzeBull/forward/right_eye.png" id="8_mfg7i"]
-[ext_resource type="Texture2D" uid="uid://dqqe61togcnmd" path="res://Assets/Bots/BronzeBull/forward/right_eye2.png" id="9_l1h8p"]
-[ext_resource type="Texture2D" uid="uid://dr5efah1o4joe" path="res://Assets/Bots/BronzeBull/forward/right_eye3.png" id="10_ph463"]
-[ext_resource type="Texture2D" uid="uid://dsakbefln44hr" path="res://Assets/Bots/BronzeBull/forward/left_eye.png" id="11_nvlep"]
+[ext_resource type="Texture2D" uid="uid://bkpgmqy6nh77e" path="res://Assets/Bots/BronzeBull/forward/left_eye.png" id="8_mfg7i"]
+[ext_resource type="Texture2D" uid="uid://dqqe61togcnmd" path="res://Assets/Bots/BronzeBull/forward/left_eye2.png" id="9_l1h8p"]
+[ext_resource type="Texture2D" uid="uid://dr5efah1o4joe" path="res://Assets/Bots/BronzeBull/forward/left_eye3.png" id="10_ph463"]
+[ext_resource type="Texture2D" uid="uid://dsakbefln44hr" path="res://Assets/Bots/BronzeBull/forward/right_eye.png" id="11_nvlep"]
 [ext_resource type="Texture2D" uid="uid://bbegfv2u6nq0g" path="res://Assets/Bots/BronzeBull/forward/wheel_back.png" id="12_8u5v4"]
-[ext_resource type="Texture2D" uid="uid://ijyi0hnyk65n" path="res://Assets/Bots/BronzeBull/forward/left_eye2.png" id="12_g44tt"]
-[ext_resource type="Texture2D" uid="uid://dekfg3s7e70p5" path="res://Assets/Bots/BronzeBull/forward/left_eye3.png" id="13_5gihv"]
-[ext_resource type="Texture2D" uid="uid://u8dtj37p6o71" path="res://Assets/Bots/BronzeBull/forward/left-shoulder.png" id="14_2jo2v"]
+[ext_resource type="Texture2D" uid="uid://ijyi0hnyk65n" path="res://Assets/Bots/BronzeBull/forward/right_eye2.png" id="12_g44tt"]
+[ext_resource type="Texture2D" uid="uid://dekfg3s7e70p5" path="res://Assets/Bots/BronzeBull/forward/right_eye3.png" id="13_5gihv"]
+[ext_resource type="Texture2D" uid="uid://u8dtj37p6o71" path="res://Assets/Bots/BronzeBull/forward/right_shoulder.png" id="14_2jo2v"]
 [ext_resource type="Texture2D" uid="uid://dpns8d4nfpw5p" path="res://Assets/Bots/BronzeBull/forward/head_back.png" id="18_k2v11"]
 
 [sub_resource type="Animation" id="Animation_xdv4v"]
@@ -491,6 +491,7 @@ z_index = 2
 scale = Vector2(0.2, 0.2)
 
 [node name="SW" type="Node2D" parent="Sprite"]
+visible = false
 
 [node name="RightArmTarget" type="Node2D" parent="Sprite/SW"]
 position = Vector2(110.548, -135.869)
@@ -499,20 +500,20 @@ position = Vector2(110.548, -135.869)
 position = Vector2(262.107, -216.576)
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/SW"]
-position = Vector2(118.198, -237.079)
-rotation = 1.33166
-scale = Vector2(0.999895, 0.999895)
+position = Vector2(18.2017, -287.079)
+rotation = 1.33163
+scale = Vector2(0.999873, 0.999873)
 texture = ExtResource("2_or0a7")
 
 [node name="LeftShoulder" type="Sprite2D" parent="Sprite/SW/LeftBicep"]
-position = Vector2(-124.628, 10.6066)
-rotation = -1.1115
+position = Vector2(-78.4238, -73.3482)
+rotation = -1.26895
 texture = ExtResource("3_wq5o8")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/SW"]
-position = Vector2(212.586, -212.476)
-rotation = -0.03773
-scale = Vector2(0.999816, 0.999816)
+position = Vector2(212.588, -212.478)
+rotation = -0.0377082
+scale = Vector2(0.999793, 0.999793)
 texture = ExtResource("4_gpts5")
 
 [node name="LeftElbow" type="Sprite2D" parent="Sprite/SW/LeftForearm"]
@@ -521,9 +522,9 @@ rotation = -1.1115
 texture = ExtResource("5_xsydx")
 
 [node name="LeftHand" type="Sprite2D" parent="Sprite/SW"]
-position = Vector2(262.106, -216.575)
-rotation = -0.03773
-scale = Vector2(0.999816, 0.999816)
+position = Vector2(262.107, -216.576)
+rotation = -0.0377082
+scale = Vector2(0.999793, 0.999793)
 texture = ExtResource("5_xsydx")
 
 [node name="LeftWheel" type="Sprite2D" parent="Sprite/SW"]
@@ -558,20 +559,20 @@ scale = Vector2(0.999992, 0.999992)
 texture = ExtResource("6_66gxu")
 
 [node name="RightBicep" type="Sprite2D" parent="Sprite/SW"]
-position = Vector2(-62.7798, -220.272)
+position = Vector2(-145.28, -217.772)
 rotation = 1.21924
-scale = Vector2(0.999847, 0.999847)
+scale = Vector2(0.999843, 0.999843)
 texture = ExtResource("2_or0a7")
 
 [node name="RightShoulder" type="Sprite2D" parent="Sprite/SW/RightBicep"]
-position = Vector2(-93.0187, 9.14341)
-rotation = -1.69056
+position = Vector2(-74.8557, -69.4194)
+rotation = -0.115103
 texture = ExtResource("14_2jo2v")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/SW"]
-position = Vector2(48.6847, -142.988)
-rotation = 0.187229
-scale = Vector2(0.999713, 0.999713)
+position = Vector2(48.6839, -142.988)
+rotation = 0.187235
+scale = Vector2(0.999706, 0.999706)
 texture = ExtResource("4_gpts5")
 
 [node name="RightElbow" type="Sprite2D" parent="Sprite/SW/RightForearm"]
@@ -580,9 +581,9 @@ rotation = -1.05361
 texture = ExtResource("5_xsydx")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/SW"]
-position = Vector2(88.3821, -133.069)
-rotation = 0.187229
-scale = Vector2(0.999713, 0.999713)
+position = Vector2(88.381, -133.069)
+rotation = 0.187235
+scale = Vector2(0.999706, 0.999706)
 texture = ExtResource("5_xsydx")
 
 [node name="LeftEye" type="AnimatedSprite2D" parent="Sprite/SW"]
@@ -616,9 +617,10 @@ position = Vector2(53.4003, -241.913)
 rotation = 1.33166
 scale = Vector2(0.999895, 0.999895)
 rest = Transform2D(0.236843, 0.97144, -0.97144, 0.236843, 53.4003, -241.913)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/SW/Skeleton2D/Torso/LeftShoulder"]
-position = Vector2(124.628, -10.6066)
+position = Vector2(52.356, 74.7131)
 remote_path = NodePath("../../../../LeftBicep")
 
 [node name="LeftElbow" type="Bone2D" parent="Sprite/SW/Skeleton2D/Torso/LeftShoulder"]
@@ -626,6 +628,7 @@ position = Vector2(157.845, -4.36506)
 rotation = -1.36939
 scale = Vector2(0.999921, 0.999921)
 rest = Transform2D(0.200029, -0.97971, 0.97971, 0.200029, 157.845, -4.36506)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/SW/Skeleton2D/Torso/LeftShoulder/LeftElbow"]
 position = Vector2(92.88, -5.64597)
@@ -680,12 +683,13 @@ remote_path = NodePath("../../../../../../RightEye")
 
 [node name="RightShoulder" type="Bone2D" parent="Sprite/SW/Skeleton2D/Torso"]
 position = Vector2(-111.853, -173.569)
-rotation = 1.22829
-scale = Vector2(0.999847, 0.999847)
+rotation = 1.21392
+scale = Vector2(0.999843, 0.999843)
 rest = Transform2D(0.335796, 0.941768, -0.941768, 0.335796, -111.853, -173.569)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/SW/Skeleton2D/Torso/RightShoulder"]
-position = Vector2(71.2297, -0.187885)
+position = Vector2(45.8735, 78.3721)
 rotation = -0.00905303
 remote_path = NodePath("../../../../RightBicep")
 
@@ -694,6 +698,7 @@ position = Vector2(143.747, -8.16698)
 rotation = -1.04106
 scale = Vector2(0.999866, 0.999866)
 rest = Transform2D(0.505241, -0.862823, 0.862823, 0.505241, 143.747, -8.16698)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/SW/Skeleton2D/Torso/RightShoulder/RightElbow"]
 position = Vector2(80.4028, -3.35212)
@@ -711,7 +716,6 @@ position = Vector2(-21.2646, 6.87911)
 remote_path = NodePath("../../../../../../RightHand")
 
 [node name="SE" type="Node2D" parent="Sprite"]
-visible = false
 scale = Vector2(-1, 1)
 
 [node name="RightArmTarget" type="Node2D" parent="Sprite/SE"]
@@ -721,20 +725,21 @@ position = Vector2(69.5495, -127.045)
 position = Vector2(250.949, -215.781)
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/SE"]
-position = Vector2(158.742, -280.889)
-rotation = 0.919319
-scale = Vector2(0.999867, -0.999867)
+position = Vector2(196.241, -338.389)
+rotation = 0.919327
+scale = Vector2(0.999864, -0.999864)
 texture = ExtResource("2_or0a7")
 
 [node name="LeftShoulder" type="Sprite2D" parent="Sprite/SE/LeftBicep"]
-position = Vector2(-124.628, 10.6066)
-rotation = -1.1115
+position = Vector2(-102.41, -88.0869)
+rotation = -1.70411
+scale = Vector2(-1, 1)
 texture = ExtResource("3_wq5o8")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/SE"]
-position = Vector2(117.834, -221.262)
-rotation = 2.85613
-scale = Vector2(0.99977, -0.99977)
+position = Vector2(272.927, -279.476)
+rotation = -0.575573
+scale = Vector2(0.999745, -0.999745)
 texture = ExtResource("4_gpts5")
 
 [node name="LeftElbow" type="Sprite2D" parent="Sprite/SE/LeftForearm"]
@@ -743,9 +748,9 @@ rotation = -1.1115
 texture = ExtResource("5_xsydx")
 
 [node name="LeftHand" type="Sprite2D" parent="Sprite/SE"]
-position = Vector2(89.4766, -212.59)
-rotation = 2.85613
-scale = Vector2(0.99977, -0.99977)
+position = Vector2(297.618, -295.896)
+rotation = -0.575573
+scale = Vector2(0.999745, -0.999745)
 texture = ExtResource("5_xsydx")
 
 [node name="LeftWheel" type="Sprite2D" parent="Sprite/SE"]
@@ -780,20 +785,20 @@ scale = Vector2(0.999992, 0.999992)
 texture = ExtResource("6_66gxu")
 
 [node name="RightBicep" type="Sprite2D" parent="Sprite/SE"]
-position = Vector2(-91.8709, -216.247)
-rotation = 1.64741
-scale = Vector2(0.999859, -0.999859)
+position = Vector2(-16.3251, -267.957)
+rotation = 1.13386
+scale = Vector2(0.999853, -0.999853)
 texture = ExtResource("2_or0a7")
 
 [node name="RightShoulder" type="Sprite2D" parent="Sprite/SE/RightBicep"]
-position = Vector2(-93.0187, 9.14341)
-rotation = -1.69056
+position = Vector2(-76.4261, -67.5962)
+rotation = 1.06109
 texture = ExtResource("14_2jo2v")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/SE"]
-position = Vector2(-182.326, -165.668)
-rotation = -2.91628
-scale = Vector2(0.999722, -0.999722)
+position = Vector2(47.6176, -163.786)
+rotation = -0.162341
+scale = Vector2(0.999711, -0.999711)
 texture = ExtResource("4_gpts5")
 
 [node name="RightElbow" type="Sprite2D" parent="Sprite/SE/RightForearm"]
@@ -802,9 +807,9 @@ rotation = -1.05361
 texture = ExtResource("5_xsydx")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/SE"]
-position = Vector2(-222.67, -172.498)
-rotation = -2.91628
-scale = Vector2(0.999722, -0.999722)
+position = Vector2(87.5495, -172.714)
+rotation = -0.162341
+scale = Vector2(0.999711, -0.999711)
 texture = ExtResource("5_xsydx")
 
 [node name="LeftEye" type="AnimatedSprite2D" parent="Sprite/SE"]
@@ -835,12 +840,13 @@ remote_path = NodePath("../../../Torso")
 
 [node name="LeftShoulder" type="Bone2D" parent="Sprite/SE/Skeleton2D/Torso"]
 position = Vector2(66.6385, -272.687)
-rotation = 0.919319
-scale = Vector2(0.999867, -0.999867)
+rotation = 0.909338
+scale = Vector2(0.999864, -0.999864)
 rest = Transform2D(0.172485, 0.984928, -0.984928, 0.172485, 87.1122, -217.565)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/SE/Skeleton2D/Torso/LeftShoulder"]
-position = Vector2(124.628, -10.6066)
+position = Vector2(101.639, 54.0873)
 remote_path = NodePath("../../../../LeftBicep")
 
 [node name="LeftElbow" type="Bone2D" parent="Sprite/SE/Skeleton2D/Torso/LeftShoulder"]
@@ -848,6 +854,7 @@ position = Vector2(182.708, -3.46373)
 rotation = -1.93681
 scale = Vector2(0.999903, 0.999903)
 rest = Transform2D(-0.377886, -0.925757, 0.925757, -0.377886, 182.708, -3.46373)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/SE/Skeleton2D/Torso/LeftShoulder/LeftElbow"]
 position = Vector2(83.5161, -5.97646)
@@ -906,9 +913,10 @@ position = Vector2(-111.853, -173.569)
 rotation = 1.63836
 scale = Vector2(0.999859, -0.999859)
 rest = Transform2D(0.383116, 0.923532, -0.923532, 0.383116, -121.774, -149.758)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/SE/Skeleton2D/Torso/RightShoulder"]
-position = Vector2(71.2297, -0.187885)
+position = Vector2(47.8817, 55.3181)
 rotation = -0.00905303
 remote_path = NodePath("../../../../RightBicep")
 
@@ -917,6 +925,7 @@ position = Vector2(143.747, -8.16698)
 rotation = -1.72855
 scale = Vector2(0.999863, 0.999863)
 rest = Transform2D(0.190498, -0.981551, 0.981551, 0.190498, 143.747, -8.16698)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/SE/Skeleton2D/Torso/RightShoulder/RightElbow"]
 position = Vector2(80.4028, -3.35212)
@@ -943,32 +952,32 @@ position = Vector2(308.254, -275.601)
 position = Vector2(175.129, -314.575)
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/NW"]
-position = Vector2(25.11, -303.131)
-rotation = 0.336448
+position = Vector2(13.0095, -272.989)
+rotation = 0.596879
 scale = Vector2(0.999913, 0.999913)
 texture = ExtResource("2_or0a7")
 
 [node name="LeftShoulder" type="Sprite2D" parent="Sprite/NW"]
 position = Vector2(-96.0216, -334.26)
-rotation = -0.775052
+rotation = -0.514621
 scale = Vector2(0.999913, 0.999913)
 texture = ExtResource("3_wq5o8")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/NW"]
-position = Vector2(73.6368, -370.168)
-rotation = -1.55238
+position = Vector2(133.725, -287.102)
+rotation = -0.540979
 scale = Vector2(0.999823, 0.999823)
 texture = ExtResource("4_gpts5")
 
 [node name="LeftElbow" type="Sprite2D" parent="Sprite/NW"]
-position = Vector2(77.5709, -277.216)
-rotation = -2.66388
+position = Vector2(57.0286, -234.44)
+rotation = -1.65248
 scale = Vector2(0.999823, 0.999823)
 texture = ExtResource("5_xsydx")
 
 [node name="LeftHand" type="Sprite2D" parent="Sprite/NW"]
-position = Vector2(72.3231, -419.841)
-rotation = -1.55238
+position = Vector2(175.129, -314.575)
+rotation = -0.540979
 scale = Vector2(0.999823, 0.999823)
 texture = ExtResource("5_xsydx")
 
@@ -1005,8 +1014,8 @@ scale = Vector2(0.999992, 0.999992)
 texture = ExtResource("12_8u5v4")
 
 [node name="RightBicep" type="Sprite2D" parent="Sprite/NW"]
-position = Vector2(42.6759, -242.212)
-rotation = 2.62669
+position = Vector2(152.517, -223.94)
+rotation = 0.831752
 scale = Vector2(0.999842, 0.999842)
 texture = ExtResource("2_or0a7")
 
@@ -1016,8 +1025,8 @@ rotation = -1.69056
 texture = ExtResource("14_2jo2v")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/NW"]
-position = Vector2(-15.454, -119.664)
-rotation = 1.59469
+position = Vector2(264.76, -231.035)
+rotation = -0.724905
 scale = Vector2(0.999706, 0.999706)
 texture = ExtResource("4_gpts5")
 
@@ -1027,8 +1036,8 @@ rotation = -1.05361
 texture = ExtResource("5_xsydx")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/NW"]
-position = Vector2(-18.7853, -78.8822)
-rotation = 1.59469
+position = Vector2(296.901, -256.357)
+rotation = -0.724905
 scale = Vector2(0.999706, 0.999706)
 texture = ExtResource("5_xsydx")
 
@@ -1050,6 +1059,7 @@ position = Vector2(-120.999, -220.538)
 rotation = 0.336448
 scale = Vector2(0.999913, 0.999913)
 rest = Transform2D(0.172485, 0.984928, -0.984928, 0.172485, 87.1122, -217.565)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NW/Skeleton2D/Torso/LeftShoulder"]
 rotation = -1.1115
@@ -1064,6 +1074,7 @@ position = Vector2(182.708, -3.46373)
 rotation = -1.88883
 scale = Vector2(0.99991, 0.99991)
 rest = Transform2D(-0.377886, -0.925757, 0.925757, -0.377886, 182.708, -3.46373)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NW/Skeleton2D/Torso/LeftShoulder/LeftElbow"]
 rotation = -1.1115
@@ -1119,6 +1130,7 @@ position = Vector2(79.9066, -163.163)
 rotation = 2.63574
 scale = Vector2(0.999842, 0.999842)
 rest = Transform2D(0.383116, 0.923532, -0.923532, 0.383116, -121.774, -149.758)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NW/Skeleton2D/Torso/RightShoulder"]
 position = Vector2(71.2297, -0.187885)
@@ -1130,6 +1142,7 @@ position = Vector2(143.747, -8.16698)
 rotation = -1.04105
 scale = Vector2(0.999864, 0.999864)
 rest = Transform2D(0.190498, -0.981551, 0.981551, 0.190498, 143.747, -8.16698)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NW/Skeleton2D/Torso/RightShoulder/RightElbow"]
 position = Vector2(80.4028, -3.35212)
@@ -1157,32 +1170,32 @@ position = Vector2(308.254, -275.601)
 position = Vector2(175.129, -314.575)
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/NE"]
-position = Vector2(13.0099, -272.99)
-rotation = 0.596872
+position = Vector2(28.9843, -338.185)
+rotation = 0.053516
 scale = Vector2(0.999912, 0.999912)
 texture = ExtResource("2_or0a7")
 
 [node name="LeftShoulder" type="Sprite2D" parent="Sprite/NE"]
 position = Vector2(-96.0216, -334.26)
-rotation = -0.514628
+rotation = -1.05798
 scale = Vector2(0.999912, 0.999912)
 texture = ExtResource("3_wq5o8")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/NE"]
-position = Vector2(133.724, -287.102)
-rotation = -0.540978
+position = Vector2(179.54, -331.986)
+rotation = 0.0172793
 scale = Vector2(0.999813, 0.999813)
 texture = ExtResource("4_gpts5")
 
 [node name="LeftElbow" type="Sprite2D" parent="Sprite/NE"]
-position = Vector2(57.0291, -234.441)
-rotation = -1.65248
+position = Vector2(86.594, -327.946)
+rotation = -1.09422
 scale = Vector2(0.999813, 0.999813)
 texture = ExtResource("5_xsydx")
 
 [node name="LeftHand" type="Sprite2D" parent="Sprite/NE"]
-position = Vector2(175.128, -314.575)
-rotation = -0.540978
+position = Vector2(229.211, -333.356)
+rotation = 0.0172793
 scale = Vector2(0.999813, 0.999813)
 texture = ExtResource("5_xsydx")
 
@@ -1219,8 +1232,8 @@ scale = Vector2(0.999992, 0.999992)
 texture = ExtResource("12_8u5v4")
 
 [node name="RightBicep" type="Sprite2D" parent="Sprite/NE"]
-position = Vector2(152.517, -223.94)
-rotation = 0.831754
+position = Vector2(176.002, -280.664)
+rotation = -0.0594927
 scale = Vector2(0.999843, 0.999843)
 texture = ExtResource("2_or0a7")
 
@@ -1230,8 +1243,8 @@ rotation = -1.69056
 texture = ExtResource("14_2jo2v")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/NE"]
-position = Vector2(264.76, -231.035)
-rotation = -0.724903
+position = Vector2(328.133, -299.561)
+rotation = -0.0488778
 scale = Vector2(0.999703, 0.999703)
 texture = ExtResource("4_gpts5")
 
@@ -1241,8 +1254,8 @@ rotation = -1.05361
 texture = ExtResource("5_xsydx")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/NE"]
-position = Vector2(296.901, -256.357)
-rotation = -0.724903
+position = Vector2(369.049, -299.204)
+rotation = -0.0488778
 scale = Vector2(0.999703, 0.999703)
 texture = ExtResource("5_xsydx")
 
@@ -1264,6 +1277,7 @@ position = Vector2(-120.999, -220.538)
 rotation = 0.596872
 scale = Vector2(0.999912, 0.999912)
 rest = Transform2D(0.172485, 0.984928, -0.984928, 0.172485, 87.1122, -217.565)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NE/Skeleton2D/Torso/LeftShoulder"]
 rotation = -1.1115
@@ -1278,6 +1292,7 @@ position = Vector2(182.708, -3.46373)
 rotation = -1.13785
 scale = Vector2(0.999901, 0.999901)
 rest = Transform2D(-0.377886, -0.925757, 0.925757, -0.377886, 182.708, -3.46373)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NE/Skeleton2D/Torso/LeftShoulder/LeftElbow"]
 rotation = -1.1115
@@ -1333,6 +1348,7 @@ position = Vector2(79.9066, -163.163)
 rotation = 0.840807
 scale = Vector2(0.999843, 0.999843)
 rest = Transform2D(0.383116, 0.923532, -0.923532, 0.383116, -121.774, -149.758)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NE/Skeleton2D/Torso/RightShoulder"]
 position = Vector2(71.2297, -0.187885)
@@ -1344,6 +1360,7 @@ position = Vector2(143.747, -8.16698)
 rotation = -1.56571
 scale = Vector2(0.99986, 0.99986)
 rest = Transform2D(0.190498, -0.981551, 0.981551, 0.190498, 143.747, -8.16698)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NE/Skeleton2D/Torso/RightShoulder/RightElbow"]
 position = Vector2(80.4028, -3.35212)

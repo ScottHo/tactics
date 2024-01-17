@@ -2,16 +2,23 @@ BUGS
 - Buttons need to be disabled when things are happening
 
 DO NEXT
-- Orbs kinda bad
-- Add reset all stats button
+- Foundry 2 floor bosses
+- Foundry 2 foundry boss
+- Foundry 3 floor bosses
+- Foundry 3 foundry boss
+- Foundry 4 floor bosses
+- Foundry 4 foundry boss
+- Final Foundry Boss
+- Animations (Wait for artists?)
 
 DO LATER
-- Save states
-- Animations
-- Side Missions
-- Animations for new recruits
+- Orbs kinda bad
+- More Orbs?
 - Procedurally generated maps
 - Obstructions
+- Save states
+- Side Missions
+- Animations for new recruits
 - Scale tilemap
 - Action buttons being enabled need animations
 - "Popup" for current action/event

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyqw7tm8tery5"
-path="res://.godot/imported/fore-arm.png-cbd797d505a38236e3d927f89bbceeeb.ctex"
+uid="uid://u8dtj37p6o71"
+path="res://.godot/imported/right_shoulder.png-76aeedc038702d020ebbd02687216030.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bots/BronzeBull/forward/fore-arm.png"
-dest_files=["res://.godot/imported/fore-arm.png-cbd797d505a38236e3d927f89bbceeeb.ctex"]
+source_file="res://Assets/Bots/BronzeBull/forward/right_shoulder.png"
+dest_files=["res://.godot/imported/right_shoulder.png-76aeedc038702d020ebbd02687216030.ctex"]
 
 [params]
 
