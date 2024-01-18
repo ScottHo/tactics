@@ -168,7 +168,7 @@ static func create_boss_2_3():
     return ent
 
 static func create_boss_2_f():
-    var ent = _create_entity("Iron Foundry Boss", 300, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    var ent = _create_entity("Iron Foundry Boss", 300, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
     ent.damage += 6
     ActionFactory.add_base_attack(ent)
     return ent
@@ -181,25 +181,25 @@ static func create_boss_spawn_2():
     return ent
 
 static func create_boss_3_1():
-    var ent = _create_entity("Steel Floor Grunt", 350, 4, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Steel Floor Grunt", 350, 5, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ent.damage += 4
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_3_2():
-    var ent = _create_entity("Steel Floor Grunt", 400, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    var ent = _create_entity("Steel Floor Grunt", 400, 5, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
     ent.damage += 4
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_3_3():
-    var ent = _create_entity("Steel Floor Grunt", 450, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    var ent = _create_entity("Steel Floor Grunt", 450, 5, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
     ent.damage += 4
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_3_f():
-    var ent = _create_entity("Steel Foundry Boss", 600, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    var ent = _create_entity("Steel Foundry Boss", 600, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
     ent.damage += 4
     ActionFactory.add_base_attack(ent)
     return ent
@@ -212,36 +212,39 @@ static func create_boss_spawn_3():
     return ent
 
 static func create_boss_4_1():
-    var ent = _create_entity("Platinum Floor Grunt", 500, 4, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Platinum Floor Grunt", 500, 5, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    ent.damage += 5
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_4_2():
-    var ent = _create_entity("Platinum Floor Grunt", 550, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    var ent = _create_entity("Platinum Floor Grunt", 550, 5, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    ent.damage += 5
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_4_3():
-    var ent = _create_entity("Platinum Floor Grunt", 600, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    var ent = _create_entity("Platinum Floor Grunt", 600, 5, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    ent.damage += 5
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_4_f():
-    var ent = _create_entity("Platinum Foundry Boss", 1000, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
-    ent.damage += 2
+    var ent = _create_entity("Platinum Foundry Boss", 100, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    ent.damage += 5
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_spawn_4():
     var ent = _create_entity("Mini Platinum Grunt", 14, 3, 1, 8, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
-    ent.damage += 4
+    ent.damage += 7
     ent.is_add = true
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_final():
-    var ent = _create_entity("Chief Executive Foundry", 2000, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
-    ent.damage += 2
+    var ent = _create_entity("Chief Executive Foundry", 1500, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    ent.damage += 6
     ActionFactory.add_base_attack(ent)
     return ent
 

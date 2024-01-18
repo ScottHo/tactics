@@ -32,7 +32,6 @@ func update_new():
         var entity: Entity = _state.get_entity(entity_id)
         if entity.alive:
             turnNode.entity_id = entity_id
-            turnNode.total = randi_range(95, 99)
             _turnNodes.append(turnNode)
     return
 
