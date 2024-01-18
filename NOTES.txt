@@ -17,7 +17,6 @@ DO LATER
 - Save states
 - Side Missions
 - Animations for new recruits
-- Scale tilemap
 - Action buttons being enabled need animations
 - "Popup" for current action/event
 - deploy to slot alternative
