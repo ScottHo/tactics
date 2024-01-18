@@ -115,57 +115,133 @@ static func create_buster():
     return ent
 
 static func create_boss_1_1():
-    var ent = _create_entity("Evil Red", 25, 4, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
-    ent.description = "Intimidating Placeholder Text"
+    var ent = _create_entity("Bronze Floor Grunt", 50, 5, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_1_2():
-    var ent = _create_entity("Evil Pink", 36, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
-    ent.description = "Intimidating Placeholder Text"
+    var ent = _create_entity("Bronze Floor Grunt", 75, 5, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_1_3():
-    var ent = _create_entity("Evil Orange", 50, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
-    ent.description = "Intimidating Placeholder Text"
+    var ent = _create_entity("Bronze Floor Grunt", 100, 5, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_1_f():
-    var ent = _create_entity("Bronze Bull", 100, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
-    ent.description = "Intimidating Placeholder Text"
+    var ent = _create_entity("Bronze Bull", 125, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent)
     return ent
 
-static func create_boss_2():
-    var ent = _create_entity("Evil Pink", 200, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
-    ent.damage += 4
-    ent.description = "Intimidating Placeholder Text"
-    ActionFactory.add_base_attack(ent)
-    return ent
-
-static func create_boss_3():
-    var ent = _create_entity("Evil Orange", 200, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
-    ent.description = "Intimidating Placeholder Text"
-    ent.damage += 4
-    ActionFactory.add_base_attack(ent)
-    return ent
-
 static func create_boss_spawn_1():
-    var ent = _create_entity("Mini Evil Gray", 8, 3, 1, 8, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
-    ent.description = "Intimidating Placeholder Text"
-    ent.damage += 4
+    var ent = _create_entity("Mini Evil Gray", 7, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    ent.damage += 2
     ent.is_add = true
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_spawn_1_f():
-    var ent = _create_entity("Bronze Mini Evil", 10, 3, 1, 8, "res://Bots/bronze_spawn.tscn", "res://Assets/Bots/bronze_spawn.png", false)
-    ent.description = "Intimidating Placeholder Text"
+    var ent = _create_entity("Mini Bronze Grunt", 10, 3, 1, 10, "res://Bots/bronze_spawn.tscn", "res://Assets/Bots/bronze_spawn.png", false)
     ent.is_add = true
     ent.spawn_on_death = InteractableFactory.bronze_soul()
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_2_1():
+    var ent = _create_entity("Iron Floor Grunt", 150, 5, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    ent.damage += 3
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_2_2():
+    var ent = _create_entity("Iron Floor Grunt", 175, 5, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    ent.damage += 3
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_2_3():
+    var ent = _create_entity("Iron Floor Grunt", 200, 5, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    ent.damage += 3
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_2_f():
+    var ent = _create_entity("Iron Foundry Boss", 300, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    ent.damage += 6
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_spawn_2():
+    var ent = _create_entity("Mini Iron Grunt", 10, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    ent.damage += 5
+    ent.is_add = true
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_3_1():
+    var ent = _create_entity("Steel Floor Grunt", 350, 4, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    ent.damage += 4
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_3_2():
+    var ent = _create_entity("Steel Floor Grunt", 400, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    ent.damage += 4
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_3_3():
+    var ent = _create_entity("Steel Floor Grunt", 450, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    ent.damage += 4
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_3_f():
+    var ent = _create_entity("Steel Foundry Boss", 600, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    ent.damage += 4
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_spawn_3():
+    var ent = _create_entity("Mini Steel Grunt", 12, 3, 1, 8, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    ent.damage += 6
+    ent.is_add = true
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_4_1():
+    var ent = _create_entity("Platinum Floor Grunt", 500, 4, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_4_2():
+    var ent = _create_entity("Platinum Floor Grunt", 550, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_4_3():
+    var ent = _create_entity("Platinum Floor Grunt", 600, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_4_f():
+    var ent = _create_entity("Platinum Foundry Boss", 1000, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    ent.damage += 2
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_spawn_4():
+    var ent = _create_entity("Mini Platinum Grunt", 14, 3, 1, 8, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    ent.damage += 4
+    ent.is_add = true
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_final():
+    var ent = _create_entity("Chief Executive Foundry", 2000, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    ent.damage += 2
     ActionFactory.add_base_attack(ent)
     return ent
 

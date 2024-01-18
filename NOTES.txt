@@ -2,16 +2,14 @@ BUGS
 - Buttons need to be disabled when things are happening
 
 DO NEXT
-- Foundry 2 floor bosses
 - Foundry 2 foundry boss
-- Foundry 3 floor bosses
 - Foundry 3 foundry boss
-- Foundry 4 floor bosses
 - Foundry 4 foundry boss
 - Final Foundry Boss
 - Animations (Wait for artists?)
 
 DO LATER
+- Orb prize for completing foundry
 - Orbs kinda bad
 - More Orbs?
 - Procedurally generated maps

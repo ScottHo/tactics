@@ -73,7 +73,7 @@ func mechanic_soak_effect():
             if ent.location == vec:
                 ents.append(ent)
     var damage = float(special().damage)
-    damage = ceili(damage/len(ents))
+    damage = floori(damage/len(ents))
     for ent in ents:
         ent.loseHP(damage)
         special().effect.call(ent)
