@@ -9,7 +9,9 @@ DO NEXT
 - Animations (Wait for artists?)
 
 DO LATER
-- Orb prize for completing foundry
+- Maybe foundry boss just has 1 mechanic, then absorbs the previous mechanics?
+- Foundry boss aborbs all mechanics?
+- Orb prize for completing foundry?
 - Orbs kinda bad
 - More Orbs?
 - Does orb drop work well?
@@ -32,11 +34,13 @@ DO LATER
 
 
 IDEAS
-Boss 2: Certain Tiles Dice Roll For Safe Ones
+Boss 1: Adds that drops souls that revive
 
-Boss 3: Soul-link, Destroy Tiles
+Boss 2: Destroy Tiles
 
-Boss 4: Immune with Heal Adds / Normal Adds
+Boss 3: Certain Tiles Dice Roll For Safe Ones??
+
+Boss 4: Immune that spawns a heal add and a normal add
 
 
 
