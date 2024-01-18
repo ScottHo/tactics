@@ -117,10 +117,8 @@ text = "OK"
 
 [node name="Fader" type="ColorRect" parent="."]
 visible = false
-offset_left = -33.6738
-offset_top = -31.4289
-offset_right = 1566.33
-offset_bottom = 968.571
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0, 0, 0)
 
 [node name="Timer" type="Timer" parent="."]

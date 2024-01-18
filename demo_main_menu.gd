@@ -1,8 +1,7 @@
 extends Node2D
 
-@onready var sprite1 = $LongShot
-@onready var sprite2 = $Boss1
 func _ready():
+    $Buster/AnimationPlayer.play("Move")
     $Label2.visible = false    
     if Globals.current_level > 4:
         $Control/Control/Button.disabled = true
@@ -16,9 +15,4 @@ func _ready():
         var b = EntityFactory.Bot.values()
         b.shuffle()
         Globals.bots_collected = b.slice(0, 6)
-    return
-    
-func _process(delta):
-    sprite1.rotate(.01)
-    sprite2.rotate(.01)
     return

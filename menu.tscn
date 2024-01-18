@@ -478,6 +478,7 @@ theme_type_variation = &"TriangleButton"
 toggle_mode = true
 
 [node name="GridContainer" type="GridContainer" parent="TurnsContainer"]
+visible = false
 layout_direction = 3
 layout_mode = 0
 offset_left = 205.342

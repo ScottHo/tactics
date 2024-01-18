@@ -24,7 +24,7 @@ func in_range(v: Vector2i) -> bool:
 
 func all_tiles() -> Array:
     if len(_all_tiles) > 0:
-        return _all_tiles
+        return _all_tiles.duplicate(true)
     for x in range(MIN_X, MAX_X+1):
         for y in range(MIN_Y, MAX_Y+1):
             var tile_data: TileData = get_cell_tile_data(0, Vector2i(x,y))
@@ -34,7 +34,7 @@ func all_tiles() -> Array:
             if tile_level == -1:
                 continue
             _all_tiles.append(Vector2i(x,y))
-    return _all_tiles
+    return _all_tiles.duplicate(true)
 
 func switch_tile_data(point: Vector2i, atlas: Vector2i):
     set_cell(0, point, 1, atlas)

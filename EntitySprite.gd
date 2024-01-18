@@ -7,6 +7,7 @@ var interContainer: Node2D
 var points := []
 var moved_entities := []
 var sprite : Node2D
+var custom_sprite: Sprite2D
 
 signal doneMoving
 
@@ -16,6 +17,7 @@ func _ready():
     textAnimNode = $CharacterCommon/TextParent/TextAnimation
     sprite = $Sprite
     interContainer = $CharacterCommon/InteractableContainer
+    custom_sprite = $CharacterCommon/CustomContainer/Sprite2D
     return
 
 func movePoints(_points: Array, _moved_entities: Array):
@@ -97,4 +99,14 @@ func show_info():
 
 func hide_info():
     infoTab.unexpand()
+    return
+
+func show_custom_sprite(path: String, _scale: Vector2):
+    custom_sprite.texture = load(path)
+    custom_sprite.scale = _scale
+    return
+
+func show_death():
+    var tween = get_tree().create_tween()
+    tween.tween_property(self, "modulate:a", 0, 1)
     return

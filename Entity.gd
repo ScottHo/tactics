@@ -18,6 +18,7 @@ var icon_path: String
 var description: String
 var specials_left := 1
 var spawn_on_death: Interactable
+var custom_data
 
 # Variable Stats
 var threat: int
@@ -161,6 +162,12 @@ func failed():
     if not check_sprite():
         return
     sprite.textAnimation().other_text("Failed.", Color.RED)
+    return
+
+func nice():
+    if not check_sprite():
+        return
+    sprite.textAnimation().other_text("Nice!", Color.GREEN)
     return
 
 func set_max_health(hp):
@@ -330,6 +337,10 @@ func hide_info():
     if not check_sprite():
         return
     sprite.hide_info()
+    return
+
+func show_custom_sprite(path: String, _scale: Vector2):
+    sprite.show_custom_sprite(path, _scale)
     return
 
 func check_sprite():

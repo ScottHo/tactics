@@ -58,35 +58,59 @@ static func foundry_2_final_boss() -> Mission:
 
     # TODO
     var s1 = Special.new()    
-    s1.display_name = "Deploy Minions"
-    s1.description = "Deploy 3 minions with high base damage"
-    s1.target = Special.Target.RANDOM
+    s1.display_name = "Roll the dice"
+    s1.description = "Switches the stage and rolls a number to determine targets"
+    s1.target = Special.Target.SELF
     s1.shape = Special.Shape.SINGLE
     s1.mechanic = Special.Mechanic.CHANGE_TILE_DICE
-    s1.spawns = [EntityFactory.create_boss_spawn_1(), EntityFactory.create_boss_spawn_1(),
-            EntityFactory.create_boss_spawn_1()]
 
-
-    var s2 = Special.new()
-    s2.display_name = "Hater Missle"
-    s2.description = "Deal 12 damage to the highest threat target, then removing all it's threat"
-    s2.target = Special.Target.THREAT
+    var s2 = Special.new()    
+    s2.display_name = "Dice Attack"
+    s2.description = "Deals damage to every allied unit based on the dice roll"
+    s2.target = Special.Target.ALL
     s2.shape = Special.Shape.SINGLE
-    s2.mechanic = Special.Mechanic.SPREAD
-    s2.damage = 12
-    s2.effect = func(ent: Entity):
-        ent.setThreat(0)
-        return
-    s2.animation_path = "res://Effects/explosion_yellow.tscn"
+    s2.mechanic = Special.Mechanic.DAMAGE_PER_DICE
+
+    var s3 = Special.new()
+    s3.display_name = "Dice Bombs"
+    s3.description = "Deals 10 damage to every allied unit in a square area, centered on the rolled number"
+    s3.target = Special.Target.TILE_DICE
+    s3.shape = Special.Shape.SQUARE_3x3
+    s3.mechanic = Special.Mechanic.SPREAD
+
+    var s4 = Special.new()
+    s4.display_name = "Absorb Dice"
+    s4.description = "If the Iron Dice is standing on the rolled number, it gains 30 health"
+    s4.target = Special.Target.SELF
+    s4.shape = Special.Shape.SINGLE
+    s4.mechanic = Special.Mechanic.BUFF
+    s4.effect = func(ent: Entity):
+        ent.gainHP(30)
     
-    m.specials = [s1, s2]
+    var s5 = Special.new()
+    s5.display_name = "Iron Power"
+    s5.description = "Each allied unit takes 12 damage unless standing on the rolled number"
+    s5.target = Special.Target.ALL
+    s5.shape = Special.Shape.SINGLE
+    s5.mechanic = Special.Mechanic.DAMAGE_IF_NOT_ON_DICE
+    s5.effect = func(ent: Entity):
+        ent.loseHP(12)
+
+    var s6 = Special.new()
+    s6.display_name = "Just Unlucky"
+    s6.description = "A random unit takes the damage of the rolled number"
+    s6.target = Special.Target.ALL
+    s6.shape = Special.Shape.SINGLE
+    s6.mechanic = Special.Mechanic.DAMAGE_PER_DICE
+
+    m.specials = [s1, s2, s3, s4, s5, s6]
     return m
 
 static func foundry_3_final_boss() -> Mission:
     var m = Mission.new()
     m.boss = EntityFactory.create_boss_3_f()
     m.buffs = []
-    m.specials_per_turn = 3
+    m.specials_per_turn = 2
 
     # TODO
     var s1 = Special.new()
@@ -203,7 +227,7 @@ static func foundry_1_floors(floor: int) -> Array:
         else:
             m.boss = EntityFactory.create_boss_1_3()
         m.specials = [specs[i], recharge_special()]
-        m.buffs = InteractableFactory.random_set()
+        m.buffs = []
         m.specials_per_turn = 1
         ret.append(m)
     return ret

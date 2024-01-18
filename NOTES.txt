@@ -32,10 +32,12 @@ DO LATER
 
 
 IDEAS
-Boss 2: Certain Tiles Explrr Dice Roll
+Boss 2: Certain Tiles Dice Roll For Safe Ones
 
-Boss 3: Immune with Heal Adds/Heal
+Boss 3: Soul-link, Destroy Tiles
 
-Boss 4: Soul-link, Covered Tiles
+Boss 4: Immune with Heal Adds / Normal Adds
+
+
 
 

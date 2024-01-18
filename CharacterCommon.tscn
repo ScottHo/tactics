@@ -54,7 +54,7 @@ scale = Vector2(0.09, 0.09)
 texture = ExtResource("1_rpbxn")
 
 [node name="TextParent" type="Node2D" parent="."]
-position = Vector2(0.141331, -45.1868)
+position = Vector2(0.141331, -51.0625)
 
 [node name="TextAnimation" parent="TextParent" instance=ExtResource("3_dh5hh")]
 anchors_preset = 8
@@ -77,7 +77,12 @@ position = Vector2(0, -22.6046)
 texture = ExtResource("2_sbscd")
 
 [node name="InteractableContainer" type="Node2D" parent="."]
-position = Vector2(-24.2459, -6.10185)
+position = Vector2(-32.1645, -6.67046)
+
+[node name="CustomContainer" type="Node2D" parent="."]
+position = Vector2(-32.1645, -24.487)
+
+[node name="Sprite2D" type="Sprite2D" parent="CustomContainer"]
 
 [node name="InfoBoxContainer" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0.862745)

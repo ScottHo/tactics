@@ -42,7 +42,7 @@ func show_score():
 
 func return_to_menu():
     $Timer.timeout.connect(func():
-        get_tree().change_scene_to_file("res://demo_main_menu.tscn")
+        get_tree().change_scene_to_file("res://Headquarters.tscn")
         )
     $Timer.start(2)
     $Fader.visible = true

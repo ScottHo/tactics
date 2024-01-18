@@ -1,12 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://co6uw02ob1vr"]
+[gd_scene load_steps=7 format=3 uid="uid://co6uw02ob1vr"]
 
 [ext_resource type="Script" path="res://demo_main_menu.gd" id="1_l175m"]
 [ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_gua28"]
-[ext_resource type="Texture2D" uid="uid://5slno62p0s40" path="res://Assets/LongShot.png" id="3_pyfrk"]
 [ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="4_3dbph"]
 [ext_resource type="Texture2D" uid="uid://ky4egufwvaqq" path="res://Assets/boss2.png" id="4_jdhk7"]
 [ext_resource type="Texture2D" uid="uid://bxtn18lv8qdtv" path="res://Assets/boss3.png" id="5_6xbh7"]
-[ext_resource type="Texture2D" uid="uid://d2vv25mrshlpr" path="res://Assets/Electo.png" id="7_g1nmo"]
+[ext_resource type="PackedScene" uid="uid://c4oqyg37i21rs" path="res://Bots/buster.tscn" id="6_16hxo"]
 
 [node name="DemoMainMenu" type="Node2D"]
 script = ExtResource("1_l175m")
@@ -92,17 +91,6 @@ offset_bottom = 817.303
 theme_override_font_sizes/font_size = 26
 text = "Exit"
 
-[node name="LongShot" type="Sprite2D" parent="."]
-position = Vector2(786.516, 661.53)
-rotation = 3.14159
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_pyfrk")
-
-[node name="Boss1" type="Sprite2D" parent="."]
-position = Vector2(1482.57, 604.753)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("7_g1nmo")
-
 [node name="Label2" type="Label" parent="."]
 offset_left = 605.49
 offset_top = 931.613
@@ -112,3 +100,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 text = "GGs, thanks for playing! Feedback appreciated"
+
+[node name="Buster" parent="." instance=ExtResource("6_16hxo")]
+position = Vector2(1506.96, 716.719)
+scale = Vector2(2, 2)
