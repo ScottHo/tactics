@@ -104,19 +104,19 @@ func setup_entities():
         e4.action1.level += 1
         var e5 := EntityFactory.create_bot(EntityFactory.Bot.NANONANO)
         e5.action2.level += 2
-        setup_entity_for_level(e, Vector2i(0,0))        
-        setup_entity_for_level(e1, Vector2i(0,1))        
-        setup_entity_for_level(e2, Vector2i(0,2))        
-        setup_entity_for_level(e3, Vector2i(0,3))        
-        setup_entity_for_level(e4, Vector2i(0,4))        
-        setup_entity_for_level(e5, Vector2i(0,5))
+        setup_entity_for_level(e, Vector2i(1,0))        
+        setup_entity_for_level(e1, Vector2i(1,1))        
+        setup_entity_for_level(e2, Vector2i(1,2))        
+        setup_entity_for_level(e3, Vector2i(1,3))        
+        setup_entity_for_level(e4, Vector2i(1,4))        
+        setup_entity_for_level(e5, Vector2i(1,5))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,4))
     else:
         # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
         for i in range(len(allies)):
             if allies[i] != null:
-                setup_entity_for_level(allies[i], Vector2i(0, i))
+                setup_entity_for_level(allies[i], Vector2i(1, i))
     
     _mission = Globals.current_mission
     
@@ -128,7 +128,7 @@ func currentEntity() -> Entity:
 
 func nextTurn():
     print_debug("Next Turn")
-    if [5, 10, 15, 20, 25, 30].has(scoreService.turnsTaken):
+    if scoreService.turnsTaken != 0 and scoreService.turnsTaken % 5 == 0:
         var location = interactService.spawn_interactable(_mission)
         if location == Vector2i(999,999):
             nextTurn_continued()
