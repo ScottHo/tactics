@@ -60,9 +60,9 @@ static func foundry_2_final_boss() -> Mission:
     var s1 = Special.new()    
     s1.display_name = "Deploy Minions"
     s1.description = "Deploy 3 minions with high base damage"
-    s1.target = Special.Target.SPAWN_CLOSE
-    s1.shape = Special.Shape.OCTAGON
-    s1.mechanic = Special.Mechanic.SPAWN
+    s1.target = Special.Target.RANDOM
+    s1.shape = Special.Shape.SINGLE
+    s1.mechanic = Special.Mechanic.CHANGE_TILE_DICE
     s1.spawns = [EntityFactory.create_boss_spawn_1(), EntityFactory.create_boss_spawn_1(),
             EntityFactory.create_boss_spawn_1()]
 

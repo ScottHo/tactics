@@ -45,7 +45,6 @@ func _ready():
     aiSpecialService.special_done.connect(continue_doAiSpecial)
     
     setup_entities()
-    
     actionService.setState(state)
     moveService.setState(state)
     aiMoveService.setState(state)

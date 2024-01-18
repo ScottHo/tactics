@@ -13,8 +13,8 @@ var original_position: Vector2
 
 func _ready():
     original_position = cam.position
-    max_x = cam.position.x + 1000
-    max_y = cam.position.y + 600
+    max_x = cam.position.x + 1400
+    max_y = cam.position.y + 1000
     min_x = cam.position.x - 1000
     min_y = cam.position.y - 600
     $Timer.timeout.connect(func():
