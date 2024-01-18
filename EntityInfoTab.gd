@@ -16,9 +16,9 @@ var _entity: Entity
 
 
 func _ready():
-    var r : ReferenceRect = $ReferenceRect
-    r.mouse_entered.connect(expand)
-    r.mouse_exited.connect(unexpand)
+    #var r : ReferenceRect = $ReferenceRect
+    #r.mouse_entered.connect(expand)
+    #r.mouse_exited.connect(unexpand)
     return
 
 func update_nodes():
@@ -45,10 +45,6 @@ func update_from_entity(entity: Entity):
 
 func update():
     healthLabel.text = str(_entity.health)
-    healthLabel.reset_size()
-    var healthLabel_x = healthLabel.size.x
-    maxHealthLabel.position = healthLabel.position + Vector2(healthLabel_x+15, 0)
-    slashLabel.position = healthLabel.position + Vector2(healthLabel_x, 0)
     maxHealthLabel.text = str(_entity.get_max_health())
     
     moveLabel.text = str(_entity.get_movement())

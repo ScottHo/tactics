@@ -112,7 +112,7 @@ func resetHighlights(calcRange: bool, highlight_self := false):
             var curVec := Vector2i(i,j)
             if not highlight_self and curVec == _location:
                 continue
-            _highlight_map.set_cell(0, curVec, 0, Highlights.EMPTY, 0)
+            _highlight_map.highlightVec(curVec, Highlights.EMPTY)
             if calcRange and inRange(curVec, highlight_self):
-                _highlight_map.set_cell(0, curVec, 0, _range_color, 0)
+                _highlight_map.highlightVec(curVec, _range_color)
     return

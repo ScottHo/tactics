@@ -19,17 +19,14 @@ radius = 5.91449
 height = 42.1811
 
 [sub_resource type="LabelSettings" id="LabelSettings_gu1px"]
-font_size = 15
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_emkyf"]
-font_size = 15
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pnrjd"]
-font_size = 15
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -90,17 +87,17 @@ script = ExtResource("6_m13e8")
 
 [node name="Background" type="Sprite2D" parent="InfoBoxContainer"]
 visible = false
-position = Vector2(-10.302, 0.0245952)
-scale = Vector2(0.35, 0.35)
+position = Vector2(34.5113, 11.0356)
+scale = Vector2(0.4, 0.5)
 texture = ExtResource("6_v4rmv")
 
 [node name="Stats" type="GridContainer" parent="InfoBoxContainer"]
 visible = false
-offset_left = -41.1688
-offset_top = -18.7338
-offset_right = 108.831
-offset_bottom = 67.2662
-scale = Vector2(0.35, 0.35)
+offset_left = -0.0593047
+offset_top = -16.5946
+offset_right = 149.941
+offset_bottom = 69.4054
+scale = Vector2(0.5, 0.5)
 theme_override_constants/h_separation = 150
 theme_override_constants/v_separation = 43
 columns = 2
@@ -214,64 +211,64 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthBar" type="TextureProgressBar" parent="InfoBoxContainer"]
 visible = false
 z_index = 5
-offset_left = -136.444
-offset_top = 26.3881
-offset_right = 75.5564
-offset_bottom = 56.3881
-scale = Vector2(0.4, 0.6)
+offset_left = -168.841
+offset_top = 45.8383
+offset_right = 43.1592
+offset_bottom = 75.8383
+scale = Vector2(0.7, 0.7)
 value = 50.0
 texture_under = ExtResource("10_m1a84")
 texture_progress = ExtResource("4_fux7d")
 
 [node name="HealthLabel" type="Label" parent="InfoBoxContainer/HealthBar"]
 layout_mode = 0
-offset_left = 72.7876
-offset_top = 5.9668
-offset_right = 108.788
-offset_bottom = 24.9668
-text = "999
-"
+offset_left = 44.231
+offset_top = 5.0
+offset_right = 98.231
+offset_bottom = 26.0
+text = "8888"
 label_settings = SubResource("LabelSettings_gu1px")
 horizontal_alignment = 2
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="SlashLabel" type="Label" parent="InfoBoxContainer/HealthBar"]
 layout_mode = 0
-offset_left = 108.064
-offset_top = 5.24297
-offset_right = 118.064
-offset_bottom = 24.243
+offset_left = 100.0
+offset_top = 4.0
+offset_right = 112.0
+offset_bottom = 25.0
 text = "/
 "
 label_settings = SubResource("LabelSettings_emkyf")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MaxHealthLabel" type="Label" parent="InfoBoxContainer/HealthBar"]
 layout_mode = 0
-offset_left = 119.319
-offset_top = 6.247
-offset_right = 155.319
-offset_bottom = 25.247
-text = "999"
+offset_left = 113.0
+offset_top = 5.0
+offset_right = 167.0
+offset_bottom = 26.0
+text = "8888"
 label_settings = SubResource("LabelSettings_pnrjd")
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="EnergyBar" type="TextureProgressBar" parent="InfoBoxContainer"]
 visible = false
 z_index = 5
-offset_left = -136.444
-offset_top = 42.6168
-offset_right = 75.5564
-offset_bottom = 72.6168
-scale = Vector2(0.4, 0.4)
+offset_left = -168.841
+offset_top = 63.8383
+offset_right = 43.1592
+offset_bottom = 93.8383
+scale = Vector2(0.7, 0.5)
 max_value = 5.0
 value = 3.0
 texture_under = ExtResource("10_m1a84")
 texture_progress = ExtResource("5_apc0l")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="InfoBoxContainer"]
-offset_left = -119.403
-offset_top = -29.143
-offset_right = -69.4031
-offset_bottom = 28.857
+offset_left = -129.457
+offset_top = -37.7451
+offset_right = -59.4574
+offset_bottom = 42.2549
 border_color = Color(1, 0, 0, 0)

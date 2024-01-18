@@ -1,13 +1,21 @@
 class_name EntitySprite extends Node2D
 
 var animationPlayer: AnimationPlayer
+var infoTab: EntityInfoTab
+var textAnimNode: TextAnimation
+var interContainer: Node2D
 var points := []
 var moved_entities := []
+var sprite : Node2D
 
 signal doneMoving
 
 func _ready():
     animationPlayer = $AnimationPlayer
+    infoTab = $CharacterCommon/InfoBoxContainer
+    textAnimNode = $CharacterCommon/TextParent/TextAnimation
+    sprite = $Sprite
+    interContainer = $CharacterCommon/InteractableContainer
     return
 
 func movePoints(_points: Array, _moved_entities: Array):
@@ -64,25 +72,29 @@ func stop_animations():
     return    
 
 func textAnimation() -> TextAnimation:
-    return $CharacterCommon/TextParent/TextAnimation
+    return textAnimNode
 
 func texture_scale() -> Vector2:
-    if $Sprite != null:
-        return $Sprite.scale
+    if sprite != null:
+        return sprite.scale
     return Vector2(1,1)
 
-func show_death():
-    $CharacterCommon/DeathSprite.visible = true
-    return
-
 func update_from_entity(entity: Entity):
-    $CharacterCommon/InfoBoxContainer.update_from_entity(entity)
+    infoTab.update_from_entity(entity)
     return
 
 func add_interactable(inter: Interactable):
     inter.sprite.get_parent().remove_child(inter.sprite)
-    $CharacterCommon/InteractableContainer.add_child(inter.sprite)
+    interContainer.add_child(inter.sprite)
     inter.sprite.position = Vector2(0,0)
     inter.sprite.scale = inter.sprite.scale*.25
     inter.location = Vector2(999,999)
+    return
+
+func show_info():
+    infoTab.expand()
+    return
+
+func hide_info():
+    infoTab.unexpand()
     return

@@ -13,6 +13,7 @@ extends Node2D
 @onready var scoreService: ScoreService = $Camera2D/CanvasLayer/ScoreService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
+@onready var highlightMap2: HighlightMap2 = $HighlightMap2
 @onready var timer: Timer = $Timer
 var current_turn_id: int = -1
 var _mission: Mission
@@ -55,6 +56,7 @@ func _ready():
     interactService.setState(state)    
     scoreService.setState(state)
     turnService.update()
+    highlightMap2.set_state(state)
     menuService.setState(state)
     menuService.showTurns(turnService.next7Turns())
     nextTurn()
@@ -339,7 +341,6 @@ func movesFound(poses):
                     moved_ents.append(ent)
                     continue
             moved_ents.append(null)
-        print(moved_ents)
         currentEntity().sprite.movePoints(poses, moved_ents)
     else:
         doneMove()

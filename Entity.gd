@@ -55,8 +55,9 @@ var damage_debuff_count: int
 var damage_debuff_value: int
 
 func update_sprite():
-    if sprite != null:
-        sprite.update_from_entity(self)
+    if not check_sprite():
+        return
+    sprite.update_from_entity(self)
     return
 
 func get_damage() -> int:
@@ -138,6 +139,8 @@ func loseHP(hp):
     health -= hp
     if health < 0:
         health = 0
+    if not check_sprite():
+        return
     sprite.textAnimation().update_stat(-hp, "Health")
     return
 
@@ -149,10 +152,14 @@ func gainHP(hp):
     return
 
 func miss():
+    if not check_sprite():
+        return
     sprite.textAnimation().other_text("Miss!", Color.WHITE)
     return
 
 func failed():
+    if not check_sprite():
+        return
     sprite.textAnimation().other_text("Failed.", Color.RED)
     return
 
@@ -179,26 +186,36 @@ func set_energy(e):
 func update_energy(value):
     set_energy(energy + value)
     if value > 0:
+        if not check_sprite():
+            return
         sprite.textAnimation().update_stat(value, "Energy")
     return
 
 func update_damage(value):
     damage_modifier += value
+    if not check_sprite():
+        return
     sprite.textAnimation().update_stat(value, "Damage")
     return
 
 func update_range(value):
     range_modifier += value
+    if not check_sprite():
+        return
     sprite.textAnimation().update_stat(value, "Range")
     return
     
 func update_initiative(value):
     initiative_modifier += value
+    if not check_sprite():
+        return
     sprite.textAnimation().update_stat(value, "Initiative")
     return
 
 func update_armor(value):
     armor_modifier += value
+    if not check_sprite():
+        return
     sprite.textAnimation().update_stat(value, "Armor")
     return
 
@@ -206,11 +223,15 @@ func update_max_health(value):
     health_modifier += value
     if health > get_max_health():
         health = get_max_health()
+    if not check_sprite():
+        return
     sprite.textAnimation().update_stat(value, "Max Health")
     return
 
 func update_movement(value):
     movement_modifier += value
+    if not check_sprite():
+        return
     sprite.textAnimation().update_stat(value, "Movement")
     return
 
@@ -233,27 +254,37 @@ func setThreat(t):
 func crippled(value, count):
     crippled_value = value
     crippled_count = count
+    if not check_sprite():
+        return
     sprite.textAnimation().status_effect(-value, "Crippled")
     return
 
 func shielded(value, count):
     shield_value = value
     shield_count = count
+    if not check_sprite():
+        return
     sprite.textAnimation().status_effect(value, "Shielded")
     return
 
 func weakened(value, count):
     weakness_value = value
     weakness_count = count
+    if not check_sprite():
+        return
     sprite.textAnimation().status_effect(value, "Weakened")
     return
 
 func add_iteractable(inter: Interactable):
+    if not check_sprite():
+        return
     interactable = inter
     sprite.add_interactable(inter)
     return
 
 func setup_next_turn():
+    if not check_sprite():
+        return
     lose_all_buffs()
     moves_left = get_movement()
     if is_ally:
@@ -272,16 +303,41 @@ func done_turn():
     return
 
 func action_animation(callback):
+    if not check_sprite():
+        return
     sprite.play_action_animation(callback)
     return
 
 func stop_animations():
+    if not check_sprite():
+        return
     sprite.stop_animations()
     return
     
 func shift_animation():
+    if not check_sprite():
+        return
     sprite.play_shift_animation()
     return
+    
+func show_info():
+    if not check_sprite():
+        return
+    sprite.show_info()
+    return
+    
+func hide_info():
+    if not check_sprite():
+        return
+    sprite.hide_info()
+    return
+
+func check_sprite():
+    if sprite != null:
+        return true
+    print_debug("ERROR: Sprite did not exist for {0}".format([display_name]))
+    print_stack()
+    return false
 
 func clone() -> Entity:
     var e = Entity.new()

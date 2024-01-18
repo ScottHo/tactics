@@ -209,12 +209,6 @@ func setup_action_descriptions(entity: Entity):
 
 func updateEntityInfo(entity: Entity):
     healthLabel.text = str(entity.health)
-    healthLabel.reset_size()
-    slashLabel.reset_size()
-    maxHealthLabel.reset_size()
-    var healthLabel_x = healthLabel.size.x
-    maxHealthLabel.position = healthLabel.position + Vector2(healthLabel_x+16, 0)
-    slashLabel.position = healthLabel.position + Vector2(healthLabel_x+1, 0)
     maxHealthLabel.text = str(entity.get_max_health())
     
     healthBar.max_value = entity.get_max_health()

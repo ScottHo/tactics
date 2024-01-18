@@ -12,6 +12,7 @@ DO LATER
 - Orb prize for completing foundry
 - Orbs kinda bad
 - More Orbs?
+- Does orb drop work well?
 - Procedurally generated maps
 - Obstructions
 - Save states
