@@ -99,7 +99,7 @@ offset_bottom = 956.613
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
-text = "GGs, thanks for playing! Feedback appreciated"
+text = "End of demo"
 
 [node name="Buster" parent="." instance=ExtResource("6_16hxo")]
 position = Vector2(1506.96, 716.719)

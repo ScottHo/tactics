@@ -2,7 +2,11 @@ BUGS
 - Buttons need to be disabled when things are happening
 
 DO NEXT
-- Foundry 2 foundry boss
+- Collections should be different screen
+- Popup for under deploying
+- Permadeath
+- Modulate for ally/enemy
+- Headquarters tilte wrong for foundry boss
 - Foundry 3 foundry boss
 - Foundry 4 foundry boss
 - Final Foundry Boss
@@ -32,13 +36,12 @@ DO LATER
 - Confirm Popup windows where relevant
 - Different target highlights for good/bad
 
-
 IDEAS
 Boss 1: Adds that drops souls that revive
 
 Boss 2: Destroy Tiles
 
-Boss 3: Certain Tiles Dice Roll For Safe Ones??
+Boss 3: 
 
 Boss 4: Immune that spawns a heal add and a normal add
 

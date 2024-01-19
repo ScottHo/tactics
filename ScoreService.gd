@@ -51,10 +51,4 @@ func return_to_menu():
     return
 
 func calc_points() -> int:
-    if turnsTaken < 10:
-        return 4
-    if turnsTaken < 25:
-        return 3
-    if turnsTaken < 50:
-        return 2
-    return 1
+    return 2

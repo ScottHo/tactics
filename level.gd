@@ -92,7 +92,7 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
 
 func setup_entities():
     if Globals.level_debug_mode:
-        Globals.current_mission = MissionFactory.foundry_1_final_boss()
+        Globals.current_mission = MissionFactory.foundry_2_final_boss()
         var e := EntityFactory.create_bot(EntityFactory.Bot.LONGSHOT)
         e.damage += 2
         e.max_health += 2
@@ -131,7 +131,12 @@ func setup_entities():
                 setup_entity_for_level(allies[i], Vector2i(1, i-1))
     
     _mission = Globals.current_mission
-    
+    if _mission.display_name == "Foundry 2F":
+        var tiles = tileMap.all_tiles()
+        tiles.shuffle()
+        for i in range(9):
+            tileMap.set_cell(0, tiles[i], 1, Tiles.CRACKED)
+        
     setup_entity_for_level(_mission.boss, Vector2i(9, 2))
     return
 

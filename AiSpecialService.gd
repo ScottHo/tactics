@@ -55,7 +55,8 @@ func mechanic_buff_effect():
     for vec in _targets:
         for ent in _state.all_enemies_alive():
             if ent.location == vec:
-                special().effect.call(ent)
+                if special().effect != null:
+                    special().effect.call(ent)
                 break
     return
 
@@ -64,7 +65,8 @@ func mechanic_spread_effect():
         for ent in _state.all_allies_alive():
             if ent.location == vec:
                 ent.loseHP(special().damage)
-                special().effect.call(ent)
+                if special().effect != null:
+                    special().effect.call(ent)
                 break
     return
 
@@ -79,7 +81,8 @@ func mechanic_soak_effect():
     damage = floori(damage/len(ents))
     for ent in ents:
         ent.loseHP(damage)
-        special().effect.call(ent)
+        if special().effect != null:
+            special().effect.call(ent)
     return
 
 func mechanic_spawn_effect():
@@ -98,38 +101,28 @@ func mechanic_spawn_effect_inters():
         spawn_entity(_targets[i], special().spawns[0])
     return
 
+func mechanic_destroy_tile():
+    for vec in _targets:
+        if tileMap.get_cell_tile_data(0, vec).get_custom_data("Cracked") == 0:
+            tileMap.set_cell(0, vec, 1, Tiles.CRACKED)
+        else:
+            tileMap.set_cell(0, vec, 1, Tiles.BROKEN)
+            for ent in _state.all_allies_alive():
+                if ent.location == vec:
+                    ent.health = 0
+                    break
+    return
+
 func mechanic_change_tile_dice():
     var tiles := tileMap.all_tiles()
     tiles.shuffle()
-    for i in range(6):
-        tileMap.switch_tile_data(tiles[i*6], Tiles.DICE_1)
-        tileMap.switch_tile_data(tiles[i*6+1], Tiles.DICE_2)
-        tileMap.switch_tile_data(tiles[i*6+2], Tiles.DICE_3)
-        tileMap.switch_tile_data(tiles[i*6+3], Tiles.DICE_4)
-        tileMap.switch_tile_data(tiles[i*6+4], Tiles.DICE_5)
-        tileMap.switch_tile_data(tiles[i*6+5], Tiles.DICE_6)
-    _entity.custom_data = randi_range(1,6)
-    _entity.show_custom_sprite("res://Assets/Objects/dice_1.png", Vector2(.1, .1))
-    return
-
-func mechanic_damage_if_not_on_dice():
-    for vec in _targets:
-        for ent in _state.all_allies_alive():
-            if ent.location == vec:
-                if tileMap.get_cell_tile_data(0, ent.location).get_custom_data("Dice") == _entity.custom_data:
-                    ent.nice()
-                else:
-                    ent.loseHP(special().damage)
-                    special().effect.call(ent)
-                break
-    return
-
-func mechanic_damage_per_dice():
-    for vec in _targets:
-        for ent in _state.all_allies_alive():
-            if ent.location == vec:
-                ent.loseHP(_entity.custom_data)
-                break
+    for i in range(2):
+        tileMap.switch_tile_data(tiles[i*2], Tiles.DICE_1)
+        tileMap.switch_tile_data(tiles[i*2+1], Tiles.DICE_2)
+        tileMap.switch_tile_data(tiles[i*2+2], Tiles.DICE_3)
+        tileMap.switch_tile_data(tiles[i*2+3], Tiles.DICE_4)
+        tileMap.switch_tile_data(tiles[i*2+4], Tiles.DICE_5)
+        tileMap.switch_tile_data(tiles[i*2+5], Tiles.DICE_6)
     return
 
 func spawn_entity(location: Vector2i, e: Entity):
@@ -162,7 +155,18 @@ func find_special_targets():
         var ent = _state.all_allies_alive()[randi_range(0, len(_state.all_allies_alive())-1)]
         _targets = targets_per_entity(ent)
         cameraService.lock_on(ent.sprite)
-
+    
+    if special().target == Special.Target.RANDOM2:
+        var first = randi_range(0, len(_state.all_allies_alive())-1)
+        var ent = _state.all_allies_alive()[first]
+        _targets = targets_per_entity(ent)
+        if len(_state.all_allies_alive()) > 1:
+            var second = randi_range(0, len(_state.all_allies_alive())-1)
+            while first == second:
+                second = randi_range(0, len(_state.all_allies_alive())-1)
+            _targets.append_array(targets_per_entity(_state.all_allies_alive()[second]))
+        cameraService.lock_on(ent.sprite)
+        
     if special().target == Special.Target.THREAT:
         var ent = _state.threatOrder()[0]
         _targets = targets_per_entity(ent)
@@ -183,11 +187,8 @@ func find_special_targets():
             if _inter.display_name == special().target_interactable:
                 _targets.append(_inter.location)
             
-    if special().target == Special.Target.TILE_DICE:
-        for tile in tileMap.all_tiles():
-            if tileMap.get_cell_tile_data(0, tile).get_custom_data("Dice") == _entity.custom_data:
-                _targets.append(tile)
-        cameraService.reset()
+    if special().target == Special.Target.RANDOM_NO_ENTITIY:
+        pass
 
     for v in _targets:
         highlightMap.highlightVec(v, Highlights.RED)
@@ -227,12 +228,8 @@ func special_animation_done():
             mechanic_spawn_effect_inters()
         else:
             mechanic_spawn_effect()
-    if special().mechanic == Special.Mechanic.CHANGE_TILE_DICE:
-        mechanic_change_tile_dice()
-    if special().mechanic == Special.Mechanic.DAMAGE_IF_NOT_ON_DICE:
-        mechanic_damage_if_not_on_dice()
-    if special().mechanic == Special.Mechanic.DAMAGE_PER_DICE:
-        mechanic_damage_per_dice()
+    if special().mechanic == Special.Mechanic.DESTROY_TILE:
+        mechanic_destroy_tile()
     special_done.emit()
     return
 
