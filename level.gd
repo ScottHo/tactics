@@ -94,22 +94,21 @@ func setup_entities():
     if Globals.level_debug_mode:
         Globals.current_mission = MissionFactory.foundry_2_final_boss()
         var e := EntityFactory.create_bot(EntityFactory.Bot.LONGSHOT)
+        e.action1.level += 1
         e.damage += 2
-        e.max_health += 2
         var e1 := EntityFactory.create_bot(EntityFactory.Bot.PEPPERSHOT)
-        e1.action2.level += 2
+        e1.action1.level += 1
         e1.max_health += 2
         var e2 := EntityFactory.create_bot(EntityFactory.Bot.BRUTUS)
+        e2.action1.level += 1
         e2.armor += 2
-        e2.max_health += 2
         var e3 := EntityFactory.create_bot(EntityFactory.Bot.ELECTO)
+        e3.action1.level += 1
         e3.damage += 2
-        e3.max_health += 2
         var e4 := EntityFactory.create_bot(EntityFactory.Bot.BATTERIE)
-        e4.action1.level += 2
-        e4.max_health += 2
+        e4.action1.level += 1
         var e5 := EntityFactory.create_bot(EntityFactory.Bot.NANONANO)
-        e5.action2.level += 2
+        e4.action1.level += 1
         e5.max_health += 2
         #setup_entity_for_level(e, Vector2i(1,0))
         #setup_entity_for_level(e1, Vector2i(1,1))

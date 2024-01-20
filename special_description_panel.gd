@@ -5,6 +5,7 @@ class_name SpecialDescriptionPanel extends Node2D
 @onready var costLabel: Label = $CostLabel
 @onready var affectsLabel: Label = $AffectsLabel
 @onready var actionLabel: Label = $ActionLabel
+@onready var specIcon: Sprite2D = $SpecIcon
 @onready var grid: GridContainer = $GridContainer
 
 func name_label(c) -> Label:
@@ -38,10 +39,18 @@ func container(idx: int) -> Control:
     return grid.get_child(idx)
     
 func set_action(action: Action):
-    if action.is_ultimate:
-        actionLabel.text = "Ultimate"
-    else:
-        actionLabel.text = "Special"
+    if action.type == ActionType.ATTACK:
+        specIcon.visible = true
+        actionLabel.visible = false
+        specIcon.texture = load("res://Assets/item_sword.png")
+    if action.type == ActionType.ACTION1:
+        specIcon.visible = true
+        actionLabel.visible = false
+        specIcon.texture = load("res://Assets/ability.png")
+    if action.type == ActionType.ACTION2:
+        specIcon.visible = false
+        actionLabel.visible = true
+
     descName.text = action.display_name
     descMain.text = action.description
     costLabel.text = str(action.cost())
@@ -118,8 +127,9 @@ func modulate_label(label: Label, level: int, target_level: int):
         label.add_theme_color_override("font_color", Color.WHITE)
         label.add_theme_constant_override("outline_size", 1)
     else:
-        label.add_theme_color_override("font_color", Color("8e8e8e"))
+        label.add_theme_color_override("font_color", Color.DIM_GRAY)
         label.add_theme_constant_override("outline_size", 0)
+        
     return
 
 func parse_single_stat(c, key, _stat):

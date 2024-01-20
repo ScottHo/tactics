@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://co6uw02ob1vr"]
 
 [ext_resource type="Script" path="res://demo_main_menu.gd" id="1_l175m"]
-[ext_resource type="Texture2D" uid="uid://c3712bkx4eapf" path="res://Assets/Backgrounds/Background_beige.png" id="2_wav2s"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_gua28"]
 [ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="4_3dbph"]
 [ext_resource type="Texture2D" uid="uid://ky4egufwvaqq" path="res://Assets/boss2.png" id="4_jdhk7"]
 [ext_resource type="Texture2D" uid="uid://bxtn18lv8qdtv" path="res://Assets/boss3.png" id="5_6xbh7"]
@@ -12,7 +12,7 @@ script = ExtResource("1_l175m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.72549, 0.72549, 0.72549, 1)
-texture = ExtResource("2_wav2s")
+texture = ExtResource("2_gua28")
 centered = false
 
 [node name="Label" type="Label" parent="."]

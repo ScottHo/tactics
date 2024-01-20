@@ -66,7 +66,7 @@ func switch_to_chooser():
     return
 
 func setup_panels(level: int, floor):
-    choose_container.visible = true
+    switch_to_chooser()
     title.text = Utils.floor_title(level, floor)
     if [4,8,12,16,17].has(level):
         var m: Mission

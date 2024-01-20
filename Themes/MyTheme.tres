@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://d3xlkfucuimn7"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://d3xlkfucuimn7"]
 
 [ext_resource type="StyleBox" uid="uid://8beooxr6ba16" path="res://Themes/bot_button.tres" id="1_a8y5b"]
 [ext_resource type="StyleBox" uid="uid://c3vaiadrtevf" path="res://Themes/button_normal.tres" id="1_da8vl"]
@@ -12,6 +12,8 @@
 [ext_resource type="StyleBox" uid="uid://cvkdtfj115cu2" path="res://Themes/small_button_pressed.tres" id="5_l3c1q"]
 [ext_resource type="StyleBox" uid="uid://dkb5kq5k3ynml" path="res://Themes/triangle_button.tres" id="7_gkjjj"]
 [ext_resource type="StyleBox" uid="uid://biwov3vxpto6l" path="res://Themes/triangle_button_pressed.tres" id="8_npgn5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfpw6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_la554"]
 
@@ -40,7 +42,7 @@ BotButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 BotButton/colors/font_outline_color = Color(0, 0, 0, 1)
 BotButton/colors/font_pressed_color = Color(0, 0, 0, 1)
 BotButton/colors/icon_disabled_color = Color(0.509804, 0.509804, 0.509804, 1)
-BotButton/colors/icon_focus_color = Color(0.85098, 0.85098, 0.85098, 0.823529)
+BotButton/colors/icon_focus_color = Color(0.85098, 0.85098, 0.85098, 1)
 BotButton/colors/icon_hover_color = Color(1, 1, 1, 1)
 BotButton/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
 BotButton/colors/icon_normal_color = Color(0.85098, 0.85098, 0.85098, 0.823529)
@@ -50,6 +52,7 @@ BotButton/constants/icon_max_width = 0
 BotButton/constants/outline_size = 0
 BotButton/font_sizes/font_size = 16
 BotButton/styles/disabled = ExtResource("1_g127u")
+BotButton/styles/focus = SubResource("StyleBoxEmpty_qfpw6")
 BotButton/styles/hover = ExtResource("2_1ixwx")
 BotButton/styles/normal = ExtResource("1_a8y5b")
 BotButton/styles/pressed = ExtResource("2_1ixwx")

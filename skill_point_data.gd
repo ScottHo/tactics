@@ -6,7 +6,7 @@ var movement_level := 0
 var initiative_level := 0
 var attack_level := 0
 var action1_level := 1
-var action2_level := 1
+var action2_level := 0
 var range_level := 0
 
 var health_points := 0

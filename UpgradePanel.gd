@@ -150,7 +150,7 @@ func update_mods(container):
                 modifierLabel(container).text = ""
             else:
                 modifierLabel(container).text = "(+%d)" % health_mod
-            modifierLabel(container).label_settings.font_color = Color.GOLD
+            modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
             if health_mod == health_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
@@ -160,7 +160,7 @@ func update_mods(container):
                 modifierLabel(container).text = ""
             else:
                 modifierLabel(container).text = "(+%d)" % armor_mod
-                modifierLabel(container).label_settings.font_color = Color.GOLD
+                modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
             if armor_mod == armor_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
@@ -170,7 +170,7 @@ func update_mods(container):
                 modifierLabel(container).text = ""
             else:
                 modifierLabel(container).text = "(+%d)" % movement_mod
-                modifierLabel(container).label_settings.font_color = Color.GOLD
+                modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
             if _entity.range == 1:
                 if movement_mod == movement_max:
                     maxedLabel(container).visible = true
@@ -185,7 +185,7 @@ func update_mods(container):
                 modifierLabel(container).text = ""
             else:
                 modifierLabel(container).text = "(+%d)" % initiative_mod
-                modifierLabel(container).label_settings.font_color = Color.GOLD
+                modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
             if initiative_mod == initiative_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
@@ -195,7 +195,7 @@ func update_mods(container):
                 modifierLabel(container).text = ""
             else:
                 modifierLabel(container).text = "(+%d)" % attack_mod
-                modifierLabel(container).label_settings.font_color = Color.GOLD
+                modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
             if attack_mod == attack_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
@@ -203,7 +203,7 @@ func update_mods(container):
             special1_mod += 1
             modifierLabel(container).text = str(special1_mod)
             if special1_mod > 1:
-                modifierLabel(container).label_settings.font_color = Color.GOLD
+                modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
             if special1_mod == special1_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
@@ -212,7 +212,7 @@ func update_mods(container):
             special2_mod += 1
             modifierLabel(container).text = str(special2_mod)
             if special2_mod > 1:
-                modifierLabel(container).label_settings.font_color = Color.GOLD
+                modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
             if special2_mod == special2_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
@@ -223,7 +223,7 @@ func update_mods(container):
                 modifierLabel(container).text = ""
             else:
                 modifierLabel(container).text = "(+%d)" % range_mod
-            modifierLabel(container).label_settings.font_color = Color.GOLD
+            modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
             if range_mod == range_max:
                 maxedLabel(container).visible = true
                 button(container).disabled = true
@@ -291,7 +291,7 @@ func reset():
     initiative_mod = 0
     attack_mod = 0
     special1_mod = 1
-    special2_mod = 1
+    special2_mod = 0
     range_mod = 0
     skill_points_label.text = str(0)
     
@@ -327,6 +327,7 @@ func setup_entity():
     statLabel(action2_c).text = _entity.action2.display_name
     modifierLabel(action1_c).text = str(_entity.action1.level)
     modifierLabel(action2_c).text = str(_entity.action2.level)
+    print(_entity.action2.level)
     statLabel(range_c).text = str(_entity.range)
     
     action1_copy = _entity.action1.clone()
@@ -334,7 +335,7 @@ func setup_entity():
     update_action_descriptions()
 
     for container in containers:
-        modifierLabel(container).label_settings.font_color = Color.WHITE
+        modifierLabel(container).add_theme_color_override("font_color", Color.WHITE)
         button(container).disabled = false
         if container == range_c and _entity.range == 1:
             button(container).disabled = true

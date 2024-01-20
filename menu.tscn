@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=42 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="14_t4p6o"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="17_diddf"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="19_gtpi5"]
+[ext_resource type="Texture2D" uid="uid://20se04bvsoay" path="res://Assets/ability.png" id="24_ucv0g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxedm"]
 
@@ -845,7 +846,7 @@ theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 19
 toggle_mode = true
-text = "SP 1"
+icon = ExtResource("24_ucv0g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterContainer/Action1Button"]
 libraries = {
@@ -864,7 +865,7 @@ theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 19
 toggle_mode = true
-text = "SP 2"
+text = "Ult"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterContainer/Action2Button"]
 libraries = {

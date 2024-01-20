@@ -7,7 +7,7 @@ var description: String
 var stats: Dictionary
 var level := 1
 var animation_path : String = ""
-var is_ultimate := false
+var type : int
 
 func get_from_stats(key, default=0):
     if stats.has(key):
@@ -45,4 +45,6 @@ func clone() -> Action:
     a.description = description
     a.stats = stats
     a.level = level
+    a.type = type
+    a.animation_path = animation_path
     return a

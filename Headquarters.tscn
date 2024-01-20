@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Headquarters.gd" id="1_clf1y"]
 [ext_resource type="PackedScene" uid="uid://d3k0do70v6qoo" path="res://checkpoints.tscn" id="1_r11n2"]
-[ext_resource type="Texture2D" uid="uid://c3712bkx4eapf" path="res://Assets/Backgrounds/Background_beige.png" id="2_i43f3"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_hi6xu"]
 [ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="2_yhgcx"]
 [ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="3_joss2"]
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="4_60k36"]
@@ -14,7 +14,7 @@ script = ExtResource("1_clf1y")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.72549, 0.72549, 0.72549, 1)
-texture = ExtResource("2_i43f3")
+texture = ExtResource("2_hi6xu")
 centered = false
 
 [node name="Levels" type="Node2D" parent="."]
@@ -31,71 +31,72 @@ text = "Exit"
 position = Vector2(94.2903, 203.066)
 
 [node name="FloorLabel" type="Label" parent="Levels"]
-offset_left = 518.447
-offset_top = 728.994
-offset_right = 1219.45
-offset_bottom = 777.994
+offset_left = 635.249
+offset_top = 699.458
+offset_right = 1336.25
+offset_bottom = 748.458
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 40
 text = "BRONZE FOUNDRY - LEVEL 1"
 
 [node name="EnterFloorButton" type="Button" parent="Levels"]
-offset_left = 1295.62
-offset_top = 708.911
-offset_right = 1495.62
-offset_bottom = 798.911
-theme_override_font_sizes/font_size = 20
-text = "Continue"
+offset_left = 995.772
+offset_top = 830.099
+offset_right = 1195.77
+offset_bottom = 920.099
+theme_override_font_sizes/font_size = 30
+text = "Go"
 
 [node name="RosterButton" type="Button" parent="Levels"]
-offset_left = 874.422
-offset_top = 886.467
-offset_right = 1074.42
-offset_bottom = 976.467
+offset_left = 719.805
+offset_top = 829.385
+offset_right = 919.805
+offset_bottom = 919.385
 theme_override_font_sizes/font_size = 20
 text = "Roster"
 
 [node name="Collections" type="Node2D" parent="."]
 visible = false
 
+[node name="CollectionContainer" parent="Collections" instance=ExtResource("2_yhgcx")]
+position = Vector2(277.217, -11.3213)
+scale = Vector2(1.5, 1.5)
+
 [node name="BackButton" type="Button" parent="Collections"]
-offset_left = 7.14996
-offset_top = 3.93852
-offset_right = 177.15
+offset_left = 3.37448
+offset_top = 3.93855
+offset_right = 173.375
 offset_bottom = 93.9385
 theme_override_font_sizes/font_size = 20
 text = "Back"
 
-[node name="CollectionContainer" parent="Collections" instance=ExtResource("2_yhgcx")]
-position = Vector2(288.544, -22.6478)
-scale = Vector2(1.5, 1.5)
-
 [node name="EnemyPanel" parent="Collections" instance=ExtResource("3_joss2")]
-offset_left = 754.745
-offset_top = 611.79
-offset_right = 754.745
-offset_bottom = 611.79
+offset_left = 705.664
+offset_top = 619.341
+offset_right = 705.664
+offset_bottom = 619.341
 scale = Vector2(1.5, 1.5)
 
 [node name="BotIcon" type="Sprite2D" parent="Collections"]
-position = Vector2(375.304, 780.484)
+position = Vector2(326.222, 788.036)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_60k36")
 
 [node name="BotName" type="Label" parent="Collections"]
-offset_left = 140.956
-offset_top = 954.919
-offset_right = 640.956
-offset_bottom = 1003.92
+offset_left = 91.875
+offset_top = 962.47
+offset_right = 591.875
+offset_bottom = 1011.47
 theme_override_font_sizes/font_size = 36
 text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SpecialPanel1" parent="Collections" instance=ExtResource("5_mcj8g")]
-position = Vector2(1042.46, 577.095)
+position = Vector2(993.376, 584.646)
 
 [node name="SpecialPanel2" parent="Collections" instance=ExtResource("5_mcj8g")]
-position = Vector2(1440.51, 577.095)
+position = Vector2(1391.43, 584.646)
 
 [node name="PassivePanel" parent="Collections" instance=ExtResource("8_0qc54")]
-position = Vector2(651.617, 838.758)
+position = Vector2(602.535, 846.309)

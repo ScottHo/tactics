@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bxp0hhpdubjky" path="res://detailed_room_info.tscn" id="1_0yuhc"]
 [ext_resource type="Script" path="res://room_chooser.gd" id="1_lm1uq"]
-[ext_resource type="Texture2D" uid="uid://c3712bkx4eapf" path="res://Assets/Backgrounds/Background_beige.png" id="2_4w8f8"]
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="2_m61tk"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_r4mxn"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="3_vkqma"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="4_36kkq"]
 [ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/long-vertical.png" id="5_ib14x"]
@@ -15,7 +15,7 @@ script = ExtResource("1_lm1uq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.72549, 0.72549, 0.72549, 1)
-texture = ExtResource("2_4w8f8")
+texture = ExtResource("2_r4mxn")
 centered = false
 
 [node name="TileMapFloor" type="TileMap" parent="."]
@@ -85,7 +85,7 @@ text = "Go"
 [node name="RoomContainer" type="Node2D" parent="."]
 
 [node name="DetailedRoomInfo" parent="RoomContainer" instance=ExtResource("1_0yuhc")]
-position = Vector2(159.158, 148.352)
+position = Vector2(85.0758, 137.127)
 
 [node name="Recruit1" type="Node2D" parent="RoomContainer"]
 position = Vector2(984.107, 293.185)
@@ -158,12 +158,14 @@ autowrap_mode = 2
 
 [node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Passive"]
 layout_mode = 0
-offset_left = 34.5529
-offset_top = 34.233
-offset_right = 634.553
-offset_bottom = 106.233
+offset_left = 49.2208
+offset_top = 27.3921
+offset_right = 674.221
+offset_bottom = 102.392
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("8_fs5q0")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -192,12 +194,14 @@ autowrap_mode = 2
 
 [node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Special"]
 layout_mode = 0
-offset_left = 34.5529
-offset_top = 34.233
-offset_right = 634.553
-offset_bottom = 106.233
+offset_left = 49.2208
+offset_top = 27.3921
+offset_right = 674.221
+offset_bottom = 102.392
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("8_fs5q0")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -226,12 +230,14 @@ autowrap_mode = 2
 
 [node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Ultimate"]
 layout_mode = 0
-offset_left = 34.5529
-offset_top = 34.233
-offset_right = 634.553
-offset_bottom = 106.233
+offset_left = 49.2208
+offset_top = 27.3921
+offset_right = 674.221
+offset_bottom = 102.392
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("8_fs5q0")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -250,7 +256,7 @@ offset_top = 850.232
 offset_right = 1828.66
 offset_bottom = 955.232
 theme_override_font_sizes/font_size = 24
-text = "GO!"
+text = "GO"
 metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="."]

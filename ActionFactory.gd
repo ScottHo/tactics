@@ -411,7 +411,7 @@ static func _add_action(ent, display_name, description, shape, effect, action_ty
     if action_type == ActionType.ACTION2:
         ent.action2 = action
         action.level = 0
-        action.is_ultimate = true
+    action.type = action_type
     action.stats = stats
     action.animation_path = animation_path
     return

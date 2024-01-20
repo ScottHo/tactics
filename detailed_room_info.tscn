@@ -10,15 +10,15 @@
 script = ExtResource("1_kltg5")
 
 [node name="Vertical-medium" type="Sprite2D" parent="."]
-position = Vector2(296.897, 403.402)
-scale = Vector2(0.7, 0.7)
+position = Vector2(325.488, 455.538)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_0vjqg")
 
 [node name="RoomName" type="Label" parent="."]
-offset_left = 87.8255
-offset_top = 12.3485
-offset_right = 507.826
-offset_bottom = 44.3484
+offset_left = 110.479
+offset_top = 9.51688
+offset_right = 530.479
+offset_bottom = 41.5169
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 26
@@ -26,39 +26,42 @@ text = "ENEMY"
 horizontal_alignment = 1
 
 [node name="EnemyPanel" parent="." instance=ExtResource("2_m4fqc")]
-offset_left = 363.603
-offset_top = 88.8896
-offset_right = 363.603
-offset_bottom = 88.8896
-scale = Vector2(0.8, 0.8)
+offset_left = 384.743
+offset_top = 83.5811
+offset_right = 384.743
+offset_bottom = 83.5811
+scale = Vector2(0.9, 0.9)
 
 [node name="SpecialsGrid" type="GridContainer" parent="."]
-offset_left = 33.5872
-offset_top = 231.936
-offset_right = 33.5872
-offset_bottom = 731.936
-theme_override_constants/v_separation = 88
+offset_left = 20.1329
+offset_top = 276.281
+offset_right = 20.1329
+offset_bottom = 776.281
+theme_override_constants/v_separation = 99
 
 [node name="Special1" type="Control" parent="SpecialsGrid"]
 layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special1"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = -8.72844
+offset_top = -14.253
+offset_right = 591.272
+offset_bottom = 6.74698
+theme_override_font_sizes/font_size = 16
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special1"]
 layout_mode = 0
-offset_left = 2.44421
+offset_left = 2.1693
 offset_top = 7.01337
-offset_right = 522.444
-offset_bottom = 79.0134
+offset_right = 630.169
+offset_bottom = 85.0134
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_sgklb")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -67,21 +70,24 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special2"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = -8.72844
+offset_top = -14.253
+offset_right = 591.272
+offset_bottom = 6.74698
+theme_override_font_sizes/font_size = 16
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special2"]
 layout_mode = 0
-offset_left = 2.44421
+offset_left = 2.1693
 offset_top = 7.01337
-offset_right = 522.444
-offset_bottom = 79.0134
+offset_right = 630.169
+offset_bottom = 85.0134
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_sgklb")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -90,21 +96,24 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special3"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = -8.72844
+offset_top = -14.253
+offset_right = 591.272
+offset_bottom = 6.74698
+theme_override_font_sizes/font_size = 16
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special3"]
 layout_mode = 0
-offset_left = 2.44421
+offset_left = 2.1693
 offset_top = 7.01337
-offset_right = 522.444
-offset_bottom = 79.0134
+offset_right = 630.169
+offset_bottom = 85.0134
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_sgklb")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -113,21 +122,24 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special4"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = -8.72844
+offset_top = -14.253
+offset_right = 591.272
+offset_bottom = 6.74698
+theme_override_font_sizes/font_size = 16
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special4"]
 layout_mode = 0
-offset_left = 2.44421
+offset_left = 2.1693
 offset_top = 7.01337
-offset_right = 522.444
-offset_bottom = 79.0134
+offset_right = 630.169
+offset_bottom = 85.0134
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_sgklb")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -136,21 +148,24 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special5"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = -8.72844
+offset_top = -14.253
+offset_right = 591.272
+offset_bottom = 6.74698
+theme_override_font_sizes/font_size = 16
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special5"]
 layout_mode = 0
-offset_left = 2.44421
+offset_left = 2.1693
 offset_top = 7.01337
-offset_right = 522.444
-offset_bottom = 79.0134
+offset_right = 630.169
+offset_bottom = 85.0134
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_sgklb")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
@@ -159,25 +174,53 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="SpecialsGrid/Special6"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = -8.72844
+offset_top = -14.253
+offset_right = 591.272
+offset_bottom = 6.74698
+theme_override_font_sizes/font_size = 16
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="SpecialsGrid/Special6"]
 layout_mode = 0
-offset_left = 2.44421
+offset_left = 2.1693
 offset_top = 7.01337
-offset_right = 522.444
-offset_bottom = 79.0134
+offset_right = 630.169
+offset_bottom = 85.0134
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("3_sgklb")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
 autowrap_mode = 2
 
 [node name="BossSprite" type="Sprite2D" parent="."]
-position = Vector2(159.289, 134.656)
-scale = Vector2(0.2, 0.2)
+position = Vector2(138.543, 135.003)
+scale = Vector2(0.24, 0.24)
 texture = ExtResource("4_l5xc7")
+
+[node name="BossName" type="Label" parent="."]
+offset_left = 214.436
+offset_top = 69.9202
+offset_right = 637.436
+offset_bottom = 95.9202
+theme_override_font_sizes/font_size = 21
+text = "NAME"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 11.7755
+offset_top = 233.528
+offset_right = 208.775
+offset_bottom = 252.528
+theme_override_font_sizes/font_size = 16
+text = "Specials Per Turn:"
+
+[node name="SpecialsPerTurn" type="Label" parent="."]
+offset_left = 227.533
+offset_top = 234.14
+offset_right = 267.533
+offset_bottom = 255.14
+theme_override_font_sizes/font_size = 16
+text = "2"
