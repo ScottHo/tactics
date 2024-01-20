@@ -53,7 +53,7 @@ static func add_sturdy_stance(ent: Entity, type: int):
         "Affects": TargetTypes.SELF,
         "Cost": 3,
         "Shield Amount": [5, 10, 15, 20],
-        "Threat Gain": 5,
+        "Threat Gain": 4,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         user.shielded(action.get_from_stats("Shield Amount"), action.get_from_stats("Shield Duration"))
@@ -66,7 +66,7 @@ static func add_flying_barb_stance(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.SELF,
         "Reflected Damage": "1x",
-        "Shield Amount": 20,
+        "Shield Amount": 10,
         "Threat Gain": 5,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
@@ -104,7 +104,8 @@ static func add_winding_strike(ent: Entity, type: int):
         "Damage per Tile Moved": 3,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
-        user.moves_left += action.get_from_stats("Extra Moves")
+        for _ent in targets:
+            _ent.loseHP((user.get_movement() - user.moves_left)*3)
         return
     var d = "Deals damage based on tiles moved this turn by the user"
     _add_action(ent, "Winding Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
@@ -311,6 +312,7 @@ static func add_ultimate_shiphon(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
             _ent.ultimate_used = false
+            # TODO Add Text
         return
     var d = "Siphon ultimate energy to an allied unit, allowing their ultimate to be used again"
     _add_action(ent, "Siphon Energy", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")

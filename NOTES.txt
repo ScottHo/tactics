@@ -2,9 +2,14 @@ BUGS
 - Buttons need to be disabled when things are happening
 - Highlights over being over written for ai if if recently moved off of it before attack
 - Headquarters title wrong for foundry boss
+- Disable clicking on tiles if menu is covering it - Global flag?
+- Damage done calc for some actions not implemented
+
 
 DO NEXT
-- Add passives
+- Custom Animation Texts
+- Target All
+- Add passives, and passive to menu somehow
 - Add way to reflect damage
 - Popup for under deploying
 - Permadeath
