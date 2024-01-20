@@ -20,6 +20,7 @@ var _mission: Mission
 var state: State = State.new()
 var _is_first_turn := true
 var _is_ai_turn := false
+var _start_of_turn := false
 var _special_texts_set := true
 var _orig_ai_delay := 2.0
 var _ai_delay := 0.0
@@ -108,20 +109,23 @@ func setup_entities():
         var e4 := EntityFactory.create_bot(EntityFactory.Bot.BATTERIE)
         e4.action1.level += 1
         var e5 := EntityFactory.create_bot(EntityFactory.Bot.NANONANO)
-        e4.action1.level += 1
+        e5.action1.level += 1
         e5.max_health += 2
+        var e6 := EntityFactory.create_bot(EntityFactory.Bot.SMITHY)
+        e6.action2.level += 1
+        e6.max_health += 2
         #setup_entity_for_level(e, Vector2i(1,0))
         #setup_entity_for_level(e1, Vector2i(1,1))
         #setup_entity_for_level(e2, Vector2i(1,2))
-        #setup_entity_for_level(e3, Vector2i(1,3))
-        #setup_entity_for_level(e4, Vector2i(1,4))
-        #setup_entity_for_level(e5, Vector2i(1,5))
-        #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,0))
+        #setup_entity_for_level(e3, Vector2i(3,3))
+        #setup_entity_for_level(e4, Vector2i(3,4))
+        #setup_entity_for_level(e5, Vector2i(3,5))
+        setup_entity_for_level(e6, Vector2i(3,6))
+        setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,0))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,1))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,2))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,3))
-        setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,4))
-        setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,5))
+        #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,5))
     else:
         # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
@@ -144,26 +148,32 @@ func currentEntity() -> Entity:
 
 func nextTurn():
     print_debug("Next Turn")
-    if scoreService.turnsTaken != 0 and scoreService.turnsTaken % 5 == 0:
-        var location = interactService.spawn_interactable(_mission)
-        if location == Vector2i(999,999):
-            nextTurn_continued()
-            return
-        cameraService.move(tileMap.pointToGlobal(location))
-        timer.timeout.connect(nextTurn_continued, CONNECT_ONE_SHOT)
-        timer.start(1.6)
-        return
-    nextTurn_continued()
+    _start_of_turn = true
+    if currentEntity() != null:
+        currentEntity().reset_buff_values()
+        currentEntity().done_turn()
+    if not checkDeaths():
+        nextTurn_continued()
     return
 
 func nextTurn_continued():
+    if scoreService.turnsTaken != 0 and scoreService.turnsTaken % 5 == 0:
+        var location = interactService.spawn_interactable(_mission)
+        if location == Vector2i(999,999):
+            nextTurn_continued2()
+            return
+        cameraService.move(tileMap.pointToGlobal(location))
+        timer.timeout.connect(nextTurn_continued2, CONNECT_ONE_SHOT)
+        timer.start(1.6)
+        return
+    nextTurn_continued2()
+    return
+
+func nextTurn_continued2():
     timer.stop()
 
     scoreService.turn_taken()
     menuService.disableAllButtons()
-    if currentEntity() != null:
-        currentEntity().reset_buff_values()
-        currentEntity().done_turn()
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
     cameraService.move(tileMap.pointToGlobal(currentEntity().location))
@@ -175,11 +185,11 @@ func nextTurn_continued():
     _is_first_turn = false
     menuService.showTurns(turnService.next7Turns())
     menuService.pre_showCurrentTurn(current_turn_id)
-    timer.timeout.connect(nextTurn_continued2, CONNECT_ONE_SHOT)
+    timer.timeout.connect(nextTurn_continued3, CONNECT_ONE_SHOT)
     timer.start(.4)
     return
 
-func nextTurn_continued2():
+func nextTurn_continued3():
     timer.stop()
     currentEntity().setup_next_turn()
     if state.allies.has(current_turn_id):
@@ -188,6 +198,7 @@ func nextTurn_continued2():
         _is_ai_turn = true
     update_character_menu()
     menuService.showCurrentTurn(current_turn_id)
+    _start_of_turn = false
     return
 
 func doNextTurn():
@@ -410,6 +421,7 @@ func actionDone():
     menuService.disableActionButtons()
     menuService.show_description(false, null)
     menuService.force_show_description = false
+    turnService.update_new()
     update_character_menu()
     checkDeaths()
     return
@@ -435,6 +447,9 @@ func processDeathsFinished():
         menuService.win()
         return
     menuService.restore_button_states()
+    if _start_of_turn:
+        nextTurn_continued()
+        return
     if _is_ai_turn:
         nextAiStep()
     return

@@ -9,7 +9,9 @@ var attack: Action
 var action1: Action
 var action2: Action
 var moves_left: int
+var skip_next_turn: bool = false
 var damage_done := 0
+var ultimate_used := false
 var is_ally: bool
 var is_add: bool = false
 var interactable: Interactable

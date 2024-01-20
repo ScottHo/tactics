@@ -35,13 +35,33 @@ func _input(event):
                 if len(_target_points) <= 0:
                     return
                 if len(_target_points) == 1:
-                    if not _state.entity_on_tile(_target_points[0]):
+                    if not validate_single_target():
                         return
-                _entity.update_energy(-action().cost())
+                if action().cost() != 0:
+                    _entity.update_energy(-action().cost())
                 _entity.action_animation(action_animation_effects)
+                if action().type == ActionType.ACTION2:
+                    _entity.ultimate_used = true
                 _enabled = false
                 return
     return
+
+func validate_single_target():
+    var ent = _state.entity_on_tile(_target_points[0])
+    var inter = _state.interactable_on_tile(_target_points[0])
+    if action().affects() != TargetTypes.EMPTY:
+        if ent == null:
+            return false
+        if TargetTypes.ALLIES_LIST.has(action().affects()):
+            if not ent.is_ally:
+                return false
+        if TargetTypes.ENEMIES_LIST.has(action().affects()):
+            if ent.is_ally:
+                return false
+    else:
+        if ent != null or inter != null:
+            return false
+    return true
 
 func action_animation_effects():
     ActionCommon.do_action_animation(effects, action(), _target_points, tileMap, action_animation_done)
@@ -49,6 +69,11 @@ func action_animation_effects():
 
 func action_animation_done():
     ActionCommon.do_action(_state, _entity, _target_points, action())
+    if action().spawn != null:
+        print("SPAWN")
+        for target in _target_points:
+            ActionCommon.spawn_entity(target, action().spawn.clone(), $"../", tileMap, _state)
+        action().spawn = null
     _entity.gainThreat(action().threat())
     effects.get_child(0).queue_free()
     actionDone.emit()

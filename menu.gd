@@ -167,12 +167,14 @@ func showCurrentTurn(turn: int):
     if is_ally:
         if entity.get_movement() > 0:
             moveButton.disabled = false
-        interactButton.disabled = false
+        if not entity.is_add:
+            interactButton.disabled = false
         attackButton.disabled = false
-        if entity.action1.cost() <= entity.energy:
+        if entity.action1 != null and entity.action1.cost() <= entity.energy:
             action1Button.disabled = false
-        if entity.action2.cost() <= entity.energy:
-            action2Button.disabled = false
+        if entity.action2 != null and entity.action2.cost() <= entity.energy:
+            if not entity.ultimate_used:
+                action2Button.disabled = false
         setup_action_descriptions(entity)
     
     start_menu_animations()

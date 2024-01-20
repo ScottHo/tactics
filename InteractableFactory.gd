@@ -125,6 +125,26 @@ static func bronze_soul() -> Interactable:
     inter.color = Color.SADDLE_BROWN
     return inter
 
+static func add_drainer() -> Interactable:
+    var inter = Interactable.new()
+    inter.display_name = "Deteriorating"
+    inter.description = "Lose 1 HP"
+    inter.effect = func (user: Entity):
+        return
+
+    inter.drop_effect = func (user: Entity):
+        return
+
+    inter.repeated_effect = func (user: Entity):
+        return
+    
+    inter.repeated_end_effect = func (user: Entity):
+        user.loseHP(1)
+        return
+
+    inter.storable = true
+    return inter
+
 static func random_set():
     var ret = [orb_of_destruction(), orb_of_energy(), orb_of_roots(), orb_of_sacrifice()]
     ret.shuffle()

@@ -21,7 +21,7 @@ func all_enemies() -> Array:
 func all_allies_alive() -> Array:
     var ret = []
     for id in allies:
-        if get_entity(id).alive:
+        if get_entity(id).alive and not get_entity(id).is_add:
             ret.append(get_entity(id))
     return ret
 
@@ -71,6 +71,8 @@ func threatOrder() -> Array:
 func all_allies_dead() -> bool:
     var ret = true
     for id in allies:
+        if get_entity(id).is_add:
+            continue
         if get_entity(id).alive:
             return false
     return ret

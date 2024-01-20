@@ -24,3 +24,20 @@ static func do_action_animation(parent: Node2D, action, _targets: Array, tileMap
     else:
         callback.call()
     return
+
+static func spawn_entity(location: Vector2i, e: Entity, parent: Node2D, tileMap: MainTileMap, state: State):
+    var ent := e.clone()
+    var sprite: EntitySprite  = load(ent.sprite_path).instantiate()
+    parent.add_child(sprite)
+    sprite.global_position = tileMap.pointToGlobal(location)
+    ent.location = location
+    if ent.is_ally:
+        state.addAlly(ent)
+        ent.set_energy(1)
+        if ent.is_add:
+            ent.interactable = InteractableFactory.add_drainer()
+    else:
+        state.addEnemy(ent)
+    ent.sprite = sprite
+    ent.update_sprite()
+    return

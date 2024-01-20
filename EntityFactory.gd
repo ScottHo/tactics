@@ -41,77 +41,85 @@ static func create_god_mode():
     ent.damage += 200
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_snipe(ent, ActionType.ACTION1)
-    ActionFactory.add_titanium_bullet(ent, ActionType.ACTION2)
+    ActionFactory.add_god_shot(ent, ActionType.ACTION2)
     return ent
         
 static func create_brutus():
     var ent = _create_entity("Brutis", 21, 5, 1, 10, "res://Bots/brutus.tscn", "res://Assets/Brutus.png", true)
+    ent.armor += 1
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_exert(ent, ActionType.ACTION1)
-    ActionFactory.add_bolster(ent, ActionType.ACTION2)
+    ActionFactory.add_sturdy_stance(ent, ActionType.ACTION1)
+    ActionFactory.add_flying_barb_stance(ent, ActionType.ACTION2)
     return ent
     
 static func create_oilee():
     var ent = _create_entity("Oilee", 20, 6, 1, 10, "res://Bots/oilee.tscn", "res://Assets/Oilee.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_oil_bomb(ent, ActionType.ACTION1)
-    ActionFactory.add_lubricate(ent, ActionType.ACTION2)
+    ActionFactory.add_winding_strike(ent, ActionType.ACTION2)
     return ent
 
 static func create_electo():
     var ent = _create_entity("Electo", 18, 4, 4, 10, "res://Bots/electo.tscn", "res://Assets/Electo.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_storm(ent, ActionType.ACTION1)
-    ActionFactory.add_static_shield(ent, ActionType.ACTION2)
+    ActionFactory.add_thunderous_wrath(ent, ActionType.ACTION2)
     return ent
 
 static func create_nanonano():
     var ent = _create_entity("Nano-nano", 18, 4, 3, 10, "res://Bots/nanonano.tscn", "res://Assets/NanoNano.png", true)
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_focused_repair(ent, ActionType.ACTION1)
-    ActionFactory.add_nano_field(ent, ActionType.ACTION2)
+    ActionFactory.add_nano_field(ent, ActionType.ACTION1)
+    ActionFactory.add_swarm_of_pain(ent, ActionType.ACTION2)
     return ent
 
 static func create_smithy():
     var ent = _create_entity("Smithy", 20, 5, 1, 10, "res://Bots/smithy.tscn", "res://Assets/Smithy.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_weapons_upgade(ent, ActionType.ACTION1)
-    ActionFactory.add_engine_upgrade(ent, ActionType.ACTION2)
+    ActionFactory.add_auto_turret_3000(ent, ActionType.ACTION2)
     return ent
 
 static func create_longshot():
     var ent = _create_entity("Longshot", 16, 4, 5, 10, "res://Bots/longshot.tscn", "res://Assets/LongShot.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_snipe(ent, ActionType.ACTION1)
-    ActionFactory.add_titanium_bullet(ent, ActionType.ACTION2)
+    ActionFactory.add_god_shot(ent, ActionType.ACTION2)
     return ent
 
 static func create_batterie():
     var ent = _create_entity("Batterie", 17, 4, 3, 10, "res://Bots/batterie.tscn", "res://Assets/batterie.png", true)
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_power_up(ent, ActionType.ACTION1)
-    ActionFactory.add_shock_therapy(ent, ActionType.ACTION2)
+    ActionFactory.add_ultimate_shiphon(ent, ActionType.ACTION2)
     return ent
 
 static func create_punch_e():
     var ent = _create_entity("Punch-E", 18, 5, 1, 10, "res://Bots/punch-e.tscn", "res://Assets/punch-e.png", true)
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_precise_strike(ent, ActionType.ACTION1)
-    ActionFactory.add_robo_punch(ent, ActionType.ACTION2)
+    ActionFactory.add_robo_punch(ent, ActionType.ACTION1)
+    ActionFactory.add_KO_punch(ent, ActionType.ACTION2)
     return ent
 
 static func create_peppershot():
     var ent = _create_entity("Peppershot", 16, 4, 4, 10, "res://Bots/peppershot.tscn", "res://Assets/peppershot.png", true)
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_scatter_shot(ent, ActionType.ACTION1)
-    ActionFactory.add_spray_and_pray(ent, ActionType.ACTION2)
+    ActionFactory.add_spray_and_pray(ent, ActionType.ACTION1)
+    ActionFactory.add_bullet_rain(ent, ActionType.ACTION2)    
     return ent
 
 static func create_buster():
     var ent = _create_entity("Buster", 20, 5, 1, 10, "res://Bots/buster.tscn", "res://Assets/bot_template.png", true)
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_double_strike(ent, ActionType.ACTION1)
-    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION2)
+    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION1)
+    ActionFactory.add_battlefield_transfer(ent, ActionType.ACTION2)
+    return ent
+
+static func create_auto_turret_3000():
+    var ent = _create_entity("Auto Turret 3000", 5, 0, 5, 15, "res://Bots/buster.tscn", "res://Assets/bot_template.png", true)
+    ent.damage += 6
+    ent.is_add = true
+    ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_1_1():

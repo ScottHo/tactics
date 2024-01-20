@@ -87,7 +87,7 @@ func mechanic_soak_effect():
 
 func mechanic_spawn_effect():
     for i in range(len(_targets)):
-        spawn_entity(_targets[i], special().spawns[i])
+        ActionCommon.spawn_entity(_targets[i], special().spawns[i], $"../", tileMap, _state)
     return
 
 func mechanic_spawn_effect_inters():
@@ -98,7 +98,7 @@ func mechanic_spawn_effect_inters():
             _state.remove_interactable(_inter)
             _inter.sprite.queue_free()
     for i in range(len(_targets)):
-        spawn_entity(_targets[i], special().spawns[0])
+        ActionCommon.spawn_entity(_targets[i], special().spawns[0], $"../", tileMap, _state)
     return
 
 func mechanic_destroy_tile():
@@ -123,21 +123,6 @@ func mechanic_change_tile_dice():
         tileMap.switch_tile_data(tiles[i*2+3], Tiles.DICE_4)
         tileMap.switch_tile_data(tiles[i*2+4], Tiles.DICE_5)
         tileMap.switch_tile_data(tiles[i*2+5], Tiles.DICE_6)
-    return
-
-func spawn_entity(location: Vector2i, e: Entity):
-    var ent := e.clone()
-    var sprite: EntitySprite  = load(ent.sprite_path).instantiate()
-    $"..".add_child(sprite)
-    sprite.global_position = tileMap.pointToGlobal(location)
-    ent.location = location
-    if ent.is_ally:
-        _state.addAlly(ent)
-        ent.set_energy(1)
-    else:
-        _state.addEnemy(ent)
-    ent.sprite = sprite
-    ent.update_sprite()
     return
 
 func find_special_targets():

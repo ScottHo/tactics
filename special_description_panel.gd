@@ -39,6 +39,8 @@ func container(idx: int) -> Control:
     return grid.get_child(idx)
     
 func set_action(action: Action):
+    if action == null:
+        return
     if action.type == ActionType.ATTACK:
         specIcon.visible = true
         actionLabel.visible = false

@@ -28,11 +28,13 @@ func update_new():
     for entity_id in _state.entities.allKeys():
         if has_turn_node(entity_id):
             continue
-        var turnNode = TurnNode.new()
         var entity: Entity = _state.get_entity(entity_id)
         if entity.alive:
+            var turnNode = TurnNode.new()
+            if entity.is_ally:
+                turnNode.total = 100 + randi_range(0, 5)
             turnNode.entity_id = entity_id
-            _turnNodes.append(turnNode)
+            _turnNodes.push_front(turnNode)
     return
 
 func has_turn_node(entity_id: int):
