@@ -7,8 +7,7 @@ func _ready():
             _c.text = ""
     return
     
-func start(mission: Mission, title: String):
-    $RoomName.text = title
+func start(mission: Mission):
     $BossSprite.texture = load(mission.boss.icon_path)
     $EnemyPanel.start(mission.boss)
     for i in range(len(mission.specials)):

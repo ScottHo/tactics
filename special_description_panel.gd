@@ -4,6 +4,7 @@ class_name SpecialDescriptionPanel extends Node2D
 @onready var descMain: Label = $DescriptionLabel
 @onready var costLabel: Label = $CostLabel
 @onready var affectsLabel: Label = $AffectsLabel
+@onready var actionLabel: Label = $ActionLabel
 @onready var grid: GridContainer = $GridContainer
 
 func name_label(c) -> Label:
@@ -37,6 +38,10 @@ func container(idx: int) -> Control:
     return grid.get_child(idx)
     
 func set_action(action: Action):
+    if action.is_ultimate:
+        actionLabel.text = "Ultimate"
+    else:
+        actionLabel.text = "Special"
     descName.text = action.display_name
     descMain.text = action.description
     costLabel.text = str(action.cost())

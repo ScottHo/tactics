@@ -1,6 +1,6 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://f4qa3cvwbc8f"]
 
-[ext_resource type="Texture2D" uid="uid://c7b5sju76pcr0" path="res://Assets/bot-button-disabled.png" id="1_kuk4g"]
+[ext_resource type="Texture2D" uid="uid://di42xjem2lh5a" path="res://Assets/GUI/SingleTileDisabled.png" id="1_0vn3p"]
 
 [resource]
-texture = ExtResource("1_kuk4g")
+texture = ExtResource("1_0vn3p")

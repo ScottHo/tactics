@@ -1,17 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://c76patbej3f6w"]
+[gd_scene load_steps=10 format=3 uid="uid://c76patbej3f6w"]
 
 [ext_resource type="PackedScene" uid="uid://bxp0hhpdubjky" path="res://detailed_room_info.tscn" id="1_0yuhc"]
 [ext_resource type="Script" path="res://room_chooser.gd" id="1_lm1uq"]
+[ext_resource type="Texture2D" uid="uid://c3712bkx4eapf" path="res://Assets/Backgrounds/Background_beige.png" id="2_4w8f8"]
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="2_m61tk"]
-[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_r4mxn"]
+[ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="3_vkqma"]
+[ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="4_36kkq"]
+[ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/long-vertical.png" id="5_ib14x"]
+[ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="7_pivh6"]
+[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="8_fs5q0"]
 
 [node name="RoomChooser" type="Node2D"]
 script = ExtResource("1_lm1uq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.72549, 0.72549, 0.72549, 1)
-texture = ExtResource("2_r4mxn")
+texture = ExtResource("2_4w8f8")
 centered = false
+
+[node name="TileMapFloor" type="TileMap" parent="."]
+position = Vector2(87.5901, 74.2031)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("3_vkqma")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 131073, 0, 65535, 131073, 0, -65536, 131073, 0, 0, 131073, 0, -65513, 131073, 0, 23, 131073, 0, -65512, 131073, 0, 24, 131073, 0, -65511, 131073, 0, 25, 131073, 0, -65510, 131073, 0, 26, 131073, 0, -65509, 131073, 0, 27, 131073, 0, -65508, 131073, 0, 28, 131073, 0, -65535, 131073, 0, 1, 131073, 0, -65534, 131073, 0, 2, 131073, 0, -65533, 131073, 0, 3, 131073, 0, -65532, 131073, 0, 4, 131073, 0, -65531, 131073, 0, 5, 131073, 0, -65530, 131073, 0, 6, 131073, 0, -65529, 131073, 0, 7, 131073, 0, -65528, 131073, 0, 8, 131073, 0, 327689, 327681, 0, 393225, 327681, 0, 458761, 327681, 0, 327690, 327681, 0, 393226, 327681, 0, 458762, 327681, 0, 327691, 327681, 0, 393227, 327681, 0, 458763, 327681, 0, 327692, 327681, 0, 393228, 327681, 0, 458764, 327681, 0, 327693, 327681, 0, 393229, 327681, 0, 458765, 327681, 0, 327694, 327681, 0, 393230, 327681, 0, 458766, 327681, 0, -524273, 131073, 0, -458737, 131073, 0, -65521, 131073, 0, 15, 131073, 0, 393231, 131073, 0, 458767, 131073, 0, -720880, 131073, 0, -655344, 131073, 0, -589808, 131073, 0, -524272, 131073, 0, -458736, 131073, 0, -65520, 131073, 0, 16, 131073, 0, 393232, 131073, 0, 458768, 131073, 0, -720879, 131073, 0, -655343, 131073, 0, -589807, 131073, 0, -524271, 131073, 0, -458735, 131073, 0, -65519, 131073, 0, 17, 131073, 0, 393233, 131073, 0, 458769, 131073, 0, 524305, 131073, 0, 589841, 131073, 0, 655377, 131073, 0, -65518, 131073, 0, 18, 131073, 0, 393234, 131073, 0, 458770, 131073, 0, 524306, 131073, 0, 589842, 131073, 0, 655378, 131073, 0, -65517, 131073, 0, 19, 131073, 0, -65516, 131073, 0, 20, 131073, 0, -65515, 131073, 0, 21, 131073, 0, -65514, 131073, 0, 22, 131073, 0, -524279, 327681, 0, -458743, 327681, 0, -393207, 327681, 0, -327671, 327681, 0, -262135, 327681, 0, -196599, 327681, 0, -131063, 327681, 0, -65527, 327681, 0, 9, 327681, 0, 65545, 327681, 0, 131081, 327681, 0, 196617, 327681, 0, 262153, 327681, 0, -524278, 327681, 0, -458742, 327681, 0, -393206, 327681, 0, -327670, 327681, 0, -262134, 327681, 0, -196598, 327681, 0, -131062, 327681, 0, -65526, 327681, 0, 10, 327681, 0, 65546, 327681, 0, 131082, 327681, 0, 196618, 327681, 0, 262154, 327681, 0, -524277, 327681, 0, -458741, 327681, 0, -393205, 327681, 0, -327669, 327681, 0, -262133, 327681, 0, -196597, 327681, 0, -131061, 327681, 0, -65525, 327681, 0, 11, 327681, 0, 65547, 327681, 0, 131083, 327681, 0, 196619, 327681, 0, 262155, 327681, 0, -524276, 327681, 0, -458740, 327681, 0, -393204, 327681, 0, -327668, 327681, 0, -262132, 327681, 0, -196596, 327681, 0, -131060, 327681, 0, -65524, 327681, 0, 12, 327681, 0, 65548, 327681, 0, 131084, 327681, 0, 196620, 327681, 0, 262156, 327681, 0, -524275, 327681, 0, -458739, 327681, 0, -393203, 327681, 0, -327667, 327681, 0, -262131, 327681, 0, -196595, 327681, 0, -131059, 327681, 0, -65523, 327681, 0, 13, 327681, 0, 65549, 327681, 0, 131085, 327681, 0, 196621, 327681, 0, 262157, 327681, 0, -524274, 327681, 0, -458738, 327681, 0, -393202, 327681, 0, -327666, 327681, 0, -262130, 327681, 0, -196594, 327681, 0, -131058, 327681, 0, -65522, 327681, 0, 14, 327681, 0, 65550, 327681, 0, 131086, 327681, 0, 196622, 327681, 0, 262158, 327681, 0, 720913, 131073, 0, 720914, 131073, 0, -2, 131073, 0, 65534, 131073, 0, -3, 131073, 0, 65533, 131073, 0, 786449, 131073, 0, 786450, 131073, 0)
+
+[node name="TileMapBoss" type="TileMap" parent="."]
+visible = false
+position = Vector2(87.5901, 74.2031)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("3_vkqma")
+format = 2
+layer_0/tile_data = PackedInt32Array(-1, 131073, 0, 65535, 131073, 0, -65536, 131073, 0, 0, 131073, 0, -65513, 131073, 0, 23, 131073, 0, -65512, 131073, 0, 24, 131073, 0, -65511, 131073, 0, 25, 131073, 0, -65510, 131073, 0, 26, 131073, 0, -65509, 131073, 0, 27, 131073, 0, -65508, 131073, 0, 28, 131073, 0, -65535, 131073, 0, 1, 131073, 0, -65534, 131073, 0, 2, 131073, 0, -65533, 131073, 0, 3, 131073, 0, -65532, 131073, 0, 4, 131073, 0, -65531, 131073, 0, 5, 131073, 0, -65530, 131073, 0, 6, 131073, 0, -65529, 131073, 0, 7, 131073, 0, -65528, 131073, 0, 8, 131073, 0, -65521, 131073, 0, 15, 131073, 0, -65520, 131073, 0, 16, 131073, 0, -65519, 131073, 0, 17, 131073, 0, -65518, 131073, 0, 18, 131073, 0, -65517, 131073, 0, 19, 131073, 0, -65516, 131073, 0, 20, 131073, 0, -65515, 131073, 0, 21, 131073, 0, -65514, 131073, 0, 22, 131073, 0, -65527, 131073, 0, 9, 131073, 0, -65526, 131073, 0, 10, 131073, 0, -65525, 131073, 0, 11, 131073, 0, -65524, 131073, 0, 12, 131073, 0, -65523, 131073, 0, 13, 131073, 0, -65522, 131073, 0, 14, 131073, 0, -2, 131073, 0, 65534, 131073, 0, -3, 131073, 0, 65533, 131073, 0)
 
 [node name="Title" type="Label" parent="."]
 offset_left = 561.132
@@ -24,112 +44,213 @@ theme_override_font_sizes/font_size = 40
 text = "Metal Foundry - Level 1"
 horizontal_alignment = 1
 
-[node name="DetailedRoomInfo" parent="." instance=ExtResource("1_0yuhc")]
-position = Vector2(42.2342, 114.449)
+[node name="ChooserContainer" type="Node2D" parent="."]
 
-[node name="DetailedRoomInfo2" parent="." instance=ExtResource("1_0yuhc")]
-position = Vector2(665.847, 114.449)
+[node name="Bottom" type="Button" parent="ChooserContainer"]
+offset_left = 699.834
+offset_top = 802.423
+offset_right = 799.834
+offset_bottom = 902.423
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("4_36kkq")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 19
+text = "Go"
 
-[node name="DetailedRoomInfo3" parent="." instance=ExtResource("1_0yuhc")]
-position = Vector2(1292.39, 114.449)
+[node name="Middle" type="Button" parent="ChooserContainer"]
+offset_left = 1159.61
+offset_top = 561.282
+offset_right = 1259.61
+offset_bottom = 661.282
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("4_36kkq")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 19
+text = "Go"
 
-[node name="Recruit1" type="Node2D" parent="."]
-position = Vector2(153.374, 941.2)
+[node name="Top" type="Button" parent="ChooserContainer"]
+offset_left = 1620.64
+offset_top = 321.896
+offset_right = 1720.64
+offset_bottom = 421.896
+pivot_offset = Vector2(50, 50)
+focus_mode = 0
+theme = ExtResource("4_36kkq")
+theme_type_variation = &"FlatButton"
+theme_override_font_sizes/font_size = 19
+text = "Go"
 
-[node name="Button" type="Button" parent="Recruit1"]
-offset_left = 228.694
-offset_top = 6.57214
-offset_right = 398.694
-offset_bottom = 96.5721
+[node name="RoomContainer" type="Node2D" parent="."]
+
+[node name="DetailedRoomInfo" parent="RoomContainer" instance=ExtResource("1_0yuhc")]
+position = Vector2(159.158, 148.352)
+
+[node name="Recruit1" type="Node2D" parent="RoomContainer"]
+position = Vector2(984.107, 293.185)
+
+[node name="Medium" type="Sprite2D" parent="RoomContainer/Recruit1"]
+position = Vector2(331.612, 79.2572)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_ib14x")
+
+[node name="Label" type="Label" parent="RoomContainer/Recruit1"]
+offset_left = 214.043
+offset_top = -149.624
+offset_right = 472.043
+offset_bottom = -112.624
 theme_override_font_sizes/font_size = 24
-text = "GO"
+text = "NEW RECRUIT"
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite" type="Sprite2D" parent="Recruit1"]
-position = Vector2(148.056, 62.9763)
+[node name="Sprite" type="Sprite2D" parent="RoomContainer/Recruit1"]
+position = Vector2(12.6945, 42.7132)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_m61tk")
 
-[node name="Label" type="Label" parent="Recruit1"]
-offset_left = -81.9832
-offset_top = 3.00685
-offset_right = 8.01676
-offset_bottom = 24.0068
-text = "NEW RECRUIT:"
-metadata/_edit_use_anchors_ = true
-
-[node name="Name" type="Label" parent="Recruit1"]
-offset_left = -80.4967
-offset_top = 31.2434
-offset_right = -22.4967
-offset_bottom = 52.2434
+[node name="Name" type="Label" parent="RoomContainer/Recruit1"]
+offset_left = -99.3681
+offset_top = -82.4918
+offset_right = 120.632
+offset_bottom = -36.4919
+theme_override_font_sizes/font_size = 20
 text = "NONE"
+horizontal_alignment = 1
+autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Recruit2" type="Node2D" parent="."]
-position = Vector2(781.276, 941.2)
+[node name="EnemyPanel" parent="RoomContainer/Recruit1" instance=ExtResource("7_pivh6")]
+offset_left = -33.0133
+offset_top = 121.594
+offset_right = -33.0133
+offset_bottom = 121.594
 
-[node name="Button" type="Button" parent="Recruit2"]
-offset_left = 228.694
-offset_top = 6.57214
-offset_right = 398.694
-offset_bottom = 96.5721
+[node name="AbilitiesGrid" type="GridContainer" parent="RoomContainer/Recruit1"]
+offset_left = 145.827
+offset_top = -67.9932
+offset_right = 145.827
+offset_bottom = 432.007
+theme_override_constants/v_separation = 115
+
+[node name="Passive" type="Control" parent="RoomContainer/Recruit1/AbilitiesGrid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Passive"]
+layout_mode = 0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
+theme_override_font_sizes/font_size = 14
+text = "Passive - Static Effect"
+autowrap_mode = 2
+
+[node name="Name" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Passive"]
+layout_mode = 0
+offset_left = 32.588
+offset_top = 7.36328
+offset_right = 552.588
+offset_bottom = 32.3633
+theme_override_font_sizes/font_size = 18
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Passive"]
+layout_mode = 0
+offset_left = 34.5529
+offset_top = 34.233
+offset_right = 634.553
+offset_bottom = 106.233
+theme_override_fonts/font = ExtResource("8_fs5q0")
+theme_override_font_sizes/font_size = 16
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="Special" type="Control" parent="RoomContainer/Recruit1/AbilitiesGrid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Special"]
+layout_mode = 0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
+theme_override_font_sizes/font_size = 14
+text = "Special - Costs Energy"
+autowrap_mode = 2
+
+[node name="Name" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Special"]
+layout_mode = 0
+offset_left = 32.588
+offset_top = 7.36328
+offset_right = 552.588
+offset_bottom = 32.3633
+theme_override_font_sizes/font_size = 18
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Special"]
+layout_mode = 0
+offset_left = 34.5529
+offset_top = 34.233
+offset_right = 634.553
+offset_bottom = 106.233
+theme_override_fonts/font = ExtResource("8_fs5q0")
+theme_override_font_sizes/font_size = 16
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="Ultimate" type="Control" parent="RoomContainer/Recruit1/AbilitiesGrid"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Ultimate"]
+layout_mode = 0
+offset_left = 2.06844
+offset_top = -10.0908
+offset_right = 522.068
+offset_bottom = 10.9092
+theme_override_font_sizes/font_size = 14
+text = "Ultimate - Only Once Per Level"
+autowrap_mode = 2
+
+[node name="Name" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Ultimate"]
+layout_mode = 0
+offset_left = 32.588
+offset_top = 7.36328
+offset_right = 552.588
+offset_bottom = 32.3633
+theme_override_font_sizes/font_size = 18
+text = "Explosive Missles"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Ultimate"]
+layout_mode = 0
+offset_left = 34.5529
+offset_top = 34.233
+offset_right = 634.553
+offset_bottom = 106.233
+theme_override_fonts/font = ExtResource("8_fs5q0")
+theme_override_font_sizes/font_size = 16
+text = "Deals 21 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+autowrap_mode = 2
+
+[node name="CancelButton" type="Button" parent="RoomContainer"]
+offset_left = 1421.66
+offset_top = 850.232
+offset_right = 1621.66
+offset_bottom = 955.232
 theme_override_font_sizes/font_size = 24
-text = "GO"
+text = "Cancel"
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite" type="Sprite2D" parent="Recruit2"]
-position = Vector2(148.056, 62.9763)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_m61tk")
-
-[node name="Label" type="Label" parent="Recruit2"]
-offset_left = -81.9832
-offset_top = 3.00685
-offset_right = 8.01676
-offset_bottom = 24.0068
-text = "NEW RECRUIT:"
-metadata/_edit_use_anchors_ = true
-
-[node name="Name" type="Label" parent="Recruit2"]
-offset_left = -80.4967
-offset_top = 31.2434
-offset_right = -22.4967
-offset_bottom = 52.2434
-text = "NONE"
-metadata/_edit_use_anchors_ = true
-
-[node name="Recruit3" type="Node2D" parent="."]
-position = Vector2(1405.61, 941.2)
-
-[node name="Button" type="Button" parent="Recruit3"]
-offset_left = 228.694
-offset_top = 6.57214
-offset_right = 398.694
-offset_bottom = 96.5721
+[node name="GoButton" type="Button" parent="RoomContainer"]
+offset_left = 1628.66
+offset_top = 850.232
+offset_right = 1828.66
+offset_bottom = 955.232
 theme_override_font_sizes/font_size = 24
-text = "GO"
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite" type="Sprite2D" parent="Recruit3"]
-position = Vector2(148.056, 62.9763)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_m61tk")
-
-[node name="Label" type="Label" parent="Recruit3"]
-offset_left = -81.9832
-offset_top = 3.00685
-offset_right = 8.01676
-offset_bottom = 24.0068
-text = "NEW RECRUIT:"
-metadata/_edit_use_anchors_ = true
-
-[node name="Name" type="Label" parent="Recruit3"]
-offset_left = -80.4967
-offset_top = 31.2434
-offset_right = -22.4967
-offset_bottom = 52.2434
-text = "NONE"
+text = "GO!"
 metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="."]

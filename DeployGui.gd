@@ -30,7 +30,7 @@ func start():
     collectionPanel.start()
     upgradePanel.reset()
     deployPanel.start()
-    detailedRoomInfo.start(mission, "")
+    detailedRoomInfo.start(mission)
     startMissionButton.disabled = true
     return
 

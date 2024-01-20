@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5r70vpa8c172"]
+[gd_scene load_steps=4 format=3 uid="uid://b5r70vpa8c172"]
 
 [ext_resource type="Script" path="res://DeployPanel.gd" id="1_ymb0d"]
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="2_0crdc"]
+[ext_resource type="Texture2D" uid="uid://di42xjem2lh5a" path="res://Assets/GUI/SingleTileDisabled.png" id="2_q2crv"]
 
 [node name="DeployContainer" type="Node2D"]
 position = Vector2(96.066, 214.394)
@@ -12,12 +13,17 @@ offset_left = -142.941
 offset_top = -17.4228
 offset_right = 407.059
 offset_bottom = 82.5772
-theme_override_constants/h_separation = 110
+theme_override_constants/h_separation = 220
 theme_override_constants/v_separation = 1
 columns = 6
 
 [node name="Control" type="Control" parent="GridContainer"]
 layout_mode = 2
+
+[node name="SingleTile" type="Sprite2D" parent="GridContainer/Control"]
+position = Vector2(-1.99025, -12.1956)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_q2crv")
 
 [node name="BotSprite" type="Sprite2D" parent="GridContainer/Control"]
 scale = Vector2(0.2, 0.2)
@@ -34,6 +40,11 @@ theme_type_variation = &"BotDeployButton"
 [node name="Control2" type="Control" parent="GridContainer"]
 layout_mode = 2
 
+[node name="SingleTile" type="Sprite2D" parent="GridContainer/Control2"]
+position = Vector2(-1.99025, -12.1956)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_q2crv")
+
 [node name="BotSprite" type="Sprite2D" parent="GridContainer/Control2"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0crdc")
@@ -48,6 +59,11 @@ theme_type_variation = &"BotDeployButton"
 
 [node name="Control3" type="Control" parent="GridContainer"]
 layout_mode = 2
+
+[node name="SingleTile" type="Sprite2D" parent="GridContainer/Control3"]
+position = Vector2(-1.99025, -12.1956)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_q2crv")
 
 [node name="BotSprite" type="Sprite2D" parent="GridContainer/Control3"]
 scale = Vector2(0.2, 0.2)
@@ -64,6 +80,11 @@ theme_type_variation = &"BotDeployButton"
 [node name="Control4" type="Control" parent="GridContainer"]
 layout_mode = 2
 
+[node name="SingleTile" type="Sprite2D" parent="GridContainer/Control4"]
+position = Vector2(-1.99026, -12.1956)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_q2crv")
+
 [node name="BotSprite" type="Sprite2D" parent="GridContainer/Control4"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0crdc")
@@ -78,6 +99,11 @@ theme_type_variation = &"BotDeployButton"
 
 [node name="Control5" type="Control" parent="GridContainer"]
 layout_mode = 2
+
+[node name="SingleTile" type="Sprite2D" parent="GridContainer/Control5"]
+position = Vector2(-1.99023, -12.1956)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_q2crv")
 
 [node name="BotSprite" type="Sprite2D" parent="GridContainer/Control5"]
 scale = Vector2(0.2, 0.2)
@@ -94,6 +120,11 @@ theme_type_variation = &"BotDeployButton"
 [node name="Control6" type="Control" parent="GridContainer"]
 layout_mode = 2
 
+[node name="SingleTile" type="Sprite2D" parent="GridContainer/Control6"]
+position = Vector2(-1.99023, -12.1956)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_q2crv")
+
 [node name="BotSprite" type="Sprite2D" parent="GridContainer/Control6"]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_0crdc")
@@ -107,13 +138,13 @@ offset_bottom = 46.4022
 theme_type_variation = &"BotDeployButton"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 461.2
-offset_top = -45.1898
-offset_right = 549.2
-offset_bottom = 3.81015
+offset_left = 1100.74
+offset_top = 30.0629
+offset_right = 1210.74
+offset_bottom = 91.0629
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 50
 text = "0/6"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -22,7 +22,7 @@ offset_bottom = 44.3484
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 26
-text = "ROOM A"
+text = "ENEMY"
 horizontal_alignment = 1
 
 [node name="EnemyPanel" parent="." instance=ExtResource("2_m4fqc")]
@@ -179,5 +179,5 @@ autowrap_mode = 2
 
 [node name="BossSprite" type="Sprite2D" parent="."]
 position = Vector2(159.289, 134.656)
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_l5xc7")

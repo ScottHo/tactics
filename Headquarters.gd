@@ -5,25 +5,37 @@ var checkpoints: Checkpoints
 var enterFloorButton: Button
 var floorLabel: Label
 var backButton: Button
+var rosterButton: Button
+var abortButton: Button
 var botIcon: Sprite2D
+var botName: Label
 var botPanel: MissionEnemyPanel
 var specialPanel1: SpecialDescriptionPanel
 var specialPanel2: SpecialDescriptionPanel
 
 
 func _ready():
-    collectionPanel = $CollectionContainer
-    checkpoints = $Checkpoints
-    enterFloorButton = $EnterFloorButton
-    floorLabel = $FloorLabel    
-    backButton = $BackButton
-    specialPanel1 = $SpecialPanel
-    specialPanel2 = $SpecialPanel2
-    botIcon = $BotIcon
-    botPanel = $EnemyPanel
+    collectionPanel = $Collections/CollectionContainer
+    checkpoints = $Levels/Checkpoints
+    enterFloorButton = $Levels/EnterFloorButton
+    floorLabel = $Levels/FloorLabel
+    rosterButton = $Levels/RosterButton    
+    abortButton = $Levels/AbortButton
+    backButton = $Collections/BackButton
+    specialPanel1 = $Collections/SpecialPanel1
+    specialPanel2 = $Collections/SpecialPanel2
+    botIcon = $Collections/BotIcon
+    botName = $Collections/BotName
+    botPanel = $Collections/EnemyPanel
     collectionPanel.entity_selected.connect(entity_selected)
     enterFloorButton.pressed.connect(go_to_room_select)
-    backButton.pressed.connect(back_to_menu)
+    abortButton.pressed.connect(back_to_menu)
+    backButton.pressed.connect(func():
+        $Collections.visible = false
+        $Levels.visible = true)
+    rosterButton.pressed.connect(func():
+        $Collections.visible = true
+        $Levels.visible = false)
     
     specialPanel1.clear()
     specialPanel2.clear()
@@ -42,6 +54,7 @@ func entity_selected(ent: Entity):
     specialPanel1.set_action(ent.action1)
     specialPanel2.set_action(ent.action2)
     botIcon.texture = load(ent.icon_path)
+    botName.text = ent.display_name
     botPanel.start(ent)
     return
 

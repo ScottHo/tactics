@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cve4y2nbbwucg"]
 
 [ext_resource type="Script" path="res://DeployGui.gd" id="1_1roly"]
-[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_q1skw"]
+[ext_resource type="Texture2D" uid="uid://c3712bkx4eapf" path="res://Assets/Backgrounds/Background_beige.png" id="2_mdtj1"]
 [ext_resource type="PackedScene" uid="uid://bxp0hhpdubjky" path="res://detailed_room_info.tscn" id="6_27vo8"]
 [ext_resource type="PackedScene" uid="uid://ct2wj06r38iul" path="res://upgrade_panel.tscn" id="11_q353u"]
 [ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="12_os86a"]
@@ -13,31 +13,32 @@ script = ExtResource("1_1roly")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.72549, 0.72549, 0.72549, 1)
-texture = ExtResource("2_q1skw")
+texture = ExtResource("2_mdtj1")
 centered = false
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(103.856, 44.537)
+position = Vector2(122.338, 24.4844)
 scale = Vector2(1.2, 1.2)
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(927.105, 439.882)
+position = Vector2(938.878, 488.654)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(493.517, 890.537)
+position = Vector2(341.656, 927.82)
+scale = Vector2(0.8, 0.8)
 
 [node name="StartMission" type="Button" parent="."]
-offset_left = 559.209
-offset_top = 946.41
-offset_right = 729.208
-offset_bottom = 1036.41
+offset_left = 1427.91
+offset_top = 914.086
+offset_right = 1627.91
+offset_bottom = 1034.09
 theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
 text = "START
 MISSION"
 
 [node name="DetailedRoomInfo" parent="." instance=ExtResource("6_27vo8")]
-position = Vector2(1234.75, 100.52)
+position = Vector2(1227.2, 21.2346)
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 7.14996

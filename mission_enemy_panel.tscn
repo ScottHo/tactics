@@ -150,12 +150,3 @@ theme_override_font_sizes/font_size = 14
 text = "-"
 label_settings = SubResource("LabelSettings_3qud2")
 vertical_alignment = 1
-
-[node name="BossName" type="Label" parent="."]
-layout_mode = 0
-offset_left = -18.6138
-offset_top = -42.9942
-offset_right = 231.386
-offset_bottom = 37.0058
-theme_override_font_sizes/font_size = 30
-autowrap_mode = 2

@@ -6,7 +6,6 @@ class_name MissionEnemyPanel extends Control
 @onready var damageLabel = $GridContainer/Damage/Label
 @onready var rangeLabel = $GridContainer/Range/Label
 @onready var armorLabel = $GridContainer/Armor/Label
-@onready var bossName = $BossName
 var _entity
 
 func _ready():
@@ -19,7 +18,6 @@ func clear():
     rangeLabel.text = "-"
     initiativeLabel.text = "-"
     armorLabel.text = "-"
-    bossName.text = "-"
     return
 
 func start(e: Entity):
@@ -30,5 +28,4 @@ func start(e: Entity):
     rangeLabel.text = str(_entity.get_range())
     initiativeLabel.text = str(_entity.get_initiative())
     armorLabel.text = str(_entity.get_armor())
-    bossName.text = _entity.display_name
     return

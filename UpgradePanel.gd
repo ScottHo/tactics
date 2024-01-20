@@ -5,8 +5,8 @@ class_name UpgradePanel extends Node2D
 @onready var movement_c = $GridContainer/Movement
 @onready var initiative_c = $GridContainer/Initiative
 @onready var attack_c = $GridContainer/Attack
-@onready var action1_c = $GridContainer/Action1
-@onready var action2_c = $GridContainer/Action2
+@onready var action1_c = $GridContainer/Special
+@onready var action2_c = $GridContainer/Ultimate
 @onready var range_c = $GridContainer/Range
 @onready var skill_points_label = $Bottom/SkillPointsLabel
 @onready var bottom_label = $Bottom/Label
@@ -14,8 +14,8 @@ class_name UpgradePanel extends Node2D
 @onready var deploy_button = $Bottom/DeployButton
 @onready var entity_sprite = $EntityContainer/Sprite2D
 @onready var entity_label = $EntityContainer/Label
-@onready var action1_description: SpecialDescriptionPanel = $GridContainer/Action1/SpecialPanel
-@onready var action2_description: SpecialDescriptionPanel = $GridContainer/Action2/SpecialPanel
+@onready var action1_description: SpecialDescriptionPanel = $GridContainer/Special/SpecialPanel
+@onready var action2_description: SpecialDescriptionPanel = $GridContainer/Ultimate/SpecialPanel
 
 var containers = []
 
@@ -35,7 +35,7 @@ var movement_max_melee := 4
 var initiative_max := 3
 var attack_max := 3
 var special1_max := 4
-var special2_max := 4
+var special2_max := 1
 var range_max := 2
 var skill_points_base := 0
 var deploy_full := false

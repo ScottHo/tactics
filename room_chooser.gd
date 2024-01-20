@@ -1,32 +1,29 @@
 extends Node2D
 
-var back_button: Button
-var room_info1: DetailedRoomInfo
-var room_info2: DetailedRoomInfo
-var room_info3: DetailedRoomInfo
-var recruit_1: Node2D
-var recruit_2: Node2D
-var recruit_3: Node2D
-var entity_1: Entity
-var entity_2: Entity
-var entity_3: Entity
-var title: Label
-var mission1: Mission
-var mission2: Mission
-var mission3: Mission
-var e_recruit_bot_1: EntityFactory.Bot
-var e_recruit_bot_2: EntityFactory.Bot
-var e_recruit_bot_3: EntityFactory.Bot
+@onready var back_button : Button = $BackButton
+@onready var title : Label = $Title
+@onready var room_container : Node2D = $RoomContainer
+@onready var room_info : DetailedRoomInfo = $RoomContainer/DetailedRoomInfo
+@onready var goButton : Button = $RoomContainer/GoButton
+@onready var cancelButton : Button = $RoomContainer/CancelButton
+@onready var choose_container : Node2D = $ChooserContainer
+@onready var botButton : Button = $ChooserContainer/Bottom
+@onready var midButton : Button = $ChooserContainer/Middle
+@onready var topButton : Button = $ChooserContainer/Top
+@onready var recruitPanel : Node2D = $RoomContainer/Recruit1
+@onready var recruitSprite : Sprite2D = $RoomContainer/Recruit1/Sprite
+@onready var recruitName : Label = $RoomContainer/Recruit1/Name
+@onready var recruitStatsPanel : MissionEnemyPanel = $RoomContainer/Recruit1/EnemyPanel
+@onready var recruitPassiveName : Label = $RoomContainer/Recruit1/AbilitiesGrid/Passive/Name
+@onready var recruitPassiveDesc : Label = $RoomContainer/Recruit1/AbilitiesGrid/Passive/Description
+@onready var recruitSpecName : Label = $RoomContainer/Recruit1/AbilitiesGrid/Special/Name
+@onready var recruitSpecDesc : Label = $RoomContainer/Recruit1/AbilitiesGrid/Special/Description
+@onready var recruitUltName : Label = $RoomContainer/Recruit1/AbilitiesGrid/Ultimate/Name
+@onready var recruitUltDesc : Label = $RoomContainer/Recruit1/AbilitiesGrid/Ultimate/Description
 
-
-func button(container) -> Button:
-    return container.get_child(0)
-
-func sprite(container) -> Sprite2D:
-    return container.get_child(1)
-
-func label(container) -> Label:
-    return container.get_child(3)
+var missions: Array = []
+var recruits: Array = []
+var room_idx: int = 1
 
 func _ready():
     var level = Globals.current_level
@@ -37,38 +34,39 @@ func _ready():
     return
 
 func setup_nodes():
-    back_button = $BackButton    
-    room_info1 = $DetailedRoomInfo
-    room_info2 = $DetailedRoomInfo2
-    room_info3 = $DetailedRoomInfo3
-    recruit_1 = $Recruit1
-    recruit_2 = $Recruit2
-    recruit_3 = $Recruit3
-    title = $Title
-    room_info1.visible = true
-    room_info2.visible = true
-    room_info3.visible = true
-    recruit_1.visible = true
-    recruit_2.visible = true
-    recruit_3.visible = true
     Globals.current_recruit = -1
-    button(recruit_1).pressed.connect(func():
-        Globals.current_mission = mission1
-        Globals.current_recruit = e_recruit_bot_1
+    goButton.pressed.connect(func():
+        Globals.current_mission = missions[room_idx]
+        Globals.current_recruit = recruits[room_idx]
         get_tree().change_scene_to_file("res://DeployGui.tscn"))
-    button(recruit_2).pressed.connect(func():
-        Globals.current_mission = mission2
-        Globals.current_recruit = e_recruit_bot_2
-        get_tree().change_scene_to_file("res://DeployGui.tscn"))
-    button(recruit_3).pressed.connect(func():
-        Globals.current_mission = mission3
-        Globals.current_recruit = e_recruit_bot_3
-        get_tree().change_scene_to_file("res://DeployGui.tscn"))
+    cancelButton.pressed.connect(switch_to_chooser)
     back_button.pressed.connect(func():
         get_tree().change_scene_to_file("res://Headquarters.tscn"))
+    botButton.pressed.connect(func():
+        room_idx = 0
+        switch_to_room())
+    midButton.pressed.connect(func():
+        room_idx = 1
+        switch_to_room())
+    topButton.pressed.connect(func():
+        room_idx = 2
+        switch_to_room())
+    return
+
+func switch_to_room():
+    setup_recruit(recruits[room_idx])
+    room_info.start(missions[room_idx])    
+    room_container.visible = true
+    choose_container.visible = false
+    return
+
+func switch_to_chooser():
+    room_container.visible = false
+    choose_container.visible = true
     return
 
 func setup_panels(level: int, floor):
+    choose_container.visible = true
     title.text = Utils.floor_title(level, floor)
     if [4,8,12,16,17].has(level):
         var m: Mission
@@ -82,36 +80,25 @@ func setup_panels(level: int, floor):
             m = MissionFactory.foundry_3_final_boss()
         elif level == 17:
             m = MissionFactory.foundry_3_final_boss()
-        setup_foundry_boss_panels()
-        room_info2.start(m, "FOUNDRY BOSS")
-        mission2 = m
+        missions = [m,m,m]
+        $TileMapBoss.visible = true
+        $TileMapFloor.visible = false
+        recruitPanel.visible = false        
+        botButton.visible = false
+        topButton.visible = false
 
     else:
         setup_floor(level, floor)
-
-func setup_foundry_boss_panels():
-    recruit_1.visible = false
-    room_info1.visible = false
-    recruit_3.visible = false
-    room_info3.visible = false
-    label(recruit_2).text = "None"
-    sprite(recruit_2).texture = load(Globals.NO_BOT_ICON_PATH)
-    return
+        $TileMapBoss.visible = false
+        $TileMapFloor.visible = true
 
 func setup_floor(level: int, floor):
     if Globals.missions_found:
-        mission1 = Globals.mission_options[0]
-        mission2 = Globals.mission_options[1]
-        mission3 = Globals.mission_options[2]
-        e_recruit_bot_1 = Globals.recruit_options[0]
-        e_recruit_bot_2 = Globals.recruit_options[1]
-        e_recruit_bot_3 = Globals.recruit_options[2]
-        
-        setup_floor_missions()
-        setup_floor_recruits()
+        missions = Globals.mission_options
+        recruits = Globals.recruit_options
         return
         
-    var missions = []
+    recruits = [0,0,0]
     if level <= 4:
         missions = MissionFactory.foundry_1_floors(floor)
     elif level <= 8:
@@ -124,41 +111,29 @@ func setup_floor(level: int, floor):
     var bots = EntityFactory.new_recruits()
     if len(bots) >= 1:
         # Fill all bots up so that if there is only 1 left to recruit all rooms can recruit
-        e_recruit_bot_1 = bots[0]
-        e_recruit_bot_2 = bots[0]
-        e_recruit_bot_3 = bots[0]
+        recruits[0] = bots[0]
+        recruits[1] = bots[0]
+        recruits[2] = bots[0]
     if len(bots) >= 2:
-        e_recruit_bot_2 = bots[1]
-        e_recruit_bot_3 = bots[1]
+        recruits[1] = bots[1]
+        recruits[2] = bots[1]
     if len(bots) >= 3:
-        e_recruit_bot_3 = bots[2]
-    
-    mission1 = missions[0]
-    mission2 = missions[1]
-    mission3 = missions[2]
-
-    setup_floor_missions()
-    setup_floor_recruits()
+        recruits[2] = bots[2]
     
     Globals.missions_found = true
     Globals.mission_options = missions
-    Globals.recruit_options = [e_recruit_bot_1, e_recruit_bot_2, e_recruit_bot_3] 
-    return
-    
-func setup_floor_missions():
-    room_info1.start(mission1, "ROOM A")
-    room_info2.start(mission2, "ROOM B")
-    room_info3.start(mission3, "ROOM C")
+    Globals.recruit_options = recruits
     return
 
-func setup_floor_recruits():
-    setup_recruit(recruit_1, e_recruit_bot_1)
-    setup_recruit(recruit_2, e_recruit_bot_2)
-    setup_recruit(recruit_3, e_recruit_bot_3)
-    return
-
-func setup_recruit(container: Node2D, bot: EntityFactory.Bot):
+func setup_recruit(bot: EntityFactory.Bot):
     var ent = EntityFactory.create_bot(bot)
-    label(container).text = ent.display_name
-    sprite(container).texture = load(ent.icon_path)
+    recruitName.text = ent.display_name
+    recruitSprite.texture = load(ent.icon_path)
+    recruitStatsPanel.start(ent)
+    recruitPassiveName.text = ent.action1.display_name
+    recruitPassiveDesc.text = ent.action1.description
+    recruitSpecName.text = ent.action1.display_name
+    recruitSpecDesc.text = ent.action1.description
+    recruitUltName.text = ent.action2.display_name
+    recruitUltDesc.text = ent.action2.description
     return

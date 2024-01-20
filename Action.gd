@@ -7,6 +7,7 @@ var description: String
 var stats: Dictionary
 var level := 1
 var animation_path : String = ""
+var is_ultimate := false
 
 func get_from_stats(key, default=0):
     if stats.has(key):

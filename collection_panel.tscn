@@ -26,8 +26,8 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -38,19 +38,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control2"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -61,19 +63,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control2"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control3" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control3"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -84,19 +88,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control3"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control4" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control4"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -107,19 +113,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control4"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control5" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control5"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -130,19 +138,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control5"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control6" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control6"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -153,19 +163,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control6"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control7" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control7"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -176,19 +188,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control7"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control8" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control8"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -199,19 +213,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control8"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control9" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control9"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -222,19 +238,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control9"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control10" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control10"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -245,19 +263,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control10"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control11" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control11"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -268,19 +288,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control11"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control12" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control12"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -291,19 +313,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control12"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control13" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control13"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -314,19 +338,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control13"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control14" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control14"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -337,19 +363,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control14"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control15" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control15"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -360,19 +388,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control15"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control16" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control16"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -383,19 +413,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control16"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control17" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control17"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -406,19 +438,21 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control17"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Control18" type="Control" parent="GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="GridContainer/Control18"]
 layout_mode = 0
-offset_right = 500.0
-offset_bottom = 600.0
+offset_right = 1000.0
+offset_bottom = 1200.0
 scale = Vector2(0.1, 0.1)
 theme_type_variation = &"BotButton"
 toggle_mode = true
@@ -429,11 +463,13 @@ icon = ExtResource("1_k21am")
 [node name="Label" type="Label" parent="GridContainer/Control18"]
 layout_mode = 0
 offset_left = -1.82417
-offset_top = 35.9678
+offset_top = 52.3468
 offset_right = 103.176
-offset_bottom = 56.9678
+offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RightButton" type="Button" parent="."]
 visible = false

@@ -26,6 +26,7 @@ func add_entity(entity: Entity):
         if _entities[i] == null:
             _entities[i] = entity
             var c = container(i)
+            tile(c).texture = load("res://Assets/GUI/SingleTileSelected.png")
             sprite(c).texture = load(entity.icon_path)
             button(c).disabled = false
             update_count()
@@ -36,6 +37,7 @@ func remove_entity(idx: int):
     var entity = _entities[idx]
     _entities[idx] = null
     var c = container(idx)
+    tile(c).texture = load("res://Assets/GUI/SingleTileDisabled.png")
     sprite(c).texture = load(Globals.NO_BOT_ICON_PATH)
     button(c).disabled = true
     update_count()
@@ -55,14 +57,17 @@ func update_count():
     elif is_empty():
         countLabel.modulate = Color.DARK_RED
     else:
-        countLabel.modulate = Color.WHITE
+        countLabel.modulate = Color.CORAL
     return
 
-func sprite(c) -> Sprite2D:
+func tile(c) -> Sprite2D:
     return c.get_child(0)
 
-func button(c) -> Button:
+func sprite(c) -> Sprite2D:
     return c.get_child(1)
+
+func button(c) -> Button:
+    return c.get_child(2)
 
 func container(idx: int) -> Control:
     idx = abs(idx - 5)
