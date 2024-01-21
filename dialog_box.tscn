@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://bph1lnyqahu2x"]
+
+[ext_resource type="Texture2D" uid="uid://8joma6ftgyhh" path="res://Assets/medium.png" id="1_kartt"]
+[ext_resource type="Script" path="res://dialog_box.gd" id="1_p861v"]
+[ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="3_qnhjh"]
+
+[node name="DialogBox" type="Node2D"]
+script = ExtResource("1_p861v")
+
+[node name="Fader" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.407843)
+
+[node name="Medium" type="Sprite2D" parent="."]
+position = Vector2(988.083, 531.029)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_kartt")
+
+[node name="Title" type="Label" parent="."]
+offset_left = 715.88
+offset_top = 359.365
+offset_right = 1255.88
+offset_bottom = 396.365
+theme_override_font_sizes/font_size = 25
+text = "TITLE TITLE TITLE TITLE?"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+offset_left = 675.006
+offset_top = 416.196
+offset_right = 1305.01
+offset_bottom = 656.196
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_qnhjh")
+theme_override_font_sizes/font_size = 18
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+autowrap_mode = 2
+
+[node name="Continue" type="Button" parent="."]
+offset_left = 1010.41
+offset_top = 673.509
+offset_right = 1210.41
+offset_bottom = 783.509
+theme_override_font_sizes/font_size = 26
+text = "Continue"
+
+[node name="Cancel" type="Button" parent="."]
+offset_left = 782.28
+offset_top = 673.509
+offset_right = 982.28
+offset_bottom = 783.509
+theme_override_font_sizes/font_size = 26
+text = "Cancel"

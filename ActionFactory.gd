@@ -252,7 +252,7 @@ static func add_auto_turret_3000(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array, action: Action):
         action.spawn = EntityFactory.create_auto_turret_3000()
         return
-    var d = "Deploy the Auto Turret 3000, a powerful turret that slowly deteriorates"
+    var d = "Deploy the Auto Turret 3000, a powerful but fragile turret that slowly deteriorates"
     var action := _add_action(ent, "Auto Turret 3000", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.SPAWN
     return

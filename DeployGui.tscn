@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cve4y2nbbwucg"]
+[gd_scene load_steps=9 format=3 uid="uid://cve4y2nbbwucg"]
 
 [ext_resource type="Script" path="res://DeployGui.gd" id="1_1roly"]
 [ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_q1skw"]
 [ext_resource type="PackedScene" uid="uid://bxp0hhpdubjky" path="res://detailed_room_info.tscn" id="6_27vo8"]
+[ext_resource type="PackedScene" uid="uid://bph1lnyqahu2x" path="res://dialog_box.tscn" id="8_trrak"]
 [ext_resource type="PackedScene" uid="uid://ct2wj06r38iul" path="res://upgrade_panel.tscn" id="11_q353u"]
 [ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="12_os86a"]
 [ext_resource type="PackedScene" uid="uid://b5r70vpa8c172" path="res://DeployPanel.tscn" id="13_e71vw"]
@@ -47,3 +48,5 @@ offset_right = 177.15
 offset_bottom = 93.9385
 theme_override_font_sizes/font_size = 20
 text = "Back"
+
+[node name="DialogBox" parent="." instance=ExtResource("8_trrak")]

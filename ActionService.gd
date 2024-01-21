@@ -44,7 +44,10 @@ func _input(event):
                         return
                 if action().cost() != 0:
                     _entity.update_energy(-action().cost())
-                _entity.action_animation(action_animation_effects)
+                if action().type == ActionType.ATTACK:
+                    _entity.attack_animation(action_animation_effects)
+                else:
+                    _entity.action_animation(action_animation_effects)
                 if action().type == ActionType.ACTION2:
                     _entity.ultimate_used = true
                 _enabled = false

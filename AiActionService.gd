@@ -8,6 +8,7 @@ var _targets: Array
 
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
+@onready var highlightMap2: TileMap = $"../HighlightMap2"
 @onready var effects : Node2D = $Effects
 
 signal done
@@ -30,12 +31,12 @@ func find_attack_location() -> Vector2i:
     if target_entity == null:
         return Vector2i(999, 999)
     target_entity.loseThreat(1)
-    highlightMap.highlightVec(target_entity.location,Highlights.RED)
+    highlightMap2.highlightVec(target_entity.location,Highlights.RED)
     return target_entity.location
 
 func do_attack(target: Vector2i):
     _targets = Utils.get_target_coords(_entity.location, target, shape())
-    _entity.action_animation(func():
+    _entity.attack_animation(func():
         ActionCommon.do_action_animation(effects, _entity.attack, _targets, tileMap, action_animation_done)
         )
     return
@@ -56,7 +57,7 @@ func start(entity: Entity):
     _entity = entity
     _map_bfs = MapBFS.new()
     var _range = _entity.get_range()
-    _map_bfs.init(_entity.location, _range, tileMap, highlightMap, Highlights.PURPLE, _state, MapBFS.BFS_MODE.Attack)
+    _map_bfs.init(_entity.location, _range, tileMap, highlightMap, Highlights.ORANGE, _state, MapBFS.BFS_MODE.Attack)
     _map_bfs.resetHighlights(true)
     return
     

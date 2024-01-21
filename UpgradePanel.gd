@@ -327,7 +327,6 @@ func setup_entity():
     statLabel(action2_c).text = _entity.action2.display_name
     modifierLabel(action1_c).text = str(_entity.action1.level)
     modifierLabel(action2_c).text = str(_entity.action2.level)
-    print(_entity.action2.level)
     statLabel(range_c).text = str(_entity.range)
     
     action1_copy = _entity.action1.clone()

@@ -26,11 +26,10 @@ func _input(event):
                 _previous_ent = _state.entity_on_tile(coords)
                 if _previous_ent != null and _show_info:
                     _previous_ent.show_info()
-                    var h = Highlights.ENEMY_MOVEMENT
-                    if _previous_ent.is_ally:
-                        h = Highlights.MOVEMENT
-                    _map_bfs.init(coords, _previous_ent.get_movement(), tileMap, self, h, _state, MapBFS.BFS_MODE.Show)
-                    _map_bfs.resetHighlights(true, false)
+                    if not _previous_ent.is_ally:
+                        var h = Highlights.ENEMY_MOVEMENT
+                        _map_bfs.init(coords, _previous_ent.get_movement(), tileMap, self, h, _state, MapBFS.BFS_MODE.Show)
+                        _map_bfs.resetHighlights(true, false)
                     show_passive(coords)
                     
         _previous_coords = coords

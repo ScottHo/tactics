@@ -1,6 +1,7 @@
 class_name DeployPanel extends Node2D
 
 var _entities = [null, null, null, null, null, null]
+var ents_deployed := 0
 @onready var grid = $GridContainer
 @onready var countLabel = $Label
 
@@ -51,7 +52,8 @@ func is_empty() -> bool:
     return _entities.count(null) == len(_entities)
 
 func update_count():
-    countLabel.text = str(abs(_entities.count(null)-6)) + "/" + str(len(_entities))
+    ents_deployed = abs(_entities.count(null)-6)
+    countLabel.text = str(ents_deployed) + "/" + str(len(_entities))
     if is_full():
         countLabel.modulate = Color.LAWN_GREEN
     elif is_empty():

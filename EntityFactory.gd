@@ -200,7 +200,7 @@ static func create_buster():
     return ent
 
 static func create_auto_turret_3000():
-    var ent = _create_entity("Auto Turret 3000", 5, 0, 5, 15, "res://Bots/buster.tscn", "res://Assets/bot_template.png", true)
+    var ent = _create_entity("A.T. 3000", 5, 0, 5, 15, "res://Bots/auto_turret_3000.tscn", "res://Assets/Bots/AutoTurret3000/auto_turret_3000.png", true)
     ent.damage += 6
     ent.is_add = true
     ActionFactory.add_base_attack(ent)

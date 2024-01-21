@@ -16,6 +16,7 @@ func _ready():
     startMissionButton = $StartMission
     backButton = $BackButton
     detailedRoomInfo = $DetailedRoomInfo
+    $DialogBox.end()
     collectionPanel.entity_selected.connect(entity_selected)
     upgradePanel.deployed.connect(entity_deployed)
     deployPanel.entity_removed.connect(entity_removed_from_deploy)
@@ -54,6 +55,18 @@ func entity_removed_from_deploy(ent: Entity):
     return
 
 func startMission():
+    var bots_alive = min(len(Globals.bots_collected) - len(Globals.bots_dead), 6)
+    if bots_alive > deployPanel.ents_deployed:
+        $DialogBox.set_title("Under Deployed")
+        $DialogBox.set_description("You can have a maximum of 6 bots for the mission. Continue anyways?")
+        $DialogBox.set_callback(start_mission_cont)
+        $DialogBox.start()
+    else:
+        start_mission_cont()
+    return
+    
+func start_mission_cont():
+    $DialogBox.end()
     Globals.level_debug_mode = false
     var entities_to_deploy = []
     for ent in deployPanel._entities:

@@ -73,6 +73,18 @@ func play_action_animation(callback):
             , CONNECT_ONE_SHOT)
     return
 
+func play_attack_animation(callback):
+    if animationPlayer.has_animation("Attack"):
+        animationPlayer.play("Attack")
+        animationPlayer.animation_finished.connect(func(s):
+            callback.call(), CONNECT_ONE_SHOT)
+    else:
+        var timer = get_tree().create_timer(.5)
+        timer.timeout.connect(func():
+            callback.call()
+            , CONNECT_ONE_SHOT)
+    return
+
 func play_shift_animation():
     var tween = get_tree().create_tween()
     var shifted = position

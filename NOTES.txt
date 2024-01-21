@@ -2,9 +2,7 @@ BUGS
 - Highlights over being over written for ai if if recently moved off of it before attack
 
 DO NEXT
-- Modulate for ally/enemy
-- Popup for under deploying
-- Auto Turret 3000 Sprite
+- Tutorial
 - Animations (Wait for artists?)
 
 DO LATER
@@ -24,6 +22,8 @@ DO LATER
 - show status effects on hover
 - Splash Screen
 - Undo Button
+- Modulate on target
+- Training Room
 
 IDEAS
 Boss 1: Adds that drops souls that revive

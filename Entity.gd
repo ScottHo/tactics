@@ -375,6 +375,12 @@ func action_animation(callback):
     sprite.play_action_animation(callback)
     return
 
+func attack_animation(callback):
+    if not check_sprite():
+        return
+    sprite.play_attack_animation(callback)
+    return
+
 func stop_animations():
     if not check_sprite():
         return
