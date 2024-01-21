@@ -9,6 +9,7 @@ var _num_inters := 0
 
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
+@onready var highlightMap2: TileMap = $"../HighlightMap2"
 
 signal interactDone
 
@@ -26,8 +27,6 @@ func _input(event):
         if _target != coords:
             clearTargetHighlights()
             _target = coords
-            if not _map_bfs.inRange(_target):
-                return
             fillTargetHighlights()
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
@@ -36,7 +35,6 @@ func _input(event):
                     return
                 var _inter: Interactable = _state.interactable_on_tile(_target)
                 if _inter == null and _entity.interactable == null:
-                    print_debug("Could not find interactable")
                     return
                 if _inter == null and _entity.interactable != null:
                     print_debug("Attempting to place interactable at " + str(_target))
@@ -75,14 +73,11 @@ func setState(state: State):
     return
 
 func fillTargetHighlights():
-    highlightMap.highlightVec(_target, Highlights.RED)
+    highlightMap2.highlightVec(_target, Highlights.SELECTED)
     return
 
 func clearTargetHighlights():
-    if _map_bfs.inRange(_target):
-        highlightMap.highlightVec(_target, Highlights.PURPLE)
-    else:
-        highlightMap.highlightVec(_target, Highlights.EMPTY)
+    highlightMap2.highlightVec(_target, Highlights.EMPTY)
     _target = Vector2i(999,999)
     return
 
@@ -131,7 +126,7 @@ func setup_interactable_for_level(inter: Interactable, location: Vector2i, incre
 func start(entity: Entity):
     _entity = entity
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_entity.location, 1, tileMap, highlightMap, Highlights.PURPLE, _state, MapBFS.BFS_MODE.Interact)
+    _map_bfs.init(_entity.location, 1, tileMap, highlightMap, Highlights.GREY, _state, MapBFS.BFS_MODE.Interact)
     _map_bfs.resetHighlights(true)
     _enabled = true
     return
