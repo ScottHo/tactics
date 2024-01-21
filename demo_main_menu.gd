@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
     $Buster/AnimationPlayer.play("Move")
+    $Buster/CharacterCommon/InfoBoxContainer.visible = false
     $Label2.visible = false    
     if Globals.current_level > 8:
         $Control/Control/Button.disabled = true

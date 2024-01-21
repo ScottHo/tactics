@@ -20,16 +20,23 @@ func _ready():
 func _input(event):
     if not _enabled:
         return
+    if Globals.on_ui:
+        if TargetTypes.NO_BFS.has(action().type):
+            clear_target_highlights_no_bfs()
+        else:
+            clearTargetHighlights()
     if event is InputEventMouseMotion:
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if _previous_coords != coords:
             _previous_coords = coords            
-            if TargetTypes.NO_BFS:
+            if TargetTypes.NO_BFS.has(action().type):
                 highlight_for_no_bfs()
             else:
                 highlight_for_bfs()
             
     if event is InputEventMouseButton and event.is_pressed():
+        if Globals.on_ui:
+            return
         match event.button_index:
             MOUSE_BUTTON_LEFT:
                 if len(_target_points) <= 0:
@@ -74,10 +81,8 @@ func add_chain_target(start_vec):
     return Vector2i(999,999)
 
 func highlight_for_no_bfs():
-    if _targets_all.has(_previous_coords):
-        for t in _targets_all:
-            highlightMap.highlightVec(t, Highlights.PURPLE)
-        _target_points = []
+    if not _targets_all.has(_previous_coords):
+        clear_target_highlights_no_bfs()
     else:
         for t in _targets_all:
             highlightMap.highlightVec(t, Highlights.RED)
@@ -108,7 +113,6 @@ func action_animation_effects():
 func action_animation_done():
     ActionCommon.do_action(_state, _entity, _target_points, action())
     if action().spawn != null:
-        print("SPAWN")
         for target in _target_points:
             ActionCommon.spawn_entity(target, action().spawn.clone(), $"../", tileMap, _state)
         action().spawn = null
@@ -133,6 +137,12 @@ func clearTargetHighlights():
             highlightMap.highlightVec(point, Highlights.PURPLE)
         else:
             highlightMap.highlightVec(point, Highlights.EMPTY)
+    _target_points = []
+    return
+
+func clear_target_highlights_no_bfs():
+    for t in _targets_all:
+        highlightMap.highlightVec(t, Highlights.PURPLE)
     _target_points = []
     return
 

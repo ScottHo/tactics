@@ -91,20 +91,18 @@ position = Vector2(94.6259, -20.8391)
 script = ExtResource("6_m13e8")
 
 [node name="Background" type="Sprite2D" parent="InfoBoxContainer"]
-visible = false
-position = Vector2(34.5113, 11.0356)
-scale = Vector2(0.4, 0.5)
+position = Vector2(50.5714, 3.39394)
+scale = Vector2(0.5, 0.6)
 texture = ExtResource("6_v4rmv")
 
 [node name="Stats" type="GridContainer" parent="InfoBoxContainer"]
-visible = false
-offset_left = -0.0593047
-offset_top = -16.5946
-offset_right = 149.941
-offset_bottom = 69.4054
-scale = Vector2(0.5, 0.5)
-theme_override_constants/h_separation = 150
-theme_override_constants/v_separation = 43
+offset_left = 2.86073
+offset_top = -30.9227
+offset_right = 152.861
+offset_bottom = 69.0773
+scale = Vector2(0.45, 0.45)
+theme_override_constants/h_separation = 160
+theme_override_constants/v_separation = 50
 columns = 2
 
 [node name="Control" type="Control" parent="InfoBoxContainer/Stats"]
@@ -124,6 +122,14 @@ text = "99
 "
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="AuraLabel" type="Label" parent="InfoBoxContainer/Stats/Control"]
+layout_mode = 0
+offset_left = 39.0012
+offset_right = 79.0012
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 22
+vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="InfoBoxContainer/Stats"]
 layout_mode = 2
@@ -214,7 +220,6 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="InfoBoxContainer"]
-visible = false
 z_index = 5
 offset_left = -168.841
 offset_top = 45.8383
@@ -259,7 +264,6 @@ label_settings = SubResource("LabelSettings_pnrjd")
 vertical_alignment = 2
 
 [node name="EnergyBar" type="TextureProgressBar" parent="InfoBoxContainer"]
-visible = false
 z_index = 5
 offset_left = -168.841
 offset_top = 63.8383
@@ -272,8 +276,48 @@ texture_under = ExtResource("10_m1a84")
 texture_progress = ExtResource("5_apc0l")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="InfoBoxContainer"]
+visible = false
 offset_left = -129.457
 offset_top = -37.7451
 offset_right = -59.4574
 offset_bottom = 42.2549
 border_color = Color(1, 0, 0, 0)
+
+[node name="Passive" type="Control" parent="InfoBoxContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -39.177
+offset_top = 15.7609
+offset_right = 0.822968
+offset_bottom = 55.7609
+
+[node name="Label2" type="Label" parent="InfoBoxContainer/Passive"]
+offset_left = 14.048
+offset_top = 13.1138
+offset_right = 31.048
+offset_bottom = 26.1138
+theme_override_colors/font_color = Color(0.423529, 0.607843, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 10
+text = "[P]"
+
+[node name="Label" type="Label" parent="InfoBoxContainer/Passive"]
+offset_left = 31.9052
+offset_top = 13.1138
+offset_right = 74.9052
+offset_bottom = 26.1138
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 10
+text = "Aura: "
+
+[node name="ShortName" type="Label" parent="InfoBoxContainer/Passive"]
+offset_left = 74.2043
+offset_top = 13.1138
+offset_right = 151.204
+offset_bottom = 26.1138
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 10
+text = "+1 Initiative"

@@ -14,9 +14,21 @@ var current_foundry := "None"
 var missions_found := false
 var mission_options := []
 var recruit_options := []
+var in_action := false
+var on_ui := false
 
 static var UNKNOWN_BOT_ICON_PATH = "res://Assets/Unknown.png"
 static var NO_BOT_ICON_PATH = "res://Assets/None.png"
+
+func start_action():
+    print_debug("Action Started")
+    in_action = true
+    return
+
+func end_action():
+    print_debug("Action Stopped")
+    in_action = false
+    return
 
 func _ready():
     var root = get_tree().root

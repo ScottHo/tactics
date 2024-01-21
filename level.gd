@@ -83,6 +83,7 @@ func _process(delta):
 
 func setup_entity_for_level(ent: Entity, location: Vector2i):
     var sprite: EntitySprite = load(ent.sprite_path).instantiate()
+    ent.health = ent.get_max_health()
     add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(location)
     ent.location = location
@@ -121,7 +122,7 @@ func setup_entities():
         e5.max_health += 2
         var e6 := EntityFactory.create_bot(EntityFactory.Bot.SMITHY)
         e6.action2.level += 1
-        e6.max_health += 2
+        e6.max_health += 3
         #setup_entity_for_level(e, Vector2i(1,0))
         #setup_entity_for_level(e1, Vector2i(1,1))
         #setup_entity_for_level(e2, Vector2i(1,2))
@@ -352,10 +353,10 @@ func update_character_menu():
     return
 
 func doMove(on):
-    print_debug("Do Move")
     resetPlayerServices()
     if not on:
         return
+    print_debug("Do Move")
     if not _is_ai_turn:
         menuService.show_description_click(ActionType.MOVE)
     moveService.start(currentEntity())
@@ -363,7 +364,7 @@ func doMove(on):
 
 func movesFound(poses):
     print_debug("Moves Found")
-    currentEntity().sprite.doneMoving.connect(doneMove, CONNECT_ONE_SHOT)
+    currentEntity().sprite.doneMoving.connect(moveDone, CONNECT_ONE_SHOT)
     if len(poses) > 0:
         cameraService.lock_on(currentEntity().sprite)
         var moved_ents = []
@@ -377,10 +378,10 @@ func movesFound(poses):
             moved_ents.append(null)
         currentEntity().sprite.movePoints(poses, moved_ents)
     else:
-        doneMove()
+        moveDone()
     return
 
-func doneMove():
+func moveDone():
     print_debug("Done Move")    
     currentEntity().stop_animations()
     cameraService.stop_lock()
@@ -394,15 +395,16 @@ func doneMove():
         menuService.show_description(false, null)
         menuService.force_show_description = false
         moveService.finish()
+    Globals.end_action()
     update_character_menu()
     highlightMap.highlight(currentEntity())
     return
 
 func doInteract(on):
-    print_debug("Do Interact")
     resetPlayerServices()
     if not on:
         return
+    print_debug("Do Interact")
     interactService.start(currentEntity())
     menuService.show_description_click(ActionType.INTERACT)
     return
@@ -410,18 +412,18 @@ func doInteract(on):
 func interactDone():
     print_debug("Interact Done")
     interactService.finish()
-    menuService.disableInteractButton()
     menuService.show_description(false, null)
     menuService.force_show_description = false
     update_character_menu()
-    checkDeaths()
+    if not checkDeaths():
+        Globals.end_action()
     return
 
 func doAction(on, action_type: int):
-    print_debug("Do Action")
     resetPlayerServices()
     if not on:
         return
+    print_debug("Do Action")
     actionService.start(currentEntity(), action_type)
     menuService.show_description_click(action_type)
     return
@@ -434,7 +436,8 @@ func actionDone():
     turnService.update_new()
     auraService.update()
     update_character_menu()
-    checkDeaths()
+    if not checkDeaths():
+        Globals.end_action()
     return
 
 func checkDeaths():

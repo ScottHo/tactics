@@ -95,10 +95,11 @@ static func create_electo():
     return ent
 
 static func create_nanonano():
-    var ent = _create_entity("Nano-nano", 18, 4, 3, 10, "res://Bots/nanonano.tscn", "res://Assets/NanoNano.png", true)
+    var ent = _create_entity("Nano-nano", 21, 4, 3, 10, "res://Bots/nanonano.tscn", "res://Assets/NanoNano.png", true)
     var p = Passive.new()
     p.display_name = "Nanobot Attendants"
     p.description = "Allied units in a square near Nano-nano gain 2 health at start of turn"
+    p.aura_short_desc = "+2 HP Regen"
     p.aura_effect = func(e: Entity):
         e.aura_regen = 2
     p.is_aura = true
@@ -114,6 +115,7 @@ static func create_smithy():
     var p = Passive.new()
     p.display_name = "Quick Assist"
     p.description = "Allied units in a square near Smithy have +1 damage"
+    p.aura_short_desc = "+1 Damage"
     p.aura_effect = func(e: Entity):
         e.aura_damage_modifier = 1
     p.is_aura = true
@@ -128,6 +130,7 @@ static func create_longshot():
     var p = Passive.new()
     p.display_name = "Marksman Advice"
     p.description = "Allied units in a square near Longshot have +1 range"
+    p.aura_short_desc = "+1 Range"    
     p.aura_effect = func(e: Entity):
         e.aura_range_modifier = 1
     p.is_aura = true

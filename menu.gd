@@ -20,6 +20,7 @@ signal menuAnimationsFinished
 @onready var attackButton: Button = $CharacterContainer/AttackButton
 @onready var action1Button: Button = $CharacterContainer/Action1Button
 @onready var action2Button: Button = $CharacterContainer/Action2Button
+@onready var passiveHover: ReferenceRect = $CharacterContainer/Passive/Label/PassiveHover
 
 @onready var charSprite: Sprite2D = $CharacterContainer/CharacterSprite
 @onready var nameLabel: Label = $CharacterContainer/NameLabel
@@ -41,10 +42,10 @@ signal menuAnimationsFinished
 @onready var descSpecialPanel: SpecialDescriptionPanel = $DescriptionContainer/SpecialPanel
 @onready var descShortPanel: Sprite2D = $DescriptionContainer/ShortPanel
 @onready var descMoves: Label = $DescriptionContainer/MoveContainer/MovesLeft
-@onready var descInter: Label = $DescriptionContainer/InteractMessage
 @onready var descContainer: Control = $DescriptionContainer
 @onready var descMoveInterName: Label = $DescriptionContainer/MoveInteractName
 @onready var descInterDesc: Label = $DescriptionContainer/InteractDescription
+@onready var descPassivePanel: PassivePanel = $PassivePanel
 
 @onready var mech_1_name_short = $MechanicContainer/Short/Grid/Mechanic/Name
 @onready var mech_2_name_short = $MechanicContainer/Short/Grid/Mechanic2/Name
@@ -61,16 +62,15 @@ signal menuAnimationsFinished
 
 func _ready():
     $AbortMissionButton.pressed.connect(lose)
-    nextTurnButton.button_down.connect(func():
-        unpress_all_buttons()
-        nextTurnActionInitiate.emit())
 
+    setup_next_turn_button()
     setup_mechanic_container()
     setup_move_button()
     setup_interact_button()
     setup_action_button(attackButton, ActionType.ATTACK)
     setup_action_button(action1Button, ActionType.ACTION1)
     setup_action_button(action2Button, ActionType.ACTION2)
+    setup_passive_hover()
     
     showTurnsButton.toggled.connect(func(b):
         show_future_turns(b))
@@ -99,35 +99,91 @@ func setup_mechanic_container():
         $MechanicContainer/Long.visible = false
         $MechanicContainer/Short.visible = true)
     return
+    
+func setup_next_turn_button():
+    nextTurnButton.button_down.connect(func():
+        if Globals.in_action:
+            restore_button_states()
+            nextTurnButton.disabled = true
+            var t = get_tree().create_timer(.5)
+            t.timeout.connect(func():
+                nextTurnButton.disabled = false)
+            nextTurnButton.text = "Next\nTurn"
+            Globals.end_action()
+        else:
+            unpress_all_buttons()
+            nextTurnActionInitiate.emit()
+            )
+    nextTurnButton.mouse_entered.connect(func():
+        control_entered_tasks())
+    nextTurnButton.mouse_exited.connect(func():
+        control_exited_tasks())
 
 func setup_move_button():
     moveButton.toggled.connect(func(b):
-        unpress_all_buttons(moveButton)
+        button_toggled_tasks(moveButton, b)
         moveActionInitiate.emit(b))
     moveButton.mouse_entered.connect(func():
+        control_entered_tasks()
         show_description(true, ActionType.MOVE))
     moveButton.mouse_exited.connect(func():
+        control_exited_tasks()
         show_description(false, ActionType.MOVE))
     return
 
 func setup_interact_button():
     interactButton.toggled.connect(func(b):
-        unpress_all_buttons(interactButton)
+        button_toggled_tasks(interactButton, b)
         interactActionInitiate.emit(b))
     interactButton.mouse_entered.connect(func():
+        control_entered_tasks()
         show_description(true, ActionType.INTERACT))
     interactButton.mouse_exited.connect(func():
+        control_exited_tasks()
         show_description(false, ActionType.INTERACT))
     return
 
 func setup_action_button(button: Button, action_type):
     button.toggled.connect(func(b):
-        unpress_all_buttons(button)
+        button_toggled_tasks(button, b)
         actionInitiate.emit(b, action_type))
     button.mouse_entered.connect(func():
+        control_entered_tasks()
         show_description(true, action_type))
     button.mouse_exited.connect(func():
+        control_exited_tasks()
         show_description(false, action_type))
+    return
+
+func setup_passive_hover():
+    descPassivePanel.visible = false
+    passiveHover.mouse_entered.connect(func():
+        control_entered_tasks()
+        if descPassivePanel.has_data:
+            descPassivePanel.visible = true
+        )
+    passiveHover.mouse_exited.connect(func():
+        control_exited_tasks()
+        descPassivePanel.visible = false)
+    return
+
+func button_toggled_tasks(button, toggled):
+    if toggled:
+        disable_all_action_buttons(button)
+        Globals.start_action()
+        nextTurnButton.text = "Cancel"
+    else:
+        nextTurnButton.text = "Next\nTurn"
+        Globals.end_action()
+        restore_button_states()
+    return
+
+func control_entered_tasks():
+    Globals.on_ui = true
+    return
+
+func control_exited_tasks():
+    Globals.on_ui = false
     return
 
 func setState(state: State):
@@ -186,7 +242,7 @@ func start_menu_animations():
     _button_animations(attackButton)
     _button_animations(action1Button)
     _button_animations(action2Button)
-    $Timer.start(1)
+    $Timer.start(.5)
     return
 
 func _button_animations(button: Button):
@@ -199,7 +255,7 @@ func _button_animations(button: Button):
 
 func finish_menu_animations():
     $Timer.stop()
-    nextTurnButton.disabled = false    
+    nextTurnButton.disabled = false
     menuAnimationsFinished.emit()
     return
 
@@ -231,6 +287,8 @@ func updateEntityInfo(entity: Entity):
 
     if entity.moves_left > 0 and entity.is_ally:
         moveButton.disabled = false
+    print("Passive Set")
+    descPassivePanel.set_passive(entity.passive)
     return
 
 func _set_colors(entity: Entity):
@@ -255,6 +313,22 @@ func unpress_all_buttons(omit=null):
         action1Button.set_pressed(false)
     if omit != action2Button:
         action2Button.set_pressed(false)
+    return
+
+func disable_all_action_buttons(omit=null):
+    nextTurnButton.disabled = false
+    cache_button_states()
+    unpress_all_buttons(omit)
+    if omit != moveButton:
+        moveButton.disabled = true
+    if omit != interactButton:
+        interactButton.disabled = true
+    if omit != attackButton:
+        attackButton.disabled = true
+    if omit != action1Button:
+        action1Button.disabled = true
+    if omit != action2Button:
+        action2Button.disabled = true
     return
 
 func enableAllButtons():
@@ -374,7 +448,6 @@ func show_description(show, action_type):
         return
     descInterDesc.visible = false
     descMoveInterName.visible = false
-    descInter.visible = false
     descSpecialPanel.visible = false
     descShortPanel.visible = false
     descMoves.get_parent().visible = false
@@ -389,7 +462,6 @@ func show_description(show, action_type):
         elif action_type == ActionType.INTERACT:
             descMoveInterName.visible = true
             descInterDesc.visible = true
-            descInter.visible = true
             descMoveInterName.text = "Interact"
             if _current_interactable == "":
                 descInterDesc.text = "Interact with or pick up a field object"

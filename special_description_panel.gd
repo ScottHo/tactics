@@ -3,6 +3,7 @@ class_name SpecialDescriptionPanel extends Node2D
 @onready var descName: Label = $DescriptionName
 @onready var descMain: Label = $DescriptionLabel
 @onready var costLabel: Label = $CostLabel
+@onready var levelLabel: Label = $LevelLabel
 @onready var affectsLabel: Label = $AffectsLabel
 @onready var actionLabel: Label = $ActionLabel
 @onready var specIcon: Sprite2D = $SpecIcon
@@ -45,13 +46,19 @@ func set_action(action: Action):
         specIcon.visible = true
         actionLabel.visible = false
         specIcon.texture = load("res://Assets/item_sword.png")
+        levelLabel.text = ""
     if action.type == ActionType.ACTION1:
         specIcon.visible = true
         actionLabel.visible = false
         specIcon.texture = load("res://Assets/ability.png")
+        levelLabel.text = "Level " + str(action.level)
     if action.type == ActionType.ACTION2:
         specIcon.visible = false
         actionLabel.visible = true
+        if action.level == 1:
+            levelLabel.text = ""
+        else:
+            levelLabel.text = "Not Learned"
 
     descName.text = action.display_name
     descMain.text = action.description
@@ -79,7 +86,7 @@ func parse_stats(action: Action):
             continue
         var c = container(index)
         name_label(c).text = key
-        if stats[key] is Array:
+        if typeof(stats[key]) == TYPE_ARRAY and action.type == ActionType.ACTION1:
             parse_multi_stat(c, key, stats[key], action.level)
         else:
             parse_single_stat(c, key, stats[key])
@@ -135,6 +142,8 @@ func modulate_label(label: Label, level: int, target_level: int):
     return
 
 func parse_single_stat(c, key, _stat):
+    stat1_label(c).add_theme_color_override("font_color", Color.WHITE)
+    stat1_label(c).add_theme_constant_override("outline_size", 1)
     stat1_label(c).text = format_single_stat(key, _stat)
     extra_stats(c).visible = false
     return

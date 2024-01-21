@@ -20,6 +20,10 @@ func _ready():
 func _input(event):
     if not _enabled:
         return
+    if Globals.on_ui:
+        highlightPath(true)
+        _points = []
+        return
     if event is InputEventMouseMotion:
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if previous_coords != coords:
@@ -59,7 +63,6 @@ func finish():
     if _map_bfs != null:
         _map_bfs.resetHighlights(false)
     _enabled = false
-        
     return
 
 func start(entity: Entity):

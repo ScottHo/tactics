@@ -1,15 +1,7 @@
 BUGS
-- Buttons need to be disabled when things are happening
-- Buttons not unclicked when move is done
 - Highlights over being over written for ai if if recently moved off of it before attack
-- Headquarters title wrong for foundry boss
-- Disable clicking on tiles if menu is covering it - Global flag?
-- Damage done calc for some actions not implemented
 
 DO NEXT
-- Show Passive Highlight
-- Show Movement Highlight
-- Show Passive on Hover
 - Popup for under deploying
 - Permadeath
 - Modulate for ally/enemy

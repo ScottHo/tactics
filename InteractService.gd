@@ -18,6 +18,9 @@ func _ready():
 func _input(event):
     if not _enabled:
         return
+    if Globals.on_ui:
+        clearTargetHighlights()
+        return
     if event is InputEventMouseMotion:
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if _target != coords:

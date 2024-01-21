@@ -2,6 +2,7 @@ class_name Passive
 
 var display_name: String
 var description: String
+var aura_short_desc: String
 var repeated_effect: Callable = func(e: Entity):
     return
 var static_effect: Callable = func(e: Entity):
@@ -19,6 +20,7 @@ func clone():
     var p = Passive.new()
     p.display_name = display_name
     p.description = description
+    p.aura_short_desc = aura_short_desc
     p.repeated_effect = repeated_effect
     p.static_effect = static_effect
     p.aura_effect = aura_effect

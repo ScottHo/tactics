@@ -39,6 +39,7 @@ func update_nodes():
 
 func update_from_entity(entity: Entity):
     update_nodes()
+    unexpand()
     _entity = entity
     update()
     return
@@ -61,6 +62,9 @@ func update():
     healthBar.max_value = _entity.get_max_health()
     healthBar.value = _entity.health
     energyBar.value = _entity.energy
+    if _entity.passive != null:
+        if _entity.passive.is_aura:
+            $Passive/ShortName.text = _entity.passive.aura_short_desc
     _set_colors()
     return
 
@@ -68,6 +72,9 @@ func expand():
     background.visible = true
     healthBar.visible = true
     $Stats.visible = true
+    if _entity.passive != null:
+        if _entity.passive.is_aura:
+            $Passive.visible = true
     if _entity.is_ally:
         energyBar.visible = true
     return
@@ -77,6 +84,7 @@ func unexpand():
     healthBar.visible = false
     $Stats.visible = false
     energyBar.visible = false
+    $Passive.visible = false
     return
 
 func _set_colors():

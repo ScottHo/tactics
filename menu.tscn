@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=44 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="6_246xv"]
 [ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://Assets/panel_buttons_background.png" id="6_xc4a1"]
 [ext_resource type="Texture2D" uid="uid://b7k4df1af7n00" path="res://Assets/panel_buttons.png" id="7_eppjx"]
+[ext_resource type="PackedScene" uid="uid://cupwjts5t5aua" path="res://passive_description_panel.tscn" id="8_a0b0q"]
 [ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="8_pd4nx"]
 [ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/energy.png" id="9_vl4vh"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/health.png" id="10_slf17"]
@@ -24,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="17_diddf"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="19_gtpi5"]
 [ext_resource type="Texture2D" uid="uid://20se04bvsoay" path="res://Assets/ability.png" id="24_ucv0g"]
+[ext_resource type="Texture2D" uid="uid://cm1l266el6dvl" path="res://Assets/square_button.png" id="25_01ek2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxedm"]
 
@@ -414,7 +416,6 @@ offset_right = 409.015
 offset_bottom = 463.056
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 16
-text = "Interact once per turn"
 horizontal_alignment = 1
 
 [node name="MoveInteractName" type="Label" parent="DescriptionContainer"]
@@ -438,6 +439,9 @@ theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 15
 text = "No Action Selected."
 autowrap_mode = 2
+
+[node name="PassivePanel" parent="." instance=ExtResource("8_a0b0q")]
+position = Vector2(1573.55, 477.102)
 
 [node name="TurnButton" type="Button" parent="."]
 anchors_preset = 7
@@ -871,6 +875,29 @@ text = "Ult"
 libraries = {
 "": SubResource("AnimationLibrary_fyyxq")
 }
+
+[node name="Passive" type="Sprite2D" parent="CharacterContainer"]
+position = Vector2(557.078, 39.8757)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("25_01ek2")
+
+[node name="Label" type="Label" parent="CharacterContainer/Passive"]
+offset_left = -37.9208
+offset_top = -57.4023
+offset_right = -12.9208
+offset_bottom = -20.4023
+scale = Vector2(3, 3)
+theme_override_font_sizes/font_size = 30
+text = "P"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PassiveHover" type="ReferenceRect" parent="CharacterContainer/Passive/Label"]
+layout_mode = 0
+offset_left = -15.017
+offset_top = -9.45511
+offset_right = 39.983
+offset_bottom = 45.5449
 
 [node name="AbortMissionButton" type="Button" parent="."]
 offset_left = 8.47571

@@ -20,7 +20,7 @@ func _input(event):
                 _previous_ent = null
             if tileMap.in_range(coords):
                 set_cell(1, coords, 0, Highlights.SELECTED, 0)
-            if _show_info:
+            if _show_info and not Globals.in_action:
                 _previous_ent = _state.entity_on_tile(coords)
                 if _previous_ent != null and _show_info:
                     _previous_ent.show_info()
@@ -34,7 +34,6 @@ func _input(event):
 func show_passive(coords):
     if _previous_ent.passive != null:
         if _previous_ent.passive.is_aura:
-            print("?")
             var vecs = [Vector2i(1,0), Vector2i(0,1), Vector2i(0,-1), Vector2i(-1,0),
                         Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,-1), Vector2i(-1,1)]
             for vec in vecs:
