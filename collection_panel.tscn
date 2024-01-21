@@ -47,6 +47,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -84,6 +85,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control2"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -121,6 +123,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control3"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -158,6 +161,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control4"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -195,6 +199,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control5"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -232,6 +237,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control6"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -269,6 +275,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control7"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -306,6 +313,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control8"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -343,6 +351,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control9"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -380,6 +389,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control10"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -417,6 +427,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control11"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -454,6 +465,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control12"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -491,6 +503,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control13"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -528,6 +541,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control14"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -565,6 +579,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control15"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -602,6 +617,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control16"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -639,6 +655,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control17"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176
@@ -676,6 +693,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control18"]
+layout_mode = 0
 offset_left = -1.82417
 offset_top = 52.3468
 offset_right = 103.176

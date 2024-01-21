@@ -2,7 +2,6 @@ BUGS
 - Highlights over being over written for ai if if recently moved off of it before attack
 
 DO NEXT
-- Maybe Utilize HighlightMap2 for attacks
 - Popup for under deploying
 - Modulate for ally/enemy
 - Auto Turret 3000 Sprite
@@ -25,7 +24,6 @@ DO LATER
 - show status effects on hover
 - Splash Screen
 - Undo Button
-- Different target highlights for good/bad
 
 IDEAS
 Boss 1: Adds that drops souls that revive

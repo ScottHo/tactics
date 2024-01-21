@@ -52,9 +52,9 @@ func _input(event):
                 return
 
 func highlightPath(clear: bool):
-    var color = Highlights.ORANGE
+    var color = Highlights.YELLOW
     if clear:
-        color = Highlights.GREEN
+        color = Highlights.ORANGE
     for point in _points:
         highlightMap.highlightVec(point, color)
     return
@@ -72,7 +72,7 @@ func start(entity: Entity):
     _points = []
     previous_coords = Vector2i(999,999)
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_starting_point, maxMoves, tileMap, highlightMap, Highlights.GREEN, _state, MapBFS.BFS_MODE.AllyMove)
+    _map_bfs.init(_starting_point, maxMoves, tileMap, highlightMap, Highlights.ORANGE, _state, MapBFS.BFS_MODE.AllyMove)
     _map_bfs.resetHighlights(true)
     _enabled = true    
     return

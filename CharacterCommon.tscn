@@ -292,6 +292,7 @@ offset_right = 0.822968
 offset_bottom = 55.7609
 
 [node name="Label2" type="Label" parent="InfoBoxContainer/Passive"]
+layout_mode = 0
 offset_left = 14.048
 offset_top = 13.1138
 offset_right = 31.048
@@ -303,6 +304,7 @@ theme_override_font_sizes/font_size = 10
 text = "[P]"
 
 [node name="Label" type="Label" parent="InfoBoxContainer/Passive"]
+layout_mode = 0
 offset_left = 31.9052
 offset_top = 13.1138
 offset_right = 74.9052
@@ -313,6 +315,7 @@ theme_override_font_sizes/font_size = 10
 text = "Aura: "
 
 [node name="ShortName" type="Label" parent="InfoBoxContainer/Passive"]
+layout_mode = 0
 offset_left = 74.2043
 offset_top = 13.1138
 offset_right = 151.204

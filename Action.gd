@@ -5,6 +5,7 @@ var effect: Callable
 var display_name: String
 var description: String
 var stats: Dictionary
+var highlight_style: Vector2i = Highlights.ATTACK
 var level := 1
 var animation_path : String = ""
 var type : int

@@ -59,7 +59,8 @@ static func add_sturdy_stance(ent: Entity, type: int):
         user.shielded(action.get_from_stats("Shield Amount"))
         return
     var d = "Create a shield and taunt enemies into attacking you"
-    _add_action(ent, "Sturdy Stance", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Sturdy Stance", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_flying_barb_stance(ent: Entity, type: int):
@@ -77,7 +78,8 @@ static func add_flying_barb_stance(ent: Entity, type: int):
         user.thorns_all = true
         return
     var d = "Gain 5 threat. Until next turn, deal any damage back to ALL enemies from enemy Normal Attacks, before armor"
-    _add_action(ent, "Flying Barbs Stance", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Flying Barbs Stance", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_oil_bomb(ent: Entity, type: int):
@@ -127,7 +129,8 @@ static func add_lubricate(ent: Entity, type: int):
         user.moves_left += action.get_from_stats("Extra Moves")
         return
     var d = "Lubricate axles to gain extra movement for the turn"
-    _add_action(ent, "Lubricate", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Lubricate", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_storm(ent: Entity, type: int):
@@ -173,7 +176,8 @@ static func add_static_shield(ent: Entity, type: int):
             _ent.shielded(action.get_from_stats("Shield Amount"))
         return
     var d = "Create a stable electro magnetic field and shield everything"
-    _add_action(ent, "Static Shield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Static Shield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_focused_repair(ent: Entity, type: int):
@@ -187,7 +191,8 @@ static func add_focused_repair(ent: Entity, type: int):
             _ent.gainHP(action.get_from_stats("Heal Amount"))
         return
     var d = "Heal one ally"
-    _add_action(ent, "Focused Repair", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Focused Repair", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_swarm_of_pain(ent: Entity, type: int):
@@ -207,7 +212,7 @@ static func add_swarm_of_pain(ent: Entity, type: int):
 
 static func add_nano_field(ent: Entity, type: int):
     var stats = {
-        "Affects": "All Allied Units",
+        "Affects": "Allied Units",
         "Cost": 2,
         "Heal Amount": [3, 5, 7, 9],
     }
@@ -216,7 +221,8 @@ static func add_nano_field(ent: Entity, type: int):
             _ent.gainHP(action.get_from_stats("Heal Amount"))
         return
     var d = "Order the nanobots to heal any ally in the area"
-    _add_action(ent, "Nanofield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Nanofield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_weapons_upgade(ent: Entity, type: int):
@@ -230,7 +236,8 @@ static func add_weapons_upgade(ent: Entity, type: int):
             _ent.update_damage(action.get_from_stats("Added Damage"))
         return
     var d = "Add permanent base damage to an allied unit"
-    _add_action(ent, "Weapons Upgrade", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Weapons Upgrade", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_auto_turret_3000(ent: Entity, type: int):
@@ -246,7 +253,8 @@ static func add_auto_turret_3000(ent: Entity, type: int):
         action.spawn = EntityFactory.create_auto_turret_3000()
         return
     var d = "Deploy the Auto Turret 3000, a powerful turret that slowly deteriorates"
-    _add_action(ent, "Auto Turret 3000", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Auto Turret 3000", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.SPAWN
     return
 
 static func add_engine_upgrade(ent: Entity, type: int):
@@ -260,7 +268,8 @@ static func add_engine_upgrade(ent: Entity, type: int):
             _ent.update_movement(action.get_from_stats("Added Movement"))
         return
     var d = "Add permanent movement to an allied unit"
-    _add_action(ent, "Engine Upgrade", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Engine Upgrade", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_snipe(ent: Entity, type: int):
@@ -308,7 +317,8 @@ static func add_power_up(ent: Entity, type: int):
             _ent.update_energy(action.get_from_stats("Energy Gain"))
         return
     var d = "Siphon energy to an allied unit"
-    _add_action(ent, "Siphon Energy", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Siphon Energy", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_ultimate_shiphon(ent: Entity, type: int):
@@ -321,7 +331,8 @@ static func add_ultimate_shiphon(ent: Entity, type: int):
             _ent.custom_text("Ult Recharged", Color.GREEN)
         return
     var d = "Siphon ultimate energy to an allied unit, allowing their ultimate to be used again"
-    _add_action(ent, "Siphon Energy", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Siphon Ultimate", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_shock_therapy(ent: Entity, type: int):
@@ -498,7 +509,8 @@ static func add_bootleg_upgrades(ent: Entity, type: int):
             user.update_armor(1)
         return
     var d = "Put some bootleg parts on, resulting in added or removed stats"
-    _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_battlefield_transfer(ent: Entity, type: int):
@@ -517,10 +529,11 @@ static func add_battlefield_transfer(ent: Entity, type: int):
             user.update_armor(-user.armor_modifier)
         return
     var d = "Transfer all movement, damage, armor, and initiative upgrades and downgrades to another allied unit"
-    _add_action(ent, "Battlefield Transfer", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    var action := _add_action(ent, "Battlefield Transfer", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
     return
 
-static func _add_action(ent, display_name, description, shape, effect, action_type, stats, animation_path = ""):
+static func _add_action(ent, display_name, description, shape, effect, action_type, stats, animation_path = "") -> Action:
     var action = Action.new()
     action.shape = shape
     action.effect = effect
@@ -536,4 +549,4 @@ static func _add_action(ent, display_name, description, shape, effect, action_ty
     action.type = action_type
     action.stats = stats
     action.animation_path = animation_path
-    return
+    return action
