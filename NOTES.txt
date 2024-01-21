@@ -2,6 +2,7 @@ BUGS
 - Highlights over being over written for ai if if recently moved off of it before attack
 
 DO NEXT
+- Maybe Utilize HighlightMap2 for attacks
 - Popup for under deploying
 - Modulate for ally/enemy
 - Auto Turret 3000 Sprite
@@ -11,11 +12,6 @@ DO LATER
 - Foundry 3 foundry boss
 - Foundry 4 foundry boss
 - Final Foundry Boss
-- Maybe foundry boss just has 1 mechanic, then absorbs the previous mechanics?
-- Foundry boss aborbs all mechanics?
-- Orb prize for completing foundry?
-- Orbs kinda bad
-- More Orbs?
 - Does orb drop work well?
 - Procedurally generated maps
 - Obstructions
@@ -26,12 +22,9 @@ DO LATER
 - "Popup" for current action/event
 - deploy to slot alternative
 - slight animation for mechanic container
-- more button available animations
-- show moves on hover
 - show status effects on hover
 - Splash Screen
 - Undo Button
-- Confirm Popup windows where relevant
 - Different target highlights for good/bad
 
 IDEAS
