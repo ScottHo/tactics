@@ -175,7 +175,7 @@ func start(entity: Entity, action_type: int):
     _entity = entity
     _action_type = action_type
     if _action_type == ActionType.ATTACK:
-        _highlight_style = Highlights.CYAN
+        _highlight_style = Highlights.ORANGE
     if _action_type == ActionType.ACTION1:
         _highlight_style = Highlights.BLUE
     if _action_type == ActionType.ACTION2:

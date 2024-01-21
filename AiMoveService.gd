@@ -42,7 +42,7 @@ func _find_closest() -> Vector2i:
     return _map_bfs.closestInRange(loc)
 
 func showPath(path):
-    var color = Highlights.YELLOW
+    var color = Highlights.CYAN
     for point in path:
         highlightMap.highlightVec(point, color)
     return
@@ -54,7 +54,7 @@ func finish():
 func start(entity: Entity):
     _entity = entity
     _map_bfs = MapBFS.new()
-    _map_bfs.init(_entity.location, _entity.get_movement(), tileMap, highlightMap, Highlights.ORANGE, _state, MapBFS.BFS_MODE.EnemyMove)
+    _map_bfs.init(_entity.location, _entity.get_movement(), tileMap, highlightMap, Highlights.YELLOW, _state, MapBFS.BFS_MODE.EnemyMove)
     _map_bfs.resetHighlights(true)
     return
     
