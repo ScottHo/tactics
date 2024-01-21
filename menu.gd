@@ -173,7 +173,7 @@ func showCurrentTurn(turn: int):
         if entity.action1 != null and entity.action1.cost() <= entity.energy:
             action1Button.disabled = false
         if entity.action2 != null and entity.action2.cost() <= entity.energy:
-            if not entity.ultimate_used:
+            if not entity.ultimate_used and entity.action2.level > 0:
                 action2Button.disabled = false
         setup_action_descriptions(entity)
     

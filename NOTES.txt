@@ -7,10 +7,6 @@ BUGS
 
 
 DO NEXT
-- Custom Animation Texts
-- Target All
-- Add passives, and passive to menu somehow
-- Add way to reflect damage
 - Popup for under deploying
 - Permadeath
 - Modulate for ally/enemy
@@ -52,6 +48,8 @@ Boss 3:
 
 Boss 4: Immune that spawns a heal add and a normal add
 
-
-
+ANIMATIONS
+Special per Direction
+Move per Direction
+Idle per Direction
 

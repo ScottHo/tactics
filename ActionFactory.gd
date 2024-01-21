@@ -56,7 +56,7 @@ static func add_sturdy_stance(ent: Entity, type: int):
         "Threat Gain": 4,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
-        user.shielded(action.get_from_stats("Shield Amount"), action.get_from_stats("Shield Duration"))
+        user.shielded(action.get_from_stats("Shield Amount"))
         return
     var d = "Bolster your defensives and taunt enemies into attacking you"
     _add_action(ent, "Sturdy Stance", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
@@ -65,14 +65,18 @@ static func add_sturdy_stance(ent: Entity, type: int):
 static func add_flying_barb_stance(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.SELF,
-        "Reflected Damage": "1x",
+        "Reflected Damage": "100%",
+        "Health Gain": 20,
         "Shield Amount": 10,
         "Threat Gain": 5,
     }
     var effect = func (user: Entity, targets: Array, action: Action):
-        user.shielded(action.get_from_stats("Shield Amount"), 1)
+        user.gainHP(20)
+        user.shielded(action.get_from_stats("Shield Amount"))
+        user.gainThreat(5)
+        user.thorns_all = true
         return
-    var d = "Taunt enemies, then deal the damage back to ALL enemies"
+    var d = "Gain 5 threat. Until next turn, deal any damage back to ALL enemies from enemy Normal Attacks, before armor"
     _add_action(ent, "Flying Barbs Stance", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     return
 
@@ -161,12 +165,10 @@ static func add_static_shield(ent: Entity, type: int):
         "Affects": "All Units",
         "Cost": 2,
         "Shield Amount": [3, 6, 9, 10],
-        "Shield Duration": 1
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
-            _ent.shielded(action.get_from_stats("Shield Amount"),
-                    action.get_from_stats("Shield Duration"))
+            _ent.shielded(action.get_from_stats("Shield Amount"))
         return
     var d = "Create a stable electro magnetic field and shield everything"
     _add_action(ent, "Static Shield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
@@ -295,7 +297,7 @@ static func add_power_up(ent: Entity, type: int):
     var stats = {
         "Affects": "Other Allied Units",
         "Energy Gain": [1,2,3,4],
-        "Cost": 2
+        "Cost": 3
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
@@ -312,7 +314,7 @@ static func add_ultimate_shiphon(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
             _ent.ultimate_used = false
-            # TODO Add Text
+            _ent.custom_text("Ult Recharged", Color.GREEN)
         return
     var d = "Siphon ultimate energy to an allied unit, allowing their ultimate to be used again"
     _add_action(ent, "Siphon Energy", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")

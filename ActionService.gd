@@ -7,7 +7,7 @@ var _action_type: int = -1
 var _previous_coords: Vector2i
 var _target_points: Array = []
 var _map_bfs: MapBFS
-
+var _targets_all: Array = []
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
 @onready var effects : Node2D = $Effects
@@ -23,12 +23,12 @@ func _input(event):
     if event is InputEventMouseMotion:
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if _previous_coords != coords:
-            clearTargetHighlights()
             _previous_coords = coords            
-            if not _map_bfs.inRange(coords, action().self_castable()):
-                return
-            _target_points = Utils.get_target_coords(_entity.location, coords, shape())
-            fillTargetHighlights()
+            if TargetTypes.NO_BFS:
+                highlight_for_no_bfs()
+            else:
+                highlight_for_bfs()
+            
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
             MOUSE_BUTTON_LEFT:
@@ -44,6 +44,44 @@ func _input(event):
                     _entity.ultimate_used = true
                 _enabled = false
                 return
+    return
+
+func highlight_for_bfs():
+    clearTargetHighlights()
+    if not _map_bfs.inRange(_previous_coords, action().self_castable()):
+        return
+    _target_points = Utils.get_target_coords(_entity.location, _previous_coords, shape())
+    if action().type == ActionType.ATTACK and _entity.chain_attack:
+        var point = add_chain_target(_target_points[0])
+        if point != Vector2i(999,999):
+            _target_points.append(point)
+    fillTargetHighlights()
+    return
+
+func add_chain_target(start_vec):
+    var potential_targets = {1:[], 2:[], 3:[]}
+    for enemy in _state.all_enemies_alive():
+        var total = enemy.location - start_vec
+        var diff = abs(total.x) + abs(total.y)
+        if diff > 0 and diff <= 3:
+            potential_targets[diff].append(enemy)
+    if len(potential_targets[1]) > 0:
+        return potential_targets[1][0].location
+    if len(potential_targets[2]) > 0:
+        return potential_targets[2][0].location
+    if len(potential_targets[3]) > 0:
+        return potential_targets[3][0].location
+    return Vector2i(999,999)
+
+func highlight_for_no_bfs():
+    if _targets_all.has(_previous_coords):
+        for t in _targets_all:
+            highlightMap.highlightVec(t, Highlights.PURPLE)
+        _target_points = []
+    else:
+        for t in _targets_all:
+            highlightMap.highlightVec(t, Highlights.RED)
+        _target_points = _targets_all.duplicate(true)
     return
 
 func validate_single_target():
@@ -94,7 +132,7 @@ func clearTargetHighlights():
         if _map_bfs.inRange(point, action().self_castable()):
             highlightMap.highlightVec(point, Highlights.PURPLE)
         else:
-              highlightMap.highlightVec(point, Highlights.EMPTY)
+            highlightMap.highlightVec(point, Highlights.EMPTY)
     _target_points = []
     return
 
@@ -121,11 +159,26 @@ func finish():
     _enabled = false
     return
 
+func show_targets_all():
+    _targets_all = []
+    if action().affects() == TargetTypes.ALL or action().affects() == TargetTypes.ALL_ALLIES:
+        for e in _state.all_allies_alive(false):
+            _targets_all.append(e.location)
+            highlightMap.highlightVec(e.location, Highlights.PURPLE)
+    if action().affects() == TargetTypes.ALL or action().affects() == TargetTypes.ALL_ENEMIES:
+        for e in _state.all_enemies_alive():
+            _targets_all.append(e.location)
+            highlightMap.highlightVec(e.location, Highlights.PURPLE)
+    return
+        
 func start(entity: Entity, action_type: int):
     _entity = entity
     _action_type = action_type
-    _map_bfs = MapBFS.new()
-    _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, MapBFS.BFS_MODE.Attack)
-    _map_bfs.resetHighlights(true, action().self_castable())
+    if TargetTypes.NO_BFS.has(action().affects()):
+        show_targets_all()
+    else:
+        _map_bfs = MapBFS.new()
+        _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, Highlights.PURPLE, _state, MapBFS.BFS_MODE.Attack)
+        _map_bfs.resetHighlights(true, action().self_castable())
     _enabled = true
     return

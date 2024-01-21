@@ -24,7 +24,7 @@ func threat() -> int:
     return get_from_stats("Threat Gain", 0)
 
 func self_cast_only():
-    if get_from_stats("Affects", "All Units") == "Self":
+    if get_from_stats("Affects", TargetTypes.ANY) == TargetTypes.SELF:
         return true
     return false
 
@@ -33,10 +33,10 @@ func cost():
 
 func self_castable():
     var a = affects()
-    return a == "Self" or a == "All Allied Units" or a == "All Units"
+    return TargetTypes.SELF_OK.has(a)
 
 func affects():
-    return get_from_stats("Affects", "All Units")
+    return get_from_stats("Affects", TargetTypes.ANY)
 
 func clone() -> Action:
     var a = Action.new()

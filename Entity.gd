@@ -1,31 +1,42 @@
 class_name Entity extends Node
 
-var id: int = -1
+# Static
 var display_name: String
 var sprite: EntitySprite
-var alive: bool = true
-var location: Vector2i
+var passive: Passive
 var attack: Action
 var action1: Action
 var action2: Action
+var is_ally: bool
+var is_add: bool = false
+var sprite_path: String
+var icon_path: String
+var description: String
+
+# Variable
+var id: int = -1
+var alive: bool = true
+var location: Vector2i
+
 var moves_left: int
 var skip_next_turn: bool = false
 var damage_done := 0
 var ultimate_used := false
-var is_ally: bool
-var is_add: bool = false
 var interactable: Interactable
-var sprite_path: String
-var icon_path: String
-var description: String
 var specials_left := 1
 var spawn_on_death: Interactable
 var custom_data
-
-# Variable Stats
 var threat: int
 var energy: int
 var health: int
+
+# Passives
+var chain_attack: bool = false
+var heal_attack: bool = false
+var thorns_all: bool = false # Refect flat damage to everyone, for 1 turn
+var thorns: bool = false # Reflect flat damage on basic attacks
+var dodge_chance: float = 0.0
+var wipe_downgrades_chance: float = 0.0
 
 # Base Stats
 var max_health: int
@@ -43,12 +54,17 @@ var initiative_modifier: int
 var range_modifier: int
 var health_modifier: int
 
+# Aura Modifiers
+var aura_range_modifier: int = 0
+var aura_damage_modifier: int = 0
+var aura_shield: int = 0
+var aura_crit: float = 0
+var aura_regen: int  = 0
 
 # Temporary Modifiers
 var immune_count: int
 var weakness_count: int
 var weakness_value: int
-var shield_count: int
 var shield_value: int
 var crippled_count: int
 var crippled_value: int
@@ -64,7 +80,7 @@ func update_sprite():
     return
 
 func get_damage() -> int:
-    var ret = damage + damage_modifier
+    var ret = damage + damage_modifier + aura_damage_modifier
     if ret < 0:
         ret = 0
     return ret
@@ -76,7 +92,7 @@ func get_movement() -> int:
     return ret
 
 func get_range() -> int:
-    var ret = range + range_modifier
+    var ret = range + range_modifier + aura_range_modifier
     if ret < 1:
         ret = 1
     return ret
@@ -88,7 +104,7 @@ func get_initiative() -> int:
     return ret
 
 func get_armor() -> int:
-    return armor + armor_modifier - weakness_value + shield_value
+    return armor + armor_modifier - weakness_value
 
 func get_low_health_threshold() -> int:
     return int(get_max_health()/5)
@@ -103,8 +119,6 @@ func lose_all_buffs():
         damage_debuff_count -= 1
     if immune_count > 0:
         immune_count -= 1
-    if shield_count > 0:
-        shield_count -= 1
     if weakness_count > 0:
         weakness_count -= 1
     if crippled_count > 0:
@@ -115,9 +129,6 @@ func reset_buff_values():
     if weakness_count == 0:
         weakness_value = 0
         
-    if shield_count == 0:
-        shield_value = 0
-        
     if damage_buff_count == 0:
         damage_buff_value = 0
         
@@ -126,6 +137,7 @@ func reset_buff_values():
         
     if crippled_count == 0:
         crippled_value = 0
+    thorns_all = false
     return
 
 func damage_preview(hp) -> int:
@@ -138,7 +150,21 @@ func loseHP(hp):
     print_debug("Losing HP " + display_name + " " + str(hp))
     if immune_count > 0:
         return
+    if dodge_chance > 0:
+        if randf() < dodge_chance:
+            miss()
+            return
     hp = damage_preview(hp)
+    if shield_value > hp:
+        shielded(-hp)
+        shield_value -= hp
+        return
+    
+    if shield_value > 0:
+        hp = -shield_value
+        shielded(-shield_value)
+        shield_value = 0
+        
     health -= hp
     if health < 0:
         health = 0
@@ -170,6 +196,12 @@ func nice():
     if not check_sprite():
         return
     sprite.textAnimation().other_text("Nice!", Color.GREEN)
+    return
+
+func custom_text(t: String, c: Color):
+    if not check_sprite():
+        return
+    sprite.textAnimation().other_text(t, c)
     return
 
 func set_max_health(hp):
@@ -268,12 +300,11 @@ func crippled(value, count):
     sprite.textAnimation().status_effect(-value, "Crippled")
     return
 
-func shielded(value, count):
+func shielded(value):
     shield_value = value
-    shield_count = count
     if not check_sprite():
         return
-    sprite.textAnimation().status_effect(value, "Shielded")
+    sprite.textAnimation().status_effect(value, "Shield")
     return
 
 func weakened(value, count):
@@ -282,6 +313,22 @@ func weakened(value, count):
     if not check_sprite():
         return
     sprite.textAnimation().status_effect(value, "Weakened")
+    return
+
+func wipe_downgrades():
+    custom_text("Downgrades Wiped", Color.WHITE)
+    if damage_modifier < 0:
+        damage_modifier = 0
+    if range_modifier < 0:
+        range_modifier = 0
+    if initiative_modifier < 0:
+        initiative_modifier = 0
+    if movement_modifier < 0:
+        movement_modifier = 0
+    if armor_modifier < 0:
+        armor_modifier = 0
+    if health_modifier < 0:
+        health_modifier = 0
     return
 
 func add_iteractable(inter: Interactable):
@@ -295,13 +342,23 @@ func setup_next_turn():
     if not check_sprite():
         return
     lose_all_buffs()
-    moves_left = get_movement()
     if is_ally:
         update_energy(1)
         if interactable != null:
             if interactable.repeated_effect != null:
                 interactable.repeated_effect.call(self)
+        if passive != null:
+            if passive.is_repeated:
+                passive.repeated_effect.call(self)
         loseThreat(1)
+        if aura_regen > 0:
+            gainHP(2)
+        if aura_shield > 0:
+            shielded(aura_shield)
+        if wipe_downgrades_chance > 0:
+            if randf() < wipe_downgrades_chance:
+                wipe_downgrades()
+    moves_left = get_movement()    
     return
 
 func done_turn():
@@ -345,6 +402,14 @@ func show_custom_sprite(path: String, _scale: Vector2):
     sprite.show_custom_sprite(path, _scale)
     return
 
+func reset_auras():
+    aura_range_modifier = 0
+    aura_damage_modifier = 0
+    aura_shield = 0
+    aura_crit = 0.0
+    aura_regen = 0
+    return
+    
 func check_sprite():
     if sprite != null:
         return true
@@ -356,6 +421,8 @@ func clone() -> Entity:
     var e = Entity.new()
     e.display_name = display_name
     e.attack = attack
+    if passive != null:
+        e.passive = passive.clone()
     if action1 != null:
         e.action1 = action1.clone()
     if action1 != null:

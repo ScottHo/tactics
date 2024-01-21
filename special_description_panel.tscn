@@ -18,58 +18,59 @@ texture = ExtResource("1_48ejq")
 centered = false
 
 [node name="DescriptionName" type="Label" parent="."]
-offset_left = 62.0784
-offset_top = 9.35286
-offset_right = 297.078
-offset_bottom = 59.3529
-theme_override_font_sizes/font_size = 19
-text = "Lighting Bolt"
+offset_left = 47.0285
+offset_top = 6.92721
+offset_right = 295.029
+offset_bottom = 56.9272
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 18
+text = "Lighting Bolt Bolt Bolt"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="."]
-offset_left = 50.0225
-offset_top = 47.2678
-offset_right = 106.022
-offset_bottom = 68.2678
+offset_left = 11.262
+offset_top = 51.4935
+offset_right = 67.262
+offset_bottom = 72.4935
 theme_override_font_sizes/font_size = 15
 text = "Cost:"
 
 [node name="CostLabel" type="Label" parent="."]
-offset_left = 110.647
-offset_top = 47.2678
-offset_right = 124.647
-offset_bottom = 68.2678
+offset_left = 71.8865
+offset_top = 51.4935
+offset_right = 85.8865
+offset_bottom = 72.4935
 theme_override_font_sizes/font_size = 15
 text = "5
 "
 
 [node name="WhiteBolt" type="Sprite2D" parent="."]
-position = Vector2(132.584, 56.6242)
+position = Vector2(93.8235, 60.8499)
 scale = Vector2(0.34, 0.34)
 texture = ExtResource("3_hq8kc")
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 14.3099
-offset_top = 68.0648
-offset_right = 100.31
-offset_bottom = 89.0648
+offset_left = 10.1509
+offset_top = 71.6081
+offset_right = 102.151
+offset_bottom = 92.6081
 theme_override_font_sizes/font_size = 15
 text = "Affects:"
 
 [node name="AffectsLabel" type="Label" parent="."]
-offset_left = 111.209
-offset_top = 68.0648
-offset_right = 305.209
-offset_bottom = 89.0648
+offset_left = 107.05
+offset_top = 71.6081
+offset_right = 301.05
+offset_bottom = 92.6081
 theme_override_font_sizes/font_size = 15
 text = "All Friendly Units"
 
 [node name="DescriptionLabel" type="Label" parent="."]
-offset_left = 13.1028
-offset_top = 87.2011
-offset_right = 331.103
-offset_bottom = 189.201
+offset_left = 10.9281
+offset_top = 92.7647
+offset_right = 328.928
+offset_bottom = 194.765
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_mqpc5")
@@ -78,15 +79,15 @@ text = "No Action Selected."
 autowrap_mode = 2
 
 [node name="PanelButton" type="Sprite2D" parent="."]
-position = Vector2(20.0865, 19.0584)
+position = Vector2(4.2558, 3.87957)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_uj71j")
 
 [node name="ActionLabel" type="Label" parent="."]
-offset_left = -27.9116
-offset_top = -29.3372
-offset_right = 72.0884
-offset_bottom = 70.6629
+offset_left = -43.7423
+offset_top = -44.516
+offset_right = 56.2577
+offset_bottom = 55.4841
 theme_override_font_sizes/font_size = 22
 text = "Ult"
 horizontal_alignment = 1
@@ -94,14 +95,14 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="SpecIcon" type="Sprite2D" parent="."]
-position = Vector2(20.6566, 19.4674)
+position = Vector2(4.82593, 4.28855)
 texture = ExtResource("6_ykui0")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_left = 16.6744
-offset_top = 401.077
+offset_top = 402.199
 offset_right = 16.6744
-offset_bottom = 401.077
+offset_bottom = 402.199
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = -35
 

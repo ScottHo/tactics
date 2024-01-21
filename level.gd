@@ -11,6 +11,7 @@ extends Node2D
 @onready var interactService: InteractService = $InteractService
 @onready var cameraService: CameraService = $CameraService
 @onready var scoreService: ScoreService = $Camera2D/CanvasLayer/ScoreService
+@onready var auraService: AuraService = $AuraService
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 @onready var highlightMap2: HighlightMap2 = $HighlightMap2
@@ -46,6 +47,7 @@ func _ready():
     aiSpecialService.special_done.connect(continue_doAiSpecial)
     
     setup_entities()
+
     actionService.setState(state)
     moveService.setState(state)
     aiMoveService.setState(state)
@@ -55,10 +57,13 @@ func _ready():
     turnService.setState(state)
     interactService.setState(state)    
     scoreService.setState(state)
-    turnService.update()
     highlightMap2.set_state(state)
+    auraService.set_state(state)
     menuService.setState(state)
+
+    turnService.update()    
     menuService.showTurns(turnService.next7Turns())
+    auraService.update()
     nextTurn()
     return
 
@@ -89,6 +94,9 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
     ent.sprite = sprite
     ent.update_sprite()
     ent.damage_done = 0
+    if ent.passive != null:
+        if ent.passive.is_static:
+            ent.passive.static_effect.call(ent)
     return
 
 func setup_entities():
@@ -307,6 +315,7 @@ func continue_doAiSpecial():
     set_ai_special_mechanic_texts()
     aiSpecialService.finish()
     turnService.update_new()
+    auraService.update()
     update_character_menu()
     if not checkDeaths():
         nextAiStep()
@@ -375,6 +384,7 @@ func doneMove():
     print_debug("Done Move")    
     currentEntity().stop_animations()
     cameraService.stop_lock()
+    auraService.update()
     if currentEntity().moves_left == 0:
         menuService.disableMovesButton()
     if _is_ai_turn:
@@ -422,6 +432,7 @@ func actionDone():
     menuService.show_description(false, null)
     menuService.force_show_description = false
     turnService.update_new()
+    auraService.update()
     update_character_menu()
     checkDeaths()
     return

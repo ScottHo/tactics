@@ -10,6 +10,7 @@ var abortButton: Button
 var botIcon: Sprite2D
 var botName: Label
 var botPanel: MissionEnemyPanel
+var passivePanel: PassivePanel
 var specialPanel1: SpecialDescriptionPanel
 var specialPanel2: SpecialDescriptionPanel
 
@@ -22,6 +23,7 @@ func _ready():
     rosterButton = $Levels/RosterButton    
     abortButton = $Levels/AbortButton
     backButton = $Collections/BackButton
+    passivePanel = $Collections/PassivePanel
     specialPanel1 = $Collections/SpecialPanel1
     specialPanel2 = $Collections/SpecialPanel2
     botIcon = $Collections/BotIcon
@@ -37,6 +39,7 @@ func _ready():
         $Collections.visible = true
         $Levels.visible = false)
     
+    passivePanel.clear()
     specialPanel1.clear()
     specialPanel2.clear()
 
@@ -51,6 +54,7 @@ func start():
     return
 
 func entity_selected(ent: Entity):
+    passivePanel.set_passive(ent.passive)
     specialPanel1.set_action(ent.action1)
     specialPanel2.set_action(ent.action2)
     botIcon.texture = load(ent.icon_path)

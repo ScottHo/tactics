@@ -6,6 +6,15 @@ static func do_action(state: State, _source: Entity, _targets: Array, action: Ac
         if _ent.location in _targets:
             targets.append(_ent)
     action.effect.call(_source, targets, action)
+    if action.type == ActionType.ATTACK:
+        var target: Entity = targets[0] # Assume only 1 tile for normal attacks
+        if target.thorns_all:
+            target.custom_text("Flying Thorns " + str(target.get_damage()) , Color.WHITE)
+            for _ent in state.all_enemies_alive():
+                _ent.loseHP(target.get_damage())
+        elif target.thorns:
+            target.custom_text("Thorns " + str(target.get_damage()), Color.WHITE)
+            _source.loseHP(target.get_damage())
     return
 
 static func do_action_animation(parent: Node2D, action, _targets: Array, tileMap: TileMap, callback: Callable):

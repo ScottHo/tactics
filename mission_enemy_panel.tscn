@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b220oo4s6vl43"]
+[gd_scene load_steps=9 format=3 uid="uid://b220oo4s6vl43"]
 
 [ext_resource type="Script" path="res://MissionEnemyPanel.gd" id="1_cgn1b"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/health.png" id="2_3mu84"]
@@ -8,21 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="6_skltb"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="7_kw8vt"]
 [ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="8_wx8d0"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_3qud2"]
-font_size = 20
-
-[sub_resource type="LabelSettings" id="LabelSettings_8xgxx"]
-font_size = 20
-
-[sub_resource type="LabelSettings" id="LabelSettings_wdw6e"]
-font_size = 20
-
-[sub_resource type="LabelSettings" id="LabelSettings_u1r30"]
-font_size = 20
-
-[sub_resource type="LabelSettings" id="LabelSettings_6d3nh"]
-font_size = 20
 
 [node name="EnemyPanel" type="Control"]
 layout_mode = 3
@@ -55,10 +40,11 @@ texture = ExtResource("2_3mu84")
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_31kgf")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "-"
-label_settings = SubResource("LabelSettings_3qud2")
 vertical_alignment = 1
 
 [node name="Movement" type="Control" parent="GridContainer"]
@@ -73,10 +59,11 @@ texture = ExtResource("4_b45m5")
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_31kgf")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "-"
-label_settings = SubResource("LabelSettings_8xgxx")
 vertical_alignment = 1
 
 [node name="Initiative" type="Control" parent="GridContainer"]
@@ -91,10 +78,11 @@ texture = ExtResource("5_xk36n")
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_31kgf")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "-"
-label_settings = SubResource("LabelSettings_wdw6e")
 vertical_alignment = 1
 
 [node name="Damage" type="Control" parent="GridContainer"]
@@ -109,10 +97,11 @@ texture = ExtResource("6_skltb")
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_31kgf")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "-"
-label_settings = SubResource("LabelSettings_u1r30")
 vertical_alignment = 1
 
 [node name="Range" type="Control" parent="GridContainer"]
@@ -127,10 +116,11 @@ texture = ExtResource("7_kw8vt")
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_31kgf")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "-"
-label_settings = SubResource("LabelSettings_6d3nh")
 vertical_alignment = 1
 
 [node name="Armor" type="Control" parent="GridContainer"]
@@ -145,8 +135,9 @@ texture = ExtResource("8_wx8d0")
 layout_mode = 0
 offset_right = 34.0
 offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_31kgf")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "-"
-label_settings = SubResource("LabelSettings_3qud2")
 vertical_alignment = 1
