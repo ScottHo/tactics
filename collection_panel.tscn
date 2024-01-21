@@ -46,6 +46,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control2" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -68,6 +80,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control2"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -96,6 +120,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control3"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control4" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -118,6 +154,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control4"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -146,6 +194,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control5"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control6" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -168,6 +228,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control6"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -196,6 +268,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control7"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control8" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -218,6 +302,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control8"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -246,6 +342,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control9"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control10" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -268,6 +376,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control10"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -296,6 +416,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control11"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control12" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -318,6 +450,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control12"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -346,6 +490,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control13"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control14" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -368,6 +524,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control14"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -396,6 +564,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control15"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control16" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -418,6 +598,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control16"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -446,6 +638,18 @@ label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="GridContainer/Control17"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control18" type="Control" parent="GridContainer"]
 layout_mode = 2
 
@@ -468,6 +672,18 @@ offset_right = 103.176
 offset_bottom = 73.3468
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GridContainer/Control18"]
+offset_left = -1.82417
+offset_top = 52.3468
+offset_right = 103.176
+offset_bottom = 73.3468
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "DEAD"
 horizontal_alignment = 1
 vertical_alignment = 1
 

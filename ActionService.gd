@@ -35,8 +35,6 @@ func _input(event):
                 highlight_for_bfs()
             
     if event is InputEventMouseButton and event.is_pressed():
-        if Globals.on_ui:
-            return
         match event.button_index:
             MOUSE_BUTTON_LEFT:
                 if len(_target_points) <= 0:

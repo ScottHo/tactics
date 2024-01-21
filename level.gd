@@ -364,6 +364,7 @@ func doMove(on):
 
 func movesFound(poses):
     print_debug("Moves Found")
+    menuService.disableTurnButton()
     currentEntity().sprite.doneMoving.connect(moveDone, CONNECT_ONE_SHOT)
     if len(poses) > 0:
         cameraService.lock_on(currentEntity().sprite)
@@ -382,19 +383,21 @@ func movesFound(poses):
     return
 
 func moveDone():
-    print_debug("Done Move")    
+    print_debug("Done Move")   
+    menuService.enabled_turn_button() 
     currentEntity().stop_animations()
     cameraService.stop_lock()
     auraService.update()
-    if currentEntity().moves_left == 0:
-        menuService.disableMovesButton()
     if _is_ai_turn:
         aiMoveService.finish()
         nextAiStep()
     else:
         menuService.show_description(false, null)
         menuService.force_show_description = false
+        menuService.restore_button_states()
         moveService.finish()
+    if currentEntity().moves_left == 0:
+        menuService.disableMovesButton()
     Globals.end_action()
     update_character_menu()
     highlightMap.highlight(currentEntity())

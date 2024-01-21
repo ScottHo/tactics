@@ -3,27 +3,29 @@ class_name EntityFactory
 enum Bot {BRUTUS, OILEE, ELECTO, NANONANO, SMITHY, LONGSHOT, BATTERIE, PUNCHE, PEPPERSHOT, BUSTER}
 
 static func create_bot(bot: Bot) -> Entity:
+    var ret = Entity.new()
     if bot == Bot.BRUTUS:
-        return create_brutus()
+        ret = create_brutus()
     if bot == Bot.OILEE:
-        return create_oilee()
+        ret = create_oilee()
     if bot == Bot.ELECTO:
-        return create_electo()
+        ret = create_electo()
     if bot == Bot.NANONANO:
-        return create_nanonano()
+        ret = create_nanonano()
     if bot == Bot.SMITHY:
-        return create_smithy()
+        ret = create_smithy()
     if bot == Bot.LONGSHOT:
-        return create_longshot()
+        ret = create_longshot()
     if bot == Bot.BATTERIE:
-        return create_batterie()
+        ret = create_batterie()
     if bot == Bot.PUNCHE:
-        return create_punch_e()
+        ret = create_punch_e()
     if bot == Bot.PEPPERSHOT:
-        return create_peppershot()
+        ret = create_peppershot()
     if bot == Bot.BUSTER:
-        return create_buster()
-    return Entity.new()
+        ret = create_buster()
+    ret.collection_id = bot
+    return ret
     
 static func new_recruits() -> Array:
     var all_bots = EntityFactory.Bot.values()
@@ -189,7 +191,7 @@ static func create_buster():
     p.display_name = "Self Diagnosis"
     p.description = "Buster has a 20% chance to remove all downgrades per turn"
     p.repeated_effect = func(e: Entity):
-        e.ene = .2
+        e.wipe_downgrades_chance = .2
     p.is_repeated = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)

@@ -3,8 +3,8 @@ BUGS
 
 DO NEXT
 - Popup for under deploying
-- Permadeath
 - Modulate for ally/enemy
+- Auto Turret 3000 Sprite
 - Animations (Wait for artists?)
 
 DO LATER

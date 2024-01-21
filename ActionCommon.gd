@@ -11,9 +11,11 @@ static func do_action(state: State, _source: Entity, _targets: Array, action: Ac
         if target.thorns_all:
             target.custom_text("Flying Thorns " + str(target.get_damage()) , Color.WHITE)
             for _ent in state.all_enemies_alive():
+                target.damage_done += _source.damage_preview(target.get_damage())
                 _ent.loseHP(target.get_damage())
         elif target.thorns:
             target.custom_text("Thorns " + str(target.get_damage()), Color.WHITE)
+            target.damage_done += _source.damage_preview(target.get_damage())
             _source.loseHP(target.get_damage())
     return
 

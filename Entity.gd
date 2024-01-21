@@ -1,6 +1,7 @@
 class_name Entity extends Node
 
 # Static
+var collection_id: int
 var display_name: String
 var sprite: EntitySprite
 var passive: Passive

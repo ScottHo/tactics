@@ -169,13 +169,12 @@ func setup_passive_hover():
 
 func button_toggled_tasks(button, toggled):
     if toggled:
-        disable_all_action_buttons(button)
-        Globals.start_action()
+        unpress_all_buttons(button)
+        Globals.start_action(button == moveButton)
         nextTurnButton.text = "Cancel"
     else:
         nextTurnButton.text = "Next\nTurn"
         Globals.end_action()
-        restore_button_states()
     return
 
 func control_entered_tasks():
@@ -287,7 +286,6 @@ func updateEntityInfo(entity: Entity):
 
     if entity.moves_left > 0 and entity.is_ally:
         moveButton.disabled = false
-    print("Passive Set")
     descPassivePanel.set_passive(entity.passive)
     return
 
@@ -372,6 +370,10 @@ func disableAllButtons():
 
 func disableTurnButton():
     nextTurnButton.disabled = true
+    return
+    
+func enabled_turn_button():
+    nextTurnButton.disabled = false
     return
 
 func disableInteractButton():

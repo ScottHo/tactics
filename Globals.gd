@@ -7,6 +7,7 @@ var level_debug_mode = true
 var current_mission: Mission
 var current_recruit: int = -1
 var bots_collected := []
+var bots_dead := []
 var skill_points := 1
 var entity_skill_point_distributions: Dictionary
 var current_level := 1
@@ -15,19 +16,21 @@ var missions_found := false
 var mission_options := []
 var recruit_options := []
 var in_action := false
+var in_move := false
 var on_ui := false
 
 static var UNKNOWN_BOT_ICON_PATH = "res://Assets/Unknown.png"
 static var NO_BOT_ICON_PATH = "res://Assets/None.png"
 
-func start_action():
-    print_debug("Action Started")
+func start_action(move: bool):
     in_action = true
+    if move:
+        in_move = true
     return
 
 func end_action():
-    print_debug("Action Stopped")
     in_action = false
+    in_move = false
     return
 
 func _ready():

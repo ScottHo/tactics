@@ -13,7 +13,7 @@ static var diamond = [
 
 static func add_base_attack(ent: Entity):
     var stats = {
-        "Affects": TargetTypes.ANY,
+        "Affects": TargetTypes.ANY_OTHER,
         "Cost": 0,
         "Threat Gain": 1,
     }
@@ -23,7 +23,7 @@ static func add_base_attack(ent: Entity):
             user.damage_done += _ent.damage_preview(damage)            
             _ent.loseHP(damage)
         return
-    var d = "Deals damage to any target"
+    var d = "Deals damage to any other target"
     _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats, "res://Effects/explosion_yellow.tscn")
     return
 
