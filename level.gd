@@ -127,7 +127,7 @@ func setup_entities():
         #setup_entity_for_level(e2, Vector2i(1,2))
         #setup_entity_for_level(e3, Vector2i(3,3))
         #setup_entity_for_level(e4, Vector2i(3,4))
-        #setup_entity_for_level(e5, Vector2i(3,5))
+        setup_entity_for_level(e5, Vector2i(3,5))
         setup_entity_for_level(e6, Vector2i(3,6))
         setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,0))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,1))

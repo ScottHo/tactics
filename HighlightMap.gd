@@ -7,7 +7,7 @@ func highlight(entity: Entity):
     clearHighlight()
     if entity:
         lastLocation = entity.location
-        set_cell(0, entity.location, 0, Highlights.GREEN, 0)
+        set_cell(0, entity.location, 0, Highlights.YELLOW, 0)
     return
 
 func clearHighlight():

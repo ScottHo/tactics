@@ -3,20 +3,20 @@ class_name MapBFS
 var _bfs_points: Dictionary = {}
 var _location: Vector2i
 var _tile_map: TileMap
-var _highlight_map: HighlightMap
+var _highlight_map: TileMap
 var _range: int
 var _range_color: Vector2i
 var _mode: BFS_MODE
 var _state: State
 
 
-enum BFS_MODE { Attack, EnemyMove, AllyMove, Interact}
+enum BFS_MODE { Attack, EnemyMove, AllyMove, Interact, Show}
 
 func init(
         start_location: Vector2i,
         max_range: int,
         tileMap: TileMap,
-        highlight_map: HighlightMap,
+        highlight_map: TileMap,
         range_color: Vector2i,
         state: State,
         mode: BFS_MODE):
