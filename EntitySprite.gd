@@ -8,7 +8,11 @@ var points := []
 var moved_entities := []
 var sprite : Node2D
 var custom_sprite: Sprite2D
-
+var do_modulate := false
+var modulate_time_delta := 0.0
+var time_to_modulate := .4
+var modulate_normal := true
+var modulate_color := Color.WHITE
 signal doneMoving
 
 func _ready():
@@ -18,6 +22,20 @@ func _ready():
     sprite = $Sprite
     interContainer = $CharacterCommon/InteractableContainer
     custom_sprite = $CharacterCommon/CustomContainer/Sprite2D
+    return
+
+func _process(delta):
+    if not do_modulate:
+        return
+    modulate_time_delta += delta
+    if modulate_time_delta > time_to_modulate:
+        modulate_time_delta = 0
+        if modulate_normal:
+            sprite.modulate = modulate_color
+            modulate_normal = false
+        else:
+            sprite.modulate = Color.WHITE
+            modulate_normal = true
     return
 
 func movePoints(_points: Array, _moved_entities: Array):
@@ -83,6 +101,17 @@ func texture_scale() -> Vector2:
 
 func update_from_entity(entity: Entity):
     infoTab.update_from_entity(entity)
+    return
+    
+func loop_modulate(color: Color):
+    modulate_color = color
+    do_modulate = true
+    return
+    
+func stop_modulate():
+    do_modulate = false
+    sprite.modulate = Color.WHITE
+    modulate_normal = true
     return
 
 func add_interactable(inter: Interactable):

@@ -2,8 +2,8 @@ BUGS
 - Highlights over being over written for ai if if recently moved off of it before attack
 
 DO NEXT
-- Popup for under deploying
 - Modulate for ally/enemy
+- Popup for under deploying
 - Auto Turret 3000 Sprite
 - Animations (Wait for artists?)
 

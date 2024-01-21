@@ -417,6 +417,17 @@ func check_sprite():
     print_debug("ERROR: Sprite did not exist for {0}".format([display_name]))
     print_stack()
     return false
+    
+
+func loop_modulate(color: Color):
+    if sprite != null:
+        sprite.loop_modulate(color)
+    return
+    
+func stop_modulate():
+    if sprite != null:
+        sprite.stop_modulate()
+    return
 
 func clone() -> Entity:
     var e = Entity.new()
