@@ -1,5 +1,33 @@
 class_name MissionFactory
 
+static func tutorial_boss() -> Mission:
+    # Spread, Soak, Revivable Minions
+    var m = Mission.new()
+    m.boss = EntityFactory.create_tutorial_boss()
+    m.buffs = []
+    m.specials_per_turn = 1
+    m.is_tutorial = true
+
+    var s1 = Special.new()
+    s1.display_name = "Cursed Gift"
+    s1.description = "Spawn a cursed gift. Picking it up grants +1 damage, but -1 armor"
+    s1.target = Special.Target.SPAWN_CLOSE
+    s1.shape = Special.Shape.OCTAGON
+    s1.mechanic = Special.Mechanic.SPAWN
+    s1.spawns = [InteractableFactory.add_cursed_gift()]
+
+    var s2 = Special.new()
+    s2.display_name = "Heal Up"
+    s2.description = "Heal 10 health"
+    s2.target = Special.Target.SELF
+    s2.shape = Special.Shape.SINGLE
+    s2.mechanic = Special.Mechanic.BUFF
+    s2.damage = 0
+    s2.effect = func(ent: Entity):
+        ent.gainHP(10)
+    m.specials = [s1,s2]
+    return m
+
 static func foundry_1_final_boss() -> Mission:
     # Spread, Soak, Revivable Minions
     var m = Mission.new()

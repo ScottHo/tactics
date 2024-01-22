@@ -29,34 +29,43 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="LevelLabel" type="Label" parent="."]
-offset_left = 129.438
-offset_top = 51.4935
-offset_right = 329.438
-offset_bottom = 72.4935
+offset_left = 132.076
+offset_top = 51.6457
+offset_right = 332.076
+offset_bottom = 72.6457
 theme_override_font_sizes/font_size = 15
 horizontal_alignment = 2
 
-[node name="Label" type="Label" parent="."]
-offset_left = 11.262
-offset_top = 51.4935
-offset_right = 67.262
-offset_bottom = 72.4935
+[node name="CostContainer" type="Node2D" parent="."]
+position = Vector2(13.8748, 59.2832)
+
+[node name="Label" type="Label" parent="CostContainer"]
+offset_left = -2.61279
+offset_top = -7.7897
+offset_right = 53.3872
+offset_bottom = 13.2103
 theme_override_font_sizes/font_size = 15
 text = "Cost:"
 
-[node name="CostLabel" type="Label" parent="."]
-offset_left = 71.8865
-offset_top = 51.4935
-offset_right = 85.8865
-offset_bottom = 72.4935
+[node name="CostLabel" type="Label" parent="CostContainer"]
+offset_left = 58.0117
+offset_top = -7.7897
+offset_right = 72.0117
+offset_bottom = 13.2103
 theme_override_font_sizes/font_size = 15
 text = "5
 "
 
-[node name="WhiteBolt" type="Sprite2D" parent="."]
-position = Vector2(93.8235, 60.8499)
+[node name="WhiteBolt" type="Sprite2D" parent="CostContainer"]
+position = Vector2(79.9487, 1.5667)
 scale = Vector2(0.34, 0.34)
 texture = ExtResource("3_hq8kc")
+
+[node name="UltimateLabel" type="Label" parent="."]
+offset_left = 10.0907
+offset_top = 51.7151
+offset_right = 50.0907
+offset_bottom = 70.7151
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 10.1509

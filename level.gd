@@ -15,7 +15,9 @@ extends Node2D
 @onready var tileMap: MainTileMap = $TileMap
 @onready var highlightMap: HighlightMap = $HighlightMap
 @onready var highlightMap2: HighlightMap2 = $HighlightMap2
+@onready var tutorialService: TutorialService = $TutorialService
 @onready var timer: Timer = $Timer
+
 var current_turn_id: int = -1
 var _mission: Mission
 var state: State = State.new()
@@ -61,8 +63,11 @@ func _ready():
     auraService.set_state(state)
     menuService.setState(state)
 
+    turnService.tutorial_mode = _mission.is_tutorial
+    menuService.jenkins.tutorial_mode = _mission.is_tutorial
+    menuService.tutorial_mode = _mission.is_tutorial
     turnService.update()    
-    menuService.showTurns(turnService.next7Turns())
+    menuService.showTurns(turnService.next5Turns())
     auraService.update()
     nextTurn()
     return
@@ -102,7 +107,7 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
 
 func setup_entities():
     if Globals.level_debug_mode:
-        Globals.current_mission = MissionFactory.foundry_2_final_boss()
+        Globals.current_mission = MissionFactory.tutorial_boss()
         var e := EntityFactory.create_bot(EntityFactory.Bot.LONGSHOT)
         e.action1.level += 1
         e.damage += 2
@@ -128,9 +133,9 @@ func setup_entities():
         #setup_entity_for_level(e2, Vector2i(1,2))
         #setup_entity_for_level(e3, Vector2i(3,3))
         #setup_entity_for_level(e4, Vector2i(3,4))
-        setup_entity_for_level(e5, Vector2i(3,5))
-        setup_entity_for_level(e6, Vector2i(3,6))
-        setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,0))
+        #setup_entity_for_level(e5, Vector2i(3,5))
+        #setup_entity_for_level(e6, Vector2i(3,6))
+        #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,0))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,1))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,2))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,3))
@@ -143,6 +148,13 @@ func setup_entities():
                 setup_entity_for_level(allies[i], Vector2i(1, i-1))
     
     _mission = Globals.current_mission
+    if _mission.is_tutorial:
+        var ent = EntityFactory.create_tutorial_bot()
+        ent.action2.level = 1
+        setup_entity_for_level(ent, Vector2i(3,3))
+        tutorialService.start()
+    else:
+        menuService.jenkins_talk("This bot looks tough! Good luck.", Jenkins.Mood.NORMAL)
     if _mission.display_name == "Foundry 2F":
         var tiles = tileMap.all_tiles()
         tiles.shuffle()
@@ -180,7 +192,6 @@ func nextTurn_continued():
 
 func nextTurn_continued2():
     timer.stop()
-
     scoreService.turn_taken()
     menuService.disableAllButtons()
     highlightMap.clearHighlight()
@@ -192,7 +203,7 @@ func nextTurn_continued2():
         if not _is_first_turn:
             currentEntity().specials_left = _mission.specials_per_turn
     _is_first_turn = false
-    menuService.showTurns(turnService.next7Turns())
+    menuService.showTurns(turnService.next5Turns())
     menuService.pre_showCurrentTurn(current_turn_id)
     timer.timeout.connect(nextTurn_continued3, CONNECT_ONE_SHOT)
     timer.start(.4)
@@ -208,11 +219,20 @@ func nextTurn_continued3():
     update_character_menu()
     menuService.showCurrentTurn(current_turn_id)
     _start_of_turn = false
+    if _mission.is_tutorial:
+        if tutorialService.stage == TutorialService.TutorialStage.EndTurn1:
+            tutorialService.next_tutorial_stage()
+        elif tutorialService.stage == TutorialService.TutorialStage.DummyTurn1:
+            tutorialService.next_tutorial_stage()
+        elif tutorialService.stage == TutorialService.TutorialStage.SpecialAttack:
+            tutorialService.next_tutorial_stage()
+        elif tutorialService.stage == TutorialService.TutorialStage.DummySpecial:
+            tutorialService.next_tutorial_stage()
     return
 
 func doNextTurn():
     if _is_ai_turn:
-        menuService.disableTurnButton()
+        menuService.disableAllButtons(true)
         nextAiStep()
     return
 
@@ -383,8 +403,11 @@ func movesFound(poses):
     return
 
 func moveDone():
-    print_debug("Done Move")   
-    menuService.enabled_turn_button() 
+    if _mission.is_tutorial:
+        if tutorialService.stage == TutorialService.TutorialStage.Moves:
+            tutorialService.next_tutorial_stage()
+    print_debug("Done Move")
+    menuService.enable_turn_button()
     currentEntity().stop_animations()
     cameraService.stop_lock()
     auraService.update()
@@ -397,7 +420,7 @@ func moveDone():
         menuService.restore_button_states()
         moveService.finish()
     if currentEntity().moves_left == 0:
-        menuService.disableMovesButton()
+        menuService.disableMovesButton(true)
     Globals.end_action()
     update_character_menu()
     highlightMap.highlight(currentEntity())
@@ -414,6 +437,9 @@ func doInteract(on):
 
 func interactDone():
     print_debug("Interact Done")
+    if _mission.is_tutorial:
+        if tutorialService.stage == TutorialService.TutorialStage.Turn3:
+            tutorialService.next_tutorial_stage()
     interactService.finish()
     menuService.show_description(false, null)
     menuService.force_show_description = false
@@ -433,6 +459,11 @@ func doAction(on, action_type: int):
 
 func actionDone():
     print_debug("Action Done")
+    if _mission.is_tutorial:
+        if tutorialService.stage == TutorialService.TutorialStage.Attack:
+            tutorialService.next_tutorial_stage()
+        elif tutorialService.stage == TutorialService.TutorialStage.Turn2:
+            tutorialService.next_tutorial_stage()
     menuService.disableActionButtons()
     menuService.show_description(false, null)
     menuService.force_show_description = false
@@ -461,7 +492,12 @@ func processDeathsFinished():
         menuService.lose()
         return
     if state.boss_dead():
-        menuService.win()
+        if _mission.is_tutorial:
+            if tutorialService.stage == TutorialService.TutorialStage.Ultimate:
+                tutorialService.next_tutorial_stage()
+            get_tree().create_timer(3).timeout.connect(menuService.win)
+        else:
+            menuService.win()
         return
     menuService.restore_button_states()
     if _start_of_turn:

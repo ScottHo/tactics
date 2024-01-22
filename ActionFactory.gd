@@ -27,6 +27,44 @@ static func add_base_attack(ent: Entity):
     _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats, "res://Effects/explosion_yellow.tscn")
     return
 
+static func add_weaken(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Weaken": 1,
+        "Weaken Duration": 2,
+        "Cost": 2,
+        "Threat Gain": 2
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        var damage = user.get_damage()
+        for _ent in targets:
+            user.damage_done += _ent.damage_preview(damage)            
+            _ent.loseHP(damage)
+            _ent.weakened(action.get_from_stats("Weaken"), action.get_from_stats("Weaken Duration"))
+        return
+    var d = "Weaken the enemy, reducing it's armor temporarily. Stats can be modified temporarily, or last \
+through the mission depending on the ability."
+    _add_action(ent, "Weaken", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    return
+
+static func add_double_shot(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Number of Attacks": 2,
+        "Threat Gain": 2
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        var damage = user.get_damage()
+        for _ent in targets:
+            user.damage_done += _ent.damage_preview(damage)            
+            _ent.loseHP(damage)
+            user.damage_done += _ent.damage_preview(damage)            
+            _ent.loseHP(damage)
+        return
+    var d = "Shoot twice. Ultimate abilities can only be used once per mission"
+    _add_action(ent, "Double Shot", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    return
+
 static func add_exert(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.ENEMIES,
@@ -328,6 +366,7 @@ static func add_ultimate_shiphon(ent: Entity, type: int):
     var effect = func (user: Entity, targets: Array, action: Action):
         for _ent in targets:
             _ent.ultimate_used = false
+            _ent.action2.ultimate_used = false
             _ent.custom_text("Ult Recharged", Color.GREEN)
         return
     var d = "Siphon ultimate energy to an allied unit, allowing their ultimate to be used again"

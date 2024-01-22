@@ -206,6 +206,27 @@ static func create_auto_turret_3000():
     ActionFactory.add_base_attack(ent)
     return ent
 
+static func create_tutorial_bot():
+    var ent = _create_entity("Training Robot", 20, 5, 5, 10, "res://Bots/buster.tscn", "res://Assets/bot_template.png", true)
+    var p = Passive.new()
+    p.display_name = "Armor Aura"
+    p.description = "Allied units in a square near Training Robot have +1 armor. Mouse over Training Robot \
+to see the range of passive aura's"
+    p.aura_short_desc = "+1 Armor"    
+    p.aura_effect = func(e: Entity):
+        e.aura_armor_modifier = 1
+    p.is_aura = true
+    ent.passive = p
+    ActionFactory.add_base_attack(ent)
+    ActionFactory.add_weaken(ent, ActionType.ACTION1)
+    ActionFactory.add_double_shot(ent, ActionType.ACTION2)
+    return ent
+
+static func create_tutorial_boss():
+    var ent = _create_entity("Training Robot", 18, 0, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    ActionFactory.add_base_attack(ent)
+    return ent
+
 static func create_boss_1_1():
     var ent = _create_entity("Bronze Grunt", 50, 5, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ActionFactory.add_base_attack(ent)

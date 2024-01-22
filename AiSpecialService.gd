@@ -87,7 +87,10 @@ func mechanic_soak_effect():
 
 func mechanic_spawn_effect():
     for i in range(len(_targets)):
-        ActionCommon.spawn_entity(_targets[i], special().spawns[i], $"../", tileMap, _state)
+        if special().spawns[i].cls_name == "Entity":
+            ActionCommon.spawn_entity(_targets[i], special().spawns[i], $"../", tileMap, _state)
+        else:
+            ActionCommon.spawn_inter(_targets[i], special().spawns[i], $"../", tileMap, _state)
     return
 
 func mechanic_spawn_effect_inters():

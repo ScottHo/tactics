@@ -6,6 +6,7 @@ var _tab_dict: Dictionary = {}
 var _actions: Dictionary = {}
 var force_show_description := false
 var _current_interactable: String = ""
+var tutorial_mode := false
 
 signal moveActionInitiate
 signal nextTurnActionInitiate
@@ -58,7 +59,7 @@ signal menuAnimationsFinished
 @onready var mech_3_description_tall = $MechanicContainer/Long/Grid/Mechanic3/Label
 
 @onready var scoreService: ScoreService = $"../ScoreService"
-
+@onready var jenkins: Jenkins = $"Jenkins"
 
 func _ready():
     $AbortMissionButton.pressed.connect(lose)
@@ -104,13 +105,14 @@ func setup_next_turn_button():
     nextTurnButton.button_down.connect(func():
         if Globals.in_action:
             restore_button_states()
-            nextTurnButton.disabled = true
+            disableTurnButton()
             var t = get_tree().create_timer(.5)
             t.timeout.connect(func():
-                nextTurnButton.disabled = false)
+                enable_turn_button())
             nextTurnButton.text = "Next\nTurn"
             Globals.end_action()
         else:
+            disableTurnButton(true)
             unpress_all_buttons()
             nextTurnActionInitiate.emit()
             )
@@ -190,7 +192,7 @@ func setState(state: State):
     return
 
 func showTurns(turns: Array[int]):
-    for i in range(7):
+    for i in range(5):
         _setup_turn_sprite(_state.get_entity(turns[i]), turnSpriteContainer.get_child(i).get_child(0))
     return
 
@@ -221,15 +223,15 @@ func showCurrentTurn(turn: int):
     var is_ally := entity.is_ally
     if is_ally:
         if entity.get_movement() > 0:
-            moveButton.disabled = false
+            enable_moves_button()
         if not entity.is_add:
-            interactButton.disabled = false
-        attackButton.disabled = false
+            enable_interact_button()
+        enable_attack_button()
         if entity.action1 != null and entity.action1.cost() <= entity.energy:
-            action1Button.disabled = false
+            enable_special_button()
         if entity.action2 != null and entity.action2.cost() <= entity.energy:
             if not entity.ultimate_used and entity.action2.level > 0:
-                action2Button.disabled = false
+                enable_ultimate_button()
         setup_action_descriptions(entity)
     
     start_menu_animations()
@@ -254,7 +256,7 @@ func _button_animations(button: Button):
 
 func finish_menu_animations():
     $Timer.stop()
-    nextTurnButton.disabled = false
+    enable_turn_button()
     menuAnimationsFinished.emit()
     return
 
@@ -285,7 +287,7 @@ func updateEntityInfo(entity: Entity):
     _set_colors(entity)
 
     if entity.moves_left > 0 and entity.is_ally:
-        moveButton.disabled = false
+        enable_moves_button()
     descPassivePanel.set_passive(entity.passive)
     return
 
@@ -313,24 +315,11 @@ func unpress_all_buttons(omit=null):
         action2Button.set_pressed(false)
     return
 
-func disable_all_action_buttons(omit=null):
-    nextTurnButton.disabled = false
-    cache_button_states()
-    unpress_all_buttons(omit)
-    if omit != moveButton:
-        moveButton.disabled = true
-    if omit != interactButton:
-        interactButton.disabled = true
-    if omit != attackButton:
-        attackButton.disabled = true
-    if omit != action1Button:
-        action1Button.disabled = true
-    if omit != action2Button:
-        action2Button.disabled = true
-    return
-
-func enableAllButtons():
-    unpress_all_buttons()
+func enableAllButtons(force = false):
+    unpress_all_buttons()    
+    if tutorial_mode:
+        if not force:
+            return
     moveButton.disabled = false
     nextTurnButton.disabled = false
     interactButton.disabled = false
@@ -350,8 +339,11 @@ func cache_button_states():
     ]
     return
 
-func restore_button_states():
+func restore_button_states(force = false):
     unpress_all_buttons()
+    if tutorial_mode:
+        if not force:
+            return
     moveButton.disabled = _button_state_cache[0]
     nextTurnButton.disabled = _button_state_cache[1]
     interactButton.disabled = _button_state_cache[2]
@@ -360,36 +352,91 @@ func restore_button_states():
     action2Button.disabled = _button_state_cache[5]
     return
 
-func disableAllButtons():
+func disableAllButtons(force = false):
     unpress_all_buttons()
-    disableTurnButton()
-    disableInteractButton()
-    disableActionButtons()
-    disableMovesButton()
+    if tutorial_mode:
+        if not force:
+            return
+    disableTurnButton(force)
+    disableInteractButton(force)
+    disableActionButtons(force)
+    disableMovesButton(force)
     return
 
-func disableTurnButton():
+func disableTurnButton(force = false):
+    unpress_all_buttons()
+    if tutorial_mode:
+        if not force:
+            return
     nextTurnButton.disabled = true
     return
     
-func enabled_turn_button():
+func enable_turn_button(force = false):
+    if tutorial_mode:
+        if not force:
+            return
     nextTurnButton.disabled = false
     return
 
-func disableInteractButton():
+func disableInteractButton(force = false):
+    unpress_all_buttons()
+    if tutorial_mode:
+        if not force:
+            return
     interactButton.disabled = true
     return
 
-func disableMovesButton():
+func disableMovesButton(force = false):
     unpress_all_buttons()
+    if tutorial_mode:
+        if not force:
+            return
     moveButton.disabled = true
     return
 
-func disableActionButtons():
-    unpress_all_buttons()
+func enable_moves_button(force: = false):
+    if tutorial_mode:
+        if not force:
+            return
+    moveButton.disabled = false
+    return
+
+func disableActionButtons(force: = false):
+    unpress_all_buttons()    
+    if tutorial_mode:
+        if not force:
+            return
     attackButton.disabled = true
     action1Button.disabled = true
     action2Button.disabled = true
+    return
+
+func enable_attack_button(force: = false):
+    if tutorial_mode:
+        if not force:
+            return
+    attackButton.disabled = false
+    return
+
+func enable_special_button(force: = false):
+    if tutorial_mode:
+        if not force:
+            return
+    action1Button.disabled = false
+    return
+
+func enable_ultimate_button(force: = false):
+    if tutorial_mode:
+        if not force:
+            return
+    action2Button.disabled = false
+    return
+
+func enable_interact_button(force: = false):
+    if tutorial_mode:
+        if not force:
+            return
+    interactButton.disabled = false
     return
 
 func set_mechanic_text_1(n, t):
@@ -414,13 +461,14 @@ func win():
     disableActionButtons()
     $GameOverLabel.visible = true
     $GameOverLabel.text = "Mission success"
-    Globals.current_level += 1
-    if Globals.current_recruit != -1:
-        Globals.bots_collected.append(Globals.current_recruit)
-        var n = EntityFactory.create_bot(Globals.current_recruit).display_name
-        $RecruitLabel.visible = true
-        $RecruitLabel.text = "New Recruit!\n" + n
-        Globals.current_recruit = -1        
+    if not tutorial_mode:
+        Globals.current_level += 1
+        if Globals.current_recruit != -1:
+            Globals.bots_collected.append(Globals.current_recruit)
+            var n = EntityFactory.create_bot(Globals.current_recruit).display_name
+            $RecruitLabel.visible = true
+            $RecruitLabel.text = "New Recruit!\n" + n
+            Globals.current_recruit = -1
     scoreService.show_score()
     Globals.skill_points += scoreService.calc_points()
     Globals.missions_found = false
@@ -475,4 +523,8 @@ func show_description(show, action_type):
         descSpecialPanel.visible = true
         descSpecialPanel.set_action(_actions[action_type])
     $DescriptionContainer.visible = show
+    return
+
+func jenkins_talk(t, mood: Jenkins.Mood):
+    jenkins.talk(t, mood)
     return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cq8xqg1q1wgxp"]
+[gd_scene load_steps=22 format=3 uid="uid://cq8xqg1q1wgxp"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_uypkh"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="2_df7di"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://InteractService.gd" id="15_dm32j"]
 [ext_resource type="Script" path="res://Timer.gd" id="18_iw7cw"]
 [ext_resource type="Script" path="res://AuraService.gd" id="20_ooyno"]
+[ext_resource type="Script" path="res://TutorialService.gd" id="20_wtrmh"]
 
 [node name="MainService" type="Node2D"]
 y_sort_enabled = true
@@ -126,6 +127,9 @@ script = ExtResource("15_dm32j")
 
 [node name="AuraService" type="Node2D" parent="."]
 script = ExtResource("20_ooyno")
+
+[node name="TutorialService" type="Node2D" parent="."]
+script = ExtResource("20_wtrmh")
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("18_iw7cw")

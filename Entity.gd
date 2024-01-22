@@ -1,6 +1,7 @@
 class_name Entity extends Node
 
 # Static
+var cls_name = "Interactable"
 var collection_id: int
 var display_name: String
 var sprite: EntitySprite
@@ -57,6 +58,7 @@ var health_modifier: int
 
 # Aura Modifiers
 var aura_range_modifier: int = 0
+var aura_armor_modifier: int = 0
 var aura_damage_modifier: int = 0
 var aura_shield: int = 0
 var aura_crit: float = 0
@@ -105,7 +107,7 @@ func get_initiative() -> int:
     return ret
 
 func get_armor() -> int:
-    return armor + armor_modifier - weakness_value
+    return armor + armor_modifier - weakness_value + aura_armor_modifier
 
 func get_low_health_threshold() -> int:
     return int(get_max_health()/5)
@@ -412,6 +414,7 @@ func show_custom_sprite(path: String, _scale: Vector2):
 func reset_auras():
     aura_range_modifier = 0
     aura_damage_modifier = 0
+    aura_armor_modifier = 0
     aura_shield = 0
     aura_crit = 0.0
     aura_regen = 0

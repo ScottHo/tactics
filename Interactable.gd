@@ -1,5 +1,6 @@
 class_name Interactable extends Node
 
+var cls_name = "Interactable"
 var display_name: String
 var description: String
 var effect: Callable

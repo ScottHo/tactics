@@ -1,6 +1,7 @@
 class_name TurnService extends Node2D
 
 var _state: State
+var tutorial_mode := false
 var _turnNodes: Array[TurnNode] = []
 var _turnCache: Array[int] = []
 
@@ -13,14 +14,14 @@ func update(random=true):
         turnNode.entity_id = entity_id
         turnNode.total = 0
         if _state.isAlly(entity) and random:
-            turnNode.total = randi_range(0, 80)
+            turnNode.total = randi_range(1, 80)
         elif random:
             turnNode.total = randi_range(0, 9) + 90
-            if Globals.level_debug_mode:
+            if Globals.level_debug_mode or tutorial_mode:
                 turnNode.total = 0
         _turnNodes.append(turnNode)
     
-    for i in range(7):
+    for i in range(5):
         _turnCache.append(findNextTurn())
     return
 
@@ -78,5 +79,5 @@ func startNextTurn() -> int:
     _turnCache.append(findNextTurn())
     return ret
 
-func next7Turns() -> Array[int]:
+func next5Turns() -> Array[int]:
     return _turnCache

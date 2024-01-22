@@ -52,3 +52,14 @@ static func spawn_entity(location: Vector2i, e: Entity, parent: Node2D, tileMap:
     ent.sprite = sprite
     ent.update_sprite()
     return
+
+static func spawn_inter(location: Vector2i, inter: Interactable, parent: Node2D, tileMap: MainTileMap, state: State):
+    print_debug("Spawning Interactable at " + str(location))    
+    inter.location = location
+    var sprite: InteractableSprite  = load(inter.sprite_path).instantiate()
+    sprite.load_texture(inter.icon_path, inter.color)
+    inter.set_sprite(sprite)
+    parent.add_child(sprite)
+    sprite.global_position = tileMap.pointToGlobal(inter.location)
+    state.add_interactable(inter)
+    return

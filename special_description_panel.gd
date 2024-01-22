@@ -2,12 +2,14 @@ class_name SpecialDescriptionPanel extends Node2D
 
 @onready var descName: Label = $DescriptionName
 @onready var descMain: Label = $DescriptionLabel
-@onready var costLabel: Label = $CostLabel
+@onready var costLabel: Label = $CostContainer/CostLabel
+@onready var costContainer: Node2D = $CostContainer
 @onready var levelLabel: Label = $LevelLabel
 @onready var affectsLabel: Label = $AffectsLabel
 @onready var actionLabel: Label = $ActionLabel
 @onready var specIcon: Sprite2D = $SpecIcon
 @onready var grid: GridContainer = $GridContainer
+@onready var ultimateLabel: Label =  $UltimateLabel
 
 func name_label(c) -> Label:
     return c.get_child(0)
@@ -47,18 +49,27 @@ func set_action(action: Action):
         actionLabel.visible = false
         specIcon.texture = load("res://Assets/item_sword.png")
         levelLabel.text = ""
+        ultimateLabel.text = "No Cost"
+        costContainer.visible = false
     if action.type == ActionType.ACTION1:
         specIcon.visible = true
         actionLabel.visible = false
         specIcon.texture = load("res://Assets/ability.png")
         levelLabel.text = "Level " + str(action.level)
+        ultimateLabel.text = ""
+        costContainer.visible = true
     if action.type == ActionType.ACTION2:
+        costContainer.visible = false
         specIcon.visible = false
         actionLabel.visible = true
+        levelLabel.text = ""
         if action.level == 1:
-            levelLabel.text = ""
+            if action.ultimate_used:
+                ultimateLabel.text = "Status: Ready"
+            else:
+                ultimateLabel.text = "Status: Used"
         else:
-            levelLabel.text = "Not Learned"
+            ultimateLabel.text = "Status: Not Learned"
 
     descName.text = action.display_name
     descMain.text = action.description

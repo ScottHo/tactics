@@ -111,14 +111,7 @@ func spawn_interactable(mission: Mission):
     return Vector2i(999,999)
 
 func setup_interactable_for_level(inter: Interactable, location: Vector2i, increment=true):
-    print_debug("Spawning Interactable at " + str(location))    
-    inter.location = location
-    var sprite: InteractableSprite  = load(inter.sprite_path).instantiate()
-    sprite.load_texture(inter.icon_path, inter.color)
-    inter.set_sprite(sprite)
-    get_parent().add_child(sprite)
-    sprite.global_position = tileMap.pointToGlobal(inter.location)
-    _state.add_interactable(inter)
+    ActionCommon.spawn_inter(location, inter, get_parent(), tileMap, _state)
     if increment:
         _num_inters += 1
     return

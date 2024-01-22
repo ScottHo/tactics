@@ -6,3 +6,4 @@ var boss: Entity
 var buffs: Array
 var specials: Array
 var specials_per_turn: int
+var is_tutorial := false

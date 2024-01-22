@@ -105,18 +105,19 @@ static func orb_of_sacrifice() -> Interactable:
 static func bronze_soul() -> Interactable:
     var inter = Interactable.new()
     inter.display_name = "Bronze Soul"
-    inter.description = "Lose 3 hp at the end of every turn."
+    inter.description = "Lose 3 hp on pick up and the start of every turn when held"
     inter.effect = func (user: Entity):
+        user.loseHP(3)
         return
 
     inter.drop_effect = func (user: Entity):
         return
 
     inter.repeated_effect = func (user: Entity):
+        user.loseHP(3)
         return
     
     inter.repeated_end_effect = func (user: Entity):
-        user.loseHP(3)
         return
 
     inter.storable = true
@@ -143,6 +144,32 @@ static func add_drainer() -> Interactable:
         return
 
     inter.storable = true
+    return inter
+
+static func add_cursed_gift() -> Interactable:
+    var inter = Interactable.new()
+    inter.display_name = "Cursed Gift"
+    inter.description = "Get +1 Damage and -1 Armor"
+    inter.effect = func (user: Entity):
+        user.update_damage(1)
+        user.update_armor(-1)
+        return
+
+    inter.drop_effect = func (user: Entity):
+        user.update_damage(-1)
+        user.update_armor(1)
+        return
+
+    inter.repeated_effect = func (user: Entity):
+        return
+    
+    inter.repeated_end_effect = func (user: Entity):
+        return
+
+    inter.storable = true
+    inter.sprite_path = "res://interactable_sprite.tscn"
+    inter.icon_path = "res://Assets/Objects/cursed_gift.png"
+    inter.color = Color.WHITE
     return inter
 
 static func random_set():

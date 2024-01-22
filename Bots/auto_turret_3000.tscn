@@ -59,7 +59,6 @@ scale = Vector2(0.2, 0.2)
 
 [node name="Base" type="Sprite2D" parent="Sprite/SE"]
 position = Vector2(-11.9055, -218.268)
-scale = Vector2(1, 1)
 texture = ExtResource("2_cs2c3")
 
 [node name="Top" type="Node2D" parent="Sprite/SE"]
@@ -67,12 +66,10 @@ position = Vector2(-5.30327, -322.793)
 
 [node name="GunBox" type="Sprite2D" parent="Sprite/SE/Top"]
 position = Vector2(19.1572, -72.7711)
-scale = Vector2(1, 1)
 texture = ExtResource("3_ak4l7")
 
 [node name="Gun" type="Sprite2D" parent="Sprite/SE/Top"]
 position = Vector2(118.406, 50.5048)
-scale = Vector2(1, 1)
 texture = ExtResource("4_rlsu8")
 
 [node name="SW" type="Node2D" parent="Sprite"]

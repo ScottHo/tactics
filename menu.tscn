@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=45 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="19_gtpi5"]
 [ext_resource type="Texture2D" uid="uid://20se04bvsoay" path="res://Assets/ability.png" id="24_ucv0g"]
 [ext_resource type="Texture2D" uid="uid://cm1l266el6dvl" path="res://Assets/square_button.png" id="25_01ek2"]
+[ext_resource type="PackedScene" uid="uid://cmuxmq1g41mw1" path="res://jenkins.tscn" id="27_3x7f3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxedm"]
 
@@ -518,16 +519,6 @@ layout_mode = 2
 
 [node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control5"]
 
-[node name="Control6" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control6"]
-
-[node name="Control7" type="Control" parent="TurnsContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Turn" type="Sprite2D" parent="TurnsContainer/GridContainer/Control7"]
-
 [node name="CharacterContainer" type="ReferenceRect" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
@@ -907,5 +898,9 @@ offset_bottom = 97.4162
 theme_override_font_sizes/font_size = 16
 text = "ABORT
 MISSION"
+
+[node name="Jenkins" parent="." instance=ExtResource("27_3x7f3")]
+position = Vector2(156.917, 937.861)
+scale = Vector2(0.2, 0.2)
 
 [node name="Timer" type="Timer" parent="."]

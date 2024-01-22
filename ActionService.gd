@@ -50,6 +50,7 @@ func _input(event):
                     _entity.action_animation(action_animation_effects)
                 if action().type == ActionType.ACTION2:
                     _entity.ultimate_used = true
+                    action().ultimate_used = true
                 _enabled = false
                 return
     return

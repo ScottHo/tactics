@@ -1,29 +1,33 @@
 BUGS
 - Highlights over being over written for ai if if recently moved off of it before attack
+- Highlights for current player is bugged if last attacked
+- Tutorial can stall if run out of moves during interact -> replenish moves on tutorial
 
 DO NEXT
-- Tutorial
-- Animations (Wait for artists?)
+- Tutorial Map / Tilempa setups
+- Action buttons being enabled need animations
+- Animations
+- Obstructions
+- Side Missions
+- show status effects on hover
 
 DO LATER
-- Foundry 3 foundry boss
-- Foundry 4 foundry boss
-- Final Foundry Boss
-- Does orb drop work well?
-- Procedurally generated maps
-- Obstructions
-- Save states
-- Side Missions
-- Animations for new recruits
-- Action buttons being enabled need animations
+- Scene for new recruits
 - "Popup" for current action/event
 - deploy to slot alternative
 - slight animation for mechanic container
-- show status effects on hover
 - Splash Screen
-- Undo Button
+- Procedurally generated maps
+- Foundry 3 foundry boss
+- Foundry 4 foundry boss
+- Final Foundry Boss
+- Save states
 - Modulate on target
+- Undo Button
 - Training Room
+
+BUGS LOW PRIO
+- Moves Button can be used while moving in tutorial mode, but doesn't break game
 
 IDEAS
 Boss 1: Adds that drops souls that revive
