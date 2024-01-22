@@ -12,6 +12,7 @@ DO NEXT
 - show status effects on hover
 
 DO LATER
+- Scenes for prologue/post tutorial
 - Scene for new recruits
 - "Popup" for current action/event
 - deploy to slot alternative

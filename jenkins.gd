@@ -12,19 +12,19 @@ func talk(t: String, mood = Mood.NORMAL):
     $Timer.stop()
     $Timer.start(10)
     visible = true    
-    $Sad.visible = false
-    $Happy.visible = false
+    $Container/Sad.visible = false
+    $Container/Happy.visible = false
     if mood == Mood.HAPPY:
-        $Happy.visible = true
+        $Container/Happy.visible = true
     if mood == Mood.SAD:
-        $Sad.visible = true 
+        $Container/Sad.visible = true 
     $Label.text = t
     $AnimationPlayer.play("Talk")
     return
 
 func fade_away():
-    $Sad.visible = false
-    $Happy.visible = false
+    $Container/Sad.visible = false
+    $Container/Happy.visible = false
     if not tutorial_mode:
         $Label.text = ""
         visible = false

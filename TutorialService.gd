@@ -46,7 +46,7 @@ func next_tutorial_stage():
     return
 
 func welcome():
-    var s = "Hello! Welcome to our training room. \n
+    var s = "Hello! Welcome to our training room.\n\n
 Use right click to look around, and scroll wheel to zoom."
     menuService.jenkins_talk(s, Jenkins.Mood.HAPPY)
     menuService.disableAllButtons(true)
@@ -72,7 +72,7 @@ and attack the target dummy"
 
 func end_turn():
     var s = "That's all for our turn. We can only do one of attack, special, or ultimate \
-each turn. We can move as much as we want until we run out of moves though! Let's end our turn \
+each turn.\n\nWe can move as much as we want until we run out of moves though! Let's end our turn \
 with the next turn button"
     menuService.jenkins_talk(s, Jenkins.Mood.HAPPY)
     menuService.disableAllButtons(true)
@@ -82,7 +82,7 @@ with the next turn button"
 func dummy_turn():
     var s = "Now it's the dummy's turn to act. The Training Bot 1.0 comes equipped \
 with a passive ability of increasing not only our armor but others around it, so we \
-should take 1 less damage."
+should take less damage."
     menuService.jenkins_talk(s, Jenkins.Mood.NORMAL)
     menuService.disableAllButtons(true)
     return
@@ -98,22 +98,24 @@ Now we can use our special ability! Let's see how you do."
 
 func special():
     var s = "The dummy has been weakened! Next time we attack it, it should deal 1 extra damage. \
-The amount of threat gained varies between attacks. The higher threat you have, the enemies want to \
-attack you. Let's finish it off next turn."
+\n\nThe amount of threat gained varies between attacks. The higher threat you have, the enemies want to \
+attack you.\n\nLet's finish it off next turn."
     menuService.jenkins_talk(s, Jenkins.Mood.NORMAL)
     menuService.disableAllButtons(true)
     menuService.enable_turn_button(true)
     return
 
 func dummy_special():
-    var s = "Enemies also have special attacks. The training dummy will spawn a Cursed Gift. \
-I hear some foundry bots can use two specials a turn... scary."
+    var s = "Enemies also have special attacks. The training dummy will spawn a Cursed Gift. The next \
+special it will use will heal it. Let's finish it off soon. \n\nI hear some foundry bots can use two \
+specials a turn... scary."
     menuService.jenkins_talk(s, Jenkins.Mood.SAD)
     menuService.disableAllButtons(true)
     return
 
 func third_turn():
-    var s = "The interact button lets you pick up and store objects. Let's pick up the cursed gift."
+    var s = "The interact button lets you pick up and store objects. Let's pick up the cursed gift.\
+\nLike moving, interact can be done as many times as you want."
     menuService.jenkins_talk(s, Jenkins.Mood.NORMAL)
     menuService.disableAllButtons(true)
     menuService.enable_moves_button(true)
@@ -122,7 +124,7 @@ func third_turn():
 
 func ultimate():
     var s = "I think it's time to show your true skills. Use your ultimate ability and finish the \
-the mission! Ultimate abilities are very powerful and do not have an energy cost, but can only be \
+the mission!\n  Ultimate abilities are very powerful and do not have an energy cost, but can only be \
 used once per mission."
     menuService.jenkins_talk(s, Jenkins.Mood.NORMAL)
     menuService.disableAllButtons(true)
