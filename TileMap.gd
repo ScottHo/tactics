@@ -40,4 +40,7 @@ func switch_tile_data(point: Vector2i, atlas: Vector2i):
     set_cell(0, point, 1, atlas)
     return
 
+func load_demo_map():
+    return
+
 

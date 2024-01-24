@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc05jptt72huw"
-path="res://.godot/imported/wheel.png-3c81637dbe9d1ebfb3410ebafcf2f871.ctex"
+uid="uid://bjbcfg5i1ft4l"
+path="res://.godot/imported/Body.png-d65519efe2791907f617511bdf13b03f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bots/BronzeBull/forward/wheel.png"
-dest_files=["res://.godot/imported/wheel.png-3c81637dbe9d1ebfb3410ebafcf2f871.ctex"]
+source_file="res://Assets/Bots/Peppershot/Body.png"
+dest_files=["res://.godot/imported/Body.png-d65519efe2791907f617511bdf13b03f.ctex"]
 
 [params]
 
