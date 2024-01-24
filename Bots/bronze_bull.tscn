@@ -532,7 +532,6 @@ texture = ExtResource("6_66gxu")
 
 [node name="Torso" type="Node2D" parent="Sprite/SW"]
 position = Vector2(35.1819, -225.21)
-scale = Vector2(1, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprite/SW/Torso"]
 position = Vector2(-35.3951, -69.6176)
@@ -544,12 +543,10 @@ texture = ExtResource("2_maj6w")
 
 [node name="Neck" type="Sprite2D" parent="Sprite/SW"]
 position = Vector2(24.9774, -242.531)
-scale = Vector2(1, 1)
 texture = ExtResource("3_g5eca")
 
 [node name="Head" type="Sprite2D" parent="Sprite/SW"]
 position = Vector2(31.2274, -431.222)
-scale = Vector2(1, 1)
 texture = ExtResource("7_824bv")
 
 [node name="RightWheel" type="Sprite2D" parent="Sprite/SW"]
@@ -588,13 +585,11 @@ texture = ExtResource("5_xsydx")
 [node name="LeftEye" type="AnimatedSprite2D" parent="Sprite/SW"]
 z_index = 2
 position = Vector2(164.98, -520.402)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_i4krq")
 autoplay = "default"
 
 [node name="RightEye" type="AnimatedSprite2D" parent="Sprite/SW"]
 position = Vector2(34.1431, -519.842)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_uf3jk")
 autoplay = "default"
 
@@ -759,7 +754,6 @@ texture = ExtResource("6_66gxu")
 
 [node name="Torso" type="Node2D" parent="Sprite/SE"]
 position = Vector2(35.1819, -225.21)
-scale = Vector2(1, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprite/SE/Torso"]
 position = Vector2(-35.3951, -69.6176)
@@ -771,12 +765,10 @@ texture = ExtResource("2_maj6w")
 
 [node name="Neck" type="Sprite2D" parent="Sprite/SE"]
 position = Vector2(24.9774, -242.531)
-scale = Vector2(1, 1)
 texture = ExtResource("3_g5eca")
 
 [node name="Head" type="Sprite2D" parent="Sprite/SE"]
 position = Vector2(31.2274, -431.222)
-scale = Vector2(1, 1)
 texture = ExtResource("7_824bv")
 
 [node name="RightWheel" type="Sprite2D" parent="Sprite/SE"]
@@ -815,13 +807,11 @@ texture = ExtResource("5_xsydx")
 [node name="LeftEye" type="AnimatedSprite2D" parent="Sprite/SE"]
 z_index = 2
 position = Vector2(164.98, -520.402)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_i4krq")
 autoplay = "default"
 
 [node name="RightEye" type="AnimatedSprite2D" parent="Sprite/SE"]
 position = Vector2(34.1431, -519.842)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_uf3jk")
 autoplay = "default"
 
@@ -987,7 +977,6 @@ texture = ExtResource("12_8u5v4")
 
 [node name="Torso" type="Node2D" parent="Sprite/NW"]
 position = Vector2(35.1819, -225.21)
-scale = Vector2(1, 1)
 
 [node name="Body" type="Sprite2D" parent="Sprite/NW/Torso"]
 position = Vector2(-0.343128, 17.8914)
@@ -1000,12 +989,10 @@ texture = ExtResource("4_dgtl5")
 
 [node name="Neck" type="Sprite2D" parent="Sprite/NW"]
 position = Vector2(24.9774, -242.531)
-scale = Vector2(1, 1)
 texture = ExtResource("3_g5eca")
 
 [node name="Head" type="Sprite2D" parent="Sprite/NW"]
 position = Vector2(31.2274, -431.222)
-scale = Vector2(1, 1)
 texture = ExtResource("18_k2v11")
 
 [node name="RightWheel" type="Sprite2D" parent="Sprite/NW"]
@@ -1205,7 +1192,6 @@ texture = ExtResource("12_8u5v4")
 
 [node name="Torso" type="Node2D" parent="Sprite/NE"]
 position = Vector2(35.1819, -225.21)
-scale = Vector2(1, 1)
 
 [node name="Body" type="Sprite2D" parent="Sprite/NE/Torso"]
 position = Vector2(-0.343128, 17.8914)
@@ -1218,12 +1204,10 @@ texture = ExtResource("4_dgtl5")
 
 [node name="Neck" type="Sprite2D" parent="Sprite/NE"]
 position = Vector2(24.9774, -242.531)
-scale = Vector2(1, 1)
 texture = ExtResource("3_g5eca")
 
 [node name="Head" type="Sprite2D" parent="Sprite/NE"]
 position = Vector2(31.2274, -431.222)
-scale = Vector2(1, 1)
 texture = ExtResource("18_k2v11")
 
 [node name="RightWheel" type="Sprite2D" parent="Sprite/NE"]

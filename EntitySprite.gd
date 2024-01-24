@@ -13,6 +13,10 @@ var modulate_time_delta := 0.0
 var time_to_modulate := .4
 var modulate_normal := true
 var modulate_color := Color.WHITE
+var SE :Node2D 
+var SW :Node2D 
+var NE :Node2D 
+var NW :Node2D 
 signal doneMoving
 
 func _ready():
@@ -22,6 +26,16 @@ func _ready():
     sprite = $Sprite
     interContainer = $CharacterCommon/InteractableContainer
     custom_sprite = $CharacterCommon/CustomContainer/Sprite2D
+    if sprite.get_child_count() >= 4:
+        SE = $Sprite/SE
+        SW = $Sprite/SW
+        NE = $Sprite/NE
+        NW = $Sprite/NW
+        SE.visible = true
+        SW.visible = false
+        NE.visible = false
+        NW.visible = false
+        return
     return
 
 func _process(delta):
@@ -36,6 +50,27 @@ func _process(delta):
         else:
             sprite.modulate = Color.WHITE
             modulate_normal = true
+    return
+
+func face_direction(vec: Vector2i):
+    if $Sprite.get_child_count() < 4:
+        return
+    SE.visible = false
+    SW.visible = false    
+    NE.visible = false
+    NW.visible = false
+    if vec == Vector2i(1,0):
+        SE.visible = true
+        return
+    if vec == Vector2i(0,1):
+        SW.visible = true
+        return
+    if vec == Vector2i(0,-1):
+        NE.visible = true
+        return
+    if vec == Vector2i(-1,0):
+        NW.visible = true
+        return
     return
 
 func movePoints(_points: Array, _moved_entities: Array):
@@ -55,6 +90,16 @@ func nextMove():
     if shifted_ent != null:
         shifted_ent.shift_animation()
     var pos = points.pop_front()
+    if pos.x > global_position.x:
+        if pos.y > global_position.y:
+            face_direction(Vector2i(1,0))
+        else:
+            face_direction(Vector2i(0,-1))
+    else:
+        if pos.y > global_position.y:
+            face_direction(Vector2i(0,1))
+        else:
+            face_direction(Vector2i(-1,0))
     var tween = get_tree().create_tween()
     tween.tween_property(self, "global_position", pos, .3)
     tween.tween_callback(nextMove)

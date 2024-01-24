@@ -197,6 +197,8 @@ func spawn_targets(ent):
     return
 
 func do_special_effect():
+    if len(_targets) > 0:
+        ActionCommon.face_direction(_entity, _targets[0])
     cameraService.stop_lock()
     _entity.action_animation(func():
         ActionCommon.do_action_animation(effects, special(), _targets, tileMap, special_animation_done)

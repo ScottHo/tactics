@@ -107,7 +107,7 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
 
 func setup_entities():
     if Globals.level_debug_mode:
-        Globals.current_mission = MissionFactory.tutorial_boss()
+        Globals.current_mission = MissionFactory.foundry_1_final_boss()
         var e := EntityFactory.create_bot(EntityFactory.Bot.LONGSHOT)
         e.action1.level += 1
         e.damage += 2
@@ -129,11 +129,11 @@ func setup_entities():
         e6.action2.level += 1
         e6.max_health += 3
         #setup_entity_for_level(e, Vector2i(1,0))
-        #setup_entity_for_level(e1, Vector2i(1,1))
-        #setup_entity_for_level(e2, Vector2i(1,2))
-        #setup_entity_for_level(e3, Vector2i(3,3))
-        #setup_entity_for_level(e4, Vector2i(3,4))
-        #setup_entity_for_level(e5, Vector2i(3,5))
+        setup_entity_for_level(e1, Vector2i(1,1))
+        setup_entity_for_level(e2, Vector2i(1,2))
+        setup_entity_for_level(e3, Vector2i(3,3))
+        setup_entity_for_level(e4, Vector2i(3,4))
+        setup_entity_for_level(e5, Vector2i(3,5))
         #setup_entity_for_level(e6, Vector2i(3,6))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,0))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,1))
@@ -407,7 +407,6 @@ func moveDone():
         if tutorialService.stage == TutorialService.TutorialStage.Moves:
             tutorialService.next_tutorial_stage()
     print_debug("Done Move")
-    menuService.enable_turn_button()
     currentEntity().stop_animations()
     cameraService.stop_lock()
     auraService.update()

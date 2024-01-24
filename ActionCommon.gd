@@ -63,3 +63,17 @@ static func spawn_inter(location: Vector2i, inter: Interactable, parent: Node2D,
     sprite.global_position = tileMap.pointToGlobal(inter.location)
     state.add_interactable(inter)
     return
+
+static func face_direction(entity: Entity, target: Vector2i):
+    var direction := target - entity.location
+    if direction.x >= direction.y:
+        if direction.x + direction.y >= 0:
+            entity.face_direction(Vector2i(1,0))
+        else:
+            entity.face_direction(Vector2i(0,-1))
+    else:
+        if direction.x + direction.y >= 0:
+            entity.face_direction(Vector2i(0,1))
+        else:
+            entity.face_direction(Vector2i(-1,0))
+    return

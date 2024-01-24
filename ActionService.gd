@@ -51,6 +51,7 @@ func _input(event):
                 if action().type == ActionType.ACTION2:
                     _entity.ultimate_used = true
                     action().ultimate_used = true
+                ActionCommon.face_direction(_entity, _target_points[0])
                 _enabled = false
                 return
     return

@@ -105,11 +105,7 @@ func setup_next_turn_button():
     nextTurnButton.button_down.connect(func():
         if Globals.in_action:
             restore_button_states()
-            disableTurnButton()
-            var t = get_tree().create_timer(.5)
-            t.timeout.connect(func():
-                enable_turn_button())
-            nextTurnButton.text = "Next\nTurn"
+            nextTurnButton.text = "End\nTurn"
             Globals.end_action()
         else:
             disableTurnButton(true)
@@ -175,7 +171,7 @@ func button_toggled_tasks(button, toggled):
         Globals.start_action(button == moveButton)
         nextTurnButton.text = "Cancel"
     else:
-        nextTurnButton.text = "Next\nTurn"
+        nextTurnButton.text = "End\nTurn"
         Globals.end_action()
     return
 

@@ -1,7 +1,7 @@
 class_name Entity extends Node
 
 # Static
-var cls_name = "Interactable"
+var cls_name = "Entity"
 var collection_id: int
 var display_name: String
 var sprite: EntitySprite
@@ -436,6 +436,12 @@ func loop_modulate(color: Color):
 func stop_modulate():
     if sprite != null:
         sprite.stop_modulate()
+    return
+    
+func face_direction(vec: Vector2i):
+    if not check_sprite():
+        return
+    sprite.face_direction(vec)
     return
 
 func clone() -> Entity:
