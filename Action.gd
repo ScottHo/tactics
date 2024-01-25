@@ -9,6 +9,8 @@ var highlight_style: Vector2i = Highlights.ATTACK
 var level := 1
 var ultimate_used := false
 var animation_path : String = ""
+var target_animation: String = ""
+
 var type : int
 var spawn
 

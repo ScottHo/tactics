@@ -44,10 +44,7 @@ func _input(event):
                         return
                 if action().cost() != 0:
                     _entity.update_energy(-action().cost())
-                if action().type == ActionType.ATTACK:
-                    _entity.attack_animation(action_animation_effects)
-                else:
-                    _entity.action_animation(action_animation_effects)
+                _entity.action_animation(action_animation_effects, action().type)
                 if action().type == ActionType.ACTION2:
                     _entity.ultimate_used = true
                     action().ultimate_used = true
@@ -111,7 +108,7 @@ func validate_single_target():
     return true
 
 func action_animation_effects():
-    ActionCommon.do_action_animation(effects, action(), _target_points, tileMap, action_animation_done)
+    ActionCommon.do_action_animation(effects, action(), _target_points, tileMap, _state, action_animation_done)
     return
 
 func action_animation_done():

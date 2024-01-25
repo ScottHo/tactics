@@ -371,16 +371,27 @@ func done_turn():
                 interactable.repeated_end_effect.call(self)
     return
 
-func action_animation(callback):
+func action_animation(callback, action_type):
     if not check_sprite():
         return
-    sprite.play_action_animation(callback)
+    if action_type == ActionType.ATTACK:
+        sprite.play_attack_animation(callback)
+    if action_type == ActionType.ACTION1:
+        sprite.play_special_animation(callback)
+    if action_type == ActionType.ACTION2:
+        sprite.play_ultimate_animation(callback)
     return
 
-func attack_animation(callback):
+func hit_animation(callback = null):
     if not check_sprite():
         return
-    sprite.play_attack_animation(callback)
+    sprite.play_hit_animation(callback)
+    return
+
+func buff_animation(callback = null):
+    if not check_sprite():
+        return
+    sprite.play_buff_animation(callback)
     return
 
 func stop_animations():

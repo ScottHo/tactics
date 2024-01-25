@@ -19,19 +19,24 @@ static func do_action(state: State, _source: Entity, _targets: Array, action: Ac
             _source.loseHP(target.get_damage())
     return
 
-static func do_action_animation(parent: Node2D, action, _targets: Array, tileMap: TileMap, callback: Callable):
-    var animation_signal_connected = false
+static func do_action_animation(parent: Node2D, action, _targets: Array, tileMap: TileMap, state: State, callback: Callable):
     var node = Node2D.new()
     parent.add_child(node)
+    if action.target_animation != "":
+        for point in _targets:
+            var _ent = state.entity_on_tile(point)
+            if _ent != null:
+                if action.target_animation == TargetAnimations.BUFF:
+                    _ent.buff_animation()
+                if action.target_animation == TargetAnimations.HIT:
+                    _ent.hit_animation()
     if action.animation_path != "":
         for point in _targets:
             var s: EffectsAnimation = load(action.animation_path).instantiate()
             node.add_child(s)
             s.global_position = tileMap.pointToGlobal(point)
             s.position.y -= 40
-            if not animation_signal_connected:
-                s.done.connect(callback)
-                animation_signal_connected = true
+            s.done.connect(callback)
     else:
         callback.call()
     return

@@ -24,7 +24,8 @@ static func add_base_attack(ent: Entity):
             _ent.loseHP(damage)
         return
     var d = "Deals damage to any other target"
-    _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_weaken(ent: Entity, type: int):
@@ -41,10 +42,12 @@ static func add_weaken(ent: Entity, type: int):
             user.damage_done += _ent.damage_preview(damage)            
             _ent.loseHP(damage)
             _ent.weakened(action.get_from_stats("Weaken"), action.get_from_stats("Weaken Duration"))
+            _ent.hit_animation()
         return
     var d = "Weaken the enemy, reducing it's armor temporarily. Stats can be modified temporarily, or last \
 through the mission depending on the ability."
-    _add_action(ent, "Weaken", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action = _add_action(ent, "Weaken", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_double_shot(ent: Entity, type: int):
@@ -60,9 +63,11 @@ static func add_double_shot(ent: Entity, type: int):
             _ent.loseHP(damage)
             user.damage_done += _ent.damage_preview(damage)            
             _ent.loseHP(damage)
+            _ent.hit_animation()
         return
     var d = "Shoot twice. Ultimate abilities can only be used once per mission"
-    _add_action(ent, "Double Shot", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Double Shot", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_exert(ent: Entity, type: int):
@@ -80,10 +85,12 @@ static func add_exert(ent: Entity, type: int):
         for _ent in targets:
             _ent.loseHP(damage)
             user.damage_done += _ent.damage_preview(damage)
+            _ent.hit_animation()
         return
     var d = "Exterts and swings hard, cripplig its own movement for next turn"
     
-    _add_action(ent, "Exert", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Exert", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_sturdy_stance(ent: Entity, type: int):
@@ -139,7 +146,8 @@ static func add_oil_bomb(ent: Entity, type: int):
                     action.get_from_stats("Cripple Duration"))
         return
     var d = "Deal damage at extra range, crippling it's movement"
-    _add_action(ent, "Oil Bomb", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Oil Bomb", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_winding_strike(ent: Entity, type: int):
@@ -154,7 +162,8 @@ static func add_winding_strike(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Deals damage based on tiles moved this turn by the user"
-    _add_action(ent, "Winding Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Winding Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
     
 static func add_lubricate(ent: Entity, type: int):
@@ -185,7 +194,8 @@ static func add_storm(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Deal damage in a square area"
-    _add_action(ent, "Storm", d, shape_3x3, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Storm", d, shape_3x3, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_thunderous_wrath(ent: Entity, type: int):
@@ -200,7 +210,8 @@ static func add_thunderous_wrath(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Deal damage to every enemy unit"
-    _add_action(ent, "Thunderous Wrath", d, shape_3x3, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Thunderous Wrath", d, shape_3x3, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_static_shield(ent: Entity, type: int):
@@ -231,6 +242,7 @@ static func add_focused_repair(ent: Entity, type: int):
     var d = "Heal one ally"
     var action := _add_action(ent, "Focused Repair", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
     return
 
 static func add_swarm_of_pain(ent: Entity, type: int):
@@ -245,7 +257,8 @@ static func add_swarm_of_pain(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Deal damage based on Nano-Nano's current health to a single unit"
-    _add_action(ent, "Swarm of Pain", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Swarm of Pain", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_nano_field(ent: Entity, type: int):
@@ -261,6 +274,7 @@ static func add_nano_field(ent: Entity, type: int):
     var d = "Order the nanobots to heal any ally in the area"
     var action := _add_action(ent, "Nanofield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
     return
 
 static func add_weapons_upgade(ent: Entity, type: int):
@@ -276,6 +290,7 @@ static func add_weapons_upgade(ent: Entity, type: int):
     var d = "Add permanent base damage to an allied unit"
     var action := _add_action(ent, "Weapons Upgrade", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
     return
 
 static func add_auto_turret_3000(ent: Entity, type: int):
@@ -308,6 +323,7 @@ static func add_engine_upgrade(ent: Entity, type: int):
     var d = "Add permanent movement to an allied unit"
     var action := _add_action(ent, "Engine Upgrade", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
     return
 
 static func add_snipe(ent: Entity, type: int):
@@ -325,7 +341,8 @@ static func add_snipe(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Extend the barrel and snipe em"
-    _add_action(ent, "Snipe", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Snipe", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_god_shot(ent: Entity, type: int):
@@ -341,7 +358,8 @@ static func add_god_shot(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Shoot with near unlimited range doing critical damage"
-    _add_action(ent, "God Shot", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "God Shot", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_power_up(ent: Entity, type: int):
@@ -357,6 +375,7 @@ static func add_power_up(ent: Entity, type: int):
     var d = "Siphon energy to an allied unit"
     var action := _add_action(ent, "Siphon Energy", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
     return
 
 static func add_ultimate_shiphon(ent: Entity, type: int):
@@ -372,6 +391,7 @@ static func add_ultimate_shiphon(ent: Entity, type: int):
     var d = "Siphon ultimate energy to an allied unit, allowing their ultimate to be used again"
     var action := _add_action(ent, "Siphon Ultimate", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
     return
 
 static func add_shock_therapy(ent: Entity, type: int):
@@ -415,7 +435,8 @@ static func add_bullet_rain(ent: Entity, type: int):
                     _ent.miss()
         return
     var d = "Blanket an area with many bullets"
-    _add_action(ent, "Bullet Rain", d, diamond, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Bullet Rain", d, diamond, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_spray_and_pray(ent: Entity, type: int):
@@ -438,7 +459,8 @@ static func add_spray_and_pray(ent: Entity, type: int):
                     _ent.miss()
         return
     var d = "Fire a lot of bullets at an enemy with questionable accuracy"
-    _add_action(ent, "Spray and Pray", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Spray and Pray", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_precise_strike(ent: Entity, type: int):
@@ -457,7 +479,8 @@ static func add_precise_strike(ent: Entity, type: int):
             _ent.weakened(action.get_from_stats("Weaken"), action.get_from_stats("Weaken Duration"))
         return
     var d = "A precise strike that weakens the enemy, causing them to take more damage"
-    _add_action(ent, "Precise Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Precise Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_robo_punch(ent: Entity, type: int):
@@ -474,7 +497,8 @@ static func add_robo_punch(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "An extremely high energy powered punch"
-    _add_action(ent, "Robo Punch!", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Robo Punch", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_KO_punch(ent: Entity, type: int):
@@ -491,7 +515,8 @@ static func add_KO_punch(ent: Entity, type: int):
             _ent.skip_next_turn = true
         return
     var d = "Punch so good the enemy skips it's next turn"
-    _add_action(ent, "Robo Punch!", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Knockout Punch", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_double_strike(ent: Entity, type: int):
@@ -511,7 +536,8 @@ static func add_double_strike(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Hit them with the good ol' one-two"
-    _add_action(ent, "Double Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Double Strike", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func add_bootleg_upgrades(ent: Entity, type: int):
@@ -550,6 +576,7 @@ static func add_bootleg_upgrades(ent: Entity, type: int):
     var d = "Put some bootleg parts on, resulting in added or removed stats"
     var action := _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
     return
 
 static func add_battlefield_transfer(ent: Entity, type: int):
@@ -570,6 +597,7 @@ static func add_battlefield_transfer(ent: Entity, type: int):
     var d = "Transfer all movement, damage, armor, and initiative upgrades and downgrades to another allied unit"
     var action := _add_action(ent, "Battlefield Transfer", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
     return
 
 static func _add_action(ent, display_name, description, shape, effect, action_type, stats, animation_path = "") -> Action:

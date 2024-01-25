@@ -37,9 +37,9 @@ func find_attack_location() -> Vector2i:
 func do_attack(target: Vector2i):
     ActionCommon.face_direction(_entity, target)
     _targets = Utils.get_target_coords(_entity.location, target, shape())
-    _entity.attack_animation(func():
-        ActionCommon.do_action_animation(effects, _entity.attack, _targets, tileMap, action_animation_done)
-        )
+    _entity.action_animation(func():
+        ActionCommon.do_action_animation(effects, _entity.attack, _targets, tileMap, _state, action_animation_done)
+        , ActionType.ATTACK)
     return
 
 func action_animation_done():

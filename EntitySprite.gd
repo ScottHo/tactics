@@ -106,29 +106,40 @@ func nextMove():
     tween.play()
     return
 
-func play_action_animation(callback):
-    if animationPlayer.has_animation("Action"):
-        animationPlayer.play("Action")
-        animationPlayer.animation_finished.connect(func(s):
-            callback.call(), CONNECT_ONE_SHOT)
-    else:
-        var timer = get_tree().create_timer(.5)
-        timer.timeout.connect(func():
-            callback.call()
-            , CONNECT_ONE_SHOT)
+func play_hit_animation(callback):
+    _play_animation(callback, "Hit")
+    return
+
+func play_buff_animation(callback):
+    _play_animation(callback, "Buff")
+    return
+
+func play_ultimate_animation(callback):
+    _play_animation(callback, "Ultimate")
+    return
+
+func play_special_animation(callback):
+    _play_animation(callback, "Special")
     return
 
 func play_attack_animation(callback):
-    if animationPlayer.has_animation("Attack"):
-        animationPlayer.play("Attack")
-        animationPlayer.animation_finished.connect(func(s):
-            callback.call(), CONNECT_ONE_SHOT)
-    else:
-        var timer = get_tree().create_timer(.5)
-        timer.timeout.connect(func():
-            callback.call()
-            , CONNECT_ONE_SHOT)
+    _play_animation(callback, "Attack")
     return
+
+func _play_animation(callback, animation_name: String):
+    if animationPlayer.has_animation(animation_name):
+        animationPlayer.play(animation_name)
+        if callback != null:
+            animationPlayer.animation_finished.connect(func(s):
+                callback.call(), CONNECT_ONE_SHOT)
+    else:
+        if callback != null:
+            var timer = get_tree().create_timer(.5)
+            timer.timeout.connect(func():
+                callback.call()
+                , CONNECT_ONE_SHOT)
+    return
+    
 
 func play_shift_animation():
     var tween = get_tree().create_tween()
