@@ -83,7 +83,7 @@ static func create_oilee():
     return ent
 
 static func create_electo():
-    var ent = _create_entity("Electo", 18, 4, 4, 10, "res://Bots/electo.tscn", "res://Assets/Electo.png", true)
+    var ent = _create_entity("Electo", 18, 4, 4, 10, "res://Bots/electo.tscn", "res://Assets/Bots/Electo/Icon.png", true)
     var p = Passive.new()
     p.display_name = "Chain Lightning"
     p.description = "Electo's Normal Attacks bounce once to the nearest enemy within 3 tiles"
@@ -172,7 +172,7 @@ static func create_punch_e():
     return ent
 
 static func create_peppershot():
-    var ent = _create_entity("Peppershot", 15, 4, 4, 10, "res://Bots/peppershot.tscn", "res://Assets/peppershot.png", true)
+    var ent = _create_entity("Peppershot", 15, 4, 4, 10, "res://Bots/peppershot.tscn", "res://Assets/Bots/Peppershot/Icon.png", true)
     var p = Passive.new()
     p.display_name = "Dizzy Moves"
     p.description = "Peppershot has a 20% chance for any attack to miss"
