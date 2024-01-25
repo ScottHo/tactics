@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj61ivslb7v6h"
-path="res://.godot/imported/Neck.png-8b4994ca21e67d8fe84e82bdb5b86957.ctex"
+uid="uid://d0pstc622lcjf"
+path="res://.godot/imported/Eyes2.png-9e2cedb6621179a52d4e0bb59beb31f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bots/Peppershot/Neck.png"
-dest_files=["res://.godot/imported/Neck.png-8b4994ca21e67d8fe84e82bdb5b86957.ctex"]
+source_file="res://Assets/Bots/Electo/Eyes2.png"
+dest_files=["res://.godot/imported/Eyes2.png-9e2cedb6621179a52d4e0bb59beb31f2.ctex"]
 
 [params]
 

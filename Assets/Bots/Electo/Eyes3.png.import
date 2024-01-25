@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drta7f0pei6tn"
-path="res://.godot/imported/thumbnail.png-6da9e71ef152527ac918b76409d6d758.ctex"
+uid="uid://b8ypd1hh6fr4r"
+path="res://.godot/imported/Eyes3.png-6d9ffda98db7d26b734d6334a791935f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bots/Peppershot/thumbnail.png"
-dest_files=["res://.godot/imported/thumbnail.png-6da9e71ef152527ac918b76409d6d758.ctex"]
+source_file="res://Assets/Bots/Electo/Eyes3.png"
+dest_files=["res://.godot/imported/Eyes3.png-6d9ffda98db7d26b734d6334a791935f.ctex"]
 
 [params]
 
