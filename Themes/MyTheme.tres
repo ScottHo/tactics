@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="1_pp17p"]
 [ext_resource type="StyleBox" uid="uid://cpgpa20tc84gw" path="res://Themes/bot_button_pressed.tres" id="2_1ixwx"]
 [ext_resource type="StyleBox" uid="uid://de2pvt0cms2e1" path="res://Themes/button_pressed.tres" id="2_wqisb"]
-[ext_resource type="Texture2D" uid="uid://j1xlahvtb07t" path="res://Assets/hoverbox.png" id="3_31wt4"]
+[ext_resource type="Texture2D" uid="uid://j1xlahvtb07t" path="res://Assets/GUI/hoverbox.png" id="3_31wt4"]
 [ext_resource type="StyleBox" uid="uid://bew0k4ps101yn" path="res://Themes/bot_button_cancel.tres" id="3_p4att"]
 [ext_resource type="StyleBox" uid="uid://b0x6o50ei0e6o" path="res://Themes/small_button.tres" id="4_txl7r"]
 [ext_resource type="StyleBox" uid="uid://cvkdtfj115cu2" path="res://Themes/small_button_pressed.tres" id="5_l3c1q"]

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_r4mxn"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://base_tiles.tres" id="3_vkqma"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="4_36kkq"]
-[ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/long-vertical.png" id="5_ib14x"]
+[ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/GUI/long-vertical.png" id="5_ib14x"]
 [ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="7_pivh6"]
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="8_fs5q0"]
 

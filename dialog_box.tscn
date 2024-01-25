@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bph1lnyqahu2x"]
 
-[ext_resource type="Texture2D" uid="uid://8joma6ftgyhh" path="res://Assets/medium.png" id="1_kartt"]
+[ext_resource type="Texture2D" uid="uid://8joma6ftgyhh" path="res://Assets/GUI/medium.png" id="1_kartt"]
 [ext_resource type="Script" path="res://dialog_box.gd" id="1_p861v"]
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="3_qnhjh"]
 

@@ -1,31 +1,31 @@
 [gd_scene load_steps=45 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
-[ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_mrg4l"]
+[ext_resource type="Texture2D" uid="uid://3k0xhd74sl8t" path="res://Assets/GUI/tall-short-panel.png" id="2_nh0tv"]
 [ext_resource type="PackedScene" uid="uid://7ah3bf7cn7a" path="res://special_description_panel.tscn" id="3_kx1y6"]
-[ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/long-vertical.png" id="3_xttrl"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="4_cvwx3"]
-[ext_resource type="Texture2D" uid="uid://3k0xhd74sl8t" path="res://Assets/tall-short-panel.png" id="4_yabl6"]
+[ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/GUI/short-panel.png" id="4_jrrx7"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="5_n8sjp"]
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="6_246xv"]
-[ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://Assets/panel_buttons_background.png" id="6_xc4a1"]
-[ext_resource type="Texture2D" uid="uid://b7k4df1af7n00" path="res://Assets/panel_buttons.png" id="7_eppjx"]
+[ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/GUI/long-vertical.png" id="6_s5lub"]
+[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/GUI/Boot.png" id="7_sx6a1"]
 [ext_resource type="PackedScene" uid="uid://cupwjts5t5aua" path="res://passive_description_panel.tscn" id="8_a0b0q"]
 [ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="8_pd4nx"]
 [ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/energy.png" id="9_vl4vh"]
-[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/health.png" id="10_slf17"]
-[ext_resource type="Texture2D" uid="uid://hp656rxvw5df" path="res://Assets/Health_Over_Thick.png" id="11_60lyq"]
-[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="11_d8bxd"]
-[ext_resource type="Texture2D" uid="uid://cb20eq0yo3eql" path="res://Assets/interact.png" id="12_kln7r"]
-[ext_resource type="Texture2D" uid="uid://chkt1na1as41e" path="res://Assets/Energy_Over_Thick.png" id="12_otygi"]
-[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="12_xlgau"]
+[ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://Assets/GUI/panel_buttons_background.png" id="10_3lokk"]
+[ext_resource type="Texture2D" uid="uid://b7k4df1af7n00" path="res://Assets/GUI/panel_buttons.png" id="12_7bkir"]
+[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/GUI/health.png" id="13_fdduf"]
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="13_k180g"]
-[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="14_m7c37"]
-[ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="14_t4p6o"]
+[ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/GUI/Progress_Under_no_glow.png" id="14_gvyqw"]
+[ext_resource type="Texture2D" uid="uid://hp656rxvw5df" path="res://Assets/GUI/Health_Over_Thick.png" id="15_h0jtd"]
+[ext_resource type="Texture2D" uid="uid://chkt1na1as41e" path="res://Assets/GUI/Energy_Over_Thick.png" id="17_53a2i"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="17_diddf"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="19_gtpi5"]
-[ext_resource type="Texture2D" uid="uid://20se04bvsoay" path="res://Assets/ability.png" id="24_ucv0g"]
-[ext_resource type="Texture2D" uid="uid://cm1l266el6dvl" path="res://Assets/square_button.png" id="25_01ek2"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/GUI/initiative.png" id="19_axxwa"]
+[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/GUI/item_sword.png" id="20_rkhob"]
+[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/GUI/armor.png" id="22_4rtvu"]
+[ext_resource type="Texture2D" uid="uid://cb20eq0yo3eql" path="res://Assets/GUI/interact.png" id="24_6opb4"]
+[ext_resource type="Texture2D" uid="uid://20se04bvsoay" path="res://Assets/GUI/ability.png" id="25_t6ckd"]
+[ext_resource type="Texture2D" uid="uid://cm1l266el6dvl" path="res://Assets/GUI/square_button.png" id="26_nfwov"]
 [ext_resource type="PackedScene" uid="uid://cmuxmq1g41mw1" path="res://jenkins.tscn" id="27_3x7f3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxedm"]
@@ -183,7 +183,7 @@ grow_horizontal = 0
 [node name="Short-panel2" type="Sprite2D" parent="MechanicContainer/Long"]
 position = Vector2(-1.5874, 0.793701)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("4_yabl6")
+texture = ExtResource("2_nh0tv")
 centered = false
 
 [node name="Label" type="Label" parent="MechanicContainer/Long"]
@@ -287,7 +287,7 @@ autowrap_mode = 2
 [node name="Short-panel" type="Sprite2D" parent="MechanicContainer/Short"]
 position = Vector2(-1.5874, 0.793701)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_mrg4l")
+texture = ExtResource("4_jrrx7")
 centered = false
 
 [node name="Label" type="Label" parent="MechanicContainer/Short"]
@@ -371,7 +371,7 @@ position = Vector2(122.566, 10.7562)
 [node name="ShortPanel" type="Sprite2D" parent="DescriptionContainer"]
 position = Vector2(233.344, 371.548)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_xttrl")
+texture = ExtResource("6_s5lub")
 
 [node name="MoveContainer" type="Control" parent="DescriptionContainer"]
 layout_mode = 3
@@ -400,7 +400,7 @@ autowrap_mode = 2
 [node name="Sprite2D" type="Sprite2D" parent="DescriptionContainer/MoveContainer"]
 position = Vector2(-37.2128, 10.432)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_d8bxd")
+texture = ExtResource("7_sx6a1")
 
 [node name="Label" type="Label" parent="DescriptionContainer/MoveContainer"]
 layout_mode = 0
@@ -535,7 +535,7 @@ grow_vertical = 0
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(-31.2645, 8.29172)
 scale = Vector2(0.42, 0.42)
-texture = ExtResource("6_xc4a1")
+texture = ExtResource("10_3lokk")
 centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
@@ -553,7 +553,7 @@ libraries = {
 [node name="TransparentCharacterFrame" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(-31.2645, 8.29172)
 scale = Vector2(0.42, 0.42)
-texture = ExtResource("7_eppjx")
+texture = ExtResource("12_7bkir")
 centered = false
 
 [node name="NameLabel" type="Label" parent="CharacterContainer"]
@@ -571,7 +571,7 @@ vertical_alignment = 1
 [node name="HeartSprite" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(186.153, 102.433)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_slf17")
+texture = ExtResource("13_fdduf")
 centered = false
 
 [node name="HealthBar" type="TextureProgressBar" parent="CharacterContainer"]
@@ -582,8 +582,8 @@ offset_right = 446.771
 offset_bottom = 146.66
 scale = Vector2(1.3, 1.2)
 value = 50.0
-texture_under = ExtResource("14_t4p6o")
-texture_progress = ExtResource("11_60lyq")
+texture_under = ExtResource("14_gvyqw")
+texture_progress = ExtResource("15_h0jtd")
 
 [node name="EnergySprite" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(186.38, 140.688)
@@ -600,8 +600,8 @@ offset_bottom = 183.639
 scale = Vector2(1.3, 1)
 max_value = 5.0
 value = 3.0
-texture_under = ExtResource("14_t4p6o")
-texture_progress = ExtResource("12_otygi")
+texture_under = ExtResource("14_gvyqw")
+texture_progress = ExtResource("17_53a2i")
 
 [node name="HealthLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 1
@@ -664,7 +664,7 @@ layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Moves"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_d8bxd")
+texture = ExtResource("7_sx6a1")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Moves"]
 layout_mode = 0
@@ -683,7 +683,7 @@ layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Initiative"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("19_gtpi5")
+texture = ExtResource("19_axxwa")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Initiative"]
 layout_mode = 0
@@ -702,7 +702,7 @@ layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Damage"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("12_xlgau")
+texture = ExtResource("20_rkhob")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Damage"]
 layout_mode = 0
@@ -740,7 +740,7 @@ layout_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="CharacterContainer/Stats/Armor"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("14_m7c37")
+texture = ExtResource("22_4rtvu")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Armor"]
 layout_mode = 0
@@ -784,7 +784,7 @@ focus_mode = 0
 theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
 toggle_mode = true
-icon = ExtResource("11_d8bxd")
+icon = ExtResource("7_sx6a1")
 icon_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterContainer/MoveButton"]
@@ -803,7 +803,7 @@ focus_mode = 0
 theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
 toggle_mode = true
-icon = ExtResource("12_kln7r")
+icon = ExtResource("24_6opb4")
 icon_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterContainer/InteractButton"]
@@ -822,7 +822,7 @@ focus_mode = 0
 theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
 toggle_mode = true
-icon = ExtResource("12_xlgau")
+icon = ExtResource("20_rkhob")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterContainer/AttackButton"]
 libraries = {
@@ -841,7 +841,7 @@ theme = ExtResource("4_cvwx3")
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 19
 toggle_mode = true
-icon = ExtResource("24_ucv0g")
+icon = ExtResource("25_t6ckd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterContainer/Action1Button"]
 libraries = {
@@ -870,7 +870,7 @@ libraries = {
 [node name="Passive" type="Sprite2D" parent="CharacterContainer"]
 position = Vector2(557.078, 39.8757)
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("25_01ek2")
+texture = ExtResource("26_nfwov")
 
 [node name="Label" type="Label" parent="CharacterContainer/Passive"]
 offset_left = -37.9208

@@ -2,16 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="2_sbscd"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
-[ext_resource type="Texture2D" uid="uid://hp656rxvw5df" path="res://Assets/Health_Over_Thick.png" id="4_fux7d"]
-[ext_resource type="Texture2D" uid="uid://dh7objn6mrlvt" path="res://Assets/Energy_Over.png" id="5_apc0l"]
+[ext_resource type="Texture2D" uid="uid://cmlcf47flv4my" path="res://Assets/GUI/info_box_hover.png" id="4_fs8ym"]
+[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/GUI/Boot.png" id="5_j0nvt"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/GUI/initiative.png" id="6_67inl"]
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="6_m13e8"]
-[ext_resource type="Texture2D" uid="uid://cmlcf47flv4my" path="res://Assets/info_box_hover.png" id="6_v4rmv"]
-[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="9_ir6t0"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="10_h2kqm"]
-[ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/Progress_Under_no_glow.png" id="10_m1a84"]
-[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="11_kcro7"]
+[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/GUI/item_sword.png" id="7_1i2pp"]
+[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/GUI/armor.png" id="9_gyfpw"]
+[ext_resource type="Texture2D" uid="uid://dtaxigjhqqw61" path="res://Assets/GUI/Progress_Under_no_glow.png" id="10_252n3"]
+[ext_resource type="Texture2D" uid="uid://hp656rxvw5df" path="res://Assets/GUI/Health_Over_Thick.png" id="11_xtdie"]
+[ext_resource type="Texture2D" uid="uid://dh7objn6mrlvt" path="res://Assets/GUI/Energy_Over.png" id="12_fmp5g"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="12_v0dse"]
-[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="13_shgj1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
 radius = 5.91449
@@ -86,7 +86,7 @@ script = ExtResource("6_m13e8")
 [node name="Background" type="Sprite2D" parent="InfoBoxContainer"]
 position = Vector2(50.5714, 3.39394)
 scale = Vector2(0.5, 0.6)
-texture = ExtResource("6_v4rmv")
+texture = ExtResource("4_fs8ym")
 
 [node name="Stats" type="GridContainer" parent="InfoBoxContainer"]
 offset_left = 2.86073
@@ -104,7 +104,7 @@ layout_mode = 2
 [node name="MoveSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control"]
 position = Vector2(-16.9496, 11.0892)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("9_ir6t0")
+texture = ExtResource("5_j0nvt")
 
 [node name="MoveLabel" type="Label" parent="InfoBoxContainer/Stats/Control"]
 layout_mode = 2
@@ -130,7 +130,7 @@ layout_mode = 2
 [node name="InitiativeSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control2"]
 position = Vector2(-16.9496, 11.0892)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("10_h2kqm")
+texture = ExtResource("6_67inl")
 
 [node name="InitiativeLabel" type="Label" parent="InfoBoxContainer/Stats/Control2"]
 layout_mode = 2
@@ -148,7 +148,7 @@ layout_mode = 2
 [node name="DamageSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control3"]
 position = Vector2(-16.9496, 11.0892)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("11_kcro7")
+texture = ExtResource("7_1i2pp")
 
 [node name="DamageLabel" type="Label" parent="InfoBoxContainer/Stats/Control3"]
 layout_mode = 2
@@ -184,7 +184,7 @@ layout_mode = 2
 [node name="ArmorSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control5"]
 position = Vector2(-16.9496, 11.0892)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("13_shgj1")
+texture = ExtResource("9_gyfpw")
 
 [node name="ArmorLabel" type="Label" parent="InfoBoxContainer/Stats/Control5"]
 layout_mode = 2
@@ -220,8 +220,8 @@ offset_right = 43.1592
 offset_bottom = 75.8383
 scale = Vector2(0.7, 0.7)
 value = 50.0
-texture_under = ExtResource("10_m1a84")
-texture_progress = ExtResource("4_fux7d")
+texture_under = ExtResource("10_252n3")
+texture_progress = ExtResource("11_xtdie")
 
 [node name="HealthLabel" type="Label" parent="InfoBoxContainer/HealthBar"]
 layout_mode = 0
@@ -265,8 +265,8 @@ offset_bottom = 93.8383
 scale = Vector2(0.7, 0.5)
 max_value = 5.0
 value = 3.0
-texture_under = ExtResource("10_m1a84")
-texture_progress = ExtResource("5_apc0l")
+texture_under = ExtResource("10_252n3")
+texture_progress = ExtResource("12_fmp5g")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="InfoBoxContainer"]
 visible = false

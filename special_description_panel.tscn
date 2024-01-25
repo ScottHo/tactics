@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://7ah3bf7cn7a"]
 
-[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/vertical-medium.png" id="1_48ejq"]
+[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/GUI/vertical-medium.png" id="1_48ejq"]
 [ext_resource type="Script" path="res://special_description_panel.gd" id="1_kbi01"]
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="2_mqpc5"]
 [ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/energy.png" id="3_hq8kc"]
-[ext_resource type="Texture2D" uid="uid://d1cfdx32il5wa" path="res://Assets/panel_button.png" id="3_uj71j"]
+[ext_resource type="Texture2D" uid="uid://d1cfdx32il5wa" path="res://Assets/GUI/panel_button.png" id="3_uj71j"]
 [ext_resource type="PackedScene" uid="uid://dq28ygginmj7" path="res://stat_container.tscn" id="5_v2w3d"]
-[ext_resource type="Texture2D" uid="uid://20se04bvsoay" path="res://Assets/ability.png" id="6_ykui0"]
+[ext_resource type="Texture2D" uid="uid://20se04bvsoay" path="res://Assets/GUI/ability.png" id="6_ykui0"]
 
 [node name="SpecialPanel" type="Node2D"]
 script = ExtResource("1_kbi01")

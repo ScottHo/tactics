@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://b220oo4s6vl43"]
 
 [ext_resource type="Script" path="res://MissionEnemyPanel.gd" id="1_cgn1b"]
-[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/health.png" id="2_3mu84"]
+[ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/GUI/health.png" id="2_3mu84"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="3_31kgf"]
-[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/Boot.png" id="4_b45m5"]
-[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/initiative.png" id="5_xk36n"]
-[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/item_sword.png" id="6_skltb"]
+[ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/GUI/Boot.png" id="4_b45m5"]
+[ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/GUI/initiative.png" id="5_xk36n"]
+[ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/GUI/item_sword.png" id="6_skltb"]
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="7_kw8vt"]
-[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/armor.png" id="8_wx8d0"]
+[ext_resource type="Texture2D" uid="uid://bq0412hu76135" path="res://Assets/GUI/armor.png" id="8_wx8d0"]
 
 [node name="EnemyPanel" type="Control"]
 layout_mode = 3

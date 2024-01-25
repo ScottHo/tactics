@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://okcwn6p1bt7m"]
 
 [ext_resource type="Script" path="res://InteractableSprite.gd" id="1_p2jq1"]
-[ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/short-panel.png" id="2_dttd2"]
+[ext_resource type="Texture2D" uid="uid://c6kfrhv74ajpf" path="res://Assets/GUI/short-panel.png" id="2_dttd2"]
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="3_8viki"]
 
 [node name="InteractableSprite" type="Node2D"]

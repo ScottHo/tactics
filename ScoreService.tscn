@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crc35ul2k5iwb"]
 
-[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/vertical-medium.png" id="1_51w3k"]
+[ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/GUI/vertical-medium.png" id="1_51w3k"]
 [ext_resource type="Script" path="res://ScoreService.gd" id="1_kqaug"]
 
 [node name="ScoreService" type="Node2D"]
