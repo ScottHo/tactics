@@ -47,14 +47,14 @@ func set_action(action: Action):
     if action.type == ActionType.ATTACK:
         specIcon.visible = true
         actionLabel.visible = false
-        specIcon.texture = load("res://Assets/item_sword.png")
+        specIcon.texture = load("res://Assets/GUI/item_sword.png")
         levelLabel.text = ""
         ultimateLabel.text = "No Cost"
         costContainer.visible = false
     if action.type == ActionType.ACTION1:
         specIcon.visible = true
         actionLabel.visible = false
-        specIcon.texture = load("res://Assets/ability.png")
+        specIcon.texture = load("res://Assets/GUI/ability.png")
         levelLabel.text = "Level " + str(action.level)
         ultimateLabel.text = ""
         costContainer.visible = true

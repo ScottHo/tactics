@@ -173,6 +173,7 @@ func nextTurn():
     if currentEntity() != null:
         currentEntity().reset_buff_values()
         currentEntity().done_turn()
+        currentEntity().stop_animations()
     if not checkDeaths():
         nextTurn_continued()
     return
@@ -363,6 +364,7 @@ func resetPlayerServices():
     actionService.finish()
     interactService.finish()
     highlightMap.highlight(currentEntity())
+    currentEntity().move_animation()
     return
 
 func update_character_menu():
@@ -407,7 +409,6 @@ func moveDone():
         if tutorialService.stage == TutorialService.TutorialStage.Moves:
             tutorialService.next_tutorial_stage()
     print_debug("Done Move")
-    currentEntity().stop_animations()
     cameraService.stop_lock()
     auraService.update()
     if _is_ai_turn:

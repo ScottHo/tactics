@@ -55,9 +55,9 @@ func update():
     armorLabel.text = str(_entity.get_armor())
     if _entity.is_ally:
         threatLabel.text = str(_entity.threat)
-        background.texture = load("res://Assets/info_box_hover.png")
+        background.texture = load("res://Assets/GUI/info_box_hover.png")
     else:
-        background.texture = load("res://Assets/info_box_enemy_hover.png")
+        background.texture = load("res://Assets/GUI/info_box_enemy_hover.png")
         threatLabel.text = "-"
     healthBar.max_value = _entity.get_max_health()
     healthBar.value = _entity.health

@@ -156,7 +156,7 @@ func play_move_animation():
     return
         
 func stop_animations():
-    animationPlayer.stop()
+    animationPlayer.play("RESET")
     return    
 
 func textAnimation() -> TextAnimation:

@@ -405,6 +405,12 @@ func shift_animation():
         return
     sprite.play_shift_animation()
     return
+
+func move_animation():
+    if not check_sprite():
+        return
+    sprite.play_move_animation()
+    return
     
 func show_info():
     if not check_sprite():

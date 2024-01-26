@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://cuq6dqfbqgh3b"]
+[gd_scene load_steps=34 format=3 uid="uid://cuq6dqfbqgh3b"]
 
 [ext_resource type="Script" path="res://EntitySprite.gd" id="1_2sskd"]
 [ext_resource type="PackedScene" uid="uid://b6iqxvpypem6r" path="res://CharacterCommon.tscn" id="2_0dbjk"]
 [ext_resource type="Texture2D" uid="uid://co4exdusrrd43" path="res://Assets/Bots/Common/WheelLong.png" id="2_8h8aw"]
 [ext_resource type="Texture2D" uid="uid://shtbydd8dqcd" path="res://Assets/Bots/Electo/Body.png" id="2_r10y4"]
+[ext_resource type="Texture2D" uid="uid://ds3e6oihl70tf" path="res://Assets/Bots/Common/shadow.png" id="2_tosry"]
 [ext_resource type="Texture2D" uid="uid://b0sqwautgetyu" path="res://Assets/Bots/Electo/EyesSpec.png" id="3_35rq4"]
 [ext_resource type="Texture2D" uid="uid://dng0vleoav2g5" path="res://Assets/Bots/Electo/Eyes.png" id="3_l53d1"]
 [ext_resource type="Texture2D" uid="uid://d0pstc622lcjf" path="res://Assets/Bots/Electo/Eyes2.png" id="4_46x2c"]
@@ -781,6 +782,7 @@ tracks/21/keys = {
 [sub_resource type="Animation" id="Animation_2oecu"]
 resource_name = "Move"
 length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1582,8 +1584,14 @@ position = Vector2(-3.03607, -42.2631)
 scale = Vector2(0.2, 0.2)
 
 [node name="SE" type="Node2D" parent="Sprite"]
+visible = false
 
 [node name="Sprites" type="Node2D" parent="Sprite/SE"]
+
+[node name="Shadow" type="Sprite2D" parent="Sprite/SE/Sprites"]
+position = Vector2(0.180351, -68.6845)
+scale = Vector2(1, 1)
+texture = ExtResource("2_tosry")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/SE/Sprites"]
 position = Vector2(87.6563, 31.0752)
@@ -1624,6 +1632,11 @@ texture = ExtResource("2_8h8aw")
 
 [node name="Sprites" type="Node2D" parent="Sprite/NE"]
 
+[node name="Shadow" type="Sprite2D" parent="Sprite/NE/Sprites"]
+position = Vector2(20.1804, -73.6845)
+scale = Vector2(1, 1)
+texture = ExtResource("2_tosry")
+
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/NE/Sprites"]
 position = Vector2(-77.16, 38.8705)
 scale = Vector2(-1, 1)
@@ -1663,9 +1676,15 @@ scale = Vector2(-1, 1)
 texture = ExtResource("2_8h8aw")
 
 [node name="SW" type="Node2D" parent="Sprite"]
+visible = false
 scale = Vector2(-1, 1)
 
 [node name="Sprites" type="Node2D" parent="Sprite/SW"]
+
+[node name="Shadow" type="Sprite2D" parent="Sprite/SW/Sprites"]
+position = Vector2(-15.1804, -88.6845)
+scale = Vector2(1, 1)
+texture = ExtResource("2_tosry")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/SW/Sprites"]
 position = Vector2(87.6563, 31.0752)
@@ -1702,9 +1721,15 @@ position = Vector2(-126.277, 131.889)
 texture = ExtResource("2_8h8aw")
 
 [node name="NW" type="Node2D" parent="Sprite"]
+visible = false
 scale = Vector2(-1, 1)
 
 [node name="Sprites" type="Node2D" parent="Sprite/NW"]
+
+[node name="Shadow" type="Sprite2D" parent="Sprite/NW/Sprites"]
+position = Vector2(14.8196, -78.6845)
+scale = Vector2(1, 1)
+texture = ExtResource("2_tosry")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/NW/Sprites"]
 position = Vector2(-77.16, 38.8705)
