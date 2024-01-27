@@ -1590,7 +1590,6 @@ visible = false
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/SE/Sprites"]
 position = Vector2(0.180351, -68.6845)
-scale = Vector2(1, 1)
 texture = ExtResource("2_tosry")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/SE/Sprites"]
@@ -1634,7 +1633,6 @@ texture = ExtResource("2_8h8aw")
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/NE/Sprites"]
 position = Vector2(20.1804, -73.6845)
-scale = Vector2(1, 1)
 texture = ExtResource("2_tosry")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/NE/Sprites"]
@@ -1683,7 +1681,6 @@ scale = Vector2(-1, 1)
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/SW/Sprites"]
 position = Vector2(-15.1804, -88.6845)
-scale = Vector2(1, 1)
 texture = ExtResource("2_tosry")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/SW/Sprites"]
@@ -1728,7 +1725,6 @@ scale = Vector2(-1, 1)
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/NW/Sprites"]
 position = Vector2(14.8196, -78.6845)
-scale = Vector2(1, 1)
 texture = ExtResource("2_tosry")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/NW/Sprites"]
