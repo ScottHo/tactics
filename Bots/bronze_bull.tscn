@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://btdn0gty3hv6e"]
+[gd_scene load_steps=43 format=3 uid="uid://btdn0gty3hv6e"]
 
 [ext_resource type="Script" path="res://EntitySprite.gd" id="1_xgqcm"]
 [ext_resource type="PackedScene" uid="uid://b6iqxvpypem6r" path="res://CharacterCommon.tscn" id="2_g32gl"]
@@ -558,6 +558,298 @@ tracks/19/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-1, 1), Vector2(-1.2, 1.2), Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6jr7f"]
+resource_name = "Hit"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/SE/Skeleton2D/Torso:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, -0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/SE/Sprites/Torso/Head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite/SE/RightArmTarget:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(53.2409, -234.495), Vector2(100.741, 0.50499), Vector2(100.741, 0.50499), Vector2(53.2409, -234.495)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite/SE/LeftArmTarget:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(249.944, -228.874), Vector2(304.944, -133.874), Vector2(304.944, -133.874), Vector2(249.944, -228.874)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/SE:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-75, -27.5), Vector2(-75, -27.5), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite/SE/Sprites/Torso/Head/LeftEye:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"default", &"eye2", &"default"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite/SE/Sprites/Torso/Head/RightEye:animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"default", &"eye2", &"default"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite/NE/Skeleton2D/Torso:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, -0.174533, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite/NE/Sprites/Torso/Head:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprite/NE/RightArmTarget:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(259.202, -240.784), Vector2(315.898, -237.634), Vector2(315.898, -237.634), Vector2(259.202, -240.784)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprite/NE/LeftArmTarget:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(146.292, -270.688), Vector2(202.988, -267.538), Vector2(202.988, -267.538), Vector2(146.292, -270.688)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprite/NE:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-62.5, 57.5), Vector2(-62.5, 57.5), Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprite/SW/Skeleton2D/Torso:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, -0.174533, 0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sprite/SW/Sprites/Torso/Head:rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, 0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Sprite/SW/RightArmTarget:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(53.2409, -234.495), Vector2(100.741, 0.50499), Vector2(100.741, 0.50499), Vector2(53.2409, -234.495)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Sprite/SW/LeftArmTarget:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(249.944, -228.874), Vector2(304.944, -133.874), Vector2(304.944, -133.874), Vector2(249.944, -228.874)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Sprite/SW:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(81.8949, -44.0973), Vector2(81.8949, -44.0973), Vector2(0, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Sprite/SW/Sprites/Torso/Head/LeftEye:animation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"default", &"eye2", &"default"]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Sprite/SW/Sprites/Torso/Head/RightEye:animation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"default", &"eye2", &"default"]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Sprite/NW/Skeleton2D/Torso:rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, -0.174533, 0.0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Sprite/NW/Sprites/Torso/Head:rotation")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, -0.174533, -0.523599, 0.0]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Sprite/NW/RightArmTarget:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(259.202, -240.784), Vector2(315.898, -237.634), Vector2(315.898, -237.634), Vector2(259.202, -240.784)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Sprite/NW/LeftArmTarget:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(146.292, -270.688), Vector2(202.988, -267.538), Vector2(202.988, -267.538), Vector2(146.292, -270.688)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Sprite/NW:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(122.842, 66.1459), Vector2(122.842, 66.1459), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_o5fqm"]
@@ -1312,6 +1604,54 @@ tracks/45/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("Sprite/SE/Skeleton2D/Torso:rotation")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("Sprite/NE/Skeleton2D/Torso:rotation")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("Sprite/SW/Skeleton2D/Torso:rotation")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("Sprite/NW/Skeleton2D/Torso:rotation")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_g8yme"]
 resource_name = "Special"
@@ -1754,6 +2094,7 @@ tracks/35/keys = {
 _data = {
 "Attack": SubResource("Animation_xdv4v"),
 "Buff": SubResource("Animation_55v54"),
+"Hit": SubResource("Animation_6jr7f"),
 "Move": SubResource("Animation_o5fqm"),
 "RESET": SubResource("Animation_1iph0"),
 "Special": SubResource("Animation_g8yme")
@@ -1927,20 +2268,20 @@ position = Vector2(30.7748, -257.415)
 texture = ExtResource("18_w6qqi")
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/SE/Sprites"]
-position = Vector2(18.1983, -301.68)
-rotation = 1.33166
-scale = Vector2(0.999895, 0.999895)
+position = Vector2(94.8909, -280.367)
+rotation = 1.3987
+scale = Vector2(0.999857, 0.999857)
 texture = ExtResource("2_or0a7")
 
 [node name="LeftShoulder" type="Sprite2D" parent="Sprite/SE/Sprites/LeftBicep"]
-position = Vector2(-78.4238, -73.3482)
+position = Vector2(-103.092, -0.611977)
 rotation = -1.26895
 texture = ExtResource("3_wq5o8")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/SE/Sprites"]
-position = Vector2(212.586, -227.077)
-rotation = -0.03773
-scale = Vector2(0.999816, 0.999816)
+position = Vector2(201.443, -216.323)
+rotation = -0.106012
+scale = Vector2(0.999782, 0.999782)
 texture = ExtResource("4_gpts5")
 
 [node name="LeftHand" type="Sprite2D" parent="Sprite/SE/Sprites/LeftForearm"]
@@ -1957,8 +2298,8 @@ position = Vector2(140.068, -159.044)
 texture = ExtResource("6_66gxu")
 
 [node name="Torso" type="Node2D" parent="Sprite/SE/Sprites"]
-position = Vector2(35.1819, -239.811)
-scale = Vector2(1, 1)
+position = Vector2(35.1816, -225.207)
+scale = Vector2(0.99997, 0.99997)
 
 [node name="Back" type="Sprite2D" parent="Sprite/SE/Sprites/Torso"]
 position = Vector2(-35.3951, -69.6176)
@@ -1993,9 +2334,9 @@ scale = Vector2(0.999992, 0.999992)
 texture = ExtResource("6_66gxu")
 
 [node name="RightBicep" type="Sprite2D" parent="Sprite/SE/Sprites"]
-position = Vector2(-81.9768, -248.346)
-rotation = 1.37582
-scale = Vector2(0.999848, 0.999848)
+position = Vector2(-73.9808, -235.086)
+rotation = 1.22494
+scale = Vector2(0.999818, 0.999818)
 texture = ExtResource("2_or0a7")
 
 [node name="RightShoulder" type="Sprite2D" parent="Sprite/SE/Sprites/RightBicep"]
@@ -2004,9 +2345,9 @@ rotation = -1.5708
 texture = ExtResource("14_2jo2v")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/SE/Sprites"]
-position = Vector2(24.5227, -138.214)
-rotation = 0.343814
-scale = Vector2(0.999714, 0.999714)
+position = Vector2(22.5925, -213.731)
+rotation = -0.788842
+scale = Vector2(0.999685, 0.999685)
 texture = ExtResource("4_gpts5")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/SE/Sprites/RightForearm"]
@@ -2024,6 +2365,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_sft7d")
 
 [node name="Torso" type="Bone2D" parent="Sprite/SE/Skeleton2D"]
 position = Vector2(-72.3631, -23.422)
+scale = Vector2(0.99997, 0.99997)
 rest = Transform2D(1, 0, 0, 1, -72.3631, -23.422)
 editor_settings/show_bone_gizmo = false
 
@@ -2033,12 +2375,13 @@ remote_path = NodePath("../../../Sprites/Torso")
 
 [node name="LeftShoulder" type="Bone2D" parent="Sprite/SE/Skeleton2D/Torso"]
 position = Vector2(53.4003, -241.913)
-rotation = 1.33166
-scale = Vector2(0.999895, 0.999895)
+rotation = -0.406805
+scale = Vector2(0.999887, 0.999887)
 rest = Transform2D(0.236843, 0.97144, -0.97144, 0.236843, 53.4003, -241.913)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/SE/Skeleton2D/Torso/LeftShoulder"]
-position = Vector2(52.356, 74.7131)
+position = Vector2(76.9883, -3.38332)
 remote_path = NodePath("../../../../Sprites/LeftBicep")
 
 [node name="LeftElbow" type="Bone2D" parent="Sprite/SE/Skeleton2D/Torso/LeftShoulder"]
@@ -2046,6 +2389,7 @@ position = Vector2(157.845, -4.36506)
 rotation = -1.36939
 scale = Vector2(0.999921, 0.999921)
 rest = Transform2D(0.200029, -0.97971, 0.97971, 0.200029, 157.845, -4.36506)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/SE/Skeleton2D/Torso/LeftShoulder/LeftElbow"]
 position = Vector2(92.88, -5.64597)
@@ -2057,9 +2401,10 @@ rotation = 2.66329
 
 [node name="RightShoulder" type="Bone2D" parent="Sprite/SE/Skeleton2D/Torso"]
 position = Vector2(-111.853, -173.569)
-rotation = 1.38487
+rotation = 1.47561
 scale = Vector2(0.999848, 0.999848)
 rest = Transform2D(0.335796, 0.941768, -0.941768, 0.335796, -111.853, -173.569)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/SE/Skeleton2D/Torso/RightShoulder"]
 position = Vector2(53.5368, 5.08451)
@@ -2071,6 +2416,7 @@ position = Vector2(143.747, -8.16698)
 rotation = -1.04106
 scale = Vector2(0.999866, 0.999866)
 rest = Transform2D(0.505241, -0.862823, 0.862823, 0.505241, 143.747, -8.16698)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/SE/Skeleton2D/Torso/RightShoulder/RightElbow"]
 position = Vector2(80.4028, -3.35212)
@@ -2096,9 +2442,9 @@ position = Vector2(38.6493, -279.464)
 texture = ExtResource("18_w6qqi")
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/NE/Sprites"]
-position = Vector2(-29.1642, -331.506)
-rotation = 0.393016
-scale = Vector2(0.999849, 0.999849)
+position = Vector2(-50.7518, -296.707)
+rotation = 1.029
+scale = Vector2(0.999841, 0.999841)
 texture = ExtResource("2_or0a7")
 
 [node name="LeftShoulder" type="Sprite2D" parent="Sprite/NE/Sprites/LeftBicep"]
@@ -2107,9 +2453,9 @@ rotation = -1.09083
 texture = ExtResource("3_wq5o8")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/NE/Sprites"]
-position = Vector2(132.012, -377.588)
-rotation = -0.942624
-scale = Vector2(0.999689, 0.999689)
+position = Vector2(103.234, -245.089)
+rotation = -0.389166
+scale = Vector2(0.999682, 0.999682)
 texture = ExtResource("4_gpts5")
 
 [node name="LeftHand" type="Sprite2D" parent="Sprite/NE/Sprites/LeftForearm"]
@@ -2126,8 +2472,8 @@ position = Vector2(-90.5877, -154.257)
 texture = ExtResource("18_x2tga")
 
 [node name="Torso" type="Node2D" parent="Sprite/NE/Sprites"]
-position = Vector2(18.8575, -245.13)
-scale = Vector2(1, 1)
+position = Vector2(18.6477, -227.181)
+scale = Vector2(0.999992, 0.999992)
 
 [node name="Body" type="Sprite2D" parent="Sprite/NE/Sprites/Torso"]
 position = Vector2(10.9069, 6.6414)
@@ -2153,9 +2499,9 @@ position = Vector2(187.696, -51.2423)
 texture = ExtResource("18_x2tga")
 
 [node name="RightBicep" type="Sprite2D" parent="Sprite/NE/Sprites"]
-position = Vector2(102.867, -283.807)
-rotation = 1.13914
-scale = Vector2(0.999837, 0.999837)
+position = Vector2(103.544, -266.168)
+rotation = 1.12167
+scale = Vector2(0.999831, 0.999831)
 texture = ExtResource("2_or0a7")
 
 [node name="RightShoulder" type="Sprite2D" parent="Sprite/NE/Sprites/RightBicep"]
@@ -2164,9 +2510,9 @@ rotation = -1.5708
 texture = ExtResource("14_2jo2v")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/NE/Sprites"]
-position = Vector2(226.439, -237.347)
-rotation = -0.345392
-scale = Vector2(0.99969, 0.99969)
+position = Vector2(223.694, -230.312)
+rotation = -0.480173
+scale = Vector2(0.999684, 0.999684)
 texture = ExtResource("4_gpts5")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/NE/Sprites/RightForearm"]
@@ -2184,6 +2530,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_gv5kx")
 
 [node name="Torso" type="Bone2D" parent="Sprite/NE/Skeleton2D"]
 position = Vector2(-88.8972, -25.3934)
+scale = Vector2(0.999992, 0.999992)
 rest = Transform2D(1, 0, 0, 1, -72.3631, -23.422)
 editor_settings/show_bone_gizmo = false
 
@@ -2196,6 +2543,7 @@ position = Vector2(-74.0997, -221.913)
 rotation = 0.393016
 scale = Vector2(0.999849, 0.999849)
 rest = Transform2D(0.236843, 0.97144, -0.97144, 0.236843, 53.4003, -241.913)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/NE/Skeleton2D/Torso/LeftShoulder"]
 position = Vector2(42.733, 8.32183)
@@ -2206,6 +2554,7 @@ position = Vector2(157.845, -4.36506)
 rotation = -1.33564
 scale = Vector2(0.99984, 0.99984)
 rest = Transform2D(0.200029, -0.97971, 0.97971, 0.200029, 157.845, -4.36506)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/NE/Skeleton2D/Torso/LeftShoulder/LeftElbow"]
 position = Vector2(92.88, -5.64597)
@@ -2217,9 +2566,10 @@ rotation = 2.66329
 
 [node name="RightShoulder" type="Bone2D" parent="Sprite/NE/Skeleton2D/Torso"]
 position = Vector2(76.897, -201.069)
-rotation = 1.1482
-scale = Vector2(0.999837, 0.999837)
+rotation = 1.28899
+scale = Vector2(0.999838, 0.999838)
 rest = Transform2D(0.335796, 0.941768, -0.941768, 0.335796, -111.853, -173.569)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NE/Skeleton2D/Torso/RightShoulder"]
 position = Vector2(53.5368, 5.08451)
@@ -2231,6 +2581,7 @@ position = Vector2(143.747, -8.16698)
 rotation = -1.49359
 scale = Vector2(0.999853, 0.999853)
 rest = Transform2D(0.505241, -0.862823, 0.862823, 0.505241, 143.747, -8.16698)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NE/Skeleton2D/Torso/RightShoulder/RightElbow"]
 position = Vector2(80.4028, -3.35212)
@@ -2257,9 +2608,9 @@ position = Vector2(25.4775, -254.766)
 texture = ExtResource("18_w6qqi")
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/SW/Sprites"]
-position = Vector2(23.292, -419.754)
-rotation = -2.52136
-scale = Vector2(1, -1)
+position = Vector2(86.891, -282.055)
+rotation = 1.34361
+scale = Vector2(0.999993, -0.999993)
 texture = ExtResource("2_or0a7")
 
 [node name="LeftShoulder" type="Sprite2D" parent="Sprite/SW/Sprites/LeftBicep"]
@@ -2268,9 +2619,9 @@ rotation = -1.5708
 texture = ExtResource("3_wq5o8")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/SW/Sprites"]
-position = Vector2(-123.392, -519.417)
-rotation = -2.58469
-scale = Vector2(1, -1)
+position = Vector2(200.332, -221.838)
+rotation = -0.288085
+scale = Vector2(0.99999, -0.99999)
 texture = ExtResource("4_gpts5")
 
 [node name="LeftHand" type="Sprite2D" parent="Sprite/SW/Sprites/LeftForearm"]
@@ -2287,8 +2638,8 @@ position = Vector2(140.068, -159.044)
 texture = ExtResource("6_66gxu")
 
 [node name="Torso" type="Node2D" parent="Sprite/SW/Sprites"]
-position = Vector2(35.1819, -239.811)
-scale = Vector2(1, 1)
+position = Vector2(35.1819, -225.21)
+scale = Vector2(0.999996, 0.999996)
 
 [node name="Back" type="Sprite2D" parent="Sprite/SW/Sprites/Torso"]
 position = Vector2(-35.3951, -69.6176)
@@ -2323,9 +2674,9 @@ scale = Vector2(0.999992, 0.999992)
 texture = ExtResource("6_66gxu")
 
 [node name="RightBicep" type="Sprite2D" parent="Sprite/SW/Sprites"]
-position = Vector2(-66.2354, -252.237)
-rotation = 1.28059
-scale = Vector2(0.999926, -0.999926)
+position = Vector2(-59.0055, -241.303)
+rotation = 1.1297
+scale = Vector2(0.999921, -0.999921)
 texture = ExtResource("2_or0a7")
 
 [node name="RightShoulder" type="Sprite2D" parent="Sprite/SW/Sprites/RightBicep"]
@@ -2334,9 +2685,9 @@ rotation = -0.523599
 texture = ExtResource("14_2jo2v")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/SW/Sprites"]
-position = Vector2(-35.3057, -63.6833)
-rotation = 1.36053
-scale = Vector2(0.999926, -0.999926)
+position = Vector2(45.6777, -217.536)
+rotation = -0.724371
+scale = Vector2(0.999913, -0.999913)
 texture = ExtResource("4_gpts5")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/SW/Sprites/RightForearm"]
@@ -2354,6 +2705,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_db5v8")
 
 [node name="Torso" type="Bone2D" parent="Sprite/SW/Skeleton2D"]
 position = Vector2(-72.3631, -23.422)
+scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(1, 0, 0, 1, -72.3631, -23.422)
 editor_settings/show_bone_gizmo = false
 
@@ -2366,6 +2718,7 @@ position = Vector2(53.4003, -241.913)
 rotation = -2.52136
 scale = Vector2(1, -1)
 rest = Transform2D(0.236843, 0.97144, -0.97144, 0.236843, 53.4003, -241.913)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/SW/Skeleton2D/Torso/LeftShoulder"]
 position = Vector2(73.6066, -8.27769)
@@ -2375,6 +2728,7 @@ remote_path = NodePath("../../../../Sprites/LeftBicep")
 position = Vector2(157.845, -4.36506)
 rotation = 0.0633349
 rest = Transform2D(0.200029, -0.97971, 0.97971, 0.200029, 157.845, -4.36506)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/SW/Skeleton2D/Torso/LeftShoulder/LeftElbow"]
 position = Vector2(92.88, -5.64597)
@@ -2386,9 +2740,10 @@ rotation = 2.66329
 
 [node name="RightShoulder" type="Bone2D" parent="Sprite/SW/Skeleton2D/Torso"]
 position = Vector2(-111.853, -173.569)
-rotation = 1.27154
+rotation = 1.3621
 scale = Vector2(0.999926, -0.999926)
 rest = Transform2D(0.335796, 0.941768, -0.941768, 0.335796, -111.853, -173.569)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/SW/Skeleton2D/Torso/RightShoulder"]
 position = Vector2(53.5368, 5.08451)
@@ -2399,6 +2754,7 @@ remote_path = NodePath("../../../../Sprites/RightBicep")
 position = Vector2(143.747, -8.16698)
 rotation = -0.0889893
 rest = Transform2D(0.505241, -0.862823, 0.862823, 0.505241, 143.747, -8.16698)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/SW/Skeleton2D/Torso/RightShoulder/RightElbow"]
 position = Vector2(99.8399, -3.9254)
@@ -2424,9 +2780,9 @@ position = Vector2(54.5413, -295.356)
 texture = ExtResource("18_w6qqi")
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/NW/Sprites"]
-position = Vector2(-108.822, -359.288)
-rotation = -2.86342
-scale = Vector2(1, -1)
+position = Vector2(-34.7529, -306.941)
+rotation = 0.973859
+scale = Vector2(0.999993, -0.999993)
 texture = ExtResource("2_or0a7")
 
 [node name="LeftShoulder" type="Sprite2D" parent="Sprite/NW/Sprites/LeftBicep"]
@@ -2435,9 +2791,9 @@ rotation = -1.09083
 texture = ExtResource("3_wq5o8")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/NW/Sprites"]
-position = Vector2(-198.797, -494.524)
-rotation = -1.44526
-scale = Vector2(0.999842, -0.999842)
+position = Vector2(100.63, -250.072)
+rotation = -0.571306
+scale = Vector2(0.999836, -0.999836)
 texture = ExtResource("4_gpts5")
 
 [node name="LeftHand" type="Sprite2D" parent="Sprite/NW/Sprites/LeftForearm"]
@@ -2454,8 +2810,8 @@ position = Vector2(-90.5877, -154.257)
 texture = ExtResource("18_x2tga")
 
 [node name="Torso" type="Node2D" parent="Sprite/NW/Sprites"]
-position = Vector2(18.8575, -245.13)
-scale = Vector2(1, 1)
+position = Vector2(18.6478, -227.181)
+scale = Vector2(0.999996, 0.999996)
 
 [node name="Body" type="Sprite2D" parent="Sprite/NW/Sprites/Torso"]
 position = Vector2(10.9069, 6.6414)
@@ -2481,9 +2837,9 @@ position = Vector2(187.696, -51.2423)
 texture = ExtResource("18_x2tga")
 
 [node name="RightBicep" type="Sprite2D" parent="Sprite/NW/Sprites"]
-position = Vector2(117.262, -291.284)
-rotation = 1.04382
-scale = Vector2(0.999918, -0.999918)
+position = Vector2(117.806, -273.896)
+rotation = 1.02634
+scale = Vector2(0.999913, -0.999913)
 texture = ExtResource("2_or0a7")
 
 [node name="RightShoulder" type="Sprite2D" parent="Sprite/NW/Sprites/RightBicep"]
@@ -2492,9 +2848,9 @@ rotation = -1.5708
 texture = ExtResource("14_2jo2v")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/NW/Sprites"]
-position = Vector2(79.644, -171.662)
-rotation = 2.64566
-scale = Vector2(0.999767, -0.999767)
+position = Vector2(228.839, -219.6)
+rotation = -0.415803
+scale = Vector2(0.999759, -0.999759)
 texture = ExtResource("4_gpts5")
 
 [node name="RightHand" type="Sprite2D" parent="Sprite/NW/Sprites/RightForearm"]
@@ -2512,6 +2868,7 @@ modification_stack = SubResource("SkeletonModificationStack2D_m6jvo")
 
 [node name="Torso" type="Bone2D" parent="Sprite/NW/Skeleton2D"]
 position = Vector2(-88.8972, -25.3934)
+scale = Vector2(0.999996, 0.999996)
 rest = Transform2D(1, 0, 0, 1, -72.3631, -23.422)
 editor_settings/show_bone_gizmo = false
 
@@ -2524,6 +2881,7 @@ position = Vector2(-74.0997, -221.913)
 rotation = -2.86342
 scale = Vector2(1, -1)
 rest = Transform2D(0.236843, 0.97144, -0.97144, 0.236843, 53.4003, -241.913)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/NW/Skeleton2D/Torso/LeftShoulder"]
 position = Vector2(42.733, 8.32183)
@@ -2534,6 +2892,7 @@ position = Vector2(157.845, -4.36506)
 rotation = -1.41816
 scale = Vector2(0.999842, 0.999842)
 rest = Transform2D(0.200029, -0.97971, 0.97971, 0.200029, 157.845, -4.36506)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Sprite/NW/Skeleton2D/Torso/LeftShoulder/LeftElbow"]
 position = Vector2(92.88, -5.64597)
@@ -2545,9 +2904,10 @@ rotation = 2.66329
 
 [node name="RightShoulder" type="Bone2D" parent="Sprite/NW/Skeleton2D/Torso"]
 position = Vector2(76.897, -201.069)
-rotation = 1.03476
+rotation = 1.17558
 scale = Vector2(0.999918, -0.999918)
 rest = Transform2D(0.335796, 0.941768, -0.941768, 0.335796, -111.853, -173.569)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NW/Skeleton2D/Torso/RightShoulder"]
 position = Vector2(53.5368, 5.08451)
@@ -2559,6 +2919,7 @@ position = Vector2(143.747, -8.16698)
 rotation = -1.6109
 scale = Vector2(0.999849, 0.999849)
 rest = Transform2D(0.505241, -0.862823, 0.862823, 0.505241, 143.747, -8.16698)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite/NW/Skeleton2D/Torso/RightShoulder/RightElbow"]
 position = Vector2(80.4028, -3.35212)
