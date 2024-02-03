@@ -5,7 +5,7 @@ enum Shape { SINGLE, CROSS, SQUARE_3x3, DIAMOND_3x3, OCTAGON }
 enum Target { SELF, RANDOM, RANDOM2, ALL, THREAT, SPAWN_CLOSE, SPAWN_RANDOM,
     INTERACTABLES, FARTHEST, RANDOM_NO_ENTITIY, TILE_DICE }
 
-var display_name: String
+var display_name: String 
 var description: String
 var damage: int
 var mechanic: Mechanic
