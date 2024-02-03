@@ -1,0 +1,241 @@
+[gd_scene load_steps=25 format=3 uid="uid://c7auncstw41cc"]
+
+[ext_resource type="Script" path="res://EntitySprite.gd" id="1_5n1od"]
+[ext_resource type="Texture2D" uid="uid://ds3e6oihl70tf" path="res://Assets/Bots/Common/shadow.png" id="2_84cs2"]
+[ext_resource type="Texture2D" uid="uid://co4exdusrrd43" path="res://Assets/Bots/Common/WheelLong.png" id="3_86imk"]
+[ext_resource type="Texture2D" uid="uid://shtbydd8dqcd" path="res://Assets/Bots/Electo/Body.png" id="4_52pyi"]
+[ext_resource type="Texture2D" uid="uid://dwalljbqos0pg" path="res://Assets/Bots/Electo/Magnet.png" id="5_2k4j7"]
+[ext_resource type="Texture2D" uid="uid://c5reilpdgd8ko" path="res://Assets/Bots/Electo/Pipes.png" id="6_wxx0d"]
+[ext_resource type="Texture2D" uid="uid://hms3ic2prqi8" path="res://Assets/Bots/Common/LongNeck.png" id="7_5005d"]
+[ext_resource type="Texture2D" uid="uid://b0sqwautgetyu" path="res://Assets/Bots/Electo/EyesSpec.png" id="8_7kgnp"]
+[ext_resource type="Texture2D" uid="uid://dng0vleoav2g5" path="res://Assets/Bots/Electo/Eyes.png" id="9_ayqbn"]
+[ext_resource type="Texture2D" uid="uid://d0pstc622lcjf" path="res://Assets/Bots/Electo/Eyes2.png" id="10_rnrh0"]
+[ext_resource type="Texture2D" uid="uid://b8ypd1hh6fr4r" path="res://Assets/Bots/Electo/Eyes3.png" id="11_7t7kl"]
+[ext_resource type="Texture2D" uid="uid://b5rr85uea4mox" path="res://Assets/Bots/Electo/EyesHappy.png" id="12_iihd7"]
+[ext_resource type="Texture2D" uid="uid://dmiikbwhbhpvh" path="res://Assets/Bots/Electo/Spec1.png" id="13_davve"]
+[ext_resource type="Texture2D" uid="uid://dnvhqtrdgsw0i" path="res://Assets/Bots/Electo/Spec3.png" id="14_bwwhh"]
+[ext_resource type="Texture2D" uid="uid://cw74e510cqyfn" path="res://Assets/Bots/Electo/Spec5.png" id="15_cqil0"]
+[ext_resource type="Texture2D" uid="uid://dbkfvthypyngj" path="res://Assets/Bots/Electo/Spec4.png" id="16_2n0vq"]
+[ext_resource type="Texture2D" uid="uid://bhclehctxyv3x" path="res://Assets/Bots/Electo/BodyBack.png" id="17_3u8xr"]
+[ext_resource type="Texture2D" uid="uid://7oudvdj3n15q" path="res://Assets/Bots/Electo/HeadBack.png" id="18_xyp88"]
+[ext_resource type="Texture2D" uid="uid://cy8fwo0ek5qfv" path="res://Assets/Bots/Electo/MagnetBack.png" id="19_m8mev"]
+[ext_resource type="Texture2D" uid="uid://dkvpl1b2v2167" path="res://Assets/Bots/Electo/PipesBack.png" id="20_3cb06"]
+[ext_resource type="PackedScene" uid="uid://b6iqxvpypem6r" path="res://CharacterCommon.tscn" id="21_6bh08"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7581"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_7kgnp")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 82.0,
+"texture": ExtResource("9_ayqbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rnrh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7t7kl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rnrh0")
+}, {
+"duration": 66.0,
+"texture": ExtResource("9_ayqbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rnrh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7t7kl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rnrh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ayqbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rnrh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7t7kl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rnrh0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ayqbn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_iihd7")
+}],
+"loop": true,
+"name": &"happy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rnrh0")
+}],
+"loop": true,
+"name": &"sad",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbysl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_davve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bwwhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cqil0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2n0vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bwwhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2wpm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_davve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bwwhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_cqil0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_2n0vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_bwwhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="DrillBit" type="Node2D"]
+script = ExtResource("1_5n1od")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-3.03607, -42.2631)
+scale = Vector2(0.2, 0.2)
+
+[node name="SE" type="Node2D" parent="Sprite"]
+
+[node name="Sprites" type="Node2D" parent="Sprite/SE"]
+
+[node name="Shadow" type="Sprite2D" parent="Sprite/SE/Sprites"]
+position = Vector2(0.180351, -68.6845)
+texture = ExtResource("2_84cs2")
+
+[node name="WheelsRight" type="Sprite2D" parent="Sprite/SE/Sprites"]
+position = Vector2(87.6563, 31.0752)
+texture = ExtResource("3_86imk")
+
+[node name="Body" type="Sprite2D" parent="Sprite/SE/Sprites"]
+position = Vector2(6.67419, -56.7307)
+texture = ExtResource("4_52pyi")
+
+[node name="Magnet" type="Sprite2D" parent="Sprite/SE/Sprites/Body"]
+position = Vector2(-89.9831, -202.733)
+texture = ExtResource("5_2k4j7")
+
+[node name="Pipes" type="Sprite2D" parent="Sprite/SE/Sprites/Body"]
+position = Vector2(-142.878, 46.885)
+texture = ExtResource("6_wxx0d")
+
+[node name="Neck" type="Sprite2D" parent="Sprite/SE/Sprites/Body"]
+position = Vector2(57.5262, -29.4646)
+texture = ExtResource("7_5005d")
+
+[node name="Head" type="AnimatedSprite2D" parent="Sprite/SE/Sprites/Body"]
+position = Vector2(121.565, -90.914)
+sprite_frames = SubResource("SpriteFrames_b7581")
+
+[node name="Lightning" type="AnimatedSprite2D" parent="Sprite/SE/Sprites/Body"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-72.82, -346.444)
+sprite_frames = SubResource("SpriteFrames_cbysl")
+autoplay = "default"
+frame_progress = 0.503706
+
+[node name="WheelsLeft" type="Sprite2D" parent="Sprite/SE/Sprites"]
+position = Vector2(-126.277, 131.889)
+texture = ExtResource("3_86imk")
+
+[node name="NE" type="Node2D" parent="Sprite"]
+
+[node name="Sprites" type="Node2D" parent="Sprite/NE"]
+
+[node name="Shadow" type="Sprite2D" parent="Sprite/NE/Sprites"]
+position = Vector2(20.1804, -73.6845)
+texture = ExtResource("2_84cs2")
+
+[node name="WheelsRight" type="Sprite2D" parent="Sprite/NE/Sprites"]
+position = Vector2(-77.16, 38.8705)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_86imk")
+
+[node name="Body" type="Sprite2D" parent="Sprite/NE/Sprites"]
+position = Vector2(6.67419, -56.7307)
+texture = ExtResource("17_3u8xr")
+
+[node name="Neck" type="Sprite2D" parent="Sprite/NE/Sprites/Body"]
+position = Vector2(73.7762, -68.2146)
+texture = ExtResource("7_5005d")
+
+[node name="Head" type="Sprite2D" parent="Sprite/NE/Sprites/Body"]
+position = Vector2(73.8896, -112.496)
+texture = ExtResource("18_xyp88")
+
+[node name="Magnet" type="Sprite2D" parent="Sprite/NE/Sprites/Body"]
+position = Vector2(-49.9831, -157.733)
+texture = ExtResource("19_m8mev")
+
+[node name="Pipes" type="Sprite2D" parent="Sprite/NE/Sprites/Body"]
+position = Vector2(-151.44, -10.361)
+texture = ExtResource("20_3cb06")
+
+[node name="Lightning" type="AnimatedSprite2D" parent="Sprite/NE/Sprites/Body"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-38.6783, -291.339)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_t2wpm")
+autoplay = "default"
+frame_progress = 0.242446
+
+[node name="WheelsLeft" type="Sprite2D" parent="Sprite/NE/Sprites"]
+position = Vector2(138.742, 136.202)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_86imk")
+
+[node name="CharacterCommon" parent="." instance=ExtResource("21_6bh08")]

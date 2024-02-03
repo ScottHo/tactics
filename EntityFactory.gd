@@ -199,6 +199,20 @@ static func create_buster():
     ActionFactory.add_battlefield_transfer(ent, ActionType.ACTION2)
     return ent
 
+static func create_pulsar():
+    var ent = _create_entity("Pulsar", 20, 5, 1, 10, "res://Bots/pulsar.tscn", "res://Assets/bot_template.png", true)
+    var p = Passive.new()
+    p.display_name = "Self Diagnosis"
+    p.description = "Buster has a 20% chance to remove all downgrades per turn"
+    p.repeated_effect = func(e: Entity):
+        e.wipe_downgrades_chance = .2
+    p.is_repeated = true
+    ent.passive = p
+    ActionFactory.add_base_attack(ent)
+    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION1)
+    ActionFactory.add_battlefield_transfer(ent, ActionType.ACTION2)
+    return ent
+
 static func create_auto_turret_3000():
     var ent = _create_entity("A.T. 3000", 5, 0, 5, 15, "res://Bots/auto_turret_3000.tscn", "res://Assets/Bots/AutoTurret3000/auto_turret_3000.png", true)
     ent.damage += 6
