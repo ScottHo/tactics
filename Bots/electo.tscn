@@ -1584,7 +1584,6 @@ position = Vector2(-3.03607, -42.2631)
 scale = Vector2(0.2, 0.2)
 
 [node name="SE" type="Node2D" parent="Sprite"]
-visible = false
 
 [node name="Sprites" type="Node2D" parent="Sprite/SE"]
 
@@ -1628,6 +1627,7 @@ position = Vector2(-126.277, 131.889)
 texture = ExtResource("2_8h8aw")
 
 [node name="NE" type="Node2D" parent="Sprite"]
+visible = false
 
 [node name="Sprites" type="Node2D" parent="Sprite/NE"]
 

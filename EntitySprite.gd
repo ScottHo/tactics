@@ -13,10 +13,12 @@ var modulate_time_delta := 0.0
 var time_to_modulate := .4
 var modulate_normal := true
 var modulate_color := Color.WHITE
-var SE :Node2D 
-var SW :Node2D 
-var NE :Node2D 
-var NW :Node2D 
+var SE :Node2D
+var SW :Node2D
+var NE :Node2D
+var NW :Node2D
+var south_node: Node2D
+var north_node: Node2D
 signal doneMoving
 
 func _ready():
@@ -36,6 +38,11 @@ func _ready():
         NE.visible = false
         NW.visible = false
         return
+    elif sprite.get_child_count() >= 2:
+        SE = $Sprite/SE
+        NE = $Sprite/NE
+        SE.visible = true
+        NE.visible = false
     return
 
 func _process(delta):
@@ -53,7 +60,27 @@ func _process(delta):
     return
 
 func face_direction(vec: Vector2i):
-    if $Sprite.get_child_count() < 4:
+    if sprite.get_child_count() < 2:
+        return
+    if sprite.get_child_count() < 4:
+        SE.visible = false
+        NE.visible = false
+        if vec == Vector2i(1,0):
+            SE.visible = true
+            SE.scale = Vector2(1, 1)
+            return
+        if vec == Vector2i(0,1):
+            SE.visible = true
+            SE.scale = Vector2(-1, 1)
+            return
+        if vec == Vector2i(0,-1):
+            NE.visible = true
+            NE.scale = Vector2(1, 1)
+            return
+        if vec == Vector2i(-1,0):
+            NE.visible = true
+            NE.scale = Vector2(-1, 1)
+            return
         return
     SE.visible = false
     SW.visible = false    
@@ -139,7 +166,6 @@ func _play_animation(callback, animation_name: String):
                 callback.call()
                 , CONNECT_ONE_SHOT)
     return
-    
 
 func play_shift_animation():
     var tween = get_tree().create_tween()

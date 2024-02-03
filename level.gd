@@ -108,10 +108,10 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
 func setup_entities():
     if Globals.level_debug_mode:
         Globals.current_mission = MissionFactory.foundry_1_final_boss()
-        var e := EntityFactory.create_bot(EntityFactory.Bot.LONGSHOT)
+        var e := EntityFactory.create_bot(EntityFactory.Bot.SABER)
         e.action1.level += 1
         e.damage += 2
-        var e1 := EntityFactory.create_bot(EntityFactory.Bot.PEPPERSHOT)
+        var e1 := EntityFactory.create_bot(EntityFactory.Bot.DRILLBIT)
         e1.action1.level += 1
         e1.max_health += 2
         var e2 := EntityFactory.create_bot(EntityFactory.Bot.BRUTUS)
@@ -128,13 +128,13 @@ func setup_entities():
         var e6 := EntityFactory.create_bot(EntityFactory.Bot.SMITHY)
         e6.action2.level += 1
         e6.max_health += 3
-        #setup_entity_for_level(e, Vector2i(1,0))
+        setup_entity_for_level(e, Vector2i(1,0))
         setup_entity_for_level(e1, Vector2i(3,2))
         #setup_entity_for_level(e2, Vector2i(1,2))
-        setup_entity_for_level(e3, Vector2i(3,3))
+        #setup_entity_for_level(e3, Vector2i(3,3))
         #setup_entity_for_level(e4, Vector2i(3,4))
         #setup_entity_for_level(e5, Vector2i(3,5))
-        setup_entity_for_level(e6, Vector2i(3,6))
+        #setup_entity_for_level(e6, Vector2i(3,6))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,0))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,1))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,2))

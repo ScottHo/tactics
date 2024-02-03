@@ -1,6 +1,7 @@
 class_name EntityFactory
 
-enum Bot {BRUTUS, OILEE, ELECTO, NANONANO, SMITHY, LONGSHOT, BATTERIE, PUNCHE, PEPPERSHOT, BUSTER}
+enum Bot {BRUTUS, OILEE, ELECTO, NANONANO, SMITHY, LONGSHOT, BATTERIE, PUNCHE,
+        PEPPERSHOT, BUSTER, PULSAR, DRILLBIT, SABER}
 
 static func create_bot(bot: Bot) -> Entity:
     var ret = Entity.new()
@@ -24,6 +25,12 @@ static func create_bot(bot: Bot) -> Entity:
         ret = create_peppershot()
     if bot == Bot.BUSTER:
         ret = create_buster()
+    if bot == Bot.PULSAR:
+        ret = create_pulsar()
+    if bot == Bot.DRILLBIT:
+        ret = create_drillbit()
+    if bot == Bot.SABER:
+        ret = create_saber()
     ret.collection_id = bot
     return ret
     
@@ -200,7 +207,35 @@ static func create_buster():
     return ent
 
 static func create_pulsar():
-    var ent = _create_entity("Pulsar", 20, 5, 1, 10, "res://Bots/pulsar.tscn", "res://Assets/bot_template.png", true)
+    var ent = _create_entity("Pulsar", 20, 5, 1, 10, "res://Bots/pulsar.tscn", "res://Assets/Bots/Pulsar/Icon.png", true)
+    var p = Passive.new()
+    p.display_name = "Self Diagnosis"
+    p.description = "Buster has a 20% chance to remove all downgrades per turn"
+    p.repeated_effect = func(e: Entity):
+        e.wipe_downgrades_chance = .2
+    p.is_repeated = true
+    ent.passive = p
+    ActionFactory.add_base_attack(ent)
+    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION1)
+    ActionFactory.add_battlefield_transfer(ent, ActionType.ACTION2)
+    return ent
+
+static func create_drillbit():
+    var ent = _create_entity("Drill Bit", 20, 5, 1, 10, "res://Bots/drillbit.tscn", "res://Assets/Bots/DrillBit/Icon.png", true)
+    var p = Passive.new()
+    p.display_name = "Self Diagnosis"
+    p.description = "Buster has a 20% chance to remove all downgrades per turn"
+    p.repeated_effect = func(e: Entity):
+        e.wipe_downgrades_chance = .2
+    p.is_repeated = true
+    ent.passive = p
+    ActionFactory.add_base_attack(ent)
+    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION1)
+    ActionFactory.add_battlefield_transfer(ent, ActionType.ACTION2)
+    return ent
+
+static func create_saber():
+    var ent = _create_entity("Saber", 20, 5, 1, 10, "res://Bots/saber.tscn", "res://Assets/Bots/Saber/Icon.png", true)
     var p = Passive.new()
     p.display_name = "Self Diagnosis"
     p.description = "Buster has a 20% chance to remove all downgrades per turn"
