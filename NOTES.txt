@@ -4,7 +4,7 @@ BUGS
 - Tutorial can stall if run out of moves during interact -> replenish moves on tutorial
 
 DO NEXT
-- Sounds
+- Sounds -> Cameron
 - Scene for new recruits
 - Simple Scenes for prologue/post tutorial
 - Tutorial Map / Tilemap setups
