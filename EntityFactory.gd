@@ -209,25 +209,25 @@ static func create_buster():
 static func create_pulsar():
     var ent = _create_entity("Pulsar", 20, 5, 1, 10, "res://Bots/pulsar.tscn", "res://Assets/Bots/Pulsar/Icon.png", true)
     var p = Passive.new()
-    p.display_name = "Self Diagnosis"
-    p.description = "Buster has a 20% chance to remove all downgrades per turn"
-    p.repeated_effect = func(e: Entity):
-        e.wipe_downgrades_chance = .2
-    p.is_repeated = true
+    p.display_name = "Inversion"
+    p.description = "Pulsar's basic attack's can heal allies"
+    p.static_effect = func(e: Entity):
+        e.heal_attack = true
+    p.is_static = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION1)
-    ActionFactory.add_battlefield_transfer(ent, ActionType.ACTION2)
+    ActionFactory.add_heal_pulse(ent, ActionType.ACTION1)
+    ActionFactory.add_halo(ent, ActionType.ACTION2)
     return ent
 
 static func create_drillbit():
     var ent = _create_entity("Drill Bit", 20, 5, 1, 10, "res://Bots/drillbit.tscn", "res://Assets/Bots/DrillBit/Icon.png", true)
     var p = Passive.new()
-    p.display_name = "Self Diagnosis"
-    p.description = "Buster has a 20% chance to remove all downgrades per turn"
-    p.repeated_effect = func(e: Entity):
-        e.wipe_downgrades_chance = .2
-    p.is_repeated = true
+    p.display_name = "Armor Break"
+    p.description = "Drillbit has a 10% chance to reduce the enemies armor by 1"
+    p.static_effect = func(e: Entity):
+        e.armor_break_chance = .1
+    p.is_static = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_drill_strike(ent, ActionType.ACTION1)
@@ -237,15 +237,15 @@ static func create_drillbit():
 static func create_saber():
     var ent = _create_entity("Saber", 20, 5, 1, 10, "res://Bots/saber.tscn", "res://Assets/Bots/Saber/Icon.png", true)
     var p = Passive.new()
-    p.display_name = "Self Diagnosis"
-    p.description = "Buster has a 20% chance to remove all downgrades per turn"
-    p.repeated_effect = func(e: Entity):
-        e.wipe_downgrades_chance = .2
-    p.is_repeated = true
+    p.display_name = "Weakpoint"
+    p.description = "Saber has a 25% chance to crit all attacks"
+    p.static_effect = func(e: Entity):
+        e.crit_chance = .25
+    p.is_static = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_drill_strike(ent, ActionType.ACTION1)
-    ActionFactory.add_drill_barrage(ent, ActionType.ACTION2)
+    ActionFactory.add_alpha_slash(ent, ActionType.ACTION1)
+    ActionFactory.add_zeta_slash(ent, ActionType.ACTION2)
     return ent
 
 static func create_auto_turret_3000():

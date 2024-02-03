@@ -14,5 +14,6 @@ var target: Target
 var target_interactable: String
 var effect = null
 var spawns: Array = [] # of Entities
+var target_animation: String = ""
 var animation_path: String = ""
 

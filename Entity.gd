@@ -39,6 +39,9 @@ var thorns_all: bool = false # Refect flat damage to everyone, for 1 turn
 var thorns: bool = false # Reflect flat damage on basic attacks
 var dodge_chance: float = 0.0
 var wipe_downgrades_chance: float = 0.0
+var special_damage_mod := 0
+var crit_chance: float = 0.0
+var armor_break_chance: float = 0.0
 
 # Base Stats
 var max_health: int
@@ -61,7 +64,6 @@ var aura_range_modifier: int = 0
 var aura_armor_modifier: int = 0
 var aura_damage_modifier: int = 0
 var aura_shield: int = 0
-var aura_crit: float = 0
 var aura_regen: int  = 0
 
 # Temporary Modifiers
@@ -374,6 +376,7 @@ func done_turn():
 func action_animation(callback, action_type):
     if not check_sprite():
         return
+    stop_animations()
     if action_type == ActionType.ATTACK:
         sprite.play_attack_animation(callback)
     if action_type == ActionType.ACTION1:
@@ -385,12 +388,14 @@ func action_animation(callback, action_type):
 func hit_animation(callback = null):
     if not check_sprite():
         return
+    stop_animations()
     sprite.play_hit_animation(callback)
     return
 
 func buff_animation(callback = null):
     if not check_sprite():
         return
+    stop_animations()
     sprite.play_buff_animation(callback)
     return
 
@@ -409,6 +414,7 @@ func shift_animation():
 func move_animation():
     if not check_sprite():
         return
+    stop_animations()
     sprite.play_move_animation()
     return
     
@@ -433,7 +439,6 @@ func reset_auras():
     aura_damage_modifier = 0
     aura_armor_modifier = 0
     aura_shield = 0
-    aura_crit = 0.0
     aura_regen = 0
     return
     
@@ -459,6 +464,12 @@ func face_direction(vec: Vector2i):
     if not check_sprite():
         return
     sprite.face_direction(vec)
+    return
+
+func movePoints(_points: Array, _moved_entities: Array, dash: bool = false):
+    if not check_sprite():
+        return
+    sprite.movePoints(_points, _moved_entities, dash)
     return
 
 func clone() -> Entity:

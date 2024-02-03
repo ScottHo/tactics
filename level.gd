@@ -125,12 +125,12 @@ func setup_entities():
         var e5 := EntityFactory.create_bot(EntityFactory.Bot.SMITHY)
         e5.action2.level += 1
         e5.max_health += 3
-        setup_entity_for_level(e, Vector2i(2,0))
-        setup_entity_for_level(e1, Vector2i(2,1))
-        setup_entity_for_level(e2, Vector2i(2,2))
-        setup_entity_for_level(e3, Vector2i(2,3))
-        setup_entity_for_level(e4, Vector2i(2,4))
-        setup_entity_for_level(e5, Vector2i(2,5))
+        #setup_entity_for_level(e, Vector2i(2,0))
+        setup_entity_for_level(e1, Vector2i(5,1))
+        #setup_entity_for_level(e2, Vector2i(2,2))
+        #setup_entity_for_level(e3, Vector2i(2,3))
+        #setup_entity_for_level(e4, Vector2i(2,4))
+        #setup_entity_for_level(e5, Vector2i(2,5))
         #setup_entity_for_level(e6, Vector2i(3,6))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,0))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,1))
@@ -396,7 +396,7 @@ func movesFound(poses):
                     moved_ents.append(ent)
                     continue
             moved_ents.append(null)
-        currentEntity().sprite.movePoints(poses, moved_ents)
+        currentEntity().movePoints(poses, moved_ents)
     else:
         moveDone()
     return

@@ -32,6 +32,9 @@ func self_cast_only():
         return true
     return false
 
+func strict_range() -> int:
+    return get_from_stats("Set Range", -1)
+
 func cost():
     return get_from_stats("Cost")
 

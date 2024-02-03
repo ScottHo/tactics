@@ -11,7 +11,14 @@ static var diamond = [
         Vector2i(2,0), Vector2i(0,2), Vector2i(-2, 0), Vector2i(0, -2)
         ]
 static var cone = [
-        Vector2i(1,0), Vector2i(1,1), Vector2i(2,0), Vector2i(1,-1)]
+        Vector2i(0,1), Vector2i(1,0), Vector2i(0,-1)
+        ]
+static var straight = [
+        Vector2i(1,0), Vector2i(2,0)
+        ]
+static var cone_reverse = [
+        Vector2i(1,1), Vector2i(1,0), Vector2i(1,-1)
+        ]
 
 static func add_base_attack(ent: Entity):
     var stats = {
@@ -22,8 +29,16 @@ static func add_base_attack(ent: Entity):
     var base_effect = func (user: Entity, targets: Array, action: Action):
         var damage = user.get_damage()
         for _ent in targets:
-            user.damage_done += _ent.damage_preview(damage)            
-            _ent.loseHP(damage)
+            if randf() < user.crit_chance:
+                damage += user.get_damage()
+                _ent.custom_text("Crit!", Color.YELLOW)
+            if user.heal_attack:
+                _ent.gainHP(damage)
+            else:
+                user.damage_done += _ent.damage_preview(damage)        
+                _ent.loseHP(damage)
+            if randf() < user.armor_break_chance:
+                _ent.update_armor(-1)
         return
     var d = "Deals damage to any other target"
     var action := _add_action(ent, "Normal Attack", d, [], base_effect, ActionType.ATTACK, stats, "res://Effects/explosion_yellow.tscn")
@@ -212,7 +227,7 @@ static func add_thunderous_wrath(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Deal damage to every enemy unit"
-    var action := _add_action(ent, "Thunderous Wrath", d, shape_3x3, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var action := _add_action(ent, "Thunderous Wrath", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     action.target_animation = TargetAnimations.HIT
     return
 
@@ -601,76 +616,117 @@ static func add_battlefield_transfer(ent: Entity, type: int):
     action.highlight_style = Highlights.HEAL
     action.target_animation = TargetAnimations.BUFF
     return
-    
+
+static func add_heal_pulse(ent: Entity, type: int):
+    var stats = {
+        "Affects": TargetTypes.OTHER_ALLIES,
+        "Heal Amount": [6, 8, 10, 12],
+        "Set Range": 1,
+        "Cost": 2,
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        for _ent in targets:
+            _ent.gainHP(action.get_from_stats("Heal Amount"))
+        return
+    var d = "Heal all allies in a cone area"
+    var action := _add_action(ent, "Heal Pulse", d, cone_reverse, effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
+    return
+
+static func add_halo(ent: Entity, type: int):
+    var stats = {
+        "Affects": TargetTypes.SELF,
+        "Heal Amount": 15,
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        for _ent in targets:
+            _ent.gainHP(action.get_from_stats("Heal Amount"))
+        return
+    var d = "Restore a large amount of health to all allies in an area around Pulsar"
+    var action := _add_action(ent, "Halo", d, diamond, effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.highlight_style = Highlights.HEAL
+    action.target_animation = TargetAnimations.BUFF
+    return
+
 static func add_drill_strike(ent: Entity, type: int):
     var stats = {
-        "Affects": "Enemy Units",
-        "Extra Damage": [0, 3, 6, 9],
+        "Affects": TargetTypes.ENEMIES,
+        "Number of Attacks": [2,3,4,5],
+        "Damage Amp": .5,
         "Cost": 2,
         "Threat Gain": 2
     }
     var effect = func (user: Entity, targets: Array, action: Action):
-        var damage = user.get_damage() + action.get_from_stats("Extra Damage")
+        var damage = ceili(user.get_damage() * action.get_from_stats("Damage Amp"))
         for _ent in targets:
-            user.damage_done += _ent.damage_preview(damage)
-            _ent.loseHP(damage)
+            for i in range(action.get_from_stats("Number of Attacks")):
+                user.damage_done += _ent.damage_preview(damage)
+                _ent.loseHP(damage)
+                if randf() < user.armor_break_chance:
+                    _ent.update_armor(-1)
         return
-    var d = "Attack all enemies in a cone"
+    var d = "Attack all enemies in front multiple times with reduced damage"
     var action := _add_action(ent, "Drill Strike", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     action.target_animation = TargetAnimations.HIT
     return
 
 static func add_drill_barrage(ent: Entity, type: int):
     var stats = {
-        "Affects": "Enemy Units",
-        "Number of Attacks": 3,
+        "Affects": TargetTypes.ENEMIES,
+        "Number of Attacks": 5,
         "Threat Gain": 3
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         var damage = user.get_damage()
         for _ent in targets:
-            for i in range(action.get_from_stats("Number of Atttacks")):
+            for i in range(action.get_from_stats("Number of Attacks")):
                 user.damage_done += _ent.damage_preview(damage)
                 _ent.loseHP(damage)
+                if randf() < user.armor_break_chance:
+                    _ent.update_armor(-1)
         return
-    var d = "Unleash a barrage of drill attacks"
+    var d = "Unleash a barrage of drill attacks in front with no reduced damage"
     var action := _add_action(ent, "Drill Barrage", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     action.target_animation = TargetAnimations.HIT
     return
     
-static func add_alpha_barrage(ent: Entity, type: int):
+static func add_alpha_slash(ent: Entity, type: int):
     var stats = {
-        "Affects": "Enemy Units",
-        "Number of Attacks": 3,
-        "Threat Gain": 3
+        "Affects": TargetTypes.ENEMIES,
+        "Extra Damage": [2,4,6,8],
+        "Slash Distance": 3,
+        "Cost": 2,
+        "Threat Gain": 1
     }
     var effect = func (user: Entity, targets: Array, action: Action):
         var damage = user.get_damage()
         for _ent in targets:
-            for i in range(action.get_from_stats("Number of Atttacks")):
-                user.damage_done += _ent.damage_preview(damage)
-                _ent.loseHP(damage)
+            if randf() < user.crit_chance:
+                damage += user.get_damage()
+                _ent.custom_text("Crit!", Color.YELLOW)
+            user.damage_done += _ent.damage_preview(damage)
+            _ent.loseHP(damage)
         return
-    var d = "Unleash a barrage of drill attacks"
-    var action := _add_action(ent, "Drill Barrage", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var d = "Dash forward, slashing all enemies in your path"
+    var action := _add_action(ent, "Alpha Slash", d, straight, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     action.target_animation = TargetAnimations.HIT
     return
 
-static func add_zeta_barrage(ent: Entity, type: int):
+static func add_zeta_slash(ent: Entity, type: int):
     var stats = {
-        "Affects": "Enemy Units",
-        "Number of Attacks": 3,
-        "Threat Gain": 3
+        "Affects": TargetTypes.ALL_ENEMIES,
+        "Crit Chance": "100%",
     }
     var effect = func (user: Entity, targets: Array, action: Action):
-        var damage = user.get_damage()
+        var damage = (user.get_damage()  + user.get_damage())
         for _ent in targets:
-            for i in range(action.get_from_stats("Number of Atttacks")):
-                user.damage_done += _ent.damage_preview(damage)
-                _ent.loseHP(damage)
+            _ent.custom_text("Crit!", Color.YELLOW)
+            user.damage_done += _ent.damage_preview(damage)
+            _ent.loseHP(damage)
         return
-    var d = "Unleash a barrage of drill attacks"
-    var action := _add_action(ent, "Drill Barrage", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    var d = "Dash and strike every single enemy at their weakpoints with critical damage"
+    var action := _add_action(ent, "Zeta slash", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     action.target_animation = TargetAnimations.HIT
     return
 

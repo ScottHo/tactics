@@ -29,7 +29,7 @@ func _input(event):
         var coords: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         if _previous_coords != coords:
             _previous_coords = coords            
-            if TargetTypes.NO_BFS.has(action().type):
+            if TargetTypes.NO_BFS.has(action().affects()):
                 highlight_for_no_bfs()
             else:
                 highlight_for_bfs()
@@ -141,6 +141,8 @@ func clearTargetHighlights():
 func maxRange() -> int:
     if action().self_cast_only():
         return 0
+    if action().strict_range() > 0:
+        return action().strict_range()
     return _entity.get_range() + action().range_modifier()
 
 func shape() -> Array:

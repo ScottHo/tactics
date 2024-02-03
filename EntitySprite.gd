@@ -13,6 +13,7 @@ var modulate_time_delta := 0.0
 var time_to_modulate := .4
 var modulate_normal := true
 var modulate_color := Color.WHITE
+var _dash := false
 var SE :Node2D
 var SW :Node2D
 var NE :Node2D
@@ -100,7 +101,8 @@ func face_direction(vec: Vector2i):
         return
     return
 
-func movePoints(_points: Array, _moved_entities: Array):
+func movePoints(_points: Array, _moved_entities: Array, dash: bool = false):
+    _dash = dash
     z_index = 3
     play_move_animation()
     points = _points
@@ -114,7 +116,7 @@ func nextMove():
         doneMoving.emit()
         return
     var shifted_ent = moved_entities.pop_front()
-    if shifted_ent != null:
+    if shifted_ent != null and not _dash:
         shifted_ent.shift_animation()
     var pos = points.pop_front()
     if pos.x > global_position.x:
@@ -128,7 +130,10 @@ func nextMove():
         else:
             face_direction(Vector2i(-1,0))
     var tween = get_tree().create_tween()
-    tween.tween_property(self, "global_position", pos, .3)
+    if _dash:
+        tween.tween_property(self, "global_position", pos, .1)
+    else:
+        tween.tween_property(self, "global_position", pos, .3)
     tween.tween_callback(nextMove)
     tween.play()
     return
@@ -155,7 +160,7 @@ func play_attack_animation(callback):
 
 func _play_animation(callback, animation_name: String):
     if animationPlayer.has_animation(animation_name):
-        animationPlayer.play(animation_name)
+        animationPlayer.queue(animation_name)
         if callback != null:
             animationPlayer.animation_finished.connect(func(s):
                 callback.call(), CONNECT_ONE_SHOT)
@@ -178,10 +183,11 @@ func play_shift_animation():
 
 func play_move_animation():
     if animationPlayer.has_animation("Move"):
-        animationPlayer.play("Move")
+        animationPlayer.queue("Move")
     return
         
 func stop_animations():
+    animationPlayer.clear_queue()
     animationPlayer.play("RESET")
     return    
 

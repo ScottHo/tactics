@@ -31,12 +31,18 @@ static func do_action_animation(parent: Node2D, action, _targets: Array, tileMap
                 if action.target_animation == TargetAnimations.HIT:
                     _ent.hit_animation()
     if action.animation_path != "":
+        if len(_targets) == 0:
+            callback.call()
+            return
+        var callback_connected = false
         for point in _targets:
             var s: EffectsAnimation = load(action.animation_path).instantiate()
             node.add_child(s)
             s.global_position = tileMap.pointToGlobal(point)
             s.position.y -= 40
-            s.done.connect(callback)
+            if not callback_connected:
+                s.done.connect(callback)
+                callback_connected = true
     else:
         callback.call()
     return
