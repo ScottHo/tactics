@@ -230,8 +230,8 @@ static func create_drillbit():
     p.is_repeated = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION1)
-    ActionFactory.add_battlefield_transfer(ent, ActionType.ACTION2)
+    ActionFactory.add_drill_strike(ent, ActionType.ACTION1)
+    ActionFactory.add_drill_barrage(ent, ActionType.ACTION2)
     return ent
 
 static func create_saber():
@@ -244,8 +244,8 @@ static func create_saber():
     p.is_repeated = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
-    ActionFactory.add_bootleg_upgrades(ent, ActionType.ACTION1)
-    ActionFactory.add_battlefield_transfer(ent, ActionType.ACTION2)
+    ActionFactory.add_drill_strike(ent, ActionType.ACTION1)
+    ActionFactory.add_drill_barrage(ent, ActionType.ACTION2)
     return ent
 
 static func create_auto_turret_3000():

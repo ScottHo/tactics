@@ -10,6 +10,8 @@ static var diamond = [
         Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,1), Vector2i(-1,-1),
         Vector2i(2,0), Vector2i(0,2), Vector2i(-2, 0), Vector2i(0, -2)
         ]
+static var cone = [
+        Vector2i(1,0), Vector2i(1,1), Vector2i(2,0), Vector2i(1,-1)]
 
 static func add_base_attack(ent: Entity):
     var stats = {
@@ -598,6 +600,78 @@ static func add_battlefield_transfer(ent: Entity, type: int):
     var action := _add_action(ent, "Battlefield Transfer", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
     action.target_animation = TargetAnimations.BUFF
+    return
+    
+static func add_drill_strike(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Extra Damage": [0, 3, 6, 9],
+        "Cost": 2,
+        "Threat Gain": 2
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        var damage = user.get_damage() + action.get_from_stats("Extra Damage")
+        for _ent in targets:
+            user.damage_done += _ent.damage_preview(damage)
+            _ent.loseHP(damage)
+        return
+    var d = "Attack all enemies in a cone"
+    var action := _add_action(ent, "Drill Strike", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
+    return
+
+static func add_drill_barrage(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Number of Attacks": 3,
+        "Threat Gain": 3
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        var damage = user.get_damage()
+        for _ent in targets:
+            for i in range(action.get_from_stats("Number of Atttacks")):
+                user.damage_done += _ent.damage_preview(damage)
+                _ent.loseHP(damage)
+        return
+    var d = "Unleash a barrage of drill attacks"
+    var action := _add_action(ent, "Drill Barrage", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
+    return
+    
+static func add_alpha_barrage(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Number of Attacks": 3,
+        "Threat Gain": 3
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        var damage = user.get_damage()
+        for _ent in targets:
+            for i in range(action.get_from_stats("Number of Atttacks")):
+                user.damage_done += _ent.damage_preview(damage)
+                _ent.loseHP(damage)
+        return
+    var d = "Unleash a barrage of drill attacks"
+    var action := _add_action(ent, "Drill Barrage", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
+    return
+
+static func add_zeta_barrage(ent: Entity, type: int):
+    var stats = {
+        "Affects": "Enemy Units",
+        "Number of Attacks": 3,
+        "Threat Gain": 3
+    }
+    var effect = func (user: Entity, targets: Array, action: Action):
+        var damage = user.get_damage()
+        for _ent in targets:
+            for i in range(action.get_from_stats("Number of Atttacks")):
+                user.damage_done += _ent.damage_preview(damage)
+                _ent.loseHP(damage)
+        return
+    var d = "Unleash a barrage of drill attacks"
+    var action := _add_action(ent, "Drill Barrage", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
+    action.target_animation = TargetAnimations.HIT
     return
 
 static func _add_action(ent, display_name, description, shape, effect, action_type, stats, animation_path = "") -> Action:
