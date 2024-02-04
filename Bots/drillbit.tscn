@@ -889,15 +889,16 @@ libraries = {
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(-3.03607, -42.2631)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.22, 0.22)
 
 [node name="SE" type="Node2D" parent="Sprite"]
 
 [node name="Sprites" type="Node2D" parent="Sprite/SE"]
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/SE/Sprites"]
-position = Vector2(5.20194, -105.502)
-scale = Vector2(1.2, 1.2)
+z_index = -1
+position = Vector2(1.14782, -93.3397)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_84cs2")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/SE/Sprites"]
@@ -931,8 +932,8 @@ position = Vector2(139.219, 142.528)
 texture = ExtResource("7_rt2q6")
 
 [node name="Eyes" type="AnimatedSprite2D" parent="Sprite/SE/Sprites/Body"]
-position = Vector2(59.6194, -16.6663)
-scale = Vector2(1.2, 1.2)
+position = Vector2(52.8625, -15.3149)
+scale = Vector2(1.4, 1.4)
 sprite_frames = SubResource("SpriteFrames_b7581")
 autoplay = "default"
 
@@ -948,12 +949,14 @@ position = Vector2(-147.624, 169.023)
 texture = ExtResource("3_86imk")
 
 [node name="NE" type="Node2D" parent="Sprite"]
+visible = false
 
 [node name="Sprites" type="Node2D" parent="Sprite/NE"]
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/NE/Sprites"]
-position = Vector2(5.20194, -105.502)
-scale = Vector2(1.2, 1.2)
+z_index = -1
+position = Vector2(3.85057, -90.6369)
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_84cs2")
 
 [node name="WheelsRight" type="Sprite2D" parent="Sprite/NE/Sprites"]

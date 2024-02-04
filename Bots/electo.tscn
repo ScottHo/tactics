@@ -1977,13 +1977,14 @@ libraries = {
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(-3.03607, -42.2631)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.19, 0.19)
 
 [node name="SE" type="Node2D" parent="Sprite"]
 
 [node name="Sprites" type="Node2D" parent="Sprite/SE"]
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/SE/Sprites"]
+z_index = -1
 position = Vector2(0.180351, -68.6845)
 texture = ExtResource("2_tosry")
 
@@ -2028,6 +2029,7 @@ visible = false
 [node name="Sprites" type="Node2D" parent="Sprite/NE"]
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/NE/Sprites"]
+z_index = -1
 position = Vector2(20.1804, -73.6845)
 texture = ExtResource("2_tosry")
 
@@ -2076,6 +2078,7 @@ scale = Vector2(-1, 1)
 [node name="Sprites" type="Node2D" parent="Sprite/SW"]
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/SW/Sprites"]
+z_index = -1
 position = Vector2(-15.1804, -88.6845)
 texture = ExtResource("2_tosry")
 
@@ -2120,6 +2123,7 @@ scale = Vector2(-1, 1)
 [node name="Sprites" type="Node2D" parent="Sprite/NW"]
 
 [node name="Shadow" type="Sprite2D" parent="Sprite/NW/Sprites"]
+z_index = -1
 position = Vector2(14.8196, -78.6845)
 texture = ExtResource("2_tosry")
 

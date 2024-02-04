@@ -1,9 +1,9 @@
 class_name MainTileMap extends TileMap
 
-static var MIN_X: int = 0
-static var MAX_X: int = 11
-static var MIN_Y: int = -3
-static var MAX_Y: int = 8
+static var MIN_X: int = 1
+static var MAX_X: int = 10
+static var MIN_Y: int = -2
+static var MAX_Y: int = 7
 
 var _all_tiles = []
 

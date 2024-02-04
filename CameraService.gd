@@ -42,8 +42,8 @@ func _input(event):
                 return
             MOUSE_BUTTON_WHEEL_DOWN:
                 cam.zoom -= Vector2(.05, .05)
-                cam.zoom.x = max(cam.zoom.x, .60)
-                cam.zoom.y = max(cam.zoom.y, .60)
+                cam.zoom.x = max(cam.zoom.x, .70)
+                cam.zoom.y = max(cam.zoom.y, .70)
                 return
     if event is InputEventMouseButton and event.is_released():
         match event.button_index:
