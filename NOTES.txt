@@ -9,10 +9,12 @@ DO NEXT
 - Mission start camera movement / stall
 - Action buttons being enabled need animations
 - Finish AutoTurret animations/directions?
-
-DO LATER
 - Side Missions
 - "Popup" for current action/event
+- Add placeholder text on unfinished sprites
+- Add discord, twitter, steam page link
+
+DO LATER
 - Brutus Art/Animations
 - Punch-E Art/Animations
 - Oilee Art/Animations
