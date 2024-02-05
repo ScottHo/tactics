@@ -23,8 +23,8 @@ static func tutorial_boss() -> Mission:
     s2.shape = Special.Shape.SINGLE
     s2.mechanic = Special.Mechanic.BUFF
     s2.damage = 0
-    s2.effect = func(ent: Entity):
-        ent.gainHP(10)
+    s2.effect = func(_ent: Entity):
+        _ent.gainHP(10)
     m.specials = [s1,s2]
     return m
 
@@ -50,7 +50,7 @@ static func foundry_1_final_boss() -> Mission:
     s2.shape = Special.Shape.SQUARE_3x3
     s2.mechanic = Special.Mechanic.SPREAD
     s2.damage = 3
-    s2.effect = func(ent: Entity):
+    s2.effect = func(_ent: Entity):
         return
     s2.animation_path = "res://Effects/explosion_yellow.tscn"
 
@@ -70,7 +70,7 @@ static func foundry_1_final_boss() -> Mission:
     s4.shape = Special.Shape.DIAMOND_3x3
     s4.mechanic = Special.Mechanic.SOAK
     s4.damage = 9
-    s4.effect = func(ent: Entity):
+    s4.effect = func(_ent: Entity):
         return
     s4.animation_path = "res://Effects/explosion_yellow.tscn"
 
@@ -97,8 +97,8 @@ static func foundry_2_final_boss() -> Mission:
     s2.target = Special.Target.RANDOM2
     s2.shape = Special.Shape.SINGLE
     s2.mechanic = Special.Mechanic.SPREAD
-    s2.effect = func(ent: Entity):
-        ent.update_movement(-1)
+    s2.effect = func(_ent: Entity):
+        _ent.update_movement(-1)
 
     m.specials = [s1, s2]
     return m
@@ -122,8 +122,8 @@ static func foundry_3_final_boss() -> Mission:
     s2.target = Special.Target.RANDOM
     s2.shape = Special.Shape.SINGLE
     s2.mechanic = Special.Mechanic.SPREAD
-    s2.effect = func(ent: Entity, roll: int):
-        ent.loseHP(roll*2)
+    s2.effect = func(_ent: Entity, roll: int):
+        _ent.loseHP(roll*2)
 
     var s3 = Special.new()
     s3.display_name = "Dice trap"
@@ -131,7 +131,6 @@ static func foundry_3_final_boss() -> Mission:
     s3.target = Special.Target.TILE_DICE
     s3.shape = Special.Shape.SQUARE_3x3
     s3.mechanic = Special.Mechanic.SPREAD
-    s3.damage
     s3.animation_path = "res://Effects/explosion_yellow.tscn"
     
     var s4 = Special.new()    
@@ -150,11 +149,11 @@ static func foundry_3_final_boss() -> Mission:
     s5.shape = Special.Shape.SINGLE
     s5.mechanic = Special.Mechanic.SPREAD
     s5.damage = 0
-    s5.effect = func(ent: Entity, on_tile: int = -1):
+    s5.effect = func(_ent: Entity, on_tile: int = -1):
         if on_tile == -1:
-            ent.loseHP(12)
+            _ent.loseHP(12)
         else:
-            ent.loseHP(on_tile)
+            _ent.loseHP(on_tile)
     s5.animation_path = "res://Effects/explosion_yellow.tscn"
     
     var s6 = Special.new()
@@ -163,23 +162,23 @@ static func foundry_3_final_boss() -> Mission:
     s6.target = Special.Target.SELF
     s6.shape = Special.Shape.SINGLE
     s6.mechanic = Special.Mechanic.BUFF
-    s6.effect = func(ent: Entity, roll: int):
+    s6.effect = func(_ent: Entity, roll: int):
         if roll == 1:
-            ent.gainHP(1)
+            _ent.gainHP(1)
         if roll == 2:
-            ent.update_movement(1)
+            _ent.update_movement(1)
         if roll == 3:
-            ent.update_damage(1)
+            _ent.update_damage(1)
         if roll == 4:
-            ent.update_armor(1)
+            _ent.update_armor(1)
         if roll == 5:
-            ent.update_initiative(1)
+            _ent.update_initiative(1)
         if roll == 6:
-            ent.gainHP(1)
-            ent.update_movement(1)
-            ent.update_damage(1)
-            ent.update_armor(1)
-            ent.update_initiative(1)
+            _ent.gainHP(1)
+            _ent.update_movement(1)
+            _ent.update_damage(1)
+            _ent.update_armor(1)
+            _ent.update_initiative(1)
     
     m.specials = [s1, s2, s3, s4, s5, s2]
     return m
@@ -208,8 +207,8 @@ static func foundry_4_final_boss() -> Mission:
     s2.shape = Special.Shape.SINGLE
     s2.mechanic = Special.Mechanic.SPREAD
     s2.damage = 12
-    s2.effect = func(ent: Entity):
-        ent.setThreat(0)
+    s2.effect = func(_ent: Entity):
+        _ent.setThreat(0)
         return
     s2.animation_path = "res://Effects/explosion_yellow.tscn"
     
@@ -240,8 +239,8 @@ static func foundry_final_final_boss() -> Mission:
     s2.shape = Special.Shape.SINGLE
     s2.mechanic = Special.Mechanic.SPREAD
     s2.damage = 12
-    s2.effect = func(ent: Entity):
-        ent.setThreat(0)
+    s2.effect = func(_ent: Entity):
+        _ent.setThreat(0)
         return
     s2.animation_path = "res://Effects/explosion_yellow.tscn"
     
@@ -350,7 +349,7 @@ static func recharge_special() -> Special:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
+    s.effect = func(_ent: Entity):
         return
     return s
 
@@ -363,8 +362,8 @@ static func foundry_1_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.update_damage(1)
+    s.effect = func(_ent: Entity):
+        _ent.update_damage(1)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
         
@@ -395,8 +394,8 @@ static func foundry_1_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.update_initiative(1)
+    s.effect = func(_ent: Entity):
+        _ent.update_initiative(1)
         return
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
@@ -417,8 +416,8 @@ static func foundry_1_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.SPREAD
     s.damage = 4
-    s.effect = func(ent: Entity):
-        ent.setThreat(0)
+    s.effect = func(_ent: Entity):
+        _ent.setThreat(0)
         return
     s.animation_path = "res://Effects/explosion_yellow.tscn"    
     ret.append(s)
@@ -430,8 +429,8 @@ static func foundry_1_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.gainHP(9)
+    s.effect = func(_ent: Entity):
+        _ent.gainHP(9)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
     
@@ -442,8 +441,8 @@ static func foundry_1_specials() -> Array:
     s.shape = Special.Shape.CROSS
     s.mechanic = Special.Mechanic.SPREAD
     s.damage = 1
-    s.effect = func(ent: Entity):
-        ent.update_armor(-1)
+    s.effect = func(_ent: Entity):
+        _ent.update_armor(-1)
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
 
@@ -467,8 +466,8 @@ static func foundry_2_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.update_damage(1)
+    s.effect = func(_ent: Entity):
+        _ent.update_damage(1)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
         
@@ -499,8 +498,8 @@ static func foundry_2_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.update_initiative(1)
+    s.effect = func(_ent: Entity):
+        _ent.update_initiative(1)
         return
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
@@ -521,8 +520,8 @@ static func foundry_2_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.SPREAD
     s.damage = 7
-    s.effect = func(ent: Entity):
-        ent.setThreat(0)
+    s.effect = func(_ent: Entity):
+        _ent.setThreat(0)
         return
     s.animation_path = "res://Effects/explosion_yellow.tscn"    
     ret.append(s)
@@ -534,8 +533,8 @@ static func foundry_2_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.gainHP(10)
+    s.effect = func(_ent: Entity):
+        _ent.gainHP(10)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
     
@@ -546,8 +545,8 @@ static func foundry_2_specials() -> Array:
     s.shape = Special.Shape.CROSS
     s.mechanic = Special.Mechanic.SPREAD
     s.damage = 2
-    s.effect = func(ent: Entity):
-        ent.update_armor(-2)
+    s.effect = func(_ent: Entity):
+        _ent.update_armor(-2)
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
 
@@ -574,8 +573,8 @@ static func foundry_4_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.update_damage(3)
+    s.effect = func(_ent: Entity):
+        _ent.update_damage(3)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
         
@@ -586,7 +585,7 @@ static func foundry_4_specials() -> Array:
     s.shape = Special.Shape.DIAMOND_3x3
     s.mechanic = Special.Mechanic.SOAK
     s.damage = 15
-    s.effect = func(ent: Entity):
+    s.effect = func(_ent: Entity):
         return
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
@@ -598,7 +597,7 @@ static func foundry_4_specials() -> Array:
     s.shape = Special.Shape.SQUARE_3x3
     s.mechanic = Special.Mechanic.SPREAD
     s.damage = 4
-    s.effect = func(ent: Entity):
+    s.effect = func(_ent: Entity):
         return
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
@@ -610,8 +609,8 @@ static func foundry_4_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.update_initiative(2)
+    s.effect = func(_ent: Entity):
+        _ent.update_initiative(2)
         return
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
@@ -632,8 +631,8 @@ static func foundry_4_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.SPREAD
     s.damage = 8
-    s.effect = func(ent: Entity):
-        ent.setThreat(0)
+    s.effect = func(_ent: Entity):
+        _ent.setThreat(0)
         return
     s.animation_path = "res://Effects/explosion_yellow.tscn"    
     ret.append(s)
@@ -645,8 +644,8 @@ static func foundry_4_specials() -> Array:
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
-    s.effect = func(ent: Entity):
-        ent.gainHP(18)
+    s.effect = func(_ent: Entity):
+        _ent.gainHP(18)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
     
@@ -657,8 +656,8 @@ static func foundry_4_specials() -> Array:
     s.shape = Special.Shape.CROSS
     s.mechanic = Special.Mechanic.SPREAD
     s.damage = 3
-    s.effect = func(ent: Entity):
-        ent.update_armor(-2)
+    s.effect = func(_ent: Entity):
+        _ent.update_armor(-2)
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
 

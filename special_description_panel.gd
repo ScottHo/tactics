@@ -162,7 +162,7 @@ func parse_single_stat(c, key, _stat):
 func format_single_stat(key, s):
     return key_prefix(key) + str(s) + key_suffix(key) 
 
-func key_prefix(k) -> String:
+func key_prefix(_k) -> String:
     return ""
 
 func key_suffix(k) -> String:

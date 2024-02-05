@@ -42,7 +42,7 @@ func new_coordinator():
     dialog_options.option_selected.connect(tutorial_choice, CONNECT_ONE_SHOT)
     return
 
-func tutorial_choice(choice):
+func tutorial_choice(_choice):
     dialog_box.visible = false
     dialog_options.visible = true
     var d = "Hi, I'm Jenkins, the advisor for the resistance, I'll be your handler. \
@@ -75,7 +75,7 @@ func fade_to_tutorial():
         get_tree().change_scene_to_file("res://level.tscn"))
     return
 
-func fade_to_headquarters(c):
+func fade_to_headquarters(_c):
     $Fader.visible = true
     var tween = get_tree().create_tween()
     tween.tween_property($Fader, "modulate:a", 1, 1)

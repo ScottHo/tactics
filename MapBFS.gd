@@ -30,7 +30,6 @@ func init(
     return
 
 func calcRange_bfs():
-    var to_remove = []
     _bfs_points = {_location: [] }
     var frontier: Array[Vector2i] = [_location]
     while len(frontier) > 0:

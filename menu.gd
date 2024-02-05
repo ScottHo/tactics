@@ -215,8 +215,8 @@ func _setup_turn_sprite(entity: Entity, sprite: Sprite2D):
     sprite.scale = entity.sprite.texture_scale()*.8
     return
 
-func show_future_turns(show):
-    turnSpriteContainer.visible = show
+func show_future_turns(_show):
+    turnSpriteContainer.visible = _show
     return
 
 func pre_showCurrentTurn(turn: int):
@@ -350,7 +350,7 @@ func cache_button_states():
     ]
     return
 
-func restore_button_states(force = false):
+func restore_button_states():
     nextTurnButton.text = "End\nTurn"  
     moveButton.disabled = _button_state_cache[0]
     nextTurnButton.disabled = _button_state_cache[1]
@@ -442,7 +442,7 @@ func win():
     $GameOverLabel.text = "Mission success"
     if not tutorial_mode:
         Globals.current_level += 1
-        if Globals.current_recrt != -1:
+        if Globals.current_recruit != -1:
             Globals.bots_collected.append(Globals.current_recruit)
             var n = EntityFactory.create_bot(Globals.current_recruit).display_name
             $RecruitLabel.visible = true
