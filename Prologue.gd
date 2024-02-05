@@ -69,7 +69,7 @@ func do_tutorial_choice(choice):
 func fade_to_tutorial():
     $Fader.visible = true
     var tween = get_tree().create_tween()
-    tween.tween_property($Fader, "modulate:a", 1, 2)
+    tween.tween_property($Fader, "modulate:a", 1, 1)
     tween.tween_callback(func():
         Globals.current_mission = MissionFactory.tutorial_boss()
         get_tree().change_scene_to_file("res://level.tscn"))
@@ -78,7 +78,7 @@ func fade_to_tutorial():
 func fade_to_headquarters(c):
     $Fader.visible = true
     var tween = get_tree().create_tween()
-    tween.tween_property($Fader, "modulate:a", 1, 2)
+    tween.tween_property($Fader, "modulate:a", 1, 1)
     tween.tween_callback(func():
         get_tree().change_scene_to_file("res://Headquarters.tscn"))
     return

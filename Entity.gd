@@ -50,7 +50,7 @@ var movement: int
 var initiative: int # 10 is average, per 100 "cycles"
 var damage: int
 var armor: int
-var range: int
+var attack_range: int
 
 # Permanent Modifiers
 var armor_modifier: int
@@ -98,7 +98,7 @@ func get_movement() -> int:
     return ret
 
 func get_range() -> int:
-    var ret = range + range_modifier + aura_range_modifier
+    var ret = attack_range + range_modifier + aura_range_modifier
     if ret < 1:
         ret = 1
     return ret
@@ -495,7 +495,7 @@ func clone() -> Entity:
     e.initiative = initiative
     e.damage = damage
     e.armor = armor
-    e.range = range
+    e.attack_range = attack_range
     if spawn_on_death != null:
         e.spawn_on_death = spawn_on_death.shallow_copy()
     return e

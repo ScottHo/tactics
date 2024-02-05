@@ -45,6 +45,7 @@ func next_tutorial_stage():
         TutorialStage.Ultimate:
             stage = TutorialStage.End
             end()
+    menuService.cache_button_states()
     return
 
 func welcome():

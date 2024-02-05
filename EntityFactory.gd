@@ -272,7 +272,7 @@ to see the range of passive aura's"
     return ent
 
 static func create_tutorial_boss():
-    var ent = _create_entity("Training Robot", 18, 0, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Training Robot", 18, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ActionFactory.add_base_attack(ent)
     return ent
 
@@ -453,7 +453,7 @@ static func _create_entity(display_name, health, movement, _range, initiative, s
     ent.damage = 4
     ent.display_name = display_name
     ent.movement = movement
-    ent.range = _range
+    ent.attack_range = _range
     ent.initiative = initiative
     ent.set_max_health(health)
     ent.set_hp(health)

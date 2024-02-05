@@ -3,13 +3,13 @@ class_name Passive
 var display_name: String
 var description: String
 var aura_short_desc: String
-var repeated_effect: Callable = func(e: Entity):
+var repeated_effect: Callable = func(_e: Entity):
     return
-var static_effect: Callable = func(e: Entity):
+var static_effect: Callable = func(_e: Entity):
     return
-var aura_effect: Callable = func(e: Entity):
+var aura_effect: Callable = func(_e: Entity):
     return
-var global_effect: Callable = func(e: Entity):
+var global_effect: Callable = func(_e: Entity):
     return
 var is_repeated := false
 var is_static := false

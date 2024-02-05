@@ -162,7 +162,7 @@ func _play_animation(callback, animation_name: String):
     if animationPlayer.has_animation(animation_name):
         animationPlayer.queue(animation_name)
         if callback != null:
-            animationPlayer.animation_finished.connect(func(s):
+            animationPlayer.animation_finished.connect(func(_s):
                 callback.call(), CONNECT_ONE_SHOT)
     else:
         if callback != null:

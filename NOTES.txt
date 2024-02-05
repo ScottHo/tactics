@@ -4,7 +4,6 @@ BUGS
 - Highlights for targetting from AI attack is bugged
 
 DO NEXT
-- Many Tutorial Bugs
 - Super simple tutorial bot
 - Mission start camera movement / stall
 - Action buttons being enabled need animations

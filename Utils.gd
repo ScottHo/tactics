@@ -19,9 +19,9 @@ static func movement_color(entity: Entity, moves_left: bool = false) -> Color:
         return Color.WHITE
 
 static func range_color(entity: Entity) -> Color:
-    if entity.range < entity.get_range():
+    if entity.attack_range < entity.get_range():
         return Color.GREEN
-    elif entity.range > entity.get_range():
+    elif entity.attack_range > entity.get_range():
         return Color.RED
     else:
         return Color.WHITE
@@ -110,22 +110,22 @@ static func get_target_coords(source: Vector2i, target: Vector2i, shape: Array) 
         _target_coords.append(target+v)
     return _target_coords
 
-static func floor_title(level: int, floor: int):
+static func floor_title(level: int, _floor: int):
     if level <= 4:
         if level == 4:
             return "BRONZE FOUNDRY - BOSS"
-        return "BRONZE FOUNDRY - FLOOR " + str(floor)
+        return "BRONZE FOUNDRY - FLOOR " + str(_floor)
     elif level <= 8:
         if level == 8:
             return "IRON FOUNDRY - BOSS"
-        return "IRON FOUNDRY - FLOOR " + str(floor)
+        return "IRON FOUNDRY - FLOOR " + str(_floor)
     elif level <= 12:
         if level == 12:
             return "STEEL FOUNDRY - BOSS"
-        return "STEEL FOUNDRY - FLOOR " + str(floor)
+        return "STEEL FOUNDRY - FLOOR " + str(_floor)
     elif level <= 16:
         if level == 16:
             return "PLATINUM FOUNDRY - BOSS"
-        return "PLATINUM FOUNDRY - FLOOR " + str(floor)
+        return "PLATINUM FOUNDRY - FLOOR " + str(_floor)
     else:
         return "THE FINAL FOUNDRY"

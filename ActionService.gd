@@ -16,6 +16,7 @@ var _highlight_style: Vector2i = Highlights.GREY
 @onready var effects : Node2D = $Effects
 
 signal actionDone
+signal actionAnimation
 
 func _ready():
     return
@@ -50,6 +51,7 @@ func _input(event):
                     action().ultimate_used = true
                 ActionCommon.face_direction(_entity, _target_points[0])
                 _enabled = false
+                actionAnimation.emit()
                 return
     return
 

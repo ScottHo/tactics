@@ -180,7 +180,7 @@ func update_mods(container):
             else:
                 modifierLabel(container).text = "(+%d)" % movement_mod
                 modifierLabel(container).add_theme_color_override("font_color", Color.GOLD)
-            if _entity.range == 1:
+            if _entity.attack_range == 1:
                 if movement_mod == movement_max:
                     maxedLabel(container).visible = true
                     button(container).disabled = true
@@ -343,7 +343,7 @@ func setup_entity():
     statLabel(action2_c).text = _entity.action2.display_name
     modifierLabel(action1_c).text = str(_entity.action1.level)
     modifierLabel(action2_c).text = str(_entity.action2.level)
-    statLabel(range_c).text = str(_entity.range)
+    statLabel(range_c).text = str(_entity.attack_range)
     
     action1_copy = _entity.action1.clone()
     action2_copy = _entity.action2.clone()
@@ -352,7 +352,7 @@ func setup_entity():
     for container in containers:
         modifierLabel(container).add_theme_color_override("font_color", Color.WHITE)
         button(container).disabled = false
-        if container == range_c and _entity.range == 1:
+        if container == range_c and _entity.attack_range == 1:
             button(container).disabled = true
         
     entity_sprite.texture = load(_entity.icon_path)

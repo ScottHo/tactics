@@ -14,6 +14,7 @@ signal nextTurnActionInitiate
 signal interactActionInitiate
 signal actionInitiate
 signal menuAnimationsFinished
+signal stopAction
 
 @onready var nextTurnButton: Button = $TurnButton
 
@@ -101,13 +102,11 @@ func setup_mechanic_container():
         $MechanicContainer/Long.visible = false
         $MechanicContainer/Short.visible = true)
     return
-    
+
 func setup_next_turn_button():
     nextTurnButton.button_down.connect(func():
         if Globals.in_action:
-            update_button_states()
-            nextTurnButton.text = "End\nTurn"
-            Globals.end_action()
+            cancel_actions()
         else:
             enable_turn_button(false, true)
             unpress_all_buttons()
@@ -176,21 +175,13 @@ func setup_passive_hover():
 
 func button_toggled_tasks(button, toggled):
     if toggled:
-        if tutorial_mode:
-            cache_button_states()
         unpress_all_buttons(button)
         disableAllButtons(true)
-        enable_turn_button(true)
+        enable_turn_button(true, true)
         Globals.start_action(button == moveButton)
         nextTurnButton.text = "Cancel"
     else:
-        if tutorial_mode:
-            restore_button_states()
-            nextTurnButton.text = "End\nTurn"
-        else:
-            update_button_states()
-        
-        Globals.end_action()
+        cancel_actions()
     return
 
 func control_entered_tasks():
@@ -199,6 +190,15 @@ func control_entered_tasks():
 
 func control_exited_tasks():
     Globals.on_ui = false
+    return
+
+func cancel_actions():
+    if tutorial_mode:
+        restore_button_states()
+    else:
+        update_button_states()
+    stopAction.emit()
+    Globals.end_action()
     return
 
 func setState(state: State):
@@ -351,6 +351,7 @@ func cache_button_states():
     return
 
 func restore_button_states(force = false):
+    nextTurnButton.text = "End\nTurn"  
     moveButton.disabled = _button_state_cache[0]
     nextTurnButton.disabled = _button_state_cache[1]
     interactButton.disabled = _button_state_cache[2]

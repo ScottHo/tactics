@@ -42,8 +42,10 @@ func _ready():
     menuService.actionInitiate.connect(doAction)
     menuService.interactActionInitiate.connect(doInteract)
     menuService.menuAnimationsFinished.connect(doNextTurn)
+    menuService.stopAction.connect(resetPlayerServices)
     moveService.movesFound.connect(movesFound)
     actionService.actionDone.connect(actionDone)
+    actionService.actionAnimation.connect(actionFound)
     interactService.interactDone.connect(interactDone)
     aiActionService.done.connect(aiActionDone)
     aiSpecialService.special_done.connect(continue_doAiSpecial)
@@ -373,7 +375,10 @@ func resetPlayerServices():
     return
 
 func update_character_menu():
-    menuService.update_button_states()
+    if _mission.is_tutorial:
+        menuService.restore_button_states()
+    else:
+        menuService.update_button_states()
     menuService.updateEntityInfo()
     for entity in state.all_entities():
         if entity.alive:
@@ -392,7 +397,7 @@ func doMove(on):
 
 func movesFound(poses):
     print_debug("Moves Found")
-    menuService.enable_turn_button(false)
+    menuService.enable_turn_button(false, true)
     currentEntity().sprite.doneMoving.connect(moveDone, CONNECT_ONE_SHOT)
     if len(poses) > 0:
         cameraService.lock_on(currentEntity().sprite)
@@ -460,6 +465,12 @@ func doAction(on, action_type: int):
     print_debug("Do Action")
     actionService.start(currentEntity(), action_type)
     menuService.show_description_click(action_type)
+    return
+
+func actionFound():
+    print("action found")
+    menuService.disableAllButtons()
+    menuService.enable_turn_button(false, true)
     return
 
 func actionDone():
