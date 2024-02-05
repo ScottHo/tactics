@@ -252,17 +252,33 @@ static func foundry_1_floors(floor: int) -> Array:
     var specs = foundry_1_specials()
     specs.shuffle()
     var ret = []
-    for i in range(3):
+    for i in range(6):
         var m = Mission.new()
         if floor == 1:
             m.boss = EntityFactory.create_boss_1_1()
-        elif floor == 2:
+            m.specials_per_turn = 0
+            m.specials = []
+        if floor == 2:
             m.boss = EntityFactory.create_boss_1_2()
-        else:
+            m.specials_per_turn = 0
+            m.specials = []
+        if floor == 3:
             m.boss = EntityFactory.create_boss_1_3()
-        m.specials = [specs[i], specs[i+1], specs[i+2], specs[i+3]]
+            m.specials_per_turn = 1
+            m.specials = [specs[i], recharge_special()]
+        if floor == 4:
+            m.boss = EntityFactory.create_boss_1_4()
+            m.specials_per_turn = 1
+            m.specials = [specs[i], recharge_special()]
+        if floor == 5:
+            m.boss = EntityFactory.create_boss_1_5()
+            m.specials_per_turn = 1
+            m.specials = [specs[i], specs[i+1]]
+        if floor == 6:
+            m.boss = EntityFactory.create_boss_1_6()
+            m.specials_per_turn = 1
+            m.specials = [specs[i], specs[i+1]]
         m.buffs = []
-        m.specials_per_turn = 2
         ret.append(m)
     return ret
 
@@ -274,10 +290,16 @@ static func foundry_2_floors(floor: int) -> Array:
         var m = Mission.new()
         if floor == 1:
             m.boss = EntityFactory.create_boss_2_1()
-        elif floor == 2:
+        if floor == 2:
             m.boss = EntityFactory.create_boss_2_2()
-        else:
+        if floor == 3:
             m.boss = EntityFactory.create_boss_2_3()
+        if floor == 4:
+            m.boss = EntityFactory.create_boss_2_4()
+        if floor == 5:
+            m.boss = EntityFactory.create_boss_2_5()
+        if floor == 6:
+            m.boss = EntityFactory.create_boss_2_6()
         m.specials = [specs[i], specs[i+1], specs[i+2], specs[i+3]]
         m.buffs = InteractableFactory.random_set()
         m.specials_per_turn = 2
@@ -319,6 +341,18 @@ static func foundry_4_floors(floor: int) -> Array:
         m.specials_per_turn = 2
         ret.append(m)
     return ret
+
+static func recharge_special() -> Special:
+    var s = Special.new()
+    s.display_name = "Do Nothing"
+    s.description = "Does nothing. Seriously."
+    s.target = Special.Target.SELF
+    s.shape = Special.Shape.SINGLE
+    s.mechanic = Special.Mechanic.BUFF
+    s.damage = 0
+    s.effect = func(ent: Entity):
+        return
+    return s
 
 static func foundry_1_specials() -> Array:
     var ret = []

@@ -70,7 +70,6 @@ func startMission():
     
 func start_mission_cont():
     $DialogBox.end()
-    Globals.level_debug_mode = false
     var entities_to_deploy = []
     for ent in deployPanel._entities:
         if ent != null:

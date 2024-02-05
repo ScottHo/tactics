@@ -138,11 +138,15 @@ func setup_entities():
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,3))
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,5))
     else:
-        # TODO Custom deploy tiles
         var allies = Globals.entities_to_deploy
+        var offset = 1
+        if len(allies) < 3:
+            offset = 3
+        elif len(allies) < 5:
+            offset = 2
         for i in range(len(allies)):
             if allies[i] != null:
-                setup_entity_for_level(allies[i], Vector2i(1, i-1))
+                setup_entity_for_level(allies[i], Vector2i(2, i+offset))
     
     _mission = Globals.current_mission
     if _mission.is_tutorial:
@@ -195,7 +199,6 @@ func nextTurn_continued2():
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
     cameraService.move(tileMap.pointToGlobal(currentEntity().location))
-    resetPlayerServices()
     if not currentEntity().is_ally and not currentEntity().is_add:
         _special_texts_set = false
         if not _is_first_turn:
@@ -203,6 +206,7 @@ func nextTurn_continued2():
     _is_first_turn = false
     menuService.showTurns(turnService.next5Turns())
     menuService.pre_showCurrentTurn(current_turn_id)
+    resetPlayerServices()    
     timer.timeout.connect(nextTurn_continued3, CONNECT_ONE_SHOT)
     timer.start(.4)
     return
@@ -215,7 +219,7 @@ func nextTurn_continued3():
     else:
         _is_ai_turn = true
     update_character_menu()
-    menuService.showCurrentTurn(current_turn_id)
+    menuService.showCurrentTurn()
     _start_of_turn = false
     if _mission.is_tutorial:
         if tutorialService.stage == TutorialService.TutorialStage.EndTurn1:
@@ -312,6 +316,9 @@ func aiActionDone():
     return
 
 func startAiSpecial():
+    if _mission.specials_per_turn == 0:
+        nextAiStep()
+        return
     print_debug("Start AI Special")
     aiSpecialService.start(currentEntity(), _mission)
     if aiSpecialService.counter() == -1:
@@ -365,7 +372,8 @@ func resetPlayerServices():
     return
 
 func update_character_menu():
-    menuService.updateEntityInfo(currentEntity())
+    menuService.update_button_states()
+    menuService.updateEntityInfo()
     for entity in state.all_entities():
         if entity.alive:
             entity.update_sprite()
@@ -383,7 +391,7 @@ func doMove(on):
 
 func movesFound(poses):
     print_debug("Moves Found")
-    menuService.disableTurnButton()
+    menuService.enable_turn_button(false)
     currentEntity().sprite.doneMoving.connect(moveDone, CONNECT_ONE_SHOT)
     if len(poses) > 0:
         cameraService.lock_on(currentEntity().sprite)
@@ -414,10 +422,9 @@ func moveDone():
     else:
         menuService.show_description(false, null)
         menuService.force_show_description = false
-        menuService.restore_button_states()
+        menuService.update_button_states()
         moveService.finish()
-    if currentEntity().moves_left == 0:
-        menuService.disableMovesButton(true)
+    
     Globals.end_action()
     update_character_menu()
     highlightMap.highlight(currentEntity())
@@ -456,12 +463,12 @@ func doAction(on, action_type: int):
 
 func actionDone():
     print_debug("Action Done")
+    currentEntity().action_used = true    
     if _mission.is_tutorial:
         if tutorialService.stage == TutorialService.TutorialStage.Attack:
             tutorialService.next_tutorial_stage()
         elif tutorialService.stage == TutorialService.TutorialStage.Turn2:
             tutorialService.next_tutorial_stage()
-    menuService.disableActionButtons()
     menuService.show_description(false, null)
     menuService.force_show_description = false
     turnService.update_new()
@@ -478,7 +485,6 @@ func checkDeaths():
     deathService.processDeaths()
     turnService.updateDeaths()
     _animation_callback = processDeathsFinished
-    menuService.cache_button_states()
     menuService.disableAllButtons()
     startAnimationDelay(2)
     return true
@@ -496,7 +502,6 @@ func processDeathsFinished():
         else:
             menuService.win()
         return
-    menuService.restore_button_states()
     if _start_of_turn:
         nextTurn_continued()
         return

@@ -45,7 +45,8 @@ func _input(event):
                 if len(_points) <= 0:
                     return
                 var poses = tileMap.arrayToGlobal(_points)
-                _entity.moves_left -= len(_points)
+                if not Globals.current_mission.is_tutorial:
+                    _entity.moves_left -= len(_points)
                 _entity.location = _points[-1]
                 movesFound.emit(poses)
                 _enabled = false

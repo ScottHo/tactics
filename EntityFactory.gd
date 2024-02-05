@@ -277,17 +277,32 @@ static func create_tutorial_boss():
     return ent
 
 static func create_boss_1_1():
-    var ent = _create_entity("Bronze Grunt", 25, 5, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Bronze Grunt", 20, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_1_2():
-    var ent = _create_entity("Bronze Grunt", 40, 5, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    var ent = _create_entity("Bronze Grunt", 30, 3, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_1_3():
-    var ent = _create_entity("Bronze Grunt", 55, 5, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    var ent = _create_entity("Bronze Grunt", 40, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_1_4():
+    var ent = _create_entity("Bronze Grunt", 50, 4, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/boss1.png", false)
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_1_5():
+    var ent = _create_entity("Bronze Grunt", 60, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_1_6():
+    var ent = _create_entity("Bronze Grunt", 70, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
     ActionFactory.add_base_attack(ent)
     return ent
 
@@ -298,7 +313,7 @@ static func create_boss_1_f():
     return ent
 
 static func create_boss_spawn_1():
-    var ent = _create_entity("Mini Bronze Grunt", 6, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    var ent = _create_entity("Mini Bronze Grunt", 5, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
     ent.is_add = true
     ent.damage -= 1
     ActionFactory.add_base_attack(ent)
@@ -312,25 +327,45 @@ static func create_boss_spawn_1_f():
     return ent
 
 static func create_boss_2_1():
-    var ent = _create_entity("Iron Grunt", 150, 5, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Iron Grunt", 100, 4, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_2_2():
-    var ent = _create_entity("Iron Grunt", 175, 5, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    var ent = _create_entity("Iron Grunt", 120, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_2_3():
-    var ent = _create_entity("Iron Grunt", 200, 5, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    var ent = _create_entity("Iron Grunt", 140, 5, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent)
     return ent
 
+static func create_boss_2_4():
+    var ent = _create_entity("Iron Grunt", 160, 5, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/boss1.png", false)
+    ent.damage += 3
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_2_5():
+    var ent = _create_entity("Iron Grunt", 180, 5, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    ent.damage += 3
+    ent.armor += 1
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_2_6():
+    var ent = _create_entity("Iron Grunt", 200, 5, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    ent.damage += 3
+    ent.armor += 1
+    ActionFactory.add_base_attack(ent)
+    return ent
+
 static func create_boss_2_f():
-    var ent = _create_entity("Iron Boss", 200, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    var ent = _create_entity("Iron Boss", 300, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
     ent.damage += 4
     ent.armor += 2
     ActionFactory.add_base_attack(ent)

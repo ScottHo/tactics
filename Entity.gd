@@ -23,6 +23,7 @@ var location: Vector2i
 var moves_left: int
 var skip_next_turn: bool = false
 var damage_done := 0
+var action_used := false
 var ultimate_used := false
 var interactable: Interactable
 var specials_left := 1
@@ -363,7 +364,8 @@ func setup_next_turn():
         if wipe_downgrades_chance > 0:
             if randf() < wipe_downgrades_chance:
                 wipe_downgrades()
-    moves_left = get_movement()    
+    moves_left = get_movement()
+    action_used = false
     return
 
 func done_turn():

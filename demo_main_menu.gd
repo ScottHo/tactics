@@ -12,4 +12,5 @@ func _ready():
     )
     $ExitButton.pressed.connect(func():
         get_tree().quit())
+    Globals.level_debug_mode = false
     return

@@ -61,7 +61,7 @@ func do_tutorial_choice(choice):
         dialog_box.visible = false
         dialog_options.visible = true
         var d = "Great. Make your way to the bronze foundry floor."
-        var options = ["Time to free the the robots!"]
+        var options = ["Time to revolt!"]
         dialog_options.start(d, options)
         dialog_options.option_selected.connect(fade_to_headquarters, CONNECT_ONE_SHOT)
     return

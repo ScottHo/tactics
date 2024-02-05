@@ -51,4 +51,4 @@ func return_to_menu():
     return
 
 func calc_points() -> int:
-    return 2
+    return 1
