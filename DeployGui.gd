@@ -17,9 +17,12 @@ func _ready():
     backButton = $BackButton
     detailedRoomInfo = $DetailedRoomInfo
     $DialogBox.end()
-    collectionPanel.entity_selected.connect(entity_selected)
+    collectionPanel.entity_selected.connect(func(e):
+        entity_selected(e, false))
     upgradePanel.deployed.connect(entity_deployed)
-    deployPanel.entity_removed.connect(entity_removed_from_deploy)
+    upgradePanel.undeployed.connect(entity_removed_from_deploy)
+    deployPanel.entity_selected.connect(func(e):
+        entity_selected(e, true))
     startMissionButton.pressed.connect(startMission)
     backButton.pressed.connect(back_to_headquarters)
     start()
@@ -32,11 +35,12 @@ func start():
     upgradePanel.reset()
     deployPanel.start()
     detailedRoomInfo.start(mission)
-    startMissionButton.disabled = true
+    if deployPanel.is_empty():
+        startMissionButton.disabled = true
     return
 
-func entity_selected(ent: Entity):
-    upgradePanel.start(ent)
+func entity_selected(ent: Entity, undeploy=true):
+    upgradePanel.start(ent, undeploy)
     return
 
 func entity_deployed(ent: Entity):
@@ -57,10 +61,9 @@ func entity_removed_from_deploy(ent: Entity):
 func startMission():
     var bots_alive = min(len(Globals.bots_collected) - len(Globals.bots_dead), 6)
     if bots_alive > deployPanel.ents_deployed:
-        $DialogBox.set_title("Under Deployed")
-        $DialogBox.set_description("You can have a maximum of 6 bots for the mission. Continue anyways?")
-        $DialogBox.set_callback(start_mission_cont)
-        $DialogBox.start()
+        var t = "Under Deployed"
+        var d = "You can have a maximum of 6 bots for the mission. Continue anyways?"
+        $DialogBox.start(t, d, start_mission_cont)
     else:
         start_mission_cont()
     return

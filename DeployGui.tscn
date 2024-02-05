@@ -50,3 +50,4 @@ theme_override_font_sizes/font_size = 20
 text = "Back"
 
 [node name="DialogBox" parent="." instance=ExtResource("8_trrak")]
+visible = false

@@ -4,9 +4,7 @@ BUGS
 - Tutorial can stall if run out of moves during interact -> replenish moves on tutorial
 
 DO NEXT
-- Scene for new recruits
-- Simple Scenes for prologue/post tutorial
-- Tutorial Map / Tilemap setups
+- Undeploy for deployGUI (cannot undeploy recruited bot)
 - Action buttons being enabled need animations
 
 

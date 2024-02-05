@@ -2615,7 +2615,7 @@ position = Vector2(25.4775, -254.766)
 texture = ExtResource("18_w6qqi")
 
 [node name="LeftBicep" type="Sprite2D" parent="Sprite/SW/Sprites"]
-position = Vector2(91.6665, -282.766)
+position = Vector2(91.6666, -282.766)
 rotation = 1.27842
 scale = Vector2(0.999996, -0.999996)
 texture = ExtResource("2_or0a7")

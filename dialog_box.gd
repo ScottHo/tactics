@@ -8,24 +8,21 @@ func _ready():
     $Cancel.pressed.connect(end)
     return
 
-func set_title(t):
-    $Title.text = t
-    return
-
-func set_description(t):
-    $Description.text = t
-    return
-
-func set_callback(c):
-    callback = c
-    return
-
 func cont():
     callback.call()
     end()
     return
 
-func start():
+func start(title, description, _callback = null, show_cancel: bool = true):
+    if _callback == null:
+        _callback = func():
+            pass
+    $Title.text = title
+    $Description.text = description
+    callback = _callback
+    $Cancel.visible = false
+    if show_cancel:
+        $Cancel.visible = true
     visible = true
     return
     

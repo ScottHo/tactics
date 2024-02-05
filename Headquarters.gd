@@ -14,7 +14,6 @@ var passivePanel: PassivePanel
 var specialPanel1: SpecialDescriptionPanel
 var specialPanel2: SpecialDescriptionPanel
 
-
 func _ready():
     collectionPanel = $Collections/CollectionContainer
     checkpoints = $Levels/Checkpoints
@@ -38,7 +37,6 @@ func _ready():
     rosterButton.pressed.connect(func():
         $Collections.visible = true
         $Levels.visible = false)
-    
     passivePanel.clear()
     specialPanel1.clear()
     specialPanel2.clear()

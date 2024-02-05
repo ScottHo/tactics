@@ -6,19 +6,20 @@ var ents_deployed := 0
 @onready var countLabel = $Label
 
 signal entity_removed
-
+signal entity_selected
 
 func _ready():
     for i in range(len(_entities)):
         button(container(i)).pressed.connect(func():
-            remove_entity(i))
-    start()
+            entity_selected.emit(_entities[i]))
     return
     
 func start():
     for c in grid.get_children():
         sprite(c).texture = load(Globals.NO_BOT_ICON_PATH)
         button(c).disabled = true
+    if Globals.current_recruit >= 0:
+        add_entity(EntityFactory.create_bot(Globals.current_recruit))
     update_count()
     return
 

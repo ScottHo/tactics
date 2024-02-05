@@ -39,12 +39,14 @@ var special2_max := 1
 var range_max := 2
 var skill_points_base := 0
 var deploy_full := false
+var undeploy := false
 
 var _entity: Entity
 var action1_copy: Action
 var action2_copy: Action
 
 signal deployed
+signal undeployed
 
 func _ready():
     containers = [
@@ -93,10 +95,17 @@ func description_hover_signal(b: Button, d: Node2D):
         d.visible = false)
     return
 
-func start(entity: Entity):
+func start(entity: Entity, _undeploy: bool):
+    undeploy = _undeploy
+    if undeploy:
+        deploy_button.text = "Undeploy"
+    else:
+        deploy_button.text = "Deploy"
     _entity = entity
     reset()
     setup_entity()
+    if entity.collection_id == Globals.current_recruit:
+        deploy_button.disabled = true
     return
         
 func button(container) -> Button:
@@ -265,6 +274,15 @@ func deploy():
         return
     reset_button.disabled = true
     deploy_button.disabled = true
+    if undeploy:
+        undeployed.emit(_entity)
+    else:
+        doDeploy()
+    _entity = null
+    reset()
+    return
+
+func doDeploy():
     _entity.armor_modifier = health_mod
     _entity.armor_modifier = armor_mod
     _entity.movement_modifier = movement_mod
@@ -274,8 +292,6 @@ func deploy():
     _entity.action2.level = special2_mod
     _entity.range_modifier = range_mod
     deployed.emit(_entity)
-    _entity = null
-    reset()
     return
 
 func redo():

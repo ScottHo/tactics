@@ -8,10 +8,11 @@ func _ready():
     $Timer.timeout.connect(fade_away)
     return
 
-func talk(t: String, mood = Mood.NORMAL):
+func talk(t: String, mood = Mood.NORMAL, no_fade=false):
     $Timer.stop()
-    $Timer.start(10)
-    visible = true    
+    if not no_fade:
+        $Timer.start(10)
+    visible = true
     $Container/Sad.visible = false
     $Container/Happy.visible = false
     if mood == Mood.HAPPY:
