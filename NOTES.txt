@@ -2,10 +2,10 @@ BUGS
 - Highlights over being over written for ai if if recently moved off of it before attack
 - Highlights for current player is bugged if last attacked
 - Highlights for targetting from AI attack is bugged
+- Getting hit animations cut short
 
 DO NEXT
 - Super simple tutorial bot
-- Mission start camera movement / stall
 - Action buttons being enabled need animations
 - Finish AutoTurret animations/directions?
 - Side Missions

@@ -47,8 +47,8 @@ func _ready():
 func start():
     collectionPanel.start()
     var level = Globals.current_level
-    var floor = level % 4
-    floorLabel.text = Utils.floor_title(level, floor)
+    var _floor = level % 4
+    floorLabel.text = Utils.floor_title(level, _floor)
     return
 
 func entity_selected(ent: Entity):

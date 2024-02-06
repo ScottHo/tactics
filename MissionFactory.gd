@@ -247,33 +247,33 @@ static func foundry_final_final_boss() -> Mission:
     m.specials = [s1, s2]
     return m
 
-static func foundry_1_floors(floor: int) -> Array:
+static func foundry_1_floors(_floor: int) -> Array:
     var specs = foundry_1_specials()
     specs.shuffle()
     var ret = []
     for i in range(6):
         var m = Mission.new()
-        if floor == 1:
+        if _floor == 1:
             m.boss = EntityFactory.create_boss_1_1()
             m.specials_per_turn = 0
             m.specials = []
-        if floor == 2:
+        if _floor == 2:
             m.boss = EntityFactory.create_boss_1_2()
             m.specials_per_turn = 0
             m.specials = []
-        if floor == 3:
+        if _floor == 3:
             m.boss = EntityFactory.create_boss_1_3()
             m.specials_per_turn = 1
             m.specials = [specs[i], recharge_special()]
-        if floor == 4:
+        if _floor == 4:
             m.boss = EntityFactory.create_boss_1_4()
             m.specials_per_turn = 1
             m.specials = [specs[i], recharge_special()]
-        if floor == 5:
+        if _floor == 5:
             m.boss = EntityFactory.create_boss_1_5()
             m.specials_per_turn = 1
             m.specials = [specs[i], specs[i+1]]
-        if floor == 6:
+        if _floor == 6:
             m.boss = EntityFactory.create_boss_1_6()
             m.specials_per_turn = 1
             m.specials = [specs[i], specs[i+1]]
@@ -281,23 +281,23 @@ static func foundry_1_floors(floor: int) -> Array:
         ret.append(m)
     return ret
 
-static func foundry_2_floors(floor: int) -> Array:
+static func foundry_2_floors(_floor: int) -> Array:
     var specs = foundry_2_specials()
     specs.shuffle()
     var ret = []
     for i in range(3):
         var m = Mission.new()
-        if floor == 1:
+        if _floor == 1:
             m.boss = EntityFactory.create_boss_2_1()
-        if floor == 2:
+        if _floor == 2:
             m.boss = EntityFactory.create_boss_2_2()
-        if floor == 3:
+        if _floor == 3:
             m.boss = EntityFactory.create_boss_2_3()
-        if floor == 4:
+        if _floor == 4:
             m.boss = EntityFactory.create_boss_2_4()
-        if floor == 5:
+        if _floor == 5:
             m.boss = EntityFactory.create_boss_2_5()
-        if floor == 6:
+        if _floor == 6:
             m.boss = EntityFactory.create_boss_2_6()
         m.specials = [specs[i], specs[i+1], specs[i+2], specs[i+3]]
         m.buffs = InteractableFactory.random_set()
@@ -305,15 +305,15 @@ static func foundry_2_floors(floor: int) -> Array:
         ret.append(m)
     return ret
 
-static func foundry_3_floors(floor: int) -> Array:
+static func foundry_3_floors(_floor: int) -> Array:
     var specs = foundry_3_specials()
     specs.shuffle()
     var ret = []
     for i in range(3):
         var m = Mission.new()
-        if floor == 1:
+        if _floor == 1:
             m.boss = EntityFactory.create_boss_3_1()
-        elif floor == 2:
+        elif _floor == 2:
             m.boss = EntityFactory.create_boss_3_2()
         else:
             m.boss = EntityFactory.create_boss_3_3()
@@ -323,15 +323,15 @@ static func foundry_3_floors(floor: int) -> Array:
         ret.append(m)
     return ret
 
-static func foundry_4_floors(floor: int) -> Array:
+static func foundry_4_floors(_floor: int) -> Array:
     var specs = foundry_4_specials()
     specs.shuffle()
     var ret = []
     for i in range(3):
         var m = Mission.new()
-        if floor == 1:
+        if _floor == 1:
             m.boss = EntityFactory.create_boss_4_1()
-        elif floor == 2:
+        elif _floor == 2:
             m.boss = EntityFactory.create_boss_4_2()
         else:
             m.boss = EntityFactory.create_boss_4_3()

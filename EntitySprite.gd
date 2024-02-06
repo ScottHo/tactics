@@ -188,7 +188,8 @@ func play_move_animation():
         
 func stop_animations():
     animationPlayer.clear_queue()
-    animationPlayer.play("RESET")
+    if animationPlayer.has_animation("RESET"):
+        animationPlayer.play("RESET")
     return    
 
 func textAnimation() -> TextAnimation:

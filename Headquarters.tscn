@@ -28,30 +28,31 @@ theme_override_font_sizes/font_size = 20
 text = "Exit"
 
 [node name="Checkpoints" parent="Levels" instance=ExtResource("1_r11n2")]
-position = Vector2(94.2903, 203.066)
+position = Vector2(164.578, 63.2169)
+scale = Vector2(1.1, 1.1)
 
 [node name="FloorLabel" type="Label" parent="Levels"]
-offset_left = 635.249
-offset_top = 699.458
-offset_right = 1336.25
-offset_bottom = 748.458
+offset_left = 612.571
+offset_top = 841.829
+offset_right = 1313.57
+offset_bottom = 890.829
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 40
 text = "BRONZE FOUNDRY - LEVEL 1"
 
 [node name="EnterFloorButton" type="Button" parent="Levels"]
-offset_left = 995.772
-offset_top = 830.099
-offset_right = 1195.77
-offset_bottom = 920.099
+offset_left = 1002.14
+offset_top = 926.316
+offset_right = 1202.14
+offset_bottom = 1016.32
 theme_override_font_sizes/font_size = 30
 text = "Go"
 
 [node name="RosterButton" type="Button" parent="Levels"]
-offset_left = 719.805
-offset_top = 829.385
-offset_right = 919.805
-offset_bottom = 919.385
+offset_left = 726.174
+offset_top = 925.602
+offset_right = 926.174
+offset_bottom = 1015.6
 theme_override_font_sizes/font_size = 20
 text = "Roster"
 

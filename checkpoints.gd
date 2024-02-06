@@ -11,14 +11,12 @@ var pre_loaded_highlight
 func _ready():
     var level = Globals.current_level
     var checkPoints = [$Start]
-    for i in range(1,5):
+    for i in range(2,9):
         checkPoints.append($BronzeFoundry.get_child(i))
-    for i in range(1,5):
+    for i in range(2,9):
         checkPoints.append($IronFoundry.get_child(i))
-    for i in range(1,5):
+    for i in range(2,9):
         checkPoints.append($SteelFoundry.get_child(i))
-    for i in range(1,5):
-        checkPoints.append($PlatinumFoundry.get_child(i))
     checkPoints.append($Final)
     for i in range(level):
         checkPoints[i].texture = load("res://Assets/Foundrys/checkpoint_highlight.png")

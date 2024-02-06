@@ -1,7 +1,6 @@
 class_name AiMoveService extends Node2D
 
 var _state: State
-var _enabled: bool = false
 var _entity: Entity
 var _map_bfs: MapBFS
 

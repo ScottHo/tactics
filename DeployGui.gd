@@ -52,6 +52,7 @@ func entity_deployed(ent: Entity):
     return
 
 func entity_removed_from_deploy(ent: Entity):
+    deployPanel.remove_entity(ent)
     collectionPanel.entity_undeployed(ent)
     upgradePanel.set_deploy_full(false)
     if deployPanel.is_empty():
@@ -60,6 +61,8 @@ func entity_removed_from_deploy(ent: Entity):
 
 func startMission():
     var bots_alive = min(len(Globals.bots_collected) - len(Globals.bots_dead), 6)
+    if Globals.current_recruit >= 0:
+        bots_alive += 1
     if bots_alive > deployPanel.ents_deployed:
         var t = "Under Deployed"
         var d = "You can have a maximum of 6 bots for the mission. Continue anyways?"

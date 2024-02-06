@@ -149,6 +149,7 @@ func skill_point_added(container):
         tween.play()
 
     update_to_global(container)
+    update_entity()
     return
 
 func update_mods(container):
@@ -245,28 +246,28 @@ func update_to_global(container):
     match container:
         health_c:
             points_data.health_level = health_mod
-            points_data.health_points = progress(container).value
+            points_data.health_points = int(progress(container).value)
         armor_c:
             points_data.armor_level = armor_mod
-            points_data.armor_points = progress(container).value
+            points_data.armor_points = int(progress(container).value)
         movement_c:
             points_data.movement_level = movement_mod
-            points_data.movement_points = progress(container).value
+            points_data.movement_points = int(progress(container).value)
         initiative_c:
             points_data.initiative_level = initiative_mod
-            points_data.initiative_points = progress(container).value
+            points_data.initiative_points = int(progress(container).value)
         attack_c:
             points_data.attack_level = attack_mod
-            points_data.attack_points = progress(container).value
+            points_data.attack_points = int(progress(container).value)
         action1_c:
             points_data.action1_level = special1_mod
-            points_data.action1_points = progress(container).value
+            points_data.action1_points = int(progress(container).value)
         action2_c:
             points_data.action2_level = special2_mod
-            points_data.action2_points = progress(container).value
+            points_data.action2_points = int(progress(container).value)
         range_c:
             points_data.range_level = range_mod
-            points_data.range_points = progress(container).value
+            points_data.range_points = int(progress(container).value)
     return
 
 func deploy():
@@ -277,12 +278,12 @@ func deploy():
     if undeploy:
         undeployed.emit(_entity)
     else:
-        doDeploy()
+        deployed.emit(_entity)
     _entity = null
     reset()
     return
 
-func doDeploy():
+func update_entity():
     _entity.armor_modifier = health_mod
     _entity.armor_modifier = armor_mod
     _entity.movement_modifier = movement_mod
@@ -291,7 +292,6 @@ func doDeploy():
     _entity.action1.level = special1_mod
     _entity.action2.level = special2_mod
     _entity.range_modifier = range_mod
-    deployed.emit(_entity)
     return
 
 func redo():

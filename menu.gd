@@ -82,6 +82,8 @@ func _ready():
 
     _tab_dict = {}
     $MechanicContainer.visible = false
+    show_description(false, null)
+    jenkins.visible = false
     return
 
 func setup_mechanic_container():
@@ -123,7 +125,7 @@ func setup_move_button():
         moveActionInitiate.emit(b))
     moveButton.mouse_entered.connect(func():
         control_entered_tasks()
-        if not _entity.is_ally:
+        if _entity != null and not _entity.is_ally:
             return
         show_description(true, ActionType.MOVE))
     moveButton.mouse_exited.connect(func():
@@ -137,7 +139,7 @@ func setup_interact_button():
         interactActionInitiate.emit(b))
     interactButton.mouse_entered.connect(func():
         control_entered_tasks()
-        if not _entity.is_ally:
+        if _entity != null and not _entity.is_ally:
             return
         show_description(true, ActionType.INTERACT))
     interactButton.mouse_exited.connect(func():
@@ -151,7 +153,7 @@ func setup_action_button(button: Button, action_type):
         actionInitiate.emit(b, action_type))
     button.mouse_entered.connect(func():
         control_entered_tasks()
-        if not _entity.is_ally:
+        if _entity != null and not _entity.is_ally:
             return
         show_description(true, action_type))
     button.mouse_exited.connect(func():
@@ -163,7 +165,7 @@ func setup_passive_hover():
     descPassivePanel.visible = false
     passiveHover.mouse_entered.connect(func():
         control_entered_tasks()
-        if not _entity.is_ally:
+        if _entity != null and not _entity.is_ally:
             return
         if descPassivePanel.has_data:
             descPassivePanel.visible = true
@@ -438,18 +440,17 @@ func set_mechanic_text_3(n, t):
 
 func win():
     disableAllButtons()
-    $GameOverLabel.visible = true
-    $GameOverLabel.text = "Mission success"
+    play_mission_text("Mission success!", false)
     if not tutorial_mode:
         Globals.current_level += 1
         if Globals.current_recruit != -1:
             Globals.bots_collected.append(Globals.current_recruit)
             var n = EntityFactory.create_bot(Globals.current_recruit).display_name
             $RecruitLabel.visible = true
-            $RecruitLabel.text = "New Recruit!\n" + n
+            $RecruitLabel.text = n + " joined the roster!"
             Globals.current_recruit = -1
-    scoreService.show_score()
-    Globals.skill_points += scoreService.calc_points()
+        Globals.skill_points += scoreService.calc_points(true)        
+    scoreService.show_score(true)
     Globals.missions_found = false
     Globals.mission_options = []
     Globals.recruit_options = []
@@ -457,9 +458,8 @@ func win():
 
 func lose():
     disableAllButtons(true)
-    $GameOverLabel.visible = true
-    $GameOverLabel.text = "Mission fail"
-    scoreService.show_score()
+    play_mission_text("Mission Failed...", false)
+    scoreService.show_score(false)
     return
 
 func show_description_click(action_type):
@@ -468,7 +468,7 @@ func show_description_click(action_type):
     force_show_description = true
     return
 
-func show_description(show, action_type):
+func show_description(_show, action_type):
     if force_show_description:
         $DescriptionContainer.visible = true
         return
@@ -499,13 +499,28 @@ func show_description(show, action_type):
             else:
                 descInterDesc.text = "Drop the [" + _current_interactable + "] on the tile"
         else:
-            show = false
+            _show = false
     else:
         descSpecialPanel.visible = true
         descSpecialPanel.set_action(_actions[action_type])
-    $DescriptionContainer.visible = show
+    $DescriptionContainer.visible = _show
     return
 
 func jenkins_talk(t, mood: Jenkins.Mood):
     jenkins.talk(t, mood)
+    return
+
+func mission_start():
+    play_mission_text("Mission Start!")
+    return
+
+func play_mission_text(t: String, hide_after = true):
+    $MissionStartLabel.visible = true
+    $MissionStartLabel.text = t
+    var tween = create_tween()
+    tween.tween_interval(.2)
+    tween.tween_property($MissionStartLabel, "visible_characters", len(t), .5)
+    if hide_after:
+        tween.tween_interval(1.5)
+        tween.tween_property($MissionStartLabel, "visible", false, 0)
     return

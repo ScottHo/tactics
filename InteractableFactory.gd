@@ -4,18 +4,18 @@ static func orb_of_energy() -> Interactable:
     var inter = Interactable.new()
     inter.display_name = "Orb of Energy"
     inter.description = "When held at the start of turn, gain +1 energy per turn. Lose all energy at end of turn"
-    inter.effect = func (user: Entity):
+    inter.effect = func (_user: Entity):
         return
 
-    inter.drop_effect = func (user: Entity):
+    inter.drop_effect = func (_user: Entity):
         return
 
-    inter.repeated_effect = func (user: Entity):
-        user.update_energy(1)
+    inter.repeated_effect = func (_user: Entity):
+        _user.update_energy(1)
         return
     
-    inter.repeated_end_effect = func (user: Entity):
-        user.update_energy(-5)
+    inter.repeated_end_effect = func (_user: Entity):
+        _user.update_energy(-5)
         return
 
     inter.storable = true
@@ -28,23 +28,23 @@ static func orb_of_destruction() -> Interactable:
     var inter = Interactable.new()
     inter.display_name = "Orb of Destruction"
     inter.description = "When held at the start of turn, gain +1 damage and -1 armor every turn. Total effects are reversed when dropped"
-    inter.effect = func (user: Entity):
+    inter.effect = func (_user: Entity):
         inter.counter = 0
         return
 
-    inter.drop_effect = func (user: Entity):
-        user.update_damage(-inter.counter)
-        user.update_armor(inter.counter)
+    inter.drop_effect = func (_user: Entity):
+        _user.update_damage(-inter.counter)
+        _user.update_armor(inter.counter)
         inter.counter = 0
         return
 
-    inter.repeated_effect = func (user: Entity):
-        user.update_armor(-1)
-        user.update_damage(1)
+    inter.repeated_effect = func (_user: Entity):
+        _user.update_armor(-1)
+        _user.update_damage(1)
         inter.counter += 1
         return
     
-    inter.repeated_end_effect = func (user: Entity):
+    inter.repeated_end_effect = func (_user: Entity):
         return
 
     inter.storable = true
@@ -57,19 +57,19 @@ static func orb_of_roots() -> Interactable:
     var inter = Interactable.new()
     inter.display_name = "Orb of Roots"
     inter.description = "When held at the start of a turn, gain 5 health. Lose 3 movement"
-    inter.effect = func (user: Entity):
-        user.update_movement(-3)
+    inter.effect = func (_user: Entity):
+        _user.update_movement(-3)
         return
 
-    inter.drop_effect = func (user: Entity):
-        user.update_movement(3)
+    inter.drop_effect = func (_user: Entity):
+        _user.update_movement(3)
         return
 
-    inter.repeated_effect = func (user: Entity):
-        user.gainHP(5)
+    inter.repeated_effect = func (_user: Entity):
+        _user.gainHP(5)
         return
     
-    inter.repeated_end_effect = func (user: Entity):
+    inter.repeated_end_effect = func (_user: Entity):
         return
 
     inter.storable = true
@@ -82,18 +82,18 @@ static func orb_of_sacrifice() -> Interactable:
     var inter = Interactable.new()
     inter.display_name = "Orb of Sacrifice"
     inter.description = "When held at the end of a turn, lose 3 health. When held at the start of a turn, gain 1 damage"
-    inter.effect = func (user: Entity):
+    inter.effect = func (_user: Entity):
         return
 
-    inter.drop_effect = func (user: Entity):
+    inter.drop_effect = func (_user: Entity):
         return
 
-    inter.repeated_effect = func (user: Entity):
-        user.update_damage(1)
+    inter.repeated_effect = func (_user: Entity):
+        _user.update_damage(1)
         return
     
-    inter.repeated_end_effect = func (user: Entity):
-        user.loseHP(3)
+    inter.repeated_end_effect = func (_user: Entity):
+        _user.loseHP(3)
         return
 
     inter.storable = true
@@ -106,18 +106,18 @@ static func bronze_soul() -> Interactable:
     var inter = Interactable.new()
     inter.display_name = "Bronze Soul"
     inter.description = "Lose 3 hp on pick up and the start of every turn when held"
-    inter.effect = func (user: Entity):
-        user.loseHP(3)
+    inter.effect = func (_user: Entity):
+        _user.loseHP(3)
         return
 
-    inter.drop_effect = func (user: Entity):
+    inter.drop_effect = func (_user: Entity):
         return
 
-    inter.repeated_effect = func (user: Entity):
-        user.loseHP(3)
+    inter.repeated_effect = func (_user: Entity):
+        _user.loseHP(3)
         return
     
-    inter.repeated_end_effect = func (user: Entity):
+    inter.repeated_end_effect = func (_user: Entity):
         return
 
     inter.storable = true
@@ -130,17 +130,17 @@ static func add_drainer() -> Interactable:
     var inter = Interactable.new()
     inter.display_name = "Deteriorating"
     inter.description = "Lose 1 HP"
-    inter.effect = func (user: Entity):
+    inter.effect = func (_user: Entity):
         return
 
-    inter.drop_effect = func (user: Entity):
+    inter.drop_effect = func (_user: Entity):
         return
 
-    inter.repeated_effect = func (user: Entity):
+    inter.repeated_effect = func (_user: Entity):
         return
     
-    inter.repeated_end_effect = func (user: Entity):
-        user.loseHP(1)
+    inter.repeated_end_effect = func (_user: Entity):
+        _user.loseHP(1)
         return
 
     inter.storable = true
@@ -150,20 +150,20 @@ static func add_cursed_gift() -> Interactable:
     var inter = Interactable.new()
     inter.display_name = "Cursed Gift"
     inter.description = "Get +1 Damage and -1 Armor"
-    inter.effect = func (user: Entity):
-        user.update_damage(1)
-        user.update_armor(-1)
+    inter.effect = func (_user: Entity):
+        _user.update_damage(1)
+        _user.update_armor(-1)
         return
 
-    inter.drop_effect = func (user: Entity):
-        user.update_damage(-1)
-        user.update_armor(1)
+    inter.drop_effect = func (_user: Entity):
+        _user.update_damage(-1)
+        _user.update_armor(1)
         return
 
-    inter.repeated_effect = func (user: Entity):
+    inter.repeated_effect = func (_user: Entity):
         return
     
-    inter.repeated_end_effect = func (user: Entity):
+    inter.repeated_end_effect = func (_user: Entity):
         return
 
     inter.storable = true

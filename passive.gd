@@ -28,4 +28,4 @@ func clone():
     p.is_repeated = is_repeated
     p.is_static = is_static
     p.is_aura = is_aura
-    return
+    return p

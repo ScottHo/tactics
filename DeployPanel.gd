@@ -10,16 +10,26 @@ signal entity_selected
 
 func _ready():
     for i in range(len(_entities)):
-        button(container(i)).pressed.connect(func():
-            entity_selected.emit(_entities[i]))
+        button(container(i)).connect(
+            "gui_input",
+            func (event : InputEvent):
+                if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+                    if event.double_click:
+                        if _entities[i].collection_id != Globals.current_recruit:
+                            remove_entity(_entities[i])
+                    else:
+                        entity_selected.emit(_entities[i])
+                )
     return
-    
+
 func start():
     for c in grid.get_children():
         sprite(c).texture = load(Globals.NO_BOT_ICON_PATH)
         button(c).disabled = true
     if Globals.current_recruit >= 0:
-        add_entity(EntityFactory.create_bot(Globals.current_recruit))
+        var e = EntityFactory.create_bot(Globals.current_recruit)
+        add_entity(e)
+        entity_selected.emit(e)
     update_count()
     return
 
@@ -35,8 +45,12 @@ func add_entity(entity: Entity):
             return 
     return
 
-func remove_entity(idx: int):
-    var entity = _entities[idx]
+func remove_entity(entity):
+    var idx = -1
+    for i in len(_entities):
+        if entity == _entities[i]:
+            idx = i
+            break
     _entities[idx] = null
     var c = container(idx)
     tile(c).texture = load("res://Assets/GUI/SingleTileDisabled.png")

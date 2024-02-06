@@ -21,7 +21,7 @@ everything from their massive Foundry's. \n
     After years of preparation, the resistance is finally ready to break the tyranny. \
 Spreading it's forces all throughout the foundry's, ready to revolt. All they need is \
 the skills of a coordinator..."
-    dialog_box.start(p, d, new_coordinator)
+    dialog_box.start(p, d, new_coordinator, false)
     return
 
 func demo_choice():

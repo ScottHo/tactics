@@ -71,7 +71,7 @@ func _ready():
     turnService.update()    
     menuService.showTurns(turnService.next5Turns())
     auraService.update()
-    nextTurn()
+    mission_start()
     return
 
 func _process(delta):
@@ -156,9 +156,7 @@ func setup_entities():
         var ent = EntityFactory.create_tutorial_bot()
         ent.action2.level = 1
         setup_entity_for_level(ent, Vector2i(3,3))
-        tutorialService.start()
-    else:
-        menuService.jenkins_talk("This bot looks tough! Good luck.", Jenkins.Mood.NORMAL)
+
     if _mission.display_name == "Foundry 2F":
         var tiles = tileMap.all_tiles()
         tiles.shuffle()
@@ -170,6 +168,24 @@ func setup_entities():
 
 func currentEntity() -> Entity:
     return state.entities.get_data(current_turn_id)
+
+func mission_start():
+    menuService.disableAllButtons(true)
+    menuService.mission_start()
+    cameraService.tween_zoom_in()
+    var mid_tile_x = floor((tileMap.MAX_X-tileMap.MIN_X)/2) + tileMap.MIN_X
+    var mid_tile_y = floor((tileMap.MAX_Y-tileMap.MIN_Y)/2) + tileMap.MIN_Y
+    cameraService.move(tileMap.pointToGlobal(Vector2i(mid_tile_x, mid_tile_y)))
+    var t = get_tree().create_timer(1.5)
+    t.timeout.connect(func():
+        if _mission.is_tutorial:
+            menuService.restore_button_states()
+            tutorialService.start()
+        else:
+            menuService.jenkins_talk("This bot looks tough! Good luck.", Jenkins.Mood.NORMAL)
+        highlightMap2.start()
+        nextTurn())
+    return
 
 func nextTurn():
     print_debug("Next Turn")

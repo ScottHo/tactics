@@ -1,7 +1,6 @@
 class_name AiSpecialService extends Node2D
 
 var _state: State
-var _enabled: bool = false
 var _entity: Entity
 var _specials: Array
 var _targets := []

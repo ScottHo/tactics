@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ccrflxfdcwo3c"]
+[gd_scene load_steps=44 format=3 uid="uid://ccrflxfdcwo3c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_0qs77"]
 [ext_resource type="Texture2D" uid="uid://3k0xhd74sl8t" path="res://Assets/GUI/tall-short-panel.png" id="2_nh0tv"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cxirdqevwnnvd" path="res://Assets/GUI/long-vertical.png" id="6_s5lub"]
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/GUI/Boot.png" id="7_sx6a1"]
 [ext_resource type="PackedScene" uid="uid://cupwjts5t5aua" path="res://passive_description_panel.tscn" id="8_a0b0q"]
-[ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="8_pd4nx"]
 [ext_resource type="Texture2D" uid="uid://i5cao7fn5vrc" path="res://Assets/energy.png" id="9_vl4vh"]
 [ext_resource type="Texture2D" uid="uid://b26gil3t3beok" path="res://Assets/GUI/panel_buttons_background.png" id="10_3lokk"]
 [ext_resource type="Texture2D" uid="uid://b7k4df1af7n00" path="res://Assets/GUI/panel_buttons.png" id="12_7bkir"]
@@ -145,17 +144,6 @@ _data = {
 [node name="Node2D" type="Node2D"]
 z_index = 10
 script = ExtResource("1_0qs77")
-
-[node name="GameOverLabel" type="Label" parent="."]
-visible = false
-offset_left = 495.846
-offset_top = 186.232
-offset_right = 1059.85
-offset_bottom = 247.232
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 50
-text = "Mission Success"
 
 [node name="RecruitLabel" type="Label" parent="."]
 visible = false
@@ -542,7 +530,6 @@ centered = false
 modulate = Color(1, 1, 1, 0.647059)
 position = Vector2(216.647, 183.255)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("8_pd4nx")
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterContainer/CharacterSprite"]
@@ -563,7 +550,7 @@ offset_left = 178.994
 offset_top = 189.96
 offset_right = 398.994
 offset_bottom = 219.96
-text = "Guy"
+text = "-"
 label_settings = SubResource("LabelSettings_ffhj4")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -903,3 +890,17 @@ MISSION"
 position = Vector2(156.917, 937.861)
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="MissionStartLabel" type="Label" parent="."]
+offset_left = 693.591
+offset_top = 337.69
+offset_right = 1292.59
+offset_bottom = 410.69
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 60
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0

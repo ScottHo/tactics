@@ -1,7 +1,6 @@
 class_name DeathService extends Node2D
 
 var _state: State
-var _enabled: bool = false
 var _deaths_to_process: Array
 var _graveyard: Array
 

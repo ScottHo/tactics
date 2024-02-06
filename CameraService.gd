@@ -5,6 +5,8 @@ var max_x := 0.0
 var max_y := 0.0
 var min_x := 0.0
 var min_y := 0.0
+var zoom_min := .7
+var zoom_max := 1.5
 var _target = null
 var _moved := false
 var original_position: Vector2
@@ -22,7 +24,7 @@ func _ready():
         $Timer.stop())
     return
 
-func _process(delta):
+func _process(_delta):
     if not _moved and _target != null:
         cam.position = to_local(_target.global_position)
     return
@@ -37,13 +39,13 @@ func _input(event):
                 return
             MOUSE_BUTTON_WHEEL_UP:
                 cam.zoom += Vector2(.05, .05)
-                cam.zoom.x = min(cam.zoom.x, 1.5)
-                cam.zoom.y = min(cam.zoom.y, 1.5)
+                cam.zoom.x = min(cam.zoom.x, zoom_max)
+                cam.zoom.y = min(cam.zoom.y, zoom_max)
                 return
             MOUSE_BUTTON_WHEEL_DOWN:
                 cam.zoom -= Vector2(.05, .05)
-                cam.zoom.x = max(cam.zoom.x, .70)
-                cam.zoom.y = max(cam.zoom.y, .70)
+                cam.zoom.x = max(cam.zoom.x, zoom_min)
+                cam.zoom.y = max(cam.zoom.y, zoom_min)
                 return
     if event is InputEventMouseButton and event.is_released():
         match event.button_index:
@@ -82,6 +84,14 @@ func stop_lock():
     $Timer.stop()
     $Timer.start(.5)
     _target = null
+    return
+
+func tween_zoom_in():
+    cam.zoom = Vector2(zoom_min, zoom_min)
+    var tween = create_tween()
+    tween.tween_interval(1.5)
+    tween.tween_property(cam, "zoom", Vector2(1,1), .3)
+    tween.play()
     return
 
 func reset():

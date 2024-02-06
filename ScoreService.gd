@@ -15,7 +15,7 @@ func turn_taken():
     turnsTaken += 1
     return
 
-func show_score():
+func show_score(win: bool):
     $GridContainer/TurnsTaken.text = str(turnsTaken)
     $"GridContainer/Boss Health".text = str(_state.get_entity(_state.enemies[0]).health)
     $GridContainer/NumDead.text = str(len(_state.allies) - len(_state.all_allies_alive()))
@@ -36,7 +36,7 @@ func show_score():
     if len(_state.allies) > 5:
         $"GridContainer/Bot Name6".text = _state.get_entity(_state.allies[5]).display_name
         $GridContainer/Damage6.text = str(_state.get_entity(_state.allies[5]).damage_done)
-    $GridContainer/SkillPointsEarned.text = str(calc_points())
+    $GridContainer/SkillPointsEarned.text = str(calc_points(win))
     visible = true
     return
 
@@ -50,5 +50,7 @@ func return_to_menu():
     tween.tween_property($Fader, "color:a", 1, 2)
     return
 
-func calc_points() -> int:
-    return 1
+func calc_points(win) -> int:
+    if win:
+        return 1
+    return 0

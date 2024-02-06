@@ -6,10 +6,11 @@ var _previous_ent
 
 var _state: State
 var _show_info := true
+var _enabled := false
 var _map_bfs = MapBFS.new()
 
 func _input(event):
-    if Globals.in_action and not Globals.in_move:
+    if not _enabled:
         return
     if event is InputEventMouseMotion:
         var global_mouse: Vector2 = get_global_mouse_position()
@@ -26,7 +27,7 @@ func _input(event):
                 _previous_ent = _state.entity_on_tile(coords)
                 if _previous_ent != null and _show_info:
                     _previous_ent.show_info()
-                    if not _previous_ent.is_ally:
+                    if not _previous_ent.is_ally and Globals.in_action and not Globals.in_move:
                         var h = Highlights.ENEMY_MOVEMENT
                         _map_bfs.init(coords, _previous_ent.get_movement(), tileMap, self, h, _state, MapBFS.BFS_MODE.Show)
                         _map_bfs.resetHighlights(true, false)
@@ -59,4 +60,8 @@ func dont_show_info():
 func highlightVec(location, color):
     if tileMap.in_range(location):
         set_cell(1, location, 0, color, 0)
+    return
+
+func start():
+    _enabled = true
     return
