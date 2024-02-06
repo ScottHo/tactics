@@ -451,7 +451,7 @@ static func add_bullet_rain(ent: Entity, type: int):
                 else:
                     _ent.miss()
         return
-    var d = "Blanket an area with many bullets"
+    var d = "Blanket an area with a rain of bullets"
     var action := _add_action(ent, "Bullet Rain", d, diamond, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     action.target_animation = TargetAnimations.HIT
     return
@@ -475,7 +475,7 @@ static func add_spray_and_pray(ent: Entity, type: int):
                 else:
                     _ent.miss()
         return
-    var d = "Fire a lot of bullets at an enemy with questionable accuracy"
+    var d = "Fire a barrage of bullets at a single enemy with questionable accuracy"
     var action := _add_action(ent, "Spray and Pray", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
     action.target_animation = TargetAnimations.HIT
     return
@@ -504,7 +504,7 @@ static func add_robo_punch(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
         "Damage Amp": [2,3,4,5],
-        "Cost": 5,
+        "Cost": 4,
         "Threat Gain": 3
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
