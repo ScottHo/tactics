@@ -6,8 +6,10 @@ def test(m):
     print(m.group(0))
     if m.group(0)[:5] == "0.001":
         return m.group(0)
-    return m.group(0)[:4]
-print(sys.version_info)
+    ret = m.group(0)[:4]
+    if ret[-1] == "0":
+        return ret[:3]
+    return ret[:4]
 pathlist = Path(".").glob('**/*.tscn')
 for path in pathlist:
     file_data = ""
