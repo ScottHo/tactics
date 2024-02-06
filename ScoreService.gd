@@ -42,7 +42,17 @@ func show_score(win: bool):
 
 func return_to_menu():
     $Timer.timeout.connect(func():
-        get_tree().change_scene_to_file("res://Headquarters.tscn")
+        if Globals.current_level >= 14:
+            $DialogBox.start("Demo Complete", "\
+Thanks for playing! Have feedback? Want updates? Follow @scuffed_keys on X/Twitter!
+
+Steam Page coming soon.",
+            func():
+                get_tree().change_scene_to_file("res://demo_main_menu.tscn"),
+                false)
+                
+        else:
+            get_tree().change_scene_to_file("res://Headquarters.tscn")
         )
     $Timer.start(2)
     $Fader.visible = true

@@ -130,8 +130,8 @@ func setup_recruit(bot: EntityFactory.Bot):
     recruitName.text = ent.display_name
     recruitSprite.texture = load(ent.icon_path)
     recruitStatsPanel.start(ent)
-    recruitPassiveName.text = ent.action1.display_name
-    recruitPassiveDesc.text = ent.action1.description
+    recruitPassiveName.text = ent.passive.display_name
+    recruitPassiveDesc.text = ent.passive.description
     recruitSpecName.text = ent.action1.display_name
     recruitSpecDesc.text = ent.action1.description
     recruitUltName.text = ent.action2.display_name

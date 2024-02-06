@@ -173,8 +173,8 @@ func mission_start():
     menuService.disableAllButtons(true)
     menuService.mission_start()
     cameraService.tween_zoom_in()
-    var mid_tile_x = floor((tileMap.MAX_X-tileMap.MIN_X)/2) + tileMap.MIN_X
-    var mid_tile_y = floor((tileMap.MAX_Y-tileMap.MIN_Y)/2) + tileMap.MIN_Y
+    var mid_tile_x = floor((tileMap.MAX_X-tileMap.MIN_X)/2.0) + tileMap.MIN_X
+    var mid_tile_y = floor((tileMap.MAX_Y-tileMap.MIN_Y)/2.0) + tileMap.MIN_Y
     cameraService.move(tileMap.pointToGlobal(Vector2i(mid_tile_x, mid_tile_y)))
     var t = get_tree().create_timer(1.5)
     t.timeout.connect(func():

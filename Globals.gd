@@ -19,8 +19,27 @@ var in_action := false
 var in_move := false
 var on_ui := false
 
+
+
 static var UNKNOWN_BOT_ICON_PATH = "res://Assets/Unknown.png"
 static var NO_BOT_ICON_PATH = "res://Assets/None.png"
+
+func reset():
+    entities_to_deploy= []
+    current_recruit = -1
+    bots_collected = []
+    bots_dead = []
+    skill_points = 1
+    entity_skill_point_distributions = {}
+    current_level = 1
+    current_foundry = "None"
+    missions_found = false
+    mission_options = []
+    recruit_options = []
+    in_action = false
+    in_move = false
+    on_ui = false
+    return
 
 func start_action(move: bool):
     in_action = true
