@@ -111,21 +111,17 @@ static func get_target_coords(source: Vector2i, target: Vector2i, shape: Array) 
     return _target_coords
 
 static func floor_title(level: int, _floor: int):
-    if level <= 4:
-        if level == 4:
+    if level <= 7:
+        if level == 7:
             return "BRONZE FOUNDRY - BOSS"
         return "BRONZE FOUNDRY - FLOOR " + str(_floor)
-    elif level <= 8:
-        if level == 8:
+    elif level <= 14:
+        if level == 14:
             return "IRON FOUNDRY - BOSS"
         return "IRON FOUNDRY - FLOOR " + str(_floor)
-    elif level <= 12:
-        if level == 12:
+    elif level <= 21:
+        if level == 21:
             return "STEEL FOUNDRY - BOSS"
         return "STEEL FOUNDRY - FLOOR " + str(_floor)
-    elif level <= 16:
-        if level == 16:
-            return "PLATINUM FOUNDRY - BOSS"
-        return "PLATINUM FOUNDRY - FLOOR " + str(_floor)
     else:
         return "THE FINAL FOUNDRY"

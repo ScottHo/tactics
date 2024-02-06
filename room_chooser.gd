@@ -27,7 +27,7 @@ var room_idx: int = 1
 
 func _ready():
     var level = Globals.current_level
-    var _floor = level % 4
+    var _floor = level % 7
     
     setup_nodes()
     setup_panels(level, _floor)
@@ -55,7 +55,7 @@ func setup_nodes():
 
 func switch_to_room():
     setup_recruit(recruits[room_idx])
-    room_info.start(missions[room_idx])    
+    room_info.start(missions[room_idx]) 
     room_container.visible = true
     choose_container.visible = false
     return
@@ -68,17 +68,15 @@ func switch_to_chooser():
 func setup_panels(level: int, _floor):
     switch_to_chooser()
     title.text = Utils.floor_title(level, _floor)
-    if [4,8,12,16,17].has(level):
+    if [7,14,21,22].has(level):
         var m: Mission
-        if level == 4:
+        if level == 7:
             m = MissionFactory.foundry_1_final_boss()
-        elif level == 8:
+        elif level == 14:
             m = MissionFactory.foundry_2_final_boss()
-        elif level == 12:
+        elif level == 21:
             m = MissionFactory.foundry_3_final_boss()
-        elif level == 16:
-            m = MissionFactory.foundry_3_final_boss()
-        elif level == 17:
+        elif level == 22:
             m = MissionFactory.foundry_3_final_boss()
         missions = [m,m,m]
         $TileMapBoss.visible = true
@@ -99,13 +97,11 @@ func setup_floor(level: int, _floor):
         return
         
     recruits = [0,0,0]
-    if level <= 4:
+    if level <= 7:
         missions = MissionFactory.foundry_1_floors(_floor)
-    elif level <= 8:
+    elif level <= 14:
         missions = MissionFactory.foundry_2_floors(_floor)
-    elif level <= 12:
-        missions = MissionFactory.foundry_3_floors(_floor)
-    elif level <= 16:
+    elif level <= 21:
         missions = MissionFactory.foundry_3_floors(_floor)
 
     var bots = EntityFactory.new_recruits()

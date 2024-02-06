@@ -277,8 +277,9 @@ static func create_tutorial_boss():
     return ent
 
 static func create_boss_1_1():
-    var ent = _create_entity("Bronze Grunt", 16, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Bronze Grunt", 20, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ActionFactory.add_base_attack(ent)
+    ent.damage -= 1
     return ent
 
 static func create_boss_1_2():
@@ -306,7 +307,7 @@ static func create_boss_1_5():
 static func create_boss_1_6():
     var ent = _create_entity("Bronze Grunt", 110, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
     ActionFactory.add_base_attack(ent)
-    ent.damage += 1
+    ent.damage += 2
     return ent
 
 static func create_boss_1_f():

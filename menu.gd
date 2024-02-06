@@ -318,7 +318,7 @@ func unpress_all_buttons(omit=null):
     return
 
 func update_button_states():
-    if not _entity.is_ally or tutorial_mode:
+    if  tutorial_mode:
         return
     unpress_all_buttons()
     nextTurnButton.disabled = false
@@ -328,6 +328,9 @@ func update_button_states():
     attackButton.disabled = true
     action1Button.disabled = true
     action2Button.disabled = true
+    if not _entity.is_ally:
+        nextTurnButton.disabled = true
+        return
     if _entity.moves_left > 0:
         enable_moves_button(true)
     if not _entity.is_add:
@@ -446,8 +449,8 @@ func win():
         if Globals.current_recruit != -1:
             Globals.bots_collected.append(Globals.current_recruit)
             var n = EntityFactory.create_bot(Globals.current_recruit).display_name
-            $RecruitLabel.visible = true
-            $RecruitLabel.text = n + " joined the roster!"
+            #$RecruitLabel.visible = true
+            #$RecruitLabel.text = n + " joined the roster!"
             Globals.current_recruit = -1
         Globals.skill_points += scoreService.calc_points(true)        
     scoreService.show_score(true)

@@ -47,7 +47,7 @@ func _ready():
 func start():
     collectionPanel.start()
     var level = Globals.current_level
-    var _floor = level % 4
+    var _floor = level % 7
     floorLabel.text = Utils.floor_title(level, _floor)
     return
 
