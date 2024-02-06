@@ -919,6 +919,7 @@ tracks/25/keys = {
 [sub_resource type="Animation" id="Animation_a6b5n"]
 resource_name = "Move"
 length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1966,7 +1967,7 @@ texture = ExtResource("2_y1qut")
 
 [node name="LeftArm" type="Sprite2D" parent="Sprite/SE/Sprites"]
 position = Vector2(104.373, -119)
-rotation = 1.11878
+rotation = 1.11877
 scale = Vector2(0.999844, 0.999844)
 texture = ExtResource("3_hkv8j")
 
@@ -1977,7 +1978,7 @@ texture = ExtResource("4_hdm82")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/SE/Sprites"]
 position = Vector2(204.303, -64.3514)
-rotation = 0.0449156
+rotation = 0.0449153
 scale = Vector2(0.999843, 0.999842)
 texture = ExtResource("3_hkv8j")
 
@@ -2180,7 +2181,7 @@ scale = Vector2(1.1, 1.1)
 texture = ExtResource("2_y1qut")
 
 [node name="LeftArm" type="Sprite2D" parent="Sprite/SW/Sprites"]
-position = Vector2(117.429, -125.645)
+position = Vector2(117.429, -125.644)
 rotation = 1.08101
 scale = Vector2(0.999886, -0.999886)
 texture = ExtResource("3_hkv8j")
@@ -2191,8 +2192,8 @@ rotation = -2.98277
 texture = ExtResource("4_hdm82")
 
 [node name="LeftForearm" type="Sprite2D" parent="Sprite/SW/Sprites"]
-position = Vector2(204.845, -76.3506)
-rotation = 0.0438458
+position = Vector2(204.845, -76.3505)
+rotation = 0.0438463
 scale = Vector2(0.999864, -0.999864)
 texture = ExtResource("3_hkv8j")
 
