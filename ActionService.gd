@@ -162,6 +162,8 @@ func action() -> Action:
 func finish():
     if _map_bfs != null:
         _map_bfs.resetHighlights(false, action().self_castable())
+    for t in tileMap.all_tiles():
+        highlightMap2.highlightVec(t, Highlights.EMPTY)
     _enabled = false
     return
 
@@ -192,5 +194,7 @@ func start(entity: Entity, action_type: int):
         _map_bfs = MapBFS.new()
         _map_bfs.init(_entity.location, maxRange(), tileMap, highlightMap, _highlight_style, _state, MapBFS.BFS_MODE.Attack)
         _map_bfs.resetHighlights(true, action().self_castable())
+    for t in tileMap.all_tiles():
+        highlightMap2.highlightVec(t, Highlights.EMPTY)
     _enabled = true
     return

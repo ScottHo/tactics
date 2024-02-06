@@ -32,7 +32,7 @@ static func add_base_attack(ent: Entity):
             if randf() < _user.crit_chance:
                 damage += _user.get_damage()
                 _ent.custom_text("Crit!", Color.YELLOW)
-            if _user.heal_attack:
+            if _user.heal_attack and _ent.is_ally:
                 _ent.gainHP(damage)
             else:
                 _user.damage_done += _ent.damage_preview(damage)        
@@ -199,7 +199,7 @@ static func add_lubricate(ent: Entity, type: int):
 
 static func add_storm(ent: Entity, type: int):
     var stats = {
-        "Affects": TargetTypes.ENEMIES,
+        "Affects": TargetTypes.ANY,
         "Cost": 2,
         "Extra Damage": [2, 4, 6, 8],
         "Threat Gain": 2,
@@ -280,13 +280,14 @@ static func add_swarm_of_pain(ent: Entity, type: int):
 
 static func add_nano_field(ent: Entity, type: int):
     var stats = {
-        "Affects": "Allied Units",
+        "Affects": TargetTypes.ALLIES,
         "Cost": 2,
         "Heal Amount": [3, 5, 7, 9],
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         for _ent in _targets:
-            _ent.gainHP(_action.get_from_stats("Heal Amount"))
+            if _ent.is_ally:
+                _ent.gainHP(_action.get_from_stats("Heal Amount"))
         return
     var d = "Order the nanobots to heal any ally in the area"
     var action := _add_action(ent, "Nanofield", d, shape_3x3, effect, type, stats, "res://Effects/upgrade_effect.tscn")
@@ -436,10 +437,10 @@ static func add_shock_therapy(ent: Entity, type: int):
 
 static func add_bullet_rain(ent: Entity, type: int):
     var stats = {
-        "Affects": "All Units",
+        "Affects": TargetTypes.ANY,
         "Extra Damage": 1,
         "Number of Attacks": 5,
-        "Hit Chance": "66.66%",
+        "Hit Chance": "50%",
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         var damage = _user.get_damage() + _action.get_from_stats("Extra Damage")
@@ -590,7 +591,7 @@ static func add_bootleg_upgrades(ent: Entity, type: int):
         else:
             _user.update_armor(1)
         return
-    var d = "Put some bootleg parts on, resulting in added or removed stats"
+    var d = "Slap some bootleg parts on, resulting in + or - movement, initiative, damage, and armor"
     var action := _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
     action.target_animation = TargetAnimations.BUFF
@@ -626,7 +627,8 @@ static func add_heal_pulse(ent: Entity, type: int):
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         for _ent in _targets:
-            _ent.gainHP(_action.get_from_stats("Heal Amount"))
+            if _ent.is_ally:
+                _ent.gainHP(_action.get_from_stats("Heal Amount"))
         return
     var d = "Heal all allies in a cone area"
     var action := _add_action(ent, "Heal Pulse", d, cone_reverse, effect, type, stats, "res://Effects/upgrade_effect.tscn")
@@ -641,7 +643,8 @@ static func add_halo(ent: Entity, type: int):
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         for _ent in _targets:
-            _ent.gainHP(_action.get_from_stats("Heal Amount"))
+            if _ent.is_ally:
+                _ent.gainHP(_action.get_from_stats("Heal Amount"))
         return
     var d = "Restore a large amount of health to all allies in an area around Pulsar"
     var action := _add_action(ent, "Halo", d, diamond, effect, type, stats, "res://Effects/upgrade_effect.tscn")
@@ -651,7 +654,7 @@ static func add_halo(ent: Entity, type: int):
 
 static func add_drill_strike(ent: Entity, type: int):
     var stats = {
-        "Affects": TargetTypes.ENEMIES,
+        "Affects": TargetTypes.ANY,
         "Number of Attacks": [2,3,4,5],
         "Damage Amp": .5,
         "Cost": 2,
@@ -666,7 +669,7 @@ static func add_drill_strike(ent: Entity, type: int):
                 if randf() < _user.armor_break_chance:
                     _ent.update_armor(-1)
         return
-    var d = "Attack all enemies in front multiple times with reduced damage"
+    var d = "Attack all units in front multiple times with reduced damage"
     var action := _add_action(ent, "Drill Strike", d, cone, effect, type, stats, "res://Effects/explosion_yellow.tscn")
     action.target_animation = TargetAnimations.HIT
     return
@@ -702,11 +705,12 @@ static func add_alpha_slash(ent: Entity, type: int):
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         var damage = _user.get_damage()
         for _ent in _targets:
-            if randf() < _user.crit_chance:
-                damage += _user.get_damage()
-                _ent.custom_text("Crit!", Color.YELLOW)
-            _user.damage_done += _ent.damage_preview(damage)
-            _ent.loseHP(damage)
+            if not _ent.is_ally:
+                if randf() < _user.crit_chance:
+                    damage += _user.get_damage()
+                    _ent.custom_text("Crit!", Color.YELLOW)
+                _user.damage_done += _ent.damage_preview(damage)
+                _ent.loseHP(damage)
         return
     var d = "Dash forward, slashing all enemies in your path"
     var action := _add_action(ent, "Alpha Slash", d, straight, effect, type, stats, "res://Effects/explosion_yellow.tscn")

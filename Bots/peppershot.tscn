@@ -2209,7 +2209,7 @@ texture = ExtResource("10_vr36m")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/SE/Sprites"]
 position = Vector2(69.9453, -25.0293)
-rotation = 0.0963733
+rotation = 0.0963731
 scale = Vector2(0.999798, 0.999798)
 texture = ExtResource("9_1rcxc")
 
@@ -2366,7 +2366,7 @@ rotation = -1.93745
 texture = ExtResource("10_vr36m")
 
 [node name="RightForearm" type="Sprite2D" parent="Sprite/SW/Sprites"]
-position = Vector2(76.2587, -21.0175)
+position = Vector2(76.2586, -21.0175)
 rotation = 0.0778953
 scale = Vector2(0.99979, 0.99979)
 texture = ExtResource("9_1rcxc")

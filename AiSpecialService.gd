@@ -176,7 +176,6 @@ func find_special_targets():
             
     if special().target == Special.Target.RANDOM_NO_ENTITIY:
         pass
-
     for v in _targets:
         highlightMap.highlightVec(v, Highlights.RED)
     return

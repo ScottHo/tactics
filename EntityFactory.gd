@@ -119,7 +119,7 @@ static func create_nanonano():
     return ent
 
 static func create_smithy():
-    var ent = _create_entity("Smithy", 20, 5, 1, 10, "res://Bots/smithy.tscn", "res://Assets/Bots/Smithy/Icon.png", true)
+    var ent = _create_entity("Smithy", 20, 4, 1, 10, "res://Bots/smithy.tscn", "res://Assets/Bots/Smithy/Icon.png", true)
     ent.damage -= 1
     var p = Passive.new()
     p.display_name = "Quick Assist"
@@ -164,7 +164,7 @@ static func create_batterie():
     return ent
 
 static func create_punch_e():
-    var ent = _create_entity("Punch-E", 18, 5, 1, 10, "res://Bots/punch-e.tscn", "res://Assets/punch-e.png", true)
+    var ent = _create_entity("Punch-E", 18, 4, 1, 10, "res://Bots/punch-e.tscn", "res://Assets/punch-e.png", true)
     var p = Passive.new()
     p.display_name = "Reckless Fighter"
     p.description = "Punch-E starts with -2 armor and +2 damage"
@@ -193,7 +193,7 @@ static func create_peppershot():
     return ent
 
 static func create_buster():
-    var ent = _create_entity("Buster", 20, 5, 1, 10, "res://Bots/buster.tscn", "res://Assets/bot_template.png", true)
+    var ent = _create_entity("Buster", 20, 4, 1, 10, "res://Bots/buster.tscn", "res://Assets/bot_template.png", true)
     var p = Passive.new()
     p.display_name = "Self Diagnosis"
     p.description = "Buster has a 20% chance to remove all downgrades per turn"
@@ -310,7 +310,7 @@ static func create_boss_1_6():
     return ent
 
 static func create_boss_1_f():
-    var ent = _create_entity("Bronze Bull", 150, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    var ent = _create_entity("Bronze Bull", 150, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent)
     return ent

@@ -25,7 +25,7 @@ var _is_first_turn := true
 var _is_ai_turn := false
 var _start_of_turn := false
 var _special_texts_set := true
-var _orig_ai_delay := 2.0
+var _orig_ai_delay := 1.9
 var _ai_delay := 0.0
 var _do_ai_delay := false
 var _ai_callable: Callable
@@ -85,7 +85,6 @@ func _process(delta):
         if _animation_delay <= 0.0:
             _do_animation_delay = false
             _animation_callback.call()
-    
     return
 
 func setup_entity_for_level(ent: Entity, location: Vector2i):
@@ -268,6 +267,11 @@ func startAiDelay():
     return
 
 func nextAiStep():
+    var t = get_tree().create_timer(.2)
+    t.timeout.connect(do_nextAiStep)
+    return
+
+func do_nextAiStep():
     if _ai_state == AiState.NONE:
         _ai_state = AiState.MOVE
         startAiMove()
@@ -510,11 +514,13 @@ func checkDeaths():
     print_debug("Check Deaths")
     if not deathService.checkDeaths():
         return false
+    resetPlayerServices()
+    update_character_menu()
     deathService.processDeaths()
     turnService.updateDeaths()
     _animation_callback = processDeathsFinished
     menuService.disableAllButtons()
-    startAnimationDelay(2)
+    startAnimationDelay(2.1)
     return true
 
 func processDeathsFinished():
@@ -535,5 +541,6 @@ func processDeathsFinished():
         return
     if _is_ai_turn:
         nextAiStep()
+    update_character_menu()
     return
     

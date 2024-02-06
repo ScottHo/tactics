@@ -1,7 +1,4 @@
 BUGS
-- Highlights over being over written for ai if if recently moved off of it before attack
-- Highlights for current player is bugged if last attacked
-- Highlights for targetting from AI attack is bugged
 - Getting hit animations cut short
 
 DO NEXT

@@ -16,3 +16,5 @@ static var ENEMY_MOVEMENT = Vector2i(0,2)
 static var ATTACK = Vector2i(1,2)
 static var HEAL = Vector2i(2,2)
 static var SPAWN = Vector2i(3,2)
+
+static var TARGETED_ABILITY = [ATTACK, HEAL, SPAWN]

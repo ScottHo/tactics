@@ -16,26 +16,31 @@ func _input(event):
         var global_mouse: Vector2 = get_global_mouse_position()
         var coords: Vector2i = tileMap.globalToPoint(global_mouse)
         if _previous_coords != coords:
-            for t in tileMap.all_tiles():
-                set_cell(1, t, 0, Highlights.EMPTY, 0)
+            if not Globals.in_action or Globals.in_move:
+                for t in tileMap.all_tiles():
+                    set_cell(1, t, 0, Highlights.EMPTY, 0)
             if _previous_ent != null:
                 _previous_ent.hide_info()
                 _previous_ent = null
-            if tileMap.in_range(coords):
-                set_cell(1, coords, 0, Highlights.SELECTED, 0)
             if _show_info:
                 _previous_ent = _state.entity_on_tile(coords)
                 if _previous_ent != null and _show_info:
-                    _previous_ent.show_info()
-                    show_passive(coords)                    
-                    if not _previous_ent.is_ally:
-                        if not Globals.in_action or Globals.in_move:
-                            var h = Highlights.ENEMY_MOVEMENT
-                            _map_bfs.init(coords, _previous_ent.get_movement(), 
-                                    tileMap, self, h, _state, MapBFS.BFS_MODE.Show)
-                            _map_bfs.resetHighlights(true, false)
+                    show_info(coords)
+            if not Globals.in_action or Globals.in_move:
+                highlightVec(coords, Highlights.SELECTED)
                     
         _previous_coords = coords
+    return
+
+func show_info(coords):
+    _previous_ent.show_info()
+    if not _previous_ent.is_ally:
+        if not Globals.in_action or Globals.in_move:
+            show_passive(coords)
+            var h = Highlights.ENEMY_MOVEMENT
+            _map_bfs.init(coords, _previous_ent.get_movement(), 
+                    tileMap, self, h, _state, MapBFS.BFS_MODE.Show)
+            _map_bfs.resetHighlights(true, false)
     return
 
 func show_passive(coords):
@@ -44,7 +49,7 @@ func show_passive(coords):
             var vecs = [Vector2i(1,0), Vector2i(0,1), Vector2i(0,-1), Vector2i(-1,0),
                         Vector2i(1,1), Vector2i(1,-1), Vector2i(-1,-1), Vector2i(-1,1)]
             for vec in vecs:
-                set_cell(1, coords + vec, 0, Highlights.PASSIVE, 0)
+                highlightVec(coords + vec, Highlights.PASSIVE)
     return
 
 func set_state(state):

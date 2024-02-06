@@ -30,7 +30,7 @@ func find_attack_location() -> Vector2i:
     if target_entity == null:
         return Vector2i(999, 999)
     target_entity.loseThreat(1)
-    highlightMap2.highlightVec(target_entity.location,Highlights.RED)
+    highlightMap2.highlightVec(target_entity.location, Highlights.ATTACK)
     return target_entity.location
 
 func do_attack(target: Vector2i):
@@ -50,6 +50,8 @@ func shape():
     return _entity.attack.shape
 
 func finish():
+    for t in _targets:
+        highlightMap2.highlightVec(t, Highlights.EMPTY)
     _map_bfs.resetHighlights(false)
     return
     
