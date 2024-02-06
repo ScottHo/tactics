@@ -5,7 +5,7 @@
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_es5up"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_glcvm"]
-font_color = Color(0.050221, 0.656411, 0.0415306, 1)
+font_color = Color(0.05, 0.65, 0.04, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -13,10 +13,10 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_yr6j0")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 111.369
-offset_top = 5.6535
-offset_right = 711.369
-offset_bottom = 255.654
+offset_left = 111.36
+offset_top = 5.65
+offset_right = 711.36
+offset_bottom = 255.65
 theme_override_constants/h_separation = 120
 theme_override_constants/v_separation = 120
 columns = 6
@@ -37,10 +37,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -48,10 +48,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -75,10 +75,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control2"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -86,10 +86,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control2"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -113,10 +113,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control3"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -124,10 +124,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control3"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -151,10 +151,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control4"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -162,10 +162,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control4"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -189,10 +189,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control5"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -200,10 +200,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control5"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -227,10 +227,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control6"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -238,10 +238,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control6"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -265,10 +265,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control7"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -276,10 +276,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control7"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -303,10 +303,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control8"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -314,10 +314,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control8"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -341,10 +341,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control9"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -352,10 +352,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control9"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -379,10 +379,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control10"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -390,10 +390,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control10"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -417,10 +417,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control11"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -428,10 +428,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control11"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -455,10 +455,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control12"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -466,10 +466,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control12"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -493,10 +493,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control13"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -504,10 +504,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control13"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -531,10 +531,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control14"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -542,10 +542,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control14"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -569,10 +569,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control15"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -580,10 +580,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control15"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -607,10 +607,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control16"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -618,10 +618,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control16"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -645,10 +645,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control17"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -656,10 +656,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control17"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -683,10 +683,10 @@ icon = ExtResource("1_k21am")
 
 [node name="Label" type="Label" parent="GridContainer/Control18"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 text = "DEPLOYED"
 label_settings = SubResource("LabelSettings_glcvm")
 horizontal_alignment = 1
@@ -694,10 +694,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="GridContainer/Control18"]
 layout_mode = 0
-offset_left = -1.82417
-offset_top = 52.3468
-offset_right = 103.176
-offset_bottom = 73.3468
+offset_left = -1.82
+offset_top = 52.34
+offset_right = 103.17
+offset_bottom = 73.34
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -708,18 +708,18 @@ vertical_alignment = 1
 [node name="RightButton" type="Button" parent="."]
 visible = false
 offset_left = 1146.79
-offset_top = 46.328
+offset_top = 46.32
 offset_right = 1246.79
-offset_bottom = 146.327
+offset_bottom = 146.32
 theme = ExtResource("2_es5up")
 theme_type_variation = &"TriangleButton"
 
 [node name="LeftButton" type="Button" parent="."]
 visible = false
-offset_left = 110.751
+offset_left = 110.75
 offset_top = 145.36
-offset_right = 210.751
+offset_right = 210.75
 offset_bottom = 245.36
-rotation = 3.14159
+rotation = 3.14
 theme = ExtResource("2_es5up")
 theme_type_variation = &"TriangleButton"

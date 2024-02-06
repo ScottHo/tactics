@@ -11,8 +11,8 @@ script = ExtResource("1_sdhnt")
 root_node = NodePath("../Sprite")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(1.49325, -41.7957)
-scale = Vector2(0.193945, 0.197627)
+position = Vector2(1.49, -41.79)
+scale = Vector2(0.19, 0.19)
 texture = ExtResource("3_bkaei")
 
 [node name="CharacterCommon" parent="." instance=ExtResource("2_87m3e")]

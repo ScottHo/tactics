@@ -41,7 +41,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.647059)]
+"values": [Color(1, 1, 1, 0.64)]
 }
 
 [sub_resource type="Animation" id="Animation_ayjta"]
@@ -57,7 +57,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.647059)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.64)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m0djy"]
@@ -147,10 +147,10 @@ script = ExtResource("1_0qs77")
 
 [node name="RecruitLabel" type="Label" parent="."]
 visible = false
-offset_left = 625.683
-offset_top = 575.609
+offset_left = 625.68
+offset_top = 575.60
 offset_right = 1425.68
-offset_bottom = 700.609
+offset_bottom = 700.60
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 5
@@ -166,24 +166,24 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = 1517.29
-offset_top = 1.42838
+offset_top = 1.42
 offset_right = 1917.29
-offset_bottom = 166.429
+offset_bottom = 166.42
 grow_horizontal = 0
 
 [node name="Long" type="Node2D" parent="MechanicContainer"]
 
 [node name="Short-panel2" type="Sprite2D" parent="MechanicContainer/Long"]
-position = Vector2(-1.5874, 0.793701)
+position = Vector2(-1.58, 0.79)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_nh0tv")
 centered = false
 
 [node name="Label" type="Label" parent="MechanicContainer/Long"]
-offset_left = 50.6776
-offset_top = 8.17645
-offset_right = 350.678
-offset_bottom = 34.1765
+offset_left = 50.67
+offset_top = 8.17
+offset_right = 350.67
+offset_bottom = 34.17
 text = "Boss Specials Incoming"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -200,9 +200,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="MechanicContainer/Long/Grid/Mechanic"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 28.955
+offset_top = 28.95
 offset_right = 375.0
-offset_bottom = 50.955
+offset_bottom = 50.95
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -211,7 +211,7 @@ autowrap_mode = 2
 [node name="Label" type="Label" parent="MechanicContainer/Long/Grid/Mechanic"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 54.7498
+offset_top = 54.74
 offset_right = 375.0
 offset_bottom = 117.75
 theme_override_fonts/font = ExtResource("6_246xv")
@@ -227,9 +227,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="MechanicContainer/Long/Grid/Mechanic2"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 28.955
+offset_top = 28.95
 offset_right = 375.0
-offset_bottom = 50.955
+offset_bottom = 50.95
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -238,7 +238,7 @@ autowrap_mode = 2
 [node name="Label" type="Label" parent="MechanicContainer/Long/Grid/Mechanic2"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 54.7498
+offset_top = 54.74
 offset_right = 375.0
 offset_bottom = 117.75
 theme_override_fonts/font = ExtResource("6_246xv")
@@ -254,9 +254,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="MechanicContainer/Long/Grid/Mechanic3"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 28.955
+offset_top = 28.95
 offset_right = 375.0
-offset_bottom = 50.955
+offset_bottom = 50.95
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -265,7 +265,7 @@ autowrap_mode = 2
 [node name="Label" type="Label" parent="MechanicContainer/Long/Grid/Mechanic3"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 54.7498
+offset_top = 54.74
 offset_right = 375.0
 offset_bottom = 117.75
 theme_override_fonts/font = ExtResource("6_246xv")
@@ -278,16 +278,16 @@ autowrap_mode = 2
 [node name="Short" type="Node2D" parent="MechanicContainer"]
 
 [node name="Short-panel" type="Sprite2D" parent="MechanicContainer/Short"]
-position = Vector2(-1.5874, 0.793701)
+position = Vector2(-1.58, 0.79)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_jrrx7")
 centered = false
 
 [node name="Label" type="Label" parent="MechanicContainer/Short"]
-offset_left = 50.6776
-offset_top = 8.17645
-offset_right = 350.678
-offset_bottom = 34.1765
+offset_left = 50.67
+offset_top = 8.17
+offset_right = 350.67
+offset_bottom = 34.17
 text = "Boss Specials Incoming"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -304,9 +304,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="MechanicContainer/Short/Grid/Mechanic"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 28.955
+offset_top = 28.95
 offset_right = 375.0
-offset_bottom = 50.955
+offset_bottom = 50.95
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -318,9 +318,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="MechanicContainer/Short/Grid/Mechanic2"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 28.955
+offset_top = 28.95
 offset_right = 375.0
-offset_bottom = 50.955
+offset_bottom = 50.95
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -332,9 +332,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="MechanicContainer/Short/Grid/Mechanic3"]
 layout_mode = 0
 offset_left = 25.0
-offset_top = 28.955
+offset_top = 28.95
 offset_right = 375.0
-offset_bottom = 50.955
+offset_bottom = 50.95
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -352,72 +352,72 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1452.51
-offset_top = 203.599
+offset_top = 203.59
 offset_right = 1912.51
-offset_bottom = 693.599
+offset_bottom = 693.59
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="SpecialPanel" parent="DescriptionContainer" instance=ExtResource("3_kx1y6")]
-position = Vector2(122.566, 10.7562)
+position = Vector2(122.56, 10.75)
 
 [node name="ShortPanel" type="Sprite2D" parent="DescriptionContainer"]
-position = Vector2(233.344, 371.548)
+position = Vector2(233.34, 371.54)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_s5lub")
 
 [node name="MoveContainer" type="Control" parent="DescriptionContainer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 195.124
+offset_left = 195.12
 offset_top = 442.15
-offset_right = 235.124
+offset_right = 235.12
 offset_bottom = 482.15
 
 [node name="Label2" type="Label" parent="DescriptionContainer/MoveContainer"]
 layout_mode = 0
-offset_left = -17.7704
-offset_right = 92.2296
+offset_left = -17.77
+offset_right = 92.22
 offset_bottom = 37.0
 text = "Remaining:"
 
 [node name="MovesLeft" type="Label" parent="DescriptionContainer/MoveContainer"]
 layout_mode = 0
-offset_left = 104.079
-offset_top = 0.0174274
-offset_right = 105.079
-offset_bottom = 37.0174
+offset_left = 104.07
+offset_top = 0.01
+offset_right = 105.07
+offset_bottom = 37.01
 text = "5"
 autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="DescriptionContainer/MoveContainer"]
-position = Vector2(-37.2128, 10.432)
+position = Vector2(-37.21, 10.43)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_sx6a1")
 
 [node name="Label" type="Label" parent="DescriptionContainer/MoveContainer"]
 layout_mode = 0
-offset_left = 3.87585
-offset_right = 107.876
+offset_left = 3.87
+offset_right = 107.87
 offset_bottom = 37.0
 label_settings = SubResource("LabelSettings_jxedm")
 
 [node name="InteractMessage" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 59.0147
-offset_top = 443.056
-offset_right = 409.015
-offset_bottom = 463.056
+offset_left = 59.01
+offset_top = 443.05
+offset_right = 409.01
+offset_bottom = 463.05
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
 [node name="MoveInteractName" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 60.1207
-offset_top = 272.937
-offset_right = 410.121
-offset_bottom = 295.937
+offset_left = 60.12
+offset_top = 272.93
+offset_right = 410.12
+offset_bottom = 295.93
 theme_override_font_sizes/font_size = 18
 text = "Action"
 horizontal_alignment = 1
@@ -425,17 +425,17 @@ autowrap_mode = 2
 
 [node name="InteractDescription" type="Label" parent="DescriptionContainer"]
 layout_mode = 0
-offset_left = 26.3267
-offset_top = 321.637
-offset_right = 446.327
-offset_bottom = 404.637
+offset_left = 26.32
+offset_top = 321.63
+offset_right = 446.32
+offset_bottom = 404.63
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 15
 text = "No Action Selected."
 autowrap_mode = 2
 
 [node name="PassivePanel" parent="." instance=ExtResource("8_a0b0q")]
-position = Vector2(1573.55, 477.102)
+position = Vector2(1573.55, 477.10)
 
 [node name="TurnButton" type="Button" parent="."]
 anchors_preset = 7
@@ -443,10 +443,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 900.634
-offset_top = 835.645
+offset_left = 900.63
+offset_top = 835.64
 offset_right = 1070.63
-offset_bottom = 925.645
+offset_bottom = 925.64
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
@@ -460,8 +460,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 684.942
-offset_top = 959.235
+offset_left = 684.94
+offset_top = 959.23
 offset_right = 1434.95
 offset_bottom = 1079.24
 grow_horizontal = 0
@@ -469,10 +469,10 @@ grow_vertical = 0
 
 [node name="ShowTurnsButton" type="Button" parent="TurnsContainer"]
 layout_mode = 0
-offset_left = 576.731
-offset_top = 13.1119
-offset_right = 686.731
-offset_bottom = 123.112
+offset_left = 576.73
+offset_top = 13.11
+offset_right = 686.73
+offset_bottom = 123.11
 theme_type_variation = &"TriangleButton"
 toggle_mode = true
 
@@ -480,10 +480,10 @@ toggle_mode = true
 visible = false
 layout_direction = 3
 layout_mode = 0
-offset_left = 205.342
-offset_top = 66.1119
-offset_right = 685.342
-offset_bottom = 66.1119
+offset_left = 205.34
+offset_top = 66.11
+offset_right = 685.34
+offset_bottom = 66.11
 theme_override_constants/h_separation = 80
 columns = 10
 
@@ -519,21 +519,21 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1318.97
-offset_top = 678.702
+offset_top = 678.70
 offset_right = 1918.97
 offset_bottom = 1078.7
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="CharacterBackground" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(-31.2645, 8.29172)
+position = Vector2(-31.26, 8.29)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("10_3lokk")
 centered = false
 
 [node name="CharacterSprite" type="Sprite2D" parent="CharacterContainer"]
-modulate = Color(1, 1, 1, 0.647059)
-position = Vector2(216.647, 183.255)
+modulate = Color(1, 1, 1, 0.64)
+position = Vector2(216.64, 183.25)
 scale = Vector2(0.2, 0.2)
 centered = false
 
@@ -543,7 +543,7 @@ libraries = {
 }
 
 [node name="TransparentCharacterFrame" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(-31.2645, 8.29172)
+position = Vector2(-31.26, 8.29)
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("12_7bkir")
 centered = false
@@ -551,9 +551,9 @@ centered = false
 [node name="NameLabel" type="Label" parent="CharacterContainer"]
 layout_direction = 3
 layout_mode = 0
-offset_left = 178.994
+offset_left = 178.99
 offset_top = 189.96
-offset_right = 398.994
+offset_right = 398.99
 offset_bottom = 219.96
 text = "-"
 label_settings = SubResource("LabelSettings_ffhj4")
@@ -561,16 +561,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HeartSprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(186.153, 102.433)
+position = Vector2(186.15, 102.43)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("13_fdduf")
 centered = false
 
 [node name="HealthBar" type="TextureProgressBar" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 234.771
+offset_left = 234.77
 offset_top = 116.66
-offset_right = 446.771
+offset_right = 446.77
 offset_bottom = 146.66
 scale = Vector2(1.3, 1.2)
 value = 50.0
@@ -578,17 +578,17 @@ texture_under = ExtResource("14_gvyqw")
 texture_progress = ExtResource("15_h0jtd")
 
 [node name="EnergySprite" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(186.38, 140.688)
+position = Vector2(186.38, 140.68)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_vl4vh")
 centered = false
 
 [node name="EnergyBar" type="TextureProgressBar" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 234.771
-offset_top = 153.639
-offset_right = 446.771
-offset_bottom = 183.639
+offset_left = 234.77
+offset_top = 153.63
+offset_right = 446.77
+offset_bottom = 183.63
 scale = Vector2(1.3, 1)
 max_value = 5.0
 value = 3.0
@@ -598,14 +598,14 @@ texture_progress = ExtResource("17_53a2i")
 [node name="HealthLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.488162
-anchor_top = 0.585268
-anchor_right = 0.496495
-anchor_bottom = 0.590268
-offset_left = 4.48779
-offset_top = -111.106
-offset_right = 64.488
-offset_bottom = -90.106
+anchor_left = 0.48
+anchor_top = 0.58
+anchor_right = 0.49
+anchor_bottom = 0.59
+offset_left = 4.48
+offset_top = -111.10
+offset_right = 64.48
+offset_bottom = -90.10
 text = "8888"
 label_settings = SubResource("LabelSettings_rmudl")
 horizontal_alignment = 2
@@ -614,14 +614,14 @@ vertical_alignment = 1
 [node name="SlashLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.475386
-anchor_top = 0.580934
-anchor_right = 0.475386
-anchor_bottom = 0.580934
-offset_left = 80.5964
-offset_top = -109.372
-offset_right = 94.5964
-offset_bottom = -86.3724
+anchor_left = 0.47
+anchor_top = 0.58
+anchor_right = 0.47
+anchor_bottom = 0.58
+offset_left = 80.59
+offset_top = -109.37
+offset_right = 94.59
+offset_bottom = -86.37
 text = "/
 "
 label_settings = SubResource("LabelSettings_ga0sv")
@@ -630,24 +630,24 @@ vertical_alignment = 1
 [node name="MaxHealthLabel" type="Label" parent="CharacterContainer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.475386
-anchor_top = 0.580934
-anchor_right = 0.475386
-anchor_bottom = 0.580934
-offset_left = 94.6465
-offset_top = -109.372
-offset_right = 159.646
-offset_bottom = -86.3724
+anchor_left = 0.47
+anchor_top = 0.58
+anchor_right = 0.47
+anchor_bottom = 0.58
+offset_left = 94.64
+offset_top = -109.37
+offset_right = 159.64
+offset_bottom = -86.37
 text = "888"
 label_settings = SubResource("LabelSettings_fvr2p")
 vertical_alignment = 1
 
 [node name="Stats" type="GridContainer" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 449.953
-offset_top = 198.717
-offset_right = 489.952
-offset_bottom = 373.717
+offset_left = 449.95
+offset_top = 198.71
+offset_right = 489.95
+offset_bottom = 373.71
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 32
 
@@ -660,10 +660,10 @@ texture = ExtResource("7_sx6a1")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Moves"]
 layout_mode = 0
-offset_left = 17.8786
-offset_top = -10.5946
-offset_right = 51.8786
-offset_bottom = 14.4054
+offset_left = 17.87
+offset_top = -10.59
+offset_right = 51.87
+offset_bottom = 14.40
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -679,10 +679,10 @@ texture = ExtResource("19_axxwa")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Initiative"]
 layout_mode = 0
-offset_left = 17.8786
-offset_top = -10.5946
-offset_right = 51.8786
-offset_bottom = 14.4054
+offset_left = 17.87
+offset_top = -10.59
+offset_right = 51.87
+offset_bottom = 14.40
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -698,10 +698,10 @@ texture = ExtResource("20_rkhob")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Damage"]
 layout_mode = 0
-offset_left = 17.8786
-offset_top = -10.5946
-offset_right = 51.8786
-offset_bottom = 14.4054
+offset_left = 17.87
+offset_top = -10.59
+offset_right = 51.87
+offset_bottom = 14.40
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -717,10 +717,10 @@ texture = ExtResource("17_diddf")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Range"]
 layout_mode = 0
-offset_left = 17.8786
-offset_top = -10.5946
-offset_right = 51.8786
-offset_bottom = 14.4054
+offset_left = 17.87
+offset_top = -10.59
+offset_right = 51.87
+offset_bottom = 14.40
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -736,10 +736,10 @@ texture = ExtResource("22_4rtvu")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Armor"]
 layout_mode = 0
-offset_left = 17.8786
-offset_top = -10.5946
-offset_right = 51.8786
-offset_bottom = 14.4054
+offset_left = 17.87
+offset_top = -10.59
+offset_right = 51.87
+offset_bottom = 14.40
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -755,10 +755,10 @@ texture = ExtResource("13_k180g")
 
 [node name="Label" type="Label" parent="CharacterContainer/Stats/Threat"]
 layout_mode = 0
-offset_left = 17.8786
-offset_top = -10.5946
-offset_right = 51.8786
-offset_bottom = 14.4054
+offset_left = 17.87
+offset_top = -10.59
+offset_right = 51.87
+offset_bottom = 14.40
 theme_override_fonts/font = ExtResource("5_n8sjp")
 theme_override_font_sizes/font_size = 14
 text = "88"
@@ -767,10 +767,10 @@ vertical_alignment = 1
 
 [node name="MoveButton" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 51.3144
-offset_top = 228.173
-offset_right = 151.314
-offset_bottom = 328.173
+offset_left = 51.31
+offset_top = 228.17
+offset_right = 151.31
+offset_bottom = 328.17
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -786,10 +786,10 @@ libraries = {
 
 [node name="InteractButton" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 50.8038
-offset_top = 112.921
-offset_right = 150.804
-offset_bottom = 212.921
+offset_left = 50.80
+offset_top = 112.92
+offset_right = 150.80
+offset_bottom = 212.92
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -805,10 +805,10 @@ libraries = {
 
 [node name="AttackButton" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 171.428
-offset_top = 7.92068
-offset_right = 271.429
-offset_bottom = 107.921
+offset_left = 171.42
+offset_top = 7.92
+offset_right = 271.42
+offset_bottom = 107.92
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -823,10 +823,10 @@ libraries = {
 
 [node name="Action1Button" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 287.678
-offset_top = 4.79568
-offset_right = 387.678
-offset_bottom = 104.796
+offset_left = 287.67
+offset_top = 4.79
+offset_right = 387.67
+offset_bottom = 104.79
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -842,10 +842,10 @@ libraries = {
 
 [node name="Action2Button" type="Button" parent="CharacterContainer"]
 layout_mode = 0
-offset_left = 402.514
-offset_top = 4.96678
-offset_right = 502.514
-offset_bottom = 104.967
+offset_left = 402.51
+offset_top = 4.96
+offset_right = 502.51
+offset_bottom = 104.96
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_cvwx3")
@@ -860,15 +860,15 @@ libraries = {
 }
 
 [node name="Passive" type="Sprite2D" parent="CharacterContainer"]
-position = Vector2(557.078, 39.8757)
+position = Vector2(557.07, 39.87)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("26_nfwov")
 
 [node name="Label" type="Label" parent="CharacterContainer/Passive"]
-offset_left = -37.9208
-offset_top = -57.4023
-offset_right = -12.9208
-offset_bottom = -20.4023
+offset_left = -37.92
+offset_top = -57.40
+offset_right = -12.92
+offset_bottom = -20.40
 scale = Vector2(3, 3)
 theme_override_font_sizes/font_size = 30
 text = "P"
@@ -877,27 +877,27 @@ vertical_alignment = 1
 
 [node name="PassiveHover" type="ReferenceRect" parent="CharacterContainer/Passive/Label"]
 layout_mode = 0
-offset_left = -15.017
-offset_top = -9.45511
-offset_right = 39.983
-offset_bottom = 45.5449
+offset_left = -15.01
+offset_top = -9.45
+offset_right = 39.98
+offset_bottom = 45.54
 
 [node name="AbortMissionButton" type="Button" parent="."]
-offset_left = 8.47571
-offset_top = 7.41624
-offset_right = 178.476
-offset_bottom = 97.4162
+offset_left = 8.47
+offset_top = 7.41
+offset_right = 178.47
+offset_bottom = 97.41
 theme_override_font_sizes/font_size = 16
 text = "ABORT
 MISSION"
 
 [node name="Jenkins" parent="." instance=ExtResource("27_3x7f3")]
-position = Vector2(156.917, 937.861)
+position = Vector2(156.91, 937.86)
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="MissionStartLabel" type="Label" parent="."]
-offset_left = 693.591
+offset_left = 693.59
 offset_top = 337.69
 offset_right = 1292.59
 offset_bottom = 410.69

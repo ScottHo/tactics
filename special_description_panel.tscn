@@ -12,16 +12,16 @@
 script = ExtResource("1_kbi01")
 
 [node name="TallPanel" type="Sprite2D" parent="."]
-position = Vector2(1.29574, 1.62759)
+position = Vector2(1.29, 1.62)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_48ejq")
 centered = false
 
 [node name="DescriptionName" type="Label" parent="."]
-offset_left = 47.0285
-offset_top = 6.92721
-offset_right = 295.029
-offset_bottom = 56.9272
+offset_left = 47.02
+offset_top = 6.92
+offset_right = 295.02
+offset_bottom = 56.92
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 18
 text = "Lighting Bolt Bolt Bolt"
@@ -29,65 +29,65 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="LevelLabel" type="Label" parent="."]
-offset_left = 132.076
-offset_top = 51.6457
-offset_right = 332.076
-offset_bottom = 72.6457
+offset_left = 132.07
+offset_top = 51.64
+offset_right = 332.07
+offset_bottom = 72.64
 theme_override_font_sizes/font_size = 15
 horizontal_alignment = 2
 
 [node name="CostContainer" type="Node2D" parent="."]
-position = Vector2(13.8748, 59.2832)
+position = Vector2(13.87, 59.28)
 
 [node name="Label" type="Label" parent="CostContainer"]
-offset_left = -2.61279
-offset_top = -7.7897
-offset_right = 53.3872
-offset_bottom = 13.2103
+offset_left = -2.61
+offset_top = -7.78
+offset_right = 53.38
+offset_bottom = 13.21
 theme_override_font_sizes/font_size = 15
 text = "Cost:"
 
 [node name="CostLabel" type="Label" parent="CostContainer"]
-offset_left = 58.0117
-offset_top = -7.7897
-offset_right = 72.0117
-offset_bottom = 13.2103
+offset_left = 58.01
+offset_top = -7.78
+offset_right = 72.01
+offset_bottom = 13.21
 theme_override_font_sizes/font_size = 15
 text = "5
 "
 
 [node name="WhiteBolt" type="Sprite2D" parent="CostContainer"]
-position = Vector2(79.9487, 1.5667)
+position = Vector2(79.94, 1.56)
 scale = Vector2(0.34, 0.34)
 texture = ExtResource("3_hq8kc")
 
 [node name="UltimateLabel" type="Label" parent="."]
-offset_left = 10.0907
-offset_top = 51.7151
-offset_right = 50.0907
-offset_bottom = 70.7151
+offset_left = 10.09
+offset_top = 51.71
+offset_right = 50.09
+offset_bottom = 70.71
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 10.1509
-offset_top = 71.6081
-offset_right = 102.151
-offset_bottom = 92.6081
+offset_left = 10.15
+offset_top = 71.60
+offset_right = 102.15
+offset_bottom = 92.60
 theme_override_font_sizes/font_size = 15
 text = "Affects:"
 
 [node name="AffectsLabel" type="Label" parent="."]
 offset_left = 107.05
-offset_top = 71.6081
+offset_top = 71.60
 offset_right = 301.05
-offset_bottom = 92.6081
+offset_bottom = 92.60
 theme_override_font_sizes/font_size = 15
 text = "All Friendly Units"
 
 [node name="DescriptionLabel" type="Label" parent="."]
-offset_left = 10.9281
-offset_top = 92.7647
-offset_right = 328.928
-offset_bottom = 194.765
+offset_left = 10.92
+offset_top = 92.76
+offset_right = 328.92
+offset_bottom = 194.76
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("2_mqpc5")
@@ -96,15 +96,15 @@ text = "No Action Selected."
 autowrap_mode = 2
 
 [node name="PanelButton" type="Sprite2D" parent="."]
-position = Vector2(4.2558, 3.87957)
+position = Vector2(4.25, 3.87)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("3_uj71j")
 
 [node name="ActionLabel" type="Label" parent="."]
-offset_left = -43.7423
-offset_top = -44.516
-offset_right = 56.2577
-offset_bottom = 55.4841
+offset_left = -43.74
+offset_top = -44.51
+offset_right = 56.25
+offset_bottom = 55.48
 theme_override_font_sizes/font_size = 22
 text = "Ult"
 horizontal_alignment = 1
@@ -112,14 +112,14 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="SpecIcon" type="Sprite2D" parent="."]
-position = Vector2(4.82593, 4.28855)
+position = Vector2(4.82, 4.28)
 texture = ExtResource("6_ykui0")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 16.6744
-offset_top = 402.199
-offset_right = 16.6744
-offset_bottom = 402.199
+offset_left = 16.67
+offset_top = 402.19
+offset_right = 16.67
+offset_bottom = 402.19
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = -35
 

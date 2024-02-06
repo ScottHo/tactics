@@ -10,10 +10,10 @@ script = ExtResource("1_p2jq1")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
-offset_left = -51.6721
-offset_top = -51.6721
-offset_right = 48.3279
-offset_bottom = 48.3279
+offset_left = -51.67
+offset_top = -51.67
+offset_right = 48.32
+offset_bottom = 48.32
 
 [node name="Hover" type="Node2D" parent="."]
 visible = false

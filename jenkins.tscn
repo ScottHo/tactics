@@ -109,7 +109,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(8.00903, 74.751), Vector2(7.11914, -26.9934), Vector2(8.00903, 74.751), Vector2(7.11914, -26.9934), Vector2(8.00903, 74.751), Vector2(7.11914, -26.9934), Vector2(8.00903, 74.751), Vector2(7.11914, -26.9934), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(8.00, 74.75), Vector2(7.11, -26.99), Vector2(8.00, 74.75), Vector2(7.11, -26.99), Vector2(8.00, 74.75), Vector2(7.11, -26.99), Vector2(8.00, 74.75), Vector2(7.11, -26.99), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -137,7 +137,7 @@ script = ExtResource("1_yul6b")
 scale = Vector2(0.2, 0.2)
 
 [node name="Panel" type="Sprite2D" parent="Container"]
-position = Vector2(722.071, 0)
+position = Vector2(722.07, 0)
 texture = ExtResource("1_wxxv4")
 
 [node name="Whites" type="Sprite2D" parent="Container"]
@@ -147,10 +147,10 @@ texture = ExtResource("2_i72rw")
 texture = ExtResource("6_ywk4e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container"]
-position = Vector2(2.11902, 0)
+position = Vector2(2.11, 0)
 sprite_frames = SubResource("SpriteFrames_mgi3h")
 autoplay = "default"
-frame_progress = 0.125601
+frame_progress = 0.12
 
 [node name="Jaw" type="Sprite2D" parent="Container"]
 texture = ExtResource("8_gl8qj")
@@ -169,10 +169,10 @@ libraries = {
 }
 
 [node name="Label" type="Label" parent="."]
-offset_left = 111.841
-offset_top = -114.708
-offset_right = 396.841
-offset_bottom = 115.292
+offset_left = 111.84
+offset_top = -114.70
+offset_right = 396.84
+offset_bottom = 115.29
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 0

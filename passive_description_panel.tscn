@@ -9,41 +9,41 @@
 script = ExtResource("1_swptf")
 
 [node name="TallPanel" type="Sprite2D" parent="."]
-position = Vector2(1.29574, 1.62759)
+position = Vector2(1.29, 1.62)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_qpqi8")
 centered = false
 
 [node name="DescriptionName" type="Label" parent="."]
-offset_left = 53.3692
-offset_top = 10.3316
-offset_right = 298.369
-offset_bottom = 56.3316
+offset_left = 53.36
+offset_top = 10.33
+offset_right = 298.36
+offset_bottom = 56.33
 theme_override_font_sizes/font_size = 16
 text = "Passive"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="DescriptionLabel" type="Label" parent="."]
-offset_left = 16.0223
-offset_top = 59.3629
-offset_right = 316.022
-offset_bottom = 141.362
+offset_left = 16.02
+offset_top = 59.36
+offset_right = 316.02
+offset_bottom = 141.36
 theme_override_fonts/font = ExtResource("4_vpjiy")
 theme_override_font_sizes/font_size = 15
 text = "None"
 autowrap_mode = 2
 
 [node name="Passive" type="Sprite2D" parent="."]
-position = Vector2(17.6615, 15.4955)
+position = Vector2(17.66, 15.49)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_57wkg")
 
 [node name="Label" type="Label" parent="Passive"]
-offset_left = -37.9208
-offset_top = -57.4023
-offset_right = -12.9208
-offset_bottom = -20.4023
+offset_left = -37.92
+offset_top = -57.40
+offset_right = -12.92
+offset_bottom = -20.40
 scale = Vector2(3, 3)
 theme_override_font_sizes/font_size = 30
 text = "P"

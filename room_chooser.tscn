@@ -14,12 +14,12 @@
 script = ExtResource("1_lm1uq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.72549, 0.72549, 0.72549, 1)
+modulate = Color(0.72, 0.72, 0.72, 1)
 texture = ExtResource("2_r4mxn")
 centered = false
 
 [node name="TileMapFloor" type="TileMap" parent="."]
-position = Vector2(87.5901, 74.2031)
+position = Vector2(87.59, 74.20)
 scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("3_vkqma")
 format = 2
@@ -27,17 +27,17 @@ layer_0/tile_data = PackedInt32Array(-1, 131073, 0, 65535, 131073, 0, -65536, 13
 
 [node name="TileMapBoss" type="TileMap" parent="."]
 visible = false
-position = Vector2(87.5901, 74.2031)
+position = Vector2(87.59, 74.20)
 scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("3_vkqma")
 format = 2
 layer_0/tile_data = PackedInt32Array(-1, 131073, 0, 65535, 131073, 0, -65536, 131073, 0, 0, 131073, 0, -65513, 131073, 0, 23, 131073, 0, -65512, 131073, 0, 24, 131073, 0, -65511, 131073, 0, 25, 131073, 0, -65510, 131073, 0, 26, 131073, 0, -65509, 131073, 0, 27, 131073, 0, -65508, 131073, 0, 28, 131073, 0, -65535, 131073, 0, 1, 131073, 0, -65534, 131073, 0, 2, 131073, 0, -65533, 131073, 0, 3, 131073, 0, -65532, 131073, 0, 4, 131073, 0, -65531, 131073, 0, 5, 131073, 0, -65530, 131073, 0, 6, 131073, 0, -65529, 131073, 0, 7, 131073, 0, -65528, 131073, 0, 8, 131073, 0, -65521, 131073, 0, 15, 131073, 0, -65520, 131073, 0, 16, 131073, 0, -65519, 131073, 0, 17, 131073, 0, -65518, 131073, 0, 18, 131073, 0, -65517, 131073, 0, 19, 131073, 0, -65516, 131073, 0, 20, 131073, 0, -65515, 131073, 0, 21, 131073, 0, -65514, 131073, 0, 22, 131073, 0, -65527, 131073, 0, 9, 131073, 0, -65526, 131073, 0, 10, 131073, 0, -65525, 131073, 0, 11, 131073, 0, -65524, 131073, 0, 12, 131073, 0, -65523, 131073, 0, 13, 131073, 0, -65522, 131073, 0, 14, 131073, 0, -2, 131073, 0, 65534, 131073, 0, -3, 131073, 0, 65533, 131073, 0)
 
 [node name="Title" type="Label" parent="."]
-offset_left = 561.132
-offset_top = 29.4749
+offset_left = 561.13
+offset_top = 29.47
 offset_right = 1361.13
-offset_bottom = 78.4749
+offset_bottom = 78.47
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 40
@@ -47,10 +47,10 @@ horizontal_alignment = 1
 [node name="ChooserContainer" type="Node2D" parent="."]
 
 [node name="Bottom" type="Button" parent="ChooserContainer"]
-offset_left = 699.834
-offset_top = 802.423
-offset_right = 799.834
-offset_bottom = 902.423
+offset_left = 699.83
+offset_top = 802.42
+offset_right = 799.83
+offset_bottom = 902.42
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_36kkq")
@@ -60,9 +60,9 @@ text = "Go"
 
 [node name="Middle" type="Button" parent="ChooserContainer"]
 offset_left = 1159.61
-offset_top = 561.282
+offset_top = 561.28
 offset_right = 1259.61
-offset_bottom = 661.282
+offset_bottom = 661.28
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_36kkq")
@@ -72,9 +72,9 @@ text = "Go"
 
 [node name="Top" type="Button" parent="ChooserContainer"]
 offset_left = 1620.64
-offset_top = 321.896
+offset_top = 321.89
 offset_right = 1720.64
-offset_bottom = 421.896
+offset_bottom = 421.89
 pivot_offset = Vector2(50, 50)
 focus_mode = 0
 theme = ExtResource("4_36kkq")
@@ -85,35 +85,35 @@ text = "Go"
 [node name="RoomContainer" type="Node2D" parent="."]
 
 [node name="DetailedRoomInfo" parent="RoomContainer" instance=ExtResource("1_0yuhc")]
-position = Vector2(85.0758, 137.127)
+position = Vector2(85.07, 137.12)
 
 [node name="Recruit1" type="Node2D" parent="RoomContainer"]
-position = Vector2(984.107, 293.185)
+position = Vector2(984.10, 293.18)
 
 [node name="Medium" type="Sprite2D" parent="RoomContainer/Recruit1"]
-position = Vector2(331.612, 79.2572)
+position = Vector2(331.61, 79.25)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_ib14x")
 
 [node name="Label" type="Label" parent="RoomContainer/Recruit1"]
-offset_left = 214.043
-offset_top = -149.624
-offset_right = 472.043
-offset_bottom = -112.624
+offset_left = 214.04
+offset_top = -149.62
+offset_right = 472.04
+offset_bottom = -112.62
 theme_override_font_sizes/font_size = 24
 text = "NEW RECRUIT"
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="Sprite2D" parent="RoomContainer/Recruit1"]
-position = Vector2(12.6945, 42.7132)
+position = Vector2(12.69, 42.71)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_m61tk")
 
 [node name="Name" type="Label" parent="RoomContainer/Recruit1"]
-offset_left = -99.3681
-offset_top = -82.4918
-offset_right = 120.632
-offset_bottom = -36.4919
+offset_left = -99.36
+offset_top = -82.49
+offset_right = 120.63
+offset_bottom = -36.49
 theme_override_font_sizes/font_size = 20
 text = "NONE"
 horizontal_alignment = 1
@@ -121,16 +121,16 @@ autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="EnemyPanel" parent="RoomContainer/Recruit1" instance=ExtResource("7_pivh6")]
-offset_left = -33.0133
-offset_top = 121.594
-offset_right = -33.0133
-offset_bottom = 121.594
+offset_left = -33.01
+offset_top = 121.59
+offset_right = -33.01
+offset_bottom = 121.59
 
 [node name="AbilitiesGrid" type="GridContainer" parent="RoomContainer/Recruit1"]
-offset_left = 145.827
-offset_top = -67.9932
-offset_right = 145.827
-offset_bottom = 432.007
+offset_left = 145.82
+offset_top = -67.99
+offset_right = 145.82
+offset_bottom = 432.00
 theme_override_constants/v_separation = 115
 
 [node name="Passive" type="Control" parent="RoomContainer/Recruit1/AbilitiesGrid"]
@@ -138,30 +138,30 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Passive"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = 2.06
+offset_top = -10.09
+offset_right = 522.06
+offset_bottom = 10.90
 theme_override_font_sizes/font_size = 14
 text = "Passive - Static Effect"
 autowrap_mode = 2
 
 [node name="Name" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Passive"]
 layout_mode = 0
-offset_left = 32.588
-offset_top = 7.36328
-offset_right = 552.588
-offset_bottom = 32.3633
+offset_left = 32.58
+offset_top = 7.36
+offset_right = 552.58
+offset_bottom = 32.36
 theme_override_font_sizes/font_size = 18
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Passive"]
 layout_mode = 0
-offset_left = 49.2208
-offset_top = 27.3921
-offset_right = 674.221
-offset_bottom = 102.392
+offset_left = 49.22
+offset_top = 27.39
+offset_right = 674.22
+offset_bottom = 102.39
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("8_fs5q0")
@@ -174,30 +174,30 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Special"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = 2.06
+offset_top = -10.09
+offset_right = 522.06
+offset_bottom = 10.90
 theme_override_font_sizes/font_size = 14
 text = "Special - Costs Energy"
 autowrap_mode = 2
 
 [node name="Name" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Special"]
 layout_mode = 0
-offset_left = 32.588
-offset_top = 7.36328
-offset_right = 552.588
-offset_bottom = 32.3633
+offset_left = 32.58
+offset_top = 7.36
+offset_right = 552.58
+offset_bottom = 32.36
 theme_override_font_sizes/font_size = 18
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Special"]
 layout_mode = 0
-offset_left = 49.2208
-offset_top = 27.3921
-offset_right = 674.221
-offset_bottom = 102.392
+offset_left = 49.22
+offset_top = 27.39
+offset_right = 674.22
+offset_bottom = 102.39
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("8_fs5q0")
@@ -210,30 +210,30 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Ultimate"]
 layout_mode = 0
-offset_left = 2.06844
-offset_top = -10.0908
-offset_right = 522.068
-offset_bottom = 10.9092
+offset_left = 2.06
+offset_top = -10.09
+offset_right = 522.06
+offset_bottom = 10.90
 theme_override_font_sizes/font_size = 14
 text = "Ultimate - Only Once Per Level"
 autowrap_mode = 2
 
 [node name="Name" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Ultimate"]
 layout_mode = 0
-offset_left = 32.588
-offset_top = 7.36328
-offset_right = 552.588
-offset_bottom = 32.3633
+offset_left = 32.58
+offset_top = 7.36
+offset_right = 552.58
+offset_bottom = 32.36
 theme_override_font_sizes/font_size = 18
 text = "Explosive Missles"
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="RoomContainer/Recruit1/AbilitiesGrid/Ultimate"]
 layout_mode = 0
-offset_left = 49.2208
-offset_top = 27.3921
-offset_right = 674.221
-offset_bottom = 102.392
+offset_left = 49.22
+offset_top = 27.39
+offset_right = 674.22
+offset_bottom = 102.39
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("8_fs5q0")
@@ -243,26 +243,26 @@ autowrap_mode = 2
 
 [node name="CancelButton" type="Button" parent="RoomContainer"]
 offset_left = 1421.66
-offset_top = 850.232
+offset_top = 850.23
 offset_right = 1621.66
-offset_bottom = 955.232
+offset_bottom = 955.23
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
 metadata/_edit_use_anchors_ = true
 
 [node name="GoButton" type="Button" parent="RoomContainer"]
 offset_left = 1628.66
-offset_top = 850.232
+offset_top = 850.23
 offset_right = 1828.66
-offset_bottom = 955.232
+offset_bottom = 955.23
 theme_override_font_sizes/font_size = 24
 text = "GO"
 metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="."]
-offset_left = 7.14996
-offset_top = 3.93852
+offset_left = 7.14
+offset_top = 3.93
 offset_right = 177.15
-offset_bottom = 93.9385
+offset_bottom = 93.93
 theme_override_font_sizes/font_size = 20
 text = "Back"

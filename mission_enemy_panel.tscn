@@ -12,18 +12,18 @@
 [node name="EnemyPanel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 63.0555
-offset_top = 46.703
-offset_right = 63.0555
-offset_bottom = 46.703
+offset_left = 63.05
+offset_top = 46.70
+offset_right = 63.05
+offset_bottom = 46.70
 script = ExtResource("1_cgn1b")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 8.31918
-offset_top = 38.3786
-offset_right = 188.319
-offset_bottom = 178.378
+offset_left = 8.31
+offset_top = 38.37
+offset_right = 188.31
+offset_bottom = 178.37
 theme_override_constants/h_separation = 90
 theme_override_constants/v_separation = 35
 columns = 2

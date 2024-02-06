@@ -13,19 +13,19 @@
 script = ExtResource("1_1roly")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.72549, 0.72549, 0.72549, 1)
+modulate = Color(0.72, 0.72, 0.72, 1)
 texture = ExtResource("2_q1skw")
 centered = false
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(97.6441, 24.4844)
+position = Vector2(97.64, 24.48)
 scale = Vector2(1.2, 1.2)
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(1026.19, 484.416)
+position = Vector2(1026.19, 484.41)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(341.656, 927.82)
+position = Vector2(341.65, 927.82)
 scale = Vector2(0.8, 0.8)
 
 [node name="StartMission" type="Button" parent="."]
@@ -39,13 +39,13 @@ text = "START
 MISSION"
 
 [node name="DetailedRoomInfo" parent="." instance=ExtResource("6_27vo8")]
-position = Vector2(1241.55, 13.6836)
+position = Vector2(1241.55, 13.68)
 
 [node name="BackButton" type="Button" parent="."]
-offset_left = 7.14996
-offset_top = 3.93852
+offset_left = 7.14
+offset_top = 3.93
 offset_right = 177.15
-offset_bottom = 93.9385
+offset_bottom = 93.93
 theme_override_font_sizes/font_size = 20
 text = "Back"
 

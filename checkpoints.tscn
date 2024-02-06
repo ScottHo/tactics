@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://2cxixfl57qv2" path="res://Assets/Foundrys/checkpoint_highlight.png" id="8_r28xc"]
 
 [node name="Checkpoints" type="Node2D"]
-position = Vector2(117.595, -9.42566)
+position = Vector2(117.59, -9.42)
 script = ExtResource("1_cgqql")
 
 [node name="SteelFoundry" type="Sprite2D" parent="."]
@@ -18,13 +18,13 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_v061i")
 
 [node name="CheckpointLine2" type="Sprite2D" parent="SteelFoundry"]
-position = Vector2(0, 605.014)
+position = Vector2(0, 605.01)
 scale = Vector2(5, 1)
 texture = ExtResource("2_0trda")
 
 [node name="CheckpointLine" type="Sprite2D" parent="SteelFoundry"]
-position = Vector2(-2.19995, 227.012)
-rotation = 1.5708
+position = Vector2(-2.19, 227.01)
+rotation = 1.57
 scale = Vector2(3, 1)
 texture = ExtResource("2_0trda")
 
@@ -62,13 +62,13 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_s8xi4")
 
 [node name="CheckpointLine2" type="Sprite2D" parent="IronFoundry"]
-position = Vector2(0, 605.014)
+position = Vector2(0, 605.01)
 scale = Vector2(5, 1)
 texture = ExtResource("2_0trda")
 
 [node name="CheckpointLine" type="Sprite2D" parent="IronFoundry"]
-position = Vector2(-2.19995, 227.012)
-rotation = 1.5708
+position = Vector2(-2.19, 227.01)
+rotation = 1.57
 scale = Vector2(3, 1)
 texture = ExtResource("2_0trda")
 
@@ -106,13 +106,13 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_jjrkq")
 
 [node name="CheckpointLine2" type="Sprite2D" parent="BronzeFoundry"]
-position = Vector2(0, 605.014)
+position = Vector2(0, 605.01)
 scale = Vector2(5, 1)
 texture = ExtResource("2_0trda")
 
 [node name="CheckpointLine" type="Sprite2D" parent="BronzeFoundry"]
-position = Vector2(-2.19995, 227.012)
-rotation = 1.5708
+position = Vector2(-2.19, 227.01)
+rotation = 1.57
 scale = Vector2(3, 1)
 texture = ExtResource("2_0trda")
 
@@ -145,10 +145,10 @@ position = Vector2(0, -162)
 texture = ExtResource("3_v3vdy")
 
 [node name="Start" type="Sprite2D" parent="."]
-position = Vector2(-55.9905, 558.906)
+position = Vector2(-55.99, 558.90)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_r28xc")
 
 [node name="Final" type="Sprite2D" parent="."]
-position = Vector2(1485.02, 557.855)
+position = Vector2(1485.02, 557.85)
 texture = ExtResource("3_v3vdy")

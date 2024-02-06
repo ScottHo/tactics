@@ -53,21 +53,21 @@ offset_right = 98.0
 offset_bottom = 101.0
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(178.649, 57.4869)
+position = Vector2(178.64, 57.48)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_tfr3r")
 
 [node name="CharacterSprite" type="Sprite2D" parent="."]
-position = Vector2(51.9746, 56.1502)
+position = Vector2(51.97, 56.15)
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CompressedTexture2D_sfged")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 z_index = 5
-offset_left = 21.7351
-offset_top = 84.7941
-offset_right = 233.735
-offset_bottom = 114.794
+offset_left = 21.73
+offset_top = 84.79
+offset_right = 233.73
+offset_bottom = 114.79
 scale = Vector2(0.3, 0.3)
 value = 50.0
 texture_under = ExtResource("3_wv88g")
@@ -75,10 +75,10 @@ texture_progress = ExtResource("4_86m2k")
 
 [node name="EnergyBar" type="TextureProgressBar" parent="."]
 z_index = 5
-offset_left = 22.3297
-offset_top = 92.8212
+offset_left = 22.32
+offset_top = 92.82
 offset_right = 234.33
-offset_bottom = 122.821
+offset_bottom = 122.82
 scale = Vector2(0.3, 0.3)
 max_value = 5.0
 value = 4.0
@@ -86,19 +86,19 @@ texture_under = ExtResource("3_wv88g")
 texture_progress = ExtResource("5_nbtqd")
 
 [node name="Stats" type="Node2D" parent="."]
-position = Vector2(97.6046, 29.5534)
+position = Vector2(97.60, 29.55)
 scale = Vector2(0.67, 0.67)
 
 [node name="HealthSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(19.9695, 1.37518)
+position = Vector2(19.96, 1.37)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_reefb")
 
 [node name="HealthLabel" type="Label" parent="Stats"]
-offset_left = 35.1434
-offset_top = -9.74603
-offset_right = 89.1434
-offset_bottom = 17.254
+offset_left = 35.14
+offset_top = -9.74
+offset_right = 89.14
+offset_bottom = 17.25
 text = "999
 "
 label_settings = SubResource("LabelSettings_th8bq")
@@ -106,10 +106,10 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="SlashLabel" type="Label" parent="Stats"]
-offset_left = 88.5016
-offset_top = -9.74603
-offset_right = 102.502
-offset_bottom = 17.254
+offset_left = 88.50
+offset_top = -9.74
+offset_right = 102.50
+offset_bottom = 17.25
 text = "/
 "
 label_settings = SubResource("LabelSettings_cqano")
@@ -118,23 +118,23 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MaxHealthLabel" type="Label" parent="Stats"]
 offset_left = 104.58
-offset_top = -9.49502
+offset_top = -9.49
 offset_right = 158.58
-offset_bottom = 17.505
+offset_bottom = 17.50
 text = "999"
 label_settings = SubResource("LabelSettings_6r53r")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="MoveSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(179.508, 3.70917)
+position = Vector2(179.50, 3.70)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_ggr6d")
 
 [node name="MoveLabel" type="Label" parent="Stats"]
-offset_left = 202.957
+offset_left = 202.95
 offset_top = -8.5
-offset_right = 238.957
+offset_right = 238.95
 offset_bottom = 18.5
 text = "99
 "
@@ -143,14 +143,14 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="InitiativeSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(273.472, 3.68891)
+position = Vector2(273.47, 3.68)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_p0t2w")
 
 [node name="InitiativeLabel" type="Label" parent="Stats"]
-offset_left = 299.321
+offset_left = 299.32
 offset_top = -8.5
-offset_right = 335.321
+offset_right = 335.32
 offset_bottom = 18.5
 text = "99
 "
@@ -159,14 +159,14 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="DamageSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(18.9409, 36.9497)
+position = Vector2(18.94, 36.94)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_flx8q")
 
 [node name="DamageLabel" type="Label" parent="Stats"]
-offset_left = 34.7591
+offset_left = 34.75
 offset_top = 25.0
-offset_right = 70.7591
+offset_right = 70.75
 offset_bottom = 52.0
 text = "99
 "
@@ -175,14 +175,14 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RangeSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(99.7825, 35.504)
+position = Vector2(99.78, 35.50)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_gw4b8")
 
 [node name="RangeLabel" type="Label" parent="Stats"]
-offset_left = 122.124
+offset_left = 122.12
 offset_top = 25.0
-offset_right = 158.124
+offset_right = 158.12
 offset_bottom = 52.0
 text = "99
 "
@@ -191,14 +191,14 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ArmorSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(183.695, 39.3165)
+position = Vector2(183.69, 39.31)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("10_frk68")
 
 [node name="ArmorLabel" type="Label" parent="Stats"]
-offset_left = 206.342
+offset_left = 206.34
 offset_top = 25.0
-offset_right = 224.342
+offset_right = 224.34
 offset_bottom = 52.0
 text = "9"
 label_settings = SubResource("LabelSettings_sa1lh")
@@ -206,14 +206,14 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ThreatSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(275.765, 37.0544)
+position = Vector2(275.76, 37.05)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_3f53c")
 
 [node name="ThreatLabel" type="Label" parent="Stats"]
-offset_left = 298.733
+offset_left = 298.73
 offset_top = 25.0
-offset_right = 316.733
+offset_right = 316.73
 offset_bottom = 52.0
 text = "9"
 label_settings = SubResource("LabelSettings_ip6cx")
@@ -221,7 +221,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Buffs1" type="Node2D" parent="."]
-position = Vector2(105.428, 81.6959)
+position = Vector2(105.42, 81.69)
 scale = Vector2(0.65, 0.65)
 
 [node name="b0" type="Sprite2D" parent="Buffs1"]

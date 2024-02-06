@@ -8,14 +8,14 @@
 script = ExtResource("1_kqaug")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(243.69, 390.485)
+position = Vector2(243.69, 390.48)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_51w3k")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 83.2445
+offset_left = 83.24
 offset_top = 165.3
-offset_right = 401.244
+offset_right = 401.24
 offset_bottom = 248.3
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 10
@@ -97,22 +97,22 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="SpLabel" type="Label" parent="GridContainer"]
-modulate = Color(1, 0.843137, 0, 1)
+modulate = Color(1, 0.84, 0, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Skill Points
 Earned"
 
 [node name="SkillPointsEarned" type="Label" parent="GridContainer"]
-modulate = Color(1, 0.843137, 0, 1)
+modulate = Color(1, 0.84, 0, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="OkButton" type="Button" parent="."]
-offset_left = 244.659
-offset_top = 554.372
-offset_right = 404.659
-offset_bottom = 634.372
+offset_left = 244.65
+offset_top = 554.37
+offset_right = 404.65
+offset_bottom = 634.37
 theme_override_font_sizes/font_size = 20
 text = "OK"
 

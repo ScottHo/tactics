@@ -7,18 +7,18 @@
 [node name="EnvironmentPanel" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 10.3715
-offset_top = 11.9143
-offset_right = 10.3715
-offset_bottom = 11.9143
+offset_left = 10.37
+offset_top = 11.91
+offset_right = 10.37
+offset_bottom = 11.91
 script = ExtResource("1_f8w1i")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = -3.02686
-offset_top = 7.85039
-offset_right = 36.9731
-offset_bottom = 367.851
+offset_left = -3.02
+offset_top = 7.85
+offset_right = 36.97
+offset_bottom = 367.85
 theme_override_constants/v_separation = 110
 
 [node name="Buff1" type="Control" parent="GridContainer"]
@@ -27,9 +27,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="GridContainer/Buff1"]
 layout_mode = 0
 offset_left = 103.4
-offset_top = 36.3735
+offset_top = 36.37
 offset_right = 503.4
-offset_bottom = 56.3735
+offset_bottom = 56.37
 theme_override_font_sizes/font_size = 14
 text = "Blue orb buff thing"
 autowrap_mode = 2
@@ -37,29 +37,29 @@ autowrap_mode = 2
 [node name="Description" type="Label" parent="GridContainer/Buff1"]
 layout_mode = 0
 offset_left = 103.4
-offset_top = 53.8547
+offset_top = 53.85
 offset_right = 503.4
-offset_bottom = 128.855
+offset_bottom = 128.85
 theme_override_font_sizes/font_size = 12
 text = "Blue orb buff thing"
 autowrap_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="GridContainer/Buff1"]
 layout_mode = 0
-offset_left = 9.62128
-offset_top = 32.8006
-offset_right = 89.6213
-offset_bottom = 127.801
-color = Color(1, 1, 1, 0.678431)
+offset_left = 9.62
+offset_top = 32.80
+offset_right = 89.62
+offset_bottom = 127.80
+color = Color(1, 1, 1, 0.67)
 
 [node name="Tile" type="Sprite2D" parent="GridContainer/Buff1"]
-position = Vector2(50.8542, 72.5732)
+position = Vector2(50.85, 72.57)
 texture = ExtResource("2_qkmc2")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 128)
 
 [node name="Sprite" type="Sprite2D" parent="GridContainer/Buff1"]
-position = Vector2(50.0825, 58.3154)
+position = Vector2(50.08, 58.31)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_w0oyd")
 
@@ -69,9 +69,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="GridContainer/Buff2"]
 layout_mode = 0
 offset_left = 103.4
-offset_top = 36.3735
+offset_top = 36.37
 offset_right = 503.4
-offset_bottom = 56.3735
+offset_bottom = 56.37
 theme_override_font_sizes/font_size = 14
 text = "Blue orb buff thing"
 autowrap_mode = 2
@@ -79,29 +79,29 @@ autowrap_mode = 2
 [node name="Description" type="Label" parent="GridContainer/Buff2"]
 layout_mode = 0
 offset_left = 103.4
-offset_top = 53.8546
+offset_top = 53.85
 offset_right = 503.4
-offset_bottom = 128.855
+offset_bottom = 128.85
 theme_override_font_sizes/font_size = 12
 text = "Blue orb buff thing"
 autowrap_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="GridContainer/Buff2"]
 layout_mode = 0
-offset_left = 9.62128
-offset_top = 32.8006
-offset_right = 89.6213
-offset_bottom = 127.801
-color = Color(1, 1, 1, 0.678431)
+offset_left = 9.62
+offset_top = 32.80
+offset_right = 89.62
+offset_bottom = 127.80
+color = Color(1, 1, 1, 0.67)
 
 [node name="Tile" type="Sprite2D" parent="GridContainer/Buff2"]
-position = Vector2(50.8542, 72.5732)
+position = Vector2(50.85, 72.57)
 texture = ExtResource("2_qkmc2")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 128)
 
 [node name="Sprite" type="Sprite2D" parent="GridContainer/Buff2"]
-position = Vector2(50.0825, 58.3154)
+position = Vector2(50.08, 58.31)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_w0oyd")
 
@@ -111,9 +111,9 @@ layout_mode = 2
 [node name="Name" type="Label" parent="GridContainer/Buff3"]
 layout_mode = 0
 offset_left = 103.4
-offset_top = 36.3735
+offset_top = 36.37
 offset_right = 503.4
-offset_bottom = 56.3735
+offset_bottom = 56.37
 theme_override_font_sizes/font_size = 14
 text = "Blue orb buff thing"
 autowrap_mode = 2
@@ -121,29 +121,29 @@ autowrap_mode = 2
 [node name="Description" type="Label" parent="GridContainer/Buff3"]
 layout_mode = 0
 offset_left = 103.4
-offset_top = 53.8546
+offset_top = 53.85
 offset_right = 503.4
-offset_bottom = 128.855
+offset_bottom = 128.85
 theme_override_font_sizes/font_size = 12
 text = "Blue orb buff thing"
 autowrap_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="GridContainer/Buff3"]
 layout_mode = 0
-offset_left = 9.62128
-offset_top = 32.8006
-offset_right = 89.6213
-offset_bottom = 127.801
-color = Color(1, 1, 1, 0.678431)
+offset_left = 9.62
+offset_top = 32.80
+offset_right = 89.62
+offset_bottom = 127.80
+color = Color(1, 1, 1, 0.67)
 
 [node name="Tile" type="Sprite2D" parent="GridContainer/Buff3"]
-position = Vector2(50.8542, 72.5732)
+position = Vector2(50.85, 72.57)
 texture = ExtResource("2_qkmc2")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 128)
 
 [node name="Sprite" type="Sprite2D" parent="GridContainer/Buff3"]
-position = Vector2(50.0825, 58.3154)
+position = Vector2(50.08, 58.31)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_w0oyd")
 

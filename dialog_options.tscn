@@ -10,18 +10,18 @@ script = ExtResource("1_246hf")
 [node name="Fader" type="ColorRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 0.407843)
+color = Color(0, 0, 0, 0.40)
 
 [node name="Medium" type="Sprite2D" parent="."]
-position = Vector2(980.116, 699.182)
+position = Vector2(980.11, 699.18)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_8gvsh")
 
 [node name="GridContainer" type="GridContainer" parent="."]
-offset_left = 656.011
-offset_top = 557.469
-offset_right = 696.011
-offset_bottom = 737.469
+offset_left = 656.01
+offset_top = 557.46
+offset_right = 696.01
+offset_bottom = 737.46
 theme_override_constants/v_separation = 90
 
 [node name="Control" type="Control" parent="GridContainer"]
@@ -35,10 +35,10 @@ theme_type_variation = &"TriangleButton"
 
 [node name="Label" type="Label" parent="GridContainer/Control"]
 layout_mode = 0
-offset_left = 98.8928
-offset_top = 2.4613
-offset_right = 628.893
-offset_bottom = 92.4613
+offset_left = 98.89
+offset_top = 2.46
+offset_right = 628.89
+offset_bottom = 92.46
 text = "Uhhh yeah. How could you do this? Let's get this show on the road!"
 vertical_alignment = 1
 autowrap_mode = 2
@@ -54,10 +54,10 @@ theme_type_variation = &"TriangleButton"
 
 [node name="Label" type="Label" parent="GridContainer/Control2"]
 layout_mode = 0
-offset_left = 98.8928
-offset_top = 2.4613
-offset_right = 628.893
-offset_bottom = 92.4613
+offset_left = 98.89
+offset_top = 2.46
+offset_right = 628.89
+offset_bottom = 92.46
 text = "Uhhh yeah. How could you do this? Let's get this show on the road!"
 vertical_alignment = 1
 autowrap_mode = 2
@@ -73,13 +73,13 @@ theme_type_variation = &"TriangleButton"
 
 [node name="Label" type="Label" parent="GridContainer/Control3"]
 layout_mode = 0
-offset_left = 98.8928
-offset_top = 2.4613
-offset_right = 628.893
-offset_bottom = 92.4613
+offset_left = 98.89
+offset_top = 2.46
+offset_right = 628.89
+offset_bottom = 92.46
 text = "Uhhh yeah. How could you do this? Let's get this show on the road!"
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Jenkins" parent="." instance=ExtResource("3_075eb")]
-position = Vector2(831.644, 258.933)
+position = Vector2(831.64, 258.93)

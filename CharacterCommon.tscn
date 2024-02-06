@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bqk53ub4xnocc" path="res://Assets/range.png" id="12_v0dse"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mdc5f"]
-radius = 5.91449
-height = 42.1811
+radius = 5.91
+height = 42.18
 
 [sub_resource type="LabelSettings" id="LabelSettings_gu1px"]
 outline_size = 5
@@ -32,23 +32,23 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="CharacterCommon" type="CharacterBody2D"]
 z_index = 2
-scale = Vector2(1.93945, 1.97627)
+scale = Vector2(1.93, 1.97)
 motion_mode = 1
 wall_min_slide_angle = 0.0
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
-floor_max_angle = 3.14159
+floor_max_angle = 3.14
 floor_snap_length = 32.0
 safe_margin = 0.01
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.208486, -0.0978169)
-rotation = 1.5708
+position = Vector2(0.20, -0.09)
+rotation = 1.57
 shape = SubResource("CapsuleShape2D_mdc5f")
 
 [node name="TextParent" type="Node2D" parent="."]
-position = Vector2(0.141331, -51.0625)
+position = Vector2(0.14, -51.06)
 
 [node name="TextAnimation" parent="TextParent" instance=ExtResource("3_dh5hh")]
 anchors_preset = 8
@@ -67,22 +67,22 @@ vertical_alignment = 1
 [node name="DeathSprite" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
-position = Vector2(0, -22.6046)
+position = Vector2(0, -22.60)
 texture = ExtResource("2_sbscd")
 
 [node name="InteractableContainer" type="Node2D" parent="."]
-position = Vector2(-32.1645, -6.67046)
+position = Vector2(-32.16, -6.67)
 
 [node name="CustomContainer" type="Node2D" parent="."]
-position = Vector2(-32.1645, -24.487)
+position = Vector2(-32.16, -24.48)
 
 [node name="Sprite2D" type="Sprite2D" parent="CustomContainer"]
 
 [node name="SmallHealthBar" type="TextureProgressBar" parent="."]
-offset_left = -43.1905
-offset_top = -73.0093
-offset_right = 168.809
-offset_bottom = -33.0093
+offset_left = -43.19
+offset_top = -73.00
+offset_right = 168.80
+offset_bottom = -33.00
 scale = Vector2(0.4, 0.2)
 value = 50.0
 texture_under = ExtResource("10_252n3")
@@ -90,20 +90,20 @@ texture_progress = ExtResource("4_h1630")
 
 [node name="InfoBoxContainer" type="Node2D" parent="."]
 z_index = 10
-position = Vector2(94.6259, -20.8391)
+position = Vector2(94.62, -20.83)
 script = ExtResource("6_m13e8")
 
 [node name="Background" type="Sprite2D" parent="InfoBoxContainer"]
-modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(50.5714, 3.39394)
+modulate = Color(1, 1, 1, 0.78)
+position = Vector2(50.57, 3.39)
 scale = Vector2(0.5, 0.6)
 texture = ExtResource("4_fs8ym")
 
 [node name="Stats" type="GridContainer" parent="InfoBoxContainer"]
-offset_left = 2.86073
-offset_top = -30.9227
-offset_right = 152.861
-offset_bottom = 69.0773
+offset_left = 2.86
+offset_top = -30.92
+offset_right = 152.86
+offset_bottom = 69.07
 scale = Vector2(0.45, 0.45)
 theme_override_constants/h_separation = 160
 theme_override_constants/v_separation = 50
@@ -113,7 +113,7 @@ columns = 2
 layout_mode = 2
 
 [node name="MoveSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control"]
-position = Vector2(-16.9496, 11.0892)
+position = Vector2(-16.94, 11.08)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_j0nvt")
 
@@ -129,8 +129,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AuraLabel" type="Label" parent="InfoBoxContainer/Stats/Control"]
 layout_mode = 0
-offset_left = 39.0012
-offset_right = 79.0012
+offset_left = 39.00
+offset_right = 79.00
 offset_bottom = 19.0
 theme_override_font_sizes/font_size = 22
 vertical_alignment = 1
@@ -139,7 +139,7 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="InitiativeSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control2"]
-position = Vector2(-16.9496, 11.0892)
+position = Vector2(-16.94, 11.08)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_67inl")
 
@@ -157,7 +157,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="DamageSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control3"]
-position = Vector2(-16.9496, 11.0892)
+position = Vector2(-16.94, 11.08)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("7_1i2pp")
 
@@ -175,7 +175,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="RangeSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control4"]
-position = Vector2(-16.9496, 11.0892)
+position = Vector2(-16.94, 11.08)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("12_v0dse")
 
@@ -193,7 +193,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="ArmorSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control5"]
-position = Vector2(-16.9496, 11.0892)
+position = Vector2(-16.94, 11.08)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_gyfpw")
 
@@ -210,7 +210,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="ThreatSprite" type="Sprite2D" parent="InfoBoxContainer/Stats/Control6"]
-position = Vector2(-16.9496, 11.0892)
+position = Vector2(-16.94, 11.08)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_sbscd")
 
@@ -225,10 +225,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="TextureProgressBar" parent="InfoBoxContainer"]
 z_index = 5
-offset_left = -168.841
-offset_top = -78.1147
-offset_right = 43.1592
-offset_bottom = -48.1147
+offset_left = -168.84
+offset_top = -78.11
+offset_right = 43.15
+offset_bottom = -48.11
 scale = Vector2(0.7, 0.7)
 value = 50.0
 texture_under = ExtResource("10_252n3")
@@ -236,9 +236,9 @@ texture_progress = ExtResource("11_xtdie")
 
 [node name="HealthLabel" type="Label" parent="InfoBoxContainer/HealthBar"]
 layout_mode = 0
-offset_left = 44.231
+offset_left = 44.23
 offset_top = 5.0
-offset_right = 98.231
+offset_right = 98.23
 offset_bottom = 26.0
 text = "8888"
 label_settings = SubResource("LabelSettings_gu1px")
@@ -269,10 +269,10 @@ vertical_alignment = 2
 
 [node name="EnergyBar" type="TextureProgressBar" parent="InfoBoxContainer"]
 z_index = 5
-offset_left = -168.841
-offset_top = -59.1205
-offset_right = 43.1592
-offset_bottom = -29.1205
+offset_left = -168.84
+offset_top = -59.12
+offset_right = 43.15
+offset_bottom = -29.12
 scale = Vector2(0.7, 0.5)
 max_value = 5.0
 value = 3.0
@@ -281,27 +281,27 @@ texture_progress = ExtResource("12_fmp5g")
 
 [node name="ReferenceRect" type="ReferenceRect" parent="InfoBoxContainer"]
 visible = false
-offset_left = -129.457
-offset_top = -37.7451
-offset_right = -59.4574
-offset_bottom = 42.2549
+offset_left = -129.45
+offset_top = -37.74
+offset_right = -59.45
+offset_bottom = 42.25
 border_color = Color(1, 0, 0, 0)
 
 [node name="Passive" type="Control" parent="InfoBoxContainer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -39.177
-offset_top = 15.7609
-offset_right = 0.822968
-offset_bottom = 55.7609
+offset_left = -39.17
+offset_top = 15.76
+offset_right = 0.82
+offset_bottom = 55.76
 
 [node name="Label2" type="Label" parent="InfoBoxContainer/Passive"]
 layout_mode = 0
-offset_left = 14.048
-offset_top = 13.1138
-offset_right = 31.048
-offset_bottom = 26.1138
-theme_override_colors/font_color = Color(0.533333, 0.615686, 0.843137, 1)
+offset_left = 14.04
+offset_top = 13.11
+offset_right = 31.04
+offset_bottom = 26.11
+theme_override_colors/font_color = Color(0.53, 0.61, 0.84, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 10
@@ -309,10 +309,10 @@ text = "[P]"
 
 [node name="Label" type="Label" parent="InfoBoxContainer/Passive"]
 layout_mode = 0
-offset_left = 31.9052
-offset_top = 13.1138
-offset_right = 74.9052
-offset_bottom = 26.1138
+offset_left = 31.90
+offset_top = 13.11
+offset_right = 74.90
+offset_bottom = 26.11
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 10
@@ -320,10 +320,10 @@ text = "Aura: "
 
 [node name="ShortName" type="Label" parent="InfoBoxContainer/Passive"]
 layout_mode = 0
-offset_left = 74.2043
-offset_top = 13.1138
-offset_right = 151.204
-offset_bottom = 26.1138
+offset_left = 74.20
+offset_top = 13.11
+offset_right = 151.20
+offset_bottom = 26.11
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 10

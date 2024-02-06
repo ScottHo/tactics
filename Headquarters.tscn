@@ -13,45 +13,45 @@
 script = ExtResource("1_clf1y")
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.72549, 0.72549, 0.72549, 1)
+modulate = Color(0.72, 0.72, 0.72, 1)
 texture = ExtResource("2_hi6xu")
 centered = false
 
 [node name="Levels" type="Node2D" parent="."]
 
 [node name="AbortButton" type="Button" parent="Levels"]
-offset_left = 7.14996
-offset_top = 3.93852
+offset_left = 7.14
+offset_top = 3.93
 offset_right = 177.15
-offset_bottom = 93.9385
+offset_bottom = 93.93
 theme_override_font_sizes/font_size = 20
 text = "Exit"
 
 [node name="Checkpoints" parent="Levels" instance=ExtResource("1_r11n2")]
-position = Vector2(164.578, 63.2169)
+position = Vector2(164.57, 63.21)
 scale = Vector2(1.1, 1.1)
 
 [node name="FloorLabel" type="Label" parent="Levels"]
-offset_left = 612.571
-offset_top = 841.829
+offset_left = 612.57
+offset_top = 841.82
 offset_right = 1313.57
-offset_bottom = 890.829
+offset_bottom = 890.82
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 40
 text = "BRONZE FOUNDRY - LEVEL 1"
 
 [node name="EnterFloorButton" type="Button" parent="Levels"]
 offset_left = 1002.14
-offset_top = 926.316
+offset_top = 926.31
 offset_right = 1202.14
 offset_bottom = 1016.32
 theme_override_font_sizes/font_size = 30
 text = "Go"
 
 [node name="RosterButton" type="Button" parent="Levels"]
-offset_left = 726.174
-offset_top = 925.602
-offset_right = 926.174
+offset_left = 726.17
+offset_top = 925.60
+offset_right = 926.17
 offset_bottom = 1015.6
 theme_override_font_sizes/font_size = 20
 text = "Roster"
@@ -60,33 +60,33 @@ text = "Roster"
 visible = false
 
 [node name="CollectionContainer" parent="Collections" instance=ExtResource("2_yhgcx")]
-position = Vector2(277.217, -11.3213)
+position = Vector2(277.21, -11.32)
 scale = Vector2(1.5, 1.5)
 
 [node name="BackButton" type="Button" parent="Collections"]
-offset_left = 3.37448
-offset_top = 3.93855
-offset_right = 173.375
-offset_bottom = 93.9385
+offset_left = 3.37
+offset_top = 3.93
+offset_right = 173.37
+offset_bottom = 93.93
 theme_override_font_sizes/font_size = 20
 text = "Back"
 
 [node name="EnemyPanel" parent="Collections" instance=ExtResource("3_joss2")]
-offset_left = 705.664
-offset_top = 619.341
-offset_right = 705.664
-offset_bottom = 619.341
+offset_left = 705.66
+offset_top = 619.34
+offset_right = 705.66
+offset_bottom = 619.34
 scale = Vector2(1.5, 1.5)
 
 [node name="BotIcon" type="Sprite2D" parent="Collections"]
-position = Vector2(326.222, 788.036)
+position = Vector2(326.22, 788.03)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_60k36")
 
 [node name="BotName" type="Label" parent="Collections"]
-offset_left = 91.875
+offset_left = 91.87
 offset_top = 962.47
-offset_right = 591.875
+offset_right = 591.87
 offset_bottom = 1011.47
 theme_override_font_sizes/font_size = 36
 text = "-"
@@ -94,10 +94,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SpecialPanel1" parent="Collections" instance=ExtResource("5_mcj8g")]
-position = Vector2(993.376, 584.646)
+position = Vector2(993.37, 584.64)
 
 [node name="SpecialPanel2" parent="Collections" instance=ExtResource("5_mcj8g")]
-position = Vector2(1391.43, 584.646)
+position = Vector2(1391.43, 584.64)
 
 [node name="PassivePanel" parent="Collections" instance=ExtResource("8_0qc54")]
-position = Vector2(602.535, 846.309)
+position = Vector2(602.53, 846.30)
