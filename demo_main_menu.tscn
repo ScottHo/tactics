@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://co6uw02ob1vr"]
+[gd_scene load_steps=3 format=3 uid="uid://co6uw02ob1vr"]
 
 [ext_resource type="Script" path="res://demo_main_menu.gd" id="1_l175m"]
 [ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_gua28"]
-[ext_resource type="Texture2D" uid="uid://ui7y4aq56qpg" path="res://Assets/Boss1.png" id="4_3dbph"]
-[ext_resource type="Texture2D" uid="uid://ky4egufwvaqq" path="res://Assets/boss2.png" id="4_jdhk7"]
-[ext_resource type="Texture2D" uid="uid://bxtn18lv8qdtv" path="res://Assets/boss3.png" id="5_6xbh7"]
-[ext_resource type="PackedScene" uid="uid://c4oqyg37i21rs" path="res://Bots/buster.tscn" id="6_16hxo"]
 
 [node name="DemoMainMenu" type="Node2D"]
 script = ExtResource("1_l175m")
@@ -16,91 +12,31 @@ texture = ExtResource("2_gua28")
 centered = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 637.037
-offset_top = 201.127
-offset_right = 1173.04
-offset_bottom = 262.127
+offset_left = 431.758
+offset_top = 372.718
+offset_right = 1500.76
+offset_bottom = 493.718
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 50
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 100
 text = "FOUNDRY BREAK"
 
-[node name="Control" type="GridContainer" parent="."]
-offset_left = 56.3852
-offset_top = 276.485
-offset_right = 96.3852
-offset_bottom = 476.485
-theme_override_constants/v_separation = 100
-
-[node name="Control" type="Control" parent="Control"]
-layout_mode = 2
-
-[node name="Boss2" type="Sprite2D" parent="Control/Control"]
-visible = false
-position = Vector2(236.888, 149.43)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("4_3dbph")
-
-[node name="Button" type="Button" parent="Control/Control"]
-layout_mode = 2
-offset_top = 100.0
-offset_right = 200.0
-offset_bottom = 200.0
-theme_override_font_sizes/font_size = 26
-text = "PLAY"
-
-[node name="Control2" type="Control" parent="Control"]
-visible = false
-layout_mode = 2
-
-[node name="Boss3" type="Sprite2D" parent="Control/Control2"]
-position = Vector2(236.888, 149.43)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("4_jdhk7")
-
-[node name="Button" type="Button" parent="Control/Control2"]
-layout_mode = 2
-offset_top = 100.0
-offset_right = 200.0
-offset_bottom = 200.0
-theme_override_font_sizes/font_size = 26
-text = "Level 2"
-
-[node name="Control3" type="Control" parent="Control"]
-visible = false
-layout_mode = 2
-
-[node name="Boss4" type="Sprite2D" parent="Control/Control3"]
-position = Vector2(236.888, 149.43)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("5_6xbh7")
-
-[node name="Button" type="Button" parent="Control/Control3"]
-layout_mode = 2
-offset_top = 100.0
-offset_right = 200.0
-offset_bottom = 200.0
-theme_override_font_sizes/font_size = 26
-text = "Level 3"
-
 [node name="ExitButton" type="Button" parent="."]
-offset_left = 56.9357
-offset_top = 717.303
-offset_right = 256.936
-offset_bottom = 817.303
-theme_override_font_sizes/font_size = 26
+offset_left = 600.11
+offset_top = 579.128
+offset_right = 900.11
+offset_bottom = 759.128
+theme_override_font_sizes/font_size = 50
 text = "Exit"
 
-[node name="Label2" type="Label" parent="."]
-offset_left = 605.49
-offset_top = 931.613
-offset_right = 1270.49
-offset_bottom = 956.613
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 20
-text = "End of demo"
-
-[node name="Buster" parent="." instance=ExtResource("6_16hxo")]
-position = Vector2(1506.96, 716.719)
-scale = Vector2(2, 2)
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 990.611
+offset_top = 579.128
+offset_right = 1290.61
+offset_bottom = 759.128
+theme_override_font_sizes/font_size = 50
+text = "Play"
