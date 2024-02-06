@@ -14,11 +14,12 @@ func _ready():
             "gui_input",
             func (event : InputEvent):
                 if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-                    if event.double_click:
-                        if _entities[i].collection_id != Globals.current_recruit:
-                            remove_entity(_entities[i])
-                    else:
-                        entity_selected.emit(_entities[i])
+                    #if event.double_click:
+                    #    if _entities[i].collection_id != Globals.current_recruit:
+                    #        remove_entity(_entities[i])
+                    #else:
+                    #    entity_selected.emit(_entities[i])
+                    entity_selected.emit(_entities[i])
                 )
     return
 
