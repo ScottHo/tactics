@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6iqxvpypem6r"]
+[gd_scene load_steps=18 format=3 uid="uid://b6iqxvpypem6r"]
 
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="2_sbscd"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
 [ext_resource type="Texture2D" uid="uid://cmlcf47flv4my" path="res://Assets/GUI/info_box_hover.png" id="4_fs8ym"]
+[ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/GUI/Health_Over.png" id="4_h1630"]
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/GUI/Boot.png" id="5_j0nvt"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/GUI/initiative.png" id="6_67inl"]
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="6_m13e8"]
@@ -77,13 +78,23 @@ position = Vector2(-32.1645, -24.487)
 
 [node name="Sprite2D" type="Sprite2D" parent="CustomContainer"]
 
+[node name="SmallHealthBar" type="TextureProgressBar" parent="."]
+offset_left = -43.1905
+offset_top = -73.0093
+offset_right = 168.809
+offset_bottom = -33.0093
+scale = Vector2(0.4, 0.2)
+value = 50.0
+texture_under = ExtResource("10_252n3")
+texture_progress = ExtResource("4_h1630")
+
 [node name="InfoBoxContainer" type="Node2D" parent="."]
-modulate = Color(1, 1, 1, 0.862745)
 z_index = 10
 position = Vector2(94.6259, -20.8391)
 script = ExtResource("6_m13e8")
 
 [node name="Background" type="Sprite2D" parent="InfoBoxContainer"]
+modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(50.5714, 3.39394)
 scale = Vector2(0.5, 0.6)
 texture = ExtResource("4_fs8ym")
@@ -215,9 +226,9 @@ metadata/_edit_use_anchors_ = true
 [node name="HealthBar" type="TextureProgressBar" parent="InfoBoxContainer"]
 z_index = 5
 offset_left = -168.841
-offset_top = 45.8383
+offset_top = -78.1147
 offset_right = 43.1592
-offset_bottom = 75.8383
+offset_bottom = -48.1147
 scale = Vector2(0.7, 0.7)
 value = 50.0
 texture_under = ExtResource("10_252n3")
@@ -259,9 +270,9 @@ vertical_alignment = 2
 [node name="EnergyBar" type="TextureProgressBar" parent="InfoBoxContainer"]
 z_index = 5
 offset_left = -168.841
-offset_top = 63.8383
+offset_top = -59.1205
 offset_right = 43.1592
-offset_bottom = 93.8383
+offset_bottom = -29.1205
 scale = Vector2(0.7, 0.5)
 max_value = 5.0
 value = 3.0
