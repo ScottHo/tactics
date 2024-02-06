@@ -9,6 +9,7 @@ DO NEXT
 - "Popup" for current action/event
 - Add placeholder text on unfinished sprites
 - Add discord, twitter, steam page link
+- Deploy Button Gui should be closer to collections button
 
 DO LATER
 - Brutus Art/Animations
