@@ -1,7 +1,5 @@
 BUGS
 - Getting hit animations cut short
-- health bars z index fix
-- health bars should be red for enemies
 - shielding gave HP somehow
 - show recruit on path in room_chooser
 - Need way to auto deploy/clear all deploy

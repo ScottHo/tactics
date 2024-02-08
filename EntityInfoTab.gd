@@ -59,6 +59,7 @@ func update():
     else:
         background.texture = load("res://Assets/GUI/info_box_enemy_hover.png")
         threatLabel.text = "-"
+        healthBar.texture_progress = load("res://Assets/GUI/Health_Over_Thick_Red.png")
     healthBar.max_value = _entity.get_max_health()
     healthBar.value = _entity.health
     energyBar.value = _entity.energy

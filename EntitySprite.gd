@@ -21,6 +21,7 @@ var NE :Node2D
 var NW :Node2D
 var south_node: Node2D
 var north_node: Node2D
+var texture_small_bar: CompressedTexture2D
 signal doneMoving
 
 func _ready():
@@ -31,6 +32,7 @@ func _ready():
     sprite = $Sprite
     interContainer = $CharacterCommon/InteractableContainer
     custom_sprite = $CharacterCommon/CustomContainer/Sprite2D
+    texture_small_bar = preload("res://Assets/GUI/Health_Over_red.png")
     if sprite.get_child_count() >= 4:
         SE = $Sprite/SE
         SW = $Sprite/SW
@@ -206,6 +208,8 @@ func update_from_entity(entity: Entity):
     infoTab.update_from_entity(entity)
     smallHealthBar.value = entity.health
     smallHealthBar.max_value = entity.max_health
+    if not entity.is_ally:
+        smallHealthBar.texture_progress = texture_small_bar
     return
     
 func loop_modulate(color: Color):
