@@ -41,12 +41,21 @@ func queue_animation(c, t):
     return
 
 func update_stat(value: int, stat: String):
-    var c = Color.WHITE
+    var c = Color.ROYAL_BLUE
+    var pre = "+"
+    if value < 0:
+        c = Color.CORAL
+        pre = ""
+    queue_animation(c, pre + str(value)  + " " + stat)
+    return
+
+func update_hp(value: int):
+    var c = Color.GREEN
     var pre = "+"
     if value < 0:
         c = Color.RED
         pre = ""
-    queue_animation(c, pre + str(value)  + " " + stat)
+    queue_animation(c, pre + str(value)  + " Health")
     return
 
 func status_effect(value: int, status: String):

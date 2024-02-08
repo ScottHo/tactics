@@ -66,6 +66,7 @@ var aura_armor_modifier: int = 0
 var aura_damage_modifier: int = 0
 var aura_shield: int = 0
 var aura_regen: int  = 0
+var aura_energy: int = 0
 
 # Temporary Modifiers
 var immune_count: int
@@ -163,27 +164,25 @@ func loseHP(hp):
     hp = damage_preview(hp)
     if shield_value > hp:
         shielded(-hp)
-        shield_value -= hp
         return
     
     if shield_value > 0:
         hp = -shield_value
-        shielded(-shield_value)
-        shield_value = 0
+        shielded(-hp)
         
     health -= hp
     if health < 0:
         health = 0
     if not check_sprite():
         return
-    sprite.textAnimation().update_stat(-hp, "Health")
+    sprite.textAnimation().update_hp(-hp)
     return
 
 func gainHP(hp):
     health += hp
     if health > get_max_health():
         health = get_max_health()
-    sprite.textAnimation().update_stat(hp, "Health")
+    sprite.textAnimation().update_hp(hp)
     return
 
 func miss():
@@ -233,9 +232,7 @@ func set_energy(e):
 func update_energy(value):
     set_energy(energy + value)
     if value > 0:
-        if not check_sprite():
-            return
-        sprite.textAnimation().update_stat(value, "Energy")
+        custom_text("+1 Energy", Color.CYAN)
     return
 
 func update_damage(value):
@@ -359,6 +356,8 @@ func setup_next_turn():
         loseThreat(1)
         if aura_regen > 0:
             gainHP(2)
+        if aura_energy > 0:
+            update_energy(1)
         if aura_shield > 0:
             shielded(aura_shield)
         if wipe_downgrades_chance > 0:
@@ -442,6 +441,7 @@ func reset_auras():
     aura_armor_modifier = 0
     aura_shield = 0
     aura_regen = 0
+    aura_energy = 0
     return
     
 func check_sprite():

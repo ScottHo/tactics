@@ -248,7 +248,7 @@ static func add_static_shield(ent: Entity, type: int):
 
 static func add_focused_repair(ent: Entity, type: int):
     var stats = {
-        "Affects": "Allied Units",
+        "Affects": TargetTypes.ALLIES,
         "Cost": 2,
         "Heal Amount": [6, 10, 14, 18],
     }
@@ -262,20 +262,22 @@ static func add_focused_repair(ent: Entity, type: int):
     action.target_animation = TargetAnimations.BUFF
     return
 
-static func add_swarm_of_pain(ent: Entity, type: int):
+static func add_nano_rebuild(ent: Entity, type: int):
     var stats = {
-        "Affects": TargetTypes.ENEMIES,
-        "Damage": "2x Current Health",
+        "Affects": TargetTypes.ALLIES,
+        "Max Health Increase": 5,
+        "Heal Amount": 99,
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
-        var damage = _user.health * 2
         for _ent in _targets:
-            _user.damage_done += _ent.damage_preview(damage)
-            _ent.loseHP(damage)
+            _ent.wipe_downgrades()
+            _ent.update_max_health(10)            
+            _ent.gainHP(99)
         return
-    var d = "Deal damage based on Nano-Nano's current health to a single unit"
-    var action := _add_action(ent, "Swarm of Pain", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
-    action.target_animation = TargetAnimations.HIT
+    var d = "Completely heal an allied unit, and remove all downgrades, and increase max_health by 10"
+    var action := _add_action(ent, "Nano-Rebuild", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
+    action.target_animation = TargetAnimations.BUFF
+    action.highlight_style = Highlights.HEAL
     return
 
 static func add_nano_field(ent: Entity, type: int):
@@ -366,7 +368,7 @@ static func add_snipe(ent: Entity, type: int):
 static func add_god_shot(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
-        "Extra Damage": 25,
+        "Extra Damage": 20,
         "Extra Range": 99,
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
@@ -531,6 +533,7 @@ static func add_KO_punch(ent: Entity, type: int):
             _user.damage_done += _ent.damage_preview(damage)            
             _ent.loseHP(damage)
             _ent.skip_next_turn = true
+            _ent.custom_text("Knocked Out!", Color.MEDIUM_PURPLE)
         return
     var d = "Knockout the enemy, skipping it's next turn"
     var action := _add_action(ent, "Knockout Punch", d, [], effect, type, stats, "res://Effects/explosion_yellow.tscn")
@@ -566,7 +569,7 @@ static func add_bootleg_upgrades(ent: Entity, type: int):
         "Added Damage": "-1 / 1",
         "Added Armor": "-1 / 1",
         "Chance for each Upgrade": ["50%", "60%", "70%", "80%"],
-        "Cost": 1,
+        "Cost": 2,
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         var l = _action.level + 4

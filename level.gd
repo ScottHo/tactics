@@ -69,7 +69,7 @@ func _ready():
     menuService.jenkins.tutorial_mode = _mission.is_tutorial
     menuService.tutorial_mode = _mission.is_tutorial
     turnService.update()    
-    menuService.showTurns(turnService.next5Turns())
+    menuService.showTurns(turnService.next6Turns())
     auraService.update()
     mission_start()
     return
@@ -141,11 +141,11 @@ func setup_entities():
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,5))
     else:
         var allies = Globals.entities_to_deploy
-        var offset = 1
+        var offset = -1
         if len(allies) < 3:
             offset = 3
         elif len(allies) < 5:
-            offset = 2
+            offset = 1
         for i in range(len(allies)):
             if allies[i] != null:
                 setup_entity_for_level(allies[i], Vector2i(2, i+offset))
@@ -162,7 +162,7 @@ func setup_entities():
         for i in range(9):
             tileMap.set_cell(0, tiles[i], 1, Tiles.CRACKED)
         
-    setup_entity_for_level(_mission.boss, Vector2i(9, 2))
+    setup_entity_for_level(_mission.boss, Vector2i(6, 2))
     return
 
 func currentEntity() -> Entity:
@@ -178,7 +178,6 @@ func mission_start():
     var t = get_tree().create_timer(1.5)
     t.timeout.connect(func():
         if _mission.is_tutorial:
-            menuService.restore_button_states()
             tutorialService.start()
         else:
             menuService.jenkins_talk("This bot looks tough! Good luck.", Jenkins.Mood.NORMAL)
@@ -221,8 +220,12 @@ func nextTurn_continued2():
         _special_texts_set = false
         if not _is_first_turn:
             currentEntity().specials_left = _mission.specials_per_turn
-    _is_first_turn = false
-    menuService.showTurns(turnService.next5Turns())
+    Globals.enemy_turn = false
+    if not currentEntity().is_ally:
+        Globals.enemy_turn = true
+    if _mission.is_tutorial:
+        _is_first_turn = false
+    menuService.showTurns(turnService.next6Turns())
     menuService.pre_showCurrentTurn(current_turn_id)
     resetPlayerServices()    
     timer.timeout.connect(nextTurn_continued3, CONNECT_ONE_SHOT)
@@ -273,6 +276,17 @@ func nextAiStep():
 
 func do_nextAiStep():
     if _ai_state == AiState.NONE:
+        if currentEntity().skip_next_turn:
+            currentEntity().skip_next_turn = false
+            currentEntity().custom_text("Knocked Out!", Color.MEDIUM_PURPLE)
+            _ai_callable = nextTurn
+            startAiDelay()
+            return
+        if _is_first_turn:
+            _is_first_turn = false
+            _ai_callable = nextTurn
+            startAiDelay()
+            return
         _ai_state = AiState.MOVE
         startAiMove()
         return
@@ -301,7 +315,10 @@ func do_nextAiStep():
     return
 
 func startAiMove():
-    print_debug("Start AI Move")
+    if _is_first_turn:
+        nextAiStep()
+        return
+    print_debug("Start AI Move")    
     aiMoveService.start(currentEntity())
     var movePath = aiMoveService.find_move()
     _ai_callable = func ():

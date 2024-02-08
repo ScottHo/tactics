@@ -18,6 +18,7 @@ var recruit_options := []
 var in_action := false
 var in_move := false
 var on_ui := false
+var enemy_turn := false
 
 
 
@@ -38,6 +39,7 @@ func reset():
     recruit_options = []
     in_action = false
     in_move = false
+    enemy_turn = false
     on_ui = false
     return
 

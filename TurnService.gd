@@ -21,7 +21,7 @@ func update(random=true):
                 turnNode.total = 0
         _turnNodes.append(turnNode)
     
-    for i in range(5):
+    for i in range(6):
         _turnCache.append(findNextTurn())
     return
 
@@ -32,8 +32,7 @@ func update_new():
         var entity: Entity = _state.get_entity(entity_id)
         if entity.alive:
             var turnNode = TurnNode.new()
-            if entity.is_ally:
-                turnNode.total = 100 + randi_range(0, 5)
+            turnNode.total = 100 + randi_range(0, 5)
             turnNode.entity_id = entity_id
             _turnNodes.push_front(turnNode)
     return
@@ -79,5 +78,5 @@ func startNextTurn() -> int:
     _turnCache.append(findNextTurn())
     return ret
 
-func next5Turns() -> Array[int]:
+func next6Turns() -> Array[int]:
     return _turnCache

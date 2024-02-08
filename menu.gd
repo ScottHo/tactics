@@ -208,7 +208,7 @@ func setState(state: State):
     return
 
 func showTurns(turns: Array[int]):
-    for i in range(5):
+    for i in range(6):
         _setup_turn_sprite(_state.get_entity(turns[i]), turnSpriteContainer.get_child(i).get_child(0))
     return
 
@@ -356,7 +356,9 @@ func cache_button_states():
     return
 
 func restore_button_states():
-    nextTurnButton.text = "End\nTurn"  
+    nextTurnButton.text = "End\nTurn"
+    if len(_button_state_cache) == 0:
+        return
     moveButton.disabled = _button_state_cache[0]
     nextTurnButton.disabled = _button_state_cache[1]
     interactButton.disabled = _button_state_cache[2]

@@ -104,7 +104,7 @@ func start(entity: Entity, _undeploy: bool):
     _entity = entity
     reset()
     setup_entity()
-    if entity.collection_id == Globals.current_recruit:
+    if _entity.collection_id == Globals.current_recruit:
         deploy_button.disabled = true
     return
         
@@ -240,7 +240,7 @@ func update_mods(container):
     return
 
 func update_to_global(container):
-    var key = _entity.display_name
+    var key = _entity.collection_id
     var points_data: SkillPointData = Globals.entity_skill_point_distributions[key]
     points_data.total += 1
     match container:
@@ -284,7 +284,7 @@ func deploy():
     return
 
 func update_entity():
-    _entity.armor_modifier = health_mod
+    _entity.health_modifier = health_mod
     _entity.armor_modifier = armor_mod
     _entity.movement_modifier = movement_mod
     _entity.initiative_modifier = initiative_mod
@@ -295,9 +295,11 @@ func update_entity():
     return
 
 func redo():
-    Globals.entity_skill_point_distributions[_entity.display_name] = SkillPointData.new()
+    Globals.entity_skill_point_distributions[_entity.collection_id] = SkillPointData.new()
     reset()
     setup_entity()
+    if _entity.collection_id == Globals.current_recruit:
+        deploy_button.disabled = true
     return
 
 func reset():
@@ -364,7 +366,7 @@ func setup_entity():
     return
 
 func update_from_global():
-    var key = _entity.display_name
+    var key = _entity.collection_id
     if not Globals.entity_skill_point_distributions.has(key):
         Globals.entity_skill_point_distributions[key] = SkillPointData.new()
     var point_data: SkillPointData = Globals.entity_skill_point_distributions[key]

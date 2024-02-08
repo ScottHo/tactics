@@ -1,5 +1,15 @@
 BUGS
 - Getting hit animations cut short
+- health bars z index fix
+- health bars should be red for enemies
+- shielding gave HP somehow
+- show recruit on path in room_chooser
+- Need way to auto deploy/clear all deploy
+- threat still bugged sometimes
+- show upcoming boss spell cycle
+- final boss 1 too easy
+- specials 1 can be buffed a little
+- Boss not cycling spells enough
 
 DO NEXT
 - Super simple tutorial bot
@@ -9,7 +19,7 @@ DO NEXT
 - "Popup" for current action/event
 - Add placeholder text on unfinished sprites
 - Add discord, twitter, steam page link
-- Deploy Button Gui should be closer to collections button
+- Deploy Button Gui should look more like collections buttons
 
 DO LATER
 - Brutus Art/Animations

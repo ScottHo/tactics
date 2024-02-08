@@ -22,7 +22,7 @@ extends Node2D
 @onready var recruitUltDesc : Label = $RoomContainer/Recruit1/AbilitiesGrid/Ultimate/Description
 
 var missions: Array = []
-var recruits: Array = []
+var recruits: Array = [-1, -1, -1]
 var room_idx: int = 1
 
 func _ready():
@@ -54,7 +54,7 @@ func setup_nodes():
     return
 
 func switch_to_room():
-    setup_recruit(recruits[room_idx])
+    setup_recruit()
     room_info.start(missions[room_idx]) 
     room_container.visible = true
     choose_container.visible = false
@@ -121,8 +121,11 @@ func setup_floor(level: int, _floor):
     Globals.recruit_options = recruits
     return
 
-func setup_recruit(bot: EntityFactory.Bot):
-    var ent = EntityFactory.create_bot(bot)
+func setup_recruit():
+    if recruits[room_idx] < 0:
+        recruitPanel.visible = false
+        return
+    var ent = EntityFactory.create_bot(recruits[room_idx])
     recruitName.text = ent.display_name
     recruitSprite.texture = load(ent.icon_path)
     recruitStatsPanel.start(ent)

@@ -58,7 +58,7 @@ static func create_god_mode():
     return ent
         
 static func create_brutus():
-    var ent = _create_entity("Brutis", 21, 5, 1, 10, "res://Bots/brutus.tscn", "res://Assets/Brutus.png", true)
+    var ent = _create_entity("Brutis", 22, 5, 1, 10, "res://Bots/brutus.tscn", "res://Assets/Brutus.png", true)
     ent.armor += 1
     var p = Passive.new()
     p.display_name = "Thorned Armor"
@@ -115,11 +115,11 @@ static func create_nanonano():
     ent.passive = p
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_nano_field(ent, ActionType.ACTION1)
-    ActionFactory.add_swarm_of_pain(ent, ActionType.ACTION2)
+    ActionFactory.add_nano_rebuild(ent, ActionType.ACTION2)
     return ent
 
 static func create_smithy():
-    var ent = _create_entity("Smithy", 20, 4, 1, 10, "res://Bots/smithy.tscn", "res://Assets/Bots/Smithy/Icon.png", true)
+    var ent = _create_entity("Smithy", 21, 4, 1, 10, "res://Bots/smithy.tscn", "res://Assets/Bots/Smithy/Icon.png", true)
     ent.damage -= 1
     var p = Passive.new()
     p.display_name = "Quick Assist"
@@ -135,7 +135,7 @@ static func create_smithy():
     return ent
 
 static func create_longshot():
-    var ent = _create_entity("Longshot", 16, 4, 4, 10, "res://Bots/longshot.tscn", "res://Assets/LongShot.png", true)
+    var ent = _create_entity("Longshot", 18, 4, 3, 10, "res://Bots/longshot.tscn", "res://Assets/LongShot.png", true)
     var p = Passive.new()
     p.display_name = "Marksman Advice"
     p.description = "Allied units in a square near Longshot have +1 range"
@@ -150,13 +150,14 @@ static func create_longshot():
     return ent
 
 static func create_batterie():
-    var ent = _create_entity("Batterie", 17, 4, 3, 10, "res://Bots/batterie.tscn", "res://Assets/batterie.png", true)
+    var ent = _create_entity("Batterie", 18, 4, 3, 10, "res://Bots/batterie.tscn", "res://Assets/batterie.png", true)
     var p = Passive.new()
     p.display_name = "Circuit Efficiency"
-    p.description = "Gain one extra energy per turn"
-    p.repeated_effect = func(e: Entity):
-        e.update_energy(1)
-    p.is_repeated = true
+    p.description = "Allied units in a square near Batterie gain 1 extra energy at start of turn"
+    p.aura_short_desc = "+1 Energy"
+    p.aura_effect = func(e: Entity):
+        e.aura_energy = 1
+    p.is_aura = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_power_up(ent, ActionType.ACTION1)
@@ -164,13 +165,13 @@ static func create_batterie():
     return ent
 
 static func create_punch_e():
-    var ent = _create_entity("Punch-E", 18, 4, 1, 10, "res://Bots/punch-e.tscn", "res://Assets/punch-e.png", true)
+    var ent = _create_entity("Punch-E", 19, 4, 1, 10, "res://Bots/punch-e.tscn", "res://Assets/punch-e.png", true)
     var p = Passive.new()
     p.display_name = "Reckless Fighter"
-    p.description = "Punch-E starts with -2 armor and +2 damage"
+    p.description = "Punch-E starts with -1 armor and +2 damage"
     p.static_effect = func(e: Entity):
         e.damage_modifier += 2
-        e.armor_modifier -= 2
+        e.armor_modifier -= 1
     p.is_static = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
@@ -179,7 +180,7 @@ static func create_punch_e():
     return ent
 
 static func create_peppershot():
-    var ent = _create_entity("Peppershot", 15, 4, 4, 10, "res://Bots/peppershot.tscn", "res://Assets/Bots/Peppershot/Icon.png", true)
+    var ent = _create_entity("Peppershot", 18, 4, 4, 10, "res://Bots/peppershot.tscn", "res://Assets/Bots/Peppershot/Icon.png", true)
     var p = Passive.new()
     p.display_name = "Dizzy Moves"
     p.description = "Peppershot has a 20% chance for any attack to miss"
@@ -207,7 +208,7 @@ static func create_buster():
     return ent
 
 static func create_pulsar():
-    var ent = _create_entity("Pulsar", 18, 4, 3, 10, "res://Bots/pulsar.tscn", "res://Assets/Bots/Pulsar/Icon.png", true)
+    var ent = _create_entity("Pulsar", 19, 4, 3, 10, "res://Bots/pulsar.tscn", "res://Assets/Bots/Pulsar/Icon.png", true)
     var p = Passive.new()
     p.display_name = "Inversion"
     p.description = "Pulsar's basic attack's can heal allies"
@@ -224,9 +225,9 @@ static func create_drillbit():
     var ent = _create_entity("Drill Bit", 20, 4, 1, 10, "res://Bots/drillbit.tscn", "res://Assets/Bots/DrillBit/Icon.png", true)
     var p = Passive.new()
     p.display_name = "Armor Break"
-    p.description = "Drillbit has a 10% chance to reduce the enemies armor by 1"
+    p.description = "Drillbit has a 15% chance to reduce the enemies armor by 1"
     p.static_effect = func(e: Entity):
-        e.armor_break_chance = .1
+        e.armor_break_chance = .15
     p.is_static = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
@@ -249,7 +250,7 @@ static func create_saber():
     return ent
 
 static func create_auto_turret_3000():
-    var ent = _create_entity("A.T. 3000", 5, 0, 5, 15, "res://Bots/auto_turret_3000.tscn", "res://Assets/Bots/AutoTurret3000/auto_turret_3000.png", true)
+    var ent = _create_entity("A.T. 3000", 3, 0, 5, 15, "res://Bots/auto_turret_3000.tscn", "res://Assets/Bots/AutoTurret3000/auto_turret_3000.png", true)
     ent.damage += 6
     ent.is_add = true
     ActionFactory.add_base_attack(ent)
@@ -261,7 +262,7 @@ static func create_tutorial_bot():
     p.display_name = "Armor Aura"
     p.description = "Allied units in a square near Training Robot have +1 armor. Mouse over Training Robot \
 to see the range of passive aura's"
-    p.aura_short_desc = "+1 Armor"    
+    p.aura_short_desc = "Armor Aura"
     p.aura_effect = func(e: Entity):
         e.aura_armor_modifier = 1
     p.is_aura = true
@@ -277,14 +278,15 @@ static func create_tutorial_boss():
     return ent
 
 static func create_boss_1_1():
-    var ent = _create_entity("Bronze Grunt", 20, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
+    var ent = _create_entity("Bronze Grunt", 16, 3, 1, 10, "res://Bots/enemy_1.tscn", "res://Assets/Boss1.png", false)
     ActionFactory.add_base_attack(ent)
     ent.damage -= 1
     return ent
 
 static func create_boss_1_2():
-    var ent = _create_entity("Bronze Grunt", 30, 3, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    var ent = _create_entity("Bronze Grunt", 32, 3, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
     ActionFactory.add_base_attack(ent)
+    ent.damage -= 1
     return ent
 
 static func create_boss_1_3():
@@ -299,27 +301,34 @@ static func create_boss_1_4():
     return ent
 
 static func create_boss_1_5():
-    var ent = _create_entity("Bronze Grunt", 90, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
+    var ent = _create_entity("Bronze Grunt", 95, 4, 1, 10, "res://Bots/enemy_2.tscn", "res://Assets/boss2.png", false)
     ActionFactory.add_base_attack(ent)
     ent.damage += 1
     return ent
 
 static func create_boss_1_6():
-    var ent = _create_entity("Bronze Grunt", 110, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    var ent = _create_entity("Bronze Grunt", 120, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
     ActionFactory.add_base_attack(ent)
     ent.damage += 2
     return ent
 
 static func create_boss_1_f():
-    var ent = _create_entity("Bronze Bull", 150, 4, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    var ent = _create_entity("Bronze Bull", 180, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
     ent.damage += 2
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_spawn_1():
-    var ent = _create_entity("Mini Bronze Grunt", 5, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    var ent = _create_entity("Mini Bronze Grunt", 8, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
     ent.is_add = true
     ent.damage -= 1
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_spawn_1_b():
+    var ent = _create_entity("Mini Bronze Grunt", 16, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    ent.is_add = true
+    ent.damage += 1
     ActionFactory.add_base_attack(ent)
     return ent
 
@@ -376,8 +385,15 @@ static func create_boss_2_f():
     return ent
 
 static func create_boss_spawn_2():
-    var ent = _create_entity("Mini Iron Grunt", 8, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    var ent = _create_entity("Mini Iron Grunt", 12, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
     ent.is_add = true
+    ActionFactory.add_base_attack(ent)
+    return ent
+
+static func create_boss_spawn_2_b():
+    var ent = _create_entity("Mini Iron Grunt", 25, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    ent.is_add = true
+    ent.damage += 1
     ActionFactory.add_base_attack(ent)
     return ent
 

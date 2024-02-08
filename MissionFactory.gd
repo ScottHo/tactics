@@ -45,11 +45,11 @@ static func foundry_1_final_boss() -> Mission:
 
     var s2 = Special.new()
     s2.display_name = "Bronze Missles"
-    s2.description = "Deals 3 damage to every allied unit in a square area, centered on every allied unit"
+    s2.description = "Deals 4 damage to every allied unit in a square area, centered on every allied unit"
     s2.target = Special.Target.ALL
     s2.shape = Special.Shape.SQUARE_3x3
     s2.mechanic = Special.Mechanic.SPREAD
-    s2.damage = 3
+    s2.damage = 4
     s2.effect = func(_ent: Entity):
         return
     s2.animation_path = "res://Effects/explosion_yellow.tscn"
@@ -65,11 +65,11 @@ static func foundry_1_final_boss() -> Mission:
 
     var s4 = Special.new()
     s4.display_name = "Bronze Hammer"
-    s4.description = "Deals 9 damage spread over every allied unit in a diamond area, centered on a random allied unit"
+    s4.description = "Deals 12 damage spread over every allied unit in a diamond area, centered on a random allied unit"
     s4.target = Special.Target.RANDOM
     s4.shape = Special.Shape.DIAMOND_3x3
     s4.mechanic = Special.Mechanic.SOAK
-    s4.damage = 9
+    s4.damage = 12
     s4.effect = func(_ent: Entity):
         return
     s4.animation_path = "res://Effects/explosion_yellow.tscn"
@@ -99,8 +99,24 @@ static func foundry_2_final_boss() -> Mission:
     s2.mechanic = Special.Mechanic.SPREAD
     s2.effect = func(_ent: Entity):
         _ent.update_movement(-1)
+    
+    var s3 = Special.new()    
+    s3.display_name = "Iron Quake"
+    s3.description = "Strike the floor, causing tiles under allied units to crack and all brevious cracked tiles to break"
+    s3.target = Special.Target.ALL
+    s3.shape = Special.Shape.SINGLE
+    s3.mechanic = Special.Mechanic.DESTROY_TILE
 
-    m.specials = [s1, s2]
+    var s4 = Special.new()    
+    s4.display_name = "Cross "
+    s4.description = "Deals 5 damage to every allied unit in a cross area, centered on every allied unit"
+    s4.target = Special.Target.ALL
+    s4.shape = Special.Shape.CROSS
+    s4.mechanic = Special.Mechanic.SPREAD
+    s4.damage = 5
+    s4.animation_path = "res://Effects/explosion_yellow.tscn"
+
+    m.specials = [s1, s2, s3, s4]
     return m
 
 static func foundry_3_final_boss() -> Mission:
@@ -259,8 +275,8 @@ static func foundry_1_floors(_floor: int) -> Array:
             m.specials = []
         if _floor == 2:
             m.boss = EntityFactory.create_boss_1_2()
-            m.specials_per_turn = 0
-            m.specials = []
+            m.specials_per_turn = 1
+            m.specials = [specs[i], recharge_special()]
         if _floor == 3:
             m.boss = EntityFactory.create_boss_1_3()
             m.specials_per_turn = 1
@@ -268,7 +284,7 @@ static func foundry_1_floors(_floor: int) -> Array:
         if _floor == 4:
             m.boss = EntityFactory.create_boss_1_4()
             m.specials_per_turn = 1
-            m.specials = [specs[i], recharge_special()]
+            m.specials = [specs[i], specs[i+1]]
         if _floor == 5:
             m.boss = EntityFactory.create_boss_1_5()
             m.specials_per_turn = 1
@@ -282,7 +298,7 @@ static func foundry_1_floors(_floor: int) -> Array:
     return ret
 
 static func foundry_2_floors(_floor: int) -> Array:
-    var specs = foundry_2_specials()
+    var specs = foundry_1_specials()
     specs.shuffle()
     var ret = []
     for i in range(3):
@@ -369,7 +385,7 @@ static func foundry_1_specials() -> Array:
         
     s = Special.new()
     s.display_name = "Comically Large Missle"
-    s.description = "Deals 8 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+    s.description = "Deals 9 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
     s.target = Special.Target.RANDOM
     s.shape = Special.Shape.DIAMOND_3x3
     s.mechanic = Special.Mechanic.SOAK
@@ -402,7 +418,7 @@ static func foundry_1_specials() -> Array:
 
     s = Special.new()    
     s.display_name = "Deploy Minions"
-    s.description = "Deploy 3 minions"
+    s.description = "Deploy 3 minions with 8 health and 3 damage"
     s.target = Special.Target.SPAWN_CLOSE
     s.shape = Special.Shape.OCTAGON
     s.mechanic = Special.Mechanic.SPAWN
@@ -411,7 +427,7 @@ static func foundry_1_specials() -> Array:
 
     s = Special.new()
     s.display_name = "Hater Missle"
-    s.description = "Deal 4 damage to the highest threat target, then remove all it's threat"
+    s.description = "Deal 5 damage to the highest threat target, then remove all it's threat"
     s.target = Special.Target.THREAT
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.SPREAD
@@ -424,7 +440,7 @@ static func foundry_1_specials() -> Array:
     
     s = Special.new()
     s.display_name = "Regenerative Plating"
-    s.description = "Gains 9 health"
+    s.description = "Gains 10 health"
     s.target = Special.Target.SELF
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
@@ -436,11 +452,11 @@ static func foundry_1_specials() -> Array:
     
     s = Special.new()
     s.display_name = "Melting Cross Beam"
-    s.description = "Deals 1 damage to a random unit and all surrounding units in a cross, reducing their armor by 1"
+    s.description = "Deals 3 damage to a random unit and all surrounding units in a cross, reducing their armor by 1"
     s.target = Special.Target.RANDOM
     s.shape = Special.Shape.CROSS
     s.mechanic = Special.Mechanic.SPREAD
-    s.damage = 1
+    s.damage = 3
     s.effect = func(_ent: Entity):
         _ent.update_armor(-1)
     s.animation_path = "res://Effects/explosion_yellow.tscn"
@@ -448,18 +464,14 @@ static func foundry_1_specials() -> Array:
 
     s = Special.new()
     s.display_name = "Anti-artillery missle"
-    s.description = "Deals 4 damage to the farthest allied unit"
+    s.description = "Deals 5 damage to the farthest allied unit"
     s.target = Special.Target.RANDOM
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.SPREAD
-    s.damage = 4
+    s.damage = 5
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
-    return ret
 
-static func foundry_2_specials() -> Array:
-    var ret = []
-    var s = Special.new()
     s.display_name = "Big Bot Energy"
     s.description = "Gains 1 damage"
     s.target = Special.Target.SELF
@@ -470,47 +482,71 @@ static func foundry_2_specials() -> Array:
         _ent.update_damage(1)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
-        
-    s = Special.new()
-    s.display_name = "Comically Large Missle"
-    s.description = "Deals 10 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
-    s.target = Special.Target.RANDOM
-    s.shape = Special.Shape.DIAMOND_3x3
-    s.mechanic = Special.Mechanic.SOAK
-    s.damage = 10
-    s.animation_path = "res://Effects/explosion_yellow.tscn"
+    
+    s = Special.new()    
+    s.display_name = "Spawn Big Guy"
+    s.description = "Deploy 1 minions with 16 health and 5 damage"
+    s.target = Special.Target.SPAWN_CLOSE
+    s.shape = Special.Shape.OCTAGON
+    s.mechanic = Special.Mechanic.SPAWN
+    s.spawns = [EntityFactory.create_boss_spawn_1_b()]
     ret.append(s)
+    return ret
 
-    s = Special.new()
-    s.display_name = "Heatseaking Missles"
-    s.description = "Deals 3 damage to every allied unit in a square area, centered on every allied unit"
-    s.target = Special.Target.ALL
-    s.shape = Special.Shape.SQUARE_3x3
-    s.mechanic = Special.Mechanic.SPREAD
-    s.damage = 3
-    s.animation_path = "res://Effects/explosion_yellow.tscn"
-    ret.append(s)
-
-    s = Special.new()
-    s.display_name = "Overclock"
-    s.description = "Gains 1 initiative"
+static func foundry_2_specials() -> Array:
+    var ret = []
+    var s = Special.new()
+    s.display_name = "Big Bot Energy"
+    s.description = "Gains 2 damage"
     s.target = Special.Target.SELF
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
     s.effect = func(_ent: Entity):
-        _ent.update_initiative(1)
+        _ent.update_damage(2)
+    s.animation_path = "res://Effects/upgrade_effect.tscn"
+    ret.append(s)
+        
+    s = Special.new()
+    s.display_name = "Comically Large Missle"
+    s.description = "Deals 12 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+    s.target = Special.Target.RANDOM
+    s.shape = Special.Shape.DIAMOND_3x3
+    s.mechanic = Special.Mechanic.SOAK
+    s.damage = 12
+    s.animation_path = "res://Effects/explosion_yellow.tscn"
+    ret.append(s)
+
+    s = Special.new()
+    s.display_name = "Heatseaking Missles"
+    s.description = "Deals 4 damage to every allied unit in a square area, centered on every allied unit"
+    s.target = Special.Target.ALL
+    s.shape = Special.Shape.SQUARE_3x3
+    s.mechanic = Special.Mechanic.SPREAD
+    s.damage = 4
+    s.animation_path = "res://Effects/explosion_yellow.tscn"
+    ret.append(s)
+
+    s = Special.new()
+    s.display_name = "Overclock"
+    s.description = "Gains 2 initiative"
+    s.target = Special.Target.SELF
+    s.shape = Special.Shape.SINGLE
+    s.mechanic = Special.Mechanic.BUFF
+    s.damage = 0
+    s.effect = func(_ent: Entity):
+        _ent.update_initiative(2)
         return
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
 
     s = Special.new()    
     s.display_name = "Deploy Minions"
-    s.description = "Deploy 3 minions"
+    s.description = "Deploy 3 minions with 12 health and 4 damage"
     s.target = Special.Target.SPAWN_CLOSE
     s.shape = Special.Shape.OCTAGON
     s.mechanic = Special.Mechanic.SPAWN
-    s.spawns = [EntityFactory.create_boss_spawn_2(), EntityFactory.create_boss_spawn_2(), EntityFactory.create_boss_spawn_1()]
+    s.spawns = [EntityFactory.create_boss_spawn_2(), EntityFactory.create_boss_spawn_2(), EntityFactory.create_boss_spawn_2()]
     ret.append(s)
 
     s = Special.new()
@@ -528,23 +564,23 @@ static func foundry_2_specials() -> Array:
     
     s = Special.new()
     s.display_name = "Regenerative Plating"
-    s.description = "Gains 13 health"
+    s.description = "Gains 20 health"
     s.target = Special.Target.SELF
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
     s.effect = func(_ent: Entity):
-        _ent.gainHP(10)
+        _ent.gainHP(20)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
     
     s = Special.new()
     s.display_name = "Melting Cross Beam"
-    s.description = "Deals 2 damage to a random unit and all surrounding units in a cross, reducing their armor by 2"
+    s.description = "Deals 4 damage to a random unit and all surrounding units in a cross, reducing their armor by 2"
     s.target = Special.Target.RANDOM
     s.shape = Special.Shape.CROSS
     s.mechanic = Special.Mechanic.SPREAD
-    s.damage = 2
+    s.damage = 4
     s.effect = func(_ent: Entity):
         _ent.update_armor(-2)
     s.animation_path = "res://Effects/explosion_yellow.tscn"
@@ -552,12 +588,21 @@ static func foundry_2_specials() -> Array:
 
     s = Special.new()
     s.display_name = "Anti-artillery missle"
-    s.description = "Deals 7 damage to the farthest allied unit"
+    s.description = "Deals 8 damage to the farthest allied unit"
     s.target = Special.Target.RANDOM
     s.shape = Special.Shape.CROSS
     s.mechanic = Special.Mechanic.SPREAD
     s.damage = 5
     s.animation_path = "res://Effects/explosion_yellow.tscn"
+    ret.append(s)
+    
+    s = Special.new()    
+    s.display_name = "Spawn Big Guy"
+    s.description = "Deploy 1 minion with 25 health and 6 damage"
+    s.target = Special.Target.SPAWN_CLOSE
+    s.shape = Special.Shape.OCTAGON
+    s.mechanic = Special.Mechanic.SPAWN
+    s.spawns = [EntityFactory.create_boss_spawn_2_b(),]
     ret.append(s)
     return ret
 

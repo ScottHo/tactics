@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ct2wj06r38iul"]
+[gd_scene load_steps=21 format=3 uid="uid://ct2wj06r38iul"]
 
 [ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
@@ -19,9 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="16_epibs"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="16_y510m"]
 [ext_resource type="Texture2D" uid="uid://20se04bvsoay" path="res://Assets/GUI/ability.png" id="17_6e0ql"]
+[ext_resource type="Texture2D" uid="uid://cojao80seihnp" path="res://Assets/GUI/progress_over_5.png" id="19_gjvto"]
 
 [node name="SelectedContainer" type="Node2D"]
-position = Vector2(59.00, -191.35)
+position = Vector2(59, -191.35)
 script = ExtResource("1_cil83")
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -625,10 +626,10 @@ offset_right = 118.06
 offset_bottom = 113.54
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(15, 64)
-max_value = 4.0
+max_value = 5.0
 fill_mode = 3
 texture_under = ExtResource("3_00qqc")
-texture_over = ExtResource("12_khkpp")
+texture_over = ExtResource("19_gjvto")
 texture_progress = ExtResource("5_j6fm3")
 
 [node name="Anim" type="Sprite2D" parent="GridContainer/Ultimate"]
@@ -736,9 +737,9 @@ text = "Reset"
 [node name="EntityContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -793.60
+offset_left = -793.6
 offset_top = 165.83
-offset_right = -753.60
+offset_right = -753.6
 offset_bottom = 205.83
 
 [node name="Sprite2D" type="Sprite2D" parent="EntityContainer"]

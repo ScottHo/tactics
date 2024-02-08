@@ -36,11 +36,13 @@ func show_info(coords):
     _previous_ent.show_info()
     if not _previous_ent.is_ally:
         if not Globals.in_action or Globals.in_move:
-            show_passive(coords)
             var h = Highlights.ENEMY_MOVEMENT
             _map_bfs.init(coords, _previous_ent.get_movement(), 
                     tileMap, self, h, _state, MapBFS.BFS_MODE.Show)
             _map_bfs.resetHighlights(true, false)
+    else:
+        if not Globals.in_action or Globals.in_move:
+            show_passive(coords)
     return
 
 func show_passive(coords):

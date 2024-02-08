@@ -17,6 +17,7 @@ func _ready():
                     #if event.double_click:
                     #    if _entities[i].collection_id != Globals.current_recruit:
                     #        remove_entity(_entities[i])
+                    
                     #else:
                     #    entity_selected.emit(_entities[i])
                     entity_selected.emit(_entities[i])

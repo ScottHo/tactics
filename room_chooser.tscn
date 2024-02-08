@@ -19,7 +19,7 @@ texture = ExtResource("2_r4mxn")
 centered = false
 
 [node name="TileMapFloor" type="TileMap" parent="."]
-position = Vector2(87.59, 74.20)
+position = Vector2(87.59, 74.2)
 scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("3_vkqma")
 format = 2
@@ -27,7 +27,7 @@ layer_0/tile_data = PackedInt32Array(-1, 131073, 0, 65535, 131073, 0, -65536, 13
 
 [node name="TileMapBoss" type="TileMap" parent="."]
 visible = false
-position = Vector2(87.59, 74.20)
+position = Vector2(87.59, 74.2)
 scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("3_vkqma")
 format = 2
@@ -88,7 +88,7 @@ text = "Go"
 position = Vector2(85.07, 137.12)
 
 [node name="Recruit1" type="Node2D" parent="RoomContainer"]
-position = Vector2(984.10, 293.18)
+position = Vector2(984.1, 293.18)
 
 [node name="Medium" type="Sprite2D" parent="RoomContainer/Recruit1"]
 position = Vector2(331.61, 79.25)
@@ -130,7 +130,7 @@ offset_bottom = 121.59
 offset_left = 145.82
 offset_top = -67.99
 offset_right = 145.82
-offset_bottom = 432.00
+offset_bottom = 432.0
 theme_override_constants/v_separation = 115
 
 [node name="Passive" type="Control" parent="RoomContainer/Recruit1/AbilitiesGrid"]
@@ -141,7 +141,7 @@ layout_mode = 0
 offset_left = 2.06
 offset_top = -10.09
 offset_right = 522.06
-offset_bottom = 10.90
+offset_bottom = 10.9
 theme_override_font_sizes/font_size = 14
 text = "Passive - Static Effect"
 autowrap_mode = 2
@@ -177,7 +177,7 @@ layout_mode = 0
 offset_left = 2.06
 offset_top = -10.09
 offset_right = 522.06
-offset_bottom = 10.90
+offset_bottom = 10.9
 theme_override_font_sizes/font_size = 14
 text = "Special - Costs Energy"
 autowrap_mode = 2
@@ -213,7 +213,7 @@ layout_mode = 0
 offset_left = 2.06
 offset_top = -10.09
 offset_right = 522.06
-offset_bottom = 10.90
+offset_bottom = 10.9
 theme_override_font_sizes/font_size = 14
 text = "Ultimate - Only Once Per Level"
 autowrap_mode = 2
