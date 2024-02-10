@@ -26,17 +26,17 @@ theme_override_font_sizes/font_size = 100
 text = "FOUNDRY BREAK"
 
 [node name="ExitButton" type="Button" parent="."]
-offset_left = 600.11
-offset_top = 579.12
-offset_right = 900.11
-offset_bottom = 759.12
-theme_override_font_sizes/font_size = 50
+offset_left = 656.75
+offset_top = 577.533
+offset_right = 896.75
+offset_bottom = 727.533
+theme_override_font_sizes/font_size = 38
 text = "Exit"
 
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 990.61
-offset_top = 579.12
-offset_right = 1290.61
-offset_bottom = 759.12
-theme_override_font_sizes/font_size = 50
+offset_left = 1027.12
+offset_top = 577.533
+offset_right = 1267.12
+offset_bottom = 727.533
+theme_override_font_sizes/font_size = 38
 text = "Play"

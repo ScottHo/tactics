@@ -36,7 +36,7 @@ static func foundry_1_final_boss() -> Mission:
     m.specials_per_turn = 2
 
     var s1 = Special.new()
-    s1.display_name = "Bronze Boys"
+    s1.display_name = "Summon Bronze Souls"
     s1.description = "Deploy 2 minions that spawn Bronze Souls on death"
     s1.target = Special.Target.SPAWN_CLOSE
     s1.shape = Special.Shape.OCTAGON
@@ -280,18 +280,18 @@ static func foundry_1_floors(_floor: int) -> Array:
         if _floor == 3:
             m.boss = EntityFactory.create_boss_1_3()
             m.specials_per_turn = 1
-            m.specials = [specs[i], recharge_special()]
+            m.specials = [specs[i], specs[i+1]]
         if _floor == 4:
             m.boss = EntityFactory.create_boss_1_4()
-            m.specials_per_turn = 1
+            m.specials_per_turn = 2
             m.specials = [specs[i], specs[i+1]]
         if _floor == 5:
             m.boss = EntityFactory.create_boss_1_5()
-            m.specials_per_turn = 1
+            m.specials_per_turn = 2
             m.specials = [specs[i], specs[i+1]]
         if _floor == 6:
             m.boss = EntityFactory.create_boss_1_6()
-            m.specials_per_turn = 1
+            m.specials_per_turn = 2
             m.specials = [specs[i], specs[i+1]]
         m.buffs = []
         ret.append(m)
@@ -385,21 +385,21 @@ static func foundry_1_specials() -> Array:
         
     s = Special.new()
     s.display_name = "Comically Large Missle"
-    s.description = "Deals 9 damage spread over every allied unit in a diamond tile area, centered on a random allied unit"
+    s.description = "Deals 10 damage spread over every allied unit in a diamond tile area, centered on a random allied unit, rounded down"
     s.target = Special.Target.RANDOM
     s.shape = Special.Shape.DIAMOND_3x3
     s.mechanic = Special.Mechanic.SOAK
-    s.damage = 8
+    s.damage = 10
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
 
     s = Special.new()
     s.display_name = "Heatseaking Missles"
-    s.description = "Deals 2 damage to every allied unit in a square area, centered on every allied unit"
+    s.description = "Deals 3 damage to every allied unit in a square area, centered on every allied unit"
     s.target = Special.Target.ALL
     s.shape = Special.Shape.SQUARE_3x3
     s.mechanic = Special.Mechanic.SPREAD
-    s.damage = 2
+    s.damage = 3
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
 
@@ -431,7 +431,7 @@ static func foundry_1_specials() -> Array:
     s.target = Special.Target.THREAT
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.SPREAD
-    s.damage = 4
+    s.damage = 5
     s.effect = func(_ent: Entity):
         _ent.setThreat(0)
         return
@@ -446,7 +446,7 @@ static func foundry_1_specials() -> Array:
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
     s.effect = func(_ent: Entity):
-        _ent.gainHP(9)
+        _ent.gainHP(10)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
     
@@ -464,28 +464,28 @@ static func foundry_1_specials() -> Array:
 
     s = Special.new()
     s.display_name = "Anti-artillery missle"
-    s.description = "Deals 5 damage to the farthest allied unit"
+    s.description = "Deals 6 damage to the farthest allied unit"
     s.target = Special.Target.RANDOM
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.SPREAD
-    s.damage = 5
+    s.damage = 6
     s.animation_path = "res://Effects/explosion_yellow.tscn"
     ret.append(s)
 
-    s.display_name = "Big Bot Energy"
-    s.description = "Gains 1 damage"
+    s.display_name = "Harden"
+    s.description = "Gains 1 armor"
     s.target = Special.Target.SELF
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF
     s.damage = 0
     s.effect = func(_ent: Entity):
-        _ent.update_damage(1)
+        _ent.update_armor(1)
     s.animation_path = "res://Effects/upgrade_effect.tscn"
     ret.append(s)
     
     s = Special.new()    
     s.display_name = "Spawn Big Guy"
-    s.description = "Deploy 1 minions with 16 health and 5 damage"
+    s.description = "Deploy 1 minions with 18 health and 5 damage"
     s.target = Special.Target.SPAWN_CLOSE
     s.shape = Special.Shape.OCTAGON
     s.mechanic = Special.Mechanic.SPAWN

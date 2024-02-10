@@ -10,7 +10,7 @@ script = ExtResource("1_p861v")
 [node name="Fader" type="ColorRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color(0, 0, 0, 0.40)
+color = Color(0, 0, 0, 0.4)
 
 [node name="Medium" type="Sprite2D" parent="."]
 position = Vector2(988.08, 531.02)
@@ -27,7 +27,7 @@ text = "TITLE TITLE TITLE TITLE?"
 horizontal_alignment = 1
 
 [node name="Description" type="Label" parent="."]
-offset_left = 675.00
+offset_left = 675.0
 offset_top = 416.19
 offset_right = 1305.01
 offset_bottom = 656.19
@@ -39,16 +39,16 @@ autowrap_mode = 2
 
 [node name="Continue" type="Button" parent="."]
 offset_left = 1010.41
-offset_top = 673.50
+offset_top = 673.5
 offset_right = 1210.41
-offset_bottom = 783.50
-theme_override_font_sizes/font_size = 26
+offset_bottom = 783.5
+theme_override_font_sizes/font_size = 22
 text = "Continue"
 
 [node name="Cancel" type="Button" parent="."]
 offset_left = 782.28
-offset_top = 673.50
+offset_top = 673.5
 offset_right = 982.28
-offset_bottom = 783.50
-theme_override_font_sizes/font_size = 26
+offset_bottom = 783.5
+theme_override_font_sizes/font_size = 22
 text = "Cancel"

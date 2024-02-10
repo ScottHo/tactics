@@ -92,7 +92,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [0]
 }
 
@@ -109,7 +109,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(8.00, 74.75), Vector2(7.11, -26.99), Vector2(8.00, 74.75), Vector2(7.11, -26.99), Vector2(8.00, 74.75), Vector2(7.11, -26.99), Vector2(8.00, 74.75), Vector2(7.11, -26.99), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(8, 74.75), Vector2(7.11, -26.99), Vector2(8, 74.75), Vector2(7.11, -26.99), Vector2(8, 74.75), Vector2(7.11, -26.99), Vector2(8, 74.75), Vector2(7.11, -26.99), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -170,7 +170,7 @@ libraries = {
 
 [node name="Label" type="Label" parent="."]
 offset_left = 111.84
-offset_top = -114.70
+offset_top = -114.7
 offset_right = 396.84
 offset_bottom = 115.29
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)

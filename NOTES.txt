@@ -1,7 +1,6 @@
 BUGS
 - Getting hit animations cut short
 - shielding gave HP somehow
-- show recruit on path in room_chooser
 - Need way to auto deploy/clear all deploy
 - threat still bugged sometimes
 - show upcoming boss spell cycle
@@ -11,13 +10,13 @@ BUGS
 
 DO NEXT
 - Super simple tutorial bot
-- Action buttons being enabled need animations
-- Finish AutoTurret animations/directions?
 - Side Missions
 - "Popup" for current action/event
 - Add placeholder text on unfinished sprites
 - Add discord, twitter, steam page link
 - Deploy Button Gui should look more like collections buttons
+- show status effects on hover
+- show recruit on path in room_chooser
 
 DO LATER
 - Brutus Art/Animations
@@ -26,8 +25,6 @@ DO LATER
 - Buster Art/Animations
 - Batterie Art/Animations
 - Nano-nano(or another healer w/ same abilities) Art/Animations
-- show status effects on hover
-- Damage/Status text animations could be better
 - Obstructions
 - slight animation for mechanic container
 - Better roguelike run (abort run/continue run) UI/UX

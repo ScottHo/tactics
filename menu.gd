@@ -253,10 +253,11 @@ func start_menu_animations():
     return
 
 func _button_animations(button: Button):
-    if button.disabled:
-        return
     var ap: AnimationPlayer = button.get_child(0)
+    ap.stop()
     ap.current_animation = "grow"
+    if button.disabled:
+        ap.current_animation = "RESET"
     ap.play()
     return
 
@@ -392,6 +393,7 @@ func enable_moves_button(e: bool, force = false):
         if not force:
             return
     moveButton.disabled = not e
+    _button_animations(moveButton)
     return
 
 func enable_interact_button(e: bool, force = false):
@@ -399,6 +401,7 @@ func enable_interact_button(e: bool, force = false):
         if not force:
             return
     interactButton.disabled = not e
+    _button_animations(interactButton)
     return
 
 func enable_attack_button(e: bool, force = false):
@@ -406,8 +409,7 @@ func enable_attack_button(e: bool, force = false):
         if not force:
             return
     attackButton.disabled = not e
-    print("Attack Button is disabled:")
-    print(attackButton.disabled)
+    _button_animations(attackButton)
     return
 
 func enable_special_button(e: bool, force = false):
@@ -415,6 +417,7 @@ func enable_special_button(e: bool, force = false):
         if not force:
             return
     action1Button.disabled = not e
+    _button_animations(action1Button)
     return
 
 func enable_ultimate_button(e: bool, force = false):
@@ -422,6 +425,7 @@ func enable_ultimate_button(e: bool, force = false):
         if not force:
             return
     action2Button.disabled = not e
+    _button_animations(action2Button)
     return
 
 func set_mechanic_text_1(n, t):

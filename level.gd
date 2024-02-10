@@ -143,7 +143,7 @@ func setup_entities():
         var allies = Globals.entities_to_deploy
         var offset = -1
         if len(allies) < 3:
-            offset = 3
+            offset = 2
         elif len(allies) < 5:
             offset = 1
         for i in range(len(allies)):
@@ -218,8 +218,7 @@ func nextTurn_continued2():
     cameraService.move(tileMap.pointToGlobal(currentEntity().location))
     if not currentEntity().is_ally and not currentEntity().is_add:
         _special_texts_set = false
-        if not _is_first_turn:
-            currentEntity().specials_left = _mission.specials_per_turn
+        currentEntity().specials_left = _mission.specials_per_turn
     Globals.enemy_turn = false
     if not currentEntity().is_ally:
         Globals.enemy_turn = true
@@ -315,9 +314,6 @@ func do_nextAiStep():
     return
 
 func startAiMove():
-    if _is_first_turn:
-        nextAiStep()
-        return
     print_debug("Start AI Move")    
     aiMoveService.start(currentEntity())
     var movePath = aiMoveService.find_move()
