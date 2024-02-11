@@ -1,0 +1,234 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba6s0cbmnjgbh"]
+
+[ext_resource type="Script" path="res://animation_tester.gd" id="1_d33px"]
+[ext_resource type="PackedScene" uid="uid://c7auncstw41cc" path="res://Bots/drillbit.tscn" id="2_5egm6"]
+
+[node name="AnimationTester" type="Node2D"]
+script = ExtResource("1_d33px")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 200
+theme_override_constants/v_separation = 200
+columns = 8
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(562.715, 674.8)
+scale = Vector2(1.2, 1.2)
+
+[node name="Node2D2" type="Node2D" parent="."]
+z_index = 15
+z_as_relative = false
+position = Vector2(562.715, 674.8)
+scale = Vector2(1.2, 1.2)
+
+[node name="Reset" type="Button" parent="."]
+offset_left = 37.6363
+offset_top = 752.847
+offset_right = 86.6363
+offset_bottom = 792.847
+text = "Reset"
+
+[node name="Move" type="Button" parent="."]
+offset_left = 147.238
+offset_top = 752.847
+offset_right = 192.238
+offset_bottom = 792.847
+text = "Move"
+
+[node name="Attack" type="Button" parent="."]
+offset_left = 250.748
+offset_top = 749.673
+offset_right = 308.748
+offset_bottom = 789.673
+text = "Attack
+"
+
+[node name="Special" type="Button" parent="."]
+offset_left = 30.7925
+offset_top = 809.994
+offset_right = 93.7925
+offset_bottom = 849.994
+text = "Special"
+
+[node name="Ultimate" type="Button" parent="."]
+offset_left = 138.792
+offset_top = 813.994
+offset_right = 212.792
+offset_bottom = 853.994
+text = "Ultimate"
+
+[node name="Hit" type="Button" parent="."]
+offset_left = 249.793
+offset_top = 811.994
+offset_right = 289.793
+offset_bottom = 851.994
+text = "Hit"
+
+[node name="Buff" type="Button" parent="."]
+offset_left = 338.793
+offset_top = 812.994
+offset_right = 378.793
+offset_bottom = 852.994
+text = "Buff"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 26.3423
+offset_top = 878.157
+offset_right = 126.342
+offset_bottom = 928.157
+text = "Audio
+File"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 222.022
+offset_top = 969.234
+offset_right = 322.022
+offset_bottom = 999.234
+placeholder_text = "0.0"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 29.8778
+offset_top = 974.385
+offset_right = 215.878
+offset_bottom = 993.385
+text = "Offset (seconds):"
+
+[node name="AudioLabel" type="Label" parent="."]
+offset_left = 168.104
+offset_top = 888.857
+offset_right = 208.104
+offset_bottom = 907.857
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(401, 146)
+ok_button_text = "Open"
+mode_overrides_title = false
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="FileDialog2" type="FileDialog" parent="."]
+ok_button_text = "Open"
+mode_overrides_title = false
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="FileDialog3" type="FileDialog" parent="."]
+ok_button_text = "Open"
+mode_overrides_title = false
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+
+[node name="MainMusic" type="AudioStreamPlayer2D" parent="."]
+
+[node name="HitAudioStream" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MusicButton" type="Button" parent="."]
+offset_left = 741.09
+offset_top = 959.936
+offset_right = 821.09
+offset_bottom = 1009.94
+text = "Music
+File"
+
+[node name="MusicLabel" type="Label" parent="."]
+offset_left = 837.755
+offset_top = 979.302
+offset_right = 877.755
+offset_bottom = 998.302
+
+[node name="VolumeAudio" type="LineEdit" parent="."]
+offset_left = 223.618
+offset_top = 1014.25
+offset_right = 299.868
+offset_bottom = 1041.25
+placeholder_text = "0.0"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 87.5465
+offset_top = 1018.66
+offset_right = 325.547
+offset_bottom = 1037.66
+text = "Volume (dB):"
+
+[node name="EntityLabel" type="Label" parent="."]
+offset_left = 867.7
+offset_top = 826.381
+offset_right = 907.7
+offset_bottom = 845.381
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(1408.98, 688.718)
+scale = Vector2(1.2, 1.2)
+
+[node name="DrillBit" parent="Node2D3" instance=ExtResource("2_5egm6")]
+
+[node name="Node2D4" type="Node2D" parent="."]
+z_index = 15
+z_as_relative = false
+position = Vector2(1409.73, 690.066)
+scale = Vector2(1.2, 1.2)
+
+[node name="HitAudioButton2" type="Button" parent="."]
+offset_left = 1295.54
+offset_top = 817.375
+offset_right = 1383.54
+offset_bottom = 857.375
+text = "Explosion"
+
+[node name="HitAudioButton" type="Button" parent="."]
+offset_left = 1283.27
+offset_top = 886.347
+offset_right = 1371.27
+offset_bottom = 926.347
+text = "Audio
+File"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1495.97
+offset_top = 967.669
+offset_right = 1681.97
+offset_bottom = 986.669
+text = "Offset (seconds):"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 1503.46
+offset_top = 1027.6
+offset_right = 1543.46
+offset_bottom = 1046.6
+text = "Volume (DB):"
+
+[node name="VolumeHitEdit" type="LineEdit" parent="."]
+offset_left = 1651.13
+offset_top = 1023.34
+offset_right = 1727.38
+offset_bottom = 1050.34
+text = "0.0"
+
+[node name="VolumeOffsetEdit" type="LineEdit" parent="."]
+offset_left = 1702.08
+offset_top = 964.91
+offset_right = 1778.33
+offset_bottom = 991.91
+placeholder_text = "0.0"
+
+[node name="AudioHitLabel" type="Label" parent="."]
+offset_left = 1378.18
+offset_top = 894.252
+offset_right = 1564.18
+offset_bottom = 913.252
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 1297.23
+offset_top = 771.918
+offset_right = 1616.23
+offset_bottom = 790.918
+text = "Getting Hit Animations Tester"

@@ -12,6 +12,7 @@ var initiativeLabel: Label
 var armorLabel: Label
 var threatLabel: Label
 var background: Sprite2D
+var displayName: Label
 var _entity: Entity
 
 
@@ -35,6 +36,7 @@ func update_nodes():
         armorLabel = $Stats/Control5/ArmorLabel
         threatLabel = $Stats/Control6/ThreatLabel
         background = $Background
+        displayName = $DisplayName
     return
 
 func update_from_entity(entity: Entity):
@@ -45,9 +47,9 @@ func update_from_entity(entity: Entity):
     return
 
 func update():
+    displayName.text = str(_entity.display_name)
     healthLabel.text = str(_entity.health)
     maxHealthLabel.text = str(_entity.get_max_health())
-    
     moveLabel.text = str(_entity.get_movement())
     damageLabel.text = str(_entity.get_damage())    
     rangeLabel.text = str(_entity.get_range())
@@ -70,6 +72,7 @@ func update():
     return
 
 func expand():
+    displayName.visible = true
     background.visible = true
     healthBar.visible = true
     $Stats.visible = true
@@ -81,6 +84,7 @@ func expand():
     return
 
 func unexpand():
+    displayName.visible = false
     background.visible = false
     healthBar.visible = false
     $Stats.visible = false

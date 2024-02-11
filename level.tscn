@@ -85,6 +85,7 @@ texture = ExtResource("6_pxvlp")
 layer = 2
 
 [node name="MenuService" parent="Camera2D/CanvasLayer" instance=ExtResource("7_psia6")]
+position = Vector2(1, 0)
 
 [node name="ScoreService" parent="Camera2D/CanvasLayer" instance=ExtResource("8_hlxi6")]
 visible = false
@@ -135,3 +136,7 @@ script = ExtResource("20_wtrmh")
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource("18_iw7cw")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+autoplay = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c7auncstw41cc"]
+[gd_scene load_steps=27 format=3 uid="uid://c7auncstw41cc"]
 
 [ext_resource type="Script" path="res://EntitySprite.gd" id="1_5n1od"]
 [ext_resource type="Texture2D" uid="uid://ds3e6oihl70tf" path="res://Assets/Bots/Common/shadow.png" id="2_84cs2"]
@@ -876,8 +876,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AudioStream" id="AudioStream_60cdv"]
-
 [node name="DrillBit" type="Node2D"]
 script = ExtResource("1_5n1od")
 
@@ -1005,4 +1003,4 @@ texture = ExtResource("3_86imk")
 [node name="CharacterCommon" parent="." instance=ExtResource("21_6bh08")]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = SubResource("AudioStream_60cdv")
+volume_db = -10.0

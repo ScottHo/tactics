@@ -94,6 +94,18 @@ z_index = 10
 position = Vector2(94.62, -20.83)
 script = ExtResource("6_m13e8")
 
+[node name="DisplayName" type="Label" parent="InfoBoxContainer"]
+offset_left = -194.329
+offset_top = -93.4964
+offset_right = 5.67099
+offset_bottom = -80.4964
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 12
+text = "Buster"
+horizontal_alignment = 1
+
 [node name="Background" type="Sprite2D" parent="InfoBoxContainer"]
 modulate = Color(1, 1, 1, 0.78)
 position = Vector2(50.57, 3.39)

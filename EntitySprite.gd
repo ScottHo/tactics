@@ -42,12 +42,29 @@ func _ready():
         SW.visible = false
         NE.visible = false
         NW.visible = false
-        return
+        refresh_skeleton(SE)
+        refresh_skeleton(SW)
+        refresh_skeleton(NE)
+        refresh_skeleton(NW)
     elif sprite.get_child_count() >= 2:
         SE = $Sprite/SE
         NE = $Sprite/NE
         SE.visible = true
         NE.visible = false
+        refresh_skeleton(SE)
+        refresh_skeleton(NE)
+    $CharacterCommon.visible = false
+    return
+
+func refresh_skeleton(node: Node2D):
+    var skeleton: Skeleton2D = node.find_child("Skeleton2D", true)
+    if skeleton == null:
+        return
+    var mod_stack = skeleton.get_modification_stack()
+    var skl_mod = mod_stack.get_modification(0)
+    skl_mod.target_nodepath = skl_mod.target_nodepath
+    var skl_mod2 = mod_stack.get_modification(1)
+    skl_mod2.target_nodepath = skl_mod2.target_nodepath
     return
 
 func _process(delta):
@@ -205,6 +222,7 @@ func texture_scale() -> Vector2:
     return Vector2(1,1)
 
 func update_from_entity(entity: Entity):
+    $CharacterCommon.visible = true
     infoTab.update_from_entity(entity)
     smallHealthBar.value = entity.health
     smallHealthBar.max_value = entity.max_health
