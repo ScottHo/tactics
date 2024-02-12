@@ -3,7 +3,6 @@ class_name DeployPanel extends Node2D
 var _entities = [null, null, null, null, null, null]
 var ents_deployed := 0
 @onready var grid = $GridContainer
-@onready var countLabel = $Label
 
 signal entity_removed
 signal entity_selected
@@ -62,21 +61,31 @@ func remove_entity(entity):
     entity_removed.emit(entity)
     return
 
+func clear():
+    for e in _entities:
+        if e == null:
+            continue
+        if e.collection_id == Globals.current_recruit:
+            continue
+        remove_entity(e)
+    return
+
 func is_full() -> bool:
     return not _entities.has(null)
 
 func is_empty() -> bool:
     return _entities.count(null) == len(_entities)
 
+func has_entity(collection_id: int):
+    for e in _entities:
+        if e == null:
+            continue
+        if e.collection_id == collection_id:
+            return true
+    return false
+
 func update_count():
     ents_deployed = abs(_entities.count(null)-6)
-    countLabel.text = str(ents_deployed) + "/" + str(len(_entities))
-    if is_full():
-        countLabel.modulate = Color.LAWN_GREEN
-    elif is_empty():
-        countLabel.modulate = Color.DARK_RED
-    else:
-        countLabel.modulate = Color.CORAL
     return
 
 func tile(c) -> Sprite2D:

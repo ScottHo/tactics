@@ -14,7 +14,7 @@ offset_top = -17.42
 offset_right = 407.05
 offset_bottom = 82.57
 theme_override_constants/h_separation = 220
-theme_override_constants/v_separation = 1
+theme_override_constants/v_separation = 240
 columns = 6
 
 [node name="Control" type="Control" parent="GridContainer"]
@@ -34,7 +34,7 @@ layout_mode = 0
 offset_left = -41.41
 offset_top = -43.59
 offset_right = 38.58
-offset_bottom = 46.40
+offset_bottom = 46.4
 theme_type_variation = &"BotDeployButton"
 
 [node name="Control2" type="Control" parent="GridContainer"]
@@ -54,7 +54,7 @@ layout_mode = 0
 offset_left = -41.41
 offset_top = -43.59
 offset_right = 38.58
-offset_bottom = 46.40
+offset_bottom = 46.4
 theme_type_variation = &"BotDeployButton"
 
 [node name="Control3" type="Control" parent="GridContainer"]
@@ -74,7 +74,7 @@ layout_mode = 0
 offset_left = -41.41
 offset_top = -43.59
 offset_right = 38.58
-offset_bottom = 46.40
+offset_bottom = 46.4
 theme_type_variation = &"BotDeployButton"
 
 [node name="Control4" type="Control" parent="GridContainer"]
@@ -94,7 +94,7 @@ layout_mode = 0
 offset_left = -41.41
 offset_top = -43.59
 offset_right = 38.58
-offset_bottom = 46.40
+offset_bottom = 46.4
 theme_type_variation = &"BotDeployButton"
 
 [node name="Control5" type="Control" parent="GridContainer"]
@@ -114,7 +114,7 @@ layout_mode = 0
 offset_left = -41.41
 offset_top = -43.59
 offset_right = 38.58
-offset_bottom = 46.40
+offset_bottom = 46.4
 theme_type_variation = &"BotDeployButton"
 
 [node name="Control6" type="Control" parent="GridContainer"]
@@ -134,17 +134,5 @@ layout_mode = 0
 offset_left = -41.41
 offset_top = -43.59
 offset_right = 38.58
-offset_bottom = 46.40
+offset_bottom = 46.4
 theme_type_variation = &"BotDeployButton"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 1100.74
-offset_top = 30.06
-offset_right = 1210.74
-offset_bottom = 91.06
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 50
-text = "0/6"
-horizontal_alignment = 1
-vertical_alignment = 1

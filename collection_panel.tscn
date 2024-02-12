@@ -18,7 +18,7 @@ offset_top = 5.65
 offset_right = 711.36
 offset_bottom = 255.65
 theme_override_constants/h_separation = 120
-theme_override_constants/v_separation = 120
+theme_override_constants/v_separation = 116
 columns = 6
 
 [node name="Control" type="Control" parent="GridContainer"]

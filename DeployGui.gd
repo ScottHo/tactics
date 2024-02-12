@@ -7,7 +7,8 @@ var startMissionButton: Button
 var backButton: Button
 var detailedRoomInfo: DetailedRoomInfo
 var mission: Mission
-
+@onready var autoDeployButton: Button = $AutoDeploy
+@onready var clear_button: Button = $Clear
 
 func _ready():
     collectionPanel = $CollectionContainer
@@ -24,6 +25,8 @@ func _ready():
     deployPanel.entity_selected.connect(func(e):
         entity_selected(e, true))
     startMissionButton.pressed.connect(startMission)
+    autoDeployButton.pressed.connect(auto_deploy)
+    clear_button.pressed.connect(deployPanel.clear)
     backButton.pressed.connect(back_to_headquarters)
     start()
     return
@@ -94,4 +97,13 @@ func start_mission_cont():
 
 func back_to_headquarters():
     get_tree().change_scene_to_file("res://room_chooser.tscn")
+    return
+
+func auto_deploy():
+    for i in Globals.bots_collected:
+        if deployPanel.is_full():
+            return
+        if deployPanel.has_entity(i):
+            continue
+        deployPanel.add_entity(EntityFactory.create_bot(i))
     return

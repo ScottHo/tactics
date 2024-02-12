@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Headquarters.gd" id="1_clf1y"]
 [ext_resource type="PackedScene" uid="uid://d3k0do70v6qoo" path="res://checkpoints.tscn" id="1_r11n2"]
-[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_hi6xu"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_4sm4w"]
 [ext_resource type="PackedScene" uid="uid://c82hspet5gfvc" path="res://collection_panel.tscn" id="2_yhgcx"]
 [ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="3_joss2"]
 [ext_resource type="Texture2D" uid="uid://cn2ko8kmfs3ch" path="res://Assets/None.png" id="4_60k36"]
@@ -14,7 +14,7 @@ script = ExtResource("1_clf1y")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.72, 0.72, 0.72, 1)
-texture = ExtResource("2_hi6xu")
+texture = ExtResource("2_4sm4w")
 centered = false
 
 [node name="Levels" type="Node2D" parent="."]
@@ -50,7 +50,7 @@ text = "Go"
 
 [node name="RosterButton" type="Button" parent="Levels"]
 offset_left = 726.17
-offset_top = 925.60
+offset_top = 925.6
 offset_right = 926.17
 offset_bottom = 1015.6
 theme_override_font_sizes/font_size = 20
@@ -100,4 +100,4 @@ position = Vector2(993.37, 584.64)
 position = Vector2(1391.43, 584.64)
 
 [node name="PassivePanel" parent="Collections" instance=ExtResource("8_0qc54")]
-position = Vector2(602.53, 846.30)
+position = Vector2(602.53, 846.3)

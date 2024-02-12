@@ -1,7 +1,6 @@
 BUGS
 - Getting hit animations cut short
 - shielding gave HP somehow
-- Need way to auto deploy/clear all deploy
 - threat still bugged sometimes
 - show upcoming boss spell cycle
 - final boss 1 too easy

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cve4y2nbbwucg"]
 
 [ext_resource type="Script" path="res://DeployGui.gd" id="1_1roly"]
-[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_q1skw"]
+[ext_resource type="Texture2D" uid="uid://u116jsmetni2" path="res://Assets/Backgrounds/Background_Orange.png" id="2_h8y3u"]
 [ext_resource type="PackedScene" uid="uid://bxp0hhpdubjky" path="res://detailed_room_info.tscn" id="6_27vo8"]
 [ext_resource type="PackedScene" uid="uid://bph1lnyqahu2x" path="res://dialog_box.tscn" id="8_trrak"]
 [ext_resource type="PackedScene" uid="uid://ct2wj06r38iul" path="res://upgrade_panel.tscn" id="11_q353u"]
@@ -12,34 +12,54 @@
 [node name="DeployGui" type="Node2D"]
 script = ExtResource("1_1roly")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.72, 0.72, 0.72, 1)
-texture = ExtResource("2_q1skw")
+texture = ExtResource("2_h8y3u")
 centered = false
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(97.64, 24.48)
+position = Vector2(783.871, -20.4082)
 scale = Vector2(1.2, 1.2)
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(1026.19, 484.41)
+position = Vector2(1709.19, 401.046)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(341.65, 927.82)
+position = Vector2(1015.06, 809.487)
 scale = Vector2(0.8, 0.8)
 
+[node name="Clear" type="Button" parent="."]
+offset_left = 789.188
+offset_top = 948.39
+offset_right = 989.188
+offset_bottom = 1068.39
+theme = ExtResource("14_qdrbl")
+theme_override_font_sizes/font_size = 20
+text = "Clear
+Deploy"
+
+[node name="AutoDeploy" type="Button" parent="."]
+offset_left = 995.957
+offset_top = 948.39
+offset_right = 1195.96
+offset_bottom = 1068.39
+theme = ExtResource("14_qdrbl")
+theme_override_font_sizes/font_size = 20
+text = "Auto
+Deploy"
+
 [node name="StartMission" type="Button" parent="."]
-offset_left = 1460.19
-offset_top = 939.7
-offset_right = 1660.19
-offset_bottom = 1059.7
+offset_left = 1681.05
+offset_top = 948.39
+offset_right = 1881.05
+offset_bottom = 1068.39
 theme = ExtResource("14_qdrbl")
 theme_override_font_sizes/font_size = 20
 text = "START
 MISSION"
 
 [node name="DetailedRoomInfo" parent="." instance=ExtResource("6_27vo8")]
-position = Vector2(1241.55, 13.68)
+position = Vector2(59.4415, 124.415)
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 7.14
