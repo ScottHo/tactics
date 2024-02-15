@@ -121,7 +121,7 @@ func setup_entities():
         var e3 := EntityFactory.create_bot(EntityFactory.Bot.ELECTO)
         e3.action1.level += 1
         e3.action2.level += 1
-        var e4 := EntityFactory.create_bot(EntityFactory.Bot.PEPPERSHOT)
+        var e4 := EntityFactory.create_bot(EntityFactory.Bot.BRUTUS)
         e4.action1.level += 1
         e4.action2.level += 1
         var e5 := EntityFactory.create_bot(EntityFactory.Bot.SMITHY)
@@ -141,13 +141,11 @@ func setup_entities():
         #setup_entity_for_level(EntityFactory.create_god_mode(), Vector2i(4,5))
     else:
         var allies = Globals.entities_to_deploy
-        var offset = -1
+        var offset = 0
         if len(allies) < 3:
             offset = 2
         elif len(allies) < 5:
             offset = 1
-        elif len(allies) == 6:
-            offset = 0
         for i in range(len(allies)):
             if allies[i] != null:
                 setup_entity_for_level(allies[i], Vector2i(2, i+offset))
@@ -192,7 +190,6 @@ func nextTurn():
     menuService.disableAllButtons(true)
     _start_of_turn = true
     if currentEntity() != null:
-        currentEntity().reset_buff_values()
         currentEntity().done_turn()
         currentEntity().stop_animations()
     if not checkDeaths():
@@ -217,6 +214,7 @@ func nextTurn_continued2():
     scoreService.turn_taken()
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
+    currentEntity().reset_buff_values()
     cameraService.move(tileMap.pointToGlobal(currentEntity().location))
     if not currentEntity().is_ally and not currentEntity().is_add:
         _special_texts_set = false

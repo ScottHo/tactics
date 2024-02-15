@@ -307,35 +307,35 @@ static func create_boss_1_5():
     return ent
 
 static func create_boss_1_6():
-    var ent = _create_entity("Bronze Grunt", 190, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
+    var ent = _create_entity("Bronze Grunt", 182, 4, 1, 10, "res://Bots/enemy_3.tscn", "res://Assets/boss3.png", false)
     ActionFactory.add_base_attack(ent)
     ent.damage += 1
     return ent
 
 static func create_boss_1_f():
-    var ent = _create_entity("Bronze Bull", 250, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
+    var ent = _create_entity("Bronze Bull", 240, 5, 1, 10, "res://Bots/bronze_bull.tscn", "res://Assets/Bots/bronze_boss.png", false)
     ent.damage += 1
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_spawn_1():
-    var ent = _create_entity("Mini Bronze Grunt", 8, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    var ent = _create_entity("Mini B", 8, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
     ent.is_add = true
     ent.damage -= 1
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_spawn_1_b():
-    var ent = _create_entity("Mini Bronze Grunt", 18, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
+    var ent = _create_entity("Big B", 18, 3, 1, 10, "res://Bots/boss_spawn_1.tscn", "res://Assets/boss_spawn_1.png", false)
     ent.is_add = true
     ent.damage += 1
     ActionFactory.add_base_attack(ent)
     return ent
 
 static func create_boss_spawn_1_f():
-    var ent = _create_entity("Animated Bronze Soul", 15, 3, 1, 10, "res://Bots/bronze_spawn.tscn", "res://Assets/Bots/bronze_spawn.png", false)
+    var ent = _create_entity("Animated Bronze Soul", 14, 3, 1, 10, "res://Bots/bronze_spawn.tscn", "res://Assets/Bots/bronze_spawn.png", false)
     ent.is_add = true
-    ent.damage += 2
+    ent.damage += 1
     ent.spawn_on_death = InteractableFactory.bronze_soul()
     ActionFactory.add_base_attack(ent)
     return ent

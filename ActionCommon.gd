@@ -8,7 +8,7 @@ static func do_action(state: State, _source: Entity, _targets: Array, action: Ac
     action.effect.call(_source, targets, action)
     if action.type == ActionType.ATTACK:
         var target: Entity = targets[0] # Assume only 1 tile for normal attacks
-        if target.thorns_all:
+        if target.thorns_all and not _source.is_ally:
             target.custom_text("Flying Thorns " + str(target.get_damage()) , Color.WHITE)
             for _ent in state.all_enemies_alive():
                 target.damage_done += _source.damage_preview(target.get_damage())

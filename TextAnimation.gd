@@ -62,7 +62,7 @@ func status_effect(value: int, status: String):
     var c = Color.WHITE
     if value < 0:
         c = Color.RED
-    queue_animation(c, status + " " + str(abs(value)))
+    queue_animation(c, status + " " + str(value))
     return
 
 func other_text(string: String, color: Color):

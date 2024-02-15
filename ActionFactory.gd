@@ -147,15 +147,14 @@ static func add_flying_barb_stance(ent: Entity, type: int):
 static func add_oil_bomb(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.ENEMIES,
-        "Cost": 3,
+        "Cost": 2,
         "Extra Range": 2,
-        "Extra Damage": [0, 1, 2, 3],
         "Cripple": [1, 2, 3, 4],
         "Cripple Duration": 1,
         "Threat Gain": 1,
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
-        var damage = _user.get_damage() + _action.get_from_stats("Extra Damage") 
+        var damage = _user.get_damage()
         for _ent in _targets:
             _user.damage_done += _ent.damage_preview(damage)            
             _ent.loseHP(damage)
@@ -200,8 +199,8 @@ static func add_lubricate(ent: Entity, type: int):
 static func add_storm(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.ANY,
-        "Cost": 2,
-        "Extra Damage": [2, 4, 6, 8],
+        "Cost": 3,
+        "Extra Damage": [3, 6, 9, 12],
         "Threat Gain": 2,
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
@@ -284,7 +283,7 @@ static func add_nano_field(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.ALLIES,
         "Cost": 2,
-        "Heal Amount": [3, 5, 7, 9],
+        "Heal Amount": [3, 6, 9, 12],
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         for _ent in _targets:
@@ -316,7 +315,7 @@ static func add_weapons_upgade(ent: Entity, type: int):
 static func add_auto_turret_3000(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.EMPTY,
-        "Turret Damage": 9,
+        "Turret Damage": 10,
         "Turret Initiative": 15,
         "Turret Movement": 0,
         "Turret HP": 3,
@@ -624,7 +623,7 @@ static func add_battlefield_transfer(ent: Entity, type: int):
 static func add_heal_pulse(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.OTHER_ALLIES,
-        "Heal Amount": [6, 8, 10, 12],
+        "Heal Amount": [4, 7, 10, 13],
         "Set Range": 1,
         "Cost": 2,
     }
@@ -642,7 +641,7 @@ static func add_heal_pulse(ent: Entity, type: int):
 static func add_halo(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.SELF,
-        "Heal Amount": 15,
+        "Heal Amount": 16,
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         for _ent in _targets:
