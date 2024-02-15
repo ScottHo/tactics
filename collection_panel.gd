@@ -9,9 +9,8 @@ signal entity_selected
 func _ready():
     for i in range(0, grid.get_child_count()):
         var c = container(i)
-        button(c).toggled.connect(func(t):
-            if t:
-                entity_clicked(i))
+        button(c).pressed.connect(func():
+            entity_clicked(i))
     return
 
 func button(c) -> Button:
@@ -53,18 +52,12 @@ func start():
     return
 
 func entity_clicked(idx: int):
-    for i in range(0, grid.get_child_count()):
-        if i == idx:
-            continue
-        var c = container(i)
-        button(c).set_pressed(false)
     entity_selected.emit(entities[idx])
     return
 
 func entity_deployed(ent: Entity):
     var c = container(entities.find(ent))
     deployedLabel(c).visible = true
-    button(c).set_pressed(false)
     button(c).disabled = true
     return
 

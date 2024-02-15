@@ -61,7 +61,7 @@ func mechanic_buff_effect():
 
 func mechanic_spread_effect():
     for vec in _targets:
-        for ent in _state.all_allies_alive():
+        for ent in _state.all_allies_alive(false):
             if ent.location == vec:
                 ent.loseHP(special().damage)
                 if special().effect != null:
@@ -72,7 +72,7 @@ func mechanic_spread_effect():
 func mechanic_soak_effect():
     var ents = []
     for vec in _targets:
-        for ent in _state.all_allies_alive():
+        for ent in _state.all_allies_alive(false):
             if ent.location == vec:
                 ents.append(ent)
                 break
@@ -95,10 +95,13 @@ func mechanic_spawn_effect():
 func mechanic_spawn_effect_inters():
     # Remove the interactables before spawning
     var inters = _state.interactables
+    var to_remove = []
     for _inter in inters:
         if _inter.display_name == special().target_interactable:
-            _state.remove_interactable(_inter)
+            to_remove.append(_inter)
             _inter.sprite.queue_free()
+    for _inter in to_remove:
+        _state.remove_interactable(_inter)
     for i in range(len(_targets)):
         ActionCommon.spawn_entity(_targets[i], special().spawns[0], $"../", tileMap, _state)
     return
@@ -109,7 +112,7 @@ func mechanic_destroy_tile():
             tileMap.set_cell(0, vec, 1, Tiles.CRACKED)
         else:
             tileMap.set_cell(0, vec, 1, Tiles.BROKEN)
-            for ent in _state.all_allies_alive():
+            for ent in _state.all_allies_alive(false):
                 if ent.location == vec:
                     ent.health = 0
                     break
@@ -134,9 +137,18 @@ func find_special_targets():
         cameraService.lock_on(_entity.sprite)
         
     if special().target == Special.Target.ALL:
+        var max_x = -99999
+        var min_x = 99999
+        var max_y = -99999
+        var min_y = 99999
         for ent in _state.all_allies_alive():
             _targets.append_array(targets_per_entity(ent))
-        cameraService.reset()
+            var p = tileMap.pointToGlobal(ent.location)
+            min_x = min(p.x, min_x)
+            max_x = max(p.x, max_x)
+            min_y = min(p.y, min_y)
+            max_y = max(p.y, max_y)
+        cameraService.move(Vector2((max_x-min_x)/2.0 + min_x, (max_y-min_y)/2.0 + min_y))
 
     if special().target == Special.Target.RANDOM:
         var ent = _state.all_allies_alive()[randi_range(0, len(_state.all_allies_alive())-1)]
@@ -170,9 +182,22 @@ func find_special_targets():
     
     if special().target == Special.Target.INTERACTABLES:
         var inters = _state.interactables
+        var max_x = -99999
+        var min_x = 99999
+        var max_y = -99999
+        var min_y = 99999
         for _inter in inters:
             if _inter.display_name == special().target_interactable:
                 _targets.append(_inter.location)
+                var p = tileMap.pointToGlobal(_inter.location)
+                min_x = min(p.x, min_x)
+                max_x = max(p.x, max_x)
+                min_y = min(p.y, min_y)
+                max_y = max(p.y, max_y)
+        if max_x != -99999:
+            cameraService.move(Vector2((max_x-min_x)/2.0 + min_x, (max_y-min_y)/2.0 + min_y))
+        else:
+            cameraService.reset()
             
     if special().target == Special.Target.RANDOM_NO_ENTITIY:
         pass

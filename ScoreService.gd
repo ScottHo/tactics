@@ -42,7 +42,7 @@ func show_score(win: bool):
 
 func return_to_menu():
     $Timer.timeout.connect(func():
-        if Globals.current_level >= 14:
+        if Globals.current_level >= 8:
             $DialogBox.start("Demo Complete", "\
 Thanks for playing! Have feedback? Want updates? Follow @scuffed_keys on X/Twitter!
 
@@ -61,6 +61,8 @@ Steam Page coming soon.",
     return
 
 func calc_points(win) -> int:
+    if Globals.current_mission.is_tutorial:
+        return 0    
     if win:
-        return 1
+        return 2
     return 0

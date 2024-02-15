@@ -141,7 +141,7 @@ _data = {
 "grow": SubResource("Animation_vjgrq")
 }
 
-[node name="Node2D" type="Node2D"]
+[node name="MenuService" type="Node2D"]
 z_index = 10
 script = ExtResource("1_0qs77")
 
@@ -184,7 +184,7 @@ offset_left = 50.67
 offset_top = 8.17
 offset_right = 350.67
 offset_bottom = 34.17
-text = "Boss Specials Incoming"
+text = "Boss Mechanic"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -203,6 +203,7 @@ offset_left = 25.0
 offset_top = 28.95
 offset_right = 375.0
 offset_bottom = 50.95
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -214,8 +215,9 @@ offset_left = 25.0
 offset_top = 54.74
 offset_right = 375.0
 offset_bottom = 117.75
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 16
 text = "test
 test
 test"
@@ -230,6 +232,7 @@ offset_left = 25.0
 offset_top = 28.95
 offset_right = 375.0
 offset_bottom = 50.95
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -241,8 +244,9 @@ offset_left = 25.0
 offset_top = 54.74
 offset_right = 375.0
 offset_bottom = 117.75
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 16
 text = "test
 test
 test"
@@ -257,6 +261,7 @@ offset_left = 25.0
 offset_top = 28.95
 offset_right = 375.0
 offset_bottom = 50.95
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -268,8 +273,9 @@ offset_left = 25.0
 offset_top = 54.74
 offset_right = 375.0
 offset_bottom = 117.75
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 16
 text = "test
 test
 test"
@@ -288,7 +294,7 @@ offset_left = 50.67
 offset_top = 8.17
 offset_right = 350.67
 offset_bottom = 34.17
-text = "Boss Specials Incoming"
+text = "Boss Mechanic"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -307,6 +313,7 @@ offset_left = 25.0
 offset_top = 28.95
 offset_right = 375.0
 offset_bottom = 50.95
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -321,6 +328,7 @@ offset_left = 25.0
 offset_top = 28.95
 offset_right = 375.0
 offset_bottom = 50.95
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -335,6 +343,7 @@ offset_left = 25.0
 offset_top = 28.95
 offset_right = 375.0
 offset_bottom = 50.95
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 18
 text = "TEST"
@@ -359,6 +368,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="SpecialPanel" parent="DescriptionContainer" instance=ExtResource("3_kx1y6")]
+visible = false
 position = Vector2(122.56, 10.75)
 
 [node name="ShortPanel" type="Sprite2D" parent="DescriptionContainer"]
@@ -387,6 +397,7 @@ offset_left = 104.07
 offset_top = 0.01
 offset_right = 105.07
 offset_bottom = 37.01
+theme_override_font_sizes/font_size = 0
 text = "5"
 autowrap_mode = 2
 
@@ -408,6 +419,7 @@ offset_left = 59.01
 offset_top = 443.05
 offset_right = 409.01
 offset_bottom = 463.05
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
@@ -429,12 +441,14 @@ offset_left = 26.32
 offset_top = 321.63
 offset_right = 446.32
 offset_bottom = 404.63
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("6_246xv")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 16
 text = "No Action Selected."
 autowrap_mode = 2
 
 [node name="PassivePanel" parent="." instance=ExtResource("8_a0b0q")]
+visible = false
 position = Vector2(1573.55, 477.1)
 
 [node name="TurnButton" type="Button" parent="."]
@@ -886,6 +900,99 @@ offset_left = -15.01
 offset_top = -9.45
 offset_right = 39.98
 offset_bottom = 45.54
+
+[node name="ObjectivesContainer" type="ReferenceRect" parent="."]
+visible = false
+offset_left = 5.3454
+offset_top = 112.253
+offset_right = 305.345
+offset_bottom = 312.253
+
+[node name="GridContainer" type="GridContainer" parent="ObjectivesContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/v_separation = 70
+
+[node name="Control" type="Control" parent="ObjectivesContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ObjectivesContainer/GridContainer/Control"]
+layout_mode = 0
+offset_left = 38.3519
+offset_top = 5.35143
+offset_right = 78.3519
+offset_bottom = 24.3514
+
+[node name="CheckBox" type="CheckBox" parent="ObjectivesContainer/GridContainer/Control"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Control2" type="Control" parent="ObjectivesContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ObjectivesContainer/GridContainer/Control2"]
+layout_mode = 0
+offset_left = 38.3519
+offset_top = 5.35143
+offset_right = 78.3519
+offset_bottom = 24.3514
+
+[node name="CheckBox" type="CheckBox" parent="ObjectivesContainer/GridContainer/Control2"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="Control3" type="Control" parent="ObjectivesContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ObjectivesContainer/GridContainer/Control3"]
+layout_mode = 0
+offset_left = 38.3519
+offset_top = 5.35143
+offset_right = 78.3519
+offset_bottom = 24.3514
+
+[node name="CheckBox" type="CheckBox" parent="ObjectivesContainer/GridContainer/Control3"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="EventContainer" type="ReferenceRect" parent="."]
+offset_left = 668.237
+offset_top = 113.282
+offset_right = 1203.24
+offset_bottom = 333.282
+
+[node name="Panel" type="Sprite2D" parent="EventContainer"]
+position = Vector2(266.859, 109.702)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_jrrx7")
+
+[node name="Title" type="Label" parent="EventContainer"]
+layout_mode = 0
+offset_left = 82.0385
+offset_top = 17.5732
+offset_right = 462.039
+offset_bottom = 42.5732
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "Missles"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="EventContainer"]
+layout_mode = 0
+offset_left = 53.0732
+offset_top = 58.7707
+offset_right = 483.073
+offset_bottom = 188.771
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_246xv")
+theme_override_font_sizes/font_size = 16
+text = "asdsagasgas"
+autowrap_mode = 2
 
 [node name="AbortMissionButton" type="Button" parent="."]
 offset_left = 8.47

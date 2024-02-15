@@ -88,6 +88,10 @@ func in_melee_range(vector: Vector2i):
             _bfs_points.has(vector + Vector2i(0,1)) or \
             _bfs_points.has(vector + Vector2i(-1,0)) or \
             _bfs_points.has(vector + Vector2i(0,-1)))
+    b = b or (vector in  [_location + Vector2i(1,0),
+                _location + Vector2i(0, 1),
+                _location + Vector2i(-1,0),
+                _location + Vector2i(0,-1)])
     return b
 
 func closestInRange(vector) -> Vector2i:

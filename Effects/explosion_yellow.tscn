@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfr5okvkesyaw"]
+[gd_scene load_steps=12 format=3 uid="uid://bfr5okvkesyaw"]
 
 [ext_resource type="Texture2D" uid="uid://ipo47mdk2snt" path="res://Assets/Effects/ExposionYellow/frame_01.png" id="1_wtqce"]
 [ext_resource type="Script" path="res://EffectsAnimation.gd" id="2_d3ib6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b6pw5b63rkct1" path="res://Assets/Effects/ExposionYellow/frame_04.png" id="5_2vqfp"]
 [ext_resource type="Texture2D" uid="uid://dbqs2lrxqqwb7" path="res://Assets/Effects/ExposionYellow/frame_05.png" id="6_een5r"]
 [ext_resource type="Texture2D" uid="uid://b1elqucubkh0g" path="res://Assets/Effects/ExposionYellow/frame_06.png" id="7_1wtp7"]
+[ext_resource type="AudioStream" uid="uid://do11kf0xmkoo5" path="res://Assets/Audio/DMG_Taken3.wav" id="8_kamng"]
 
 [sub_resource type="Animation" id="Animation_b0fgv"]
 length = 0.001
@@ -80,3 +81,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ddmbv")
 }
 autoplay = "play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kamng")

@@ -84,6 +84,7 @@ func set_button_signals():
     
     reset_button.pressed.connect(redo)
     deploy_button.pressed.connect(deploy)
+    armor_c.visible = false
     return
 
 func description_hover_signal(b: Button, d: Node2D):

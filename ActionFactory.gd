@@ -265,7 +265,7 @@ static func add_focused_repair(ent: Entity, type: int):
 static func add_nano_rebuild(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.ALLIES,
-        "Max Health Increase": 5,
+        "Max Health Increase": 10,
         "Heal Amount": 99,
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
@@ -274,7 +274,7 @@ static func add_nano_rebuild(ent: Entity, type: int):
             _ent.update_max_health(10)            
             _ent.gainHP(99)
         return
-    var d = "Completely heal an allied unit, and remove all downgrades, and increase max_health by 10"
+    var d = "Completely heal an allied unit, and remove all downgrades, and increase max health by 10"
     var action := _add_action(ent, "Nano-Rebuild", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.target_animation = TargetAnimations.BUFF
     action.highlight_style = Highlights.HEAL
@@ -316,16 +316,16 @@ static func add_weapons_upgade(ent: Entity, type: int):
 static func add_auto_turret_3000(ent: Entity, type: int):
     var stats = {
         "Affects": TargetTypes.EMPTY,
-        "Turret Damage": 10,
+        "Turret Damage": 9,
         "Turret Initiative": 15,
         "Turret Movement": 0,
-        "Turret HP": 5,
+        "Turret HP": 3,
         "Turret HP Loss Per Turn": 1
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         _action.spawn = EntityFactory.create_auto_turret_3000()
         return
-    var d = "Deploy the Auto Turret 3000, a powerful but fragile turret that slowly deteriorates"
+    var d = "Deploy the Auto Turret 3000, a powerful but fragile turret that slowly deteriorates and can't be healed"
     var action := _add_action(ent, "Auto Turret 3000", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.SPAWN
     return
@@ -507,7 +507,7 @@ static func add_robo_punch(ent: Entity, type: int):
     var stats = {
         "Affects": "Enemy Units",
         "Damage Amp": [2,3,4,5],
-        "Cost": 4,
+        "Cost": 5,
         "Threat Gain": 3
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
@@ -568,33 +568,33 @@ static func add_bootleg_upgrades(ent: Entity, type: int):
         "Added Initiative": "-1 / 1",
         "Added Damage": "-1 / 1",
         "Added Armor": "-1 / 1",
-        "Chance for each Upgrade": ["50%", "60%", "70%", "80%"],
+        "Chance for each Upgrade": ["55%", "65%", "75%", "85%"],
         "Cost": 2,
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
-        var l = _action.level + 4
+        var l = (_action.level + 4.5)/10.0
         
-        if randi_range(1, 10) > l:
+        if randf() > l:
             _user.update_movement(-1)
         else:
             _user.update_movement(1)
         
-        if randi_range(1, 10) > l:
+        if randf() > l:
             _user.update_initiative(-1)
         else:
             _user.update_initiative(1)
         
-        if randi_range(1, 10) > l:
+        if randf() > l:
             _user.update_damage(-1)
         else:
             _user.update_damage(1)
         
-        if randi_range(1, 10) > l:
+        if randf() > l:
             _user.update_armor(-1)
         else:
             _user.update_armor(1)
         return
-    var d = "Slap some bootleg parts on, resulting in + or - movement, initiative, damage, and armor"
+    var d = "Attempt to install bootleg parts, resulting in + or - movement, initiative, damage, and armor"
     var action := _add_action(ent, "Bootleg Upgrades", d, [], effect, type, stats, "res://Effects/upgrade_effect.tscn")
     action.highlight_style = Highlights.HEAL
     action.target_animation = TargetAnimations.BUFF
@@ -657,7 +657,7 @@ static func add_halo(ent: Entity, type: int):
 
 static func add_drill_strike(ent: Entity, type: int):
     var stats = {
-        "Affects": TargetTypes.ANY,
+        "Affects": TargetTypes.ANY_OTHER,
         "Number of Attacks": [2,3,4,5],
         "Damage Amp": .5,
         "Cost": 2,
@@ -679,13 +679,15 @@ static func add_drill_strike(ent: Entity, type: int):
 
 static func add_drill_barrage(ent: Entity, type: int):
     var stats = {
-        "Affects": TargetTypes.ENEMIES,
+        "Affects": TargetTypes.ANY_OTHER,
         "Number of Attacks": 5,
         "Threat Gain": 3
     }
     var effect = func (_user: Entity, _targets: Array, _action: Action):
         var damage = _user.get_damage()
         for _ent in _targets:
+            if _ent.is_ally:
+                return
             for i in range(_action.get_from_stats("Number of Attacks")):
                 _user.damage_done += _ent.damage_preview(damage)
                 _ent.loseHP(damage)

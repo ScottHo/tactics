@@ -18,14 +18,14 @@ texture = ExtResource("2_h8y3u")
 centered = false
 
 [node name="CollectionContainer" parent="." instance=ExtResource("12_os86a")]
-position = Vector2(783.871, -20.4082)
+position = Vector2(783.871, -17.8777)
 scale = Vector2(1.2, 1.2)
 
 [node name="SelectedContainer" parent="." instance=ExtResource("11_q353u")]
-position = Vector2(1709.19, 401.046)
+position = Vector2(1709.19, 420.095)
 
 [node name="DeployContainer" parent="." instance=ExtResource("13_e71vw")]
-position = Vector2(1015.06, 809.487)
+position = Vector2(895.831, 881.736)
 scale = Vector2(0.8, 0.8)
 
 [node name="Clear" type="Button" parent="."]
@@ -59,7 +59,7 @@ text = "START
 MISSION"
 
 [node name="DetailedRoomInfo" parent="." instance=ExtResource("6_27vo8")]
-position = Vector2(59.4415, 124.415)
+position = Vector2(23.7653, 88.7388)
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 7.14

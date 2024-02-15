@@ -19,7 +19,7 @@ var description: String
 var id: int = -1
 var alive: bool = true
 var location: Vector2i
-
+var cant_heal := false
 var moves_left: int
 var skip_next_turn: bool = false
 var damage_done := 0
@@ -40,6 +40,7 @@ var thorns_all: bool = false # Refect flat damage to everyone, for 1 turn
 var thorns: bool = false # Reflect flat damage on basic attacks
 var dodge_chance: float = 0.0
 var wipe_downgrades_chance: float = 0.0
+var energy_chance: float = 0.0
 var special_damage_mod := 0
 var crit_chance: float = 0.0
 var armor_break_chance: float = 0.0
@@ -167,7 +168,7 @@ func loseHP(hp):
         return
     
     if shield_value > 0:
-        hp = -shield_value
+        hp -= shield_value
         shielded(-hp)
         
     health -= hp
@@ -179,6 +180,9 @@ func loseHP(hp):
     return
 
 func gainHP(hp):
+    if cant_heal:
+        sprite.textAnimation().other_text("Can't Heal", Color.RED)
+        return
     health += hp
     if health > get_max_health():
         health = get_max_health()
@@ -363,6 +367,9 @@ func setup_next_turn():
         if wipe_downgrades_chance > 0:
             if randf() < wipe_downgrades_chance:
                 wipe_downgrades()
+        if energy_chance > 0:
+            if randf() < energy_chance:
+                update_energy(1)
     moves_left = get_movement()
     action_used = false
     return

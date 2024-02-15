@@ -26,7 +26,10 @@ func _ready():
         entity_selected(e, true))
     startMissionButton.pressed.connect(startMission)
     autoDeployButton.pressed.connect(auto_deploy)
-    clear_button.pressed.connect(deployPanel.clear)
+    clear_button.pressed.connect(func():
+        deployPanel.clear()
+        if deployPanel.is_empty():
+            startMissionButton.disabled = true)
     backButton.pressed.connect(back_to_headquarters)
     start()
     return
@@ -74,23 +77,43 @@ func startMission():
     else:
         start_mission_cont()
     return
+
+func check_if_under_skilled() -> bool:
+    for ent in deployPanel._entities:
+        if ent == null:
+            continue
+        var point_data = Globals.entity_skill_point_distributions[ent.collection_id]
+        if point_data.total < Globals.skill_points:
+            return false
+    return true
     
 func start_mission_cont():
+    $DialogBox.end()    
+    if check_if_under_skilled():
+        start_mission_cont2()
+        return
+    var t = "Unused Skill Points"
+    var d = "You have unused skill points. Continue anyways?"
+    $DialogBox.start(t, d, start_mission_cont2)
+    return
+        
+func start_mission_cont2():
     $DialogBox.end()
     var entities_to_deploy = []
     for ent in deployPanel._entities:
-        if ent != null:
-            var point_data = Globals.entity_skill_point_distributions[ent.collection_id]
-            ent.health_modifier = point_data.health_level
-            ent.armor_modifier = point_data.armor_level
-            ent.movement_modifier = point_data.movement_level
-            ent.initiative_modifier = point_data.initiative_level
-            ent.damage_modifier = point_data.attack_level
-            ent.action1.level = point_data.action1_level
-            ent.action2.level = point_data.action2_level
-            ent.range_modifier = point_data.range_level
-            entities_to_deploy.append(ent)
-            
+        if ent == null:
+            continue
+        var point_data = Globals.entity_skill_point_distributions[ent.collection_id]
+        ent.health_modifier = point_data.health_level
+        ent.armor_modifier = point_data.armor_level
+        ent.movement_modifier = point_data.movement_level
+        ent.initiative_modifier = point_data.initiative_level
+        ent.damage_modifier = point_data.attack_level
+        ent.action1.level = point_data.action1_level
+        ent.action2.level = point_data.action2_level
+        ent.range_modifier = point_data.range_level
+        entities_to_deploy.append(ent)
+    
     Globals.entities_to_deploy = entities_to_deploy
     get_tree().change_scene_to_file("res://level.tscn")
     return
@@ -100,8 +123,10 @@ func back_to_headquarters():
     return
 
 func auto_deploy():
+    startMissionButton.disabled = false
     for i in Globals.bots_collected:
         if deployPanel.is_full():
+            upgradePanel.set_deploy_full(true)
             return
         if deployPanel.has_entity(i):
             continue

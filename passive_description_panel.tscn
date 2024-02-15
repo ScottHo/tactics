@@ -19,6 +19,7 @@ offset_left = 53.36
 offset_top = 10.33
 offset_right = 298.36
 offset_bottom = 56.33
+theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 16
 text = "Passive"
 horizontal_alignment = 1
@@ -29,8 +30,9 @@ offset_left = 16.02
 offset_top = 59.36
 offset_right = 316.02
 offset_bottom = 141.36
+theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("4_vpjiy")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 16
 text = "None"
 autowrap_mode = 2
 
@@ -41,9 +43,9 @@ texture = ExtResource("4_57wkg")
 
 [node name="Label" type="Label" parent="Passive"]
 offset_left = -37.92
-offset_top = -57.40
+offset_top = -57.4
 offset_right = -12.92
-offset_bottom = -20.40
+offset_bottom = -20.4
 scale = Vector2(3, 3)
 theme_override_font_sizes/font_size = 30
 text = "P"

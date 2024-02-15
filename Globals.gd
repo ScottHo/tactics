@@ -8,7 +8,7 @@ var current_mission: Mission
 var current_recruit: int = -1
 var bots_collected := []
 var bots_dead := []
-var skill_points := 1
+var skill_points := 0
 var entity_skill_point_distributions: Dictionary
 var current_level := 1
 var current_foundry := "None"

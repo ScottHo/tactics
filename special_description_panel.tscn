@@ -69,17 +69,17 @@ offset_bottom = 70.71
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 10.15
-offset_top = 71.60
+offset_top = 71.6
 offset_right = 102.15
-offset_bottom = 92.60
+offset_bottom = 92.6
 theme_override_font_sizes/font_size = 15
 text = "Affects:"
 
 [node name="AffectsLabel" type="Label" parent="."]
 offset_left = 107.05
-offset_top = 71.60
+offset_top = 71.6
 offset_right = 301.05
-offset_bottom = 92.60
+offset_bottom = 92.6
 theme_override_font_sizes/font_size = 15
 text = "All Friendly Units"
 

@@ -744,7 +744,7 @@ offset_bottom = 205.83
 
 [node name="Sprite2D" type="Sprite2D" parent="EntityContainer"]
 position = Vector2(-38.45, -24.93)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.35, 0.35)
 texture = ExtResource("16_epibs")
 
 [node name="Label" type="Label" parent="EntityContainer"]

@@ -269,10 +269,13 @@ static func foundry_1_floors(_floor: int) -> Array:
     var ret = []
     for i in range(6):
         var m = Mission.new()
+        m.extra_objectives = []
         if _floor == 1:
             m.boss = EntityFactory.create_boss_1_1()
             m.specials_per_turn = 0
             m.specials = []
+            var o = Objective.new()
+            o.is_bool = true
         if _floor == 2:
             m.boss = EntityFactory.create_boss_1_2()
             m.specials_per_turn = 1
@@ -284,15 +287,15 @@ static func foundry_1_floors(_floor: int) -> Array:
         if _floor == 4:
             m.boss = EntityFactory.create_boss_1_4()
             m.specials_per_turn = 2
-            m.specials = [specs[i], specs[i+1]]
+            m.specials = [specs[i], specs[i+1], specs[i+2], recharge_special()]
         if _floor == 5:
             m.boss = EntityFactory.create_boss_1_5()
             m.specials_per_turn = 2
-            m.specials = [specs[i], specs[i+1]]
+            m.specials = [specs[i], specs[i+1], specs[i+2], specs[i+3]]
         if _floor == 6:
             m.boss = EntityFactory.create_boss_1_6()
             m.specials_per_turn = 2
-            m.specials = [specs[i], specs[i+1]]
+            m.specials = [specs[i], specs[i+1], specs[i+2], specs[i+3]]
         m.buffs = []
         ret.append(m)
     return ret
@@ -359,8 +362,8 @@ static func foundry_4_floors(_floor: int) -> Array:
 
 static func recharge_special() -> Special:
     var s = Special.new()
-    s.display_name = "Do Nothing"
-    s.description = "Does nothing. Seriously."
+    s.display_name = "Recharging"
+    s.description = "Recharge for the next mechanic (does nothing)"
     s.target = Special.Target.SELF
     s.shape = Special.Shape.SINGLE
     s.mechanic = Special.Mechanic.BUFF

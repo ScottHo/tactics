@@ -22,8 +22,9 @@ func all_allies_alive(no_add: bool = true) -> Array:
     var ret = []
     for id in allies:
         if get_entity(id).alive:
-            if no_add and not get_entity(id).is_add:
-                ret.append(get_entity(id))
+            if no_add and get_entity(id).is_add:
+                continue
+            ret.append(get_entity(id))
     return ret
 
 func all_enemies_alive() -> Array:

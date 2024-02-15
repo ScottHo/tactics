@@ -7,7 +7,7 @@ func set_state(state: State):
     return
 
 func update():
-    var all_allies = _state.all_allies_alive()
+    var all_allies = _state.all_allies_alive(false)
     for ent in all_allies:
         ent.reset_auras()
     for ent in all_allies:

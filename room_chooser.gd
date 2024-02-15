@@ -31,6 +31,8 @@ func _ready():
     
     setup_nodes()
     setup_panels(level, _floor)
+    if not [7,14,21,22].has(level):
+        setup_recruit_sprites()
     return
 
 func setup_nodes():
@@ -53,9 +55,28 @@ func setup_nodes():
         switch_to_room())
     return
 
+func setup_recruit_sprites():
+    
+    var ent = EntityFactory.create_bot(recruits[0])
+    var sprite: EntitySprite = load(ent.sprite_path).instantiate()
+    $TileMapFloor/R1.add_child(sprite)
+    sprite.face_direction(Vector2i(0, 1))    
+    sprite.play_move_animation()
+    ent = EntityFactory.create_bot(recruits[1])
+    sprite = load(ent.sprite_path).instantiate()
+    $TileMapFloor/R2.add_child(sprite)
+    sprite.face_direction(Vector2i(1, 0))
+    sprite.play_move_animation()    
+    ent = EntityFactory.create_bot(recruits[2])
+    sprite = load(ent.sprite_path).instantiate()
+    $TileMapFloor/R3.add_child(sprite)
+    sprite.face_direction(Vector2i(0,-1))    
+    sprite.play_move_animation()
+    return
+
 func switch_to_room():
     setup_recruit()
-    room_info.start(missions[room_idx]) 
+    room_info.start(missions[room_idx])
     room_container.visible = true
     choose_container.visible = false
     return

@@ -25,7 +25,7 @@ var _is_first_turn := true
 var _is_ai_turn := false
 var _start_of_turn := false
 var _special_texts_set := true
-var _orig_ai_delay := 1.9
+var _orig_ai_delay := 1.8
 var _ai_delay := 0.0
 var _do_ai_delay := false
 var _ai_callable: Callable
@@ -146,6 +146,8 @@ func setup_entities():
             offset = 2
         elif len(allies) < 5:
             offset = 1
+        elif len(allies) == 6:
+            offset = 0
         for i in range(len(allies)):
             if allies[i] != null:
                 setup_entity_for_level(allies[i], Vector2i(2, i+offset))
@@ -187,6 +189,7 @@ func mission_start():
 
 func nextTurn():
     print_debug("Next Turn")
+    menuService.disableAllButtons(true)
     _start_of_turn = true
     if currentEntity() != null:
         currentEntity().reset_buff_values()
@@ -212,7 +215,6 @@ func nextTurn_continued():
 func nextTurn_continued2():
     timer.stop()
     scoreService.turn_taken()
-    menuService.disableAllButtons()
     highlightMap.clearHighlight()
     current_turn_id = turnService.startNextTurn()
     cameraService.move(tileMap.pointToGlobal(currentEntity().location))
@@ -275,14 +277,15 @@ func nextAiStep():
 
 func do_nextAiStep():
     if _ai_state == AiState.NONE:
+        if _is_first_turn:
+            _is_first_turn = false            
+            _ai_callable = startAiSpecial
+            _ai_state = AiState.SPECIAL
+            startAiDelay()
+            return
         if currentEntity().skip_next_turn:
             currentEntity().skip_next_turn = false
             currentEntity().custom_text("Knocked Out!", Color.MEDIUM_PURPLE)
-            _ai_callable = nextTurn
-            startAiDelay()
-            return
-        if _is_first_turn:
-            _is_first_turn = false
             _ai_callable = nextTurn
             startAiDelay()
             return
@@ -362,25 +365,30 @@ func startAiSpecial():
         currentEntity().specials_left = 0
         nextAiStep()
         return
+    menuService.show_event(aiSpecialService.special().display_name,
+        aiSpecialService.special().description)
     aiSpecialService.find_special_targets()
+    
     _ai_callable = doAiSpecial
     startAiDelay()
     return
 
 func doAiSpecial():
-    print_debug("Do AI Special")
+    print_debug("Do AI Special")    
     aiSpecialService.do_special_effect()
     return
 
 func continue_doAiSpecial():
     print_debug("Continue Do AI Special")
+    menuService.hide_event()    
     set_ai_special_mechanic_texts()
     aiSpecialService.finish()
     turnService.update_new()
     auraService.update()
     update_character_menu()
     if not checkDeaths():
-        nextAiStep()
+        _ai_callable = nextAiStep
+        startAiDelay()
     return
 
 func set_ai_special_mechanic_texts():

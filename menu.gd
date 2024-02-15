@@ -60,6 +60,10 @@ signal stopAction
 @onready var mech_2_description_tall = $MechanicContainer/Long/Grid/Mechanic2/Label
 @onready var mech_3_description_tall = $MechanicContainer/Long/Grid/Mechanic3/Label
 
+@onready var event_container = $EventContainer
+@onready var event_title = $EventContainer/Title
+@onready var event_description = $EventContainer/Description
+
 @onready var scoreService: ScoreService = $"../ScoreService"
 @onready var jenkins: Jenkins = $"Jenkins"
 
@@ -83,6 +87,7 @@ func _ready():
     _tab_dict = {}
     $MechanicContainer.visible = false
     show_description(false, null)
+    hide_event()
     jenkins.visible = false
     return
 
@@ -526,10 +531,20 @@ func mission_start():
 func play_mission_text(t: String, hide_after = true):
     $MissionStartLabel.visible = true
     $MissionStartLabel.text = t
+    $MissionStartLabel.visible_characters = 0
     var tween = create_tween()
-    tween.tween_interval(.2)
-    tween.tween_property($MissionStartLabel, "visible_characters", len(t), .5)
+    tween.tween_property($MissionStartLabel, "visible_characters", len(t), .8)
     if hide_after:
-        tween.tween_interval(1.5)
+        tween.tween_interval(1.4)
         tween.tween_property($MissionStartLabel, "visible", false, 0)
+    return
+
+func show_event(t: String, d: String):
+    event_container.visible = true
+    event_title.text = t
+    event_description.text = d
+    return
+
+func hide_event():
+    event_container.visible = false
     return

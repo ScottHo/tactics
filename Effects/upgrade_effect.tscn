@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7vpyxhsdn2ce"]
+[gd_scene load_steps=13 format=3 uid="uid://7vpyxhsdn2ce"]
 
 [ext_resource type="Texture2D" uid="uid://cu28mtjrlb3ph" path="res://Assets/Effects/Upgrade/upgrade1.png" id="1_xgcul"]
 [ext_resource type="Script" path="res://EffectsAnimation.gd" id="2_qsw2q"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cn3gbkqkvgpfj" path="res://Assets/Effects/Upgrade/upgrade5.png" id="6_wogrn"]
 [ext_resource type="Texture2D" uid="uid://1p3tdh5gg2kb" path="res://Assets/Effects/Upgrade/upgrade6.png" id="7_m0x0a"]
 [ext_resource type="Texture2D" uid="uid://cbi8c72yoxyj" path="res://Assets/Effects/Upgrade/upgrade7.png" id="8_6xgva"]
+[ext_resource type="AudioStream" uid="uid://cu07hj2soipld" path="res://Assets/Audio/Buff-Heal.wav" id="9_3hcay"]
 
 [sub_resource type="Animation" id="Animation_uadbe"]
 length = 0.001
@@ -79,3 +80,6 @@ libraries = {
 "": SubResource("AnimationLibrary_6tvum")
 }
 autoplay = "play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_3hcay")

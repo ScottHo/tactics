@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://d3xlkfucuimn7"]
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://d3xlkfucuimn7"]
 
 [ext_resource type="StyleBox" uid="uid://8beooxr6ba16" path="res://Themes/bot_button.tres" id="1_a8y5b"]
 [ext_resource type="StyleBox" uid="uid://c3vaiadrtevf" path="res://Themes/button_normal.tres" id="1_da8vl"]
@@ -11,7 +11,9 @@
 [ext_resource type="StyleBox" uid="uid://b0x6o50ei0e6o" path="res://Themes/small_button.tres" id="4_txl7r"]
 [ext_resource type="StyleBox" uid="uid://cvkdtfj115cu2" path="res://Themes/small_button_pressed.tres" id="5_l3c1q"]
 [ext_resource type="StyleBox" uid="uid://dkb5kq5k3ynml" path="res://Themes/triangle_button.tres" id="7_gkjjj"]
+[ext_resource type="Texture2D" uid="uid://b5jsubt7hejfq" path="res://Assets/GUI/checkbox.png" id="8_auqij"]
 [ext_resource type="StyleBox" uid="uid://biwov3vxpto6l" path="res://Themes/triangle_button_pressed.tres" id="8_npgn5"]
+[ext_resource type="Texture2D" uid="uid://bmorjs6wsgq2v" path="res://Assets/GUI/checkbox_no.png" id="9_up577"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfpw6"]
 
@@ -24,6 +26,12 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0yha"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5gqh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1i6tw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r773n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkbou"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gcly3"]
 content_margin_left = 5.0
@@ -53,7 +61,7 @@ BotButton/colors/icon_disabled_color = Color(0.509804, 0.509804, 0.509804, 1)
 BotButton/colors/icon_focus_color = Color(0.85098, 0.85098, 0.85098, 1)
 BotButton/colors/icon_hover_color = Color(1, 1, 1, 1)
 BotButton/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-BotButton/colors/icon_normal_color = Color(0.85098, 0.85098, 0.85098, 0.823529)
+BotButton/colors/icon_normal_color = Color(0.85098, 0.85098, 0.85098, 1)
 BotButton/colors/icon_pressed_color = Color(1, 1, 1, 1)
 BotButton/constants/h_separation = 0
 BotButton/constants/icon_max_width = 0
@@ -93,6 +101,13 @@ Button/styles/focus = SubResource("StyleBoxEmpty_l5gqh")
 Button/styles/hover = ExtResource("2_wqisb")
 Button/styles/normal = ExtResource("1_da8vl")
 Button/styles/pressed = ExtResource("2_wqisb")
+CheckBox/icons/checked = ExtResource("8_auqij")
+CheckBox/icons/checked_disabled = ExtResource("8_auqij")
+CheckBox/icons/unchecked = ExtResource("9_up577")
+CheckBox/icons/unchecked_disabled = ExtResource("9_up577")
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_1i6tw")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_r773n")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_rkbou")
 FlatButton/colors/font_color = Color(1, 1, 1, 1)
 FlatButton/colors/font_disabled_color = Color(0.258824, 0.258824, 0.258824, 1)
 FlatButton/colors/font_focus_color = Color(1, 1, 1, 1)
