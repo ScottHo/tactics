@@ -97,6 +97,8 @@ func in_melee_range(vector: Vector2i):
 func closestInRange(vector) -> Vector2i:
     var minVec:= Vector2i(9999, 9999)
     var curMin:= 9999
+    if vector == _location:
+        return vector
     for vec in _bfs_points.keys():
         var newMin = abs(vector.x-vec.x) + abs(vector.y-vec.y)
         if newMin < curMin:
@@ -105,6 +107,8 @@ func closestInRange(vector) -> Vector2i:
     return minVec
 
 func getPath(vector) -> Array:
+    if vector == _location:
+        return [] 
     return _bfs_points.get(vector, [])
 
 func resetHighlights(calcRange: bool, highlight_self := false):
