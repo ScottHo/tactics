@@ -29,12 +29,12 @@ func update_nodes():
         healthLabel = $HealthBar/HealthLabel
         slashLabel = $HealthBar/SlashLabel
         maxHealthLabel = $HealthBar/MaxHealthLabel
-        moveLabel = $Stats/Control/MoveLabel
-        initiativeLabel = $Stats/Control2/InitiativeLabel        
-        damageLabel = $Stats/Control3/DamageLabel
-        rangeLabel = $Stats/Control4/RangeLabel
-        armorLabel = $Stats/Control5/ArmorLabel
-        threatLabel = $Stats/Control6/ThreatLabel
+        moveLabel = $Background/Stats/Control/MoveLabel
+        initiativeLabel = $Background/Stats/Control2/InitiativeLabel        
+        damageLabel = $Background/Stats/Control3/DamageLabel
+        rangeLabel = $Background/Stats/Control4/RangeLabel
+        armorLabel = $Background/Stats/Control5/ArmorLabel
+        threatLabel = $Background/Stats/Control6/ThreatLabel
         background = $Background
         displayName = $DisplayName
     return
@@ -65,9 +65,9 @@ func update():
     healthBar.max_value = _entity.get_max_health()
     healthBar.value = _entity.health
     energyBar.value = _entity.energy
-    if _entity.passive != null:
-        if _entity.passive.is_aura:
-            $Passive/ShortName.text = _entity.passive.aura_short_desc
+    #if _entity.passive != null:
+    #    if _entity.passive.is_aura:
+    #        $Passive/ShortName.text = _entity.passive.aura_short_desc
     _set_colors()
     return
 
@@ -75,10 +75,9 @@ func expand():
     displayName.visible = true
     background.visible = true
     healthBar.visible = true
-    $Stats.visible = true
-    if _entity.passive != null:
-        if _entity.passive.is_aura:
-            $Passive.visible = true
+    #if _entity.passive != null:
+    #    if _entity.passive.is_aura:
+    #        $Passive.visible = true
     if _entity.is_ally:
         energyBar.visible = true
     return
@@ -87,9 +86,8 @@ func unexpand():
     displayName.visible = false
     background.visible = false
     healthBar.visible = false
-    $Stats.visible = false
     energyBar.visible = false
-    $Passive.visible = false
+    #$Passive.visible = false
     return
 
 func _set_colors():

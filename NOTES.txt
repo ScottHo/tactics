@@ -4,13 +4,15 @@ BUGS
 - Threat still bugged if highest threat is in melee but no other move is avilable 
 
 DO NEXT
+- All turns same time
 - Steam page
+- show status effects on hover
+
 
 DO LATER
+- Tile art
 - simple tutorial bot art/animations
-- Add placeholder text on unfinished sprites
 - Add discord, twitter, steam page link
-- show status effects on hover
 - Brutus Art/Animations
 - Punch-E Art/Animations
 - Oilee Art/Animations

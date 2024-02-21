@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba6s0cbmnjgbh"]
+[gd_scene load_steps=3 format=3 uid="uid://pcw1c006ap75"]
 
 [ext_resource type="Script" path="res://animation_tester.gd" id="1_d33px"]
 [ext_resource type="PackedScene" uid="uid://c7auncstw41cc" path="res://Bots/drillbit.tscn" id="2_5egm6"]

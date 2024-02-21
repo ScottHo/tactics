@@ -104,6 +104,7 @@ func closestInRange(vector) -> Vector2i:
         if newMin < curMin:
             curMin = newMin
             minVec = vec
+    
     return minVec
 
 func getPath(vector) -> Array:
