@@ -80,6 +80,23 @@ func lock_on(node):
     _target = node
     return
 
+func move_to_array(vec2i_array):
+    if len(vec2i_array) == 0:
+        reset()
+        return
+    var max_x = -99999
+    var min_x = 99999
+    var max_y = -99999
+    var min_y = 99999
+    for vec2 in vec2i_array:
+        var p = tileMap.pointToGlobal(vec2)
+        min_x = min(p.x, min_x)
+        max_x = max(p.x, max_x)
+        min_y = min(p.y, min_y)
+        max_y = max(p.y, max_y)
+    move(Vector2((max_x-min_x)/2.0 + min_x, (max_y-min_y)/2.0 + min_y))
+    return
+
 func stop_lock():
     $Timer.stop()
     $Timer.start(.5)

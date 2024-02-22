@@ -25,7 +25,6 @@ var damage_done := 0
 var action_used := false
 var ultimate_used := false
 var interactable: Interactable
-var specials_left := 1
 var spawn_on_death: Interactable
 var custom_data
 var threat: int

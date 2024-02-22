@@ -226,8 +226,8 @@ func show_future_turns(_show):
     turnSpriteContainer.visible = _show
     return
 
-func pre_showCurrentTurn(turn: int):
-    _entity = _state.get_entity(turn)
+func pre_showCurrentTurn(e: Entity):
+    _entity = e
     nameLabel.text = _entity.display_name
     charSprite.texture = load(_entity.icon_path)
     charSprite.modulate.a = 0
@@ -254,7 +254,7 @@ func start_menu_animations():
     _button_animations(attackButton)
     _button_animations(action1Button)
     _button_animations(action2Button)
-    $Timer.start(.5)
+    $Timer.start(.2)
     return
 
 func _button_animations(button: Button):

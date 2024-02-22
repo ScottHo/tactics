@@ -9,9 +9,20 @@ var _show_info := true
 var _enabled := false
 var _map_bfs = MapBFS.new()
 
+signal new_entity_selected
+
 func _input(event):
     if not _enabled:
         return
+    if event is InputEventMouseButton:
+        match event.button_index:
+            MOUSE_BUTTON_LEFT:
+                var global_mouse: Vector2 = get_global_mouse_position()
+                var coords: Vector2i = tileMap.globalToPoint(global_mouse)
+                if not Globals.in_action and not Globals.in_move and not Globals.enemy_turn:
+                    var e = _state.entity_on_tile(coords)
+                    if e != null and e.is_ally:
+                        new_entity_selected.emit(e)
     if event is InputEventMouseMotion:
         var global_mouse: Vector2 = get_global_mouse_position()
         var coords: Vector2i = tileMap.globalToPoint(global_mouse)
