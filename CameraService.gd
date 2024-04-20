@@ -32,7 +32,7 @@ func _process(_delta):
 func _input(event):
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
-            MOUSE_BUTTON_RIGHT:
+            MOUSE_BUTTON_MIDDLE:
                 _right_click_down = true
                 _moved = true
                 cam.position_smoothing_enabled = false
@@ -49,7 +49,7 @@ func _input(event):
                 return
     if event is InputEventMouseButton and event.is_released():
         match event.button_index:
-            MOUSE_BUTTON_RIGHT:
+            MOUSE_BUTTON_MIDDLE:
                 _right_click_down = false
                 return
     if event is InputEventMouseMotion:
