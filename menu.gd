@@ -63,6 +63,7 @@ signal stopAction
 @onready var event_container = $EventContainer
 @onready var event_title = $EventContainer/Title
 @onready var event_description = $EventContainer/Description
+@onready var event_big_title = $EventContainer/BigTitle
 
 @onready var scoreService: ScoreService = $"../ScoreService"
 @onready var jenkins: Jenkins = $"Jenkins"
@@ -83,6 +84,7 @@ func _ready():
         show_future_turns(b))
 
     $Timer.timeout.connect(finish_menu_animations)
+    $EventContainer/EventTimer.timeout.connect(hide_event)
 
     _tab_dict = {}
     $MechanicContainer.visible = false
@@ -244,7 +246,6 @@ func showCurrentTurn():
     if is_ally:
         setup_action_descriptions()
         update_button_states()
-
     start_menu_animations()
     return
 
@@ -538,11 +539,23 @@ func play_mission_text(t: String, hide_after = true):
         tween.tween_interval(1.4)
         tween.tween_property($MissionStartLabel, "visible", false, 0)
     return
-
+    
 func show_event(t: String, d: String):
     event_container.visible = true
     event_title.text = t
     event_description.text = d
+    event_big_title.text = ""
+    $EventContainer/EventTimer.stop()
+    $EventContainer/EventTimer.start(5)
+    return
+
+func show_big_event(t: String):
+    event_container.visible = true
+    event_title.text = ""
+    event_description.text = ""
+    event_big_title.text = t
+    $EventContainer/EventTimer.stop()
+    $EventContainer/EventTimer.start(5)
     return
 
 func hide_event():

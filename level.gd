@@ -201,6 +201,11 @@ func enemyTurn():
         ent.reset_buff_values()
         ent.setup_next_turn()
     nextAiTurn()
+    if tutorialService.stage == TutorialService.TutorialStage.EndTurn1:
+        tutorialService.next_tutorial_stage()
+    elif tutorialService.stage == TutorialService.TutorialStage.SpecialAttack:
+        tutorialService.next_tutorial_stage()
+    menuService.show_big_event("Enemy\nTurn")
     return
 
 func alliedTurn():
@@ -218,6 +223,12 @@ func alliedTurn():
         ent.setup_next_turn()
         locations.append(ent.location)
     cameraService.move_to_array(locations)
+    if tutorialService.stage == TutorialService.TutorialStage.DummyTurn1:
+        tutorialService.next_tutorial_stage()
+    elif tutorialService.stage == TutorialService.TutorialStage.DummySpecial:
+        tutorialService.next_tutorial_stage()
+    menuService.show_big_event("Your\nTurn")
+    menuService.enable_turn_button(true, false)
     return
 
 func nextAiTurn():
@@ -257,13 +268,7 @@ func nextTurn_continued3():
     update_character_menu()
     menuService.showCurrentTurn()
     if _mission.is_tutorial:
-        if tutorialService.stage == TutorialService.TutorialStage.EndTurn1:
-            tutorialService.next_tutorial_stage()
-        elif tutorialService.stage == TutorialService.TutorialStage.DummyTurn1:
-            tutorialService.next_tutorial_stage()
-        elif tutorialService.stage == TutorialService.TutorialStage.SpecialAttack:
-            tutorialService.next_tutorial_stage()
-        elif tutorialService.stage == TutorialService.TutorialStage.DummySpecial:
+        if tutorialService.stage == TutorialService.TutorialStage.Welcome:
             tutorialService.next_tutorial_stage()
     return
 
@@ -387,7 +392,6 @@ func doAiSpecial():
 
 func continue_doAiSpecial():
     print_debug("Continue Do AI Special")
-    menuService.hide_event()    
     set_ai_special_mechanic_texts()
     aiSpecialService.finish()
     auraService.update()
