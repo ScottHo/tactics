@@ -99,6 +99,7 @@ static func create_electo():
     p.is_static = true
     ent.passive = p
     ActionFactory.add_base_attack(ent)
+    ent.attack.animation_path = "res://Effects/lightning.tcsn"
     ActionFactory.add_storm(ent, ActionType.ACTION1)
     ActionFactory.add_thunderous_wrath(ent, ActionType.ACTION2)
     return ent

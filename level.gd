@@ -2,7 +2,6 @@ extends Node2D
 
 @onready var moveService: MoveService = $MoveService
 @onready var menuService: MenuService = $Camera2D/CanvasLayer/MenuService
-@onready var turnService: TurnService = $TurnService
 @onready var actionService: ActionService = $ActionService
 @onready var aiMoveService: AiMoveService = $AiMoveService
 @onready var aiActionService: AiActionService = $AiActionService
@@ -18,12 +17,10 @@ extends Node2D
 @onready var tutorialService: TutorialService = $TutorialService
 @onready var timer: Timer = $Timer
 
-var current_turn_id: int = -1
 var _mission: Mission
 var state: State = State.new()
 var _is_first_turn := true
 var _is_ai_turn := false
-var _start_of_turn := false
 var _special_texts_set := true
 var _orig_ai_delay := 1.8
 var _ai_delay := 0.0
@@ -32,12 +29,15 @@ var _ai_callable: Callable
 var _animation_delay := 0.0
 var _do_animation_delay := false
 var _animation_callback: Callable
+var current_entity: Entity
+var _enemy_entities: Array
+var specials_left := 0
 
 enum AiState { NONE, MOVE, ACTION, SPECIAL}
 var _ai_state: AiState = AiState.NONE
 
 func _ready():
-    menuService.nextTurnActionInitiate.connect(nextTurn)
+    menuService.nextTurnActionInitiate.connect(enemyTurn)
     menuService.moveActionInitiate.connect(doMove)
     menuService.actionInitiate.connect(doAction)
     menuService.interactActionInitiate.connect(doInteract)
@@ -49,6 +49,7 @@ func _ready():
     interactService.interactDone.connect(interactDone)
     aiActionService.done.connect(aiActionDone)
     aiSpecialService.special_done.connect(continue_doAiSpecial)
+    highlightMap2.new_entity_selected.connect(new_entity)
     
     setup_entities()
 
@@ -58,18 +59,14 @@ func _ready():
     aiActionService.setState(state)
     aiSpecialService.setState(state)
     deathService.setState(state)
-    turnService.setState(state)
     interactService.setState(state)    
     scoreService.setState(state)
     highlightMap2.set_state(state)
     auraService.set_state(state)
     menuService.setState(state)
 
-    turnService.tutorial_mode = _mission.is_tutorial
     menuService.jenkins.tutorial_mode = _mission.is_tutorial
     menuService.tutorial_mode = _mission.is_tutorial
-    turnService.update()    
-    menuService.showTurns(turnService.next6Turns())
     auraService.update()
     mission_start()
     return
@@ -165,9 +162,6 @@ func setup_entities():
     setup_entity_for_level(_mission.boss, Vector2i(6, 2))
     return
 
-func currentEntity() -> Entity:
-    return state.entities.get_data(current_turn_id)
-
 func mission_start():
     menuService.disableAllButtons(true)
     menuService.mission_start()
@@ -182,21 +176,71 @@ func mission_start():
         else:
             menuService.jenkins_talk("This bot looks tough! Good luck.", Jenkins.Mood.NORMAL)
         highlightMap2.start()
-        nextTurn())
+        alliedTurn())
+    return
+
+func new_entity(e: Entity):
+    if Globals.enemy_turn:
+        return
+    print_debug("New Entity: " + e.display_name)        
+    current_entity = e
+    current_entity.stop_animations()
+    nextTurn()
+    return
+
+func enemyTurn():
+    Globals.enemy_turn = true
+    current_entity = null
+    highlightMap.clearHighlight()
+    menuService.disableAllButtons(true)
+    scoreService.turn_taken()    
+    for ent in state.all_allies_alive():
+        ent.done_turn()
+    _enemy_entities = state.all_enemies_alive()
+    for ent in _enemy_entities:
+        ent.reset_buff_values()
+        ent.setup_next_turn()
+    nextAiTurn()
+    if tutorialService.stage == TutorialService.TutorialStage.EndTurn1:
+        tutorialService.next_tutorial_stage()
+    elif tutorialService.stage == TutorialService.TutorialStage.SpecialAttack:
+        tutorialService.next_tutorial_stage()
+    menuService.show_big_event("Enemy\nTurn")
+    return
+
+func alliedTurn():
+    Globals.enemy_turn = false    
+    highlightMap.clearHighlight()
+    current_entity = null
+    menuService.disableAllButtons(true)
+    scoreService.turn_taken()    
+    for ent in state.all_enemies_alive():
+        ent.done_turn()
+
+    var locations = []
+    for ent in state.all_allies_alive():
+        ent.reset_buff_values()
+        ent.setup_next_turn()
+        locations.append(ent.location)
+    cameraService.move_to_array(locations)
+    if tutorialService.stage == TutorialService.TutorialStage.DummyTurn1:
+        tutorialService.next_tutorial_stage()
+    elif tutorialService.stage == TutorialService.TutorialStage.DummySpecial:
+        tutorialService.next_tutorial_stage()
+    menuService.show_big_event("Your\nTurn")
+    menuService.enable_turn_button(true, false)
+    return
+
+func nextAiTurn():
+    if len(_enemy_entities) == 0:
+        alliedTurn()
+        return
+    current_entity = _enemy_entities.pop_back()
+    nextTurn()
     return
 
 func nextTurn():
     print_debug("Next Turn")
-    menuService.disableAllButtons(true)
-    _start_of_turn = true
-    if currentEntity() != null:
-        currentEntity().done_turn()
-        currentEntity().stop_animations()
-    if not checkDeaths():
-        nextTurn_continued()
-    return
-
-func nextTurn_continued():
     if scoreService.turnsTaken != 0 and scoreService.turnsTaken % 5 == 0:
         var location = interactService.spawn_interactable(_mission)
         if location == Vector2i(999,999):
@@ -211,49 +255,25 @@ func nextTurn_continued():
 
 func nextTurn_continued2():
     timer.stop()
-    scoreService.turn_taken()
     highlightMap.clearHighlight()
-    current_turn_id = turnService.startNextTurn()
-    currentEntity().reset_buff_values()
-    cameraService.move(tileMap.pointToGlobal(currentEntity().location))
-    if not currentEntity().is_ally and not currentEntity().is_add:
-        _special_texts_set = false
-        currentEntity().specials_left = _mission.specials_per_turn
-    Globals.enemy_turn = false
-    if not currentEntity().is_ally:
-        Globals.enemy_turn = true
-    if _mission.is_tutorial:
-        _is_first_turn = false
-    menuService.showTurns(turnService.next6Turns())
-    menuService.pre_showCurrentTurn(current_turn_id)
+    cameraService.move(tileMap.pointToGlobal(current_entity.location))
+    menuService.pre_showCurrentTurn(current_entity)
     resetPlayerServices()    
     timer.timeout.connect(nextTurn_continued3, CONNECT_ONE_SHOT)
-    timer.start(.4)
+    timer.start(.2)
     return
 
 func nextTurn_continued3():
     timer.stop()
-    currentEntity().setup_next_turn()
-    if state.allies.has(current_turn_id):
-        _is_ai_turn = false
-    else:
-        _is_ai_turn = true
     update_character_menu()
     menuService.showCurrentTurn()
-    _start_of_turn = false
     if _mission.is_tutorial:
-        if tutorialService.stage == TutorialService.TutorialStage.EndTurn1:
-            tutorialService.next_tutorial_stage()
-        elif tutorialService.stage == TutorialService.TutorialStage.DummyTurn1:
-            tutorialService.next_tutorial_stage()
-        elif tutorialService.stage == TutorialService.TutorialStage.SpecialAttack:
-            tutorialService.next_tutorial_stage()
-        elif tutorialService.stage == TutorialService.TutorialStage.DummySpecial:
+        if tutorialService.stage == TutorialService.TutorialStage.Welcome:
             tutorialService.next_tutorial_stage()
     return
 
 func doNextTurn():
-    if _is_ai_turn:
+    if Globals.enemy_turn:
         menuService.disableAllButtons(true)
         nextAiStep()
     return
@@ -275,15 +295,9 @@ func nextAiStep():
 
 func do_nextAiStep():
     if _ai_state == AiState.NONE:
-        if _is_first_turn:
-            _is_first_turn = false            
-            _ai_callable = startAiSpecial
-            _ai_state = AiState.SPECIAL
-            startAiDelay()
-            return
-        if currentEntity().skip_next_turn:
-            currentEntity().skip_next_turn = false
-            currentEntity().custom_text("Knocked Out!", Color.MEDIUM_PURPLE)
+        if current_entity.skip_next_turn:
+            current_entity.skip_next_turn = false
+            current_entity.custom_text("Knocked Out!", Color.MEDIUM_PURPLE)
             _ai_callable = nextTurn
             startAiDelay()
             return
@@ -295,19 +309,19 @@ func do_nextAiStep():
         startAiAction()
         return
     if _ai_state == AiState.ACTION:
-        if currentEntity().is_add:
+        if current_entity.is_add:
             _ai_state = AiState.NONE
-            nextTurn()
+            nextAiTurn()
             return
         _ai_state = AiState.SPECIAL
         startAiSpecial()
         return
     if _ai_state == AiState.SPECIAL:
-        currentEntity().specials_left -= 1
-        if currentEntity().specials_left <= 0:
-            currentEntity().specials_left = 0
+        specials_left -= 1
+        if specials_left <= 0:
+            specials_left = 0
             _ai_state = AiState.NONE
-            nextTurn()
+            nextAiTurn()
         else:
             _special_texts_set = false
             startAiSpecial()
@@ -316,7 +330,7 @@ func do_nextAiStep():
 
 func startAiMove():
     print_debug("Start AI Move")    
-    aiMoveService.start(currentEntity())
+    aiMoveService.start(current_entity)
     var movePath = aiMoveService.find_move()
     _ai_callable = func ():
         aiMoveService.showPath(movePath)
@@ -326,7 +340,7 @@ func startAiMove():
 
 func startAiAction():
     print_debug("Start AI Action")
-    aiActionService.start(currentEntity())
+    aiActionService.start(current_entity)
     _ai_callable = doAiAction
     startAiDelay()
     return
@@ -357,10 +371,10 @@ func startAiSpecial():
         nextAiStep()
         return
     print_debug("Start AI Special")
-    aiSpecialService.start(currentEntity(), _mission)
+    aiSpecialService.start(current_entity, _mission)
     if aiSpecialService.counter() == -1:
         set_ai_special_mechanic_texts()
-        currentEntity().specials_left = 0
+        specials_left = 0
         nextAiStep()
         return
     menuService.show_event(aiSpecialService.special().display_name,
@@ -378,10 +392,8 @@ func doAiSpecial():
 
 func continue_doAiSpecial():
     print_debug("Continue Do AI Special")
-    menuService.hide_event()    
     set_ai_special_mechanic_texts()
     aiSpecialService.finish()
-    turnService.update_new()
     auraService.update()
     update_character_menu()
     if not checkDeaths():
@@ -409,8 +421,8 @@ func resetPlayerServices():
     moveService.finish()
     actionService.finish()
     interactService.finish()
-    highlightMap.highlight(currentEntity())
-    currentEntity().move_animation()
+    highlightMap.highlight(current_entity)
+    current_entity.move_animation()
     return
 
 func update_character_menu():
@@ -429,27 +441,27 @@ func doMove(on):
     if not on:
         return
     print_debug("Do Move")
-    if not _is_ai_turn:
+    if not Globals.enemy_turn:
         menuService.show_description_click(ActionType.MOVE)
-    moveService.start(currentEntity())
+    moveService.start(current_entity)
     return
 
 func movesFound(poses):
     print_debug("Moves Found")
     menuService.enable_turn_button(false, true)
-    currentEntity().sprite.doneMoving.connect(moveDone, CONNECT_ONE_SHOT)
+    current_entity.sprite.doneMoving.connect(moveDone, CONNECT_ONE_SHOT)
     if len(poses) > 0:
-        cameraService.lock_on(currentEntity().sprite)
+        cameraService.lock_on(current_entity.sprite)
         var moved_ents = []
         for pose in poses:
             var tile = tileMap.globalToPoint(pose)
             var ent = state.entity_on_tile(tile)
-            if ent != null and currentEntity() !=  ent:
-                if currentEntity().is_ally == ent.is_ally:
+            if ent != null and current_entity !=  ent:
+                if current_entity.is_ally == ent.is_ally:
                     moved_ents.append(ent)
                     continue
             moved_ents.append(null)
-        currentEntity().movePoints(poses, moved_ents)
+        current_entity.movePoints(poses, moved_ents)
     else:
         moveDone()
     return
@@ -461,7 +473,7 @@ func moveDone():
     print_debug("Done Move")
     cameraService.stop_lock()
     auraService.update()
-    if _is_ai_turn:
+    if Globals.enemy_turn:
         aiMoveService.finish()
         nextAiStep()
     else:
@@ -472,7 +484,7 @@ func moveDone():
     
     Globals.end_action()
     update_character_menu()
-    highlightMap.highlight(currentEntity())
+    highlightMap.highlight(current_entity)
     return
 
 func doInteract(on):
@@ -480,7 +492,7 @@ func doInteract(on):
     if not on:
         return
     print_debug("Do Interact")
-    interactService.start(currentEntity())
+    interactService.start(current_entity)
     menuService.show_description_click(ActionType.INTERACT)
     return
 
@@ -502,7 +514,7 @@ func doAction(on, action_type: int):
     if not on:
         return
     print_debug("Do Action")
-    actionService.start(currentEntity(), action_type)
+    actionService.start(current_entity, action_type)
     menuService.show_description_click(action_type)
     return
 
@@ -514,7 +526,7 @@ func actionFound():
 
 func actionDone():
     print_debug("Action Done")
-    currentEntity().action_used = true    
+    current_entity.action_used = true    
     if _mission.is_tutorial:
         if tutorialService.stage == TutorialService.TutorialStage.Attack:
             tutorialService.next_tutorial_stage()
@@ -522,7 +534,6 @@ func actionDone():
             tutorialService.next_tutorial_stage()
     menuService.show_description(false, null)
     menuService.force_show_description = false
-    turnService.update_new()
     auraService.update()
     update_character_menu()
     if not checkDeaths():
@@ -536,7 +547,6 @@ func checkDeaths():
     resetPlayerServices()
     update_character_menu()
     deathService.processDeaths()
-    turnService.updateDeaths()
     _animation_callback = processDeathsFinished
     menuService.disableAllButtons()
     startAnimationDelay(2.1)
@@ -555,10 +565,7 @@ func processDeathsFinished():
         else:
             menuService.win()
         return
-    if _start_of_turn:
-        nextTurn_continued()
-        return
-    if _is_ai_turn:
+    if Globals.enemy_turn:
         nextAiStep()
     update_character_menu()
     return

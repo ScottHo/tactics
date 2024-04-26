@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbr7ln8tcfqk2"]
 
-[ext_resource type="Script" path="res://mission_environment_panel.gd" id="1_f8w1i"]
+[ext_resource type="Script" path="res://Menus/mission_environment_panel.gd" id="1_f8w1i"]
 [ext_resource type="Texture2D" uid="uid://b1yd3r7k2ump0" path="res://Assets/orb.png" id="1_w0oyd"]
 [ext_resource type="Texture2D" uid="uid://dv88hqnjb0ywq" path="res://Assets/BaseTiles.png" id="2_qkmc2"]
 

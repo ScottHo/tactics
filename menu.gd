@@ -63,6 +63,7 @@ signal stopAction
 @onready var event_container = $EventContainer
 @onready var event_title = $EventContainer/Title
 @onready var event_description = $EventContainer/Description
+@onready var event_big_title = $EventContainer/BigTitle
 
 @onready var scoreService: ScoreService = $"../ScoreService"
 @onready var jenkins: Jenkins = $"Jenkins"
@@ -83,6 +84,7 @@ func _ready():
         show_future_turns(b))
 
     $Timer.timeout.connect(finish_menu_animations)
+    $EventContainer/EventTimer.timeout.connect(hide_event)
 
     _tab_dict = {}
     $MechanicContainer.visible = false
@@ -226,8 +228,8 @@ func show_future_turns(_show):
     turnSpriteContainer.visible = _show
     return
 
-func pre_showCurrentTurn(turn: int):
-    _entity = _state.get_entity(turn)
+func pre_showCurrentTurn(e: Entity):
+    _entity = e
     nameLabel.text = _entity.display_name
     charSprite.texture = load(_entity.icon_path)
     charSprite.modulate.a = 0
@@ -244,7 +246,6 @@ func showCurrentTurn():
     if is_ally:
         setup_action_descriptions()
         update_button_states()
-
     start_menu_animations()
     return
 
@@ -254,7 +255,7 @@ func start_menu_animations():
     _button_animations(attackButton)
     _button_animations(action1Button)
     _button_animations(action2Button)
-    $Timer.start(.5)
+    $Timer.start(.2)
     return
 
 func _button_animations(button: Button):
@@ -538,11 +539,23 @@ func play_mission_text(t: String, hide_after = true):
         tween.tween_interval(1.4)
         tween.tween_property($MissionStartLabel, "visible", false, 0)
     return
-
+    
 func show_event(t: String, d: String):
     event_container.visible = true
     event_title.text = t
     event_description.text = d
+    event_big_title.text = ""
+    $EventContainer/EventTimer.stop()
+    $EventContainer/EventTimer.start(5)
+    return
+
+func show_big_event(t: String):
+    event_container.visible = true
+    event_title.text = ""
+    event_description.text = ""
+    event_big_title.text = t
+    $EventContainer/EventTimer.stop()
+    $EventContainer/EventTimer.start(5)
     return
 
 func hide_event():

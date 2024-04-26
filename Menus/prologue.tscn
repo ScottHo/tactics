@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://drfnxpin8mmsd"]
 
-[ext_resource type="Script" path="res://Prologue.gd" id="1_74r4m"]
+[ext_resource type="Script" path="res://Menus/Prologue.gd" id="1_74r4m"]
 [ext_resource type="PackedScene" uid="uid://dix47pa7pxb0n" path="res://dialog_options.tscn" id="2_jyfkm"]
 [ext_resource type="PackedScene" uid="uid://bph1lnyqahu2x" path="res://dialog_box.tscn" id="3_wwxsu"]
 
