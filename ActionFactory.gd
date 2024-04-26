@@ -210,7 +210,7 @@ static func add_storm(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Deal damage in a square area"
-    var action := _add_action(ent, "Storm", d, shape_3x3, effect, type, stats, "res://Effects/explosion_white.tscn")
+    var action := _add_action(ent, "Storm", d, shape_3x3, effect, type, stats, "res://Effects/lightning.tscn")
     action.target_animation = TargetAnimations.HIT
     return
 
@@ -226,7 +226,7 @@ static func add_thunderous_wrath(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Deal damage to every enemy unit"
-    var action := _add_action(ent, "Thunderous Wrath", d, [], effect, type, stats, "res://Effects/explosion_white.tscn")
+    var action := _add_action(ent, "Thunderous Wrath", d, [], effect, type, stats, "res://Effects/lightning.tscn")
     action.target_animation = TargetAnimations.HIT
     return
 

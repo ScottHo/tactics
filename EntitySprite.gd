@@ -161,6 +161,11 @@ func nextMove():
 
 func play_hit_animation(callback):
     _play_animation(callback, "Hit")
+    var tween = get_tree().create_tween()
+    for i in range(3):
+        tween.tween_property(self, "modulate", Color.PALE_VIOLET_RED, .07)
+        tween.tween_property(self, "modulate", Color.WHITE, .07)
+    tween.play()
     return
 
 func play_buff_animation(callback):
