@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ba1kyg3k3o3c4"]
 
-[ext_resource type="Script" path="res://InfoService.gd" id="1_jqq8g"]
+[ext_resource type="Script" path="res://Services/InfoService.gd" id="1_jqq8g"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_te2ox"]
 
 [node name="InfoService" type="Node2D"]

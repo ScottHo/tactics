@@ -52,7 +52,7 @@ Steam Page coming soon.",
                 false)
                 
         else:
-            get_tree().change_scene_to_file("res://Headquarters.tscn")
+            get_tree().change_scene_to_file("res://Menus/Headquarters.tscn")
         )
     $Timer.start(2)
     $Fader.visible = true

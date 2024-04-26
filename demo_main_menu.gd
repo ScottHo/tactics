@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
     $PlayButton.pressed.connect(func():
-        get_tree().change_scene_to_file("res://prologue.tscn")
+        get_tree().change_scene_to_file("res://Menus/prologue.tscn")
     )
     $ExitButton.pressed.connect(func():
         get_tree().quit())

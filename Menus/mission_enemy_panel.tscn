@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b220oo4s6vl43"]
 
-[ext_resource type="Script" path="res://MissionEnemyPanel.gd" id="1_cgn1b"]
+[ext_resource type="Script" path="res://Menus/MissionEnemyPanel.gd" id="1_cgn1b"]
 [ext_resource type="Texture2D" uid="uid://dc3pjsse52ru1" path="res://Assets/GUI/health.png" id="2_3mu84"]
 [ext_resource type="FontFile" uid="uid://bk36iunqbewli" path="res://Themes/nulshock bd.otf" id="3_31kgf"]
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/GUI/Boot.png" id="4_b45m5"]

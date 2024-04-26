@@ -80,5 +80,5 @@ func fade_to_headquarters(_c):
     var tween = get_tree().create_tween()
     tween.tween_property($Fader, "modulate:a", 1, 1)
     tween.tween_callback(func():
-        get_tree().change_scene_to_file("res://Headquarters.tscn"))
+        get_tree().change_scene_to_file("res://Menus/Headquarters.tscn"))
     return

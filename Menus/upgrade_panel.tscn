@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://ct2wj06r38iul"]
 
-[ext_resource type="Script" path="res://UpgradePanel.gd" id="1_cil83"]
+[ext_resource type="Script" path="res://Menus/UpgradePanel.gd" id="1_cil83"]
 [ext_resource type="Theme" uid="uid://d3xlkfucuimn7" path="res://Themes/MyTheme.tres" id="2_j6fe4"]
 [ext_resource type="Texture2D" uid="uid://bfpyu6ktr6o0u" path="res://Assets/GUI/progress_under_123.png" id="3_00qqc"]
 [ext_resource type="Texture2D" uid="uid://b13ud28hymj10" path="res://Assets/GUI/progress_vertical_yellow.png" id="5_j6fm3"]

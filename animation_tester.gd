@@ -47,7 +47,7 @@ func _ready():
         var es: EntitySprite = _animation_setup()
         if es != null:
             es.play_hit_animation(null)
-            var s: EffectsAnimation = load("res://Effects/explosion_yellow.tscn").instantiate()
+            var s: EffectsAnimation = load("res://Effects/explosion_white.tscn").instantiate()
             $Node2D2.add_child(s)
             s.position.y -= 40
             s.done.connect(func():
@@ -64,7 +64,7 @@ func _ready():
                 $Node2D2.remove_child(s))
         )
     $HitAudioButton2.pressed.connect(func():
-        var s: EffectsAnimation = load("res://Effects/explosion_yellow.tscn").instantiate()
+        var s: EffectsAnimation = load("res://Effects/explosion_white.tscn").instantiate()
         _hit_animation(s)
         )
     $Button.pressed.connect(func():

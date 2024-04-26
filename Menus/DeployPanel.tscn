@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5r70vpa8c172"]
 
-[ext_resource type="Script" path="res://DeployPanel.gd" id="1_ymb0d"]
+[ext_resource type="Script" path="res://Menus/DeployPanel.gd" id="1_ymb0d"]
 
 [node name="DeployContainer" type="Node2D"]
 position = Vector2(96.06, 214.39)

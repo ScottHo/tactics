@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxp0hhpdubjky"]
 
 [ext_resource type="Texture2D" uid="uid://cbrn8x7iydw63" path="res://Assets/GUI/vertical-medium.png" id="1_0vjqg"]
-[ext_resource type="Script" path="res://detailed_room_info.gd" id="1_kltg5"]
-[ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://mission_enemy_panel.tscn" id="2_m4fqc"]
+[ext_resource type="Script" path="res://Menus/detailed_room_info.gd" id="1_kltg5"]
+[ext_resource type="PackedScene" uid="uid://b220oo4s6vl43" path="res://Menus/mission_enemy_panel.tscn" id="2_m4fqc"]
 [ext_resource type="FontFile" uid="uid://uqx0pemtyyk7" path="res://Themes/zekton rg.otf" id="3_sgklb"]
 [ext_resource type="Texture2D" uid="uid://5ishrvrpc8ew" path="res://Assets/Unknown.png" id="4_l5xc7"]
 

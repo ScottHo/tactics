@@ -61,7 +61,7 @@ func entity_selected(ent: Entity):
     return
 
 func go_to_room_select():
-    get_tree().change_scene_to_file("res://room_chooser.tscn")
+    get_tree().change_scene_to_file("res://Menus/room_chooser.tscn")
     return
 
 func back_to_menu():

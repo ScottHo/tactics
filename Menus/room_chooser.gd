@@ -40,10 +40,10 @@ func setup_nodes():
     goButton.pressed.connect(func():
         Globals.current_mission = missions[room_idx]
         Globals.current_recruit = recruits[room_idx]
-        get_tree().change_scene_to_file("res://DeployGui.tscn"))
+        get_tree().change_scene_to_file("res://Menus/DeployGui.tscn"))
     cancelButton.pressed.connect(switch_to_chooser)
     back_button.pressed.connect(func():
-        get_tree().change_scene_to_file("res://Headquarters.tscn"))
+        get_tree().change_scene_to_file("res://Menus/Headquarters.tscn"))
     botButton.pressed.connect(func():
         room_idx = 0
         switch_to_room())
