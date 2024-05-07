@@ -50,7 +50,7 @@ func next_tutorial_stage():
 
 func welcome():
     var s = "Hello! Welcome to our training room.\n\n
-Hold and drag middle click to look around, and scroll wheel to zoom.
+Hold and drag right click to look around, and scroll wheel to zoom.
 Click the training bot to control it!"
     menuService.jenkins_talk(s, Jenkins.Mood.HAPPY)
     return

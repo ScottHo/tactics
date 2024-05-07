@@ -17,6 +17,7 @@ func play_music(track):
     $Music.finished.connect(func():
         $Music.stream_paused = false
         $Music.play())
+    return
 
 
 func _on_SceneTree_node_added(node):

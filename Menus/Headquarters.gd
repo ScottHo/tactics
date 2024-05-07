@@ -45,6 +45,7 @@ func _ready():
     return
 
 func start():
+    UiSoundPlayer.play_music("res://Assets/Audio/MainMenu.wav")
     collectionPanel.start()
     var level = Globals.current_level
     var _floor = level % 7
