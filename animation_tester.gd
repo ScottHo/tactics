@@ -132,11 +132,11 @@ func button(c) -> Button:
 func container(idx: int) -> Control:
     return grid.get_child(idx)
 
-
 func show_entity(idx: int):
     if spriteParent.get_child_count() > 0:
         spriteParent.remove_child(spriteParent.get_child(0))
     var es: EntitySprite = load(entities[idx].sprite_path).instantiate()
+    es.animation_overrides = entities[idx].animation_overrides
     spriteParent.add_child(es)
     $EntityLabel.text = entities[idx].display_name
     return

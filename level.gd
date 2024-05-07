@@ -89,6 +89,7 @@ func setup_entity_for_level(ent: Entity, location: Vector2i):
     ent.health = ent.get_max_health()
     add_child(sprite)
     sprite.global_position = tileMap.pointToGlobal(location)
+    sprite.animation_overrides = ent.animation_overrides
     ent.location = location
     if ent.is_ally:
         var _id = state.addAlly(ent)
@@ -158,7 +159,10 @@ func setup_entities():
         tiles.shuffle()
         for i in range(9):
             tileMap.set_cell(0, tiles[i], 1, Tiles.CRACKED)
-        
+    if _mission.is_mini_boss:
+        UiSoundPlayer.play_music("res://Assets/Audio/Amaj-120BPM.wav")
+    else:
+        UiSoundPlayer.play_music("res://Assets/Audio/Overdrive.wav")
     setup_entity_for_level(_mission.boss, Vector2i(6, 2))
     return
 

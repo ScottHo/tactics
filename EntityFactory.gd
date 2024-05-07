@@ -130,6 +130,7 @@ static func create_smithy():
         e.aura_damage_modifier = 1
     p.is_aura = true
     ent.passive = p
+    ent.animation_overrides["Ultimate"] = "Special"
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_weapons_upgade(ent, ActionType.ACTION1)
     ActionFactory.add_auto_turret_3000(ent, ActionType.ACTION2)
@@ -245,6 +246,8 @@ static func create_saber():
         e.crit_chance = .25
     p.is_static = true
     ent.passive = p
+    ent.animation_overrides["Ultimate"] = "Attack"
+    ent.animation_overrides["Special"] = "Attack"
     ActionFactory.add_base_attack(ent)
     ActionFactory.add_alpha_slash(ent, ActionType.ACTION1)
     ActionFactory.add_zeta_slash(ent, ActionType.ACTION2)

@@ -14,6 +14,8 @@ var is_add: bool = false
 var sprite_path: String
 var icon_path: String
 var description: String
+var animation_overrides := {}
+
 # Variable
 var id: int = -1
 var alive: bool = true

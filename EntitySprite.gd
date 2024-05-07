@@ -22,6 +22,7 @@ var NW :Node2D
 var south_node: Node2D
 var north_node: Node2D
 var texture_small_bar: CompressedTexture2D
+var animation_overrides := {}
 signal doneMoving
 
 func _ready():
@@ -151,6 +152,7 @@ func nextMove():
         else:
             face_direction(Vector2i(-1,0))
     var tween = get_tree().create_tween()
+    
     if _dash:
         tween.tween_property(self, "global_position", pos, .1)
     else:
@@ -162,9 +164,9 @@ func nextMove():
 func play_hit_animation(callback):
     _play_animation(callback, "Hit")
     var tween = get_tree().create_tween()
-    for i in range(3):
-        tween.tween_property(self, "modulate", Color.PALE_VIOLET_RED, .07)
-        tween.tween_property(self, "modulate", Color.WHITE, .07)
+    for i in range(7):
+        tween.tween_property(self, "modulate", Color.PALE_VIOLET_RED, .08)
+        tween.tween_property(self, "modulate", Color.WHITE, .08)
     tween.play()
     return
 
@@ -185,6 +187,8 @@ func play_attack_animation(callback):
     return
 
 func _play_animation(callback, animation_name: String):
+    if animation_name in animation_overrides:
+        animation_name = animation_overrides[animation_name]
     if animationPlayer.has_animation(animation_name):
         animationPlayer.queue(animation_name)
         if callback != null:

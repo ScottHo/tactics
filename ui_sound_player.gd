@@ -1,15 +1,23 @@
 extends Node
 
+var prev_track
+
 func _ready():
     # when _ready is called, there might already be nodes in the tree, so connect all existing buttons
     connect_buttons(get_tree().root)
     get_tree().connect("node_added", _on_SceneTree_node_added)
+    return
+
+func play_music(track):
+    if prev_track == track:
+        return
+    prev_track = track
+    $Music.stream = load(track)
     $Music.play()
     $Music.finished.connect(func():
         $Music.stream_paused = false
         $Music.play())
-    return
-    
+
 
 func _on_SceneTree_node_added(node):
     if node is BaseButton:

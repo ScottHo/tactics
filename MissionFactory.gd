@@ -34,6 +34,7 @@ static func foundry_1_final_boss() -> Mission:
     m.boss = EntityFactory.create_boss_1_f()
     m.buffs = []
     m.specials_per_turn = 2
+    m.is_mini_boss = false
 
     var s1 = Special.new()
     s1.display_name = "Summon Bronze Souls"
@@ -83,6 +84,7 @@ static func foundry_2_final_boss() -> Mission:
     m.boss = EntityFactory.create_boss_2_f()
     m.buffs = []
     m.specials_per_turn = 2
+    m.is_mini_boss = false
 
     var s1 = Special.new()    
     s1.display_name = "Iron Quake"
@@ -124,6 +126,7 @@ static func foundry_3_final_boss() -> Mission:
     m.boss = EntityFactory.create_boss_3_f()
     m.buffs = []
     m.specials_per_turn = 2
+    m.is_mini_boss = false
 
     var s1 = Special.new()    
     s1.display_name = "Dice floor"
@@ -204,6 +207,7 @@ static func foundry_4_final_boss() -> Mission:
     m.boss = EntityFactory.create_boss_4_f()
     m.buffs = []
     m.specials_per_turn = 3
+    m.is_mini_boss = false
 
     # TODO
     var s1 = Special.new()    
@@ -236,6 +240,7 @@ static func foundry_final_final_boss() -> Mission:
     m.boss = EntityFactory.create_boss_final()
     m.buffs = InteractableFactory.random_set()
     m.specials_per_turn = 3
+    m.is_mini_boss = false
 
     # TODO
     var s1 = Special.new()    

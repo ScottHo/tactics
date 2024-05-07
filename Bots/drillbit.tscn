@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://c7auncstw41cc"]
+[gd_scene load_steps=28 format=3 uid="uid://c7auncstw41cc"]
 
 [ext_resource type="Script" path="res://EntitySprite.gd" id="1_5n1od"]
 [ext_resource type="Texture2D" uid="uid://ds3e6oihl70tf" path="res://Assets/Bots/Common/shadow.png" id="2_84cs2"]
+[ext_resource type="AudioStream" uid="uid://0xcv3mfiy4kq" path="res://Assets/Audio/DrillbotAttack.wav" id="2_h6cr4"]
 [ext_resource type="Texture2D" uid="uid://co4exdusrrd43" path="res://Assets/Bots/Common/WheelLong.png" id="3_86imk"]
 [ext_resource type="Texture2D" uid="uid://din8813l0lc0m" path="res://Assets/Bots/DrillBit/body.png" id="4_0hkna"]
 [ext_resource type="Texture2D" uid="uid://67fp4ln0uj7g" path="res://Assets/Bots/DrillBit/back.png" id="4_h2chg"]
@@ -94,6 +95,21 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-42.42, 37.12), Vector2(-42.42, 37.12), Vector2(106.06, -14.14), Vector2(106.06, -14.14), Vector2(0, 0)]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_h6cr4")
+}],
+"times": PackedFloat32Array(-0.05)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jbp2t"]
 resource_name = "Buff"
@@ -751,6 +767,21 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-42.42, 37.12), Vector2(-42.42, 37.12), Vector2(106.06, -14.14), Vector2(106.06, -14.14), Vector2(0, 0)]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_h6cr4")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tl1qq"]
 resource_name = "Ultimate"
@@ -828,6 +859,21 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-42.42, 37.12), Vector2(-42.42, 37.12), Vector2(106.06, -14.14), Vector2(106.06, -14.14), Vector2(0, 0)]
 }
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_h6cr4")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/6/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nlq6d"]
 _data = {
@@ -1001,3 +1047,5 @@ scale = Vector2(-1, 1)
 texture = ExtResource("3_86imk")
 
 [node name="CharacterCommon" parent="." instance=ExtResource("21_6bh08")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
