@@ -21,7 +21,7 @@ var _mission: Mission
 var state: State = State.new()
 var _is_first_turn := true
 var _is_ai_turn := false
-var _special_texts_set := true
+var _special_texts_set := false
 var _orig_ai_delay := 1.8
 var _ai_delay := 0.0
 var _do_ai_delay := false
@@ -37,6 +37,8 @@ enum AiState { NONE, MOVE, ACTION, SPECIAL}
 var _ai_state: AiState = AiState.NONE
 
 func _ready():
+    Globals.reset()
+    
     menuService.nextTurnActionInitiate.connect(enemyTurn)
     menuService.moveActionInitiate.connect(doMove)
     menuService.actionInitiate.connect(doAction)
@@ -181,6 +183,8 @@ func mission_start():
             menuService.jenkins_talk("This bot looks tough! Good luck.", Jenkins.Mood.NORMAL)
         highlightMap2.start()
         alliedTurn())
+    aiSpecialService.start(_mission.boss, _mission)
+    set_ai_special_mechanic_texts()
     return
 
 func new_entity(e: Entity):
@@ -319,6 +323,7 @@ func do_nextAiStep():
             return
         _ai_state = AiState.SPECIAL
         startAiSpecial()
+        specials_left = _mission.specials_per_turn
         return
     if _ai_state == AiState.SPECIAL:
         specials_left -= 1
@@ -376,11 +381,6 @@ func startAiSpecial():
         return
     print_debug("Start AI Special")
     aiSpecialService.start(current_entity, _mission)
-    if aiSpecialService.counter() == -1:
-        set_ai_special_mechanic_texts()
-        specials_left = 0
-        nextAiStep()
-        return
     menuService.show_event(aiSpecialService.special().display_name,
         aiSpecialService.special().description)
     aiSpecialService.find_special_targets()
