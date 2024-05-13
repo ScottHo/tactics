@@ -4,7 +4,6 @@ BUGS
 - Threat still bugged if highest threat is in melee but no other move is avilable 
 
 DO NEXT
-- Animations
 - Steam page 
 - show status effects on hover
 

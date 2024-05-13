@@ -249,6 +249,7 @@ static func create_saber():
     ent.animation_overrides["Ultimate"] = "Attack"
     ent.animation_overrides["Special"] = "Attack"
     ActionFactory.add_base_attack(ent)
+    ent.attack.animation_path = "res://Effects/slash.tcsn"    
     ActionFactory.add_alpha_slash(ent, ActionType.ACTION1)
     ActionFactory.add_zeta_slash(ent, ActionType.ACTION2)
     return ent

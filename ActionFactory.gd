@@ -717,7 +717,7 @@ static func add_alpha_slash(ent: Entity, type: int):
                 _ent.loseHP(damage)
         return
     var d = "Dash forward, slashing all enemies in your path"
-    var action := _add_action(ent, "Alpha Slash", d, straight, effect, type, stats, "res://Effects/explosion_white.tscn")
+    var action := _add_action(ent, "Alpha Slash", d, straight, effect, type, stats, "res://Effects/slash.tscn")
     action.target_animation = TargetAnimations.HIT
     return
 
@@ -734,7 +734,7 @@ static func add_zeta_slash(ent: Entity, type: int):
             _ent.loseHP(damage)
         return
     var d = "Dash and strike every single enemy at their weakpoints with critical damage"
-    var action := _add_action(ent, "Zeta slash", d, cone, effect, type, stats, "res://Effects/explosion_white.tscn")
+    var action := _add_action(ent, "Zeta slash", d, cone, effect, type, stats, "res://Effects/slash.tscn")
     action.target_animation = TargetAnimations.HIT
     return
 
