@@ -311,6 +311,7 @@ func shielded(value):
     shield_value = value
     if not check_sprite():
         return
+    update_sprite()
     sprite.textAnimation().status_effect(value, "Shield")
     return
 

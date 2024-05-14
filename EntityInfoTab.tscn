@@ -86,7 +86,7 @@ texture_under = ExtResource("3_wv88g")
 texture_progress = ExtResource("5_nbtqd")
 
 [node name="Stats" type="Node2D" parent="."]
-position = Vector2(97.60, 29.55)
+position = Vector2(97.6, 29.55)
 scale = Vector2(0.67, 0.67)
 
 [node name="HealthSprite" type="Sprite2D" parent="Stats"]
@@ -106,9 +106,9 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="SlashLabel" type="Label" parent="Stats"]
-offset_left = 88.50
+offset_left = 88.5
 offset_top = -9.74
-offset_right = 102.50
+offset_right = 102.5
 offset_bottom = 17.25
 text = "/
 "
@@ -120,14 +120,14 @@ metadata/_edit_use_anchors_ = true
 offset_left = 104.58
 offset_top = -9.49
 offset_right = 158.58
-offset_bottom = 17.50
+offset_bottom = 17.5
 text = "999"
 label_settings = SubResource("LabelSettings_6r53r")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="MoveSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(179.50, 3.70)
+position = Vector2(179.5, 3.7)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_ggr6d")
 
@@ -175,7 +175,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RangeSprite" type="Sprite2D" parent="Stats"]
-position = Vector2(99.78, 35.50)
+position = Vector2(99.78, 35.5)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_gw4b8")
 

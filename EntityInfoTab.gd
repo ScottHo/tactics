@@ -1,10 +1,12 @@
 class_name EntityInfoTab extends Node2D
 
 var healthBar: TextureProgressBar
+var shieldBar: TextureProgressBar
 var energyBar: TextureProgressBar
 var healthLabel: Label
 var slashLabel: Label
 var maxHealthLabel: Label
+var shieldLabel: Label
 var moveLabel: Label
 var damageLabel: Label
 var rangeLabel: Label
@@ -25,10 +27,12 @@ func _ready():
 func update_nodes():
     if moveLabel == null:
         healthBar = $HealthBar
+        shieldBar = $ShieldBar
         energyBar = $EnergyBar
         healthLabel = $HealthBar/HealthLabel
         slashLabel = $HealthBar/SlashLabel
         maxHealthLabel = $HealthBar/MaxHealthLabel
+        shieldLabel = $ShieldBar/ShieldLabel
         moveLabel = $Background/Stats/Control/MoveLabel
         initiativeLabel = $Background/Stats/Control2/InitiativeLabel        
         damageLabel = $Background/Stats/Control3/DamageLabel
@@ -49,6 +53,11 @@ func update_from_entity(entity: Entity):
 func update():
     displayName.text = str(_entity.display_name)
     healthLabel.text = str(_entity.health)
+    shieldLabel.text = str(_entity.shield_value)
+    if _entity.shield_value > 0:
+        shieldBar.value = 1
+    else:
+        shieldBar.value = 0
     maxHealthLabel.text = str(_entity.get_max_health())
     moveLabel.text = str(_entity.get_movement())
     damageLabel.text = str(_entity.get_damage())    
@@ -75,6 +84,8 @@ func expand():
     displayName.visible = true
     background.visible = true
     healthBar.visible = true
+    if shieldBar.value > 0:
+        shieldBar.visible = true
     #if _entity.passive != null:
     #    if _entity.passive.is_aura:
     #        $Passive.visible = true
@@ -87,6 +98,7 @@ func unexpand():
     background.visible = false
     healthBar.visible = false
     energyBar.visible = false
+    shieldBar.visible = false
     #$Passive.visible = false
     return
 
