@@ -208,7 +208,7 @@ func do_special_effect():
     cameraService.stop_lock()
     _entity.action_animation(func():
         ActionCommon.do_action_animation(effects, special(), _targets, tileMap, _state, special_animation_done)
-        , ActionType.ACTION2)
+        , ActionType.ACTION1)
     return
 
 func special_animation_done():

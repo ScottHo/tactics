@@ -192,7 +192,6 @@ func new_entity(e: Entity):
         return
     print_debug("New Entity: " + e.display_name)        
     current_entity = e
-    current_entity.stop_animations()
     nextTurn()
     return
 
@@ -204,6 +203,7 @@ func enemyTurn():
     scoreService.turn_taken()    
     for ent in state.all_allies_alive():
         ent.done_turn()
+        ent.stop_animations(true)
     _enemy_entities = state.all_enemies_alive()
     for ent in _enemy_entities:
         ent.reset_buff_values()
@@ -229,6 +229,7 @@ func alliedTurn():
     for ent in state.all_allies_alive():
         ent.reset_buff_values()
         ent.setup_next_turn()
+        ent.move_animation()
         locations.append(ent.location)
     cameraService.move_to_array(locations)
     if tutorialService.stage == TutorialService.TutorialStage.DummyTurn1:
@@ -240,6 +241,8 @@ func alliedTurn():
     return
 
 func nextAiTurn():
+    if current_entity != null:
+        current_entity.stop_animations(true)
     if len(_enemy_entities) == 0:
         alliedTurn()
         return
@@ -426,7 +429,6 @@ func resetPlayerServices():
     actionService.finish()
     interactService.finish()
     highlightMap.highlight(current_entity)
-    current_entity.move_animation()
     return
 
 func update_character_menu():
@@ -438,6 +440,7 @@ func update_character_menu():
     for entity in state.all_entities():
         if entity.alive:
             entity.update_sprite()
+            entity.stop_animations()
     return
 
 func doMove(on):
@@ -530,7 +533,7 @@ func actionFound():
 
 func actionDone():
     print_debug("Action Done")
-    current_entity.action_used = true    
+    current_entity.action_used = true
     if _mission.is_tutorial:
         if tutorialService.stage == TutorialService.TutorialStage.Attack:
             tutorialService.next_tutorial_stage()

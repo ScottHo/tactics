@@ -385,7 +385,7 @@ func done_turn():
 func action_animation(callback, action_type):
     if not check_sprite():
         return
-    stop_animations()
+    sprite.stop_animations()
     if action_type == ActionType.ATTACK:
         sprite.play_attack_animation(callback)
     if action_type == ActionType.ACTION1:
@@ -397,21 +397,27 @@ func action_animation(callback, action_type):
 func hit_animation(callback = null):
     if not check_sprite():
         return
-    stop_animations()
+    sprite.stop_animations()
     sprite.play_hit_animation(callback)
     return
 
 func buff_animation(callback = null):
     if not check_sprite():
         return
-    stop_animations()
+    sprite.stop_animations()
     sprite.play_buff_animation(callback)
     return
 
-func stop_animations():
+func stop_animations(force = false):
     if not check_sprite():
         return
-    sprite.stop_animations()
+    if force:
+        sprite.stop_animations()
+    else:
+        if action_used:
+            sprite.stop_animations()
+        else:
+            sprite.play_move_animation()
     return
     
 func shift_animation():
@@ -423,7 +429,7 @@ func shift_animation():
 func move_animation():
     if not check_sprite():
         return
-    stop_animations()
+    sprite.stop_animations()
     sprite.play_move_animation()
     return
     

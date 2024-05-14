@@ -4,8 +4,6 @@ BUGS
 
 DO NEXT
 - Steam page 
-- show status effects on hover
-
 
 DO LATER
 - Tile art
