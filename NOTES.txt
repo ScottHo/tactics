@@ -1,6 +1,5 @@
 BUGS
 - Getting hit animations cut short
-- Electo Normal attack can target empty
 - Threat still bugged if highest threat is in melee but no other move is avilable 
 
 DO NEXT

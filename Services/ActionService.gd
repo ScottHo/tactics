@@ -69,6 +69,11 @@ func highlight_for_bfs():
     return
 
 func add_chain_target(start_vec):
+    var original_target = _state.entity_on_tile(start_vec)
+    if original_target == null:
+        return Vector2i(999,999)
+    if original_target.is_ally:
+        return Vector2i(999,999)
     var potential_targets = {1:[], 2:[], 3:[]}
     for enemy in _state.all_enemies_alive():
         var total = enemy.location - start_vec
