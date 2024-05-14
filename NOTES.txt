@@ -3,10 +3,11 @@ BUGS
 - Threat still bugged if highest threat is in melee but no other move is avilable 
 
 DO NEXT
-- Steam page 
+- Steam page
+- Better roguelike run (abort run/continue run) UI/UX
+
 
 DO LATER
-- Tile art
 - simple tutorial bot art/animations
 - Add discord, twitter, steam page link
 - Brutus Art/Animations
@@ -15,18 +16,19 @@ DO LATER
 - Buster Art/Animations
 - Batterie Art/Animations
 - Nano-nano(or another healer w/ same abilities) Art/Animations
-- Obstructions with hp bars
+- Obstructions with hp bars ???
 - side missions
 - slight animation for mechanic container
-- Better roguelike run (abort run/continue run) UI/UX
 - Splash Screen
-- Procedurally generated maps/orbs/boss sprites
+- Procedurally boss sprites
 - Foundry 3 foundry boss
 - Foundry 4 foundry boss
 - Final Foundry Boss
 - Options Menu with exit game
 
 ADDED FEATURES
+- Tile art
+- Special Tiles
 - Skill tree or other power up system
 - Classifications on bots
 - deploy to slot alternative
