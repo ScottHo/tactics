@@ -1,5 +1,14 @@
 class_name Utils extends Node
 
+static var NE = Vector2i(0,-1)
+static var SE = Vector2i(1,0)
+static var NW = Vector2i(-1,0)
+static var SW = Vector2i(0,1)
+static var NE_vec = Vector2i(1,-1)
+static var SE_vec = Vector2i(1,1)
+static var NW_vec = Vector2i(-1,-1)
+static var SW_vec = Vector2i(-1,1)
+
 static func set_label_color(label: Label, color: Color):
     label.add_theme_color_override("font_color", Color.WHITE)
     label.modulate = color
@@ -87,19 +96,33 @@ static func computeRotatedVectors(target: Vector2i, direction: Vector2i) -> Vect
         rotVec.y = target.x
         return rotVec
     return target
-    
+
 static func findDirection(source: Vector2i, target: Vector2i) -> Vector2i:
     var x_diff = source.x - target.x
     var y_diff = source.y - target.y
     
     if abs(x_diff) >= abs(y_diff):
         if x_diff < 0:
-            return Vector2i(1,0)
-        return Vector2i(-1,0)
+            return SE
+        return NW
         
     if y_diff < 0:
-        return Vector2i(0,1)
-    return Vector2i(0,-1)
+        return SW
+    return NE
+
+static func findDirectionVec(source: Vector2, target: Vector2) -> Vector2i:
+    var x = target.x - source.x
+    var y = target.y - source.y
+    
+    if x >= 0:
+        if y > 0:
+            return SE_vec
+        return NE_vec
+    else:
+        if y >= 0:
+            return SW_vec
+        return NW_vec
+
 
 static func get_target_coords(source: Vector2i, target: Vector2i, shape: Array) -> Array:
     var _target_coords = []

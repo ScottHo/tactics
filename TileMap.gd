@@ -12,12 +12,17 @@ func globalToPoint(pos: Vector2) -> Vector2i:
 
 func pointToGlobal(point: Vector2i) -> Vector2:
     return to_global(map_to_local(point))
+    
 
 func arrayToGlobal(arr: Array) -> Array:
     var poses = []
     for point in arr:
         poses.append(pointToGlobal(point))
     return poses
+
+func quadrant(pos: Vector2) -> Vector2i:
+    var center = pointToGlobal(globalToPoint(pos))
+    return Utils.findDirectionVec(center, pos)
 
 func in_range(v: Vector2i) -> bool:
     return MIN_X <= v.x and v.x <= MAX_X and MIN_Y <= v.y and v.y <= MAX_Y

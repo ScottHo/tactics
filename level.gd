@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var moveService: MoveService = $MoveService
+@onready var buildService: BuildService = $BuildService
 @onready var menuService: MenuService = $Camera2D/CanvasLayer/MenuService
 @onready var actionService: ActionService = $ActionService
 @onready var aiMoveService: AiMoveService = $AiMoveService
@@ -38,6 +39,7 @@ var _ai_state: AiState = AiState.NONE
 
 func _ready():
     menuService.nextTurnActionInitiate.connect(enemyTurn)
+    menuService.buildActionInitiate.connect(doBuild)
     menuService.moveActionInitiate.connect(doMove)
     menuService.actionInitiate.connect(doAction)
     menuService.interactActionInitiate.connect(doInteract)
@@ -196,6 +198,7 @@ func enemyTurn():
     Globals.enemy_turn = true
     current_entity = null
     highlightMap.clearHighlight()
+    
     menuService.disableAllButtons(true)
     scoreService.turn_taken()    
     for ent in state.all_allies_alive():
@@ -425,7 +428,10 @@ func resetPlayerServices():
     moveService.finish()
     actionService.finish()
     interactService.finish()
+    buildService.finish()
     highlightMap.highlight(current_entity)
+    if current_entity == null:
+        return
     current_entity.move_animation()
     return
 
@@ -448,6 +454,12 @@ func doMove(on):
     if not Globals.enemy_turn:
         menuService.show_description_click(ActionType.MOVE)
     moveService.start(current_entity)
+    return
+
+func doBuild():
+    resetPlayerServices()
+    print_debug("Do Build")
+    buildService.start()
     return
 
 func movesFound(poses):

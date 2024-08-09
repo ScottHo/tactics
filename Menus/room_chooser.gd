@@ -62,7 +62,7 @@ func setup_recruit_sprites():
     $TileMapFloor/R1.add_child(sprite)
     sprite.face_direction(Vector2i(0, 1))    
     sprite.play_move_animation()
-    ent = EntityFactory.create_bot(recruits[1])
+    ent = EntityFactory.create_bot(recNWruits[1])
     sprite = load(ent.sprite_path).instantiate()
     $TileMapFloor/R2.add_child(sprite)
     sprite.face_direction(Vector2i(1, 0))

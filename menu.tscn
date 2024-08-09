@@ -451,16 +451,31 @@ autowrap_mode = 2
 visible = false
 position = Vector2(1573.55, 477.1)
 
-[node name="TurnButton" type="Button" parent="."]
+[node name="MiddleContainer" type="ReferenceRect" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 900.63
-offset_top = 835.64
-offset_right = 1070.63
-offset_bottom = 925.64
+offset_left = 738.872
+offset_top = 764.622
+offset_right = 1338.87
+offset_bottom = 964.622
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_cvwx3")
+
+[node name="TurnButton" type="Button" parent="MiddleContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -200.0
+offset_right = -130.0
+offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
@@ -468,7 +483,26 @@ theme = ExtResource("4_cvwx3")
 theme_override_font_sizes/font_size = 18
 text = "End Turn"
 
+[node name="BuildButton" type="Button" parent="MiddleContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.862
+offset_top = -200.0
+offset_right = 54.1383
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("4_cvwx3")
+theme_override_font_sizes/font_size = 18
+text = "Build"
+
 [node name="TurnsContainer" type="ReferenceRect" parent="."]
+visible = false
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0

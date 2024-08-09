@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cq8xqg1q1wgxp"]
+[gd_scene load_steps=23 format=3 uid="uid://cq8xqg1q1wgxp"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_uypkh"]
 [ext_resource type="TileSet" uid="uid://bthpktu5fpy3m" path="res://Themes/base_tiles.tres" id="2_df7di"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Services/AiMoveService.gd" id="10_lo4ht"]
 [ext_resource type="Script" path="res://Services/AiActionService.gd" id="11_jfegk"]
 [ext_resource type="Script" path="res://DeathService.gd" id="12_4b2o3"]
+[ext_resource type="Script" path="res://Services/BuildService.gd" id="12_di3xg"]
 [ext_resource type="Script" path="res://Services/AiSpecialService.gd" id="12_nmvgr"]
 [ext_resource type="Script" path="res://Services/InteractService.gd" id="15_dm32j"]
 [ext_resource type="Script" path="res://Timer.gd" id="18_iw7cw"]
@@ -97,6 +98,9 @@ script = ExtResource("8_d2jpi")
 
 [node name="MoveService" type="Node2D" parent="."]
 script = ExtResource("6_jpms6")
+
+[node name="BuildService" type="Node2D" parent="."]
+script = ExtResource("12_di3xg")
 
 [node name="TurnService" type="Node2D" parent="."]
 script = ExtResource("8_5tca6")

@@ -11,12 +11,14 @@ var tutorial_mode := false
 
 signal moveActionInitiate
 signal nextTurnActionInitiate
+signal buildActionInitiate
 signal interactActionInitiate
 signal actionInitiate
 signal menuAnimationsFinished
 signal stopAction
 
-@onready var nextTurnButton: Button = $TurnButton
+@onready var nextTurnButton: Button = $MiddleContainer/TurnButton
+@onready var build_button: Button = $MiddleContainer/BuildButton
 
 @onready var moveButton: Button = $CharacterContainer/MoveButton
 @onready var interactButton: Button = $CharacterContainer/InteractButton
@@ -72,6 +74,7 @@ func _ready():
     $AbortMissionButton.pressed.connect(lose)
 
     setup_next_turn_button()
+    setup_build_button()
     setup_mechanic_container()
     setup_move_button()
     setup_interact_button()
@@ -125,6 +128,19 @@ func setup_next_turn_button():
         control_entered_tasks())
     nextTurnButton.mouse_exited.connect(func():
         control_exited_tasks())
+    return
+    
+func setup_build_button():
+    build_button.button_down.connect(func():
+        enable_build_button(false, true)
+        unpress_all_buttons()
+        buildActionInitiate.emit()
+        )
+    build_button.mouse_entered.connect(func():
+        control_entered_tasks())
+    build_button.mouse_exited.connect(func():
+        control_exited_tasks())
+    return
 
 func setup_move_button():
     moveButton.toggled.connect(func(b):
@@ -392,6 +408,13 @@ func enable_turn_button(e: bool, force = false):
         if not force:
             return
     nextTurnButton.disabled = not e
+    return
+
+func enable_build_button(e: bool, force = false):
+    if tutorial_mode:
+        if not force:
+            return
+    build_button.disabled = not e
     return
 
 func enable_moves_button(e: bool, force = false):
