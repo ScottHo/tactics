@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6iqxvpypem6r"]
+[gd_scene load_steps=19 format=3 uid="uid://b6iqxvpypem6r"]
 
 [ext_resource type="Texture2D" uid="uid://dhn2kw5m6too0" path="res://Assets/skull.png" id="2_sbscd"]
 [ext_resource type="PackedScene" uid="uid://cl5fa5qem3vpd" path="res://TextAnimation.tscn" id="3_dh5hh"]
 [ext_resource type="Texture2D" uid="uid://cmlcf47flv4my" path="res://Assets/GUI/info_box_hover.png" id="4_fs8ym"]
 [ext_resource type="Texture2D" uid="uid://bnsflbk3hbddm" path="res://Assets/GUI/Health_Over.png" id="4_h1630"]
 [ext_resource type="Texture2D" uid="uid://cx8a03jh8vpo2" path="res://Assets/GUI/Boot.png" id="5_j0nvt"]
+[ext_resource type="Texture2D" uid="uid://bg7xorxk3wg2b" path="res://Assets/GUI/Health_Over_Shield.png" id="5_li6hr"]
 [ext_resource type="Texture2D" uid="uid://fd3t18ylbg2a" path="res://Assets/GUI/initiative.png" id="6_67inl"]
 [ext_resource type="Script" path="res://EntityInfoTab.gd" id="6_m13e8"]
 [ext_resource type="Texture2D" uid="uid://dodutmihl1csn" path="res://Assets/GUI/item_sword.png" id="7_1i2pp"]
@@ -89,6 +90,19 @@ scale = Vector2(0.4, 0.2)
 value = 50.0
 texture_under = ExtResource("10_252n3")
 texture_progress = ExtResource("4_h1630")
+
+[node name="SmallShieldBar" type="TextureProgressBar" parent="."]
+visible = false
+z_index = 10
+offset_left = -43.19
+offset_top = -73.0
+offset_right = 168.8
+offset_bottom = -33.0
+scale = Vector2(0.4, 0.2)
+max_value = 1.0
+value = 1.0
+texture_under = ExtResource("10_252n3")
+texture_progress = ExtResource("5_li6hr")
 
 [node name="InfoBoxContainer" type="Node2D" parent="."]
 z_index = 15
@@ -358,6 +372,28 @@ offset_right = 167.699
 offset_bottom = 25.8157
 text = "8888"
 label_settings = SubResource("LabelSettings_pnrjd")
+vertical_alignment = 2
+
+[node name="ShieldBar" type="TextureProgressBar" parent="InfoBoxContainer"]
+z_index = 5
+offset_left = -148.506
+offset_top = -57.8502
+offset_right = 63.4944
+offset_bottom = -27.8502
+scale = Vector2(0.5, 0.7)
+max_value = 1.0
+texture_under = ExtResource("10_252n3")
+texture_progress = ExtResource("5_li6hr")
+
+[node name="ShieldLabel" type="Label" parent="InfoBoxContainer/ShieldBar"]
+layout_mode = 0
+offset_left = 81.8653
+offset_top = 3.62582
+offset_right = 135.865
+offset_bottom = 24.6259
+text = "8888"
+label_settings = SubResource("LabelSettings_pnrjd")
+horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="EnergyBar" type="TextureProgressBar" parent="InfoBoxContainer"]

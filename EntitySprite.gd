@@ -3,6 +3,7 @@ class_name EntitySprite extends Node2D
 var animationPlayer: AnimationPlayer
 var infoTab: EntityInfoTab
 var smallHealthBar: TextureProgressBar
+var smallShieldBar: TextureProgressBar
 var textAnimNode: TextAnimation
 var interContainer: Node2D
 var points := []
@@ -29,6 +30,7 @@ func _ready():
     animationPlayer = $AnimationPlayer
     infoTab = $CharacterCommon/InfoBoxContainer
     smallHealthBar = $CharacterCommon/SmallHealthBar
+    smallShieldBar = $CharacterCommon/SmallShieldBar
     textAnimNode = $CharacterCommon/TextParent/TextAnimation
     sprite = $Sprite
     interContainer = $CharacterCommon/InteractableContainer
@@ -235,6 +237,10 @@ func update_from_entity(entity: Entity):
     infoTab.update_from_entity(entity)
     smallHealthBar.value = entity.health
     smallHealthBar.max_value = entity.max_health
+    smallShieldBar.value = 0
+    if entity.shield_value > 0:
+        smallShieldBar.value = 1
+        smallShieldBar.visible = smallHealthBar.visible
     if not entity.is_ally:
         smallHealthBar.texture_progress = texture_small_bar
     return
@@ -261,11 +267,14 @@ func add_interactable(inter: Interactable):
 func show_info():
     infoTab.expand()
     smallHealthBar.visible = false
+    smallShieldBar.visible = false 
     return
 
 func hide_info():
     infoTab.unexpand()
     smallHealthBar.visible = true
+    if smallShieldBar.value > 0:
+        smallShieldBar.visible = true
     return
 
 func show_custom_sprite(path: String, _scale: Vector2):

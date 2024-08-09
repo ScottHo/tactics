@@ -64,7 +64,7 @@ func _ready():
                 $Node2D2.remove_child(s))
         )
     $HitAudioButton2.pressed.connect(func():
-        var s: EffectsAnimation = load("res://Effects/lightning.tscn").instantiate()
+        var s: EffectsAnimation = load("res://Effects/slash.tscn").instantiate()
         _hit_animation(s)
         )
     $Button.pressed.connect(func():

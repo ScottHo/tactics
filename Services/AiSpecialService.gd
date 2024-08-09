@@ -208,7 +208,7 @@ func do_special_effect():
     cameraService.stop_lock()
     _entity.action_animation(func():
         ActionCommon.do_action_animation(effects, special(), _targets, tileMap, _state, special_animation_done)
-        , ActionType.ACTION2)
+        , ActionType.ACTION1)
     return
 
 func special_animation_done():
@@ -257,8 +257,7 @@ func special() -> Special:
     return _specials[counter() % len(_specials)]
 
 func counter():
-    # Default at -2, as first turn it will go to -1 and we want to skip first
-    return _counters.get(_entity.id, -2)
+    return _counters.get(_entity.id, -1)
 
 func cycle_special():
     _counters[_entity.id] = counter() + 1
