@@ -28,7 +28,7 @@ func find_attack_location() -> Vector2i:
             target_entity = _ent
             continue
     if target_entity == null:
-        return Vector2i(999, 999)
+        return Utils.NULL_VEC
     target_entity.loseThreat(1)
     highlightMap2.highlightVec(target_entity.location, Highlights.ATTACK)
     return target_entity.location

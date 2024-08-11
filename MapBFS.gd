@@ -49,6 +49,8 @@ func calcRange_bfs():
                 continue
             if not path_good(neighbor):
                 continue
+            if has_wall(current, neighbor):
+                continue
             frontier.push_back(neighbor)
             _bfs_points[neighbor] = _bfs_points.get(current, []) + [neighbor]
     
@@ -73,6 +75,14 @@ func path_good(neighbor):
             if not ent.is_ally and _mode == BFS_MODE.AllyMove:
                 return false
     return true
+
+func has_wall(tile1, tile2):
+    var coords = [tile1, tile2]
+    coords.sort()
+    for wall in _state.walls:
+        if wall.coords() == coords:
+            return true
+    return false
 
 func _check_on_entity(vector):
     return _state.entity_on_tile(vector) != null

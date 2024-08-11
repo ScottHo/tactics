@@ -54,6 +54,8 @@ func _ready():
     aiActionService.done.connect(aiActionDone)
     aiSpecialService.special_done.connect(continue_doAiSpecial)
     highlightMap2.new_entity_selected.connect(new_entity)
+    buildService.build_finished.connect(func():
+        menuService.enable_build_button(true))
     
     setup_entities()
 
@@ -68,6 +70,7 @@ func _ready():
     highlightMap2.set_state(state)
     auraService.set_state(state)
     menuService.setState(state)
+    buildService.set_state(state)
 
     menuService.jenkins.tutorial_mode = _mission.is_tutorial
     menuService.tutorial_mode = _mission.is_tutorial
@@ -257,7 +260,7 @@ func nextTurn():
     print_debug("Next Turn")
     if scoreService.turnsTaken != 0 and scoreService.turnsTaken % 5 == 0:
         var location = interactService.spawn_interactable(_mission)
-        if location == Vector2i(999,999):
+        if location == Utils.NULL_VEC:
             nextTurn_continued2()
             return
         cameraService.move(tileMap.pointToGlobal(location))
@@ -363,7 +366,7 @@ func startAiAction():
 func doAiAction():
     print_debug("Do AI Action")
     var location = aiActionService.find_attack_location()
-    if location == Vector2i(999, 999):
+    if location == Utils.NULL_VEC:
         aiActionService.finish()
         update_character_menu()
         if not checkDeaths():

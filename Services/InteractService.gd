@@ -78,7 +78,7 @@ func fillTargetHighlights():
 
 func clearTargetHighlights():
     highlightMap2.highlightVec(_target, Highlights.EMPTY)
-    _target = Vector2i(999,999)
+    _target = Utils.NULL_VEC
     return
 
 func maxRange() -> int:
@@ -93,7 +93,7 @@ func finish():
 
 func spawn_interactable(mission: Mission):
     if _num_inters >= len(mission.buffs):
-        return Vector2i(999,999)
+        return Utils.NULL_VEC
     var tiles: Array = tileMap.all_tiles()
     tiles.shuffle()
     var i = 0
@@ -108,7 +108,7 @@ func spawn_interactable(mission: Mission):
             continue
         setup_interactable_for_level(mission.buffs[_num_inters], tiles[i])
         return tiles[i]
-    return Vector2i(999,999)
+    return Utils.NULL_VEC
 
 func setup_interactable_for_level(inter: Interactable, location: Vector2i, increment=true):
     ActionCommon.spawn_inter(location, inter, get_parent(), tileMap, _state)

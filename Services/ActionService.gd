@@ -63,7 +63,7 @@ func highlight_for_bfs():
     _target_points = Utils.get_target_coords(_entity.location, _previous_coords, shape())
     if action().type == ActionType.ATTACK and _entity.chain_attack:
         var point = add_chain_target(_target_points[0])
-        if point != Vector2i(999,999):
+        if point != Utils.NULL_VEC:
             _target_points.append(point)
     fillTargetHighlights()
     return
@@ -71,9 +71,9 @@ func highlight_for_bfs():
 func add_chain_target(start_vec):
     var original_target = _state.entity_on_tile(start_vec)
     if original_target == null:
-        return Vector2i(999,999)
+        return Utils.NULL_VEC
     if original_target.is_ally:
-        return Vector2i(999,999)
+        return Utils.NULL_VEC
     var potential_targets = {1:[], 2:[], 3:[]}
     for enemy in _state.all_enemies_alive():
         var total = enemy.location - start_vec
@@ -86,7 +86,7 @@ func add_chain_target(start_vec):
         return potential_targets[2][0].location
     if len(potential_targets[3]) > 0:
         return potential_targets[3][0].location
-    return Vector2i(999,999)
+    return Utils.NULL_VEC
 
 func highlight_for_no_bfs():
     clearTargetHighlights()

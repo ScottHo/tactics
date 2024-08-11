@@ -8,6 +8,8 @@ static var NE_vec = Vector2i(1,-1)
 static var SE_vec = Vector2i(1,1)
 static var NW_vec = Vector2i(-1,-1)
 static var SW_vec = Vector2i(-1,1)
+static var NULL_VEC: Vector2i = Vector2i(9999,9999)
+
 
 static func set_label_color(label: Label, color: Color):
     label.add_theme_color_override("font_color", Color.WHITE)

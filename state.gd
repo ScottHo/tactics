@@ -4,6 +4,7 @@ var entities: ID_Dict = ID_Dict.new()
 var allies: Array[int] = []
 var enemies: Array[int] = []
 var interactables: Array = []
+var walls: Array = []
 
 
 func all_allies() -> Array:
@@ -110,3 +111,6 @@ func remove_interactable(inter: Interactable):
     interactables.remove_at(interactables.find(inter))
     return
 
+func add_wall(wall: Wall):
+    walls.append(wall)
+    return

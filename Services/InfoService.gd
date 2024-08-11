@@ -2,7 +2,7 @@ class_name InfoService extends Node2D
 
 var _enabled := false
 var _state: State
-var _previous_coords: Vector2i = Vector2i(999,999)
+var _previous_coords: Vector2i = Utils.NULL_VEC
 var _previous_ent: Entity
 @onready var tileMap: MainTileMap = $"../TileMap"
 @onready var hoverPanel: Panel = $Panel

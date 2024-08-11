@@ -39,7 +39,7 @@ func doDeathAnimation(entity: Entity):
         entity.sprite.queue_free()
         if entity.spawn_on_death != null:
             spawn_interactable(entity.spawn_on_death, entity.location)
-        entity.location = Vector2i(999,999)
+        entity.location = Utils.NULL_VEC
             )
     return
 

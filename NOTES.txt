@@ -3,6 +3,7 @@ BUGS
 - Threat still bugged if highest threat is in melee but no other move is avilable 
 
 DO NEXT
+- Attacks with LOS
 - Steam page
 - Better roguelike run (abort run/continue run) UI/UX
 

@@ -4,28 +4,31 @@ class_name BuildService extends Node2D
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
 var _enabled: = false
 var _state: State
-var _prev_point: Vector2i = Vector2i(999, 999)
-var _prev_quadrant: Vector2i = Vector2i(999, 999)
+var _prev_point: Vector2i = Utils.NULL_VEC
+var _prev_quadrant: Vector2i = Utils.NULL_VEC
 var _wall: Wall = null
 
-signal wall_found
-
-func _ready():
-    return
+signal build_finished
 
 func _input(event):
     if not _enabled:
         return
     if Globals.on_ui:
-        _prev_point = Vector2i(999,999)
-        _prev_quadrant = Vector2i(999, 999)
+        _prev_point = Utils.NULL_VEC
+        _prev_quadrant = Utils.NULL_VEC
         return
+
     if event is InputEventMouseMotion:
         var point: Vector2i = tileMap.globalToPoint(get_global_mouse_position())
         var quadrant: Vector2i = tileMap.quadrant(get_global_mouse_position())
         if _prev_point == point and _prev_quadrant == quadrant:
             return
         if not tileMap.in_range(point):
+            reset_wall()
+            return
+        var coords = Wall.convert_to_wall_coords(point, quadrant)
+        if not tileMap.in_range(coords[0]) or not tileMap.in_range(coords[1]):
+            reset_wall()
             return
         _prev_point = point
         _prev_quadrant = quadrant
@@ -43,23 +46,34 @@ func _input(event):
     if event is InputEventMouseButton and event.is_pressed():
         match event.button_index:
             MOUSE_BUTTON_LEFT:
-                if _prev_point == Vector2i(999,999):
+                if _prev_point == Utils.NULL_VEC:
                     return
-                if _prev_quadrant == Vector2i(999,999):
+                if _prev_quadrant == Utils.NULL_VEC:
                     return
-                wall_found.emit(_prev_point, _prev_quadrant)
+                _wall.set_location(_prev_point, _prev_quadrant)
+                _state.add_wall(_wall)
                 finish()
                 return
 
 func finish():
     _enabled = false
-    remove_child(_wall)
     _wall = null
+    build_finished.emit()
     return
+    
+func reset_wall():
+    _wall.visible = false
+    _prev_point = Utils.NULL_VEC
+    _prev_quadrant = Utils.NULL_VEC
+    return    
 
 func start():
     _enabled = true
     _wall = load("res://Objects/Wall.tscn").instantiate()
     add_child(_wall)
     _wall.visible = false
+    return
+    
+func set_state(state: State):
+    _state = state
     return

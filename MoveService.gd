@@ -4,7 +4,7 @@ class_name MoveService extends Node2D
 @onready var highlightMap: HighlightMap = $"../HighlightMap"
 var _enabled: = false
 var finishInProcess: = false
-var previous_coords: = Vector2i(999,999)
+var previous_coords: = Utils.NULL_VEC
 var _points = []
 var _starting_point = Vector2i(0, 0)
 var _state: State
@@ -71,7 +71,7 @@ func start(entity: Entity):
     _starting_point = entity.location
     maxMoves = entity.moves_left
     _points = []
-    previous_coords = Vector2i(999,999)
+    previous_coords = Utils.NULL_VEC
     _map_bfs = MapBFS.new()
     _map_bfs.init(_starting_point, maxMoves, tileMap, highlightMap, Highlights.YELLOW, _state, MapBFS.BFS_MODE.AllyMove)
     _map_bfs.resetHighlights(true)
